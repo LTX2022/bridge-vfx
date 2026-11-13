@@ -1,0 +1,42 @@
+#! /Applications/Nuke17.0v1/Nuke17.0v1.app/Contents/MacOS/libnuke-17.0.1.dylib -nx
+#write_info Write1 file:"/Users/user/Documents/Code_Project/Bridge/outputs/Bridge-geometry-creative-20261030-01/jobs/geo_581db8c8f05ede8138799b66/project/saves/nuke.%04d.exr" format:"420 300 1" chans:":rgba.red:rgba.green:rgba.blue:rgba.alpha:" framerange:"1 100" fps:"0" colorspace:"ACEScg		ACES - ACEScg,lin_ap1" datatype:"16 bit half" transfer:"unknown" views:"main" colorManagement:"OCIO"
+version 17.0 v1
+Root {
+ inputs 0
+ name /Users/user/Documents/Code_Project/Bridge/outputs/Bridge-geometry-creative-20261030-01/jobs/geo_581db8c8f05ede8138799b66/project/saves/composite.nk
+ format "2048 1556 0 0 2048 1556 1 2K_Super_35(full-ap)"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+ colorManagement OCIO
+ OCIO_config custom
+ customOCIOConfigPath /Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/packages/ocio/houdini-config-v2.1.0_aces-v1.3_ocio-v2.3.ocio
+ defaultViewerLUT "OCIO LUTs"
+ workingSpaceLUT ACEScg
+ monitorLut "Un-tone-mapped (sRGB - Display)"
+ monitorOutLUT "Un-tone-mapped (sRGB - Display)"
+ int8Lut matte_paint
+ int16Lut texture_paint
+ logLut compositing_log
+ floatLut scene_linear
+}
+Read {
+ inputs 0
+ file_type exr
+ file /Users/user/Documents/Code_Project/Bridge/outputs/Bridge-geometry-creative-20261030-01/jobs/geo_581db8c8f05ede8138799b66/project/saves/main.%04d.exr
+ colorspace ACEScg
+ name Read1
+}
+Write {
+ channels rgba
+ file /Users/user/Documents/Code_Project/Bridge/outputs/Bridge-geometry-creative-20261030-01/jobs/geo_581db8c8f05ede8138799b66/project/saves/nuke.%04d.exr
+ file_type exr
+ metadata "all metadata"
+ first_part rgba
+ premultiplied true
+ colorspace ACEScg
+ ocioColorspace ACEScg
+ display "sRGB - Display"
+ view Un-tone-mapped
+ name Write1
+ selected true
+}

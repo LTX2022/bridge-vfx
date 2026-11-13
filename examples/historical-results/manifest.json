@@ -1,0 +1,613 @@
+{
+  "scope": "Copies of artifact files from the 14 completed results in the default registry; no credentials, receipts or execution authority",
+  "files": [
+    {
+      "project_id": "completed-geometry-20261105",
+      "operation_id": "delivery_767eae3f6c41a32278436ffb",
+      "role": "hip",
+      "path": "completed-geometry-20261105/delivery_767eae3f6c41a32278436ffb/hip.hip",
+      "sha256": "e92d75d89b556aa66d20390c9b6abd8c5c37446f1d1c1f59f166816fd30164a3",
+      "bytes": 931936
+    },
+    {
+      "project_id": "completed-geometry-20261105",
+      "operation_id": "delivery_767eae3f6c41a32278436ffb",
+      "role": "main",
+      "path": "completed-geometry-20261105/delivery_767eae3f6c41a32278436ffb/main.exr",
+      "sha256": "08b4b64673d74acad25b1542318fe521c712f52395a6ac2f613e1ca9ac1488d9",
+      "bytes": 198630
+    },
+    {
+      "project_id": "completed-geometry-20261105",
+      "operation_id": "delivery_767eae3f6c41a32278436ffb",
+      "role": "nk",
+      "path": "completed-geometry-20261105/delivery_767eae3f6c41a32278436ffb/nk.nk",
+      "sha256": "c0205b22adfb9d3a797c2a68f3da3a3aa6a0355eb17a69eb0b9cfc327dd67d5e",
+      "bytes": 1315
+    },
+    {
+      "project_id": "completed-geometry-20261105",
+      "operation_id": "delivery_767eae3f6c41a32278436ffb",
+      "role": "nuke",
+      "path": "completed-geometry-20261105/delivery_767eae3f6c41a32278436ffb/nuke.exr",
+      "sha256": "1715e628a25ff37dfbc8d36384de2c9ef4642e29f9d53d92d0bed82d676b67e4",
+      "bytes": 198919
+    },
+    {
+      "project_id": "created_41332fa685540f5259aa7301",
+      "operation_id": "geo_283a9078fd3f008229d45be9",
+      "role": "hip",
+      "path": "created_41332fa685540f5259aa7301/geo_283a9078fd3f008229d45be9/hip.hip",
+      "sha256": "cc97cb8dad6dde90f4de2158e8def7b68bf0a67f77beac0061f946cee31a639f",
+      "bytes": 929474
+    },
+    {
+      "project_id": "created_41332fa685540f5259aa7301",
+      "operation_id": "geo_283a9078fd3f008229d45be9",
+      "role": "local_preview",
+      "path": "created_41332fa685540f5259aa7301/geo_283a9078fd3f008229d45be9/local_preview.png",
+      "sha256": "02291524ae8ed9b095e8098979b01913af333e3973d5ed80b3b57880a0778450",
+      "bytes": 8616
+    },
+    {
+      "project_id": "created_41332fa685540f5259aa7301",
+      "operation_id": "geo_283a9078fd3f008229d45be9",
+      "role": "main",
+      "path": "created_41332fa685540f5259aa7301/geo_283a9078fd3f008229d45be9/main.exr",
+      "sha256": "7f43c757fdfc1ca3f23565c639b9eb52bbf45251b4d79563a025755e1a046c91",
+      "bytes": 200960
+    },
+    {
+      "project_id": "created_41332fa685540f5259aa7301",
+      "operation_id": "geo_283a9078fd3f008229d45be9",
+      "role": "nk",
+      "path": "created_41332fa685540f5259aa7301/geo_283a9078fd3f008229d45be9/nk.nk",
+      "sha256": "ce0635288306c579a032e48441cf4e2393617627fdb402640e8a5e863eff417d",
+      "bytes": 1804
+    },
+    {
+      "project_id": "created_41332fa685540f5259aa7301",
+      "operation_id": "geo_283a9078fd3f008229d45be9",
+      "role": "nuke",
+      "path": "created_41332fa685540f5259aa7301/geo_283a9078fd3f008229d45be9/nuke.exr",
+      "sha256": "3649e68d5e6be27ba74fff16c8ae08ce0a30672d94363169cb21e02cd2d60382",
+      "bytes": 201229
+    },
+    {
+      "project_id": "created_41332fa685540f5259aa7301",
+      "operation_id": "geo_283a9078fd3f008229d45be9",
+      "role": "preview",
+      "path": "created_41332fa685540f5259aa7301/geo_283a9078fd3f008229d45be9/preview.png",
+      "sha256": "2c65df0d824b5867e07e3fe904c11f06ec46ea9c60726fb0394994549b6e22bc",
+      "bytes": 22561
+    },
+    {
+      "project_id": "created_41332fa685540f5259aa7301",
+      "operation_id": "geo_789aa2cc2124c18d0443e3d1",
+      "role": "hip",
+      "path": "created_41332fa685540f5259aa7301/geo_789aa2cc2124c18d0443e3d1/hip.hip",
+      "sha256": "ea2fbe34dd671b2c010f02e24236f571e5c5b63f79a1e890dbdc7d2bb8d6ff91",
+      "bytes": 929471
+    },
+    {
+      "project_id": "created_41332fa685540f5259aa7301",
+      "operation_id": "geo_789aa2cc2124c18d0443e3d1",
+      "role": "local_preview",
+      "path": "created_41332fa685540f5259aa7301/geo_789aa2cc2124c18d0443e3d1/local_preview.png",
+      "sha256": "68e5b376f242a34175134c90c50a91393deac32c9834f01461ec095331af5dce",
+      "bytes": 8919
+    },
+    {
+      "project_id": "created_41332fa685540f5259aa7301",
+      "operation_id": "geo_789aa2cc2124c18d0443e3d1",
+      "role": "main",
+      "path": "created_41332fa685540f5259aa7301/geo_789aa2cc2124c18d0443e3d1/main.exr",
+      "sha256": "b216081984a80d76f20ffb3aaa2a7d1151bb6592e0c9b36ec0741a624bf3c6b4",
+      "bytes": 198461
+    },
+    {
+      "project_id": "created_41332fa685540f5259aa7301",
+      "operation_id": "geo_789aa2cc2124c18d0443e3d1",
+      "role": "nk",
+      "path": "created_41332fa685540f5259aa7301/geo_789aa2cc2124c18d0443e3d1/nk.nk",
+      "sha256": "2bce33dce66408cc0534bfcbd50e2b5b6cbaef3b54ff5d4d7d3c5c03910b6249",
+      "bytes": 1804
+    },
+    {
+      "project_id": "created_41332fa685540f5259aa7301",
+      "operation_id": "geo_789aa2cc2124c18d0443e3d1",
+      "role": "nuke",
+      "path": "created_41332fa685540f5259aa7301/geo_789aa2cc2124c18d0443e3d1/nuke.exr",
+      "sha256": "e64f624b3cafdfbdc6c0031e27562b44abf6183787803ac5e6513dd6b4dd3604",
+      "bytes": 198730
+    },
+    {
+      "project_id": "created_41332fa685540f5259aa7301",
+      "operation_id": "geo_789aa2cc2124c18d0443e3d1",
+      "role": "preview",
+      "path": "created_41332fa685540f5259aa7301/geo_789aa2cc2124c18d0443e3d1/preview.png",
+      "sha256": "13ddb3f5b65e18af2ec2c1ea89ab150a3a73953099e0e9080f3fc43cac149355",
+      "bytes": 22145
+    },
+    {
+      "project_id": "created_5413674dd70746566288c34f",
+      "operation_id": "geo_681f8440a8c84e2c87143c31",
+      "role": "hip",
+      "path": "created_5413674dd70746566288c34f/geo_681f8440a8c84e2c87143c31/hip.hip",
+      "sha256": "7dfbadc33a3d16c2ab5c003c98d3ea5e81a0d59f774fc3a2946c980bf5f13f8c",
+      "bytes": 929686
+    },
+    {
+      "project_id": "created_5413674dd70746566288c34f",
+      "operation_id": "geo_681f8440a8c84e2c87143c31",
+      "role": "local_preview",
+      "path": "created_5413674dd70746566288c34f/geo_681f8440a8c84e2c87143c31/local_preview.png",
+      "sha256": "0b6b0cda132e4ca27304f155a7d0645c4e37102d56da4e96a7b38130745c11bf",
+      "bytes": 8741
+    },
+    {
+      "project_id": "created_5413674dd70746566288c34f",
+      "operation_id": "geo_681f8440a8c84e2c87143c31",
+      "role": "main",
+      "path": "created_5413674dd70746566288c34f/geo_681f8440a8c84e2c87143c31/main.exr",
+      "sha256": "8a3a29c4ed6037d57cfa9570758dea80a297775d665fc7d7fddf710775842f3c",
+      "bytes": 200065
+    },
+    {
+      "project_id": "created_5413674dd70746566288c34f",
+      "operation_id": "geo_681f8440a8c84e2c87143c31",
+      "role": "nk",
+      "path": "created_5413674dd70746566288c34f/geo_681f8440a8c84e2c87143c31/nk.nk",
+      "sha256": "4348b98e7b6f8e92abb50a48e87758e39ac1ff2542aa77c8f922c63360c26c48",
+      "bytes": 1804
+    },
+    {
+      "project_id": "created_5413674dd70746566288c34f",
+      "operation_id": "geo_681f8440a8c84e2c87143c31",
+      "role": "nuke",
+      "path": "created_5413674dd70746566288c34f/geo_681f8440a8c84e2c87143c31/nuke.exr",
+      "sha256": "651c66d81b06cbc4fa981b3a07310ede158fad2c3a6bbfabed246138412626cc",
+      "bytes": 200334
+    },
+    {
+      "project_id": "created_5413674dd70746566288c34f",
+      "operation_id": "geo_681f8440a8c84e2c87143c31",
+      "role": "preview",
+      "path": "created_5413674dd70746566288c34f/geo_681f8440a8c84e2c87143c31/preview.png",
+      "sha256": "776b0680a37aa5ec9dcc14ebd862121cb587c24e5d58f369e58db02d4b8655bc",
+      "bytes": 22385
+    },
+    {
+      "project_id": "created_5413674dd70746566288c34f",
+      "operation_id": "geo_efec90eac243766b68958b83",
+      "role": "hip",
+      "path": "created_5413674dd70746566288c34f/geo_efec90eac243766b68958b83/hip.hip",
+      "sha256": "a081367eb1b27eae1c079d31cabbcaf54fb667905874329a80044111daa93555",
+      "bytes": 929683
+    },
+    {
+      "project_id": "created_5413674dd70746566288c34f",
+      "operation_id": "geo_efec90eac243766b68958b83",
+      "role": "local_preview",
+      "path": "created_5413674dd70746566288c34f/geo_efec90eac243766b68958b83/local_preview.png",
+      "sha256": "1d21dfe7abf131680e0a21a7c60e079c039f489ba140d318306fc82694e32bfa",
+      "bytes": 8809
+    },
+    {
+      "project_id": "created_5413674dd70746566288c34f",
+      "operation_id": "geo_efec90eac243766b68958b83",
+      "role": "main",
+      "path": "created_5413674dd70746566288c34f/geo_efec90eac243766b68958b83/main.exr",
+      "sha256": "24e904cc20282e851c8b68182ea3ab7c6158fe8d18aadc09cfa8b20d12cf8648",
+      "bytes": 198442
+    },
+    {
+      "project_id": "created_5413674dd70746566288c34f",
+      "operation_id": "geo_efec90eac243766b68958b83",
+      "role": "nk",
+      "path": "created_5413674dd70746566288c34f/geo_efec90eac243766b68958b83/nk.nk",
+      "sha256": "c3d65ee40a840bed352645b095145425033e7054bb9481d2666408413936b8f4",
+      "bytes": 1804
+    },
+    {
+      "project_id": "created_5413674dd70746566288c34f",
+      "operation_id": "geo_efec90eac243766b68958b83",
+      "role": "nuke",
+      "path": "created_5413674dd70746566288c34f/geo_efec90eac243766b68958b83/nuke.exr",
+      "sha256": "4db32718e01f6aa20436b89126bf22f8d5002643bf26ac84c5439ee143218975",
+      "bytes": 198711
+    },
+    {
+      "project_id": "created_5413674dd70746566288c34f",
+      "operation_id": "geo_efec90eac243766b68958b83",
+      "role": "preview",
+      "path": "created_5413674dd70746566288c34f/geo_efec90eac243766b68958b83/preview.png",
+      "sha256": "3a75fa72c12e333e7df7aafca407c656608f0dc58df9b995f1e058825625fbcf",
+      "bytes": 21977
+    },
+    {
+      "project_id": "created_5413674dd70746566288c34f",
+      "operation_id": "geo_feedback_8c216030618e095bb7a5f9c6",
+      "role": "hip",
+      "path": "created_5413674dd70746566288c34f/geo_feedback_8c216030618e095bb7a5f9c6/hip.hip",
+      "sha256": "44d70dfb0267ad8d24fb58c019d76f3711ee843c5b8425c54229fbc3efaf4bbc",
+      "bytes": 929796
+    },
+    {
+      "project_id": "created_5413674dd70746566288c34f",
+      "operation_id": "geo_feedback_8c216030618e095bb7a5f9c6",
+      "role": "local_preview",
+      "path": "created_5413674dd70746566288c34f/geo_feedback_8c216030618e095bb7a5f9c6/local_preview.png",
+      "sha256": "0541f29c882f516e84e325d731abc82d97cd05e4f9e98bbb3a25769484a889f8",
+      "bytes": 8862
+    },
+    {
+      "project_id": "created_5413674dd70746566288c34f",
+      "operation_id": "geo_feedback_8c216030618e095bb7a5f9c6",
+      "role": "main",
+      "path": "created_5413674dd70746566288c34f/geo_feedback_8c216030618e095bb7a5f9c6/main.exr",
+      "sha256": "fb424be5c406c82a2793732fba5d8dc7aa28e7dbc82bc177d1428c3ca3a69b0c",
+      "bytes": 200792
+    },
+    {
+      "project_id": "created_5413674dd70746566288c34f",
+      "operation_id": "geo_feedback_8c216030618e095bb7a5f9c6",
+      "role": "nk",
+      "path": "created_5413674dd70746566288c34f/geo_feedback_8c216030618e095bb7a5f9c6/nk.nk",
+      "sha256": "cd04a39777a8743924126cf9916ebd8967842fbbaad74a797ac0a45da6905b70",
+      "bytes": 2024
+    },
+    {
+      "project_id": "created_5413674dd70746566288c34f",
+      "operation_id": "geo_feedback_8c216030618e095bb7a5f9c6",
+      "role": "nuke",
+      "path": "created_5413674dd70746566288c34f/geo_feedback_8c216030618e095bb7a5f9c6/nuke.exr",
+      "sha256": "01a405e912049aa647de1c06561f9a59e37004b190d8050855421ff2d1f301cc",
+      "bytes": 201107
+    },
+    {
+      "project_id": "created_5413674dd70746566288c34f",
+      "operation_id": "geo_feedback_8c216030618e095bb7a5f9c6",
+      "role": "preview",
+      "path": "created_5413674dd70746566288c34f/geo_feedback_8c216030618e095bb7a5f9c6/preview.png",
+      "sha256": "ecad0f95e0ac5881d59b1766cea2fdfa2ec6b3f3885a6e02815fbc913e79b7f8",
+      "bytes": 22457
+    },
+    {
+      "project_id": "disklight",
+      "operation_id": "creative_4023177d8ff79d0defa7",
+      "role": "hip",
+      "path": "disklight/creative_4023177d8ff79d0defa7/hip.hip",
+      "sha256": "3b38eaf1cfa740cec110b0ef1c5023eb72dcaca5929538a2618843ebd5f087e7",
+      "bytes": 748817
+    },
+    {
+      "project_id": "disklight",
+      "operation_id": "creative_4023177d8ff79d0defa7",
+      "role": "main",
+      "path": "disklight/creative_4023177d8ff79d0defa7/main.exr",
+      "sha256": "fe039fca75078c582a34f77fad09bde2a41dda706af93c27c6c92f64666ea3ae",
+      "bytes": 97898
+    },
+    {
+      "project_id": "disklight",
+      "operation_id": "creative_4023177d8ff79d0defa7",
+      "role": "nk",
+      "path": "disklight/creative_4023177d8ff79d0defa7/nk.nk",
+      "sha256": "262c556861b0ce3dbca1ebf19e6b720e51f328855847fe2deacf3399dedfbe97",
+      "bytes": 2072
+    },
+    {
+      "project_id": "disklight",
+      "operation_id": "creative_4023177d8ff79d0defa7",
+      "role": "nuke",
+      "path": "disklight/creative_4023177d8ff79d0defa7/nuke.exr",
+      "sha256": "83c13a51a6d5d1a4fa5690277e0486f858c67c96fb49aaea4b6dbfc7426b46a2",
+      "bytes": 98182
+    },
+    {
+      "project_id": "disklight",
+      "operation_id": "creative_4023177d8ff79d0defa7",
+      "role": "preview",
+      "path": "disklight/creative_4023177d8ff79d0defa7/preview.png",
+      "sha256": "8f953e5ea20d96d9988acc46be2e007447b648b24c339251611481e89a6f99b3",
+      "bytes": 29496
+    },
+    {
+      "project_id": "disklight",
+      "operation_id": "creative_a8e61b2e379eb44fa300",
+      "role": "hip",
+      "path": "disklight/creative_a8e61b2e379eb44fa300/hip.hip",
+      "sha256": "f4c1184dde8618d6c2b615a2972099dc1418a49be0729194e8764945d9574d7a",
+      "bytes": 748777
+    },
+    {
+      "project_id": "disklight",
+      "operation_id": "creative_a8e61b2e379eb44fa300",
+      "role": "main",
+      "path": "disklight/creative_a8e61b2e379eb44fa300/main.exr",
+      "sha256": "cf1b614639bdb8db6cc612582f6aa251d7467686054668aec5fb783f9151ee45",
+      "bytes": 99248
+    },
+    {
+      "project_id": "disklight",
+      "operation_id": "creative_a8e61b2e379eb44fa300",
+      "role": "nk",
+      "path": "disklight/creative_a8e61b2e379eb44fa300/nk.nk",
+      "sha256": "f64da88e84ef2dc7c789ec4fdc8132f4d316a4bd1413b2849287294cc1187d1c",
+      "bytes": 1988
+    },
+    {
+      "project_id": "disklight",
+      "operation_id": "creative_a8e61b2e379eb44fa300",
+      "role": "nuke",
+      "path": "disklight/creative_a8e61b2e379eb44fa300/nuke.exr",
+      "sha256": "eb009247de379b2fbba7737e64823d93258b894ef53f933bad7d7b7ef8e5592a",
+      "bytes": 99532
+    },
+    {
+      "project_id": "disklight",
+      "operation_id": "creative_a8e61b2e379eb44fa300",
+      "role": "preview",
+      "path": "disklight/creative_a8e61b2e379eb44fa300/preview.png",
+      "sha256": "c527540423115165d2d1c35073a285bb88f60e9cd0bde357f9eb7edecefc0e2f",
+      "bytes": 29161
+    },
+    {
+      "project_id": "geometry-gate",
+      "operation_id": "geo_ac86ddaeafec804b243af788",
+      "role": "hip",
+      "path": "geometry-gate/geo_ac86ddaeafec804b243af788/hip.hip",
+      "sha256": "a7f3999aa18d935be37de8ecb935c61e561c6942f184907ae10f79f59cf3b099",
+      "bytes": 930270
+    },
+    {
+      "project_id": "geometry-gate",
+      "operation_id": "geo_ac86ddaeafec804b243af788",
+      "role": "local_preview",
+      "path": "geometry-gate/geo_ac86ddaeafec804b243af788/local_preview.png",
+      "sha256": "467c1c6168691a6bf802045aa6b98ef01052b608353c9864cbb356fc715ef9f6",
+      "bytes": 8645
+    },
+    {
+      "project_id": "geometry-gate",
+      "operation_id": "geo_ac86ddaeafec804b243af788",
+      "role": "main",
+      "path": "geometry-gate/geo_ac86ddaeafec804b243af788/main.exr",
+      "sha256": "4dc3c51343bf6a7aca496eb244d2d9611b82e9b031ff30d4b788bbf29d5f3711",
+      "bytes": 200752
+    },
+    {
+      "project_id": "geometry-gate",
+      "operation_id": "geo_ac86ddaeafec804b243af788",
+      "role": "nk",
+      "path": "geometry-gate/geo_ac86ddaeafec804b243af788/nk.nk",
+      "sha256": "7a34e2e9a3ac4df3c0895477557064ecafe46b048008ec98a0bb2692b09c8c39",
+      "bytes": 1852
+    },
+    {
+      "project_id": "geometry-gate",
+      "operation_id": "geo_ac86ddaeafec804b243af788",
+      "role": "nuke",
+      "path": "geometry-gate/geo_ac86ddaeafec804b243af788/nuke.exr",
+      "sha256": "da1faa5d17848426b10095e078a87b9c8ea4d0fba0acfca793fd2f8dc04782eb",
+      "bytes": 201033
+    },
+    {
+      "project_id": "geometry-gate",
+      "operation_id": "geo_ac86ddaeafec804b243af788",
+      "role": "preview",
+      "path": "geometry-gate/geo_ac86ddaeafec804b243af788/preview.png",
+      "sha256": "e90645536df55d77f628459ce8297e2cb006415b3e9dc347860d166897a4247a",
+      "bytes": 22356
+    },
+    {
+      "project_id": "geometry-gate",
+      "operation_id": "geo_c2ebcbe923cf8805b9edf8fb",
+      "role": "hip",
+      "path": "geometry-gate/geo_c2ebcbe923cf8805b9edf8fb/hip.hip",
+      "sha256": "a283d61e4f42229368b961c9be44803a53a3b0cb2d2e8fdffd46d3141f291623",
+      "bytes": 930267
+    },
+    {
+      "project_id": "geometry-gate",
+      "operation_id": "geo_c2ebcbe923cf8805b9edf8fb",
+      "role": "local_preview",
+      "path": "geometry-gate/geo_c2ebcbe923cf8805b9edf8fb/local_preview.png",
+      "sha256": "5c5b707db0715c0f50dc18508b5a9d08a1aa2aa0d85dda7b09f4801ff955a0e9",
+      "bytes": 8845
+    },
+    {
+      "project_id": "geometry-gate",
+      "operation_id": "geo_c2ebcbe923cf8805b9edf8fb",
+      "role": "main",
+      "path": "geometry-gate/geo_c2ebcbe923cf8805b9edf8fb/main.exr",
+      "sha256": "b0844b74fc942a624ff7c1b810704075c57e1348149840152c6db68f1c8f7cb0",
+      "bytes": 198457
+    },
+    {
+      "project_id": "geometry-gate",
+      "operation_id": "geo_c2ebcbe923cf8805b9edf8fb",
+      "role": "nk",
+      "path": "geometry-gate/geo_c2ebcbe923cf8805b9edf8fb/nk.nk",
+      "sha256": "6a32c15dc82dcdbb52084da98285af127051caae80c0984d274e6d1aa1102a33",
+      "bytes": 1852
+    },
+    {
+      "project_id": "geometry-gate",
+      "operation_id": "geo_c2ebcbe923cf8805b9edf8fb",
+      "role": "nuke",
+      "path": "geometry-gate/geo_c2ebcbe923cf8805b9edf8fb/nuke.exr",
+      "sha256": "d5c06b78fad02e7a5faf079c7e55c0a8f337909e61ef4605d8df3536353577e1",
+      "bytes": 198738
+    },
+    {
+      "project_id": "geometry-gate",
+      "operation_id": "geo_c2ebcbe923cf8805b9edf8fb",
+      "role": "preview",
+      "path": "geometry-gate/geo_c2ebcbe923cf8805b9edf8fb/preview.png",
+      "sha256": "146b73545bb54c7405d3517d13611ec4a3e601bf2f1864662d08e544d77bb32a",
+      "bytes": 21943
+    },
+    {
+      "project_id": "rectlight",
+      "operation_id": "creative_06679b9bba7ae49982f1",
+      "role": "hip",
+      "path": "rectlight/creative_06679b9bba7ae49982f1/hip.hip",
+      "sha256": "40c70e80dde300e7b805cd213810910319a1c455c5d4f1fa5f3f0e82f2116dda",
+      "bytes": 808220
+    },
+    {
+      "project_id": "rectlight",
+      "operation_id": "creative_06679b9bba7ae49982f1",
+      "role": "main",
+      "path": "rectlight/creative_06679b9bba7ae49982f1/main.exr",
+      "sha256": "b66cbff9c8c26fa33d3ccc24eb44f3c41a31aa2f897e1435a7ce17f63e72a031",
+      "bytes": 95940
+    },
+    {
+      "project_id": "rectlight",
+      "operation_id": "creative_06679b9bba7ae49982f1",
+      "role": "nk",
+      "path": "rectlight/creative_06679b9bba7ae49982f1/nk.nk",
+      "sha256": "ace9c60e5270ce02e09d158e561a07823298a77abdce11d03322f681f8b6db63",
+      "bytes": 1996
+    },
+    {
+      "project_id": "rectlight",
+      "operation_id": "creative_06679b9bba7ae49982f1",
+      "role": "nuke",
+      "path": "rectlight/creative_06679b9bba7ae49982f1/nuke.exr",
+      "sha256": "19d8a285f5fd62e67184681e2aee77e4e776afcaae1d961c56e25cd6db7a47a3",
+      "bytes": 96224
+    },
+    {
+      "project_id": "rectlight",
+      "operation_id": "creative_06679b9bba7ae49982f1",
+      "role": "preview",
+      "path": "rectlight/creative_06679b9bba7ae49982f1/preview.png",
+      "sha256": "d06123653cb882ed41aef60653ffb341ff642cd158c66cd6d20c16a642f96cfd",
+      "bytes": 22873
+    },
+    {
+      "project_id": "rectlight",
+      "operation_id": "creative_bff6f898fafe1db03aae",
+      "role": "hip",
+      "path": "rectlight/creative_bff6f898fafe1db03aae/hip.hip",
+      "sha256": "a3411f2d3e793d88275b175083acbde8a16f685143247fe24d909080b70e9bf5",
+      "bytes": 808277
+    },
+    {
+      "project_id": "rectlight",
+      "operation_id": "creative_bff6f898fafe1db03aae",
+      "role": "main",
+      "path": "rectlight/creative_bff6f898fafe1db03aae/main.exr",
+      "sha256": "a86b52dc0d2fd9132f026bf590b9ed28a6038f5f4e9e6635a370451dea624a22",
+      "bytes": 96164
+    },
+    {
+      "project_id": "rectlight",
+      "operation_id": "creative_bff6f898fafe1db03aae",
+      "role": "nk",
+      "path": "rectlight/creative_bff6f898fafe1db03aae/nk.nk",
+      "sha256": "aa1cb581b5d2999cea42e9859075441f0c3f6d2277cfdf28094796549d133aad",
+      "bytes": 2124
+    },
+    {
+      "project_id": "rectlight",
+      "operation_id": "creative_bff6f898fafe1db03aae",
+      "role": "nuke",
+      "path": "rectlight/creative_bff6f898fafe1db03aae/nuke.exr",
+      "sha256": "ebecf920f4553452b8d1a334d333d4ac05e1c602a6e73d43faa2d30f8bae9aaa",
+      "bytes": 96448
+    },
+    {
+      "project_id": "rectlight",
+      "operation_id": "creative_bff6f898fafe1db03aae",
+      "role": "preview",
+      "path": "rectlight/creative_bff6f898fafe1db03aae/preview.png",
+      "sha256": "e82273c765e52a0fe5a6edb8738abaca757a621b5de6720dc79ca8f9f979bd97",
+      "bytes": 23642
+    },
+    {
+      "project_id": "rectlight-softbox",
+      "operation_id": "rshape_73cdac9a8a587a7ca28e071a",
+      "role": "hip",
+      "path": "rectlight-softbox/rshape_73cdac9a8a587a7ca28e071a/hip.hip",
+      "sha256": "74edada4f87296559580cf5173d01b3d8601746f9259bdc3091ab70ecc7b1900",
+      "bytes": 809077
+    },
+    {
+      "project_id": "rectlight-softbox",
+      "operation_id": "rshape_73cdac9a8a587a7ca28e071a",
+      "role": "main",
+      "path": "rectlight-softbox/rshape_73cdac9a8a587a7ca28e071a/main.exr",
+      "sha256": "5007e067b7628df26a6a7ddcd1e1a60f3b522379f1aa9e21fcd4b023728d5bb3",
+      "bytes": 95539
+    },
+    {
+      "project_id": "rectlight-softbox",
+      "operation_id": "rshape_73cdac9a8a587a7ca28e071a",
+      "role": "nk",
+      "path": "rectlight-softbox/rshape_73cdac9a8a587a7ca28e071a/nk.nk",
+      "sha256": "7e85896208bca6d0216accb09172237e2b4ca79e37139482bed1ee95296a34c4",
+      "bytes": 1896
+    },
+    {
+      "project_id": "rectlight-softbox",
+      "operation_id": "rshape_73cdac9a8a587a7ca28e071a",
+      "role": "nuke",
+      "path": "rectlight-softbox/rshape_73cdac9a8a587a7ca28e071a/nuke.exr",
+      "sha256": "f5b940fc7c228893ea39518557b4b59082b2185e2b5dfc4b46805b7306e3df05",
+      "bytes": 95828
+    },
+    {
+      "project_id": "rectlight-softbox",
+      "operation_id": "rshape_73cdac9a8a587a7ca28e071a",
+      "role": "preview",
+      "path": "rectlight-softbox/rshape_73cdac9a8a587a7ca28e071a/preview.png",
+      "sha256": "42af062d61b9d365bf2240d4c2af46156d46a46a4b2892c53ad9dbf930f1b847",
+      "bytes": 21952
+    },
+    {
+      "project_id": "rectlight-softbox",
+      "operation_id": "rshape_e47d86c8a1b70cf27ca9e2b8",
+      "role": "hip",
+      "path": "rectlight-softbox/rshape_e47d86c8a1b70cf27ca9e2b8/hip.hip",
+      "sha256": "487766d00687cea1dd1c98791125744a0972da0b2eca92349fb4685e4a68be90",
+      "bytes": 809076
+    },
+    {
+      "project_id": "rectlight-softbox",
+      "operation_id": "rshape_e47d86c8a1b70cf27ca9e2b8",
+      "role": "main",
+      "path": "rectlight-softbox/rshape_e47d86c8a1b70cf27ca9e2b8/main.exr",
+      "sha256": "ca67d1c9635003818e5adbbda2fe2920e1389f18075f04b64cfd9347a4357ce7",
+      "bytes": 95157
+    },
+    {
+      "project_id": "rectlight-softbox",
+      "operation_id": "rshape_e47d86c8a1b70cf27ca9e2b8",
+      "role": "nk",
+      "path": "rectlight-softbox/rshape_e47d86c8a1b70cf27ca9e2b8/nk.nk",
+      "sha256": "41333a829f5f468975f8ff0e7299e9c195201d530922c6d7abc8cb2693e9b843",
+      "bytes": 1896
+    },
+    {
+      "project_id": "rectlight-softbox",
+      "operation_id": "rshape_e47d86c8a1b70cf27ca9e2b8",
+      "role": "nuke",
+      "path": "rectlight-softbox/rshape_e47d86c8a1b70cf27ca9e2b8/nuke.exr",
+      "sha256": "081858a20c32d8370575bcc64b66e8e4d9236e192bbe5ffc62193f51bc79b849",
+      "bytes": 95446
+    },
+    {
+      "project_id": "rectlight-softbox",
+      "operation_id": "rshape_e47d86c8a1b70cf27ca9e2b8",
+      "role": "preview",
+      "path": "rectlight-softbox/rshape_e47d86c8a1b70cf27ca9e2b8/preview.png",
+      "sha256": "6a096b58790f793178ffe24ace6aa74b676c7aa9cba9ad1c9f59fa509ef50137",
+      "bytes": 22894
+    }
+  ]
+}
