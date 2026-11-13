@@ -1,0 +1,4554 @@
+{
+  "domain_pack": "swarm_flocking_v1",
+  "case_id": "swarm_flocking_v1__build_inspect",
+  "case_ids": [
+    "swarm_flocking_v1__build_inspect",
+    "swarm_flocking_v1__causal_candidate",
+    "swarm_flocking_v1__approval_recovery"
+  ],
+  "domain_pack_version": "1.0.0",
+  "kind": "current_software_contract_checklist_not_execution_evidence",
+  "status": "PREPARATION_NOT_ACCEPTED",
+  "applications": [
+    "houdini",
+    "nuke"
+  ],
+  "required_versions": {
+    "houdini": [
+      "21.0.631",
+      "22.0.459"
+    ],
+    "nuke": [
+      "17.0v1"
+    ]
+  },
+  "native_basis_status": "UNRESOLVED",
+  "native_basis": {
+    "static_definitions": [
+      "docs/native-basis/hda-interface-capture.json",
+      "docs/native-basis/native-boundary-metadata-supplement.json",
+      "docs/native-basis/hda-interface-22.0.459.json",
+      "docs/native-basis/supporting-sources-22.0.459.json"
+    ],
+    "meaning": "Current software mappings and static references are not whole-domain native validation; resolve exact operator/parameter/port and output-consumption gaps before marking VERIFIED_SOURCE.",
+    "versioned_preparation": {
+      "22.0.459": {
+        "status": "UNRESOLVED",
+        "scope": "Independent459HDA static fields and prospective software topology only; no compiled template, host process, writer execution or whole-domain validation.",
+        "sources": [
+          {
+            "path": "docs/native-basis/hda-interface-22.0.459.json",
+            "sha256": "e8d9ee7a16f14baa2327ae45412b2acee60ef4849d4e3aa099aea229586379c7",
+            "version": "22.0.459",
+            "native_execution": false
+          },
+          {
+            "path": "docs/native-basis/supporting-sources-22.0.459.json",
+            "sha256": "7b1bd4e1b187de823db9555bca10f40e9278dd88fb790cce8c874576405e1c3a",
+            "version": "22.0.459",
+            "native_execution": false
+          }
+        ],
+        "originals": "docs/native-basis/h22-459-originals/",
+        "captured_hda_operators": 55,
+        "node_templates": {
+          "default": [
+            {
+              "role": "geometry_network",
+              "candidates": [
+                {
+                  "operator": "Obj/geo",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "source",
+              "candidates": [
+                {
+                  "operator": "Sop/sphere",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "simulation",
+              "candidates": [
+                {
+                  "operator": "Sop/dopnet",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "particle_object",
+              "candidates": [
+                {
+                  "operator": "Dop/popobject",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "2327dd305f24a6b1416c23aa3c54fb4e3acdd0d9fe3e4bc83c4e5e6786d50f99",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "emission",
+              "candidates": [
+                {
+                  "operator": "Dop/popsource::2.0",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "f0da84834be59b92f29b40b5d84f616f0e8a9471cc17d41a5c4b109dd5b31bbd",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "flock",
+              "candidates": [
+                {
+                  "operator": "Dop/popflock",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "seek",
+              "candidates": [
+                {
+                  "operator": "Dop/popsteerseek",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "f3fa66faf01dfd9f408bb48772b9c82616ff6a4c7aaede773ffd23862282df9a",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "noise_force",
+              "candidates": [
+                {
+                  "operator": "Dop/popforce",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "4f5b4cc5f9678396de535449fbdea62a57dbd54bb16b4fa977d0e73fae5b591d",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "solver",
+              "candidates": [
+                {
+                  "operator": "Dop/popsolver::2.0",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "90db8ddcc3d50919629609292ab2ce5c6d8c8473527a0f650583a444c40c0d84",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "simulation_output",
+              "candidates": [
+                {
+                  "operator": "Dop/output",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "f9e21908dd5b1800272186f0a1c444e4506b7057e5540fb32e4ff9c649fa1499",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "particle_size",
+              "candidates": [
+                {
+                  "operator": "Sop/attribadjustfloat",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "23de8cbbf6748d8d9dd96b8ffdf2fda6b3717909f60b57aa51d3e56ecaaffd89",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "instance_source",
+              "candidates": [
+                {
+                  "operator": "Sop/sphere",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "instances",
+              "candidates": [
+                {
+                  "operator": "Sop/copytopoints::2.0",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "output",
+              "candidates": [
+                {
+                  "operator": "Sop/null",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "usd_network",
+              "candidates": [
+                {
+                  "operator": "Obj/lopnet",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "render_network",
+              "candidates": [
+                {
+                  "operator": "Obj/ropnet",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "geometry_import",
+              "candidates": [
+                {
+                  "operator": "Lop/sopimport",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "camera",
+              "candidates": [
+                {
+                  "operator": "Lop/camera",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "e7961a7d50953ca0a1d9cbd8f5349db34a4ec33fb98118f6d852e91765564612",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "light",
+              "candidates": [
+                {
+                  "operator": "Lop/light",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "34498e2f239d0566a47fc65928f9d42db17b8d7e487a99d3e0acc66b407abf38",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render_settings",
+              "candidates": [
+                {
+                  "operator": "Lop/karmarendersettings",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "cc263cb8a2e6e1f964363999322d8395f7c52d7160ea723173a24b23568783fe",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render_var",
+              "candidates": [
+                {
+                  "operator": "Lop/rendervar",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "c296736e72c9e2881b3867ff634cfe6253e5e5848e4f63bc9ff01420cbc39aea",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render_product",
+              "candidates": [
+                {
+                  "operator": "Lop/renderproduct",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "db75399202e08a57d1c5a1b29b42a2f871b690b9f23fe5db955a185bcb015cab",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "settings_binding",
+              "candidates": [
+                {
+                  "operator": "Lop/rendersettings",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "325937f14987a4b23ec74be88ac1bb0a424e351a469776e41b15952dbef9ac3d",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render",
+              "candidates": [
+                {
+                  "operator": "Driver/usdrender",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            }
+          ]
+        },
+        "blocked_controls": {
+          "default": []
+        },
+        "native_execution": false
+      }
+    }
+  },
+  "expected_nodes": {
+    "21.0.631": {
+      "default": [
+        {
+          "role": "geometry_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "geo"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "source",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "sphere"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "simulation",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "dopnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "particle_object",
+          "category": "dop",
+          "input_role": null,
+          "parent_role": "simulation",
+          "type_candidates": [
+            "popobject"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "emission",
+          "category": "dop",
+          "input_role": null,
+          "parent_role": "simulation",
+          "type_candidates": [
+            "popsource::2.0"
+          ],
+          "required_parameter_aliases": [
+            [
+              "emittype"
+            ],
+            [
+              "usecontextgeo"
+            ],
+            [
+              "initvel"
+            ],
+            [
+              "constantrate"
+            ],
+            [
+              "life"
+            ],
+            [
+              "lifevar"
+            ],
+            [
+              "vel"
+            ],
+            [
+              "var"
+            ],
+            [
+              "doid"
+            ],
+            [
+              "constantactivate"
+            ],
+            [
+              "impulseactiveate"
+            ],
+            [
+              "scalebyarea"
+            ],
+            [
+              "emitattrib"
+            ],
+            [
+              "usesimpointlimit"
+            ],
+            [
+              "useframepointlimit"
+            ],
+            [
+              "removeoverlap"
+            ]
+          ]
+        },
+        {
+          "role": "flock",
+          "category": "dop",
+          "input_role": null,
+          "parent_role": "simulation",
+          "type_candidates": [
+            "popflock"
+          ],
+          "required_parameter_aliases": [
+            [
+              "centralforce"
+            ],
+            [
+              "interactionforce"
+            ],
+            [
+              "velmatchforce"
+            ],
+            [
+              "centermaxdist"
+            ],
+            [
+              "activate"
+            ],
+            [
+              "usegroup"
+            ],
+            [
+              "ignoremass"
+            ]
+          ]
+        },
+        {
+          "role": "seek",
+          "category": "dop",
+          "input_role": null,
+          "parent_role": "simulation",
+          "type_candidates": [
+            "popsteerseek"
+          ],
+          "required_parameter_aliases": [
+            [
+              "forcescale"
+            ],
+            [
+              "goal"
+            ],
+            [
+              "activate"
+            ],
+            [
+              "usegroup"
+            ],
+            [
+              "output"
+            ],
+            [
+              "attracttype"
+            ],
+            [
+              "uselocalgoal"
+            ],
+            [
+              "uselocalforce"
+            ],
+            [
+              "ignoremass"
+            ],
+            [
+              "bindgeo"
+            ]
+          ]
+        },
+        {
+          "role": "noise_force",
+          "category": "dop",
+          "input_role": null,
+          "parent_role": "simulation",
+          "type_candidates": [
+            "popforce"
+          ],
+          "required_parameter_aliases": [
+            [
+              "amp"
+            ],
+            [
+              "force"
+            ],
+            [
+              "activate"
+            ],
+            [
+              "usegroup"
+            ],
+            [
+              "uselocalforce"
+            ],
+            [
+              "uselocalnoise"
+            ],
+            [
+              "ignoremass"
+            ],
+            [
+              "swirlsize"
+            ],
+            [
+              "swirlscale"
+            ],
+            [
+              "pulselength"
+            ],
+            [
+              "rough"
+            ],
+            [
+              "atten"
+            ],
+            [
+              "turb"
+            ],
+            [
+              "offset"
+            ],
+            [
+              "bindgeo"
+            ]
+          ]
+        },
+        {
+          "role": "solver",
+          "category": "dop",
+          "input_role": null,
+          "parent_role": "simulation",
+          "type_candidates": [
+            "popsolver::2.0"
+          ],
+          "required_parameter_aliases": [
+            [
+              "integratevel"
+            ],
+            [
+              "integratepos"
+            ],
+            [
+              "doage"
+            ],
+            [
+              "doreapparticles"
+            ],
+            [
+              "externalforce"
+            ]
+          ]
+        },
+        {
+          "role": "simulation_output",
+          "category": "dop",
+          "input_role": null,
+          "parent_role": "simulation",
+          "type_candidates": [
+            "output"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "particle_size",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "attribadjustfloat"
+          ],
+          "required_parameter_aliases": [
+            [
+              "singlevalue"
+            ],
+            [
+              "attrib"
+            ],
+            [
+              "class"
+            ],
+            [
+              "adjustvalue"
+            ],
+            [
+              "operation"
+            ],
+            [
+              "valuetype"
+            ],
+            [
+              "unitsettings"
+            ],
+            [
+              "doblend"
+            ],
+            [
+              "enable_postprocess"
+            ],
+            [
+              "group"
+            ]
+          ]
+        },
+        {
+          "role": "instance_source",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "sphere"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "instances",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "copytopoints::2.0"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "output",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "null"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "usd_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "lopnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "render_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "ropnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "geometry_import",
+          "category": "lop",
+          "input_role": null,
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "sopimport"
+          ],
+          "required_parameter_aliases": [
+            [
+              "soppath"
+            ],
+            [
+              "enable_pathprefix"
+            ],
+            [
+              "pathprefix"
+            ]
+          ]
+        },
+        {
+          "role": "camera",
+          "category": "lop",
+          "input_role": "geometry_import",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "camera"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "focalLength"
+            ],
+            [
+              "fStop"
+            ],
+            [
+              "xn__shutteropen_0ta"
+            ],
+            [
+              "xn__shutterclose_nva"
+            ]
+          ]
+        },
+        {
+          "role": "light",
+          "category": "lop",
+          "input_role": "camera",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "light"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "lighttype"
+            ],
+            [
+              "radius"
+            ],
+            [
+              "exposure"
+            ]
+          ]
+        },
+        {
+          "role": "render_settings",
+          "category": "lop",
+          "input_role": "light",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "karmarendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "camera"
+            ],
+            [
+              "samplesperpixel"
+            ],
+            [
+              "volumesteprate"
+            ],
+            [
+              "enablemblur"
+            ],
+            [
+              "pixelfiltersize"
+            ],
+            [
+              "denoiser"
+            ]
+          ]
+        },
+        {
+          "role": "render_var",
+          "category": "lop",
+          "input_role": "render_settings",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendervar"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "sourceName"
+            ],
+            [
+              "sourceType"
+            ],
+            [
+              "dataType"
+            ]
+          ]
+        },
+        {
+          "role": "render_product",
+          "category": "lop",
+          "input_role": "render_var",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "renderproduct"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "orderedVars"
+            ],
+            [
+              "productType"
+            ],
+            [
+              "productName"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "settings_binding",
+          "category": "lop",
+          "input_role": "render_product",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "createprims"
+            ],
+            [
+              "products"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "render",
+          "category": "rop",
+          "input_role": null,
+          "parent_role": "render_network",
+          "type_candidates": [
+            "usdrender"
+          ],
+          "required_parameter_aliases": [
+            [
+              "loppath"
+            ],
+            [
+              "rendersettings"
+            ],
+            [
+              "override_camera"
+            ],
+            [
+              "outputimage"
+            ],
+            [
+              "execute"
+            ]
+          ]
+        }
+      ]
+    },
+    "22.0.429": {
+      "default": [
+        {
+          "role": "geometry_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "geo"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "source",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "sphere"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "simulation",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "dopnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "particle_object",
+          "category": "dop",
+          "input_role": null,
+          "parent_role": "simulation",
+          "type_candidates": [
+            "popobject"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "emission",
+          "category": "dop",
+          "input_role": null,
+          "parent_role": "simulation",
+          "type_candidates": [
+            "popsource::2.0"
+          ],
+          "required_parameter_aliases": [
+            [
+              "emittype"
+            ],
+            [
+              "usecontextgeo"
+            ],
+            [
+              "initvel"
+            ],
+            [
+              "constantrate"
+            ],
+            [
+              "life"
+            ],
+            [
+              "lifevar"
+            ],
+            [
+              "vel"
+            ],
+            [
+              "var"
+            ],
+            [
+              "doid"
+            ],
+            [
+              "constantactivate"
+            ],
+            [
+              "impulseactiveate"
+            ],
+            [
+              "scalebyarea"
+            ],
+            [
+              "emitattrib"
+            ],
+            [
+              "usesimpointlimit"
+            ],
+            [
+              "useframepointlimit"
+            ],
+            [
+              "removeoverlap"
+            ]
+          ]
+        },
+        {
+          "role": "flock",
+          "category": "dop",
+          "input_role": null,
+          "parent_role": "simulation",
+          "type_candidates": [
+            "popflock"
+          ],
+          "required_parameter_aliases": [
+            [
+              "centralforce"
+            ],
+            [
+              "interactionforce"
+            ],
+            [
+              "velmatchforce"
+            ],
+            [
+              "centermaxdist"
+            ],
+            [
+              "activate"
+            ],
+            [
+              "usegroup"
+            ],
+            [
+              "ignoremass"
+            ]
+          ]
+        },
+        {
+          "role": "seek",
+          "category": "dop",
+          "input_role": null,
+          "parent_role": "simulation",
+          "type_candidates": [
+            "popsteerseek"
+          ],
+          "required_parameter_aliases": [
+            [
+              "forcescale"
+            ],
+            [
+              "goal"
+            ],
+            [
+              "activate"
+            ],
+            [
+              "usegroup"
+            ],
+            [
+              "output"
+            ],
+            [
+              "attracttype"
+            ],
+            [
+              "uselocalgoal"
+            ],
+            [
+              "uselocalforce"
+            ],
+            [
+              "ignoremass"
+            ],
+            [
+              "bindgeo"
+            ]
+          ]
+        },
+        {
+          "role": "noise_force",
+          "category": "dop",
+          "input_role": null,
+          "parent_role": "simulation",
+          "type_candidates": [
+            "popforce"
+          ],
+          "required_parameter_aliases": [
+            [
+              "amp"
+            ],
+            [
+              "force"
+            ],
+            [
+              "activate"
+            ],
+            [
+              "usegroup"
+            ],
+            [
+              "uselocalforce"
+            ],
+            [
+              "uselocalnoise"
+            ],
+            [
+              "ignoremass"
+            ],
+            [
+              "swirlsize"
+            ],
+            [
+              "swirlscale"
+            ],
+            [
+              "pulselength"
+            ],
+            [
+              "rough"
+            ],
+            [
+              "atten"
+            ],
+            [
+              "turb"
+            ],
+            [
+              "offset"
+            ],
+            [
+              "bindgeo"
+            ]
+          ]
+        },
+        {
+          "role": "solver",
+          "category": "dop",
+          "input_role": null,
+          "parent_role": "simulation",
+          "type_candidates": [
+            "popsolver::2.0"
+          ],
+          "required_parameter_aliases": [
+            [
+              "integratevel"
+            ],
+            [
+              "integratepos"
+            ],
+            [
+              "doage"
+            ],
+            [
+              "doreapparticles"
+            ],
+            [
+              "externalforce"
+            ]
+          ]
+        },
+        {
+          "role": "simulation_output",
+          "category": "dop",
+          "input_role": null,
+          "parent_role": "simulation",
+          "type_candidates": [
+            "output"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "particle_size",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "attribadjustfloat"
+          ],
+          "required_parameter_aliases": [
+            [
+              "singlevalue"
+            ],
+            [
+              "attrib"
+            ],
+            [
+              "class"
+            ],
+            [
+              "adjustvalue"
+            ],
+            [
+              "operation"
+            ],
+            [
+              "valuetype"
+            ],
+            [
+              "unitsettings"
+            ],
+            [
+              "doblend"
+            ],
+            [
+              "enable_postprocess"
+            ],
+            [
+              "group"
+            ]
+          ]
+        },
+        {
+          "role": "instance_source",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "sphere"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "instances",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "copytopoints::2.0"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "output",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "null"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "usd_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "lopnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "render_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "ropnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "geometry_import",
+          "category": "lop",
+          "input_role": null,
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "sopimport"
+          ],
+          "required_parameter_aliases": [
+            [
+              "soppath"
+            ],
+            [
+              "enable_pathprefix"
+            ],
+            [
+              "pathprefix"
+            ]
+          ]
+        },
+        {
+          "role": "camera",
+          "category": "lop",
+          "input_role": "geometry_import",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "camera"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "focalLength"
+            ],
+            [
+              "fStop"
+            ],
+            [
+              "xn__shutteropen_0ta"
+            ],
+            [
+              "xn__shutterclose_nva"
+            ]
+          ]
+        },
+        {
+          "role": "light",
+          "category": "lop",
+          "input_role": "camera",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "light"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "lighttype"
+            ],
+            [
+              "radius"
+            ],
+            [
+              "exposure"
+            ]
+          ]
+        },
+        {
+          "role": "render_settings",
+          "category": "lop",
+          "input_role": "light",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "karmarendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "camera"
+            ],
+            [
+              "samplesperpixel"
+            ],
+            [
+              "volumesteprate"
+            ],
+            [
+              "enablemblur"
+            ],
+            [
+              "pixelfiltersize"
+            ],
+            [
+              "denoiser"
+            ]
+          ]
+        },
+        {
+          "role": "render_var",
+          "category": "lop",
+          "input_role": "render_settings",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendervar"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "sourceName"
+            ],
+            [
+              "sourceType"
+            ],
+            [
+              "dataType"
+            ]
+          ]
+        },
+        {
+          "role": "render_product",
+          "category": "lop",
+          "input_role": "render_var",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "renderproduct"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "orderedVars"
+            ],
+            [
+              "productType"
+            ],
+            [
+              "productName"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "settings_binding",
+          "category": "lop",
+          "input_role": "render_product",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "createprims"
+            ],
+            [
+              "products"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "render",
+          "category": "rop",
+          "input_role": null,
+          "parent_role": "render_network",
+          "type_candidates": [
+            "usdrender"
+          ],
+          "required_parameter_aliases": [
+            [
+              "loppath"
+            ],
+            [
+              "rendersettings"
+            ],
+            [
+              "override_camera"
+            ],
+            [
+              "outputimage"
+            ],
+            [
+              "execute"
+            ]
+          ]
+        }
+      ]
+    },
+    "22.0.459": {
+      "default": [
+        {
+          "role": "geometry_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "geo"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "source",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "sphere"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "simulation",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "dopnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "particle_object",
+          "category": "dop",
+          "input_role": null,
+          "parent_role": "simulation",
+          "type_candidates": [
+            "popobject"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "emission",
+          "category": "dop",
+          "input_role": null,
+          "parent_role": "simulation",
+          "type_candidates": [
+            "popsource::2.0"
+          ],
+          "required_parameter_aliases": [
+            [
+              "emittype"
+            ],
+            [
+              "usecontextgeo"
+            ],
+            [
+              "initvel"
+            ],
+            [
+              "constantrate"
+            ],
+            [
+              "life"
+            ],
+            [
+              "lifevar"
+            ],
+            [
+              "vel"
+            ],
+            [
+              "var"
+            ],
+            [
+              "doid"
+            ],
+            [
+              "constantactivate"
+            ],
+            [
+              "impulseactiveate"
+            ],
+            [
+              "scalebyarea"
+            ],
+            [
+              "emitattrib"
+            ],
+            [
+              "usesimpointlimit"
+            ],
+            [
+              "useframepointlimit"
+            ],
+            [
+              "removeoverlap"
+            ]
+          ]
+        },
+        {
+          "role": "flock",
+          "category": "dop",
+          "input_role": null,
+          "parent_role": "simulation",
+          "type_candidates": [
+            "popflock"
+          ],
+          "required_parameter_aliases": [
+            [
+              "centralforce"
+            ],
+            [
+              "interactionforce"
+            ],
+            [
+              "velmatchforce"
+            ],
+            [
+              "centermaxdist"
+            ],
+            [
+              "activate"
+            ],
+            [
+              "usegroup"
+            ],
+            [
+              "ignoremass"
+            ]
+          ]
+        },
+        {
+          "role": "seek",
+          "category": "dop",
+          "input_role": null,
+          "parent_role": "simulation",
+          "type_candidates": [
+            "popsteerseek"
+          ],
+          "required_parameter_aliases": [
+            [
+              "forcescale"
+            ],
+            [
+              "goal"
+            ],
+            [
+              "activate"
+            ],
+            [
+              "usegroup"
+            ],
+            [
+              "output"
+            ],
+            [
+              "attracttype"
+            ],
+            [
+              "uselocalgoal"
+            ],
+            [
+              "uselocalforce"
+            ],
+            [
+              "ignoremass"
+            ],
+            [
+              "bindgeo"
+            ]
+          ]
+        },
+        {
+          "role": "noise_force",
+          "category": "dop",
+          "input_role": null,
+          "parent_role": "simulation",
+          "type_candidates": [
+            "popforce"
+          ],
+          "required_parameter_aliases": [
+            [
+              "amp"
+            ],
+            [
+              "force"
+            ],
+            [
+              "activate"
+            ],
+            [
+              "usegroup"
+            ],
+            [
+              "uselocalforce"
+            ],
+            [
+              "uselocalnoise"
+            ],
+            [
+              "ignoremass"
+            ],
+            [
+              "swirlsize"
+            ],
+            [
+              "swirlscale"
+            ],
+            [
+              "pulselength"
+            ],
+            [
+              "rough"
+            ],
+            [
+              "atten"
+            ],
+            [
+              "turb"
+            ],
+            [
+              "offset"
+            ],
+            [
+              "bindgeo"
+            ]
+          ]
+        },
+        {
+          "role": "solver",
+          "category": "dop",
+          "input_role": null,
+          "parent_role": "simulation",
+          "type_candidates": [
+            "popsolver::2.0"
+          ],
+          "required_parameter_aliases": [
+            [
+              "integratevel"
+            ],
+            [
+              "integratepos"
+            ],
+            [
+              "doage"
+            ],
+            [
+              "doreapparticles"
+            ],
+            [
+              "externalforce"
+            ]
+          ]
+        },
+        {
+          "role": "simulation_output",
+          "category": "dop",
+          "input_role": null,
+          "parent_role": "simulation",
+          "type_candidates": [
+            "output"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "particle_size",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "attribadjustfloat"
+          ],
+          "required_parameter_aliases": [
+            [
+              "singlevalue"
+            ],
+            [
+              "attrib"
+            ],
+            [
+              "class"
+            ],
+            [
+              "adjustvalue"
+            ],
+            [
+              "operation"
+            ],
+            [
+              "valuetype"
+            ],
+            [
+              "unitsettings"
+            ],
+            [
+              "doblend"
+            ],
+            [
+              "enable_postprocess"
+            ],
+            [
+              "group"
+            ]
+          ]
+        },
+        {
+          "role": "instance_source",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "sphere"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "instances",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "copytopoints::2.0"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "output",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "null"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "usd_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "lopnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "render_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "ropnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "geometry_import",
+          "category": "lop",
+          "input_role": null,
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "sopimport"
+          ],
+          "required_parameter_aliases": [
+            [
+              "soppath"
+            ],
+            [
+              "enable_pathprefix"
+            ],
+            [
+              "pathprefix"
+            ]
+          ]
+        },
+        {
+          "role": "camera",
+          "category": "lop",
+          "input_role": "geometry_import",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "camera"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "focalLength"
+            ],
+            [
+              "fStop"
+            ],
+            [
+              "xn__shutteropen_0ta"
+            ],
+            [
+              "xn__shutterclose_nva"
+            ]
+          ]
+        },
+        {
+          "role": "light",
+          "category": "lop",
+          "input_role": "camera",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "light"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "lighttype"
+            ],
+            [
+              "radius"
+            ],
+            [
+              "exposure"
+            ]
+          ]
+        },
+        {
+          "role": "render_settings",
+          "category": "lop",
+          "input_role": "light",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "karmarendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "camera"
+            ],
+            [
+              "samplesperpixel"
+            ],
+            [
+              "volumesteprate"
+            ],
+            [
+              "enablemblur"
+            ],
+            [
+              "pixelfiltersize"
+            ],
+            [
+              "denoiser"
+            ]
+          ]
+        },
+        {
+          "role": "render_var",
+          "category": "lop",
+          "input_role": "render_settings",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendervar"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "sourceName"
+            ],
+            [
+              "sourceType"
+            ],
+            [
+              "dataType"
+            ]
+          ]
+        },
+        {
+          "role": "render_product",
+          "category": "lop",
+          "input_role": "render_var",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "renderproduct"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "orderedVars"
+            ],
+            [
+              "productType"
+            ],
+            [
+              "productName"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "settings_binding",
+          "category": "lop",
+          "input_role": "render_product",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "createprims"
+            ],
+            [
+              "products"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "render",
+          "category": "rop",
+          "input_role": null,
+          "parent_role": "render_network",
+          "type_candidates": [
+            "usdrender"
+          ],
+          "required_parameter_aliases": [
+            [
+              "loppath"
+            ],
+            [
+              "rendersettings"
+            ],
+            [
+              "override_camera"
+            ],
+            [
+              "outputimage"
+            ],
+            [
+              "execute"
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "expected_connections": {
+    "21.0.631": {
+      "default": [
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "simulation",
+          "destination_input": 0
+        },
+        {
+          "source_role": "particle_object",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 0
+        },
+        {
+          "source_role": "emission",
+          "source_output": 0,
+          "destination_role": "flock",
+          "destination_input": 0
+        },
+        {
+          "source_role": "flock",
+          "source_output": 0,
+          "destination_role": "seek",
+          "destination_input": 0
+        },
+        {
+          "source_role": "noise_force",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 1
+        },
+        {
+          "source_role": "seek",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 2
+        },
+        {
+          "source_role": "solver",
+          "source_output": 0,
+          "destination_role": "simulation_output",
+          "destination_input": 0
+        },
+        {
+          "source_role": "simulation",
+          "source_output": 0,
+          "destination_role": "particle_size",
+          "destination_input": 0
+        },
+        {
+          "source_role": "instance_source",
+          "source_output": 0,
+          "destination_role": "instances",
+          "destination_input": 0
+        },
+        {
+          "source_role": "particle_size",
+          "source_output": 0,
+          "destination_role": "instances",
+          "destination_input": 1
+        },
+        {
+          "source_role": "instances",
+          "source_output": 0,
+          "destination_role": "output",
+          "destination_input": 0
+        },
+        {
+          "source_role": "geometry_import",
+          "source_output": 0,
+          "destination_role": "camera",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "camera",
+          "source_output": 0,
+          "destination_role": "light",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "light",
+          "source_output": 0,
+          "destination_role": "render_settings",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_settings",
+          "source_output": 0,
+          "destination_role": "render_var",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_var",
+          "source_output": 0,
+          "destination_role": "render_product",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_product",
+          "source_output": 0,
+          "destination_role": "settings_binding",
+          "destination_input": 0,
+          "require_same_parent": true
+        }
+      ]
+    },
+    "22.0.429": {
+      "default": [
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "simulation",
+          "destination_input": 0
+        },
+        {
+          "source_role": "particle_object",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 0
+        },
+        {
+          "source_role": "emission",
+          "source_output": 0,
+          "destination_role": "flock",
+          "destination_input": 0
+        },
+        {
+          "source_role": "flock",
+          "source_output": 0,
+          "destination_role": "seek",
+          "destination_input": 0
+        },
+        {
+          "source_role": "noise_force",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 1
+        },
+        {
+          "source_role": "seek",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 2
+        },
+        {
+          "source_role": "solver",
+          "source_output": 0,
+          "destination_role": "simulation_output",
+          "destination_input": 0
+        },
+        {
+          "source_role": "simulation",
+          "source_output": 0,
+          "destination_role": "particle_size",
+          "destination_input": 0
+        },
+        {
+          "source_role": "instance_source",
+          "source_output": 0,
+          "destination_role": "instances",
+          "destination_input": 0
+        },
+        {
+          "source_role": "particle_size",
+          "source_output": 0,
+          "destination_role": "instances",
+          "destination_input": 1
+        },
+        {
+          "source_role": "instances",
+          "source_output": 0,
+          "destination_role": "output",
+          "destination_input": 0
+        },
+        {
+          "source_role": "geometry_import",
+          "source_output": 0,
+          "destination_role": "camera",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "camera",
+          "source_output": 0,
+          "destination_role": "light",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "light",
+          "source_output": 0,
+          "destination_role": "render_settings",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_settings",
+          "source_output": 0,
+          "destination_role": "render_var",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_var",
+          "source_output": 0,
+          "destination_role": "render_product",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_product",
+          "source_output": 0,
+          "destination_role": "settings_binding",
+          "destination_input": 0,
+          "require_same_parent": true
+        }
+      ]
+    },
+    "22.0.459": {
+      "default": [
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "simulation",
+          "destination_input": 0
+        },
+        {
+          "source_role": "particle_object",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 0
+        },
+        {
+          "source_role": "emission",
+          "source_output": 0,
+          "destination_role": "flock",
+          "destination_input": 0
+        },
+        {
+          "source_role": "flock",
+          "source_output": 0,
+          "destination_role": "seek",
+          "destination_input": 0
+        },
+        {
+          "source_role": "noise_force",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 1
+        },
+        {
+          "source_role": "seek",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 2
+        },
+        {
+          "source_role": "solver",
+          "source_output": 0,
+          "destination_role": "simulation_output",
+          "destination_input": 0
+        },
+        {
+          "source_role": "simulation",
+          "source_output": 0,
+          "destination_role": "particle_size",
+          "destination_input": 0
+        },
+        {
+          "source_role": "instance_source",
+          "source_output": 0,
+          "destination_role": "instances",
+          "destination_input": 0
+        },
+        {
+          "source_role": "particle_size",
+          "source_output": 0,
+          "destination_role": "instances",
+          "destination_input": 1
+        },
+        {
+          "source_role": "instances",
+          "source_output": 0,
+          "destination_role": "output",
+          "destination_input": 0
+        },
+        {
+          "source_role": "geometry_import",
+          "source_output": 0,
+          "destination_role": "camera",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "camera",
+          "source_output": 0,
+          "destination_role": "light",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "light",
+          "source_output": 0,
+          "destination_role": "render_settings",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_settings",
+          "source_output": 0,
+          "destination_role": "render_var",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_var",
+          "source_output": 0,
+          "destination_role": "render_product",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_product",
+          "source_output": 0,
+          "destination_role": "settings_binding",
+          "destination_input": 0,
+          "require_same_parent": true
+        }
+      ]
+    }
+  },
+  "key_parameters": {
+    "semantic": [
+      {
+        "name": "cohesion",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 100.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "separation",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 100.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "alignment",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 100.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "neighbor_radius",
+        "value_type": "float",
+        "minimum": 0.001,
+        "maximum": 10000.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "goal_attraction",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 100.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "target_noise",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 100.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "noise_strength",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 1000.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      }
+    ],
+    "versioned_native_mapping": {
+      "21.0.631": {
+        "default": [
+          {
+            "id": "cohesion",
+            "node_role": "flock",
+            "parameter_aliases": [
+              "centralforce"
+            ],
+            "minimum": 0,
+            "maximum": 100,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "flock",
+                "activate",
+                1
+              ],
+              [
+                "flock",
+                "usegroup",
+                0
+              ],
+              [
+                "flock",
+                "ignoremass",
+                1
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "separation",
+            "node_role": "flock",
+            "parameter_aliases": [
+              "interactionforce"
+            ],
+            "minimum": 0,
+            "maximum": 100,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "flock",
+                "activate",
+                1
+              ],
+              [
+                "flock",
+                "usegroup",
+                0
+              ],
+              [
+                "flock",
+                "ignoremass",
+                1
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "alignment",
+            "node_role": "flock",
+            "parameter_aliases": [
+              "velmatchforce"
+            ],
+            "minimum": 0,
+            "maximum": 100,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "flock",
+                "activate",
+                1
+              ],
+              [
+                "flock",
+                "usegroup",
+                0
+              ],
+              [
+                "flock",
+                "ignoremass",
+                1
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "neighbor_radius",
+            "node_role": "flock",
+            "parameter_aliases": [
+              "centermaxdist"
+            ],
+            "minimum": 0.001,
+            "maximum": 10000,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "flock",
+                "activate",
+                1
+              ],
+              [
+                "flock",
+                "usegroup",
+                0
+              ],
+              [
+                "flock",
+                "ignoremass",
+                1
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "goal_attraction",
+            "node_role": "seek",
+            "parameter_aliases": [
+              "forcescale"
+            ],
+            "minimum": 0,
+            "maximum": 100,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "seek",
+                "activate",
+                1.0
+              ],
+              [
+                "seek",
+                "usegroup",
+                0
+              ],
+              [
+                "seek",
+                "output",
+                "1"
+              ],
+              [
+                "seek",
+                "attracttype",
+                "position"
+              ],
+              [
+                "seek",
+                "uselocalgoal",
+                0
+              ],
+              [
+                "seek",
+                "uselocalforce",
+                0
+              ],
+              [
+                "seek",
+                "ignoremass",
+                1
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "target_noise",
+            "node_role": "seek",
+            "parameter_aliases": [
+              "goal"
+            ],
+            "minimum": 0,
+            "maximum": 100,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "seek",
+                "activate",
+                1.0
+              ],
+              [
+                "seek",
+                "usegroup",
+                0
+              ],
+              [
+                "seek",
+                "output",
+                "1"
+              ],
+              [
+                "seek",
+                "attracttype",
+                "position"
+              ],
+              [
+                "seek",
+                "uselocalgoal",
+                0
+              ],
+              [
+                "seek",
+                "uselocalforce",
+                0
+              ],
+              [
+                "seek",
+                "ignoremass",
+                1
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "noise_strength",
+            "node_role": "noise_force",
+            "parameter_aliases": [
+              "amp"
+            ],
+            "minimum": 0,
+            "maximum": 1000,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "noise_force",
+                "activate",
+                1.0
+              ],
+              [
+                "noise_force",
+                "usegroup",
+                0
+              ],
+              [
+                "noise_force",
+                "uselocalforce",
+                0
+              ],
+              [
+                "noise_force",
+                "uselocalnoise",
+                0
+              ],
+              [
+                "noise_force",
+                "ignoremass",
+                1
+              ],
+              [
+                "solver",
+                "externalforce",
+                1
+              ],
+              [
+                "solver",
+                "integratevel",
+                1
+              ],
+              [
+                "solver",
+                "integratepos",
+                1
+              ],
+              [
+                "noise_force",
+                "force",
+                [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ]
+            ],
+            "native_status": "mapped"
+          }
+        ]
+      },
+      "22.0.429": {
+        "default": [
+          {
+            "id": "cohesion",
+            "node_role": "flock",
+            "parameter_aliases": [
+              "centralforce"
+            ],
+            "minimum": 0,
+            "maximum": 100,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "flock",
+                "activate",
+                1
+              ],
+              [
+                "flock",
+                "usegroup",
+                0
+              ],
+              [
+                "flock",
+                "ignoremass",
+                1
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "separation",
+            "node_role": "flock",
+            "parameter_aliases": [
+              "interactionforce"
+            ],
+            "minimum": 0,
+            "maximum": 100,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "flock",
+                "activate",
+                1
+              ],
+              [
+                "flock",
+                "usegroup",
+                0
+              ],
+              [
+                "flock",
+                "ignoremass",
+                1
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "alignment",
+            "node_role": "flock",
+            "parameter_aliases": [
+              "velmatchforce"
+            ],
+            "minimum": 0,
+            "maximum": 100,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "flock",
+                "activate",
+                1
+              ],
+              [
+                "flock",
+                "usegroup",
+                0
+              ],
+              [
+                "flock",
+                "ignoremass",
+                1
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "neighbor_radius",
+            "node_role": "flock",
+            "parameter_aliases": [
+              "centermaxdist"
+            ],
+            "minimum": 0.001,
+            "maximum": 10000,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "flock",
+                "activate",
+                1
+              ],
+              [
+                "flock",
+                "usegroup",
+                0
+              ],
+              [
+                "flock",
+                "ignoremass",
+                1
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "goal_attraction",
+            "node_role": "seek",
+            "parameter_aliases": [
+              "forcescale"
+            ],
+            "minimum": 0,
+            "maximum": 100,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "seek",
+                "activate",
+                1.0
+              ],
+              [
+                "seek",
+                "usegroup",
+                0
+              ],
+              [
+                "seek",
+                "output",
+                "1"
+              ],
+              [
+                "seek",
+                "attracttype",
+                "position"
+              ],
+              [
+                "seek",
+                "uselocalgoal",
+                0
+              ],
+              [
+                "seek",
+                "uselocalforce",
+                0
+              ],
+              [
+                "seek",
+                "ignoremass",
+                1
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "target_noise",
+            "node_role": "seek",
+            "parameter_aliases": [
+              "goal"
+            ],
+            "minimum": 0,
+            "maximum": 100,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "seek",
+                "activate",
+                1.0
+              ],
+              [
+                "seek",
+                "usegroup",
+                0
+              ],
+              [
+                "seek",
+                "output",
+                "1"
+              ],
+              [
+                "seek",
+                "attracttype",
+                "position"
+              ],
+              [
+                "seek",
+                "uselocalgoal",
+                0
+              ],
+              [
+                "seek",
+                "uselocalforce",
+                0
+              ],
+              [
+                "seek",
+                "ignoremass",
+                1
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "noise_strength",
+            "node_role": "noise_force",
+            "parameter_aliases": [
+              "amp"
+            ],
+            "minimum": 0,
+            "maximum": 1000,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "noise_force",
+                "activate",
+                1.0
+              ],
+              [
+                "noise_force",
+                "usegroup",
+                0
+              ],
+              [
+                "noise_force",
+                "uselocalforce",
+                0
+              ],
+              [
+                "noise_force",
+                "uselocalnoise",
+                0
+              ],
+              [
+                "noise_force",
+                "ignoremass",
+                1
+              ],
+              [
+                "solver",
+                "externalforce",
+                1
+              ],
+              [
+                "solver",
+                "integratevel",
+                1
+              ],
+              [
+                "solver",
+                "integratepos",
+                1
+              ],
+              [
+                "noise_force",
+                "force",
+                [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ]
+            ],
+            "native_status": "mapped"
+          }
+        ]
+      },
+      "22.0.459": {
+        "default": [
+          {
+            "minimum": 0,
+            "maximum": 100,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [
+              [
+                "flock",
+                "activate",
+                1
+              ],
+              [
+                "flock",
+                "usegroup",
+                0
+              ],
+              [
+                "flock",
+                "ignoremass",
+                1
+              ]
+            ],
+            "invalidates_from": "generation_simulation",
+            "unit": "native central attraction force scalar; physical unit NOT_CAPTURED",
+            "native_status": "mapped",
+            "context_parms": [
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "simulation",
+                "@node"
+              ],
+              [
+                "particle_object",
+                "@node"
+              ],
+              [
+                "emission",
+                "@node"
+              ],
+              [
+                "flock",
+                "@node"
+              ],
+              [
+                "seek",
+                "@node"
+              ],
+              [
+                "noise_force",
+                "@node"
+              ],
+              [
+                "solver",
+                "@node"
+              ],
+              [
+                "simulation_output",
+                "@node"
+              ],
+              [
+                "particle_size",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "instances",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "simulation",
+                "@input/0"
+              ],
+              [
+                "solver",
+                "@input/0"
+              ],
+              [
+                "flock",
+                "@input/0"
+              ],
+              [
+                "seek",
+                "@input/0"
+              ],
+              [
+                "solver",
+                "@input/1"
+              ],
+              [
+                "solver",
+                "@input/2"
+              ],
+              [
+                "simulation_output",
+                "@input/0"
+              ],
+              [
+                "particle_size",
+                "@input/0"
+              ],
+              [
+                "instances",
+                "@input/0"
+              ],
+              [
+                "instances",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Dop/popflock",
+                  "parameter": "centralforce",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popflock",
+                  "parameter": "activate",
+                  "type": "integer",
+                  "size": 1,
+                  "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popflock",
+                  "parameter": "usegroup",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popflock",
+                  "parameter": "ignoremass",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                }
+              ],
+              "missing": []
+            },
+            "id": "cohesion",
+            "node_role": "flock",
+            "parameter_aliases": [
+              "centralforce"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 100,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [
+              [
+                "flock",
+                "activate",
+                1
+              ],
+              [
+                "flock",
+                "usegroup",
+                0
+              ],
+              [
+                "flock",
+                "ignoremass",
+                1
+              ]
+            ],
+            "invalidates_from": "generation_simulation",
+            "unit": "native avoidance force scalar; physical unit NOT_CAPTURED",
+            "native_status": "mapped",
+            "context_parms": [
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "simulation",
+                "@node"
+              ],
+              [
+                "particle_object",
+                "@node"
+              ],
+              [
+                "emission",
+                "@node"
+              ],
+              [
+                "flock",
+                "@node"
+              ],
+              [
+                "seek",
+                "@node"
+              ],
+              [
+                "noise_force",
+                "@node"
+              ],
+              [
+                "solver",
+                "@node"
+              ],
+              [
+                "simulation_output",
+                "@node"
+              ],
+              [
+                "particle_size",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "instances",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "simulation",
+                "@input/0"
+              ],
+              [
+                "solver",
+                "@input/0"
+              ],
+              [
+                "flock",
+                "@input/0"
+              ],
+              [
+                "seek",
+                "@input/0"
+              ],
+              [
+                "solver",
+                "@input/1"
+              ],
+              [
+                "solver",
+                "@input/2"
+              ],
+              [
+                "simulation_output",
+                "@input/0"
+              ],
+              [
+                "particle_size",
+                "@input/0"
+              ],
+              [
+                "instances",
+                "@input/0"
+              ],
+              [
+                "instances",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Dop/popflock",
+                  "parameter": "interactionforce",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popflock",
+                  "parameter": "activate",
+                  "type": "integer",
+                  "size": 1,
+                  "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popflock",
+                  "parameter": "usegroup",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popflock",
+                  "parameter": "ignoremass",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                }
+              ],
+              "missing": []
+            },
+            "id": "separation",
+            "node_role": "flock",
+            "parameter_aliases": [
+              "interactionforce"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 100,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [
+              [
+                "flock",
+                "activate",
+                1
+              ],
+              [
+                "flock",
+                "usegroup",
+                0
+              ],
+              [
+                "flock",
+                "ignoremass",
+                1
+              ]
+            ],
+            "invalidates_from": "generation_simulation",
+            "unit": "native velocity matching force scalar; physical unit NOT_CAPTURED",
+            "native_status": "mapped",
+            "context_parms": [
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "simulation",
+                "@node"
+              ],
+              [
+                "particle_object",
+                "@node"
+              ],
+              [
+                "emission",
+                "@node"
+              ],
+              [
+                "flock",
+                "@node"
+              ],
+              [
+                "seek",
+                "@node"
+              ],
+              [
+                "noise_force",
+                "@node"
+              ],
+              [
+                "solver",
+                "@node"
+              ],
+              [
+                "simulation_output",
+                "@node"
+              ],
+              [
+                "particle_size",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "instances",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "simulation",
+                "@input/0"
+              ],
+              [
+                "solver",
+                "@input/0"
+              ],
+              [
+                "flock",
+                "@input/0"
+              ],
+              [
+                "seek",
+                "@input/0"
+              ],
+              [
+                "solver",
+                "@input/1"
+              ],
+              [
+                "solver",
+                "@input/2"
+              ],
+              [
+                "simulation_output",
+                "@input/0"
+              ],
+              [
+                "particle_size",
+                "@input/0"
+              ],
+              [
+                "instances",
+                "@input/0"
+              ],
+              [
+                "instances",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Dop/popflock",
+                  "parameter": "velmatchforce",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popflock",
+                  "parameter": "activate",
+                  "type": "integer",
+                  "size": 1,
+                  "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popflock",
+                  "parameter": "usegroup",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popflock",
+                  "parameter": "ignoremass",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                }
+              ],
+              "missing": []
+            },
+            "id": "alignment",
+            "node_role": "flock",
+            "parameter_aliases": [
+              "velmatchforce"
+            ]
+          },
+          {
+            "minimum": 0.001,
+            "maximum": 10000,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [
+              [
+                "flock",
+                "activate",
+                1
+              ],
+              [
+                "flock",
+                "usegroup",
+                0
+              ],
+              [
+                "flock",
+                "ignoremass",
+                1
+              ]
+            ],
+            "invalidates_from": "generation_simulation",
+            "unit": "native central maximum distance; vendor scene length token m1",
+            "native_status": "mapped",
+            "context_parms": [
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "simulation",
+                "@node"
+              ],
+              [
+                "particle_object",
+                "@node"
+              ],
+              [
+                "emission",
+                "@node"
+              ],
+              [
+                "flock",
+                "@node"
+              ],
+              [
+                "seek",
+                "@node"
+              ],
+              [
+                "noise_force",
+                "@node"
+              ],
+              [
+                "solver",
+                "@node"
+              ],
+              [
+                "simulation_output",
+                "@node"
+              ],
+              [
+                "particle_size",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "instances",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "simulation",
+                "@input/0"
+              ],
+              [
+                "solver",
+                "@input/0"
+              ],
+              [
+                "flock",
+                "@input/0"
+              ],
+              [
+                "seek",
+                "@input/0"
+              ],
+              [
+                "solver",
+                "@input/1"
+              ],
+              [
+                "solver",
+                "@input/2"
+              ],
+              [
+                "simulation_output",
+                "@input/0"
+              ],
+              [
+                "particle_size",
+                "@input/0"
+              ],
+              [
+                "instances",
+                "@input/0"
+              ],
+              [
+                "instances",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Dop/popflock",
+                  "parameter": "centermaxdist",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popflock",
+                  "parameter": "activate",
+                  "type": "integer",
+                  "size": 1,
+                  "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popflock",
+                  "parameter": "usegroup",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popflock",
+                  "parameter": "ignoremass",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                }
+              ],
+              "missing": []
+            },
+            "id": "neighbor_radius",
+            "node_role": "flock",
+            "parameter_aliases": [
+              "centermaxdist"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 100,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [
+              [
+                "seek",
+                "activate",
+                1.0
+              ],
+              [
+                "seek",
+                "usegroup",
+                0
+              ],
+              [
+                "seek",
+                "output",
+                "1"
+              ],
+              [
+                "seek",
+                "attracttype",
+                "position"
+              ],
+              [
+                "seek",
+                "uselocalgoal",
+                0
+              ],
+              [
+                "seek",
+                "uselocalforce",
+                0
+              ],
+              [
+                "seek",
+                "ignoremass",
+                1
+              ]
+            ],
+            "invalidates_from": "generation_simulation",
+            "unit": "native goal force scale; vendor token kg1m1s-2, physical conversion NOT_CAPTURED",
+            "native_status": "mapped",
+            "context_parms": [
+              [
+                "seek",
+                "goal"
+              ],
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "simulation",
+                "@node"
+              ],
+              [
+                "particle_object",
+                "@node"
+              ],
+              [
+                "emission",
+                "@node"
+              ],
+              [
+                "flock",
+                "@node"
+              ],
+              [
+                "seek",
+                "@node"
+              ],
+              [
+                "noise_force",
+                "@node"
+              ],
+              [
+                "solver",
+                "@node"
+              ],
+              [
+                "simulation_output",
+                "@node"
+              ],
+              [
+                "particle_size",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "instances",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "simulation",
+                "@input/0"
+              ],
+              [
+                "solver",
+                "@input/0"
+              ],
+              [
+                "flock",
+                "@input/0"
+              ],
+              [
+                "seek",
+                "@input/0"
+              ],
+              [
+                "solver",
+                "@input/1"
+              ],
+              [
+                "solver",
+                "@input/2"
+              ],
+              [
+                "simulation_output",
+                "@input/0"
+              ],
+              [
+                "particle_size",
+                "@input/0"
+              ],
+              [
+                "instances",
+                "@input/0"
+              ],
+              [
+                "instances",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Dop/popsteerseek",
+                  "parameter": "forcescale",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "f3fa66faf01dfd9f408bb48772b9c82616ff6a4c7aaede773ffd23862282df9a",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popsteerseek",
+                  "parameter": "activate",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "f3fa66faf01dfd9f408bb48772b9c82616ff6a4c7aaede773ffd23862282df9a",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popsteerseek",
+                  "parameter": "usegroup",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "f3fa66faf01dfd9f408bb48772b9c82616ff6a4c7aaede773ffd23862282df9a",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popsteerseek",
+                  "parameter": "output",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "f3fa66faf01dfd9f408bb48772b9c82616ff6a4c7aaede773ffd23862282df9a",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popsteerseek",
+                  "parameter": "attracttype",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "f3fa66faf01dfd9f408bb48772b9c82616ff6a4c7aaede773ffd23862282df9a",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popsteerseek",
+                  "parameter": "uselocalgoal",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "f3fa66faf01dfd9f408bb48772b9c82616ff6a4c7aaede773ffd23862282df9a",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popsteerseek",
+                  "parameter": "uselocalforce",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "f3fa66faf01dfd9f408bb48772b9c82616ff6a4c7aaede773ffd23862282df9a",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popsteerseek",
+                  "parameter": "ignoremass",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "f3fa66faf01dfd9f408bb48772b9c82616ff6a4c7aaede773ffd23862282df9a",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                }
+              ],
+              "missing": []
+            },
+            "id": "goal_attraction",
+            "node_role": "seek",
+            "parameter_aliases": [
+              "forcescale"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 100,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 3,
+            "application": "houdini",
+            "required_gates": [
+              [
+                "seek",
+                "activate",
+                1.0
+              ],
+              [
+                "seek",
+                "usegroup",
+                0
+              ],
+              [
+                "seek",
+                "output",
+                "1"
+              ],
+              [
+                "seek",
+                "attracttype",
+                "position"
+              ],
+              [
+                "seek",
+                "uselocalgoal",
+                0
+              ],
+              [
+                "seek",
+                "uselocalforce",
+                0
+              ],
+              [
+                "seek",
+                "ignoremass",
+                1
+              ]
+            ],
+            "invalidates_from": "generation_simulation",
+            "unit": "shared goal perturbation radius in scene units",
+            "native_status": "mapped",
+            "semantic_contract": "owned_swarm_goal_channels/1",
+            "context_parms": [
+              [
+                "seek",
+                "@swarm_basis"
+              ],
+              [
+                "seek",
+                "@swarm_channels"
+              ],
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "simulation",
+                "@node"
+              ],
+              [
+                "particle_object",
+                "@node"
+              ],
+              [
+                "emission",
+                "@node"
+              ],
+              [
+                "flock",
+                "@node"
+              ],
+              [
+                "seek",
+                "@node"
+              ],
+              [
+                "noise_force",
+                "@node"
+              ],
+              [
+                "solver",
+                "@node"
+              ],
+              [
+                "simulation_output",
+                "@node"
+              ],
+              [
+                "particle_size",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "instances",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "simulation",
+                "@input/0"
+              ],
+              [
+                "solver",
+                "@input/0"
+              ],
+              [
+                "flock",
+                "@input/0"
+              ],
+              [
+                "seek",
+                "@input/0"
+              ],
+              [
+                "solver",
+                "@input/1"
+              ],
+              [
+                "solver",
+                "@input/2"
+              ],
+              [
+                "simulation_output",
+                "@input/0"
+              ],
+              [
+                "particle_size",
+                "@input/0"
+              ],
+              [
+                "instances",
+                "@input/0"
+              ],
+              [
+                "instances",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ],
+            "product_status": "approved",
+            "product_definition": {
+              "decision_id": "S01",
+              "unit": "SU",
+              "definition": "Target-position perturbation radius a: uniform samples inside a 3D ball centered on actual goal_base, updated each scene second with linear interpolation between samples; one shared moving goal for the whole swarm.",
+              "zero": "Exactly goal_base.",
+              "negative": "Reject.",
+              "scope": "Seek target position only; preserve particle source, initial v and goal_attraction; add no force. Protect existing drivers.",
+              "required_basis": [
+                "actual goal_base and reference space",
+                "fixed seed and independent control sub-seed",
+                "time origin, actual FPS and time scale"
+              ],
+              "capture_blockers": [
+                "versioned legal goal-animation/noise graph, seed/time and vector types",
+                "goal input/expression consumption, existing-driver protection and reopening"
+              ],
+              "proposal_sha256": "7a5d8f699ee879c9d613832d9520ceb71580080f6ebadfd187fbd3b0389f4f9e",
+              "decision_record": "handover/CONTROL_DECISIONS_20261004.md",
+              "approved_sections": [
+                2,
+                3
+              ],
+              "common_rules": {
+                "units": "Lengths use current scene units (SU), velocities SU/s; read actual FPS and time scale. No SI conversion without explicit scale and mass bases.",
+                "validation": "Require finite values and each control's zero policy; reject unsigned negatives, missing bases, incompatible combinations and budget excess. No clamping, rounding, implicit conversion or renaming.",
+                "randomness": "Use fixed task seed, stable entity IDs and independent control sub-seeds; reopening reproduces samples and changing one control does not resample another. New percentages are bounded amplitudes, not statistical variance.",
+                "basis": "Freeze bases, coordinate spaces, distributions, time scales and controlled stages. Missing axes, targets, events, source geometry or stable IDs remain explicit missing inputs; preserve unrelated artist fields.",
+                "ranges": "Preserve existing names and validation ranges. Mathematical conditions, version-specific native hard limits, product limits and scene budgets remain distinct; unsupported endpoints stay blocked. Range, alias or endpoint changes require a specific decision.",
+                "readback": "Observe actual parameters, attributes, channels, topology or semantic programs and their input SHA, not requested values. Cache/render authorization, 12-frame/120-second limits and total disk budget remain required; product approval does not authorize real jobs.",
+                "existing_definitions": "Preserve particle life/velocity variance, Crowd path_variance and Geometry scale_variance; preserve the existing RBD activation_frame constant active step."
+              },
+              "common_capture_requirements": {
+                "versions": [
+                  "21.0.631",
+                  "22.0.429"
+                ],
+                "interface": "For each version, capture raw definition/help/SDK sources and hashes, exact operators/machine parameters, types/tuples, menu tokens, defaults/expressions, hard/soft ranges, disable/hide state, indexed input/output roles, editable boundaries and downstream consumption.",
+                "attributes": "Attribute routes additionally need class/storage/tuple, coordinate space, stable IDs and actual downstream consumption rules; labels, help anchors, sliders and other-version tokens are not machine interface proof.",
+                "runtime": "Static evidence bounds pure contracts/native API substitutes. Instance state, geometry/fields, save/reopen and dynamic effects require separately authorized real-host evidence. Recovered JSON excerpts do not replace missing original HDA bytes."
+              },
+              "preparation_capture_requirements": {
+                "versions": [
+                  "22.0.459"
+                ],
+                "interface": "For each version, capture raw definition/help/SDK sources and hashes, exact operators/machine parameters, types/tuples, menu tokens, defaults/expressions, hard/soft ranges, disable/hide state, indexed input/output roles, editable boundaries and downstream consumption.",
+                "attributes": "Attribute routes additionally need class/storage/tuple, coordinate space, stable IDs and actual downstream consumption rules; labels, help anchors, sliders and other-version tokens are not machine interface proof.",
+                "runtime": "Static evidence bounds pure contracts/native API substitutes. Instance state, geometry/fields, save/reopen and dynamic effects require separately authorized real-host evidence. Recovered JSON excerpts do not replace missing original HDA bytes.",
+                "status": "PARTIAL_STATIC_BASIS_RUNTIME_FACTS_REQUIRED"
+              }
+            },
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Dop/popsteerseek",
+                  "parameter": "goal",
+                  "type": "vector",
+                  "size": 3,
+                  "section_sha256": "f3fa66faf01dfd9f408bb48772b9c82616ff6a4c7aaede773ffd23862282df9a",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popsteerseek",
+                  "parameter": "activate",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "f3fa66faf01dfd9f408bb48772b9c82616ff6a4c7aaede773ffd23862282df9a",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popsteerseek",
+                  "parameter": "usegroup",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "f3fa66faf01dfd9f408bb48772b9c82616ff6a4c7aaede773ffd23862282df9a",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popsteerseek",
+                  "parameter": "output",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "f3fa66faf01dfd9f408bb48772b9c82616ff6a4c7aaede773ffd23862282df9a",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popsteerseek",
+                  "parameter": "attracttype",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "f3fa66faf01dfd9f408bb48772b9c82616ff6a4c7aaede773ffd23862282df9a",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popsteerseek",
+                  "parameter": "uselocalgoal",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "f3fa66faf01dfd9f408bb48772b9c82616ff6a4c7aaede773ffd23862282df9a",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popsteerseek",
+                  "parameter": "uselocalforce",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "f3fa66faf01dfd9f408bb48772b9c82616ff6a4c7aaede773ffd23862282df9a",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popsteerseek",
+                  "parameter": "ignoremass",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "f3fa66faf01dfd9f408bb48772b9c82616ff6a4c7aaede773ffd23862282df9a",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                }
+              ],
+              "missing": []
+            },
+            "id": "target_noise",
+            "node_role": "seek",
+            "parameter_aliases": [
+              "goal"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 1000,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [
+              [
+                "noise_force",
+                "activate",
+                1.0
+              ],
+              [
+                "noise_force",
+                "usegroup",
+                0
+              ],
+              [
+                "noise_force",
+                "uselocalforce",
+                0
+              ],
+              [
+                "noise_force",
+                "uselocalnoise",
+                0
+              ],
+              [
+                "noise_force",
+                "ignoremass",
+                1
+              ],
+              [
+                "solver",
+                "externalforce",
+                1
+              ],
+              [
+                "solver",
+                "integratevel",
+                1
+              ],
+              [
+                "solver",
+                "integratepos",
+                1
+              ],
+              [
+                "noise_force",
+                "force",
+                [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ]
+            ],
+            "invalidates_from": "generation_simulation",
+            "unit": "native POP noise amplitude with Ignore Mass; SI conversion not captured",
+            "native_status": "mapped",
+            "context_parms": [
+              [
+                "seek",
+                "@swarm_basis"
+              ],
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "simulation",
+                "@node"
+              ],
+              [
+                "particle_object",
+                "@node"
+              ],
+              [
+                "emission",
+                "@node"
+              ],
+              [
+                "flock",
+                "@node"
+              ],
+              [
+                "seek",
+                "@node"
+              ],
+              [
+                "noise_force",
+                "@node"
+              ],
+              [
+                "solver",
+                "@node"
+              ],
+              [
+                "simulation_output",
+                "@node"
+              ],
+              [
+                "particle_size",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "instances",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "simulation",
+                "@input/0"
+              ],
+              [
+                "solver",
+                "@input/0"
+              ],
+              [
+                "flock",
+                "@input/0"
+              ],
+              [
+                "seek",
+                "@input/0"
+              ],
+              [
+                "solver",
+                "@input/1"
+              ],
+              [
+                "solver",
+                "@input/2"
+              ],
+              [
+                "simulation_output",
+                "@input/0"
+              ],
+              [
+                "particle_size",
+                "@input/0"
+              ],
+              [
+                "instances",
+                "@input/0"
+              ],
+              [
+                "instances",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ],
+            "product_status": "approved",
+            "product_definition": {
+              "decision_id": "S02",
+              "unit": "native POP noise amplitude with Ignore Mass; SI conversion not captured",
+              "definition": "Owned POP noise-force native amplitude scalar, using the existing particle force_noise interpretation with Ignore Mass; no claim of SI acceleration. Preserve frequency, seed and roughness, freezing explicit bases when their context is missing.",
+              "zero": "This new noise-force contribution is zero.",
+              "negative": "Reject.",
+              "scope": "Independent editable swarm noise-force branch; preserve flock, seek and their weights. Existing particle force_noise is a design basis, not proof of a swarm graph.",
+              "required_basis": [
+                "explicit frequency, seed and roughness",
+                "actual time-noise context",
+                "Ignore Mass convention"
+              ],
+              "capture_blockers": [
+                "versioned legal swarm POP Force branch and connections",
+                "amplitude/gates/time-noise context and actual solver external-force consumption"
+              ],
+              "proposal_sha256": "7a5d8f699ee879c9d613832d9520ceb71580080f6ebadfd187fbd3b0389f4f9e",
+              "decision_record": "handover/CONTROL_DECISIONS_20261004.md",
+              "approved_sections": [
+                2,
+                3
+              ],
+              "common_rules": {
+                "units": "Lengths use current scene units (SU), velocities SU/s; read actual FPS and time scale. No SI conversion without explicit scale and mass bases.",
+                "validation": "Require finite values and each control's zero policy; reject unsigned negatives, missing bases, incompatible combinations and budget excess. No clamping, rounding, implicit conversion or renaming.",
+                "randomness": "Use fixed task seed, stable entity IDs and independent control sub-seeds; reopening reproduces samples and changing one control does not resample another. New percentages are bounded amplitudes, not statistical variance.",
+                "basis": "Freeze bases, coordinate spaces, distributions, time scales and controlled stages. Missing axes, targets, events, source geometry or stable IDs remain explicit missing inputs; preserve unrelated artist fields.",
+                "ranges": "Preserve existing names and validation ranges. Mathematical conditions, version-specific native hard limits, product limits and scene budgets remain distinct; unsupported endpoints stay blocked. Range, alias or endpoint changes require a specific decision.",
+                "readback": "Observe actual parameters, attributes, channels, topology or semantic programs and their input SHA, not requested values. Cache/render authorization, 12-frame/120-second limits and total disk budget remain required; product approval does not authorize real jobs.",
+                "existing_definitions": "Preserve particle life/velocity variance, Crowd path_variance and Geometry scale_variance; preserve the existing RBD activation_frame constant active step."
+              },
+              "common_capture_requirements": {
+                "versions": [
+                  "21.0.631",
+                  "22.0.429"
+                ],
+                "interface": "For each version, capture raw definition/help/SDK sources and hashes, exact operators/machine parameters, types/tuples, menu tokens, defaults/expressions, hard/soft ranges, disable/hide state, indexed input/output roles, editable boundaries and downstream consumption.",
+                "attributes": "Attribute routes additionally need class/storage/tuple, coordinate space, stable IDs and actual downstream consumption rules; labels, help anchors, sliders and other-version tokens are not machine interface proof.",
+                "runtime": "Static evidence bounds pure contracts/native API substitutes. Instance state, geometry/fields, save/reopen and dynamic effects require separately authorized real-host evidence. Recovered JSON excerpts do not replace missing original HDA bytes."
+              },
+              "preparation_capture_requirements": {
+                "versions": [
+                  "22.0.459"
+                ],
+                "interface": "For each version, capture raw definition/help/SDK sources and hashes, exact operators/machine parameters, types/tuples, menu tokens, defaults/expressions, hard/soft ranges, disable/hide state, indexed input/output roles, editable boundaries and downstream consumption.",
+                "attributes": "Attribute routes additionally need class/storage/tuple, coordinate space, stable IDs and actual downstream consumption rules; labels, help anchors, sliders and other-version tokens are not machine interface proof.",
+                "runtime": "Static evidence bounds pure contracts/native API substitutes. Instance state, geometry/fields, save/reopen and dynamic effects require separately authorized real-host evidence. Recovered JSON excerpts do not replace missing original HDA bytes.",
+                "status": "PARTIAL_STATIC_BASIS_RUNTIME_FACTS_REQUIRED"
+              }
+            },
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Dop/popforce",
+                  "parameter": "amp",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "4f5b4cc5f9678396de535449fbdea62a57dbd54bb16b4fa977d0e73fae5b591d",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popforce",
+                  "parameter": "activate",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "4f5b4cc5f9678396de535449fbdea62a57dbd54bb16b4fa977d0e73fae5b591d",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popforce",
+                  "parameter": "usegroup",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "4f5b4cc5f9678396de535449fbdea62a57dbd54bb16b4fa977d0e73fae5b591d",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popforce",
+                  "parameter": "uselocalforce",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "4f5b4cc5f9678396de535449fbdea62a57dbd54bb16b4fa977d0e73fae5b591d",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popforce",
+                  "parameter": "uselocalnoise",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "4f5b4cc5f9678396de535449fbdea62a57dbd54bb16b4fa977d0e73fae5b591d",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popforce",
+                  "parameter": "ignoremass",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "4f5b4cc5f9678396de535449fbdea62a57dbd54bb16b4fa977d0e73fae5b591d",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popsolver::2.0",
+                  "parameter": "externalforce",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "90db8ddcc3d50919629609292ab2ce5c6d8c8473527a0f650583a444c40c0d84",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popsolver::2.0",
+                  "parameter": "integratevel",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "90db8ddcc3d50919629609292ab2ce5c6d8c8473527a0f650583a444c40c0d84",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popsolver::2.0",
+                  "parameter": "integratepos",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "90db8ddcc3d50919629609292ab2ce5c6d8c8473527a0f650583a444c40c0d84",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popforce",
+                  "parameter": "force",
+                  "type": "direction",
+                  "size": 3,
+                  "section_sha256": "4f5b4cc5f9678396de535449fbdea62a57dbd54bb16b4fa977d0e73fae5b591d",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                }
+              ],
+              "missing": []
+            },
+            "id": "noise_strength",
+            "node_role": "noise_force",
+            "parameter_aliases": [
+              "amp"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "save_reopen": [
+    "Use the production generator and task-owned host; persist project content/version/owner and the original operation receipt.",
+    "Stop the actual owned worker and verify trusted stop, then reopen the saved HIP/NK in a new host identity.",
+    "Read back every role, native type, port, connection and semantic control; preserve unrelated artist changes."
+  ],
+  "stop_recovery": [
+    "Interrupt the actual case worker, not an auxiliary process.",
+    "Retain the heavy slot while stop is unknown; verify task/session/nonce/process/generation/build/scene epoch.",
+    "Restart the controller, restore the same operation from persistent facts, and verify no duplicate execution/registration."
+  ],
+  "artifact_checks": [
+    "Consume only task-owned registered input IDs/versions/hash and exact frames.",
+    "Validate applicable outputs: diagnostic_preview, editable_scene, simulation_cache",
+    "Require producer operation, scene/version, format/dimensions/channels, color/premultiplication and dependency facts; reject missing typed metadata.",
+    "Check missing/repeated/frozen/abrupt frames against a frozen activity interval; pixel change alone does not establish correct motion."
+  ],
+  "raw_evidence_path": "outputs/live-validation/swarm_flocking_v1/<new-run-id>",
+  "human_checks": [
+    "Editable topology and save/reopen match the approved controls.",
+    "Compare the registered reference and feedback result; judge actual motion, silhouette, timing, material, lighting and composition.",
+    "Accept visual quality separately from software, format and process-stop checks."
+  ],
+  "resource_requirements": {
+    "explicit_frames_max": 12,
+    "seconds_max": 120,
+    "disk_bytes": "explicit positive task budget; include output/cache/temp/logs",
+    "cache": "separate exact path/frame/content-version/estimated-bytes/invalidation confirmation before execution",
+    "concurrency": "one heavy DCC job; unknown stop keeps slot"
+  },
+  "blockers": [
+    "Full 54-row current-build evidence and independent M1 reception remain incomplete.",
+    "Whole-domain native basis and applicable output/actual worker recovery are not verified by this card."
+  ],
+  "composite": true
+}

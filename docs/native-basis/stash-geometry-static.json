@@ -1,0 +1,2834 @@
+{
+  "schema": "bridge.static-native-followup/1",
+  "scope": "read-only same-build installed Stash/HOM docs, SDK and vendor materialization code; no native instance/cook/save",
+  "versions": {
+    "21.0.631": {
+      "source_refs": [
+        {
+          "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/toolkit/include/SOP/SOP_Stash.proto.h",
+          "sha256": "b86bb79b33803c2a1ebaa7b0728dde6c2004cf476726935ccb1d9efe7bea5d29",
+          "lines": [
+            {
+              "line": 28,
+              "text": ""
+            },
+            {
+              "line": 29,
+              "text": "    SOP_StashParms()"
+            },
+            {
+              "line": 30,
+              "text": "    {"
+            },
+            {
+              "line": 31,
+              "text": "        myStash = PRM_DataItemHandle(0);"
+            },
+            {
+              "line": 32,
+              "text": "        myStashFile = \"\"_UTsh;"
+            },
+            {
+              "line": 33,
+              "text": "        raw_myStashFile = \"\"_UTsh;"
+            },
+            {
+              "line": 34,
+              "text": ""
+            },
+            {
+              "line": 62,
+              "text": ""
+            },
+            {
+              "line": 63,
+              "text": "    void        buildFromOp(const OP_GraphProxy *graph, exint nodeidx, fpreal time, DEP_MicroNode *depnode)"
+            },
+            {
+              "line": 64,
+              "text": "    {"
+            },
+            {
+              "line": 65,
+              "text": "        myStash = PRM_DataItemHandle(0);"
+            },
+            {
+              "line": 66,
+              "text": "        if (true)"
+            },
+            {
+              "line": 67,
+              "text": "            graph->evalOpParm(myStash, nodeidx, \"stash\", time, graph->isDirect()?nullptr:depnode);"
+            },
+            {
+              "line": 68,
+              "text": "        myStashFile = \"\"_UTsh;"
+            },
+            {
+              "line": 69,
+              "text": "        if (true)"
+            },
+            {
+              "line": 70,
+              "text": "            graph->evalOpParm(myStashFile, nodeidx, \"stashfile\", time, graph->isDirect()?nullptr:depnode);"
+            },
+            {
+              "line": 71,
+              "text": "        raw_myStashFile = \"\"_UTsh;"
+            },
+            {
+              "line": 72,
+              "text": "        if (true)"
+            },
+            {
+              "line": 73,
+              "text": "            graph->evalOpParmRaw(raw_myStashFile, nodeidx, \"stashfile\", time, graph->isDirect()?nullptr:depnode);"
+            },
+            {
+              "line": 74,
+              "text": ""
+            },
+            {
+              "line": 75,
+              "text": "    }"
+            },
+            {
+              "line": 76,
+              "text": ""
+            },
+            {
+              "line": 202,
+              "text": "        switch (fieldnum[0])"
+            },
+            {
+              "line": 203,
+              "text": "        {"
+            },
+            {
+              "line": 204,
+              "text": "            case 0:"
+            },
+            {
+              "line": 205,
+              "text": "                return \"stash\";"
+            },
+            {
+              "line": 206,
+              "text": "            case 1:"
+            },
+            {
+              "line": 207,
+              "text": "                return \"stashfile\";"
+            },
+            {
+              "line": 208,
+              "text": ""
+            },
+            {
+              "line": 209,
+              "text": "        }"
+            },
+            {
+              "line": 210,
+              "text": "        return 0;"
+            },
+            {
+              "line": 356,
+              "text": "        return true;"
+            },
+            {
+              "line": 357,
+              "text": "    }"
+            },
+            {
+              "line": 358,
+              "text": ""
+            },
+            {
+              "line": 359,
+              "text": "    PRM_DataItemHandle getStash() const { return myStash; }"
+            },
+            {
+              "line": 360,
+              "text": "    void setStash(PRM_DataItemHandle val) { myStash = val; }"
+            },
+            {
+              "line": 361,
+              "text": "    PRM_DataItemHandle opStash(const SOP_NodeVerb::CookParms &cookparms) const"
+            },
+            {
+              "line": 362,
+              "text": "    { "
+            },
+            {
+              "line": 363,
+              "text": "        SOP_Node *thissop = cookparms.getNode();"
+            },
+            {
+              "line": 364,
+              "text": "        if (!thissop) return getStash();"
+            },
+            {
+              "line": 365,
+              "text": "        PRM_DataItemHandle result;"
+            },
+            {
+              "line": 366,
+              "text": "        OP_Utils::evalOpParm(result, thissop, \"stash\", cookparms.getCookTime(), 0);"
+            },
+            {
+              "line": 367,
+              "text": "        return result;"
+            },
+            {
+              "line": 368,
+              "text": "    }"
+            },
+            {
+              "line": 369,
+              "text": "    const UT_StringHolder & getStashFile() const { return myStashFile; }"
+            },
+            {
+              "line": 370,
+              "text": "    void setStashFile(const UT_StringHolder & val) { myStashFile = val; }"
+            },
+            {
+              "line": 371,
+              "text": "    UT_StringHolder opStashFile(const SOP_NodeVerb::CookParms &cookparms) const"
+            },
+            {
+              "line": 372,
+              "text": "    { "
+            },
+            {
+              "line": 373,
+              "text": "        SOP_Node *thissop = cookparms.getNode();"
+            },
+            {
+              "line": 374,
+              "text": "        if (!thissop) return getStashFile();"
+            },
+            {
+              "line": 375,
+              "text": "        UT_StringHolder result;"
+            },
+            {
+              "line": 376,
+              "text": "        OP_Utils::evalOpParm(result, thissop, \"stashfile\", cookparms.getCookTime(), 0);"
+            },
+            {
+              "line": 377,
+              "text": "        return result;"
+            },
+            {
+              "line": 378,
+              "text": "    }"
+            },
+            {
+              "line": 379,
+              "text": "    const UT_StringHolder & raw_getStashFile() const { return raw_myStashFile; }"
+            },
+            {
+              "line": 380,
+              "text": "    void raw_setStashFile(const UT_StringHolder & val) { raw_myStashFile = val; }"
+            },
+            {
+              "line": 381,
+              "text": "    UT_StringHolder raw_opStashFile(const SOP_NodeVerb::CookParms &cookparms) const"
+            },
+            {
+              "line": 382,
+              "text": "    { "
+            },
+            {
+              "line": 383,
+              "text": "        SOP_Node *thissop = cookparms.getNode();"
+            },
+            {
+              "line": 384,
+              "text": "        if (!thissop) return raw_getStashFile();"
+            },
+            {
+              "line": 385,
+              "text": "        UT_StringHolder result;"
+            },
+            {
+              "line": 386,
+              "text": "        OP_Utils::evalOpParmRaw(result, thissop, \"stashfile\", cookparms.getCookTime(), 0);"
+            },
+            {
+              "line": 387,
+              "text": "        return result;"
+            },
+            {
+              "line": 388,
+              "text": "    }"
+            },
+            {
+              "line": 389,
+              "text": ""
+            }
+          ]
+        },
+        {
+          "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/toolkit/include/HOM/HOM_Parm.h",
+          "sha256": "0b662217d890ff674f538e7a12a3eb8f00ebb6457112e2c56cdca80bb4d83b23",
+          "lines": [
+            {
+              "line": 82,
+              "text": "    virtual void _setPending(int64 int_value) = 0;"
+            },
+            {
+              "line": 83,
+              "text": "    virtual void _set(const char *string_value) = 0;"
+            },
+            {
+              "line": 84,
+              "text": "    virtual void _setPending(const char *string_value) = 0;"
+            },
+            {
+              "line": 85,
+              "text": "    virtual void _set(HOM_Geometry *geo) = 0;"
+            },
+            {
+              "line": 86,
+              "text": "    virtual void _setPending(HOM_Geometry *geo) = 0;"
+            },
+            {
+              "line": 87,
+              "text": "    virtual void _set(HOM_ImageLayer *layer) = 0;"
+            },
+            {
+              "line": 88,
+              "text": "    virtual void _setPending(HOM_ImageLayer *layer) = 0;"
+            },
+            {
+              "line": 143,
+              "text": "    virtual int64 evalAsIntAtFrame(double frame) = 0;"
+            },
+            {
+              "line": 144,
+              "text": "    virtual std::string evalAsString() = 0;"
+            },
+            {
+              "line": 145,
+              "text": "    virtual std::string evalAsStringAtFrame(double frame) = 0;"
+            },
+            {
+              "line": 146,
+              "text": "    virtual HOM_Geometry *evalAsGeometry() = 0;"
+            },
+            {
+              "line": 147,
+              "text": "    virtual HOM_Geometry *evalAsGeometryAtFrame(double frame) = 0;"
+            },
+            {
+              "line": 148,
+              "text": "    virtual HOM_ImageLayer *evalAsImageLayer() = 0;"
+            },
+            {
+              "line": 149,
+              "text": "    virtual HOM_ImageLayer *evalAsImageLayerAtFrame(double frame) = 0;"
+            },
+            {
+              "line": 150,
+              "text": "    virtual HOM_NanoVDB *evalAsNanoVDB() = 0;"
+            }
+          ]
+        },
+        {
+          "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/toolkit/include/HOM/HOM_DataParmTemplate.h",
+          "sha256": "79d389f6f8c27a764b34d2e70a66e1c685a2b92fa21621a14cf6f3ff842ee4d0",
+          "lines": [
+            {
+              "line": 7,
+              "text": " */"
+            },
+            {
+              "line": 8,
+              "text": ""
+            },
+            {
+              "line": 9,
+              "text": "#ifndef __HOM_DataParmTemplate_h__"
+            },
+            {
+              "line": 10,
+              "text": "#define __HOM_DataParmTemplate_h__"
+            },
+            {
+              "line": 11,
+              "text": ""
+            },
+            {
+              "line": 12,
+              "text": "#include \"HOM_API.h\""
+            },
+            {
+              "line": 13,
+              "text": "#include \"HOM_ParmTemplate.h\""
+            },
+            {
+              "line": 14,
+              "text": ""
+            },
+            {
+              "line": 15,
+              "text": "SWIGOUT(%feature(\"notabstract\") HOM_DataParmTemplate;)"
+            },
+            {
+              "line": 16,
+              "text": "SWIGOUT(%rename(DataParmTemplate) HOM_DataParmTemplate;)"
+            },
+            {
+              "line": 17,
+              "text": ""
+            },
+            {
+              "line": 18,
+              "text": "class HOM_API HOM_DataParmTemplate : virtual public HOM_ParmTemplate"
+            },
+            {
+              "line": 19,
+              "text": "{"
+            },
+            {
+              "line": 20,
+              "text": "public:"
+            },
+            {
+              "line": 21,
+              "text": "#ifdef SWIG"
+            },
+            {
+              "line": 22,
+              "text": "%extend {"
+            },
+            {
+              "line": 23,
+              "text": "    %kwargs HOM_DataParmTemplate;"
+            },
+            {
+              "line": 24,
+              "text": "    HOM_DataParmTemplate("
+            },
+            {
+              "line": 25,
+              "text": "\t    const char *name,"
+            },
+            {
+              "line": 26,
+              "text": "\t    const char *label,"
+            },
+            {
+              "line": 54,
+              "text": "};"
+            },
+            {
+              "line": 55,
+              "text": "#else"
+            },
+            {
+              "line": 56,
+              "text": "    HOM_DataParmTemplate()"
+            },
+            {
+              "line": 57,
+              "text": "    { HOM_CONSTRUCT_OBJECT(this) }"
+            },
+            {
+              "line": 58,
+              "text": ""
+            },
+            {
+              "line": 59,
+              "text": "    HOM_DataParmTemplate(const HOM_DataParmTemplate &parm_template)"
+            },
+            {
+              "line": 60,
+              "text": "    : HOM_ParmTemplate(parm_template)"
+            },
+            {
+              "line": 61,
+              "text": "    { HOM_CONSTRUCT_OBJECT(this) }"
+            },
+            {
+              "line": 62,
+              "text": "#endif"
+            },
+            {
+              "line": 63,
+              "text": ""
+            },
+            {
+              "line": 64,
+              "text": "    ~HOM_DataParmTemplate() override"
+            },
+            {
+              "line": 65,
+              "text": "    { HOM_DESTRUCT_OBJECT(this) }"
+            },
+            {
+              "line": 66,
+              "text": ""
+            }
+          ]
+        },
+        {
+          "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/python3.11libs/muscletoolutils.py",
+          "sha256": "c084499ab07341e2b7ebc103adfad750b94a2408ad2ed66e7f96dead34ec50f1",
+          "lines": [
+            {
+              "line": 2319,
+              "text": ""
+            },
+            {
+              "line": 2320,
+              "text": "def stashAutoFlexIDs(kwargs):"
+            },
+            {
+              "line": 2321,
+              "text": "    #print kwargs"
+            },
+            {
+              "line": 2322,
+              "text": "    node = kwargs['node']"
+            },
+            {
+              "line": 2323,
+              "text": "    geo = node.node('AUTOFLEX_LINES').geometry()"
+            },
+            {
+              "line": 2324,
+              "text": "    node.parm('stash').set(geo)"
+            },
+            {
+              "line": 2325,
+              "text": "   "
+            },
+            {
+              "line": 2326,
+              "text": "    autoflex_attrib = geo.findPrimAttrib(\"autoflex_id\")"
+            },
+            {
+              "line": 2327,
+              "text": "    "
+            },
+            {
+              "line": 2328,
+              "text": "    if (autoflex_attrib is not None):"
+            }
+          ]
+        },
+        {
+          "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/python3.11libs/layout/utils.py",
+          "sha256": "1ab477a2cbaa0adbb635ac04a83b63c9e1e13cfb8508b20dea7385d6b39a72a7",
+          "lines": [
+            {
+              "line": 455,
+              "text": "    # Setup EXISTING_POINTS"
+            },
+            {
+              "line": 456,
+              "text": "    stashes[0].setName(\"_EXISTING_POINTS\")"
+            },
+            {
+              "line": 457,
+              "text": "    stashes[0].setPosition(hou.Vector2(0, 10))"
+            },
+            {
+              "line": 458,
+              "text": "    stashes[0].parm(\"stash\").set(existing_points)"
+            },
+            {
+              "line": 459,
+              "text": ""
+            },
+            {
+              "line": 460,
+              "text": "    # Setup STATIC_GEO"
+            },
+            {
+              "line": 461,
+              "text": "    stashes[1].setName(\"_STATIC_GEO\")"
+            },
+            {
+              "line": 462,
+              "text": "    stashes[1].setPosition(hou.Vector2(3, 10))"
+            },
+            {
+              "line": 463,
+              "text": "    stashes[1].parm(\"stash\").set(static_geo)"
+            },
+            {
+              "line": 464,
+              "text": ""
+            },
+            {
+              "line": 465,
+              "text": "    # Setup ASSET_GEO"
+            },
+            {
+              "line": 466,
+              "text": "    stashes[2].setName(\"_ASSET_GEO\")"
+            },
+            {
+              "line": 467,
+              "text": "    stashes[2].setPosition(hou.Vector2(6, 10))"
+            },
+            {
+              "line": 468,
+              "text": "    stashes[2].parm(\"stash\").set(asset_geo)"
+            },
+            {
+              "line": 469,
+              "text": ""
+            },
+            {
+              "line": 470,
+              "text": "    # Setup STROKE"
+            },
+            {
+              "line": 471,
+              "text": "    stashes[3].setName(\"_STROKE\")"
+            },
+            {
+              "line": 472,
+              "text": "    stashes[3].setPosition(hou.Vector2(9, 10))"
+            },
+            {
+              "line": 473,
+              "text": "    stashes[3].parm(\"stash\").set(stroke)"
+            },
+            {
+              "line": 474,
+              "text": ""
+            },
+            {
+              "line": 475,
+              "text": "    # Setup WORKING_SET"
+            },
+            {
+              "line": 476,
+              "text": "    stashes[4].setName(\"_WORKING_SET\")"
+            },
+            {
+              "line": 477,
+              "text": "    stashes[4].setPosition(hou.Vector2(12, 10))"
+            },
+            {
+              "line": 478,
+              "text": "    stashes[4].parm(\"stash\").set(working_set)"
+            },
+            {
+              "line": 479,
+              "text": ""
+            }
+          ]
+        },
+        {
+          "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/help/nodes.zip",
+          "archive_sha256": "7c83e14d77ddaebf0f918244c1747509633b2721a39468eb4ae3efc694886916",
+          "member": "sop/stash.txt",
+          "section_sha256": "089b516c1a790451e0055c534c4bd64ebfb4b3668cf72e0b4ba87c654d9ddff6",
+          "lines": [
+            {
+              "line": 1,
+              "text": "= Stash ="
+            },
+            {
+              "line": 2,
+              "text": ""
+            },
+            {
+              "line": 3,
+              "text": "#type: node"
+            },
+            {
+              "line": 4,
+              "text": "#context: sop"
+            },
+            {
+              "line": 5,
+              "text": "#internal: stash"
+            },
+            {
+              "line": 6,
+              "text": "#icon: SOP/stash"
+            },
+            {
+              "line": 7,
+              "text": "#tags: network, util"
+            },
+            {
+              "line": 8,
+              "text": "#since: 16.0"
+            },
+            {
+              "line": 9,
+              "text": "#verb_since: 16.5"
+            },
+            {
+              "line": 10,
+              "text": ""
+            },
+            {
+              "line": 11,
+              "text": "\"\"\"Caches the input geometry in the node on command, and then uses it as the node's output.\"\"\""
+            },
+            {
+              "line": 12,
+              "text": ""
+            },
+            {
+              "line": 13,
+              "text": ""
+            },
+            {
+              "line": 14,
+              "text": "== Overview =="
+            },
+            {
+              "line": 15,
+              "text": ""
+            },
+            {
+              "line": 16,
+              "text": "When you click __Stash input__, the node will cook the input and cache the geometry in a data parameter. The node does not otherwise cook its input and will simply output the cached geometry. (You can even disconnect the input and the node will continue to output its stored geometry.) You can click __Stash input__ again to re-cache if the input changes."
+            },
+            {
+              "line": 17,
+              "text": ""
+            },
+            {
+              "line": 18,
+              "text": "This node is conceptually very similar to [locking|/network/flags#sop] a Null SOP, however it has several additional features:"
+            },
+            {
+              "line": 19,
+              "text": ""
+            },
+            {
+              "line": 20,
+              "text": "* The interaction is slightly more convenient."
+            },
+            {
+              "line": 21,
+              "text": ""
+            },
+            {
+              "line": 22,
+              "text": "* You can modify or overwrite the cached geometry with [Hom:hou.Geometry] objects through scripting."
+            },
+            {
+              "line": 23,
+              "text": ""
+            },
+            {
+              "line": 24,
+              "text": "* You can link the geometry parameter to a parameter on a parent [asset|/assets/].  This allows assets to inject geometry into a network without making the contents editable."
+            },
+            {
+              "line": 25,
+              "text": ""
+            },
+            {
+              "line": 26,
+              "text": "* The node never passes the input directly to the output, so Houdini doesn't see downstream nodes as depending on upstream nodes. This is useful if a live connection would create a dependency cycle."
+            },
+            {
+              "line": 27,
+              "text": ""
+            },
+            {
+              "line": 28,
+              "text": ""
+            },
+            {
+              "line": 29,
+              "text": "== Tips and notes =="
+            },
+            {
+              "line": 30,
+              "text": ""
+            },
+            {
+              "line": 31,
+              "text": "* The stashed geometry is saved as part of the node instance when you save the scene, so stashing large geometry can bloat the size of the `.hip` file."
+            },
+            {
+              "line": 32,
+              "text": ""
+            },
+            {
+              "line": 33,
+              "text": "* You can discard the cached geometry by disconnecting the node's input and clicking __Stash input__."
+            },
+            {
+              "line": 34,
+              "text": ""
+            },
+            {
+              "line": 35,
+              "text": "* Because the caching process is manual, it is independent of time. For example, you can run a simulation process (for example, a terrain erosion), cache the final geometry, disconnect the simulation, and then go back to frame 1 and use the geometry in an animation."
+            },
+            {
+              "line": 36,
+              "text": ""
+            },
+            {
+              "line": 37,
+              "text": ""
+            },
+            {
+              "line": 38,
+              "text": "@parameters"
+            },
+            {
+              "line": 39,
+              "text": ""
+            },
+            {
+              "line": 40,
+              "text": "Geometry Stash:"
+            },
+            {
+              "line": 41,
+              "text": "    #id: stash"
+            },
+            {
+              "line": 42,
+              "text": ""
+            },
+            {
+              "line": 43,
+              "text": "    The data parameter (internal name `stash`) where the node stores the geometry."
+            },
+            {
+              "line": 44,
+              "text": "    "
+            },
+            {
+              "line": 45,
+              "text": "Stash Input:"
+            },
+            {
+              "line": 46,
+              "text": "    Click to cook the input and cache its geometry in the data parameter above. Once geometry is cached, the node will output the cached geometry."
+            },
+            {
+              "line": 47,
+              "text": ""
+            },
+            {
+              "line": 48,
+              "text": "Geometry File:"
+            },
+            {
+              "line": 49,
+              "text": "    #id: stashfile"
+            },
+            {
+              "line": 50,
+              "text": ""
+            },
+            {
+              "line": 51,
+              "text": "    If there is no geometry in the data parameter, this file will be"
+            },
+            {
+              "line": 52,
+              "text": "    loaded and used instead."
+            },
+            {
+              "line": 53,
+              "text": ""
+            },
+            {
+              "line": 54,
+              "text": "    Storing geometry in the data parameter will cause the .hip file to"
+            },
+            {
+              "line": 55,
+              "text": "    become larger, and require every version of the .hip file to"
+            },
+            {
+              "line": 56,
+              "text": "    re-save the data.  When the stashed geometry no longer changes"
+            },
+            {
+              "line": 57,
+              "text": "    frequently, it can be moved into an external file.  This file will"
+            },
+            {
+              "line": 58,
+              "text": "    then need to be available for the .hip file to load properly."
+            },
+            {
+              "line": 59,
+              "text": ""
+            },
+            {
+              "line": 60,
+              "text": ":include standard_stash:"
+            },
+            {
+              "line": 61,
+              "text": ""
+            },
+            {
+              "line": 62,
+              "text": "@related"
+            },
+            {
+              "line": 63,
+              "text": ""
+            },
+            {
+              "line": 64,
+              "text": "- [Node:sop/file]"
+            },
+            {
+              "line": 65,
+              "text": "- [Node:sop/cache]"
+            },
+            {
+              "line": 66,
+              "text": "- [Node:sop/filecache::2.0]"
+            },
+            {
+              "line": 67,
+              "text": ""
+            },
+            {
+              "line": 68,
+              "text": ""
+            }
+          ]
+        },
+        {
+          "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/help/hom.zip",
+          "archive_sha256": "e4c8f5503d1f96ab10ca17f865e468c05243d2a3fa7a96ccd0b7904b0929817c",
+          "member": "hou/Parm.txt",
+          "section_sha256": "bfc24e62c4095fe841f64152c0914262915689a2f578aa2fbd0de35bfbbb2b24",
+          "methods": {
+            "evalAsGeometry": {
+              "status": "CAPTURED",
+              "lines": [
+                {
+                  "line": 538,
+                  "text": "::`evalAsGeometry(self)` -> [Hom:hou.Geometry]:"
+                },
+                {
+                  "line": 539,
+                  "text": "    #cppname: HOM_Parm::evalAsGeometry"
+                },
+                {
+                  "line": 540,
+                  "text": "    Evaluates this parameter at the current frame and returns the result as a"
+                },
+                {
+                  "line": 541,
+                  "text": "    geometry."
+                },
+                {
+                  "line": 542,
+                  "text": ""
+                },
+                {
+                  "line": 543,
+                  "text": "    Raises `TypeError` if the parameter is not a geometry."
+                },
+                {
+                  "line": 544,
+                  "text": ""
+                }
+              ]
+            },
+            "evalAsGeometryAtFrame": {
+              "status": "CAPTURED",
+              "lines": [
+                {
+                  "line": 545,
+                  "text": "::`evalAsGeometryAtFrame(self, frame)` -> [Hom:hou.Geometry]:"
+                },
+                {
+                  "line": 546,
+                  "text": "    #cppname: HOM_Parm::evalAsGeometryAtFrame"
+                },
+                {
+                  "line": 547,
+                  "text": "    Evaluates this parameter at a certain frame and returns the result as a"
+                },
+                {
+                  "line": 548,
+                  "text": "    geometry."
+                },
+                {
+                  "line": 549,
+                  "text": ""
+                },
+                {
+                  "line": 550,
+                  "text": "    Raises `TypeError` if the parameter is not a geometry."
+                },
+                {
+                  "line": 551,
+                  "text": ""
+                }
+              ]
+            },
+            "set": {
+              "status": "CAPTURED",
+              "lines": [
+                {
+                  "line": 630,
+                  "text": "::`set(self, value, language=None, follow_parm_reference=True)`:"
+                },
+                {
+                  "line": 631,
+                  "text": "    #cppname: HOM_Parm::set"
+                },
+                {
+                  "line": 632,
+                  "text": "    Sets the parameter value at the current frame."
+                },
+                {
+                  "line": 633,
+                  "text": ""
+                },
+                {
+                  "line": 634,
+                  "text": "    value:"
+                },
+                {
+                  "line": 635,
+                  "text": "        A float, integer, or string to set the parameter value to."
+                },
+                {
+                  "line": 636,
+                  "text": "        "
+                },
+                {
+                  "line": 637,
+                  "text": "        Pass in a [Hom:hou.Ramp] object, as the parameter value, to set the"
+                },
+                {
+                  "line": 638,
+                  "text": "        value of a ramp parameter. The ramp object's type needs to match the"
+                },
+                {
+                  "line": 639,
+                  "text": "        target ramp's type. Note that the [Hom:hou.Ramp#colorType]"
+                },
+                {
+                  "line": 640,
+                  "text": "        information is ignored since the color type on a ramp parameter is"
+                },
+                {
+                  "line": 641,
+                  "text": "        read-only."
+                },
+                {
+                  "line": 642,
+                  "text": ""
+                },
+                {
+                  "line": 643,
+                  "text": "        Pass in a [Hom:hou.Geometry] object, as the parameter value, to set"
+                },
+                {
+                  "line": 644,
+                  "text": "        the value of a geometry data parameter."
+                },
+                {
+                  "line": 645,
+                  "text": ""
+                },
+                {
+                  "line": 646,
+                  "text": "        Pass in a [Hom:hou.Parm] object to create a channel reference from this"
+                },
+                {
+                  "line": 647,
+                  "text": "        parameter to the specified parameter."
+                },
+                {
+                  "line": 648,
+                  "text": ""
+                },
+                {
+                  "line": 649,
+                  "text": "    language:"
+                },
+                {
+                  "line": 650,
+                  "text": "        This option only applies when setting to a [Hom:hou.Parm] value."
+                },
+                {
+                  "line": 651,
+                  "text": "        Specifies the expression language to use when creating a channel"
+                },
+                {
+                  "line": 652,
+                  "text": "        reference from this parameter to the given parameter.  Set this option"
+                },
+                {
+                  "line": 653,
+                  "text": "        to an [Hom:hou.exprLanguage] object or `None` to choose the default"
+                },
+                {
+                  "line": 654,
+                  "text": "        language."
+                },
+                {
+                  "line": 655,
+                  "text": ""
+                },
+                {
+                  "line": 656,
+                  "text": "    follow_parm_reference:"
+                },
+                {
+                  "line": 657,
+                  "text": "        This option only applies when setting to a [Hom:hou.Parm] value. It"
+                },
+                {
+                  "line": 658,
+                  "text": "        defines the [Hom:hou.Parm] that gets modified."
+                },
+                {
+                  "line": 659,
+                  "text": ""
+                },
+                {
+                  "line": 660,
+                  "text": "        If set to `True`, this method first follows the"
+                },
+                {
+                  "line": 661,
+                  "text": "        current channel references on this [Hom:hou.Parm] to determine the"
+                },
+                {
+                  "line": 662,
+                  "text": "        [Hom:hou.Parm] to modify. It acts to keep the chain of"
+                },
+                {
+                  "line": 663,
+                  "text": "        references and sets a new channel reference on the [Hom:hou.Parm]"
+                },
+                {
+                  "line": 664,
+                  "text": "        that doesn't yet have one."
+                },
+                {
+                  "line": 665,
+                  "text": ""
+                },
+                {
+                  "line": 666,
+                  "text": "        If set to `False`, the current [Hom:hou.Parm] is modified directly and the"
+                },
+                {
+                  "line": 667,
+                  "text": "        chain of references is broken if there was an existing channel reference."
+                },
+                {
+                  "line": 668,
+                  "text": ""
+                },
+                {
+                  "line": 669,
+                  "text": "    If this parameter currently contains a channel reference to another"
+                },
+                {
+                  "line": 670,
+                  "text": "    parameter, this method will follow the channel references and change the"
+                },
+                {
+                  "line": 671,
+                  "text": "    value of the referenced parameter. If this is not the desired behavior, "
+                },
+                {
+                  "line": 672,
+                  "text": "    first delete the channel reference for the string parameters that don't have the"
+                },
+                {
+                  "line": 673,
+                  "text": "    channel reference embedded in their string value using"
+                },
+                {
+                  "line": 674,
+                  "text": "    [Hom:hou.Parm#deleteAllKeyframes] or [Hom:hou.Parm#revertToDefaults]."
+                },
+                {
+                  "line": 675,
+                  "text": ""
+                },
+                {
+                  "line": 676,
+                  "text": "    Raises `TypeError` if the type of `value` does not match the"
+                },
+                {
+                  "line": 677,
+                  "text": "    type of this parameter. Raises [Hom:hou.PermissionError] if this"
+                },
+                {
+                  "line": 678,
+                  "text": "    parameter is not writable."
+                },
+                {
+                  "line": 679,
+                  "text": ""
+                },
+                {
+                  "line": 680,
+                  "text": "    See also [Hom:hou.OpNode#setParms]."
+                },
+                {
+                  "line": 681,
+                  "text": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/help/hom.zip",
+          "archive_sha256": "e4c8f5503d1f96ab10ca17f865e468c05243d2a3fa7a96ccd0b7904b0929817c",
+          "member": "hou/DataParmTemplate.txt",
+          "section_sha256": "7de0ae17e336731ad73fd45800276cb390a3c751aab332119e6c02d2008406e0",
+          "methods": {
+            "type": {
+              "status": "NOT_IN_THIS_SECTION"
+            },
+            "dataType": {
+              "status": "NOT_IN_THIS_SECTION"
+            },
+            "__init__": {
+              "status": "CAPTURED",
+              "lines": [
+                {
+                  "line": 11,
+                  "text": "::`__init__(self, name, label, num_components, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.XYZW, disable_when=None, is_hidden=False, is_label_hidden=False, join_with_next=False, help=None, script_callback=None, script_callback_language=hou.scriptLanguage.Hscript, tags={}, default_expression=(), default_expression_language=())`:"
+                },
+                {
+                  "line": 12,
+                  "text": "    #cppname: HOM_DataParmTemplate::HOM_DataParmTemplate"
+                },
+                {
+                  "line": 13,
+                  "text": "    Construct a new DataParmTemplate."
+                },
+                {
+                  "line": 14,
+                  "text": ""
+                },
+                {
+                  "line": 15,
+                  "text": "    name:"
+                },
+                {
+                  "line": 16,
+                  "text": "\tSee [Hom:hou.ParmTemplate#name] for more information."
+                },
+                {
+                  "line": 17,
+                  "text": "    label:"
+                },
+                {
+                  "line": 18,
+                  "text": "\tSee [Hom:hou.ParmTemplate#label] for more information."
+                },
+                {
+                  "line": 19,
+                  "text": "    num_components:"
+                },
+                {
+                  "line": 20,
+                  "text": "\tSee [Hom:hou.ParmTemplate#numComponents] for more information."
+                },
+                {
+                  "line": 21,
+                  "text": "    look:"
+                },
+                {
+                  "line": 22,
+                  "text": "\tSee [Hom:hou.ParmTemplate#look] for more information."
+                },
+                {
+                  "line": 23,
+                  "text": "    naming_scheme:"
+                },
+                {
+                  "line": 24,
+                  "text": "\tSee [Hom:hou.ParmTemplate#namingScheme] for more information."
+                },
+                {
+                  "line": 25,
+                  "text": "    disable_when:"
+                },
+                {
+                  "line": 26,
+                  "text": "\tSee [Hom:hou.ParmTemplate#disableWhen] for more information."
+                },
+                {
+                  "line": 27,
+                  "text": "    is_hidden:"
+                },
+                {
+                  "line": 28,
+                  "text": "\tSee [Hom:hou.ParmTemplate#isHidden] for more information."
+                },
+                {
+                  "line": 29,
+                  "text": "    is_label_hidden:"
+                },
+                {
+                  "line": 30,
+                  "text": "\tSee [Hom:hou.ParmTemplate#isLabelHidden] for more information."
+                },
+                {
+                  "line": 31,
+                  "text": "    join_with_next:"
+                },
+                {
+                  "line": 32,
+                  "text": "\tSee [Hom:hou.ParmTemplate#joinsWithNext] for more information."
+                },
+                {
+                  "line": 33,
+                  "text": "    help:"
+                },
+                {
+                  "line": 34,
+                  "text": "\tSee [Hom:hou.ParmTemplate#help] for more information."
+                },
+                {
+                  "line": 35,
+                  "text": "    script_callback:"
+                },
+                {
+                  "line": 36,
+                  "text": "\tSee [Hom:hou.ParmTemplate#scriptCallback] for more information."
+                },
+                {
+                  "line": 37,
+                  "text": "    script_callback_language:"
+                },
+                {
+                  "line": 38,
+                  "text": "\tSee [Hom:hou.ParmTemplate#scriptCallbackLanguage] for more information."
+                },
+                {
+                  "line": 39,
+                  "text": "    tags:"
+                },
+                {
+                  "line": 40,
+                  "text": "\tSee [Hom:hou.ParmTemplate#tags] for more information."
+                },
+                {
+                  "line": 41,
+                  "text": "    default_expression:"
+                },
+                {
+                  "line": 42,
+                  "text": "\tSee the [defaultExpression|Hom:hou.DataParmTemplate#defaultExpression]"
+                },
+                {
+                  "line": 43,
+                  "text": "\tmethod for more information."
+                },
+                {
+                  "line": 44,
+                  "text": "    default_expression_language:"
+                },
+                {
+                  "line": 45,
+                  "text": "\tSee the [defaultExpressionLanguage|Hom:hou.DataParmTemplate#defaultExpressionLanguage] method for more information."
+                },
+                {
+                  "line": 46,
+                  "text": ""
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "interface_facts": {
+        "native_node": "Sop/stash",
+        "data_parameter": "stash",
+        "file_parameter": "stashfile",
+        "materialization": "parm(\"stash\").set(hou.Geometry) same-build vendor code; HOM geometry setter overload declared",
+        "typed_readback": "parm.evalAsGeometry()/evalAsGeometryAtFrame(frame) returns native Geometry",
+        "persistent_content": "Stash help documents stored geometry within HIP; actual producer/save/reopen content validation still required"
+      },
+      "unknowns": [
+        "instantiated Data parameter gates/locks/default contents",
+        "actual saved Crowd agent geometry and native asset persistence NOT_RUN"
+      ]
+    },
+    "22.0.429": {
+      "source_refs": [
+        {
+          "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/toolkit/include/SOP/SOP_Stash.proto.h",
+          "sha256": "4a9a43176198a4dc479bb151254d405df776a6bd353035890b24f9b6b5e3c5ba",
+          "lines": [
+            {
+              "line": 28,
+              "text": ""
+            },
+            {
+              "line": 29,
+              "text": "    SOP_StashParms()"
+            },
+            {
+              "line": 30,
+              "text": "    {"
+            },
+            {
+              "line": 31,
+              "text": "        myStash = PRM_DataItemHandle(0);"
+            },
+            {
+              "line": 32,
+              "text": "        myUseInputWhenEmpty = false;"
+            },
+            {
+              "line": 33,
+              "text": "        myStashFile = \"\"_UTsh;"
+            },
+            {
+              "line": 34,
+              "text": "        raw_myStashFile = \"\"_UTsh;"
+            },
+            {
+              "line": 64,
+              "text": ""
+            },
+            {
+              "line": 65,
+              "text": "    void        buildFromOp(const OP_GraphProxy *graph, exint nodeidx, fpreal time, DEP_MicroNode *depnode)"
+            },
+            {
+              "line": 66,
+              "text": "    {"
+            },
+            {
+              "line": 67,
+              "text": "        myStash = PRM_DataItemHandle(0);"
+            },
+            {
+              "line": 68,
+              "text": "        if (true)"
+            },
+            {
+              "line": 69,
+              "text": "            graph->evalOpParm(myStash, nodeidx, \"stash\", time, graph->isDirect()?nullptr:depnode);"
+            },
+            {
+              "line": 70,
+              "text": "        myUseInputWhenEmpty = false;"
+            },
+            {
+              "line": 71,
+              "text": "        if (true)"
+            },
+            {
+              "line": 72,
+              "text": "            graph->evalOpParm(myUseInputWhenEmpty, nodeidx, \"useinputwhenempty\", time, graph->isDirect()?nullptr:depnode);"
+            },
+            {
+              "line": 73,
+              "text": "        myStashFile = \"\"_UTsh;"
+            },
+            {
+              "line": 74,
+              "text": "        if (true && ( (true&&!(((getUseInputWhenEmpty()!=0)))) ) )"
+            },
+            {
+              "line": 75,
+              "text": "            graph->evalOpParm(myStashFile, nodeidx, \"stashfile\", time, graph->isDirect()?nullptr:depnode);"
+            },
+            {
+              "line": 76,
+              "text": "        raw_myStashFile = \"\"_UTsh;"
+            },
+            {
+              "line": 77,
+              "text": "        if (true && ( (true&&!(((getUseInputWhenEmpty()!=0)))) ) )"
+            },
+            {
+              "line": 78,
+              "text": "            graph->evalOpParmRaw(raw_myStashFile, nodeidx, \"stashfile\", time, graph->isDirect()?nullptr:depnode);"
+            },
+            {
+              "line": 79,
+              "text": ""
+            },
+            {
+              "line": 80,
+              "text": "    }"
+            },
+            {
+              "line": 81,
+              "text": ""
+            },
+            {
+              "line": 213,
+              "text": "        switch (fieldnum[0])"
+            },
+            {
+              "line": 214,
+              "text": "        {"
+            },
+            {
+              "line": 215,
+              "text": "            case 0:"
+            },
+            {
+              "line": 216,
+              "text": "                return \"stash\";"
+            },
+            {
+              "line": 217,
+              "text": "            case 1:"
+            },
+            {
+              "line": 218,
+              "text": "                return \"useinputwhenempty\";"
+            },
+            {
+              "line": 219,
+              "text": "            case 2:"
+            },
+            {
+              "line": 220,
+              "text": "                return \"stashfile\";"
+            },
+            {
+              "line": 221,
+              "text": ""
+            },
+            {
+              "line": 222,
+              "text": "        }"
+            },
+            {
+              "line": 223,
+              "text": "        return 0;"
+            },
+            {
+              "line": 373,
+              "text": "        return true;"
+            },
+            {
+              "line": 374,
+              "text": "    }"
+            },
+            {
+              "line": 375,
+              "text": ""
+            },
+            {
+              "line": 376,
+              "text": "    PRM_DataItemHandle getStash() const { return myStash; }"
+            },
+            {
+              "line": 377,
+              "text": "    void setStash(PRM_DataItemHandle val) { myStash = val; }"
+            },
+            {
+              "line": 378,
+              "text": "    PRM_DataItemHandle opStash(const SOP_NodeVerb::CookParms &cookparms) const"
+            },
+            {
+              "line": 379,
+              "text": "    { "
+            },
+            {
+              "line": 380,
+              "text": "        SOP_Node *thissop = cookparms.getNode();"
+            },
+            {
+              "line": 381,
+              "text": "        if (!thissop) return getStash();"
+            },
+            {
+              "line": 382,
+              "text": "        PRM_DataItemHandle result;"
+            },
+            {
+              "line": 383,
+              "text": "        OP_Utils::evalOpParm(result, thissop, \"stash\", cookparms.getCookTime(), 0);"
+            },
+            {
+              "line": 384,
+              "text": "        return result;"
+            },
+            {
+              "line": 385,
+              "text": "    }"
+            },
+            {
+              "line": 386,
+              "text": "    bool getUseInputWhenEmpty() const { return myUseInputWhenEmpty; }"
+            },
+            {
+              "line": 393,
+              "text": "        OP_Utils::evalOpParm(result, thissop, \"useinputwhenempty\", cookparms.getCookTime(), 0);"
+            },
+            {
+              "line": 394,
+              "text": "        return result;"
+            },
+            {
+              "line": 395,
+              "text": "    }"
+            },
+            {
+              "line": 396,
+              "text": "    const UT_StringHolder & getStashFile() const { return myStashFile; }"
+            },
+            {
+              "line": 397,
+              "text": "    void setStashFile(const UT_StringHolder & val) { myStashFile = val; }"
+            },
+            {
+              "line": 398,
+              "text": "    UT_StringHolder opStashFile(const SOP_NodeVerb::CookParms &cookparms) const"
+            },
+            {
+              "line": 399,
+              "text": "    { "
+            },
+            {
+              "line": 400,
+              "text": "        SOP_Node *thissop = cookparms.getNode();"
+            },
+            {
+              "line": 401,
+              "text": "        if (!thissop) return getStashFile();"
+            },
+            {
+              "line": 402,
+              "text": "        UT_StringHolder result;"
+            },
+            {
+              "line": 403,
+              "text": "        OP_Utils::evalOpParm(result, thissop, \"stashfile\", cookparms.getCookTime(), 0);"
+            },
+            {
+              "line": 404,
+              "text": "        return result;"
+            },
+            {
+              "line": 405,
+              "text": "    }"
+            },
+            {
+              "line": 406,
+              "text": "    const UT_StringHolder & raw_getStashFile() const { return raw_myStashFile; }"
+            },
+            {
+              "line": 407,
+              "text": "    void raw_setStashFile(const UT_StringHolder & val) { raw_myStashFile = val; }"
+            },
+            {
+              "line": 408,
+              "text": "    UT_StringHolder raw_opStashFile(const SOP_NodeVerb::CookParms &cookparms) const"
+            },
+            {
+              "line": 409,
+              "text": "    { "
+            },
+            {
+              "line": 410,
+              "text": "        SOP_Node *thissop = cookparms.getNode();"
+            },
+            {
+              "line": 411,
+              "text": "        if (!thissop) return raw_getStashFile();"
+            },
+            {
+              "line": 412,
+              "text": "        UT_StringHolder result;"
+            },
+            {
+              "line": 413,
+              "text": "        OP_Utils::evalOpParmRaw(result, thissop, \"stashfile\", cookparms.getCookTime(), 0);"
+            },
+            {
+              "line": 414,
+              "text": "        return result;"
+            },
+            {
+              "line": 415,
+              "text": "    }"
+            },
+            {
+              "line": 416,
+              "text": ""
+            }
+          ]
+        },
+        {
+          "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/toolkit/include/HOM/HOM_Parm.h",
+          "sha256": "9efdca464fbde9da789fb3d084e1fabd44a6510089395ae8bd5b946b8d829595",
+          "lines": [
+            {
+              "line": 87,
+              "text": "    virtual void _set(const char *string_value,"
+            },
+            {
+              "line": 88,
+              "text": "        bool follow_parm_reference=true) = 0;"
+            },
+            {
+              "line": 89,
+              "text": "    virtual void _setPending(const char *string_value) = 0;"
+            },
+            {
+              "line": 90,
+              "text": "    virtual void _set(HOM_Geometry *geo,"
+            },
+            {
+              "line": 91,
+              "text": "        bool follow_parm_reference=true) = 0;"
+            },
+            {
+              "line": 92,
+              "text": "    virtual void _setPending(HOM_Geometry *geo) = 0;"
+            },
+            {
+              "line": 93,
+              "text": "    virtual void _set(HOM_ImageLayer *layer,"
+            },
+            {
+              "line": 168,
+              "text": "    virtual int64 evalAsIntAtFrame(double frame) = 0;"
+            },
+            {
+              "line": 169,
+              "text": "    virtual std::string evalAsString() = 0;"
+            },
+            {
+              "line": 170,
+              "text": "    virtual std::string evalAsStringAtFrame(double frame) = 0;"
+            },
+            {
+              "line": 171,
+              "text": "    SWIGOUT(%newobject evalAsGeometry;)"
+            },
+            {
+              "line": 172,
+              "text": "    virtual HOM_Geometry *evalAsGeometry() = 0;"
+            },
+            {
+              "line": 173,
+              "text": "    SWIGOUT(%newobject evalAsGeometryAtFrame;)"
+            },
+            {
+              "line": 174,
+              "text": "    virtual HOM_Geometry *evalAsGeometryAtFrame(double frame) = 0;"
+            },
+            {
+              "line": 175,
+              "text": "    SWIGOUT(%newobject evalAsImageLayer;)"
+            },
+            {
+              "line": 176,
+              "text": "    virtual HOM_ImageLayer *evalAsImageLayer() = 0;"
+            },
+            {
+              "line": 177,
+              "text": "    SWIGOUT(%newobject evalAsImageLayerAtFrame;)"
+            }
+          ]
+        },
+        {
+          "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/toolkit/include/HOM/HOM_DataParmTemplate.h",
+          "sha256": "79d389f6f8c27a764b34d2e70a66e1c685a2b92fa21621a14cf6f3ff842ee4d0",
+          "lines": [
+            {
+              "line": 7,
+              "text": " */"
+            },
+            {
+              "line": 8,
+              "text": ""
+            },
+            {
+              "line": 9,
+              "text": "#ifndef __HOM_DataParmTemplate_h__"
+            },
+            {
+              "line": 10,
+              "text": "#define __HOM_DataParmTemplate_h__"
+            },
+            {
+              "line": 11,
+              "text": ""
+            },
+            {
+              "line": 12,
+              "text": "#include \"HOM_API.h\""
+            },
+            {
+              "line": 13,
+              "text": "#include \"HOM_ParmTemplate.h\""
+            },
+            {
+              "line": 14,
+              "text": ""
+            },
+            {
+              "line": 15,
+              "text": "SWIGOUT(%feature(\"notabstract\") HOM_DataParmTemplate;)"
+            },
+            {
+              "line": 16,
+              "text": "SWIGOUT(%rename(DataParmTemplate) HOM_DataParmTemplate;)"
+            },
+            {
+              "line": 17,
+              "text": ""
+            },
+            {
+              "line": 18,
+              "text": "class HOM_API HOM_DataParmTemplate : virtual public HOM_ParmTemplate"
+            },
+            {
+              "line": 19,
+              "text": "{"
+            },
+            {
+              "line": 20,
+              "text": "public:"
+            },
+            {
+              "line": 21,
+              "text": "#ifdef SWIG"
+            },
+            {
+              "line": 22,
+              "text": "%extend {"
+            },
+            {
+              "line": 23,
+              "text": "    %kwargs HOM_DataParmTemplate;"
+            },
+            {
+              "line": 24,
+              "text": "    HOM_DataParmTemplate("
+            },
+            {
+              "line": 25,
+              "text": "\t    const char *name,"
+            },
+            {
+              "line": 26,
+              "text": "\t    const char *label,"
+            },
+            {
+              "line": 54,
+              "text": "};"
+            },
+            {
+              "line": 55,
+              "text": "#else"
+            },
+            {
+              "line": 56,
+              "text": "    HOM_DataParmTemplate()"
+            },
+            {
+              "line": 57,
+              "text": "    { HOM_CONSTRUCT_OBJECT(this) }"
+            },
+            {
+              "line": 58,
+              "text": ""
+            },
+            {
+              "line": 59,
+              "text": "    HOM_DataParmTemplate(const HOM_DataParmTemplate &parm_template)"
+            },
+            {
+              "line": 60,
+              "text": "    : HOM_ParmTemplate(parm_template)"
+            },
+            {
+              "line": 61,
+              "text": "    { HOM_CONSTRUCT_OBJECT(this) }"
+            },
+            {
+              "line": 62,
+              "text": "#endif"
+            },
+            {
+              "line": 63,
+              "text": ""
+            },
+            {
+              "line": 64,
+              "text": "    ~HOM_DataParmTemplate() override"
+            },
+            {
+              "line": 65,
+              "text": "    { HOM_DESTRUCT_OBJECT(this) }"
+            },
+            {
+              "line": 66,
+              "text": ""
+            }
+          ]
+        },
+        {
+          "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/python3.13libs/muscletoolutils.py",
+          "sha256": "686ab89ef7d13b490f828a809840c0a65bf33ababbe0593f17adcf4d634d3267",
+          "lines": [
+            {
+              "line": 2319,
+              "text": ""
+            },
+            {
+              "line": 2320,
+              "text": "def stashAutoFlexIDs(kwargs):"
+            },
+            {
+              "line": 2321,
+              "text": "    #print kwargs"
+            },
+            {
+              "line": 2322,
+              "text": "    node = kwargs['node']"
+            },
+            {
+              "line": 2323,
+              "text": "    geo = node.node('AUTOFLEX_LINES').geometry()"
+            },
+            {
+              "line": 2324,
+              "text": "    node.parm('stash').set(geo)"
+            },
+            {
+              "line": 2325,
+              "text": "   "
+            },
+            {
+              "line": 2326,
+              "text": "    autoflex_attrib = geo.findPrimAttrib(\"autoflex_id\")"
+            },
+            {
+              "line": 2327,
+              "text": "    "
+            },
+            {
+              "line": 2328,
+              "text": "    if (autoflex_attrib is not None):"
+            }
+          ]
+        },
+        {
+          "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/python3.13libs/layout/utils.py",
+          "sha256": "e0a87c6359f047c8a3ee07d1c14e865ab6910c5b662eb3ed78c2c5caa3401275",
+          "lines": [
+            {
+              "line": 448,
+              "text": "    # Setup EXISTING_POINTS"
+            },
+            {
+              "line": 449,
+              "text": "    stashes[0].setName(\"_EXISTING_POINTS\")"
+            },
+            {
+              "line": 450,
+              "text": "    stashes[0].setPosition(hou.Vector2(0, 10))"
+            },
+            {
+              "line": 451,
+              "text": "    stashes[0].parm(\"stash\").set(existing_points)"
+            },
+            {
+              "line": 452,
+              "text": ""
+            },
+            {
+              "line": 453,
+              "text": "    # Setup STATIC_GEO"
+            },
+            {
+              "line": 454,
+              "text": "    stashes[1].setName(\"_STATIC_GEO\")"
+            },
+            {
+              "line": 455,
+              "text": "    stashes[1].setPosition(hou.Vector2(3, 10))"
+            },
+            {
+              "line": 456,
+              "text": "    stashes[1].parm(\"stash\").set(static_geo)"
+            },
+            {
+              "line": 457,
+              "text": ""
+            },
+            {
+              "line": 458,
+              "text": "    # Setup ASSET_GEO"
+            },
+            {
+              "line": 459,
+              "text": "    stashes[2].setName(\"_ASSET_GEO\")"
+            },
+            {
+              "line": 460,
+              "text": "    stashes[2].setPosition(hou.Vector2(6, 10))"
+            },
+            {
+              "line": 461,
+              "text": "    stashes[2].parm(\"stash\").set(asset_geo)"
+            },
+            {
+              "line": 462,
+              "text": ""
+            },
+            {
+              "line": 463,
+              "text": "    # Setup STROKE"
+            },
+            {
+              "line": 464,
+              "text": "    stashes[3].setName(\"_STROKE\")"
+            },
+            {
+              "line": 465,
+              "text": "    stashes[3].setPosition(hou.Vector2(9, 10))"
+            },
+            {
+              "line": 466,
+              "text": "    stashes[3].parm(\"stash\").set(stroke)"
+            },
+            {
+              "line": 467,
+              "text": ""
+            },
+            {
+              "line": 468,
+              "text": "    # Setup WORKING_SET"
+            },
+            {
+              "line": 469,
+              "text": "    stashes[4].setName(\"_WORKING_SET\")"
+            },
+            {
+              "line": 470,
+              "text": "    stashes[4].setPosition(hou.Vector2(12, 10))"
+            },
+            {
+              "line": 471,
+              "text": "    stashes[4].parm(\"stash\").set(working_set)"
+            },
+            {
+              "line": 472,
+              "text": ""
+            }
+          ]
+        },
+        {
+          "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/help/nodes.zip",
+          "archive_sha256": "6ca2ef18ce0d1f142d3415e27885b36f69b3537344a04621c89f9fab6937ad53",
+          "member": "sop/stash.txt",
+          "section_sha256": "3f8e6957d0d982033a53905b0f9d46ee01f2823236e4a645d5a2866eaf6f9d4f",
+          "lines": [
+            {
+              "line": 1,
+              "text": "= Stash ="
+            },
+            {
+              "line": 2,
+              "text": ""
+            },
+            {
+              "line": 3,
+              "text": "#type: node"
+            },
+            {
+              "line": 4,
+              "text": "#context: sop"
+            },
+            {
+              "line": 5,
+              "text": "#internal: stash"
+            },
+            {
+              "line": 6,
+              "text": "#icon: SOP/stash"
+            },
+            {
+              "line": 7,
+              "text": "#tags: network, util"
+            },
+            {
+              "line": 8,
+              "text": "#since: 16.0"
+            },
+            {
+              "line": 9,
+              "text": "#verb_since: 16.5"
+            },
+            {
+              "line": 10,
+              "text": ""
+            },
+            {
+              "line": 11,
+              "text": "\"\"\"Caches the input geometry in the node on command, then uses it as the node's output.\"\"\""
+            },
+            {
+              "line": 12,
+              "text": ""
+            },
+            {
+              "line": 13,
+              "text": ""
+            },
+            {
+              "line": 14,
+              "text": "== Overview =="
+            },
+            {
+              "line": 15,
+              "text": ""
+            },
+            {
+              "line": 16,
+              "text": "When you click __Stash Input__, the node cooks the input and caches the geometry in a data parameter. The node otherwise doesn't cook its input and simply outputs the cached geometry. (You can even disconnect the input and the node will continue to output its stored geometry.) You can click __Stash Input__ again to re-cache if the input changes."
+            },
+            {
+              "line": 17,
+              "text": ""
+            },
+            {
+              "line": 18,
+              "text": "This node is conceptually very similar to [locking|/network/flags#sop] a Null SOP, with several additional features:"
+            },
+            {
+              "line": 19,
+              "text": ""
+            },
+            {
+              "line": 20,
+              "text": "* The interaction is slightly more convenient."
+            },
+            {
+              "line": 21,
+              "text": ""
+            },
+            {
+              "line": 22,
+              "text": "* You can modify or overwrite the cached geometry with [Hom:hou.Geometry] objects through scripting."
+            },
+            {
+              "line": 23,
+              "text": ""
+            },
+            {
+              "line": 24,
+              "text": "* You can link the geometry parameter to a parameter on a parent [asset|/assets/].  This allows assets to inject geometry into a network without making the contents editable."
+            },
+            {
+              "line": 25,
+              "text": ""
+            },
+            {
+              "line": 26,
+              "text": "* The node never passes the input directly to the output, so Houdini doesn't see downstream nodes as depending on upstream nodes. This is useful if a live connection would create a dependency cycle."
+            },
+            {
+              "line": 27,
+              "text": ""
+            },
+            {
+              "line": 28,
+              "text": ""
+            },
+            {
+              "line": 29,
+              "text": "== Tips and notes =="
+            },
+            {
+              "line": 30,
+              "text": ""
+            },
+            {
+              "line": 31,
+              "text": "* The stashed geometry is saved as part of the node instance when you save the scene, so stashing large geometry can bloat the size of the .hip file."
+            },
+            {
+              "line": 32,
+              "text": ""
+            },
+            {
+              "line": 33,
+              "text": "* You can discard the cached geometry by disconnecting the node's input and clicking __Stash Input__."
+            },
+            {
+              "line": 34,
+              "text": ""
+            },
+            {
+              "line": 35,
+              "text": "* Because the caching process is manual, it is independent of time. For example, you can run a simulation process (for example, a terrain erosion), cache the final geometry, disconnect the simulation, and then go back to frame 1 and use the geometry in an animation."
+            },
+            {
+              "line": 36,
+              "text": ""
+            },
+            {
+              "line": 37,
+              "text": "@parameters"
+            },
+            {
+              "line": 38,
+              "text": ""
+            },
+            {
+              "line": 39,
+              "text": "Geometry Stash:"
+            },
+            {
+              "line": 40,
+              "text": "    #id: stash"
+            },
+            {
+              "line": 41,
+              "text": ""
+            },
+            {
+              "line": 42,
+              "text": "    The data parameter (internal name `stash`) where the node stores the geometry."
+            },
+            {
+              "line": 43,
+              "text": "    "
+            },
+            {
+              "line": 44,
+              "text": "Stash Input:"
+            },
+            {
+              "line": 45,
+              "text": "    Click to cook the input and cache its geometry in the data parameter above. Once the geometry is cached, the node will output the cached geometry."
+            },
+            {
+              "line": 46,
+              "text": ""
+            },
+            {
+              "line": 47,
+              "text": "Use Input When Stash Is Empty:"
+            },
+            {
+              "line": 48,
+              "text": "    #id: useinputwhenempty"
+            },
+            {
+              "line": 49,
+              "text": ""
+            },
+            {
+              "line": 50,
+              "text": "    When there is no geometry in the __Geometry Stash__ data parameter,"
+            },
+            {
+              "line": 51,
+              "text": "    turning on this parameter causes the input geometry to be used. When"
+            },
+            {
+              "line": 52,
+              "text": "    turned off, the node tries to load the __Geometry File__ if available."
+            },
+            {
+              "line": 53,
+              "text": ""
+            },
+            {
+              "line": 54,
+              "text": "Geometry File:"
+            },
+            {
+              "line": 55,
+              "text": "    #id: stashfile"
+            },
+            {
+              "line": 56,
+              "text": ""
+            },
+            {
+              "line": 57,
+              "text": "    This file is loaded and used when __Use Input When Stash Is Empty__ is"
+            },
+            {
+              "line": 58,
+              "text": "    turned off and there is no geometry in the __Geometry Stash__ data parameter."
+            },
+            {
+              "line": 59,
+              "text": ""
+            },
+            {
+              "line": 60,
+              "text": "    Storing geometry in the data parameter will cause the .hip file to"
+            },
+            {
+              "line": 61,
+              "text": "    become larger and require every version of the .hip file to"
+            },
+            {
+              "line": 62,
+              "text": "    resave the data.  When the stashed geometry no longer changes"
+            },
+            {
+              "line": 63,
+              "text": "    frequently, it can be moved to an external file.  This file will"
+            },
+            {
+              "line": 64,
+              "text": "    then need to be available for the .hip file to load properly."
+            },
+            {
+              "line": 65,
+              "text": ""
+            },
+            {
+              "line": 66,
+              "text": ":include standard_stash:"
+            },
+            {
+              "line": 67,
+              "text": ""
+            },
+            {
+              "line": 68,
+              "text": "@related"
+            },
+            {
+              "line": 69,
+              "text": ""
+            },
+            {
+              "line": 70,
+              "text": "- [Node:sop/file]"
+            },
+            {
+              "line": 71,
+              "text": "- [Node:sop/cache]"
+            },
+            {
+              "line": 72,
+              "text": "- [Node:sop/filecache]"
+            },
+            {
+              "line": 73,
+              "text": ""
+            },
+            {
+              "line": 74,
+              "text": ""
+            }
+          ]
+        },
+        {
+          "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/help/hom.zip",
+          "archive_sha256": "143162e01defa725c5e35f9a53bfb3ba339a91fa1edd0e99d73da8499be23d0c",
+          "member": "hou/Parm.txt",
+          "section_sha256": "01e930c2f95921c43b962a7a4ace809b978fbe49d987d4bfe12029bfef985704",
+          "methods": {
+            "evalAsGeometry": {
+              "status": "CAPTURED",
+              "lines": [
+                {
+                  "line": 538,
+                  "text": "::`evalAsGeometry(self)` -> [Hom:hou.Geometry]:"
+                },
+                {
+                  "line": 539,
+                  "text": "    #cppname: HOM_Parm::evalAsGeometry"
+                },
+                {
+                  "line": 540,
+                  "text": "    Evaluates this parameter at the current frame and returns the result as a"
+                },
+                {
+                  "line": 541,
+                  "text": "    geometry."
+                },
+                {
+                  "line": 542,
+                  "text": ""
+                },
+                {
+                  "line": 543,
+                  "text": "    Raises `TypeError` if the parameter is not a geometry."
+                },
+                {
+                  "line": 544,
+                  "text": ""
+                }
+              ]
+            },
+            "evalAsGeometryAtFrame": {
+              "status": "CAPTURED",
+              "lines": [
+                {
+                  "line": 545,
+                  "text": "::`evalAsGeometryAtFrame(self, frame)` -> [Hom:hou.Geometry]:"
+                },
+                {
+                  "line": 546,
+                  "text": "    #cppname: HOM_Parm::evalAsGeometryAtFrame"
+                },
+                {
+                  "line": 547,
+                  "text": "    Evaluates this parameter at a certain frame and returns the result as a"
+                },
+                {
+                  "line": 548,
+                  "text": "    geometry."
+                },
+                {
+                  "line": 549,
+                  "text": ""
+                },
+                {
+                  "line": 550,
+                  "text": "    Raises `TypeError` if the parameter is not a geometry."
+                },
+                {
+                  "line": 551,
+                  "text": ""
+                }
+              ]
+            },
+            "set": {
+              "status": "CAPTURED",
+              "lines": [
+                {
+                  "line": 662,
+                  "text": "::`set(self, value, language=None, follow_parm_reference=True)`:"
+                },
+                {
+                  "line": 663,
+                  "text": "    #cppname: HOM_Parm::set"
+                },
+                {
+                  "line": 664,
+                  "text": "    Sets the parameter value at the current frame."
+                },
+                {
+                  "line": 665,
+                  "text": ""
+                },
+                {
+                  "line": 666,
+                  "text": "    value:"
+                },
+                {
+                  "line": 667,
+                  "text": "        A float, integer, or string to set the parameter value to."
+                },
+                {
+                  "line": 668,
+                  "text": "        "
+                },
+                {
+                  "line": 669,
+                  "text": "        Pass in a [Hom:hou.Ramp] object, as the parameter value, to set the"
+                },
+                {
+                  "line": 670,
+                  "text": "        value of a ramp parameter. The ramp object's type needs to match the"
+                },
+                {
+                  "line": 671,
+                  "text": "        target ramp's type. Note that the [Hom:hou.Ramp#colorType]"
+                },
+                {
+                  "line": 672,
+                  "text": "        information is ignored since the color type on a ramp parameter is"
+                },
+                {
+                  "line": 673,
+                  "text": "        read-only."
+                },
+                {
+                  "line": 674,
+                  "text": ""
+                },
+                {
+                  "line": 675,
+                  "text": "        Pass in a [Hom:hou.Geometry] object, as the parameter value, to set"
+                },
+                {
+                  "line": 676,
+                  "text": "        the value of a geometry data parameter."
+                },
+                {
+                  "line": 677,
+                  "text": ""
+                },
+                {
+                  "line": 678,
+                  "text": "        Pass in a [Hom:hou.Parm] object to create a channel reference from this"
+                },
+                {
+                  "line": 679,
+                  "text": "        parameter to the specified parameter."
+                },
+                {
+                  "line": 680,
+                  "text": ""
+                },
+                {
+                  "line": 681,
+                  "text": "    language:"
+                },
+                {
+                  "line": 682,
+                  "text": "        This option only applies when setting to a [Hom:hou.Parm] value."
+                },
+                {
+                  "line": 683,
+                  "text": "        Specifies the expression language to use when creating a channel"
+                },
+                {
+                  "line": 684,
+                  "text": "        reference from this parameter to the given parameter.  Set this option"
+                },
+                {
+                  "line": 685,
+                  "text": "        to an [Hom:hou.exprLanguage] object or `None` to choose the default"
+                },
+                {
+                  "line": 686,
+                  "text": "        language."
+                },
+                {
+                  "line": 687,
+                  "text": ""
+                },
+                {
+                  "line": 688,
+                  "text": "    follow_parm_reference:"
+                },
+                {
+                  "line": 689,
+                  "text": "        If set to `True`, this method first follows the"
+                },
+                {
+                  "line": 690,
+                  "text": "        current channel references on this [Hom:hou.Parm] to determine the"
+                },
+                {
+                  "line": 691,
+                  "text": "        [Hom:hou.Parm] to modify. It acts to keep the chain of"
+                },
+                {
+                  "line": 692,
+                  "text": "        references and sets the value on the [Hom:hou.Parm] at the end of the"
+                },
+                {
+                  "line": 693,
+                  "text": "\tchain.  If the value is a [Hom:hou.Parm] object, then it sets a new"
+                },
+                {
+                  "line": 694,
+                  "text": "\tchannel reference on the [Hom:hou.Parm] that doesn't yet have one."
+                },
+                {
+                  "line": 695,
+                  "text": ""
+                },
+                {
+                  "line": 696,
+                  "text": "\tIf set to `False`, the current [Hom:hou.Parm] is modified directly and"
+                },
+                {
+                  "line": 697,
+                  "text": "\tthe chain of references is broken if there was an existing channel"
+                },
+                {
+                  "line": 698,
+                  "text": "\treference."
+                },
+                {
+                  "line": 699,
+                  "text": ""
+                },
+                {
+                  "line": 700,
+                  "text": "    If this parameter currently contains a channel reference to another"
+                },
+                {
+                  "line": 701,
+                  "text": "    parameter, this method will follow the channel references and change the"
+                },
+                {
+                  "line": 702,
+                  "text": "    value of the referenced parameter by default. If this is not the desired"
+                },
+                {
+                  "line": 703,
+                  "text": "    behavior, then set `follow_parm_reference` to `False`.  Alternatively,"
+                },
+                {
+                  "line": 704,
+                  "text": "    first delete the channel reference for the string parameters that"
+                },
+                {
+                  "line": 705,
+                  "text": "    don't have the channel reference embedded in their string value using"
+                },
+                {
+                  "line": 706,
+                  "text": "    [Hom:hou.Parm#deleteAllKeyframes] or [Hom:hou.Parm#revertToDefaults]. If the parameter"
+                },
+                {
+                  "line": 707,
+                  "text": "    contains backtick expressions, it may be necessary to run `parm.setExpression('')` first to"
+                },
+                {
+                  "line": 708,
+                  "text": "    clear it. Then [Hom:hou.Parm#deleteAllKeyframes] can be used to delete it."
+                },
+                {
+                  "line": 709,
+                  "text": ""
+                },
+                {
+                  "line": 710,
+                  "text": "    Raises `TypeError` if the type of `value` does not match the"
+                },
+                {
+                  "line": 711,
+                  "text": "    type of this parameter. Raises [Hom:hou.PermissionError] if this"
+                },
+                {
+                  "line": 712,
+                  "text": "    parameter is not writable."
+                },
+                {
+                  "line": 713,
+                  "text": ""
+                },
+                {
+                  "line": 714,
+                  "text": "    Raises [Hom:hou.OperationFailed] if the value is `None` and the"
+                },
+                {
+                  "line": 715,
+                  "text": "    `follow_parm_reference` parameter is explicitly specified to `True`"
+                },
+                {
+                  "line": 716,
+                  "text": "    or `False`."
+                },
+                {
+                  "line": 717,
+                  "text": ""
+                },
+                {
+                  "line": 718,
+                  "text": "    See also [Hom:hou.OpNode#setParms]."
+                },
+                {
+                  "line": 719,
+                  "text": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/help/hom.zip",
+          "archive_sha256": "143162e01defa725c5e35f9a53bfb3ba339a91fa1edd0e99d73da8499be23d0c",
+          "member": "hou/DataParmTemplate.txt",
+          "section_sha256": "7de0ae17e336731ad73fd45800276cb390a3c751aab332119e6c02d2008406e0",
+          "methods": {
+            "type": {
+              "status": "NOT_IN_THIS_SECTION"
+            },
+            "dataType": {
+              "status": "NOT_IN_THIS_SECTION"
+            },
+            "__init__": {
+              "status": "CAPTURED",
+              "lines": [
+                {
+                  "line": 11,
+                  "text": "::`__init__(self, name, label, num_components, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.XYZW, disable_when=None, is_hidden=False, is_label_hidden=False, join_with_next=False, help=None, script_callback=None, script_callback_language=hou.scriptLanguage.Hscript, tags={}, default_expression=(), default_expression_language=())`:"
+                },
+                {
+                  "line": 12,
+                  "text": "    #cppname: HOM_DataParmTemplate::HOM_DataParmTemplate"
+                },
+                {
+                  "line": 13,
+                  "text": "    Construct a new DataParmTemplate."
+                },
+                {
+                  "line": 14,
+                  "text": ""
+                },
+                {
+                  "line": 15,
+                  "text": "    name:"
+                },
+                {
+                  "line": 16,
+                  "text": "\tSee [Hom:hou.ParmTemplate#name] for more information."
+                },
+                {
+                  "line": 17,
+                  "text": "    label:"
+                },
+                {
+                  "line": 18,
+                  "text": "\tSee [Hom:hou.ParmTemplate#label] for more information."
+                },
+                {
+                  "line": 19,
+                  "text": "    num_components:"
+                },
+                {
+                  "line": 20,
+                  "text": "\tSee [Hom:hou.ParmTemplate#numComponents] for more information."
+                },
+                {
+                  "line": 21,
+                  "text": "    look:"
+                },
+                {
+                  "line": 22,
+                  "text": "\tSee [Hom:hou.ParmTemplate#look] for more information."
+                },
+                {
+                  "line": 23,
+                  "text": "    naming_scheme:"
+                },
+                {
+                  "line": 24,
+                  "text": "\tSee [Hom:hou.ParmTemplate#namingScheme] for more information."
+                },
+                {
+                  "line": 25,
+                  "text": "    disable_when:"
+                },
+                {
+                  "line": 26,
+                  "text": "\tSee [Hom:hou.ParmTemplate#disableWhen] for more information."
+                },
+                {
+                  "line": 27,
+                  "text": "    is_hidden:"
+                },
+                {
+                  "line": 28,
+                  "text": "\tSee [Hom:hou.ParmTemplate#isHidden] for more information."
+                },
+                {
+                  "line": 29,
+                  "text": "    is_label_hidden:"
+                },
+                {
+                  "line": 30,
+                  "text": "\tSee [Hom:hou.ParmTemplate#isLabelHidden] for more information."
+                },
+                {
+                  "line": 31,
+                  "text": "    join_with_next:"
+                },
+                {
+                  "line": 32,
+                  "text": "\tSee [Hom:hou.ParmTemplate#joinsWithNext] for more information."
+                },
+                {
+                  "line": 33,
+                  "text": "    help:"
+                },
+                {
+                  "line": 34,
+                  "text": "\tSee [Hom:hou.ParmTemplate#help] for more information."
+                },
+                {
+                  "line": 35,
+                  "text": "    script_callback:"
+                },
+                {
+                  "line": 36,
+                  "text": "\tSee [Hom:hou.ParmTemplate#scriptCallback] for more information."
+                },
+                {
+                  "line": 37,
+                  "text": "    script_callback_language:"
+                },
+                {
+                  "line": 38,
+                  "text": "\tSee [Hom:hou.ParmTemplate#scriptCallbackLanguage] for more information."
+                },
+                {
+                  "line": 39,
+                  "text": "    tags:"
+                },
+                {
+                  "line": 40,
+                  "text": "\tSee [Hom:hou.ParmTemplate#tags] for more information."
+                },
+                {
+                  "line": 41,
+                  "text": "    default_expression:"
+                },
+                {
+                  "line": 42,
+                  "text": "\tSee the [defaultExpression|Hom:hou.DataParmTemplate#defaultExpression]"
+                },
+                {
+                  "line": 43,
+                  "text": "\tmethod for more information."
+                },
+                {
+                  "line": 44,
+                  "text": "    default_expression_language:"
+                },
+                {
+                  "line": 45,
+                  "text": "\tSee the [defaultExpressionLanguage|Hom:hou.DataParmTemplate#defaultExpressionLanguage] method for more information."
+                },
+                {
+                  "line": 46,
+                  "text": ""
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "interface_facts": {
+        "native_node": "Sop/stash",
+        "data_parameter": "stash",
+        "file_parameter": "stashfile",
+        "materialization": "parm(\"stash\").set(hou.Geometry) same-build vendor code; HOM geometry setter overload declared",
+        "typed_readback": "parm.evalAsGeometry()/evalAsGeometryAtFrame(frame) returns native Geometry",
+        "persistent_content": "Stash help documents stored geometry within HIP; actual producer/save/reopen content validation still required"
+      },
+      "unknowns": [
+        "instantiated Data parameter gates/locks/default contents",
+        "actual saved Crowd agent geometry and native asset persistence NOT_RUN"
+      ]
+    }
+  }
+}

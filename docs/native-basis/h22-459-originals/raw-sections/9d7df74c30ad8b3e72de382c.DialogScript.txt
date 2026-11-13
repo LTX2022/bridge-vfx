@@ -1,0 +1,493 @@
+# Dialog script for mtlxstandard_surface automatically generated
+
+{
+    name	mtlxstandard_surface
+    script	mtlxstandard_surface
+    label	"MtlX Standard Surface"
+
+    rendermask	mtlx
+    externalshader 1
+    shadertype	surface
+    input	float	base	Base
+    input	color	base_color	"Base Color"
+    input	float	diffuse_roughness	"Diffuse Roughness"
+    input	float	metalness	Metalness
+    input	float	specular	Specular
+    input	color	specular_color	"Specular Color"
+    input	float	specular_roughness	"Specular Roughness"
+    input	float	specular_IOR	"Index of Refraction"
+    input	float	specular_anisotropy	"Specular Anisotropy"
+    input	float	specular_rotation	"Specular Rotation"
+    input	float	transmission	Transmission
+    input	color	transmission_color	"Transmission Color"
+    input	float	transmission_depth	"Transmission Depth"
+    input	color	transmission_scatter	"Transmission Scatter"
+    input	float	transmission_scatter_anisotropy	"Transmission Anisotropy"
+    input	float	transmission_dispersion	"Transmission Dispersion"
+    input	float	transmission_extra_roughness	"Transmission Roughness"
+    input	float	subsurface	Subsurface
+    input	color	subsurface_color	"Subsurface Color"
+    input	color	subsurface_radius	"Subsurface Radius"
+    input	float	subsurface_scale	"Subsurface Scale"
+    input	float	subsurface_anisotropy	"Subsurface Anisotropy"
+    input	float	sheen	Sheen
+    input	color	sheen_color	"Sheen Color"
+    input	float	sheen_roughness	"Sheen Roughness"
+    input	float	coat	Coat
+    input	color	coat_color	"Coat Color"
+    input	float	coat_roughness	"Coat Roughness"
+    input	float	coat_anisotropy	"Coat Anisotropy"
+    input	float	coat_rotation	"Coat Rotation"
+    input	float	coat_IOR	"Coat Index of Refraction"
+    input	vector	coat_normal	"Coat normal"
+    input	float	coat_affect_color	"Coat Affect Color"
+    input	float	coat_affect_roughness	"Coat Affect Roughness"
+    input	float	thin_film_thickness	"Thin Film Thickness"
+    input	float	thin_film_IOR	"Thin Film Index of Refraction"
+    input	float	emission	Emission
+    input	color	emission_color	"Emission Color"
+    input	color	opacity	Opacity
+    input	int	thin_walled	"Thin Walled"
+    input	vector	normal	Normal
+    input	vector	tangent	"Tangent Input"
+    output	surface	out	out
+    inputflags	base	0
+    inputflags	base_color	0
+    inputflags	diffuse_roughness	0
+    inputflags	metalness	0
+    inputflags	specular	0
+    inputflags	specular_color	0
+    inputflags	specular_roughness	0
+    inputflags	specular_IOR	0
+    inputflags	specular_anisotropy	0
+    inputflags	specular_rotation	0
+    inputflags	transmission	0
+    inputflags	transmission_color	0
+    inputflags	transmission_depth	0
+    inputflags	transmission_scatter	0
+    inputflags	transmission_scatter_anisotropy	0
+    inputflags	transmission_dispersion	0
+    inputflags	transmission_extra_roughness	0
+    inputflags	subsurface	0
+    inputflags	subsurface_color	0
+    inputflags	subsurface_radius	0
+    inputflags	subsurface_scale	0
+    inputflags	subsurface_anisotropy	0
+    inputflags	sheen	0
+    inputflags	sheen_color	0
+    inputflags	sheen_roughness	0
+    inputflags	coat	0
+    inputflags	coat_color	0
+    inputflags	coat_roughness	0
+    inputflags	coat_anisotropy	0
+    inputflags	coat_rotation	0
+    inputflags	coat_IOR	0
+    inputflags	coat_normal	0
+    inputflags	coat_affect_color	0
+    inputflags	coat_affect_roughness	0
+    inputflags	thin_film_thickness	0
+    inputflags	thin_film_IOR	0
+    inputflags	emission	0
+    inputflags	emission_color	0
+    inputflags	opacity	0
+    inputflags	thin_walled	0
+    inputflags	normal	0
+    inputflags	tangent	0
+    signature	"surfacesurfaceshader (1.0.1)"	default	{ float color float float float color float float float float float color float color float float float float color color float float float color float float color float float float float vector float float float float float color color int vector vector surface script=ND_standard_surface_surfaceshader }
+    signature	"surfacesurfaceshader (1.0.0)"	surfacesurfaceshader100	{ float color float float float color float float float float float color float color float float float float color color float float float color float float color float float float float vector float float float float float color color int vector vector surface script=ND_standard_surface_surfaceshader_100 }
+
+    outputoverrides	default
+    {
+	___begin	auto
+			(0)
+    }
+    outputoverrides	surfacesurfaceshader100
+    {
+	___begin	auto
+			(0)
+    }
+
+    help {
+	""
+    }
+
+    parm {
+        name    "signature"
+        baseparm
+        label   "Signature"
+        export  none
+    }
+    groupcollapsible {
+        name    "folder0"
+        label   "Base"
+        parmtag { "group_default" "1" }
+
+        parm {
+            name    "base"
+            label   "Base"
+            type    float
+            default { "1" }
+            range   { 0! 1! }
+            parmtag { "ogl_diff_intensity" "1" }
+        }
+        parm {
+            name    "base_color"
+            label   "Color"
+            type    color
+            size    3
+            default { "0.8" "0.8" "0.8" }
+            range   { 0 10 }
+            parmtag { "ogl_diff" "1" }
+        }
+        parm {
+            name    "diffuse_roughness"
+            label   "Diffuse Roughness"
+            type    float
+            default { "0" }
+            range   { 0! 1! }
+        }
+        parm {
+            name    "metalness"
+            label   "Metalness"
+            type    float
+            default { "0" }
+            range   { 0! 1! }
+            parmtag { "ogl_metallic" "1" }
+        }
+    }
+
+    groupcollapsible {
+        name    "folder0_1"
+        label   "Specular"
+
+        parm {
+            name    "specular"
+            label   "Specular"
+            type    float
+            default { "1" }
+            range   { 0! 1! }
+            parmtag { "ogl_spec_intensity" "1" }
+        }
+        parm {
+            name    "specular_color"
+            label   "Color"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            range   { 0 10 }
+            parmtag { "ogl_spec" "1" }
+        }
+        parm {
+            name    "specular_roughness"
+            label   "Roughness"
+            type    float
+            default { "0.2" }
+            range   { 0! 1! }
+            parmtag { "ogl_rough" "1" }
+        }
+        parm {
+            name    "specular_IOR"
+            label   "Index of Refraction"
+            type    float
+            default { "1.5" }
+            range   { 0! 3 }
+            parmtag { "ogl_ior" "1" }
+        }
+        parm {
+            name    "specular_anisotropy"
+            label   "Anisotropy"
+            type    float
+            default { "0" }
+            range   { 0! 1! }
+        }
+        parm {
+            name    "specular_rotation"
+            label   "Rotation"
+            type    float
+            default { "0" }
+            range   { 0! 1! }
+        }
+    }
+
+    groupcollapsible {
+        name    "folder0_5"
+        label   "Coat"
+
+        parm {
+            name    "coat"
+            label   "Coat"
+            type    float
+            default { "0" }
+            range   { 0! 1! }
+            parmtag { "ogl_coat_intensity" "1" }
+        }
+        parm {
+            name    "coat_color"
+            label   "Color"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            range   { 0 10 }
+        }
+        parm {
+            name    "coat_roughness"
+            label   "Roughness"
+            type    float
+            default { "0.1" }
+            range   { 0! 1! }
+            parmtag { "ogl_coat_rough" "1" }
+        }
+        parm {
+            name    "coat_anisotropy"
+            label   "Anisotropy"
+            type    float
+            default { "0" }
+            range   { 0! 1! }
+        }
+        parm {
+            name    "coat_rotation"
+            label   "Rotation"
+            type    float
+            default { "0" }
+            range   { 0! 1! }
+        }
+        parm {
+            name    "coat_IOR"
+            label   "Index of Refraction"
+            type    float
+            default { "1.5" }
+            range   { 0! 3 }
+        }
+        parm {
+            name    "coat_normal"
+            label   "Normal"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            range   { 0 10 }
+        }
+        parm {
+            name    "coat_affect_color"
+            label   "Affect Color"
+            type    float
+            default { "0" }
+            range   { 0! 1! }
+        }
+        parm {
+            name    "coat_affect_roughness"
+            label   "Affect Roughness"
+            type    float
+            default { "0" }
+            range   { 0! 1! }
+        }
+    }
+
+    groupcollapsible {
+        name    "folder0_2"
+        label   "Transmission"
+
+        parm {
+            name    "transmission"
+            label   "Transmission"
+            type    float
+            default { "0" }
+            range   { 0! 1! }
+            parmtag { "ogl_transparency" "1" }
+        }
+        parm {
+            name    "transmission_color"
+            label   "Color"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            range   { 0 10 }
+        }
+        parm {
+            name    "transmission_depth"
+            label   "Depth"
+            type    float
+            default { "0" }
+            range   { 0! 100 }
+        }
+        parm {
+            name    "transmission_scatter"
+            label   "Scatter"
+            type    color
+            size    3
+            default { "0" "0" "0" }
+            range   { 0 10 }
+        }
+        parm {
+            name    "transmission_scatter_anisotropy"
+            label   "Anisotropy"
+            type    float
+            default { "0" }
+            range   { 0! 1! }
+        }
+        parm {
+            name    "transmission_dispersion"
+            label   "Dispersion"
+            type    float
+            default { "0" }
+            range   { 0! 100 }
+        }
+        parm {
+            name    "transmission_extra_roughness"
+            label   "Roughness"
+            type    float
+            default { "0" }
+            range   { -1! 1! }
+        }
+    }
+
+    groupcollapsible {
+        name    "folder0_4"
+        label   "Sheen"
+
+        parm {
+            name    "sheen"
+            label   "Sheen"
+            type    float
+            default { "0" }
+            range   { 0! 1! }
+        }
+        parm {
+            name    "sheen_color"
+            label   "Color"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            range   { 0 10 }
+        }
+        parm {
+            name    "sheen_roughness"
+            label   "Roughness"
+            type    float
+            default { "0.3" }
+            range   { 0! 1! }
+        }
+    }
+
+    groupcollapsible {
+        name    "folder0_3"
+        label   "Subsurface"
+
+        parm {
+            name    "subsurface"
+            label   "Subsurface"
+            type    float
+            default { "0" }
+            range   { 0! 1! }
+        }
+        parm {
+            name    "subsurface_color"
+            label   "Color"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            range   { 0 10 }
+        }
+        parm {
+            name    "subsurface_radius"
+            label   "Radius"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            range   { 0 10 }
+        }
+        parm {
+            name    "subsurface_scale"
+            label   "Scale"
+            type    float
+            default { "1" }
+            range   { 0! 10 }
+        }
+        parm {
+            name    "subsurface_anisotropy"
+            label   "Anisotropy"
+            type    float
+            default { "0" }
+            range   { -1! 1! }
+        }
+    }
+
+    groupcollapsible {
+        name    "folder0_7"
+        label   "Emission"
+
+        parm {
+            name    "emission"
+            label   "Emission"
+            type    float
+            default { "0" }
+            range   { 0! 1 }
+            parmtag { "ogl_emit_intensity" "1" }
+        }
+        parm {
+            name    "emission_color"
+            label   "Color"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            range   { 0 10 }
+            parmtag { "ogl_emit" "1" }
+        }
+    }
+
+    groupcollapsible {
+        name    "folder0_6"
+        label   "Thin Film"
+
+        parm {
+            name    "thin_film_thickness"
+            label   "Thickness"
+            type    float
+            default { "0" }
+            range   { 0! 2000 }
+        }
+        parm {
+            name    "thin_film_IOR"
+            label   "Index of Refraction"
+            type    float
+            default { "1.5" }
+            range   { 0! 3 }
+        }
+    }
+
+    groupcollapsible {
+        name    "folder0_8"
+        label   "Geometry"
+
+        parm {
+            name    "opacity"
+            label   "Opacity"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            range   { 0 10 }
+        }
+        parm {
+            name    "thin_walled"
+            label   "Thin Walled"
+            type    toggle
+            default { "0" }
+        }
+        parm {
+            name    "normal"
+            label   "Normal"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            range   { 0 10 }
+        }
+        parm {
+            name    "tangent"
+            label   "Tangent Input"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            range   { 0 10 }
+        }
+    }
+
+}

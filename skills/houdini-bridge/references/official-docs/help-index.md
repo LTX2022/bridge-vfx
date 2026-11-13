@@ -1,0 +1,12 @@
+# help.zip 官方文档索引（Houdini 22.0.368）
+
+共 6 页。用 `--page help.zip:<内部路径>` 读取全文。
+
+| 页面 | 标题 |
+|---|---|
+| `central.txt` | Running a \|> central help server |
+| `createexamples.txt` | Creating custom examples |
+| `format.txt` | Wiki markup reference |
+| `index.txt` | How to use the help |
+| `nodes.txt` | Documenting your assets |
+| `search.txt` | Searching <\| the help |

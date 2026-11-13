@@ -1,0 +1,29 @@
+# dyno.zip 官方文档索引（Houdini 22.0.368）
+
+共 23 页。用 `--page dyno.zip:<内部路径>` 读取全文。
+
+| 页面 | 标题 |
+|---|---|
+| `about.txt` | ﻿= Understanding Houdini dynamics |
+| `autofracturegeometry.txt` | How to \|> auto fracture geometry |
+| `cache.txt` | Caching simulations |
+| `cloth-.txt` | Cloth and wire simulations |
+| `constraints.txt` | Constraints |
+| `distribute.txt` | Distributing simulations |
+| `fluid_sourcing.txt` | Fluid sourcing |
+| `forces.txt` | Forces |
+| `fracturing.txt` | Fracturing objects for simulation |
+| `index.txt` | Dynamics |
+| `io.txt` | Input and output |
+| `keyframe.txt` | Mixing keyframe animation and simulation |
+| `manage.txt` | Managing simulation networks |
+| `optimize.txt` | Optimizing a simulation |
+| `rbd.txt` | Rigid body dynamics |
+| `ripples.txt` | Waves and ripples |
+| `shatter.txt` | Shattering |
+| `top10_advanced.txt` | Top ten advanced things about dynamics |
+| `top10_basics.txt` | Top ten basic things about dynamics |
+| `top10_medium.txt` | Top ten intermediate things about dynamics |
+| `visualize.txt` | Visualizing dynamics |
+| `voronoifracture.txt` | How to \|> control the effects of voronoi fracture |
+| `wire.txt` | Simulating ropes, wires, and other bendable objects |

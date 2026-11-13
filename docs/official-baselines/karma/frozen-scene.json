@@ -1,0 +1,76 @@
+{
+  "schema": "bridge.static-render-scene/1",
+  "profile": "sphere_ground_v1",
+  "supported_versions": [
+    "21.0.631",
+    "22.0.459"
+  ],
+  "scene": {
+    "units": "metres",
+    "up_axis": "Y",
+    "sphere": {
+      "radius": 0.5,
+      "center": [
+        0,
+        0.5,
+        0
+      ]
+    },
+    "ground": {
+      "plane": "XZ",
+      "y": 0
+    },
+    "material": {
+      "semantic_base_color": [
+        0.18,
+        0.18,
+        0.18
+      ],
+      "semantic_roughness": 0.5
+    },
+    "camera": {
+      "position": [
+        3,
+        2,
+        4
+      ],
+      "look_at": [
+        0,
+        0.5,
+        0
+      ],
+      "focal_length_mm": 50
+    },
+    "light": {
+      "usd_shape": "UsdLuxDiskLight",
+      "position": [
+        2,
+        3,
+        2
+      ],
+      "look_at": [
+        0,
+        0.5,
+        0
+      ],
+      "radius": 0.5
+    },
+    "engine": "Karma CPU",
+    "resolution": [
+      128,
+      128
+    ],
+    "frames": [
+      1
+    ],
+    "denoise": false,
+    "motion_blur": false,
+    "simulation": false,
+    "feedback_base_color": [
+      0.5,
+      0.18,
+      0.18
+    ]
+  },
+  "source_contract_sha256": "557c53f6fd6765894d82ccd8e467a56caee87be14a73e3debce36458ea8c648e"
+}

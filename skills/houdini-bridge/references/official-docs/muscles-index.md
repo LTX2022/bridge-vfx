@@ -1,0 +1,26 @@
+# muscles.zip 官方文档索引（Houdini 22.0.368）
+
+共 20 页。用 `--page muscles.zip:<内部路径>` 读取全文。
+
+| 页面 | 标题 |
+|---|---|
+| `differences.txt` | Differences between Otis solver and Vellum Solver |
+| `fasciatissuesetup.txt` | Fascia and tissue setup |
+| `forces.txt` | Forces |
+| `frankenmuscle.txt` | Franken Muscle overview |
+| `geopreparation.txt` | Preparing geometry for muscles |
+| `howto.txt` | How-to's resources |
+| `index.txt` | Muscles and tissue |
+| `muscle_muscletransfer.txt` | Test Geometry: Otto Muscle Transfer |
+| `muscle_otismuscletissuesim.txt` | Otis Muscle and Tissue Simulation |
+| `muscle_ottomuscletissuesim.txt` | Test Geometry: Otto Muscle and Tissue Simulation |
+| `musclesetup.txt` | Muscle setup |
+| `muscletransfer.txt` | Transfer muscles to your character |
+| `otissimulation.txt` | Otis configure and simulation workflow |
+| `overview.txt` | Introduction to muscles and tissues |
+| `overviewvellum.txt` | Vellum muscles and tissue overview |
+| `propertyassignments.txt` | Working with muscle property assignments |
+| `skinpostprocessing.txt` | Skin post-processing |
+| `tissues.txt` | Understanding tissues |
+| `troubleshooting.txt` | Muscles and tissue troubleshooting |
+| `workflowvellum.txt` | Muscles and tissue Vellum workflow |

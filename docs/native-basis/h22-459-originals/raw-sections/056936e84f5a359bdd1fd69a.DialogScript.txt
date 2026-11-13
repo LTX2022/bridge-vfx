@@ -1,0 +1,1187 @@
+# Dialog script for rbdconfigure automatically generated
+
+{
+    name	rbdconfigure
+    script	rbdconfigure
+    label	"RBD Configure"
+
+    help {
+	""
+    }
+    bindhandle bboxcenterx boundingbox "BBox" centerx ""
+    bindhandle bboxcentery boundingbox "BBox" centery ""
+    bindhandle bboxcenterz boundingbox "BBox" centerz ""
+    bindhandle bboxonoff boundingbox "BBox" onoff ""
+    bindhandle bboxrx boundingbox "BBox" rx ""
+    bindhandle bboxry boundingbox "BBox" ry ""
+    bindhandle bboxrz boundingbox "BBox" rz ""
+    bindhandle bboxsizex boundingbox "BBox" sizex ""
+    bindhandle bboxsizey boundingbox "BBox" sizey ""
+    bindhandle bboxsizez boundingbox "BBox" sizez ""
+
+    inputlabel	1	Geometry
+    inputlabel	2	"Constraint Geometry"
+    inputlabel	3	"Proxy Geometry"
+    inputlabel	4	"Static Bounds Geometry"
+    parmtag { inputisref4 1 }
+    outputlabel	1	Geometry
+    outputlabel	2	"Constraint Geometry"
+    outputlabel	3	"Proxy Geometry"
+
+    groupsimple {
+        name    "folder0"
+        label   "Visualization"
+
+        parm {
+            name    "visualize"
+            label   "Visualize"
+            type    integer
+            default { "0" }
+            menu {
+                "0"     "None"
+                "1"     "Active"
+                "2"     "Animated"
+                "3"     "Deforming"
+                "4"     "Sleeping"
+                "5"     "Bounce"
+                "6"     "Density"
+                "7"     "Friction"
+                "8"     "Rotational Stiffness"
+                "9"     "Pinned"
+                "10"    "Collision Padding"
+            }
+            range   { 0 10 }
+            export  all
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback" "kwargs['node'].hm().enterState(kwargs)" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "scale"
+            label   "Exploded Scale"
+            type    float
+            default { "0" }
+            disablewhen "{ visualize == 0 }"
+            range   { 0 5 }
+            export  all
+            parmtag { "autoscope" "0000000000000000" }
+        }
+    }
+
+    groupsimple {
+        name    "folder1"
+        label   "Units"
+
+        parm {
+            name    "unitmass"
+            label   "Unit Mass (kg)"
+            type    integer
+            default { "1000" }
+            menu usetokenvalue {
+                "1"         "Grams"
+                "10"        "10 Grams"
+                "100"       "100 Grams"
+                "1000"      "Kilograms"
+                "10000"     "10 Kilograms"
+                "100000"    "100 Kilograms"
+                "1000000"   "Metric Tons"
+            }
+            range   { 0 10 }
+        }
+        parm {
+            name    "unitlength"
+            label   "Unit Length (m)"
+            type    integer
+            default { "1000" }
+            menu usetokenvalue {
+                "1"         "Millimiters"
+                "10"        "Centimeters"
+                "100"       "Decimeters"
+                "1000"      "Meters"
+                "10000"     "10 Meters"
+                "100000"    "100 Meters"
+                "1000000"   "Kilometers"
+            }
+            range   { 0 10 }
+        }
+    }
+
+    groupsimple {
+        name    "folder2"
+        label   "Bounds"
+
+        parm {
+            name    "boundingtype"
+            label   "Bounding Type"
+            type    integer
+            default { "1" }
+            menu {
+                "0" "Bounding Box"
+                "1" "Bounding Geometry"
+                "2" "Bounding Volume"
+            }
+            range   { 0 10 }
+            parmtag { "script_callback" "kwargs['node'].hm().showBbox(kwargs)" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "bboxsize"
+            label   "Size"
+            type    vector
+            size    3
+            default { "1" "1" "1" }
+            disablewhen "{ boundingtype > 0 }"
+            hidewhen "{ boundingtype > 0 }"
+            range   { -1 1 }
+            parmtag { "script_callback" "" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "bboxcenter"
+            label   "Center"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            disablewhen "{ boundingtype > 0 }"
+            hidewhen "{ boundingtype > 0 }"
+            range   { -1 1 }
+            parmtag { "script_callback" "" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "bboxr"
+            label   "Rotation"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            disablewhen "{ boundingtype > 0 }"
+            hidewhen "{ boundingtype > 0 }"
+            range   { -1 1 }
+            parmtag { "script_callback" "" }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    parm {
+        name    "bboxonoff"
+        label   "Show Bbox"
+        type    toggle
+        invisible
+        default { [ "ch(\"boundingtype\")==0" hscript-expr ] }
+    }
+    groupsimple {
+        name    "folder3"
+        label   "Attributes"
+
+        parm {
+            name    "nameprefix"
+            label   "Name Prefix"
+            type    string
+            default { "piece" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "transfer_attributes"
+            label   "Transfer Simulation Attributes"
+            type    string
+            default { "v w" }
+            menutoggle {
+                [ "node = kwargs['node']" ]
+                [ "parmnode = node.node('assemble1')" ]
+                [ "if (node.node('switch_use_proxy').evalParm('input')):" ]
+                [ "    parmnode = node.node('assemble2')" ]
+                [ "parm = parmnode.parm('transfer_attributes')" ]
+                [ "return [x for x in parm.menuItems() for y in range(2)]" ]
+                language python
+            }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "transfer_renderattributes"
+            label   "Transfer Render Geo Attributes"
+            type    string
+            default { "shop_materialpath path" }
+            menutoggle {
+                [ "node = kwargs['node']" ]
+                [ "parmnode = node.node('assemble1')" ]
+                [ "if (node.node('switch_use_proxy').evalParm('input')):" ]
+                [ "    parmnode = node.node('assemble2')" ]
+                [ "parm = parmnode.parm('transfer_attributes')" ]
+                [ "return [x for x in parm.menuItems() for y in range(2)]" ]
+                language python
+            }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "createpath"
+            label   "Create Path Attribute"
+            type    toggle
+            nolabel
+            joinnext
+            default { "off" }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "path"
+            label   "Path Attribute"
+            type    string
+            default { "op:`opfullpath('.')`" }
+            disablewhen "{ createpath == 0 }"
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "createpackedfragments"
+            label   "Create Packed Fragments"
+            type    toggle
+            default { "on" }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        multiswitcher {
+            name    "attributes"
+            label    "Attributes"
+            default 1
+
+            parm {
+                name    "enable#"
+                label   "Enable"
+                type    toggle
+                default { "1" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "group#"
+                label   "Group"
+                type    string
+                default { "" }
+                disablewhen "{ enable# == 0 }"
+                menutoggle {
+                    [ "opcook get_grp; opmenu -l -a get_grp group;" ]
+                }
+                parmtag { "script_action" "import soputils\nnode = kwargs['node']\nkwargs['geometrytype'] = hou.geometryType.Primitives\nkwargs['inputindex'] = 0\nkwargs['nodepath'] = node.path()\nsoputils.selectGroupParm(kwargs)" }
+                parmtag { "script_action_icon" "BUTTONS_reselect" }
+            }
+            groupsimple {
+                name    "folder0_#_2"
+                label   "Bullet Data"
+                disablewhentab "{ enable# == 0 }"
+
+                parm {
+                    name    "addactive#"
+                    label   "Add Active"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "0" }
+                }
+                parm {
+                    name    "active#"
+                    label   "Active"
+                    type    integer
+                    joinnext
+                    default { "1" }
+                    disablewhen "{ addactive# == 0 }"
+                    range   { 0! 1! }
+                }
+                parm {
+                    name    "useactivebounds#"
+                    label   "Use Bounds"
+                    type    toggle
+                    default { "0" }
+                    disablewhen "{ addactive# == 0 }"
+                }
+                parm {
+                    name    "addanimated#"
+                    label   "Add Animated"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "0" }
+                }
+                parm {
+                    name    "animated#"
+                    label   "Animated"
+                    type    integer
+                    joinnext
+                    default { "0" }
+                    disablewhen "{ addanimated# == 0 }"
+                    range   { 0! 1! }
+                }
+                parm {
+                    name    "useanimatedbounds#"
+                    label   "Use Bounds"
+                    type    toggle
+                    default { "0" }
+                    disablewhen "{ addanimated# == 0 }"
+                }
+                parm {
+                    name    "adddeforming#"
+                    label   "Add Deforming"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "0" }
+                }
+                parm {
+                    name    "deforming#"
+                    label   "Deforming"
+                    type    integer
+                    joinnext
+                    default { "0" }
+                    disablewhen "{ adddeforming# == 0 }"
+                    range   { 0! 1! }
+                }
+                parm {
+                    name    "usedeformingbounds#"
+                    label   "Use Bounds"
+                    type    toggle
+                    default { "0" }
+                    disablewhen "{ adddeforming# == 0 }"
+                }
+                parm {
+                    name    "addsleeping#"
+                    label   "Add Sleeping"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "0" }
+                }
+                parm {
+                    name    "sleeping#"
+                    label   "Sleeping"
+                    type    integer
+                    joinnext
+                    default { "0" }
+                    disablewhen "{ addsleeping# == 0 }"
+                    range   { 0! 1! }
+                }
+                parm {
+                    name    "usesleepingbounds#"
+                    label   "Use Bounds"
+                    type    toggle
+                    default { "0" }
+                    disablewhen "{ addsleeping# == 0 }"
+                }
+                parm {
+                    name    "addenablesleeping#"
+                    label   "Add Enable Sleeping"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "0" }
+                }
+                parm {
+                    name    "enablesleeping#"
+                    label   "Enable Sleeping"
+                    type    integer
+                    joinnext
+                    default { "1" }
+                    disablewhen "{ addenablesleeping# == 0 }"
+                    range   { 0! 1! }
+                }
+                parm {
+                    name    "useenablesleepingbounds#"
+                    label   "Use Bounds"
+                    type    toggle
+                    default { "0" }
+                    disablewhen "{ addenablesleeping# == 0 }"
+                }
+                parm {
+                    name    "addsleeplinearthreshold#"
+                    label   "Add Sleep Lineaar Threshold"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "0" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "sleeplinearthreshold#"
+                    label   "Sleep Linear Threshold"
+                    type    float
+                    default { "0.8" }
+                    disablewhen "{ addsleeplinearthreshold# == 0 }"
+                    range   { -1! 2 }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "addsleepangularthreshold#"
+                    label   "Add Sleep Angular Threshold"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "0" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "sleepangularthreshold#"
+                    label   "Sleep Angular Threshold"
+                    type    float
+                    default { "1" }
+                    disablewhen "{ addsleepangularthreshold# == 0 }"
+                    range   { -1! 2 }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "addignore#"
+                    label   "Add Bullet Ignore"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "0" }
+                }
+                parm {
+                    name    "bullet_ignore#"
+                    label   "Bullet Ignore"
+                    type    integer
+                    joinnext
+                    default { "0" }
+                    disablewhen "{ addignore# == 0 }"
+                    range   { 0! 1! }
+                }
+                parm {
+                    name    "useignorebounds#"
+                    label   "Use Bounds"
+                    type    toggle
+                    default { "0" }
+                    disablewhen "{ addignore# == 0 }"
+                }
+                parm {
+                    name    "addcomputecom#"
+                    label   "Add Compute Center of Mass"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "0" }
+                }
+                parm {
+                    name    "computecom#"
+                    label   "Compute Center of Mass"
+                    type    integer
+                    joinnext
+                    default { "1" }
+                    disablewhen "{ addcomputecom# == 0 }"
+                    range   { 0! 1! }
+                }
+                parm {
+                    name    "usecomputecombounds#"
+                    label   "Use Bounds"
+                    type    toggle
+                    default { "0" }
+                    disablewhen "{ addcomputecom# == 0 }"
+                }
+                groupcollapsible {
+                    name    "folder0_#_4"
+                    label   "Collision Shapes"
+
+                    parm {
+                        name    "addgeorep#"
+                        label   "Add Geo Rep"
+                        type    toggle
+                        nolabel
+                        joinnext
+                        default { "0" }
+                    }
+                    parm {
+                        name    "georep#"
+                        label   "Geometry Representation"
+                        type    string
+                        default { "convexhull" }
+                        disablewhen "{ addgeorep# == 0 }"
+                        menu {
+                            "convexhull"    "Convex Hull"
+                            "concave"       "Concave"
+                            "box"           "Box"
+                            "capsule"       "Capsule"
+                            "cylinder"      "Cylinder"
+                            "compound"      "Compound"
+                            "sphere"        "Sphere"
+                            "plane"         "Plane"
+                            "none"          "None"
+                        }
+                    }
+                    parm {
+                        name    "addcollisionmargin#"
+                        label   "Add Collision Padding"
+                        type    toggle
+                        nolabel
+                        joinnext
+                        default { "0" }
+                    }
+                    parm {
+                        name    "collisionmargin#"
+                        label   "Collision Padding"
+                        type    float
+                        default { "0.02" }
+                        disablewhen "{ addcollisionmargin# == 0 }"
+                        range   { 0! 10 }
+                    }
+                    parm {
+                        name    "adjustgeometry#"
+                        label   "Shrink Collision Geometry"
+                        type    toggle
+                        nolabel
+                        joinnext
+                        default { "1" }
+                        disablewhen "{ addcollisionmargin# == 0 }"
+                    }
+                    parm {
+                        name    "shrinkamount#"
+                        label   "Shrink Amount"
+                        type    float
+                        default { "ch(\"collisionmargin#\")" }
+                        disablewhen "{ addcollisionmargin# == 0 } { adjustgeometry# == 0 }"
+                        range   { 0! 10 }
+                    }
+                    parm {
+                        name    "addgroupconnected#"
+                        label   "Add Group Connected"
+                        type    toggle
+                        nolabel
+                        joinnext
+                        default { "0" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "groupconnected#"
+                        label   "Create Convex Hull per Set of Connected Primitives"
+                        type    integer
+                        default { "1" }
+                        disablewhen "{ addgroupconnected# == 0 }"
+                        range   { 0! 1! }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                }
+
+                groupcollapsible {
+                    name    "folder1_#"
+                    label   "Collisions"
+
+                    parm {
+                        name    "addcollisiongroup#"
+                        label   "Add Collision Group"
+                        type    toggle
+                        nolabel
+                        joinnext
+                        default { "0" }
+                    }
+                    parm {
+                        name    "collisiongroup#"
+                        label   "Collision Group"
+                        type    string
+                        default { "" }
+                        disablewhen "{ addcollisiongroup# == 0 }"
+                    }
+                    parm {
+                        name    "addcollisionignore#"
+                        label   "Add Collision Ignore"
+                        type    toggle
+                        nolabel
+                        joinnext
+                        default { "0" }
+                    }
+                    parm {
+                        name    "collisionignore#"
+                        label   "Collision Ignore"
+                        type    string
+                        default { "" }
+                        disablewhen "{ addcollisionignore# == 0 }"
+                        menutoggle {
+                            [ "hou.phm().buildCollisionIgnoreMenu(kwargs)" ]
+                            language python
+                        }
+                    }
+                    parm {
+                        name    "addminactivationimpulse#"
+                        label   "Add Min Activation Impulse"
+                        type    toggle
+                        nolabel
+                        joinnext
+                        default { "0" }
+                    }
+                    parm {
+                        name    "minactivationimpulse#"
+                        label   "Min Activation Impulse"
+                        type    float
+                        default { "0" }
+                        disablewhen "{ addminactivationimpulse# == 0 }"
+                        range   { 0 10 }
+                    }
+                    parm {
+                        name    "addactivationignore#"
+                        label   "Add Activation Ignore"
+                        type    toggle
+                        nolabel
+                        joinnext
+                        default { "0" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "activationignore#"
+                        label   "Activation Ignore"
+                        type    string
+                        default { "" }
+                        disablewhen "{ addactivationignore# == 0 }"
+                        menutoggle {
+                            [ "hou.phm().buildCollisionIgnoreMenu(kwargs)" ]
+                            language python
+                        }
+                        range   { -1! 10 }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "addallowinitialoverlap#"
+                        label   "Add Allow Initial Overlap"
+                        type    toggle
+                        nolabel
+                        joinnext
+                        default { "0" }
+                    }
+                    parm {
+                        name    "allowinitialoverlap#"
+                        label   "Allow Initial Overlap"
+                        type    integer
+                        default { "1" }
+                        disablewhen "{ addallowinitialoverlap# == 0 }"
+                        range   { 0! 1! }
+                    }
+                }
+
+                groupcollapsible {
+                    name    "folder4_#"
+                    label   "Sticky Collisions"
+
+                    parm {
+                        name    "addminstickycollisionimpulse#"
+                        label   "Add Min Sticky Collision Impulse"
+                        type    toggle
+                        nolabel
+                        joinnext
+                        default { "0" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "minstickycollisionimpulse#"
+                        label   "Min Sticky Collision Impulse"
+                        type    float
+                        default { "-1" }
+                        disablewhen "{ addminstickycollisionimpulse# == 0 }"
+                        range   { -1! 10000 }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "addmaxstickycollisionobjects#"
+                        label   "Add Max Sticky Collision Objects"
+                        type    toggle
+                        nolabel
+                        joinnext
+                        default { "0" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "maxstickycollisionobjects#"
+                        label   "Max Sticky Collision Objects"
+                        type    integer
+                        default { "-1" }
+                        disablewhen "{ addmaxstickycollisionobjects# == 0 }"
+                        range   { -1! 10 }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "addmaxstickycollisionpoints#"
+                        label   "Add Max Sticky Collision Points"
+                        type    toggle
+                        nolabel
+                        joinnext
+                        default { "0" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "maxstickycollisionpoints#"
+                        label   "Max Sticky Collision Points"
+                        type    integer
+                        default { "-1" }
+                        disablewhen "{ addmaxstickycollisionpoints# == 0 }"
+                        range   { -1! 10 }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "addstickycollisionignore#"
+                        label   "Add Sticky Collision Ignore"
+                        type    toggle
+                        nolabel
+                        joinnext
+                        default { "0" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "stickycollisionignore#"
+                        label   "Sticky Collision Ignore"
+                        type    string
+                        default { "" }
+                        disablewhen "{ addstickycollisionignore# == 0 }"
+                        menutoggle {
+                            [ "hou.phm().buildCollisionIgnoreMenu(kwargs)" ]
+                            language python
+                        }
+                        range   { -1! 10 }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                }
+
+                groupcollapsible {
+                    name    "folder0_#_5"
+                    label   "Speed Limit"
+
+                    parm {
+                        name    "addspeedmin#"
+                        label   "Add Speed Min"
+                        type    toggle
+                        nolabel
+                        joinnext
+                        default { "0" }
+                    }
+                    parm {
+                        name    "speedmin#"
+                        label   "Speed Min"
+                        type    float
+                        default { "-1" }
+                        disablewhen "{ addspeedmin# == 0 }"
+                        range   { -1! 10 }
+                    }
+                    parm {
+                        name    "addspeedmax#"
+                        label   "Add Speed Max"
+                        type    toggle
+                        nolabel
+                        joinnext
+                        default { "0" }
+                    }
+                    parm {
+                        name    "speedmax#"
+                        label   "Speed Max"
+                        type    float
+                        default { "-1" }
+                        disablewhen "{ addspeedmax# == 0 }"
+                        range   { -1! 10 }
+                    }
+                    parm {
+                        name    "addspinmin#"
+                        label   "Add Spin Min"
+                        type    toggle
+                        nolabel
+                        joinnext
+                        default { "0" }
+                    }
+                    parm {
+                        name    "spinmin#"
+                        label   "Spin Min"
+                        type    float
+                        default { "-1" }
+                        disablewhen "{ addspinmin# == 0 }"
+                        range   { -1! 10 }
+                    }
+                    parm {
+                        name    "addspinmax#"
+                        label   "Add Spin Max"
+                        type    toggle
+                        nolabel
+                        joinnext
+                        default { "0" }
+                    }
+                    parm {
+                        name    "spinmax#"
+                        label   "Spin Max"
+                        type    float
+                        default { "-1" }
+                        disablewhen "{ addspinmax# == 0 }"
+                        range   { -1! 10 }
+                    }
+                    parm {
+                        name    "addaccelmax#"
+                        label   "Add Accel Max"
+                        type    toggle
+                        nolabel
+                        joinnext
+                        default { "0" }
+                    }
+                    parm {
+                        name    "accelmax#"
+                        label   "Acceleration Max"
+                        type    float
+                        default { "-1" }
+                        disablewhen "{ addaccelmax# == 0 }"
+                        range   { -1! 10 }
+                    }
+                    parm {
+                        name    "addangaccelmax#"
+                        label   "Add Ang Accel Max"
+                        type    toggle
+                        nolabel
+                        joinnext
+                        default { "0" }
+                    }
+                    parm {
+                        name    "angaccelmax#"
+                        label   "Angular Acceleration Max"
+                        type    float
+                        default { "-1" }
+                        disablewhen "{ addangaccelmax# == 0 }"
+                        range   { -1! 10 }
+                    }
+                }
+
+            }
+
+            groupsimple {
+                name    "folder0_#"
+                label   "Physical Attributes"
+                disablewhentab "{ enable# == 0 }"
+
+                parm {
+                    name    "type#"
+                    label   "Type"
+                    type    ordinal
+                    joinnext
+                    default { "0" }
+                    menu {
+                        "0" "Concrete"
+                        "1" "Glass"
+                        "2" "Wood"
+                        "3" "Metal"
+                    }
+                    parmtag { "script_callback" "kwargs['node'].hm().typeCallback(kwargs)" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "material#"
+                    label   "Material"
+                    type    integer
+                    nolabel
+                    joinnext
+                    default { "1000" }
+                    menu usetokenvalue {
+                        [ "node = kwargs['node']" ]
+                        [ "istr = str(kwargs['script_multiparm_index'])" ]
+                        [ "mattype = node.evalParm(\"type\"+istr)" ]
+                        [ "retval = []" ]
+                        [ "for x in node.hm().getMaterialProperties(mattype):" ]
+                        [ "    retval += x[:2]" ]
+                        [ "return retval" ]
+                        language python
+                    }
+                    range   { 0 10 }
+                    parmtag { "script_callback" "kwargs['node'].hm().frictionCallback(kwargs)" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "state#"
+                    label   "State"
+                    type    integer
+                    nolabel
+                    default { "0" }
+                    menu usetokenvalue {
+                        "0" "Dry and Clean Surfaces"
+                        "1" "Lubricated and Greasy Surfaces"
+                    }
+                    range   { 0 10 }
+                    parmtag { "script_callback" "kwargs['node'].hm().frictionCallback(kwargs)" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "adddensity#"
+                    label   "Add Density"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "1" }
+                }
+                parm {
+                    name    "density#"
+                    label   "Density (kg/m3)"
+                    type    string
+                    joinnext
+                    default { [ "chs(\"material\"+opdigits($CH))" hscript-expr ] }
+                    disablewhen "{ parm == 0 }"
+                }
+                parm {
+                    name    "adduserdensity#"
+                    label   "User Density"
+                    type    toggle
+                    joinnext
+                    default { "0" }
+                    hidewhen "{ adddensity# == 0 }"
+                }
+                parm {
+                    name    "userdensity#"
+                    label   "User Density (kg/m3)"
+                    type    float
+                    nolabel
+                    joinnext
+                    default { "1000" }
+                    disablewhen "{ adduserdensity# == 0 }"
+                    hidewhen "{ adddensity# == 0 }"
+                    range   { 0 10000 }
+                }
+                parm {
+                    name    "useuserdensityvar#"
+                    label   "Var"
+                    type    toggle
+                    joinnext
+                    default { "0" }
+                    disablewhen "{ adduserdensity# == 0 }"
+                    hidewhen "{ adddensity# == 0 }"
+                }
+                parm {
+                    name    "userdensityvar#"
+                    label   "Density Var"
+                    type    float
+                    nolabel
+                    default { "0.1" }
+                    disablewhen "{ useuserdensityvar# == 0 } { adduserdensity# == 0 }"
+                    hidewhen "{ adddensity# == 0 }"
+                    range   { 0! 1! }
+                }
+                parm {
+                    name    "addbounce#"
+                    label   "Add Bounce"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "1" }
+                }
+                parm {
+                    name    "bounce#"
+                    label   "Bounce"
+                    type    string
+                    joinnext
+                    default { "0.25" }
+                    disablewhen "{ parm == 0 }"
+                }
+                parm {
+                    name    "adduserbounce#"
+                    label   "User Bounce"
+                    type    toggle
+                    joinnext
+                    default { "0" }
+                    hidewhen "{ addbounce# == 0 }"
+                }
+                parm {
+                    name    "userbounce#"
+                    label   "Bounce"
+                    type    float
+                    nolabel
+                    joinnext
+                    default { "0.5" }
+                    disablewhen "{ adduserbounce# == 0 }"
+                    hidewhen "{ addbounce# == 0 }"
+                    range   { 0 1 }
+                }
+                parm {
+                    name    "useuserbouncevar#"
+                    label   "Var"
+                    type    toggle
+                    joinnext
+                    default { "0" }
+                    disablewhen "{ adduserbounce# == 0 }"
+                    hidewhen "{ addbounce# == 0 }"
+                }
+                parm {
+                    name    "userbouncevar#"
+                    label   "Bounce Var"
+                    type    float
+                    nolabel
+                    default { "0.1" }
+                    disablewhen "{ useuserbouncevar# == 0 } { adduserbounce# == 0 }"
+                    hidewhen "{ addbounce# == 0 }"
+                    range   { 0! 1! }
+                }
+                parm {
+                    name    "addfriction#"
+                    label   "Add Friction"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "0" }
+                    parmtag { "script_callback" "" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "friction#"
+                    label   "Friction"
+                    type    string
+                    joinnext
+                    default { "1" }
+                    disablewhen "{ parm == 0 }"
+                }
+                parm {
+                    name    "adduserfriction#"
+                    label   "User Friction"
+                    type    toggle
+                    joinnext
+                    default { "0" }
+                    hidewhen "{ addfriction# == 0 }"
+                }
+                parm {
+                    name    "userfriction#"
+                    label   "Friction"
+                    type    float
+                    nolabel
+                    joinnext
+                    default { "1" }
+                    disablewhen "{ adduserfriction# == 0 }"
+                    hidewhen "{ addfriction# == 0 }"
+                    range   { 0 1 }
+                }
+                parm {
+                    name    "useuserfrictionvar#"
+                    label   "Var"
+                    type    toggle
+                    joinnext
+                    default { "0" }
+                    disablewhen "{ adduserfriction# == 0 }"
+                    hidewhen "{ addfriction# == 0 }"
+                }
+                parm {
+                    name    "userfrictionvar#"
+                    label   "Friction Var"
+                    type    float
+                    nolabel
+                    default { "0.1" }
+                    disablewhen "{ useuserfrictionvar# == 0 } { adduserfriction# == 0 }"
+                    hidewhen "{ addfriction# == 0 }"
+                    range   { 0! 1! }
+                }
+                parm {
+                    name    "addrotationalstiffness#"
+                    label   "Add Rotational Stiffness"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "0" }
+                    parmtag { "script_callback" "" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "inertialtensorstiffness#"
+                    label   "Rotational Stiffness"
+                    type    float
+                    joinnext
+                    default { "1" }
+                    disablewhen "{ addrotationalstiffness# == 0 }"
+                    range   { 0 1 }
+                }
+                parm {
+                    name    "useinertialtensorstiffnessvar#"
+                    label   "Var"
+                    type    toggle
+                    joinnext
+                    default { "0" }
+                    disablewhen "{ addrotationalstiffness# == 0 }"
+                }
+                parm {
+                    name    "inertialtensorstiffnessvar#"
+                    label   "Rotational Stiffness Var"
+                    type    float
+                    nolabel
+                    default { "0.1" }
+                    disablewhen "{ useinertialtensorstiffnessvar# == 0 } { addrotationalstiffness# == 0 }"
+                    range   { 0! 1! }
+                }
+            }
+
+            groupsimple {
+                name    "folder0_#_3"
+                label   "Constraints"
+                disablewhentab "{ enable# == 0 }"
+
+                parm {
+                    name    "addpin#"
+                    label   "Add Pin"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "0" }
+                }
+                parm {
+                    name    "pin#"
+                    label   "Pin"
+                    type    integer
+                    joinnext
+                    default { "1" }
+                    disablewhen "{ addpin# == 0 }"
+                    range   { 0! 1! }
+                }
+                parm {
+                    name    "pintype#"
+                    label   "Type"
+                    type    ordinal
+                    joinnext
+                    default { "0" }
+                    disablewhen "{ addpin# == 0 }"
+                    menu usetokenvalue {
+                        "0" "Glue"
+                        "2" "Soft"
+                        "1" "Hard (Deprecated)"
+                    }
+                    parmtag { "script_action" "import soptoolutils\nidx = kwargs['script_multiparm_index']\nparms = {}\nparms['constraintgroup'] = '@constraint_tag=`opname(opinputpath(\".\", 0))`/*pinconstraints'\nparms['collisions'] = 0\nparms['hard_constraintname'] = 'Pin'\nparms['hard_numangularmotors'] = 3\nparms['glue_strength'] = -1\nparms['soft_stiffness'] = 1000000\nn = soptoolutils.buildRBDConstraintPropertiesFromActionButton(kwargs, {'parms':parms})\nn.parm('constrainttype').setExpression('ch(\"../%s/pintype%d\")' % (kwargs['node'].name(), idx))\n" }
+                    parmtag { "script_action_help" "Create an RBD Constraint Properties SOP to tweak pin constraints." }
+                    parmtag { "script_action_icon" "SOP_rbdconstraintproperties" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "usepinbounds#"
+                    label   "Use Bounds"
+                    type    toggle
+                    default { "0" }
+                    disablewhen "{ addpin# == 0 }"
+                }
+            }
+
+            groupsimple {
+                name    "folder0_#_6"
+                label   "Emission"
+                disablewhentab "{ enable# == 0 }"
+
+                parm {
+                    name    "addrbdbulletemit#"
+                    label   "Add RBD Bullet Emit"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "0" }
+                }
+                parm {
+                    name    "rbdbulletemit#"
+                    label   "RBD Bullet Emit"
+                    type    integer
+                    joinnext
+                    default { "1" }
+                    disablewhen "{ addrbdbulletemit# == 0 }"
+                    range   { 0! 1! }
+                }
+                parm {
+                    name    "userbdbulletemitbounds#"
+                    label   "Use Bounds"
+                    type    toggle
+                    default { "0" }
+                    disablewhen "{ addrbdbulletemit# == 0 }"
+                }
+            }
+
+        }
+
+    }
+
+    parm {
+        name    "parm"
+        label   "Label"
+        type    toggle
+        invisible
+        default { "0" }
+    }
+}

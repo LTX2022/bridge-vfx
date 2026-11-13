@@ -1,0 +1,3481 @@
+{
+  "schema": "bridge.domain_case_contract_document/1.0",
+  "kind": "prospective_case_documents_not_receipts",
+  "baseline_id": "7046477d4daba24610f601c257909b52b95834326b7c1d29801c50662231f499",
+  "source_snapshot_id": "f90b44bf88cadb30cce4cffe0d68449c057d29b97096aa4665066756cfb657fb",
+  "inventory_sources": [
+    {
+      "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929/receipts/domain-cases.json",
+      "sha256": "f7727dceb61bf54eac39708610b66c99173d4e6867d858ab749b4d0b180fdac2",
+      "case_count": 48,
+      "composite_count": 2,
+      "case_ids": [
+        "pyro_smoke_v1__build_inspect",
+        "pyro_smoke_v1__causal_candidate",
+        "pyro_smoke_v1__approval_recovery",
+        "pyro_fire_v1__build_inspect",
+        "pyro_fire_v1__causal_candidate",
+        "pyro_fire_v1__approval_recovery",
+        "particles_v1__build_inspect",
+        "particles_v1__causal_candidate",
+        "particles_v1__approval_recovery",
+        "water_ocean_v1__build_inspect",
+        "water_ocean_v1__causal_candidate",
+        "water_ocean_v1__approval_recovery",
+        "water_flip_v1__build_inspect",
+        "water_flip_v1__causal_candidate",
+        "water_flip_v1__approval_recovery",
+        "crowd_agents_v1__build_inspect",
+        "crowd_agents_v1__causal_candidate",
+        "crowd_agents_v1__approval_recovery",
+        "swarm_flocking_v1__build_inspect",
+        "swarm_flocking_v1__causal_candidate",
+        "swarm_flocking_v1__approval_recovery",
+        "vellum_cloth_v1__build_inspect",
+        "vellum_cloth_v1__causal_candidate",
+        "vellum_cloth_v1__approval_recovery",
+        "vellum_softbody_grains_v1__build_inspect",
+        "vellum_softbody_grains_v1__causal_candidate",
+        "vellum_softbody_grains_v1__approval_recovery",
+        "hair_fur_v1__build_inspect",
+        "hair_fur_v1__causal_candidate",
+        "hair_fur_v1__approval_recovery",
+        "rbd_destruction_v1__build_inspect",
+        "rbd_destruction_v1__causal_candidate",
+        "rbd_destruction_v1__approval_recovery",
+        "procedural_geometry_v1__build_inspect",
+        "procedural_geometry_v1__causal_candidate",
+        "procedural_geometry_v1__approval_recovery",
+        "material_lookdev_v1__build_inspect",
+        "material_lookdev_v1__causal_candidate",
+        "material_lookdev_v1__approval_recovery",
+        "lighting_camera_render_v1__build_inspect",
+        "lighting_camera_render_v1__causal_candidate",
+        "lighting_camera_render_v1__approval_recovery",
+        "nuke_composite_v1__build_inspect",
+        "nuke_composite_v1__causal_candidate",
+        "nuke_composite_v1__approval_recovery",
+        "explosion_composite_v1__build_inspect",
+        "explosion_composite_v1__causal_candidate",
+        "explosion_composite_v1__approval_recovery"
+      ],
+      "composite_ids": [
+        "composite__explosion_components",
+        "composite__nuke_delivery"
+      ],
+      "use": "historical_inventory_only_not_current_acceptance",
+      "modified": false
+    },
+    {
+      "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts/domain-cases.json",
+      "sha256": "4aa74053d47dca509fdc1cf1cdb254a22941b1f4221611268be7409ba1df07af",
+      "case_count": 48,
+      "composite_count": 2,
+      "case_ids": [
+        "pyro_smoke_v1__build_inspect",
+        "pyro_smoke_v1__causal_candidate",
+        "pyro_smoke_v1__approval_recovery",
+        "pyro_fire_v1__build_inspect",
+        "pyro_fire_v1__causal_candidate",
+        "pyro_fire_v1__approval_recovery",
+        "particles_v1__build_inspect",
+        "particles_v1__causal_candidate",
+        "particles_v1__approval_recovery",
+        "water_ocean_v1__build_inspect",
+        "water_ocean_v1__causal_candidate",
+        "water_ocean_v1__approval_recovery",
+        "water_flip_v1__build_inspect",
+        "water_flip_v1__causal_candidate",
+        "water_flip_v1__approval_recovery",
+        "crowd_agents_v1__build_inspect",
+        "crowd_agents_v1__causal_candidate",
+        "crowd_agents_v1__approval_recovery",
+        "swarm_flocking_v1__build_inspect",
+        "swarm_flocking_v1__causal_candidate",
+        "swarm_flocking_v1__approval_recovery",
+        "vellum_cloth_v1__build_inspect",
+        "vellum_cloth_v1__causal_candidate",
+        "vellum_cloth_v1__approval_recovery",
+        "vellum_softbody_grains_v1__build_inspect",
+        "vellum_softbody_grains_v1__causal_candidate",
+        "vellum_softbody_grains_v1__approval_recovery",
+        "hair_fur_v1__build_inspect",
+        "hair_fur_v1__causal_candidate",
+        "hair_fur_v1__approval_recovery",
+        "rbd_destruction_v1__build_inspect",
+        "rbd_destruction_v1__causal_candidate",
+        "rbd_destruction_v1__approval_recovery",
+        "procedural_geometry_v1__build_inspect",
+        "procedural_geometry_v1__causal_candidate",
+        "procedural_geometry_v1__approval_recovery",
+        "material_lookdev_v1__build_inspect",
+        "material_lookdev_v1__causal_candidate",
+        "material_lookdev_v1__approval_recovery",
+        "lighting_camera_render_v1__build_inspect",
+        "lighting_camera_render_v1__causal_candidate",
+        "lighting_camera_render_v1__approval_recovery",
+        "nuke_composite_v1__build_inspect",
+        "nuke_composite_v1__causal_candidate",
+        "nuke_composite_v1__approval_recovery",
+        "explosion_composite_v1__build_inspect",
+        "explosion_composite_v1__causal_candidate",
+        "explosion_composite_v1__approval_recovery"
+      ],
+      "composite_ids": [
+        "composite__explosion_components",
+        "composite__nuke_delivery"
+      ],
+      "use": "historical_inventory_only_not_current_acceptance",
+      "modified": false
+    },
+    {
+      "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+      "sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+      "case_count": 48,
+      "composite_count": 2,
+      "case_ids": [
+        "pyro_smoke_v1__build_inspect",
+        "pyro_smoke_v1__causal_candidate",
+        "pyro_smoke_v1__approval_recovery",
+        "pyro_fire_v1__build_inspect",
+        "pyro_fire_v1__causal_candidate",
+        "pyro_fire_v1__approval_recovery",
+        "particles_v1__build_inspect",
+        "particles_v1__causal_candidate",
+        "particles_v1__approval_recovery",
+        "water_ocean_v1__build_inspect",
+        "water_ocean_v1__causal_candidate",
+        "water_ocean_v1__approval_recovery",
+        "water_flip_v1__build_inspect",
+        "water_flip_v1__causal_candidate",
+        "water_flip_v1__approval_recovery",
+        "crowd_agents_v1__build_inspect",
+        "crowd_agents_v1__causal_candidate",
+        "crowd_agents_v1__approval_recovery",
+        "swarm_flocking_v1__build_inspect",
+        "swarm_flocking_v1__causal_candidate",
+        "swarm_flocking_v1__approval_recovery",
+        "vellum_cloth_v1__build_inspect",
+        "vellum_cloth_v1__causal_candidate",
+        "vellum_cloth_v1__approval_recovery",
+        "vellum_softbody_grains_v1__build_inspect",
+        "vellum_softbody_grains_v1__causal_candidate",
+        "vellum_softbody_grains_v1__approval_recovery",
+        "hair_fur_v1__build_inspect",
+        "hair_fur_v1__causal_candidate",
+        "hair_fur_v1__approval_recovery",
+        "rbd_destruction_v1__build_inspect",
+        "rbd_destruction_v1__causal_candidate",
+        "rbd_destruction_v1__approval_recovery",
+        "procedural_geometry_v1__build_inspect",
+        "procedural_geometry_v1__causal_candidate",
+        "procedural_geometry_v1__approval_recovery",
+        "material_lookdev_v1__build_inspect",
+        "material_lookdev_v1__causal_candidate",
+        "material_lookdev_v1__approval_recovery",
+        "lighting_camera_render_v1__build_inspect",
+        "lighting_camera_render_v1__causal_candidate",
+        "lighting_camera_render_v1__approval_recovery",
+        "nuke_composite_v1__build_inspect",
+        "nuke_composite_v1__causal_candidate",
+        "nuke_composite_v1__approval_recovery",
+        "explosion_composite_v1__build_inspect",
+        "explosion_composite_v1__causal_candidate",
+        "explosion_composite_v1__approval_recovery"
+      ],
+      "composite_ids": [
+        "composite__explosion_components",
+        "composite__nuke_delivery"
+      ],
+      "use": "historical_inventory_only_not_current_acceptance",
+      "modified": false
+    }
+  ],
+  "required_case_count": 48,
+  "case_count": 48,
+  "required_composite_count": 2,
+  "composite_count": 2,
+  "domain_count": 16,
+  "houdini_domain_count": 15,
+  "houdini_versions": [
+    "21.0.631",
+    "22.0.459"
+  ],
+  "nuke_version": "17.0v1 (external owner unchanged)",
+  "cases": [
+    {
+      "case_id": "pyro_smoke_v1__build_inspect",
+      "domain_pack": "pyro_smoke_v1",
+      "scenario": "build_inspect",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "pyro_smoke_v1__build_inspect",
+        "canonical_case_sha256": "ee9bef26591e317ae53a5f926ad4993b35f9d7ef1ebba31644522fcafc54c136",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/pyro_smoke_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "full topology/type/ALL key parameters/controls/connections/domain data and save-reopen assertions",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_APPLICABLE",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_APPLICABLE"
+      },
+      "recovery": {
+        "status": "NOT_APPLICABLE",
+        "tested": false
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/pyro_smoke_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "pyro_smoke_v1__causal_candidate",
+      "domain_pack": "pyro_smoke_v1",
+      "scenario": "causal_candidate",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "pyro_smoke_v1__causal_candidate",
+        "canonical_case_sha256": "e305e4c2f0942523a29acb0050664b7c9b46925a5e199ce0a8bdcfcf6bcf093c",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/pyro_smoke_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "all required/runtime controls in authorized batches <=5, actual role/fields inverse readback, invalidation closure and negative rollback",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_RUN",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_APPLICABLE"
+      },
+      "recovery": {
+        "status": "NOT_APPLICABLE",
+        "tested": false
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/pyro_smoke_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "pyro_smoke_v1__approval_recovery",
+      "domain_pack": "pyro_smoke_v1",
+      "scenario": "approval_recovery",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "pyro_smoke_v1__approval_recovery",
+        "canonical_case_sha256": "c87e7ff117eb973c3d2e9f2fb742bb14b825925fa93fc48b81a958155e5398b0",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/pyro_smoke_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "same domain input executed in actual case worker, supervisor stop/restart original task, no duplicated completed side effects",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_APPLICABLE",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_RUN"
+      },
+      "recovery": {
+        "status": "NOT_RUN",
+        "tested": false,
+        "owner": "R",
+        "evidence_owner": "E",
+        "domain_assertion_owner": "Z",
+        "requirements": [
+          "interrupt the process actually executing this case while operation active",
+          "supervisor observes identity and STOP_CONFIRMED before restart",
+          "restart controller and original task from real serialized scene, same request_id",
+          "completed side effects not repeated; incomplete work reconciled through formal control authorization",
+          "recovered topology/ALL controls/domain data/producer artifact content match saved actual state",
+          "case_id/build_id/provider/host identity/operation_id/scene hash and phase facts bound by E"
+        ],
+        "forbidden_substitutes": [
+          "immediately exiting helper process",
+          "manual RECONCILE edit",
+          "reopen original in-memory substitute scene",
+          "load-time expected-data rebuilding"
+        ]
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/pyro_smoke_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "pyro_fire_v1__build_inspect",
+      "domain_pack": "pyro_fire_v1",
+      "scenario": "build_inspect",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "pyro_fire_v1__build_inspect",
+        "canonical_case_sha256": "c429ea9a98f6ce9a0747ca5994f29e43200138a2759de0852da036759ac85635",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/pyro_fire_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "full topology/type/ALL key parameters/controls/connections/domain data and save-reopen assertions",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_APPLICABLE",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_APPLICABLE"
+      },
+      "recovery": {
+        "status": "NOT_APPLICABLE",
+        "tested": false
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/pyro_fire_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "pyro_fire_v1__causal_candidate",
+      "domain_pack": "pyro_fire_v1",
+      "scenario": "causal_candidate",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "pyro_fire_v1__causal_candidate",
+        "canonical_case_sha256": "e5d566408f70d4cb7c13579663b88a884969eaa2e5e9054a22d86f43a94dad26",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/pyro_fire_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "all required/runtime controls in authorized batches <=5, actual role/fields inverse readback, invalidation closure and negative rollback",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_RUN",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_APPLICABLE"
+      },
+      "recovery": {
+        "status": "NOT_APPLICABLE",
+        "tested": false
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/pyro_fire_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "pyro_fire_v1__approval_recovery",
+      "domain_pack": "pyro_fire_v1",
+      "scenario": "approval_recovery",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "pyro_fire_v1__approval_recovery",
+        "canonical_case_sha256": "4963c57f625e530c225b3cede8b5f47c5f788e73e0a5700bab7640bbd6110679",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/pyro_fire_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "same domain input executed in actual case worker, supervisor stop/restart original task, no duplicated completed side effects",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_APPLICABLE",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_RUN"
+      },
+      "recovery": {
+        "status": "NOT_RUN",
+        "tested": false,
+        "owner": "R",
+        "evidence_owner": "E",
+        "domain_assertion_owner": "Z",
+        "requirements": [
+          "interrupt the process actually executing this case while operation active",
+          "supervisor observes identity and STOP_CONFIRMED before restart",
+          "restart controller and original task from real serialized scene, same request_id",
+          "completed side effects not repeated; incomplete work reconciled through formal control authorization",
+          "recovered topology/ALL controls/domain data/producer artifact content match saved actual state",
+          "case_id/build_id/provider/host identity/operation_id/scene hash and phase facts bound by E"
+        ],
+        "forbidden_substitutes": [
+          "immediately exiting helper process",
+          "manual RECONCILE edit",
+          "reopen original in-memory substitute scene",
+          "load-time expected-data rebuilding"
+        ]
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/pyro_fire_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "particles_v1__build_inspect",
+      "domain_pack": "particles_v1",
+      "scenario": "build_inspect",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "particles_v1__build_inspect",
+        "canonical_case_sha256": "cdc05fec8387c52d5a36da73cf74a6429337008bc39290c7b149bf4e7feadcd5",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/particles_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "full topology/type/ALL key parameters/controls/connections/domain data and save-reopen assertions",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_APPLICABLE",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_APPLICABLE"
+      },
+      "recovery": {
+        "status": "NOT_APPLICABLE",
+        "tested": false
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/particles_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "particles_v1__causal_candidate",
+      "domain_pack": "particles_v1",
+      "scenario": "causal_candidate",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "particles_v1__causal_candidate",
+        "canonical_case_sha256": "f00df8dbacd56562d358b226ccf2531a0c179f40399611b80c47c7b6a891fa7c",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/particles_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "all required/runtime controls in authorized batches <=5, actual role/fields inverse readback, invalidation closure and negative rollback",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_RUN",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_APPLICABLE"
+      },
+      "recovery": {
+        "status": "NOT_APPLICABLE",
+        "tested": false
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/particles_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "particles_v1__approval_recovery",
+      "domain_pack": "particles_v1",
+      "scenario": "approval_recovery",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "particles_v1__approval_recovery",
+        "canonical_case_sha256": "423d88c2f0bce28944920460d1fd92209d78c8347779312e2b02afc84ba9130b",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/particles_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "same domain input executed in actual case worker, supervisor stop/restart original task, no duplicated completed side effects",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_APPLICABLE",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_RUN"
+      },
+      "recovery": {
+        "status": "NOT_RUN",
+        "tested": false,
+        "owner": "R",
+        "evidence_owner": "E",
+        "domain_assertion_owner": "Z",
+        "requirements": [
+          "interrupt the process actually executing this case while operation active",
+          "supervisor observes identity and STOP_CONFIRMED before restart",
+          "restart controller and original task from real serialized scene, same request_id",
+          "completed side effects not repeated; incomplete work reconciled through formal control authorization",
+          "recovered topology/ALL controls/domain data/producer artifact content match saved actual state",
+          "case_id/build_id/provider/host identity/operation_id/scene hash and phase facts bound by E"
+        ],
+        "forbidden_substitutes": [
+          "immediately exiting helper process",
+          "manual RECONCILE edit",
+          "reopen original in-memory substitute scene",
+          "load-time expected-data rebuilding"
+        ]
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/particles_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "water_ocean_v1__build_inspect",
+      "domain_pack": "water_ocean_v1",
+      "scenario": "build_inspect",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "water_ocean_v1__build_inspect",
+        "canonical_case_sha256": "8c88defb70eb23690ec829fd7851416f19369fc9ef91d588976365ec8f2c9c81",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/water_ocean_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "full topology/type/ALL key parameters/controls/connections/domain data and save-reopen assertions",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_APPLICABLE",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_APPLICABLE"
+      },
+      "recovery": {
+        "status": "NOT_APPLICABLE",
+        "tested": false
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/water_ocean_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "water_ocean_v1__causal_candidate",
+      "domain_pack": "water_ocean_v1",
+      "scenario": "causal_candidate",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "water_ocean_v1__causal_candidate",
+        "canonical_case_sha256": "65f47b248358e43eeab86d851683fdb9e8a806ef32e639407bcfc2a759f709b3",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/water_ocean_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "all required/runtime controls in authorized batches <=5, actual role/fields inverse readback, invalidation closure and negative rollback",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_RUN",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_APPLICABLE"
+      },
+      "recovery": {
+        "status": "NOT_APPLICABLE",
+        "tested": false
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/water_ocean_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "water_ocean_v1__approval_recovery",
+      "domain_pack": "water_ocean_v1",
+      "scenario": "approval_recovery",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "water_ocean_v1__approval_recovery",
+        "canonical_case_sha256": "157413cb9c8b25a5b882c6a0d87ac82c6dae39f7bf3c98a778bf2343e88cf089",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/water_ocean_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "same domain input executed in actual case worker, supervisor stop/restart original task, no duplicated completed side effects",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_APPLICABLE",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_RUN"
+      },
+      "recovery": {
+        "status": "NOT_RUN",
+        "tested": false,
+        "owner": "R",
+        "evidence_owner": "E",
+        "domain_assertion_owner": "Z",
+        "requirements": [
+          "interrupt the process actually executing this case while operation active",
+          "supervisor observes identity and STOP_CONFIRMED before restart",
+          "restart controller and original task from real serialized scene, same request_id",
+          "completed side effects not repeated; incomplete work reconciled through formal control authorization",
+          "recovered topology/ALL controls/domain data/producer artifact content match saved actual state",
+          "case_id/build_id/provider/host identity/operation_id/scene hash and phase facts bound by E"
+        ],
+        "forbidden_substitutes": [
+          "immediately exiting helper process",
+          "manual RECONCILE edit",
+          "reopen original in-memory substitute scene",
+          "load-time expected-data rebuilding"
+        ]
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/water_ocean_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "water_flip_v1__build_inspect",
+      "domain_pack": "water_flip_v1",
+      "scenario": "build_inspect",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "water_flip_v1__build_inspect",
+        "canonical_case_sha256": "6c19055fb9b4ef28be0008bca245f22e2fc7d1555f52ed0baf44d09bbbebd237",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/water_flip_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "full topology/type/ALL key parameters/controls/connections/domain data and save-reopen assertions",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_APPLICABLE",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_APPLICABLE"
+      },
+      "recovery": {
+        "status": "NOT_APPLICABLE",
+        "tested": false
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/water_flip_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "water_flip_v1__causal_candidate",
+      "domain_pack": "water_flip_v1",
+      "scenario": "causal_candidate",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "water_flip_v1__causal_candidate",
+        "canonical_case_sha256": "24aab51ed418f55a8b3965cb25faba9c9b263f7d5aaf401b04f973c3bdc3bcb7",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/water_flip_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "all required/runtime controls in authorized batches <=5, actual role/fields inverse readback, invalidation closure and negative rollback",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_RUN",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_APPLICABLE"
+      },
+      "recovery": {
+        "status": "NOT_APPLICABLE",
+        "tested": false
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/water_flip_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "water_flip_v1__approval_recovery",
+      "domain_pack": "water_flip_v1",
+      "scenario": "approval_recovery",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "water_flip_v1__approval_recovery",
+        "canonical_case_sha256": "106ef2cc581c6a2c70c427e53c06842883fe46f8c375522082035ad532177024",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/water_flip_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "same domain input executed in actual case worker, supervisor stop/restart original task, no duplicated completed side effects",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_APPLICABLE",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_RUN"
+      },
+      "recovery": {
+        "status": "NOT_RUN",
+        "tested": false,
+        "owner": "R",
+        "evidence_owner": "E",
+        "domain_assertion_owner": "Z",
+        "requirements": [
+          "interrupt the process actually executing this case while operation active",
+          "supervisor observes identity and STOP_CONFIRMED before restart",
+          "restart controller and original task from real serialized scene, same request_id",
+          "completed side effects not repeated; incomplete work reconciled through formal control authorization",
+          "recovered topology/ALL controls/domain data/producer artifact content match saved actual state",
+          "case_id/build_id/provider/host identity/operation_id/scene hash and phase facts bound by E"
+        ],
+        "forbidden_substitutes": [
+          "immediately exiting helper process",
+          "manual RECONCILE edit",
+          "reopen original in-memory substitute scene",
+          "load-time expected-data rebuilding"
+        ]
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/water_flip_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "crowd_agents_v1__build_inspect",
+      "domain_pack": "crowd_agents_v1",
+      "scenario": "build_inspect",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "crowd_agents_v1__build_inspect",
+        "canonical_case_sha256": "21e59870bded5f2ea87d2fa59ac744effd2b0b58776a7dbeeab6315f6df9e0f0",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/crowd_agents_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "full topology/type/ALL key parameters/controls/connections/domain data and save-reopen assertions",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_APPLICABLE",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_APPLICABLE"
+      },
+      "recovery": {
+        "status": "NOT_APPLICABLE",
+        "tested": false
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/crowd_agents_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "crowd_agents_v1__causal_candidate",
+      "domain_pack": "crowd_agents_v1",
+      "scenario": "causal_candidate",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "crowd_agents_v1__causal_candidate",
+        "canonical_case_sha256": "15560f40459c2aa44e3b32f4a494414677caffd2a51a3382d3f610c0bf826190",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/crowd_agents_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "all required/runtime controls in authorized batches <=5, actual role/fields inverse readback, invalidation closure and negative rollback",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_RUN",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_APPLICABLE"
+      },
+      "recovery": {
+        "status": "NOT_APPLICABLE",
+        "tested": false
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/crowd_agents_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "crowd_agents_v1__approval_recovery",
+      "domain_pack": "crowd_agents_v1",
+      "scenario": "approval_recovery",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "crowd_agents_v1__approval_recovery",
+        "canonical_case_sha256": "3987cb6f4c1d9622f6243eb0f2699f5bb45f070b0131473d8dd9f89602c9fa2a",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/crowd_agents_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "same domain input executed in actual case worker, supervisor stop/restart original task, no duplicated completed side effects",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_APPLICABLE",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_RUN"
+      },
+      "recovery": {
+        "status": "NOT_RUN",
+        "tested": false,
+        "owner": "R",
+        "evidence_owner": "E",
+        "domain_assertion_owner": "Z",
+        "requirements": [
+          "interrupt the process actually executing this case while operation active",
+          "supervisor observes identity and STOP_CONFIRMED before restart",
+          "restart controller and original task from real serialized scene, same request_id",
+          "completed side effects not repeated; incomplete work reconciled through formal control authorization",
+          "recovered topology/ALL controls/domain data/producer artifact content match saved actual state",
+          "case_id/build_id/provider/host identity/operation_id/scene hash and phase facts bound by E"
+        ],
+        "forbidden_substitutes": [
+          "immediately exiting helper process",
+          "manual RECONCILE edit",
+          "reopen original in-memory substitute scene",
+          "load-time expected-data rebuilding"
+        ]
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/crowd_agents_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "swarm_flocking_v1__build_inspect",
+      "domain_pack": "swarm_flocking_v1",
+      "scenario": "build_inspect",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "swarm_flocking_v1__build_inspect",
+        "canonical_case_sha256": "e541a0d3bc6013c92a2bc27cd9fa3bdce6b79d860dce872890dc1c377587e1aa",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/swarm_flocking_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "full topology/type/ALL key parameters/controls/connections/domain data and save-reopen assertions",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_APPLICABLE",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_APPLICABLE"
+      },
+      "recovery": {
+        "status": "NOT_APPLICABLE",
+        "tested": false
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/swarm_flocking_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "swarm_flocking_v1__causal_candidate",
+      "domain_pack": "swarm_flocking_v1",
+      "scenario": "causal_candidate",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "swarm_flocking_v1__causal_candidate",
+        "canonical_case_sha256": "7451eb552cc34fbaeda74b0e0be37937bc1efca9ce33aed469f13ac52960c213",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/swarm_flocking_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "all required/runtime controls in authorized batches <=5, actual role/fields inverse readback, invalidation closure and negative rollback",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_RUN",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_APPLICABLE"
+      },
+      "recovery": {
+        "status": "NOT_APPLICABLE",
+        "tested": false
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/swarm_flocking_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "swarm_flocking_v1__approval_recovery",
+      "domain_pack": "swarm_flocking_v1",
+      "scenario": "approval_recovery",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "swarm_flocking_v1__approval_recovery",
+        "canonical_case_sha256": "7a2a1802206dfab80a5d95da72c85ba2cf79fe953f989bf097da6f4ccc13ef64",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/swarm_flocking_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "same domain input executed in actual case worker, supervisor stop/restart original task, no duplicated completed side effects",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_APPLICABLE",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_RUN"
+      },
+      "recovery": {
+        "status": "NOT_RUN",
+        "tested": false,
+        "owner": "R",
+        "evidence_owner": "E",
+        "domain_assertion_owner": "Z",
+        "requirements": [
+          "interrupt the process actually executing this case while operation active",
+          "supervisor observes identity and STOP_CONFIRMED before restart",
+          "restart controller and original task from real serialized scene, same request_id",
+          "completed side effects not repeated; incomplete work reconciled through formal control authorization",
+          "recovered topology/ALL controls/domain data/producer artifact content match saved actual state",
+          "case_id/build_id/provider/host identity/operation_id/scene hash and phase facts bound by E"
+        ],
+        "forbidden_substitutes": [
+          "immediately exiting helper process",
+          "manual RECONCILE edit",
+          "reopen original in-memory substitute scene",
+          "load-time expected-data rebuilding"
+        ]
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/swarm_flocking_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "vellum_cloth_v1__build_inspect",
+      "domain_pack": "vellum_cloth_v1",
+      "scenario": "build_inspect",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "vellum_cloth_v1__build_inspect",
+        "canonical_case_sha256": "49c524061f5928cfe7ee6a7b1fb6302cdc5b77c43e4bc2f7a20f52dc4c374ef7",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/vellum_cloth_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "full topology/type/ALL key parameters/controls/connections/domain data and save-reopen assertions",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_APPLICABLE",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_APPLICABLE"
+      },
+      "recovery": {
+        "status": "NOT_APPLICABLE",
+        "tested": false
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/vellum_cloth_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "vellum_cloth_v1__causal_candidate",
+      "domain_pack": "vellum_cloth_v1",
+      "scenario": "causal_candidate",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "vellum_cloth_v1__causal_candidate",
+        "canonical_case_sha256": "ab8082fbb830d719b5c9c310b8db241340dd2b1a06e04032723ea8ed7080ed62",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/vellum_cloth_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "all required/runtime controls in authorized batches <=5, actual role/fields inverse readback, invalidation closure and negative rollback",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_RUN",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_APPLICABLE"
+      },
+      "recovery": {
+        "status": "NOT_APPLICABLE",
+        "tested": false
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/vellum_cloth_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "vellum_cloth_v1__approval_recovery",
+      "domain_pack": "vellum_cloth_v1",
+      "scenario": "approval_recovery",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "vellum_cloth_v1__approval_recovery",
+        "canonical_case_sha256": "49c7b089bfc842c67d893583a67f6b8917ee0ab39ec60e326abfd7babae6ff72",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/vellum_cloth_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "same domain input executed in actual case worker, supervisor stop/restart original task, no duplicated completed side effects",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_APPLICABLE",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_RUN"
+      },
+      "recovery": {
+        "status": "NOT_RUN",
+        "tested": false,
+        "owner": "R",
+        "evidence_owner": "E",
+        "domain_assertion_owner": "Z",
+        "requirements": [
+          "interrupt the process actually executing this case while operation active",
+          "supervisor observes identity and STOP_CONFIRMED before restart",
+          "restart controller and original task from real serialized scene, same request_id",
+          "completed side effects not repeated; incomplete work reconciled through formal control authorization",
+          "recovered topology/ALL controls/domain data/producer artifact content match saved actual state",
+          "case_id/build_id/provider/host identity/operation_id/scene hash and phase facts bound by E"
+        ],
+        "forbidden_substitutes": [
+          "immediately exiting helper process",
+          "manual RECONCILE edit",
+          "reopen original in-memory substitute scene",
+          "load-time expected-data rebuilding"
+        ]
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/vellum_cloth_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "vellum_softbody_grains_v1__build_inspect",
+      "domain_pack": "vellum_softbody_grains_v1",
+      "scenario": "build_inspect",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "vellum_softbody_grains_v1__build_inspect",
+        "canonical_case_sha256": "ed521b9d0a2bde5d77af660e9d72756a3fa7a933beb706f4245acf1588d719a5",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/vellum_softbody_grains_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "full topology/type/ALL key parameters/controls/connections/domain data and save-reopen assertions",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_APPLICABLE",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_APPLICABLE"
+      },
+      "recovery": {
+        "status": "NOT_APPLICABLE",
+        "tested": false
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/vellum_softbody_grains_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "vellum_softbody_grains_v1__causal_candidate",
+      "domain_pack": "vellum_softbody_grains_v1",
+      "scenario": "causal_candidate",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "vellum_softbody_grains_v1__causal_candidate",
+        "canonical_case_sha256": "37f3875a04fe1794a8cf5612c17458cfc188d813c5e5f8c2aed28fac9e66fbae",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/vellum_softbody_grains_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "all required/runtime controls in authorized batches <=5, actual role/fields inverse readback, invalidation closure and negative rollback",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_RUN",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_APPLICABLE"
+      },
+      "recovery": {
+        "status": "NOT_APPLICABLE",
+        "tested": false
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/vellum_softbody_grains_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "vellum_softbody_grains_v1__approval_recovery",
+      "domain_pack": "vellum_softbody_grains_v1",
+      "scenario": "approval_recovery",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "vellum_softbody_grains_v1__approval_recovery",
+        "canonical_case_sha256": "2cee231574dfa200336fec3de6048404c9717a1fc726d0d72afb5ed2d6afaf81",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/vellum_softbody_grains_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "same domain input executed in actual case worker, supervisor stop/restart original task, no duplicated completed side effects",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_APPLICABLE",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_RUN"
+      },
+      "recovery": {
+        "status": "NOT_RUN",
+        "tested": false,
+        "owner": "R",
+        "evidence_owner": "E",
+        "domain_assertion_owner": "Z",
+        "requirements": [
+          "interrupt the process actually executing this case while operation active",
+          "supervisor observes identity and STOP_CONFIRMED before restart",
+          "restart controller and original task from real serialized scene, same request_id",
+          "completed side effects not repeated; incomplete work reconciled through formal control authorization",
+          "recovered topology/ALL controls/domain data/producer artifact content match saved actual state",
+          "case_id/build_id/provider/host identity/operation_id/scene hash and phase facts bound by E"
+        ],
+        "forbidden_substitutes": [
+          "immediately exiting helper process",
+          "manual RECONCILE edit",
+          "reopen original in-memory substitute scene",
+          "load-time expected-data rebuilding"
+        ]
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/vellum_softbody_grains_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "hair_fur_v1__build_inspect",
+      "domain_pack": "hair_fur_v1",
+      "scenario": "build_inspect",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "hair_fur_v1__build_inspect",
+        "canonical_case_sha256": "bfa86a4faa1be2c0188b59b68ffd860033408d4ccc7adbf59265376406fb898e",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/hair_fur_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "full topology/type/ALL key parameters/controls/connections/domain data and save-reopen assertions",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_APPLICABLE",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_APPLICABLE"
+      },
+      "recovery": {
+        "status": "NOT_APPLICABLE",
+        "tested": false
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/hair_fur_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "hair_fur_v1__causal_candidate",
+      "domain_pack": "hair_fur_v1",
+      "scenario": "causal_candidate",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "hair_fur_v1__causal_candidate",
+        "canonical_case_sha256": "1bb9a3272fab7a06a2e6cd774c19bc6e6db5d455b5d82d339e75fab5896489f2",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/hair_fur_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "all required/runtime controls in authorized batches <=5, actual role/fields inverse readback, invalidation closure and negative rollback",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_RUN",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_APPLICABLE"
+      },
+      "recovery": {
+        "status": "NOT_APPLICABLE",
+        "tested": false
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/hair_fur_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "hair_fur_v1__approval_recovery",
+      "domain_pack": "hair_fur_v1",
+      "scenario": "approval_recovery",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "hair_fur_v1__approval_recovery",
+        "canonical_case_sha256": "c7ef574506371e60f6d65aac1386710916552faa6f4c25f17cb32c3f4e07bcb0",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/hair_fur_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "same domain input executed in actual case worker, supervisor stop/restart original task, no duplicated completed side effects",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_APPLICABLE",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_RUN"
+      },
+      "recovery": {
+        "status": "NOT_RUN",
+        "tested": false,
+        "owner": "R",
+        "evidence_owner": "E",
+        "domain_assertion_owner": "Z",
+        "requirements": [
+          "interrupt the process actually executing this case while operation active",
+          "supervisor observes identity and STOP_CONFIRMED before restart",
+          "restart controller and original task from real serialized scene, same request_id",
+          "completed side effects not repeated; incomplete work reconciled through formal control authorization",
+          "recovered topology/ALL controls/domain data/producer artifact content match saved actual state",
+          "case_id/build_id/provider/host identity/operation_id/scene hash and phase facts bound by E"
+        ],
+        "forbidden_substitutes": [
+          "immediately exiting helper process",
+          "manual RECONCILE edit",
+          "reopen original in-memory substitute scene",
+          "load-time expected-data rebuilding"
+        ]
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/hair_fur_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "rbd_destruction_v1__build_inspect",
+      "domain_pack": "rbd_destruction_v1",
+      "scenario": "build_inspect",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "rbd_destruction_v1__build_inspect",
+        "canonical_case_sha256": "305d385eefb22bd6a7c118035ad90761cedc7ec2b1b7cb15829b5deb85a85452",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/rbd_destruction_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "full topology/type/ALL key parameters/controls/connections/domain data and save-reopen assertions",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_APPLICABLE",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_APPLICABLE"
+      },
+      "recovery": {
+        "status": "NOT_APPLICABLE",
+        "tested": false
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/rbd_destruction_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "rbd_destruction_v1__causal_candidate",
+      "domain_pack": "rbd_destruction_v1",
+      "scenario": "causal_candidate",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "rbd_destruction_v1__causal_candidate",
+        "canonical_case_sha256": "2d556f6b7af70a3ce4e3ec2e8679e3e09c86c83185bc1e1810e0490f61343bcc",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/rbd_destruction_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "all required/runtime controls in authorized batches <=5, actual role/fields inverse readback, invalidation closure and negative rollback",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_RUN",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_APPLICABLE"
+      },
+      "recovery": {
+        "status": "NOT_APPLICABLE",
+        "tested": false
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/rbd_destruction_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "rbd_destruction_v1__approval_recovery",
+      "domain_pack": "rbd_destruction_v1",
+      "scenario": "approval_recovery",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "rbd_destruction_v1__approval_recovery",
+        "canonical_case_sha256": "5e420b98699c5b95db7273e086af4940becc3f2ce2232d29709b316082e888d8",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/rbd_destruction_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "same domain input executed in actual case worker, supervisor stop/restart original task, no duplicated completed side effects",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_APPLICABLE",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_RUN"
+      },
+      "recovery": {
+        "status": "NOT_RUN",
+        "tested": false,
+        "owner": "R",
+        "evidence_owner": "E",
+        "domain_assertion_owner": "Z",
+        "requirements": [
+          "interrupt the process actually executing this case while operation active",
+          "supervisor observes identity and STOP_CONFIRMED before restart",
+          "restart controller and original task from real serialized scene, same request_id",
+          "completed side effects not repeated; incomplete work reconciled through formal control authorization",
+          "recovered topology/ALL controls/domain data/producer artifact content match saved actual state",
+          "case_id/build_id/provider/host identity/operation_id/scene hash and phase facts bound by E"
+        ],
+        "forbidden_substitutes": [
+          "immediately exiting helper process",
+          "manual RECONCILE edit",
+          "reopen original in-memory substitute scene",
+          "load-time expected-data rebuilding"
+        ]
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/rbd_destruction_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "procedural_geometry_v1__build_inspect",
+      "domain_pack": "procedural_geometry_v1",
+      "scenario": "build_inspect",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "procedural_geometry_v1__build_inspect",
+        "canonical_case_sha256": "530e68fcad685f1afb1e7f75873ba95f3fa0f596a3cee3bc699443775bcb118c",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/procedural_geometry_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "full topology/type/ALL key parameters/controls/connections/domain data and save-reopen assertions",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_APPLICABLE",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_APPLICABLE"
+      },
+      "recovery": {
+        "status": "NOT_APPLICABLE",
+        "tested": false
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/procedural_geometry_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "procedural_geometry_v1__causal_candidate",
+      "domain_pack": "procedural_geometry_v1",
+      "scenario": "causal_candidate",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "procedural_geometry_v1__causal_candidate",
+        "canonical_case_sha256": "6dc4897266c4a331a6dae5772c8cd06e048036cead052bff12a07b66d2bdef1b",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/procedural_geometry_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "all required/runtime controls in authorized batches <=5, actual role/fields inverse readback, invalidation closure and negative rollback",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_RUN",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_APPLICABLE"
+      },
+      "recovery": {
+        "status": "NOT_APPLICABLE",
+        "tested": false
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/procedural_geometry_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "procedural_geometry_v1__approval_recovery",
+      "domain_pack": "procedural_geometry_v1",
+      "scenario": "approval_recovery",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "procedural_geometry_v1__approval_recovery",
+        "canonical_case_sha256": "12220d335b2c75289cbef4cc7e6e0640fb8c68699cb409886d2ad91a8e80917e",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/procedural_geometry_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "same domain input executed in actual case worker, supervisor stop/restart original task, no duplicated completed side effects",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_APPLICABLE",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_RUN"
+      },
+      "recovery": {
+        "status": "NOT_RUN",
+        "tested": false,
+        "owner": "R",
+        "evidence_owner": "E",
+        "domain_assertion_owner": "Z",
+        "requirements": [
+          "interrupt the process actually executing this case while operation active",
+          "supervisor observes identity and STOP_CONFIRMED before restart",
+          "restart controller and original task from real serialized scene, same request_id",
+          "completed side effects not repeated; incomplete work reconciled through formal control authorization",
+          "recovered topology/ALL controls/domain data/producer artifact content match saved actual state",
+          "case_id/build_id/provider/host identity/operation_id/scene hash and phase facts bound by E"
+        ],
+        "forbidden_substitutes": [
+          "immediately exiting helper process",
+          "manual RECONCILE edit",
+          "reopen original in-memory substitute scene",
+          "load-time expected-data rebuilding"
+        ]
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/procedural_geometry_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "material_lookdev_v1__build_inspect",
+      "domain_pack": "material_lookdev_v1",
+      "scenario": "build_inspect",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "material_lookdev_v1__build_inspect",
+        "canonical_case_sha256": "0d20145fabb7247558ae1f39c28ca2f3e6b8219fb203c94cdc7b9680242c8b7d",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/material_lookdev_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "full topology/type/ALL key parameters/controls/connections/domain data and save-reopen assertions",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_APPLICABLE",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_APPLICABLE"
+      },
+      "recovery": {
+        "status": "NOT_APPLICABLE",
+        "tested": false
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/material_lookdev_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "material_lookdev_v1__causal_candidate",
+      "domain_pack": "material_lookdev_v1",
+      "scenario": "causal_candidate",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "material_lookdev_v1__causal_candidate",
+        "canonical_case_sha256": "bd20ed5b945cad81da4d68540ce298d330b901f8faf3b71c4ec3d13c09737413",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/material_lookdev_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "all required/runtime controls in authorized batches <=5, actual role/fields inverse readback, invalidation closure and negative rollback",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_RUN",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_APPLICABLE"
+      },
+      "recovery": {
+        "status": "NOT_APPLICABLE",
+        "tested": false
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/material_lookdev_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "material_lookdev_v1__approval_recovery",
+      "domain_pack": "material_lookdev_v1",
+      "scenario": "approval_recovery",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "material_lookdev_v1__approval_recovery",
+        "canonical_case_sha256": "1553d3a65b26e5913252bdf0e187f15b4aa512b76e551b0d589ca0d0eba8371e",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/material_lookdev_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "same domain input executed in actual case worker, supervisor stop/restart original task, no duplicated completed side effects",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_APPLICABLE",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_RUN"
+      },
+      "recovery": {
+        "status": "NOT_RUN",
+        "tested": false,
+        "owner": "R",
+        "evidence_owner": "E",
+        "domain_assertion_owner": "Z",
+        "requirements": [
+          "interrupt the process actually executing this case while operation active",
+          "supervisor observes identity and STOP_CONFIRMED before restart",
+          "restart controller and original task from real serialized scene, same request_id",
+          "completed side effects not repeated; incomplete work reconciled through formal control authorization",
+          "recovered topology/ALL controls/domain data/producer artifact content match saved actual state",
+          "case_id/build_id/provider/host identity/operation_id/scene hash and phase facts bound by E"
+        ],
+        "forbidden_substitutes": [
+          "immediately exiting helper process",
+          "manual RECONCILE edit",
+          "reopen original in-memory substitute scene",
+          "load-time expected-data rebuilding"
+        ]
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/material_lookdev_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "lighting_camera_render_v1__build_inspect",
+      "domain_pack": "lighting_camera_render_v1",
+      "scenario": "build_inspect",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "lighting_camera_render_v1__build_inspect",
+        "canonical_case_sha256": "9ccf2da0314e789f3b5b32457f9fa71967909d88699dd36f209b9a3a0376a748",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/lighting_camera_render_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "full topology/type/ALL key parameters/controls/connections/domain data and save-reopen assertions",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_APPLICABLE",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_APPLICABLE"
+      },
+      "recovery": {
+        "status": "NOT_APPLICABLE",
+        "tested": false
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/lighting_camera_render_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "lighting_camera_render_v1__causal_candidate",
+      "domain_pack": "lighting_camera_render_v1",
+      "scenario": "causal_candidate",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "lighting_camera_render_v1__causal_candidate",
+        "canonical_case_sha256": "5d572fca2367f88ce6b2916b41c97c8918675aefb25c89e62d92da71a418a8eb",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/lighting_camera_render_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "all required/runtime controls in authorized batches <=5, actual role/fields inverse readback, invalidation closure and negative rollback",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_RUN",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_APPLICABLE"
+      },
+      "recovery": {
+        "status": "NOT_APPLICABLE",
+        "tested": false
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/lighting_camera_render_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "lighting_camera_render_v1__approval_recovery",
+      "domain_pack": "lighting_camera_render_v1",
+      "scenario": "approval_recovery",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "lighting_camera_render_v1__approval_recovery",
+        "canonical_case_sha256": "245cbb7453e2bf31f3a9ffcc48dcc08f607bc67b3d33d5e75bcdf0620905a926",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/lighting_camera_render_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "same domain input executed in actual case worker, supervisor stop/restart original task, no duplicated completed side effects",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_APPLICABLE",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_RUN"
+      },
+      "recovery": {
+        "status": "NOT_RUN",
+        "tested": false,
+        "owner": "R",
+        "evidence_owner": "E",
+        "domain_assertion_owner": "Z",
+        "requirements": [
+          "interrupt the process actually executing this case while operation active",
+          "supervisor observes identity and STOP_CONFIRMED before restart",
+          "restart controller and original task from real serialized scene, same request_id",
+          "completed side effects not repeated; incomplete work reconciled through formal control authorization",
+          "recovered topology/ALL controls/domain data/producer artifact content match saved actual state",
+          "case_id/build_id/provider/host identity/operation_id/scene hash and phase facts bound by E"
+        ],
+        "forbidden_substitutes": [
+          "immediately exiting helper process",
+          "manual RECONCILE edit",
+          "reopen original in-memory substitute scene",
+          "load-time expected-data rebuilding"
+        ]
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/lighting_camera_render_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "nuke_composite_v1__build_inspect",
+      "domain_pack": "nuke_composite_v1",
+      "scenario": "build_inspect",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "nuke_composite_v1__build_inspect",
+        "canonical_case_sha256": "38be844c6e6407c9ae8d6cf57e092944807772164d7b2c0766e6207da07fed61",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "R/main-task Nuke owner",
+      "documentation_action": "UNCHANGED_REFERENCE_ONLY",
+      "acceptance_status": "EXTERNAL_OWNER_UNCHANGED",
+      "operation_card": "docs/real-acceptance-cards/nuke_composite_v1.json",
+      "versions": [
+        "17.0v1"
+      ],
+      "execution_status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "case_id": "nuke_composite_v1__causal_candidate",
+      "domain_pack": "nuke_composite_v1",
+      "scenario": "causal_candidate",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "nuke_composite_v1__causal_candidate",
+        "canonical_case_sha256": "3f54ba99a600ce0512f66491ab9f4cb1ca18e371112cb8a27a49aa9afbcf4184",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "R/main-task Nuke owner",
+      "documentation_action": "UNCHANGED_REFERENCE_ONLY",
+      "acceptance_status": "EXTERNAL_OWNER_UNCHANGED",
+      "operation_card": "docs/real-acceptance-cards/nuke_composite_v1.json",
+      "versions": [
+        "17.0v1"
+      ],
+      "execution_status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "case_id": "nuke_composite_v1__approval_recovery",
+      "domain_pack": "nuke_composite_v1",
+      "scenario": "approval_recovery",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "nuke_composite_v1__approval_recovery",
+        "canonical_case_sha256": "da57186b2971c98c07db4157a234d9c7b26271ee52b5a017d560766221c0f06f",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "R/main-task Nuke owner",
+      "documentation_action": "UNCHANGED_REFERENCE_ONLY",
+      "acceptance_status": "EXTERNAL_OWNER_UNCHANGED",
+      "operation_card": "docs/real-acceptance-cards/nuke_composite_v1.json",
+      "versions": [
+        "17.0v1"
+      ],
+      "execution_status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "case_id": "explosion_composite_v1__build_inspect",
+      "domain_pack": "explosion_composite_v1",
+      "scenario": "build_inspect",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "explosion_composite_v1__build_inspect",
+        "canonical_case_sha256": "76696c68cd5f7a7753056f9bf48438944ca82b2f03fb172499fe4af88a468d5a",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/explosion_composite_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "full topology/type/ALL key parameters/controls/connections/domain data and save-reopen assertions",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_APPLICABLE",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_APPLICABLE"
+      },
+      "recovery": {
+        "status": "NOT_APPLICABLE",
+        "tested": false
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/explosion_composite_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "explosion_composite_v1__causal_candidate",
+      "domain_pack": "explosion_composite_v1",
+      "scenario": "causal_candidate",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "explosion_composite_v1__causal_candidate",
+        "canonical_case_sha256": "34e78e841e9c2d058841620ff092844774ac75220b6834fee0e19f3ee297bddb",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/explosion_composite_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "all required/runtime controls in authorized batches <=5, actual role/fields inverse readback, invalidation closure and negative rollback",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_RUN",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_APPLICABLE"
+      },
+      "recovery": {
+        "status": "NOT_APPLICABLE",
+        "tested": false
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/explosion_composite_v1.json",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "explosion_composite_v1__approval_recovery",
+      "domain_pack": "explosion_composite_v1",
+      "scenario": "approval_recovery",
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "case_id": "explosion_composite_v1__approval_recovery",
+        "canonical_case_sha256": "20b8e622f0f0bb54d39f74184cdbfb36f59fe66129b3f3c0b7e38ad3a00b2636",
+        "scope": "historical_receipt_not_current_evidence"
+      },
+      "owner": "Z domain assertions / R runtime / E evidence",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "operation_card": "docs/real-acceptance-cards/explosion_composite_v1.json",
+      "formal_entry": "agent.fx.build_preview + node.info + agent.fx.apply_candidate + scene.save_hip/scene.reopen_task_hip; formal render via GraphRun.houdini_render_bounded after I1/I2",
+      "input_contract": {
+        "schema": "existing TaskSpec",
+        "domain_pack_version": "1.0.0",
+        "constraints.fx.domain_control_plan": "explicit typed required controls with synthetic value provenance from card",
+        "constraints.fx.domain_control_plan_sha256": "computed by existing formal planner when actual case input is prepared; BLOCKED not fabricated",
+        "task_id": "allocated by trusted controller per case/version",
+        "frames": [
+          1,
+          2
+        ]
+      },
+      "scenario_obligations": "same domain input executed in actual case worker, supervisor stop/restart original task, no duplicated completed side effects",
+      "stages": {
+        "domain_structure": "NOT_RUN",
+        "feedback": "NOT_APPLICABLE",
+        "save_reopen": "NOT_RUN",
+        "formal_output": "NOT_RUN",
+        "real_host_live": "NOT_RUN",
+        "visual_acceptance": "NOT_RUN",
+        "recovery": "NOT_RUN"
+      },
+      "recovery": {
+        "status": "NOT_RUN",
+        "tested": false,
+        "owner": "R",
+        "evidence_owner": "E",
+        "domain_assertion_owner": "Z",
+        "requirements": [
+          "interrupt the process actually executing this case while operation active",
+          "supervisor observes identity and STOP_CONFIRMED before restart",
+          "restart controller and original task from real serialized scene, same request_id",
+          "completed side effects not repeated; incomplete work reconciled through formal control authorization",
+          "recovered topology/ALL controls/domain data/producer artifact content match saved actual state",
+          "case_id/build_id/provider/host identity/operation_id/scene hash and phase facts bound by E"
+        ],
+        "forbidden_substitutes": [
+          "immediately exiting helper process",
+          "manual RECONCILE edit",
+          "reopen original in-memory substitute scene",
+          "load-time expected-data rebuilding"
+        ]
+      },
+      "blockers": [
+        "CURRENT_FORMAL_LIFECYCLE_NOT_ACCEPTED",
+        "CURRENT_DOMAIN_TOPOLOGY_CONTROLS_NOT_JOINTLY_ACCEPTED",
+        "CURRENT_OPERATION_AND_ARTIFACT_CHAIN_NOT_ACCEPTED"
+      ],
+      "evidence": null,
+      "version_preparation": {
+        "22.0.459": {
+          "kind": "prospective_case_not_receipt",
+          "status": "BLOCKED",
+          "native_basis_status": "UNRESOLVED",
+          "expectations_source": "docs/real-acceptance-cards/explosion_composite_v1.json",
+          "native_execution": false
+        }
+      }
+    }
+  ],
+  "composites": [
+    {
+      "case_id": "composite__explosion_components",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "canonical_case_sha256": "d4561c8d106f4dd7e6cab8a832a320980b6d7ba9220d1b0e38b817738485917a"
+      },
+      "original_dependencies": [
+        "pyro_smoke_v1",
+        "pyro_fire_v1",
+        "particles_v1",
+        "nuke_composite_v1"
+      ],
+      "required_route": [
+        "pyro_smoke_v1",
+        "pyro_fire_v1",
+        "particles_v1",
+        "material_lookdev_v1",
+        "lighting_camera_render_v1",
+        "nuke_composite_v1"
+      ],
+      "branches": [
+        "pyro_smoke_v1",
+        "pyro_fire_v1",
+        "particles_v1"
+      ],
+      "expected_consumer_bindings": [
+        {
+          "producer": "pyro_smoke_v1",
+          "output_type": "volume",
+          "consumer_role": "volume_import",
+          "consumer_assertion": "actual upstream artifact data loaded on typed import, then actual material bind and RenderProduct"
+        },
+        {
+          "producer": "pyro_fire_v1",
+          "output_type": "volume",
+          "consumer_role": "volume_import",
+          "consumer_assertion": "actual upstream artifact data loaded on typed import, then actual material bind and RenderProduct"
+        },
+        {
+          "producer": "particles_v1",
+          "output_type": "geometry",
+          "consumer_role": "geometry_import",
+          "consumer_assertion": "actual upstream artifact data loaded on typed import, then actual material bind and RenderProduct"
+        }
+      ],
+      "handoff_fields_required": [
+        "producer operation_id",
+        "artifact_id",
+        "version",
+        "content sha256",
+        "artifact_type",
+        "frame_set",
+        "colorspace for rendered-image",
+        "premultiplied",
+        "dependencies",
+        "scene/build/provider binding"
+      ],
+      "current_known_gap": "Full common-composer consumption of registered upstream producer operations/artifacts, exact versions/frames/color/content, actual render output and Nuke lineage is not accepted. Prospective branches and standalone synthetic EXR do not establish this chain.",
+      "assertions": [
+        "each branch output actually connected/imported/bound to render consumer, not only dependency names",
+        "rendered-image actual formal producer -> registry -> Nuke artifact_read/Write input lineage",
+        "upstream changed version/hash invalidates transitive render/composite outputs",
+        "wrong artifact type/version/frames/colorspace rejected before consumer executes",
+        "tinyEXR never Houdini upstream evidence"
+      ],
+      "owners": {
+        "graph_assertions": "Z",
+        "formal_execution_typed_registry_Nuke_consumer": "R",
+        "producer_evidence": "E",
+        "dispatch_integration": "M"
+      },
+      "formal_build": "NOT_RUN",
+      "save_reopen": "NOT_RUN",
+      "formal_render": "NOT_RUN",
+      "artifact_consumption": "NOT_RUN",
+      "recovery": "NOT_RUN",
+      "real_host_live": "NOT_RUN",
+      "visual_acceptance": "NOT_RUN",
+      "evidence": null,
+      "interfaces": [
+        "I1",
+        "I2",
+        "I3",
+        "I4"
+      ],
+      "version_preparation": {
+        "22.0.459": {
+          "status": "UNRESOLVED",
+          "blocker": "REGISTERED_UPSTREAM_ARTIFACT_CONSUMPTION_NOT_ACCEPTED",
+          "native_execution": false
+        }
+      }
+    },
+    {
+      "case_id": "composite__nuke_delivery",
+      "status": "BLOCKED",
+      "execution_status": "NOT_RUN",
+      "versions": [
+        "21.0.631",
+        "22.0.459"
+      ],
+      "original_case_reference": {
+        "path": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/outputs/g2-g5-readiness-20260929-final4/receipts-final8/domain-cases.json",
+        "file_sha256": "407968e31f173986b34ab8ae93dac3ba1553e175e42a7e247b75af4c1dae7679",
+        "canonical_case_sha256": "2eff004bbe862a66edd5e013b55bd2f4a3b78397b1812f8d80dd9966e7057f85"
+      },
+      "original_dependencies": [
+        "rbd_destruction_v1",
+        "procedural_geometry_v1",
+        "material_lookdev_v1",
+        "lighting_camera_render_v1",
+        "nuke_composite_v1"
+      ],
+      "required_route": [
+        "rbd_destruction_v1",
+        "procedural_geometry_v1",
+        "material_lookdev_v1",
+        "lighting_camera_render_v1",
+        "nuke_composite_v1"
+      ],
+      "branches": [
+        "rbd_destruction_v1",
+        "procedural_geometry_v1"
+      ],
+      "expected_consumer_bindings": [
+        {
+          "producer": "rbd_destruction_v1",
+          "output_type": "geometry",
+          "consumer_role": "geometry_import",
+          "consumer_assertion": "actual upstream artifact data loaded on typed import, then actual material bind and RenderProduct"
+        },
+        {
+          "producer": "procedural_geometry_v1",
+          "output_type": "geometry",
+          "consumer_role": "geometry_import",
+          "consumer_assertion": "actual upstream artifact data loaded on typed import, then actual material bind and RenderProduct"
+        }
+      ],
+      "handoff_fields_required": [
+        "producer operation_id",
+        "artifact_id",
+        "version",
+        "content sha256",
+        "artifact_type",
+        "frame_set",
+        "colorspace for rendered-image",
+        "premultiplied",
+        "dependencies",
+        "scene/build/provider binding"
+      ],
+      "current_known_gap": "Full common-composer consumption of registered upstream producer operations/artifacts, exact versions/frames/color/content, actual render output and Nuke lineage is not accepted. Prospective branches and standalone synthetic EXR do not establish this chain.",
+      "assertions": [
+        "each branch output actually connected/imported/bound to render consumer, not only dependency names",
+        "rendered-image actual formal producer -> registry -> Nuke artifact_read/Write input lineage",
+        "upstream changed version/hash invalidates transitive render/composite outputs",
+        "wrong artifact type/version/frames/colorspace rejected before consumer executes",
+        "tinyEXR never Houdini upstream evidence"
+      ],
+      "owners": {
+        "graph_assertions": "Z",
+        "formal_execution_typed_registry_Nuke_consumer": "R",
+        "producer_evidence": "E",
+        "dispatch_integration": "M"
+      },
+      "formal_build": "NOT_RUN",
+      "save_reopen": "NOT_RUN",
+      "formal_render": "NOT_RUN",
+      "artifact_consumption": "NOT_RUN",
+      "recovery": "NOT_RUN",
+      "real_host_live": "NOT_RUN",
+      "visual_acceptance": "NOT_RUN",
+      "evidence": null,
+      "interfaces": [
+        "I1",
+        "I2",
+        "I3",
+        "I4"
+      ],
+      "version_preparation": {
+        "22.0.459": {
+          "status": "UNRESOLVED",
+          "blocker": "REGISTERED_UPSTREAM_ARTIFACT_CONSUMPTION_NOT_ACCEPTED",
+          "native_execution": false
+        }
+      }
+    }
+  ],
+  "status": "BLOCKED",
+  "runtime_interface": "FORMAL_ENTRY_PRESENT_FULL_DOMAIN_LIFECYCLE_UNVERIFIED",
+  "real_dcc_verified": false,
+  "visual_verified": false,
+  "recovery_tested": false,
+  "historical_PASS_is_not_current_acceptance": true,
+  "consumer_status": "Prospective documents only; the current formal runner uses source contracts. This inventory is not an execution receipt or acceptance result.",
+  "required_versions": {
+    "houdini": [
+      "21.0.631",
+      "22.0.459"
+    ],
+    "nuke": [
+      "17.0v1"
+    ]
+  }
+}

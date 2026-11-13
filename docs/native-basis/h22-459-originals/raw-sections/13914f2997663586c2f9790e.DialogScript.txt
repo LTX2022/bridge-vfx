@@ -1,0 +1,631 @@
+# Dialog script for oceanspectrum automatically generated
+
+{
+    name	oceanspectrum
+    script	oceanspectrum
+    label	"Ocean Spectrum"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Wave Instancing Points"
+    inputlabel	2	Mask
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+    outputlabel	1	"Spectrum Layer"
+
+    parm {
+        name    "res"
+        label   "Resolution Exponent"
+        type    integer
+        default { "7" }
+        range   { 1! 10 }
+    }
+    parm {
+        name    "gridsize"
+        label   "Grid Size"
+        type    float
+        default { "50" }
+        range   { 0 100 }
+        parmtag { "units" "m1" }
+    }
+    parm {
+        name    "gridcenter"
+        label   "Grid Center"
+        type    vector2
+        size    2
+        default { "0" "0" }
+        range   { -1 1 }
+    }
+    parm {
+        name    "depth"
+        label   "Depth"
+        type    log
+        default { "3000" }
+        range   { 5! 5000 }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "parmvop" "1" }
+        parmtag { "shaderparmcontexts" "cvex" }
+        parmtag { "units" "m1" }
+    }
+    parm {
+        name    "gravity"
+        label   "Gravity"
+        type    float
+        default { "9.8" }
+        range   { 0 10 }
+        parmtag { "units" "m1s-2" }
+    }
+    parm {
+        name    "seed"
+        label   "Seed"
+        type    integer
+        default { "0" }
+        range   { 0 100 }
+    }
+    parm {
+        name    "timeoffset"
+        label   "Time Offset"
+        type    float
+        default { "0" }
+        range   { -10 10 }
+    }
+    parm {
+        name    "timescale"
+        label   "Time Scale"
+        type    float
+        default { "1" }
+        range   { 0 10 }
+    }
+    parm {
+        name    "loop"
+        label   "Loop Over Time"
+        type    toggle
+        default { "0" }
+        range   { 0 1 }
+    }
+    parm {
+        name    "loopperiod"
+        label   "Loop Period"
+        type    float
+        default { "10" }
+        disablewhen "{ loop == 0 }"
+        range   { 0.01! 10 }
+    }
+    group {
+        name    "folder0"
+        label   "Wind"
+
+        parm {
+            name    "spectrumtype"
+            label   "Spectrum Type"
+            type    ordinal
+            default { "tma" }
+            menu {
+                "phillips"  "Phillips"
+                "tma"       "TMA"
+            }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "winddir"
+            label   "Direction"
+            type    float
+            default { "0" }
+            range   { 0 360 }
+        }
+        parm {
+            name    "windspeed"
+            label   "Speed"
+            type    float
+            default { "5" }
+            range   { 0 30 }
+            parmtag { "units" "m1s-1" }
+        }
+        parm {
+            name    "dirbias"
+            label   "Directional Bias"
+            type    float
+            default { "2" }
+            hidewhen "{ spectrumtype != phillips }"
+            range   { 0 10 }
+        }
+        parm {
+            name    "dirmove"
+            label   "Directional Movement"
+            type    float
+            default { "0.6" }
+            hidewhen "{ spectrumtype != phillips }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "swell"
+            label   "Swell"
+            type    float
+            default { "0" }
+            hidewhen "{ spectrumtype != tma }"
+            range   { -1! 1! }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "fetch"
+            label   "Fetch (km)"
+            type    log
+            default { "300" }
+            hidewhen "{ spectrumtype != tma }"
+            range   { 0 3000 }
+            parmtag { "script_callback_language" "python" }
+            parmtag { "units" "" }
+        }
+        parm {
+            name    "chopscale"
+            label   "Chop"
+            type    float
+            default { "0.7" }
+            range   { 0 1 }
+        }
+    }
+
+    group {
+        name    "folder0_1"
+        label   "Amplitude"
+
+        parm {
+            name    "normalize"
+            label   "Normalize"
+            type    toggle
+            default { "1" }
+            disablewhen "{ spectrumtype != phillips }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "referencewind"
+            label   "Reference Wind"
+            type    float
+            default { "10" }
+            disablewhen "{ normalize == 0 } { spectrumtype != phillips }"
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "parmvop" "1" }
+            parmtag { "shaderparmcontexts" "cvex" }
+            parmtag { "units" "m1s-1" }
+        }
+        parm {
+            name    "ampscale"
+            label   "Scale"
+            type    float
+            default { "3" }
+            range   { 0 10 }
+            parmtag { "units" "m1" }
+        }
+        parm {
+            name    "distribution"
+            label   "Random Distribution"
+            type    ordinal
+            default { "2" }
+            menu {
+                "none"      "None"
+                "uniform"   "Uniform"
+                "gaussian"  "Gaussian"
+                "lognormal" "Log Normal"
+            }
+            range   { 0 1 }
+        }
+        parm {
+            name    "mink"
+            label   "Min Wavelength"
+            type    float
+            default { "0" }
+            range   { 0! 1 }
+        }
+        parm {
+            name    "filterabove"
+            label   "filterabove"
+            type    toggle
+            nolabel
+            joinnext
+            default { "0" }
+        }
+        parm {
+            name    "filteraboveres"
+            label   "Filter Above Resolution"
+            type    integer
+            default { "10" }
+            disablewhen "{ filterabove == 0 }"
+            range   { 0 10 }
+        }
+        parm {
+            name    "filterbelow"
+            label   "filterbelow"
+            type    toggle
+            nolabel
+            joinnext
+            default { "0" }
+        }
+        parm {
+            name    "filterbelowres"
+            label   "Filter Below Resolution"
+            type    integer
+            default { "0" }
+            disablewhen "{ filterbelow == 0 }"
+            range   { 0 10 }
+        }
+        parm {
+            name    "remapamplitude"
+            label   "Remap Amplitude"
+            type    toggle
+            default { "off" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "parmvop" "1" }
+            parmtag { "shaderparmcontexts" "cvex" }
+        }
+        parm {
+            name    "maxmapres"
+            label   "Max Remap Resolution"
+            type    integer
+            default { "8" }
+            disablewhen "{ remapamplitude == 0 }"
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "parmvop" "1" }
+            parmtag { "shaderparmcontexts" "cvex" }
+        }
+        parm {
+            name    "amplituderamp"
+            label   "Amplitude Ramp"
+            type    ramp_flt
+            default { "2" }
+            disablewhen "{ remapamplitude == 0 }"
+            range   { 1! 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "parmvop" "1" }
+            parmtag { "rampbasis_var" "ramp_the_basis_strings" }
+            parmtag { "rampbasisdefault" "linear" }
+            parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 1 ) 1interp ( linear ) 2pos ( 1 ) 2value ( 1 ) 2interp ( linear )" }
+            parmtag { "rampkeys_var" "ramp_the_key_positions" }
+            parmtag { "rampshowcontrolsdefault" "0" }
+            parmtag { "rampvalues_var" "ramp_the_key_values" }
+            parmtag { "shaderparmcontexts" "cvex" }
+        }
+    }
+
+    group {
+        name    "folder0_2"
+        label   "Wave Instancing"
+
+        parm {
+            name    "dopointrad"
+            label   "dopointrad"
+            type    toggle
+            nolabel
+            joinnext
+            default { "1" }
+        }
+        parm {
+            name    "pointrad"
+            label   "Radius"
+            type    float
+            joinnext
+            default { "20" }
+            disablewhen "{ dopointrad == 0 }"
+            range   { 0 100 }
+            parmtag { "units" "m" }
+        }
+        parm {
+            name    "pointradvar"
+            label   "Variance"
+            type    float
+            default { "5" }
+            disablewhen "{ dopointrad == 0 }"
+            range   { 0 10 }
+        }
+        parm {
+            name    "dopointrot"
+            label   "dopointangle"
+            type    toggle
+            nolabel
+            joinnext
+            default { "1" }
+        }
+        parm {
+            name    "pointrot"
+            label   "Rotation"
+            type    float
+            joinnext
+            default { "0" }
+            disablewhen "{ dopointrot == 0 }"
+            range   { 0 360 }
+        }
+        parm {
+            name    "pointrotvar"
+            label   "Variance"
+            type    float
+            default { "10" }
+            disablewhen "{ dopointrot == 0 }"
+            range   { 0 60 }
+        }
+        parm {
+            name    "dopointamp"
+            label   "dopointamp"
+            type    toggle
+            nolabel
+            joinnext
+            default { "1" }
+        }
+        parm {
+            name    "pointamp"
+            label   "Amplitude"
+            type    float
+            joinnext
+            default { "0.8" }
+            disablewhen "{ dopointamp == 0 }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "pointampvar"
+            label   "Variance"
+            type    float
+            default { "0.2" }
+            disablewhen "{ dopointamp == 0 }"
+            range   { 0 0.5 }
+        }
+        parm {
+            name    "dopointoffset"
+            label   "dopointamp"
+            type    toggle
+            nolabel
+            joinnext
+            default { "1" }
+        }
+        parm {
+            name    "pointoffset"
+            label   "Offset"
+            type    float
+            joinnext
+            default { "0" }
+            disablewhen "{ dopointoffset == 0 }"
+            range   { -1 1 }
+        }
+        parm {
+            name    "pointoffsetvar"
+            label   "Variance"
+            type    float
+            default { "1" }
+            disablewhen "{ dopointoffset == 0 }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "dopointwavelen"
+            label   "dopointamp"
+            type    toggle
+            nolabel
+            joinnext
+            default { "0" }
+        }
+        parm {
+            name    "pointwavelen"
+            label   "Wavelength"
+            type    float
+            joinnext
+            default { "10" }
+            disablewhen "{ dopointwavelen == 0 }"
+            range   { 0 50 }
+        }
+        parm {
+            name    "pointwavelenvar"
+            label   "Variance"
+            type    float
+            default { "0" }
+            disablewhen "{ dopointwavelen == 0 }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "pointwavechop"
+            label   "Wave Chop"
+            type    float
+            default { "0.5" }
+            disablewhen "{ dopointwavelen == 0 }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "pointrolloff"
+            label   "Rolloff"
+            type    float
+            default { "5" }
+            range   { 0 10 }
+        }
+        parm {
+            name    "pointseed"
+            label   "Seed"
+            type    float
+            default { "0" }
+            range   { 0 10 }
+        }
+        parm {
+            name    "pointconfig"
+            label   "Point Configuration"
+            type    ordinal
+            default { "0" }
+            menu {
+                "auto"  "Auto Detect"
+                "2d"    "2D Best Fit Plane"
+                "3d"    "3D"
+            }
+        }
+    }
+
+    group {
+        name    "folder0_3"
+        label   "Mask"
+
+        parm {
+            name    "masktype"
+            label   "Type"
+            type    ordinal
+            default { "0" }
+            menu {
+                "suppress"      "Suppression"
+                "contribute"    "Contribution"
+            }
+        }
+        parm {
+            name    "noiseenabled"
+            label   "Add Noise"
+            type    toggle
+            default { "0" }
+            disablewhen "{ noiseblend == 1 }"
+        }
+        parm {
+            name    "noisesize"
+            label   "Size"
+            type    vector2
+            size    2
+            default { "20" "20" }
+            disablewhen "{ noiseblend == 1 } { noiseenabled == 0 }"
+            range   { -1 1 }
+            parmtag { "units" "m" }
+        }
+        parm {
+            name    "noiserough"
+            label   "Roughness"
+            type    float
+            default { "0.5" }
+            disablewhen "{ noiseblend == 1 } { noiseenabled == 0 }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "noiseturb"
+            label   "Turbulence"
+            type    integer
+            default { "3" }
+            disablewhen "{ noiseblend == 1 } { noiseenabled == 0 }"
+            range   { 0 5 }
+        }
+        parm {
+            name    "noisedir"
+            label   "Direction"
+            type    float
+            default { "0" }
+            disablewhen "{ noiseblend == 1 } { noiseenabled == 0 }"
+            range   { 0 360 }
+        }
+        parm {
+            name    "noisespeed"
+            label   "Speed"
+            type    float
+            default { "5" }
+            disablewhen "{ noiseblend == 1 } { noiseenabled == 0 }"
+            range   { 0 10 }
+            parmtag { "units" "m1s-1" }
+        }
+        parm {
+            name    "noisepulse"
+            label   "Pulse Length"
+            type    float
+            default { "5" }
+            disablewhen "{ noiseblend == 1 } { noiseenabled == 0 }"
+            range   { 0 10 }
+        }
+        parm {
+            name    "noiseoffset"
+            label   "Offset"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            disablewhen "{ noiseblend == 1 } { noiseenabled == 0 }"
+            range   { -1 1 }
+            parmtag { "units" "m" }
+        }
+        parm {
+            name    "noiseinput"
+            label   "Input Range"
+            type    float_minmax
+            size    2
+            default { "-ch(\"noiseinputmax\")" "0.8" }
+            disablewhen "{ noiseblend == 1 } { noiseenabled == 0 }"
+            range   { -1 1 }
+        }
+        parm {
+            name    "noiseoutput"
+            label   "Output Range"
+            type    float_minmax
+            size    2
+            default { "0" "1" }
+            disablewhen "{ noiseblend == 1 } { noiseenabled == 0 }"
+            range   { 0! 1! }
+        }
+        parm {
+            name    "noiseblend"
+            label   "Mix with Spectrum"
+            type    toggle
+            nolabel
+            joinnext
+            default { "0" }
+        }
+        parm {
+            name    "noiseblendspectrum"
+            label   "Blend with Spectrum"
+            type    oppath
+            default { "" }
+            disablewhen "{ noiseblend == 0 }"
+            parmtag { "oprelative" "." }
+        }
+    }
+
+    group {
+        name    "folder0_4"
+        label   "Visualization"
+
+        parm {
+            name    "doviz"
+            label   "Visualize"
+            type    ordinal
+            default { "0" }
+            menu {
+                "none"      "None"
+                "spectrum"  "Spectrum"
+                "points"    "Wave Instancing"
+                "mask"      "Mask"
+            }
+            range   { 0 1 }
+        }
+        parm {
+            name    "vismode"
+            label   "Visualization Ramp"
+            type    ordinal
+            default { "false" }
+            disablewhen "{ doviz == none }"
+            menu {
+                "none"      "No Mapping"
+                "false"     "Infra-Red"
+                "pink"      "White to Red"
+                "mono"      "Grayscale"
+                "blackbody" "Blackbody"
+                "bipartite" "Two-Tone"
+            }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "visres"
+            label   "Visualization Resolution"
+            type    integer
+            default { "7" }
+            disablewhen "{ doviz == spectrum } { doviz == none }"
+            range   { 1! 8 }
+        }
+        parm {
+            name    "visrange"
+            label   "Visualization Range"
+            type    float
+            size    2
+            default { "-0.001" "0.001" }
+            disablewhen "{ doviz != spectrum }"
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+    }
+
+}

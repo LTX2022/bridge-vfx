@@ -1,0 +1,214 @@
+# Dialog script for clusterpoints automatically generated
+
+{
+    name	clusterpoints
+    script	clusterpoints
+    label	"Cluster Points"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Points To Cluster"
+    inputlabel	2	"Rest Position"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+
+    parm {
+        name    "attrib_name"
+        label   "Output Attribute"
+        type    string
+        joinnext
+        default { "cluster" }
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "cluster_output"
+        label   "Output"
+        type    ordinal
+        joinnext
+        default { "0" }
+        menu {
+            "clusterpoints" "Cluster Points "
+            "averagepoints" "Average Points"
+            "both"          "Both"
+            "boxes"         "Boxes"
+        }
+        range   { 0 1 }
+    }
+    parm {
+        name    "color_output"
+        label   "Color Output"
+        type    ordinal
+        nolabel
+        default { "color" }
+        menu {
+            "off"   "Points"
+            "on"    "Colored Particles"
+            "color" "Colored Points"
+        }
+        range   { 0 1 }
+    }
+    parm {
+        name    "cluster_filter"
+        label   "Cluster Filter"
+        type    string
+        default { "*" }
+        range   { 0 1 }
+    }
+    multiparm {
+        name    "num_controls"
+        label    "Control Attributes"
+        default 1
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "multistartoffset" "1" }
+
+        parm {
+            name    "control_attrib#"
+            label   "Control Attribute #"
+            type    string
+            joinnext
+            default { "P" }
+            range   { 0 1 }
+        }
+        parm {
+            name    "control_weight#"
+            label   "Weight #"
+            type    float
+            default { "1" }
+            range   { 0! 10 }
+        }
+    }
+
+    group {
+        name    "folder0"
+        label   "Cluster Settings"
+
+        parm {
+            name    "buildclusters"
+            label   "Build Clusters"
+            type    toggle
+            default { "1" }
+            range   { 0 1 }
+        }
+        parm {
+            name    "num_clusters"
+            label   "Clusters"
+            type    integer
+            default { "10" }
+            disablewhen "{ buildclusters == 0 }"
+            range   { 1! 100 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "random_seed"
+            label   "Seed"
+            type    integer
+            default { "0" }
+            disablewhen "{ buildclusters == 0 }"
+            range   { 0 100 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "iterations"
+            label   "Refinement Iterations"
+            type    integer
+            default { "50" }
+            disablewhen "{ buildclusters == 0 }"
+            range   { 0 100 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "threshold_attrib"
+            label   "Threshold Attribute"
+            type    string
+            joinnext
+            default { "" }
+            disablewhen "{ buildclusters == 0 }"
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "threshold_weight"
+            label   "Weight"
+            type    float
+            default { "1" }
+            disablewhen "{ threshold_attrib == \"\" } { buildclusters == 0 }"
+            range   { 0! 10 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "initial_time_thresh"
+            label   "Initial Threshold"
+            type    float
+            default { "1" }
+            disablewhen "{ threshold_attrib == \"\" } { buildclusters == 0 }"
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "time_thresh"
+            label   "Goal Threshold"
+            type    float
+            default { "0.25" }
+            disablewhen "{ threshold_attrib == \"\" } { buildclusters == 0 }"
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+    }
+
+    group {
+        name    "folder0_1"
+        label   "Averaging Settings"
+
+        parm {
+            name    "keep_attributes"
+            label   "Copy Point Attributes From Cluster"
+            type    toggle
+            default { "off" }
+            disablewhen "{ output_average_points == 0 }"
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "maxsamplecount"
+            label   "Max Sample Count"
+            type    integer
+            default { "1" }
+            disablewhen "{ keep_attributes == 0 }"
+            range   { 1! 10 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "size_attribute"
+            label   "Size Attribute Name"
+            type    string
+            default { "scale" }
+            disablewhen "{ output_average_points == 0 }"
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "size_padding"
+            label   "Padding Min"
+            type    vector
+            size    3
+            default { "0.1" "0.1" "0.1" }
+            disablewhen "{ output_average_points == 0 }"
+            range   { -1 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "size_padding2"
+            label   "Padding Max"
+            type    vector
+            size    3
+            default { "0.1" "0.1" "0.1" }
+            disablewhen "{ output_average_points == 0 }"
+            range   { -1 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+    }
+
+}

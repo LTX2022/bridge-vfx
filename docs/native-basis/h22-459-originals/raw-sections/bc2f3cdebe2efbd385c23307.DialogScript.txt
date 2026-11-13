@@ -1,0 +1,374 @@
+# Dialog script for oceanfoam automatically generated
+
+{
+    name	oceanfoam
+    script	oceanfoam
+    label	"Ocean Foam"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Ocean Spectrum"
+    inputlabel	2	"Sub-Network Input #2"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+    outputlabel	1	"Foam Particles"
+
+    parm {
+	name	"mode"
+	label	"Mode"
+	type	ordinal
+	default	{ "solve" }
+	menu	{
+	    "emit"	"Emitter"
+	    "solve"	"Solver"
+	}
+    }
+    group {
+	name	"folder5"
+	label	"Emission"
+
+	parm {
+	    name	"density"
+	    label	"Particle Density"
+	    type	float
+	    default	{ "10" }
+	    range	{ 0 500 }
+	}
+	groupsimple {
+	    name	"folder2"
+	    label	"Region"
+
+	    parm {
+		name	"region"
+		label	"Type"
+		type	ordinal
+		default	{ "0" }
+		menu	{
+		    "grid"	"Grid"
+		    "camera"	"Camera"
+		}
+	    }
+	    parm {
+		name	"size"
+		label	"Size"
+		type	vector2
+		size	2
+		default	{ "100" "100" }
+		hidewhen	"{ region != grid }"
+		range	{ -1 1 }
+		parmtag	{ "autoscope" "0000000000000000" }
+	    }
+	    parm {
+		name	"t"
+		label	"Center"
+		type	vector2
+		size	2
+		default	{ "0" "0" }
+		hidewhen	"{ region != grid }"
+		range	{ -1 1 }
+		parmtag	{ "autoscope" "0000000000000000" }
+	    }
+	    parm {
+		name	"camera"
+		label	"Camera"
+		type	oppath
+		default	{ "" }
+		hidewhen	"{ region != camera }"
+		parmtag	{ "opfilter" "!!OBJ/CAMERA!!" }
+		parmtag	{ "oprelative" "." }
+	    }
+	    parm {
+		name	"zmin"
+		label	"Z Near"
+		type	float
+		default	{ "1" }
+		hidewhen	"{ region != camera }"
+		range	{ 0 20 }
+	    }
+	    parm {
+		name	"zmax"
+		label	"Z Far"
+		type	float
+		default	{ "250" }
+		hidewhen	"{ region != camera }"
+		range	{ 0 5000 }
+	    }
+	    parm {
+		name	"winx"
+		label	"Window X"
+		type	float
+		size	2
+		default	{ "-0.1" "1.1" }
+		hidewhen	"{ region != camera }"
+		range	{ 0 10 }
+	    }
+	    parm {
+		name	"winy"
+		label	"Window Y"
+		type	float
+		size	2
+		default	{ "-0.1" "1.1" }
+		hidewhen	"{ region != camera }"
+		range	{ 0 10 }
+	    }
+	    parm {
+		name	"zscale"
+		label	"Z Density Falloff"
+		type	float
+		default	{ "1" }
+		hidewhen	"{ region != camera }"
+		range	{ 0! 1! }
+	    }
+	}
+
+	groupsimple {
+	    name	"folder3"
+	    label	"Conditions"
+
+	    parm {
+		name	"domincusp"
+		label	"Label"
+		type	toggle
+		nolabel
+		joinnext
+		default	{ "1" }
+	    }
+	    parm {
+		name	"mincusp"
+		label	"Min Cusp"
+		type	float
+		default	{ "0.25" }
+		disablewhen	"{ domincusp == 0 }"
+		range	{ 0 1 }
+		parmtag	{ "autoscope" "0000000000000000" }
+	    }
+	    parm {
+		name	"dominvel"
+		label	"Label"
+		type	toggle
+		nolabel
+		joinnext
+		default	{ "0" }
+	    }
+	    parm {
+		name	"minvel"
+		label	"Min Velocity"
+		type	float
+		default	{ "2" }
+		disablewhen	"{ dominvel == 0 }"
+		range	{ 0 5 }
+		parmtag	{ "autoscope" "0000000000000000" }
+	    }
+	    parm {
+		name	"dominheight"
+		label	"Label"
+		type	toggle
+		nolabel
+		joinnext
+		default	{ "0" }
+	    }
+	    parm {
+		name	"minheight"
+		label	"Min Height"
+		type	float
+		default	{ "1" }
+		disablewhen	"{ dominheight == 0 }"
+		range	{ 0 10 }
+		parmtag	{ "autoscope" "0000000000000000" }
+	    }
+	    parm {
+		name	"seed"
+		label	"Seed"
+		type	float
+		default	{ "$T" }
+		range	{ 0 10 }
+	    }
+	}
+
+	groupsimple {
+	    name	"folder0"
+	    label	"Ocean Evaluation"
+
+	    parm {
+		name	"time"
+		label	"Time"
+		type	float
+		default	{ [ "$T" hscript-expr ] }
+		range	{ 0 10 }
+		parmtag	{ "autoscope" "0000000000000000" }
+	    }
+	    parm {
+		name	"downsample"
+		label	"Downsample"
+		type	integer
+		default	{ "0" }
+		range	{ 0 10 }
+		parmtag	{ "autoscope" "0000000000000000" }
+	    }
+	    parm {
+		name	"dodisplace"
+		label	"Displace Particles"
+		type	toggle
+		default	{ "0" }
+	    }
+	}
+
+    }
+
+    group {
+	name	"folder5_1"
+	label	"Solver"
+
+	groupsimple {
+	    name	"folder4"
+	    label	"Foam"
+
+	    parm {
+		name	"life"
+		label	"Life Expectancy"
+		type	float
+		default	{ "1" }
+		disablewhen	"{ mode != solve }"
+		range	{ 0 100 }
+		parmtag	{ "autoscope" "0000000000000000" }
+		parmtag	{ "parmvop" "1" }
+		parmtag	{ "shaderparmcontexts" "sop" }
+	    }
+	    parm {
+		name	"lifevar"
+		label	"Life Variance"
+		type	float
+		default	{ "0.5" }
+		disablewhen	"{ mode != solve }"
+		range	{ 0 5 }
+		parmtag	{ "autoscope" "0000000000000000" }
+		parmtag	{ "parmvop" "1" }
+		parmtag	{ "shaderparmcontexts" "sop" }
+	    }
+	    parm {
+		name	"driftrate"
+		label	"Drift Rate"
+		type	float
+		default	{ "0.25" }
+		disablewhen	"{ mode != solve }"
+		range	{ 0 1 }
+		parmtag	{ "autoscope" "0000000000000000" }
+		parmtag	{ "parmvop" "1" }
+		parmtag	{ "shaderparmcontexts" "cvex" }
+	    }
+	    parm {
+		name	"preservefoam"
+		label	"Preserve Foam"
+		type	toggle
+		default	{ "1" }
+		disablewhen	"{ mode != solve }"
+	    }
+	    parm {
+		name	"minfoamdensity"
+		label	"Min Foam Density"
+		type	float
+		default	{ "6" }
+		disablewhen	"{ preservefoam == 0 } { mode != solve }"
+		range	{ 0 1 }
+		parmtag	{ "autoscope" "0000000000000000" }
+		parmtag	{ "parmvop" "1" }
+		parmtag	{ "shaderparmcontexts" "cvex" }
+	    }
+	    parm {
+		name	"maxfoamdensity"
+		label	"Max Foam Density"
+		type	float
+		default	{ "10" }
+		disablewhen	"{ preservefoam == 0 } { mode != solve }"
+		range	{ 0 1 }
+		parmtag	{ "autoscope" "0000000000000000" }
+		parmtag	{ "parmvop" "1" }
+		parmtag	{ "shaderparmcontexts" "cvex" }
+	    }
+	    parm {
+		name	"foampreserverate"
+		label	"Preservation Rate"
+		type	float
+		default	{ "0.6" }
+		disablewhen	"{ preservefoam == 0 } { mode != solve }"
+		range	{ 0 1 }
+		parmtag	{ "autoscope" "0000000000000000" }
+		parmtag	{ "parmvop" "1" }
+		parmtag	{ "shaderparmcontexts" "cvex" }
+	    }
+	    parm {
+		name	"foamreducerate"
+		label	"Reduction Rate"
+		type	float
+		default	{ "0" }
+		disablewhen	"{ preservefoam == 0 } { mode != solve }"
+		range	{ 0 1 }
+		parmtag	{ "autoscope" "0000000000000000" }
+		parmtag	{ "parmvop" "1" }
+		parmtag	{ "shaderparmcontexts" "cvex" }
+	    }
+	    parm {
+		name	"ptkeep"
+		label	"Keep Attributes"
+		type	string
+		default	{ "pscale rest age life" }
+		disablewhen	"{ mode != solve }"
+		menutoggle	{
+		    [ "opmenu -l -a keep_attributes ptkeep" ]
+		}
+		parmtag	{ "autoscope" "0000000000000000" }
+	    }
+	}
+
+	groupsimple {
+	    name	"folder1"
+	    label	"Simulation"
+
+	    parm {
+		name	"resimulate"
+		label	"Reset Simulation"
+		type	button
+		default	{ [ "ch(\"../../resimulate\")" hscript-expr ] }
+		disablewhen	"{ mode != solve }"
+		parmtag	{ "autoscope" "0000000000000000" }
+	    }
+	    parm {
+		name	"startframe"
+		label	"Start Frame"
+		type	integer
+		default	{ "1" }
+		disablewhen	"{ mode != solve }"
+		range	{ 1 240 }
+		parmtag	{ "autoscope" "0000000000000000" }
+	    }
+	    parm {
+		name	"substeps"
+		label	"Substeps"
+		type	integer
+		default	{ "1" }
+		range	{ 1! 10 }
+	    }
+	    parm {
+		name	"cacheenabled"
+		label	"Cache Simulation"
+		type	toggle
+		default	{ "on" }
+		disablewhen	"{ mode != solve }"
+		parmtag	{ "autoscope" "0000000000000000" }
+	    }
+	    parm {
+		name	"cachemaxsize"
+		label	"Cache Memory (MB)"
+		type	integer
+		default	{ "5000" }
+		disablewhen	"{ mode != solve }"
+		range	{ 0! 1000 }
+		parmtag	{ "autoscope" "0000000000000000" }
+	    }
+	}
+
+    }
+
+}

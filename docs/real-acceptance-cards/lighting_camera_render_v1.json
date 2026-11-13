@@ -1,0 +1,2166 @@
+{
+  "domain_pack": "lighting_camera_render_v1",
+  "case_id": "lighting_camera_render_v1__build_inspect",
+  "case_ids": [
+    "lighting_camera_render_v1__build_inspect",
+    "lighting_camera_render_v1__causal_candidate",
+    "lighting_camera_render_v1__approval_recovery"
+  ],
+  "domain_pack_version": "1.0.0",
+  "kind": "current_software_contract_checklist_not_execution_evidence",
+  "status": "PREPARATION_NOT_ACCEPTED",
+  "applications": [
+    "houdini",
+    "nuke"
+  ],
+  "required_versions": {
+    "houdini": [
+      "21.0.631",
+      "22.0.459"
+    ],
+    "nuke": [
+      "17.0v1"
+    ]
+  },
+  "native_basis_status": "UNRESOLVED",
+  "native_basis": {
+    "static_definitions": [
+      "docs/native-basis/hda-interface-capture.json",
+      "docs/native-basis/native-boundary-metadata-supplement.json",
+      "docs/native-basis/hda-interface-22.0.459.json",
+      "docs/native-basis/supporting-sources-22.0.459.json"
+    ],
+    "meaning": "Current software mappings and static references are not whole-domain native validation; resolve exact operator/parameter/port and output-consumption gaps before marking VERIFIED_SOURCE.",
+    "versioned_preparation": {
+      "22.0.459": {
+        "status": "UNRESOLVED",
+        "scope": "Independent459HDA static fields and prospective software topology only; no compiled template, host process, writer execution or whole-domain validation.",
+        "sources": [
+          {
+            "path": "docs/native-basis/hda-interface-22.0.459.json",
+            "sha256": "e8d9ee7a16f14baa2327ae45412b2acee60ef4849d4e3aa099aea229586379c7",
+            "version": "22.0.459",
+            "native_execution": false
+          },
+          {
+            "path": "docs/native-basis/supporting-sources-22.0.459.json",
+            "sha256": "7b1bd4e1b187de823db9555bca10f40e9278dd88fb790cce8c874576405e1c3a",
+            "version": "22.0.459",
+            "native_execution": false
+          }
+        ],
+        "originals": "docs/native-basis/h22-459-originals/",
+        "captured_hda_operators": 55,
+        "node_templates": {
+          "default": [
+            {
+              "role": "geometry_network",
+              "candidates": [
+                {
+                  "operator": "Obj/geo",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "source",
+              "candidates": [
+                {
+                  "operator": "Sop/sphere",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "usd_network",
+              "candidates": [
+                {
+                  "operator": "Obj/lopnet",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "render_network",
+              "candidates": [
+                {
+                  "operator": "Obj/ropnet",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "geometry_import",
+              "candidates": [
+                {
+                  "operator": "Lop/sopimport",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "camera",
+              "candidates": [
+                {
+                  "operator": "Lop/camera",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "e7961a7d50953ca0a1d9cbd8f5349db34a4ec33fb98118f6d852e91765564612",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "light",
+              "candidates": [
+                {
+                  "operator": "Lop/light",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "34498e2f239d0566a47fc65928f9d42db17b8d7e487a99d3e0acc66b407abf38",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "settings",
+              "candidates": [
+                {
+                  "operator": "Lop/karmarendersettings",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "cc263cb8a2e6e1f964363999322d8395f7c52d7160ea723173a24b23568783fe",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render_var",
+              "candidates": [
+                {
+                  "operator": "Lop/rendervar",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "c296736e72c9e2881b3867ff634cfe6253e5e5848e4f63bc9ff01420cbc39aea",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render_product",
+              "candidates": [
+                {
+                  "operator": "Lop/renderproduct",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "db75399202e08a57d1c5a1b29b42a2f871b690b9f23fe5db955a185bcb015cab",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "settings_binding",
+              "candidates": [
+                {
+                  "operator": "Lop/rendersettings",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "325937f14987a4b23ec74be88ac1bb0a424e351a469776e41b15952dbef9ac3d",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render",
+              "candidates": [
+                {
+                  "operator": "Driver/usdrender",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            }
+          ]
+        },
+        "blocked_controls": {
+          "default": [
+            {
+              "id": "filter_width",
+              "blocker": "H22_459_NATIVE_TEMPLATE_REQUIRED",
+              "native_basis": {
+                "version": "22.0.459",
+                "source": "docs/native-basis/hda-interface-22.0.459.json",
+                "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+                "native_execution": false,
+                "observed": [],
+                "missing": [
+                  {
+                    "role": "settings",
+                    "parameter": "pixelfiltersize",
+                    "operators": [
+                      "Lop/karmarendersettings"
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "native_execution": false
+      }
+    }
+  },
+  "expected_nodes": {
+    "21.0.631": {
+      "default": [
+        {
+          "role": "geometry_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "geo"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "source",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "sphere"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "usd_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "lopnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "render_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "ropnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "geometry_import",
+          "category": "lop",
+          "input_role": null,
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "sopimport"
+          ],
+          "required_parameter_aliases": [
+            [
+              "soppath"
+            ],
+            [
+              "enable_pathprefix"
+            ],
+            [
+              "pathprefix"
+            ]
+          ]
+        },
+        {
+          "role": "camera",
+          "category": "lop",
+          "input_role": "geometry_import",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "camera"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "focalLength"
+            ],
+            [
+              "fStop"
+            ],
+            [
+              "xn__shutteropen_0ta"
+            ],
+            [
+              "xn__shutterclose_nva"
+            ]
+          ]
+        },
+        {
+          "role": "light",
+          "category": "lop",
+          "input_role": "camera",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "light"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "lighttype"
+            ],
+            [
+              "radius"
+            ],
+            [
+              "exposure"
+            ]
+          ]
+        },
+        {
+          "role": "settings",
+          "category": "lop",
+          "input_role": "light",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "karmarendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "camera"
+            ],
+            [
+              "samplesperpixel"
+            ],
+            [
+              "volumesteprate"
+            ],
+            [
+              "enablemblur"
+            ],
+            [
+              "pixelfiltersize"
+            ],
+            [
+              "denoiser"
+            ]
+          ]
+        },
+        {
+          "role": "render_var",
+          "category": "lop",
+          "input_role": "settings",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendervar"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "sourceName"
+            ],
+            [
+              "sourceType"
+            ],
+            [
+              "dataType"
+            ]
+          ]
+        },
+        {
+          "role": "render_product",
+          "category": "lop",
+          "input_role": "render_var",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "renderproduct"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "orderedVars"
+            ],
+            [
+              "productType"
+            ],
+            [
+              "productName"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "settings_binding",
+          "category": "lop",
+          "input_role": "render_product",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "createprims"
+            ],
+            [
+              "products"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "render",
+          "category": "rop",
+          "input_role": null,
+          "parent_role": "render_network",
+          "type_candidates": [
+            "usdrender"
+          ],
+          "required_parameter_aliases": [
+            [
+              "loppath"
+            ],
+            [
+              "rendersettings"
+            ],
+            [
+              "override_camera"
+            ],
+            [
+              "outputimage"
+            ],
+            [
+              "execute"
+            ]
+          ]
+        }
+      ]
+    },
+    "22.0.429": {
+      "default": [
+        {
+          "role": "geometry_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "geo"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "source",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "sphere"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "usd_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "lopnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "render_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "ropnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "geometry_import",
+          "category": "lop",
+          "input_role": null,
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "sopimport"
+          ],
+          "required_parameter_aliases": [
+            [
+              "soppath"
+            ],
+            [
+              "enable_pathprefix"
+            ],
+            [
+              "pathprefix"
+            ]
+          ]
+        },
+        {
+          "role": "camera",
+          "category": "lop",
+          "input_role": "geometry_import",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "camera"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "focalLength"
+            ],
+            [
+              "fStop"
+            ],
+            [
+              "xn__shutteropen_0ta"
+            ],
+            [
+              "xn__shutterclose_nva"
+            ]
+          ]
+        },
+        {
+          "role": "light",
+          "category": "lop",
+          "input_role": "camera",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "light"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "lighttype"
+            ],
+            [
+              "radius"
+            ],
+            [
+              "exposure"
+            ]
+          ]
+        },
+        {
+          "role": "settings",
+          "category": "lop",
+          "input_role": "light",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "karmarendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "camera"
+            ],
+            [
+              "samplesperpixel"
+            ],
+            [
+              "volumesteprate"
+            ],
+            [
+              "enablemblur"
+            ],
+            [
+              "pixelfiltersize"
+            ],
+            [
+              "denoiser"
+            ]
+          ]
+        },
+        {
+          "role": "render_var",
+          "category": "lop",
+          "input_role": "settings",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendervar"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "sourceName"
+            ],
+            [
+              "sourceType"
+            ],
+            [
+              "dataType"
+            ]
+          ]
+        },
+        {
+          "role": "render_product",
+          "category": "lop",
+          "input_role": "render_var",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "renderproduct"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "orderedVars"
+            ],
+            [
+              "productType"
+            ],
+            [
+              "productName"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "settings_binding",
+          "category": "lop",
+          "input_role": "render_product",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "createprims"
+            ],
+            [
+              "products"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "render",
+          "category": "rop",
+          "input_role": null,
+          "parent_role": "render_network",
+          "type_candidates": [
+            "usdrender"
+          ],
+          "required_parameter_aliases": [
+            [
+              "loppath"
+            ],
+            [
+              "rendersettings"
+            ],
+            [
+              "override_camera"
+            ],
+            [
+              "outputimage"
+            ],
+            [
+              "execute"
+            ]
+          ]
+        }
+      ]
+    },
+    "22.0.459": {
+      "default": [
+        {
+          "role": "geometry_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "geo"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "source",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "sphere"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "usd_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "lopnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "render_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "ropnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "geometry_import",
+          "category": "lop",
+          "input_role": null,
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "sopimport"
+          ],
+          "required_parameter_aliases": [
+            [
+              "soppath"
+            ],
+            [
+              "enable_pathprefix"
+            ],
+            [
+              "pathprefix"
+            ]
+          ]
+        },
+        {
+          "role": "camera",
+          "category": "lop",
+          "input_role": "geometry_import",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "camera"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "focalLength"
+            ],
+            [
+              "fStop"
+            ],
+            [
+              "xn__shutteropen_0ta"
+            ],
+            [
+              "xn__shutterclose_nva"
+            ]
+          ]
+        },
+        {
+          "role": "light",
+          "category": "lop",
+          "input_role": "camera",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "light"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "lighttype"
+            ],
+            [
+              "radius"
+            ],
+            [
+              "exposure"
+            ]
+          ]
+        },
+        {
+          "role": "settings",
+          "category": "lop",
+          "input_role": "light",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "karmarendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "camera"
+            ],
+            [
+              "samplesperpixel"
+            ],
+            [
+              "volumesteprate"
+            ],
+            [
+              "enablemblur"
+            ],
+            [
+              "pixelfiltersize"
+            ],
+            [
+              "denoiser"
+            ]
+          ]
+        },
+        {
+          "role": "render_var",
+          "category": "lop",
+          "input_role": "settings",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendervar"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "sourceName"
+            ],
+            [
+              "sourceType"
+            ],
+            [
+              "dataType"
+            ]
+          ]
+        },
+        {
+          "role": "render_product",
+          "category": "lop",
+          "input_role": "render_var",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "renderproduct"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "orderedVars"
+            ],
+            [
+              "productType"
+            ],
+            [
+              "productName"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "settings_binding",
+          "category": "lop",
+          "input_role": "render_product",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "createprims"
+            ],
+            [
+              "products"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "render",
+          "category": "rop",
+          "input_role": null,
+          "parent_role": "render_network",
+          "type_candidates": [
+            "usdrender"
+          ],
+          "required_parameter_aliases": [
+            [
+              "loppath"
+            ],
+            [
+              "rendersettings"
+            ],
+            [
+              "override_camera"
+            ],
+            [
+              "outputimage"
+            ],
+            [
+              "execute"
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "expected_connections": {
+    "21.0.631": {
+      "default": [
+        {
+          "source_role": "geometry_import",
+          "source_output": 0,
+          "destination_role": "camera",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "camera",
+          "source_output": 0,
+          "destination_role": "light",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "light",
+          "source_output": 0,
+          "destination_role": "settings",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "settings",
+          "source_output": 0,
+          "destination_role": "render_var",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_var",
+          "source_output": 0,
+          "destination_role": "render_product",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_product",
+          "source_output": 0,
+          "destination_role": "settings_binding",
+          "destination_input": 0,
+          "require_same_parent": true
+        }
+      ]
+    },
+    "22.0.429": {
+      "default": [
+        {
+          "source_role": "geometry_import",
+          "source_output": 0,
+          "destination_role": "camera",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "camera",
+          "source_output": 0,
+          "destination_role": "light",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "light",
+          "source_output": 0,
+          "destination_role": "settings",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "settings",
+          "source_output": 0,
+          "destination_role": "render_var",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_var",
+          "source_output": 0,
+          "destination_role": "render_product",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_product",
+          "source_output": 0,
+          "destination_role": "settings_binding",
+          "destination_input": 0,
+          "require_same_parent": true
+        }
+      ]
+    },
+    "22.0.459": {
+      "default": [
+        {
+          "source_role": "geometry_import",
+          "source_output": 0,
+          "destination_role": "camera",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "camera",
+          "source_output": 0,
+          "destination_role": "light",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "light",
+          "source_output": 0,
+          "destination_role": "settings",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "settings",
+          "source_output": 0,
+          "destination_role": "render_var",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_var",
+          "source_output": 0,
+          "destination_role": "render_product",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_product",
+          "source_output": 0,
+          "destination_role": "settings_binding",
+          "destination_input": 0,
+          "require_same_parent": true
+        }
+      ]
+    }
+  },
+  "key_parameters": {
+    "semantic": [
+      {
+        "name": "exposure",
+        "value_type": "float",
+        "minimum": -30.0,
+        "maximum": 30.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "lighting_camera"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "focal_length",
+        "value_type": "float",
+        "minimum": 1.0,
+        "maximum": 1000.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "lighting_camera"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "pixel_samples",
+        "value_type": "int",
+        "minimum": 1.0,
+        "maximum": 100000.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "render"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "volume_step_rate",
+        "value_type": "float",
+        "minimum": 0.01,
+        "maximum": 100.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "render"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "denoise",
+        "value_type": "bool",
+        "minimum": null,
+        "maximum": null,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "render"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "sample_quality",
+        "value_type": "float",
+        "minimum": 1.0,
+        "maximum": 100000.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "render"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "filter_width",
+        "value_type": "float",
+        "minimum": 0.01,
+        "maximum": 100.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "render"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "denoise_mix",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "render"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "depth_of_field",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 1000.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "lighting_camera"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "motion_blur",
+        "value_type": "bool",
+        "minimum": null,
+        "maximum": null,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "render"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "shutter",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 10.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "lighting_camera"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "light_size",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 10000.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "lighting_camera"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "houdini"
+      }
+    ],
+    "versioned_native_mapping": {
+      "21.0.631": {
+        "default": [
+          {
+            "id": "exposure",
+            "node_role": "light",
+            "parameter_aliases": [
+              "exposure"
+            ],
+            "minimum": -30,
+            "maximum": 30,
+            "invalidates_from": "lighting_camera",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "light",
+                "exposure_control",
+                "set"
+              ]
+            ]
+          },
+          {
+            "id": "focal_length",
+            "node_role": "camera",
+            "parameter_aliases": [
+              "focalLength"
+            ],
+            "minimum": 1,
+            "maximum": 1000,
+            "invalidates_from": "lighting_camera",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "camera",
+                "focalLength_control",
+                "set"
+              ]
+            ]
+          },
+          {
+            "id": "pixel_samples",
+            "node_role": "settings",
+            "parameter_aliases": [
+              "samplesperpixel"
+            ],
+            "minimum": 1,
+            "maximum": 100000,
+            "invalidates_from": "render",
+            "value_type": "int",
+            "application": "houdini",
+            "required_gates": []
+          },
+          {
+            "id": "volume_step_rate",
+            "node_role": "settings",
+            "parameter_aliases": [
+              "volumesteprate"
+            ],
+            "minimum": 0.01,
+            "maximum": 100,
+            "invalidates_from": "render",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": []
+          },
+          {
+            "id": "denoise",
+            "node_role": "settings",
+            "parameter_aliases": [
+              "denoiser"
+            ],
+            "minimum": 0,
+            "maximum": 1,
+            "invalidates_from": "render",
+            "value_type": "bool",
+            "application": "houdini",
+            "required_gates": []
+          },
+          {
+            "id": "sample_quality",
+            "node_role": "settings",
+            "parameter_aliases": [
+              "samplesperpixel"
+            ],
+            "minimum": 1,
+            "maximum": 100000,
+            "invalidates_from": "render",
+            "value_type": "int",
+            "application": "houdini",
+            "required_gates": []
+          },
+          {
+            "id": "filter_width",
+            "node_role": "settings",
+            "parameter_aliases": [
+              "pixelfiltersize"
+            ],
+            "minimum": 0.01,
+            "maximum": 100,
+            "invalidates_from": "render",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": []
+          },
+          {
+            "id": "denoise_mix",
+            "node_role": "settings",
+            "parameter_aliases": [
+              "denoiser"
+            ],
+            "minimum": 0,
+            "maximum": 1,
+            "invalidates_from": "render",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": []
+          },
+          {
+            "id": "depth_of_field",
+            "node_role": "camera",
+            "parameter_aliases": [
+              "fStop"
+            ],
+            "minimum": 0,
+            "maximum": 1000,
+            "invalidates_from": "lighting_camera",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "camera",
+                "fStop_control",
+                "set"
+              ]
+            ]
+          },
+          {
+            "id": "motion_blur",
+            "node_role": "settings",
+            "parameter_aliases": [
+              "enablemblur"
+            ],
+            "minimum": 0,
+            "maximum": 1,
+            "invalidates_from": "render",
+            "value_type": "bool",
+            "application": "houdini",
+            "required_gates": []
+          },
+          {
+            "id": "shutter",
+            "node_role": "camera",
+            "parameter_aliases": [
+              "xn__shutteropen_0ta"
+            ],
+            "minimum": 0,
+            "maximum": 10,
+            "invalidates_from": "lighting_camera",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "camera",
+                "xn__shutteropen_control_16a",
+                "set"
+              ],
+              [
+                "camera",
+                "xn__shutterclose_control_o8a",
+                "set"
+              ]
+            ]
+          },
+          {
+            "id": "light_size",
+            "node_role": "light",
+            "parameter_aliases": [
+              "radius"
+            ],
+            "minimum": 0,
+            "maximum": 10000,
+            "invalidates_from": "lighting_camera",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "light",
+                "radius_control",
+                "set"
+              ],
+              [
+                "light",
+                "lighttype",
+                "UsdLuxSphereLight"
+              ]
+            ]
+          }
+        ]
+      },
+      "22.0.429": {
+        "default": [
+          {
+            "id": "exposure",
+            "node_role": "light",
+            "parameter_aliases": [
+              "exposure"
+            ],
+            "minimum": -30,
+            "maximum": 30,
+            "invalidates_from": "lighting_camera",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "light",
+                "exposure_control",
+                "set"
+              ]
+            ]
+          },
+          {
+            "id": "focal_length",
+            "node_role": "camera",
+            "parameter_aliases": [
+              "focalLength"
+            ],
+            "minimum": 1,
+            "maximum": 1000,
+            "invalidates_from": "lighting_camera",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "camera",
+                "focalLength_control",
+                "set"
+              ]
+            ]
+          },
+          {
+            "id": "pixel_samples",
+            "node_role": "settings",
+            "parameter_aliases": [
+              "samplesperpixel"
+            ],
+            "minimum": 1,
+            "maximum": 100000,
+            "invalidates_from": "render",
+            "value_type": "int",
+            "application": "houdini",
+            "required_gates": []
+          },
+          {
+            "id": "volume_step_rate",
+            "node_role": "settings",
+            "parameter_aliases": [
+              "volumesteprate"
+            ],
+            "minimum": 0.01,
+            "maximum": 100,
+            "invalidates_from": "render",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": []
+          },
+          {
+            "id": "denoise",
+            "node_role": "settings",
+            "parameter_aliases": [
+              "denoiser"
+            ],
+            "minimum": 0,
+            "maximum": 1,
+            "invalidates_from": "render",
+            "value_type": "bool",
+            "application": "houdini",
+            "required_gates": []
+          },
+          {
+            "id": "sample_quality",
+            "node_role": "settings",
+            "parameter_aliases": [
+              "samplesperpixel"
+            ],
+            "minimum": 1,
+            "maximum": 100000,
+            "invalidates_from": "render",
+            "value_type": "int",
+            "application": "houdini",
+            "required_gates": []
+          },
+          {
+            "id": "filter_width",
+            "node_role": "settings",
+            "parameter_aliases": [
+              "pixelfiltersize"
+            ],
+            "minimum": 0.01,
+            "maximum": 100,
+            "invalidates_from": "render",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": []
+          },
+          {
+            "id": "denoise_mix",
+            "node_role": "settings",
+            "parameter_aliases": [
+              "denoiser"
+            ],
+            "minimum": 0,
+            "maximum": 1,
+            "invalidates_from": "render",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": []
+          },
+          {
+            "id": "depth_of_field",
+            "node_role": "camera",
+            "parameter_aliases": [
+              "fStop"
+            ],
+            "minimum": 0,
+            "maximum": 1000,
+            "invalidates_from": "lighting_camera",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "camera",
+                "fStop_control",
+                "set"
+              ]
+            ]
+          },
+          {
+            "id": "motion_blur",
+            "node_role": "settings",
+            "parameter_aliases": [
+              "enablemblur"
+            ],
+            "minimum": 0,
+            "maximum": 1,
+            "invalidates_from": "render",
+            "value_type": "bool",
+            "application": "houdini",
+            "required_gates": []
+          },
+          {
+            "id": "shutter",
+            "node_role": "camera",
+            "parameter_aliases": [
+              "xn__shutteropen_0ta"
+            ],
+            "minimum": 0,
+            "maximum": 10,
+            "invalidates_from": "lighting_camera",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "camera",
+                "xn__shutteropen_control_16a",
+                "set"
+              ],
+              [
+                "camera",
+                "xn__shutterclose_control_o8a",
+                "set"
+              ]
+            ]
+          },
+          {
+            "id": "light_size",
+            "node_role": "light",
+            "parameter_aliases": [
+              "radius"
+            ],
+            "minimum": 0,
+            "maximum": 10000,
+            "invalidates_from": "lighting_camera",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "light",
+                "radius_control",
+                "set"
+              ],
+              [
+                "light",
+                "lighttype",
+                "UsdLuxSphereLight"
+              ]
+            ]
+          }
+        ]
+      },
+      "22.0.459": {
+        "default": [
+          {
+            "minimum": -30,
+            "maximum": 30,
+            "value_type": "float",
+            "application": "houdini",
+            "native_conversion": "exposure",
+            "required_gates": [
+              [
+                "light",
+                "exposure_control",
+                "set"
+              ]
+            ],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Lop/light",
+                  "parameter": "exposure",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "34498e2f239d0566a47fc65928f9d42db17b8d7e487a99d3e0acc66b407abf38",
+                  "archive_sha256": "82ea9d10928bb8bd0fecba63f30068e60faa887abf4d2a6c25136dcc89574645"
+                },
+                {
+                  "operator": "Lop/light",
+                  "parameter": "exposure_control",
+                  "type": "string",
+                  "size": 1,
+                  "section_sha256": "34498e2f239d0566a47fc65928f9d42db17b8d7e487a99d3e0acc66b407abf38",
+                  "archive_sha256": "82ea9d10928bb8bd0fecba63f30068e60faa887abf4d2a6c25136dcc89574645"
+                }
+              ],
+              "missing": []
+            },
+            "native_status": "mapped",
+            "id": "exposure",
+            "node_role": "light",
+            "parameter_aliases": [
+              "exposure"
+            ]
+          },
+          {
+            "minimum": 1,
+            "maximum": 1000,
+            "value_type": "float",
+            "application": "houdini",
+            "native_conversion": "focal_length",
+            "required_gates": [
+              [
+                "camera",
+                "focalLength_control",
+                "set"
+              ]
+            ],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Lop/camera",
+                  "parameter": "focalLength",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "e7961a7d50953ca0a1d9cbd8f5349db34a4ec33fb98118f6d852e91765564612",
+                  "archive_sha256": "82ea9d10928bb8bd0fecba63f30068e60faa887abf4d2a6c25136dcc89574645"
+                },
+                {
+                  "operator": "Lop/camera",
+                  "parameter": "focalLength_control",
+                  "type": "string",
+                  "size": 1,
+                  "section_sha256": "e7961a7d50953ca0a1d9cbd8f5349db34a4ec33fb98118f6d852e91765564612",
+                  "archive_sha256": "82ea9d10928bb8bd0fecba63f30068e60faa887abf4d2a6c25136dcc89574645"
+                }
+              ],
+              "missing": []
+            },
+            "native_status": "mapped",
+            "id": "focal_length",
+            "node_role": "camera",
+            "parameter_aliases": [
+              "focalLength"
+            ]
+          },
+          {
+            "minimum": 1,
+            "maximum": 100000,
+            "value_type": "int",
+            "application": "houdini",
+            "native_conversion": "pixel_samples",
+            "required_gates": [],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Lop/karmarendersettings",
+                  "parameter": "samplesperpixel",
+                  "type": "integer",
+                  "size": 1,
+                  "section_sha256": "cc263cb8a2e6e1f964363999322d8395f7c52d7160ea723173a24b23568783fe",
+                  "archive_sha256": "82ea9d10928bb8bd0fecba63f30068e60faa887abf4d2a6c25136dcc89574645"
+                }
+              ],
+              "missing": []
+            },
+            "native_status": "mapped",
+            "id": "pixel_samples",
+            "node_role": "settings",
+            "parameter_aliases": [
+              "samplesperpixel"
+            ]
+          },
+          {
+            "minimum": 0.01,
+            "maximum": 100,
+            "value_type": "float",
+            "application": "houdini",
+            "native_conversion": "volume_step_rate",
+            "required_gates": [],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Lop/karmarendersettings",
+                  "parameter": "volumesteprate",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "cc263cb8a2e6e1f964363999322d8395f7c52d7160ea723173a24b23568783fe",
+                  "archive_sha256": "82ea9d10928bb8bd0fecba63f30068e60faa887abf4d2a6c25136dcc89574645"
+                }
+              ],
+              "missing": []
+            },
+            "native_status": "mapped",
+            "id": "volume_step_rate",
+            "node_role": "settings",
+            "parameter_aliases": [
+              "volumesteprate"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 1,
+            "value_type": "bool",
+            "application": "houdini",
+            "native_conversion": "denoise",
+            "required_gates": [],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Lop/karmarendersettings",
+                  "parameter": "denoiser",
+                  "type": "string",
+                  "size": 1,
+                  "section_sha256": "cc263cb8a2e6e1f964363999322d8395f7c52d7160ea723173a24b23568783fe",
+                  "archive_sha256": "82ea9d10928bb8bd0fecba63f30068e60faa887abf4d2a6c25136dcc89574645"
+                }
+              ],
+              "missing": []
+            },
+            "native_status": "mapped",
+            "id": "denoise",
+            "node_role": "settings",
+            "parameter_aliases": [
+              "denoiser"
+            ]
+          },
+          {
+            "minimum": 1,
+            "maximum": 100000,
+            "value_type": "int",
+            "application": "houdini",
+            "native_conversion": "sample_quality",
+            "required_gates": [],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Lop/karmarendersettings",
+                  "parameter": "samplesperpixel",
+                  "type": "integer",
+                  "size": 1,
+                  "section_sha256": "cc263cb8a2e6e1f964363999322d8395f7c52d7160ea723173a24b23568783fe",
+                  "archive_sha256": "82ea9d10928bb8bd0fecba63f30068e60faa887abf4d2a6c25136dcc89574645"
+                }
+              ],
+              "missing": []
+            },
+            "native_status": "mapped",
+            "id": "sample_quality",
+            "node_role": "settings",
+            "parameter_aliases": [
+              "samplesperpixel"
+            ]
+          },
+          {
+            "minimum": 0.01,
+            "maximum": 100,
+            "value_type": "float",
+            "application": "houdini",
+            "native_conversion": "filter_width",
+            "required_gates": [],
+            "unit": "pixels",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [],
+              "missing": [
+                {
+                  "role": "settings",
+                  "parameter": "pixelfiltersize",
+                  "operators": [
+                    "Lop/karmarendersettings"
+                  ]
+                }
+              ]
+            },
+            "native_status": "blocked",
+            "blocker": "H22_459_NATIVE_TEMPLATE_REQUIRED",
+            "id": "filter_width",
+            "node_role": "settings",
+            "parameter_aliases": [
+              "pixelfiltersize"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 1,
+            "value_type": "float",
+            "application": "houdini",
+            "native_conversion": "denoise_mix",
+            "required_gates": [],
+            "native_supported_values": [
+              0,
+              1
+            ],
+            "interval_blocker": "EXTERNAL_DENOISE_BLEND_REQUIRED",
+            "external_application": "external_nuke",
+            "external_contract": {
+              "raw_beauty": "required",
+              "denoised_beauty": "required",
+              "weight": "denoise_mix",
+              "formula": "raw*(1-weight)+denoised*weight",
+              "operation_receipt": "required"
+            },
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Lop/karmarendersettings",
+                  "parameter": "denoiser",
+                  "type": "string",
+                  "size": 1,
+                  "section_sha256": "cc263cb8a2e6e1f964363999322d8395f7c52d7160ea723173a24b23568783fe",
+                  "archive_sha256": "82ea9d10928bb8bd0fecba63f30068e60faa887abf4d2a6c25136dcc89574645"
+                }
+              ],
+              "missing": []
+            },
+            "native_status": "mapped",
+            "id": "denoise_mix",
+            "node_role": "settings",
+            "parameter_aliases": [
+              "denoiser"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 1000,
+            "value_type": "float",
+            "application": "houdini",
+            "native_conversion": "depth_of_field",
+            "required_gates": [
+              [
+                "camera",
+                "fStop_control",
+                "set"
+              ]
+            ],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Lop/camera",
+                  "parameter": "fStop",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "e7961a7d50953ca0a1d9cbd8f5349db34a4ec33fb98118f6d852e91765564612",
+                  "archive_sha256": "82ea9d10928bb8bd0fecba63f30068e60faa887abf4d2a6c25136dcc89574645"
+                },
+                {
+                  "operator": "Lop/camera",
+                  "parameter": "fStop_control",
+                  "type": "string",
+                  "size": 1,
+                  "section_sha256": "e7961a7d50953ca0a1d9cbd8f5349db34a4ec33fb98118f6d852e91765564612",
+                  "archive_sha256": "82ea9d10928bb8bd0fecba63f30068e60faa887abf4d2a6c25136dcc89574645"
+                }
+              ],
+              "missing": []
+            },
+            "native_status": "mapped",
+            "id": "depth_of_field",
+            "node_role": "camera",
+            "parameter_aliases": [
+              "fStop"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 1,
+            "value_type": "bool",
+            "application": "houdini",
+            "native_conversion": "motion_blur",
+            "required_gates": [],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Lop/karmarendersettings",
+                  "parameter": "enablemblur",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "cc263cb8a2e6e1f964363999322d8395f7c52d7160ea723173a24b23568783fe",
+                  "archive_sha256": "82ea9d10928bb8bd0fecba63f30068e60faa887abf4d2a6c25136dcc89574645"
+                }
+              ],
+              "missing": []
+            },
+            "native_status": "mapped",
+            "id": "motion_blur",
+            "node_role": "settings",
+            "parameter_aliases": [
+              "enablemblur"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 10,
+            "value_type": "float",
+            "application": "houdini",
+            "native_conversion": "shutter",
+            "required_gates": [
+              [
+                "camera",
+                "xn__shutteropen_control_16a",
+                "set"
+              ],
+              [
+                "camera",
+                "xn__shutterclose_control_o8a",
+                "set"
+              ]
+            ],
+            "unit": "UsdTimeCode",
+            "semantic_contract": "centered_duration_usd_timecode/1",
+            "inverse": "shutter_close - shutter_open",
+            "forward": "(-duration / 2, duration / 2)",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Lop/camera",
+                  "parameter": "xn__shutteropen_0ta",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "e7961a7d50953ca0a1d9cbd8f5349db34a4ec33fb98118f6d852e91765564612",
+                  "archive_sha256": "82ea9d10928bb8bd0fecba63f30068e60faa887abf4d2a6c25136dcc89574645"
+                },
+                {
+                  "operator": "Lop/camera",
+                  "parameter": "xn__shutteropen_control_16a",
+                  "type": "string",
+                  "size": 1,
+                  "section_sha256": "e7961a7d50953ca0a1d9cbd8f5349db34a4ec33fb98118f6d852e91765564612",
+                  "archive_sha256": "82ea9d10928bb8bd0fecba63f30068e60faa887abf4d2a6c25136dcc89574645"
+                },
+                {
+                  "operator": "Lop/camera",
+                  "parameter": "xn__shutterclose_control_o8a",
+                  "type": "string",
+                  "size": 1,
+                  "section_sha256": "e7961a7d50953ca0a1d9cbd8f5349db34a4ec33fb98118f6d852e91765564612",
+                  "archive_sha256": "82ea9d10928bb8bd0fecba63f30068e60faa887abf4d2a6c25136dcc89574645"
+                }
+              ],
+              "missing": []
+            },
+            "native_status": "mapped",
+            "id": "shutter",
+            "node_role": "camera",
+            "parameter_aliases": [
+              "xn__shutteropen_0ta"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 10000,
+            "value_type": "float",
+            "application": "houdini",
+            "native_conversion": "light_size",
+            "required_gates": [
+              [
+                "light",
+                "radius_control",
+                "set"
+              ],
+              [
+                "light",
+                "lighttype",
+                "UsdLuxSphereLight"
+              ]
+            ],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Lop/light",
+                  "parameter": "radius",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "34498e2f239d0566a47fc65928f9d42db17b8d7e487a99d3e0acc66b407abf38",
+                  "archive_sha256": "82ea9d10928bb8bd0fecba63f30068e60faa887abf4d2a6c25136dcc89574645"
+                },
+                {
+                  "operator": "Lop/light",
+                  "parameter": "radius_control",
+                  "type": "string",
+                  "size": 1,
+                  "section_sha256": "34498e2f239d0566a47fc65928f9d42db17b8d7e487a99d3e0acc66b407abf38",
+                  "archive_sha256": "82ea9d10928bb8bd0fecba63f30068e60faa887abf4d2a6c25136dcc89574645"
+                },
+                {
+                  "operator": "Lop/light",
+                  "parameter": "lighttype",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "34498e2f239d0566a47fc65928f9d42db17b8d7e487a99d3e0acc66b407abf38",
+                  "archive_sha256": "82ea9d10928bb8bd0fecba63f30068e60faa887abf4d2a6c25136dcc89574645"
+                }
+              ],
+              "missing": []
+            },
+            "native_status": "mapped",
+            "id": "light_size",
+            "node_role": "light",
+            "parameter_aliases": [
+              "radius"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "save_reopen": [
+    "Use the production generator and task-owned host; persist project content/version/owner and the original operation receipt.",
+    "Stop the actual owned worker and verify trusted stop, then reopen the saved HIP/NK in a new host identity.",
+    "Read back every role, native type, port, connection and semantic control; preserve unrelated artist changes."
+  ],
+  "stop_recovery": [
+    "Interrupt the actual case worker, not an auxiliary process.",
+    "Retain the heavy slot while stop is unknown; verify task/session/nonce/process/generation/build/scene epoch.",
+    "Restart the controller, restore the same operation from persistent facts, and verify no duplicate execution/registration."
+  ],
+  "artifact_checks": [
+    "Consume only task-owned registered input IDs/versions/hash and exact frames.",
+    "Validate applicable outputs: diagnostic_preview, editable_scene",
+    "Require producer operation, scene/version, format/dimensions/channels, color/premultiplication and dependency facts; reject missing typed metadata.",
+    "Check missing/repeated/frozen/abrupt frames against a frozen activity interval; pixel change alone does not establish correct motion."
+  ],
+  "raw_evidence_path": "outputs/live-validation/lighting_camera_render_v1/<new-run-id>",
+  "human_checks": [
+    "Editable topology and save/reopen match the approved controls.",
+    "Compare the registered reference and feedback result; judge actual motion, silhouette, timing, material, lighting and composition.",
+    "Accept visual quality separately from software, format and process-stop checks."
+  ],
+  "resource_requirements": {
+    "explicit_frames_max": 12,
+    "seconds_max": 120,
+    "disk_bytes": "explicit positive task budget; include output/cache/temp/logs",
+    "cache": "separate exact path/frame/content-version/estimated-bytes/invalidation confirmation before execution",
+    "concurrency": "one heavy DCC job; unknown stop keeps slot"
+  },
+  "blockers": [
+    "Full 54-row current-build evidence and independent M1 reception remain incomplete.",
+    "Whole-domain native basis and applicable output/actual worker recovery are not verified by this card."
+  ],
+  "composite": true
+}

@@ -1,0 +1,223 @@
+# Dialog script for crowdtransition::3.0 automatically generated
+
+{
+    name	crowdtransition::3.0
+    script	crowdtransition::3.0
+    label	"Crowd Transition"
+
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Trigger or Triggerlogic"
+    inputlabel	2	"Input 2"
+    parmtag { inputisref2 1 }
+    inputlabel	3	"Input 3"
+    inputlabel	4	"Input 4"
+
+    parm {
+        name    "usegroup"
+        label   "Use Group"
+        type    toggle
+        nolabel
+        joinnext
+        default { "off" }
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "partgroup"
+        label   "Group"
+        type    string
+        default { "" }
+        disablewhen "{ usegroup == 0 }"
+        menutoggle {
+            [ "import doppoptoolutils" ]
+            [ "" ]
+            [ "return doppoptoolutils.buildGroupMenu(hou.pwd())" ]
+            language python
+        }
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "sepparm2"
+        label   "Separator"
+        type    separator
+        default { "" }
+    }
+    parm {
+        name    "instate"
+        label   "Input State"
+        type    string
+        default { "walk" }
+        menureplace {
+            [ "import crowdstoolutils" ]
+            [ "return crowdstoolutils.buildDopStateMenu(hou.pwd())" ]
+            language python
+        }
+        range   { 0 1 }
+    }
+    parm {
+        name    "outstate"
+        label   "Output State"
+        type    string
+        default { "run" }
+        menureplace {
+            [ "import crowdstoolutils" ]
+            [ "return crowdstoolutils.buildDopStateMenu(hou.pwd())" ]
+            language python
+        }
+        range   { 0 1 }
+    }
+    parm {
+        name    "useoutclip"
+        label   "Set Output Clip"
+        type    toggle
+        nolabel
+        joinnext
+        default { "0" }
+    }
+    parm {
+        name    "outclip"
+        label   "Output Clip"
+        type    string
+        default { "" }
+        disablewhen "{ useoutclip == 0 }"
+        menureplace {
+            [ "import crowdstoolutils" ]
+            [ "return crowdstoolutils.buildDopClipMenu(hou.pwd())" ]
+            language python
+        }
+    }
+    parm {
+        name    "uselocal"
+        label   "Use VEXpressions"
+        type    toggle
+        default { "0" }
+        range   { 0 1 }
+    }
+    parm {
+        name    "localexpression"
+        label   " "
+        type    string
+        default { "" }
+        hidewhen "{ uselocal == 0 }"
+        menu {
+            [ "import vexpressionmenu" ]
+            [ "" ]
+            [ "return vexpressionmenu.buildSnippetMenu('crowdtransition::3.0/localexpression', kwargs=kwargs)" ]
+            language python
+        }
+        range   { 0 1 }
+        parmtag { "editor" "1" }
+        parmtag { "editorlang" "vex" }
+        parmtag { "editorlines" "5-40" }
+    }
+    parm {
+        name    "sepparm"
+        label   "Separator"
+        type    separator
+        default { "" }
+        range   { 0 1 }
+    }
+    parm {
+        name    "randomstart"
+        label   "Random Delay"
+        type    toggle
+        nolabel
+        joinnext
+        default { "0" }
+        range   { 0 1 }
+    }
+    parm {
+        name    "randomstartoffset"
+        label   "Max Random Delay"
+        type    float
+        default { "1" }
+        disablewhen "{ randomstart != 1 }"
+        range   { 0 5 }
+    }
+    parm {
+        name    "randomstartseed"
+        label   "Random Seed"
+        type    float
+        default { "1" }
+        disablewhen "{ randomstart == 0 }"
+        hidewhen "{ randomstart == 0 }"
+        range   { 0 10 }
+    }
+    parm {
+        name    "enableinterrupt"
+        label   "Interrupt Active Transitions"
+        type    toggle
+        default { "0" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "detachfromparent"
+        label   "Detach from Parent Agent"
+        type    toggle
+        default { "0" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "useclipgraph"
+        label   "Use Clip Transition Graph"
+        type    toggle
+        default { "0" }
+        range   { 0 1 }
+    }
+    parm {
+        name    "duration"
+        label   "Duration (sec)"
+        type    float
+        default { "1" }
+        disablewhen "{ useclipgraph == 1 }"
+        hidewhen "{ useclipgraph == 1 }"
+        range   { 0 10 }
+    }
+    parm {
+        name    "animationmatch"
+        label   "Animation Match"
+        type    toggle
+        invisible
+        default { "0" }
+        range   { 0 1 }
+    }
+    parm {
+        name    "maxanimationtime"
+        label   "Max Search Time"
+        type    float
+        invisible
+        default { "2" }
+        disablewhen "{ animationmatch != 1 }"
+        range   { 0 10 }
+    }
+    parm {
+        name    "sepparm3"
+        label   "Separator"
+        type    separator
+        invisible
+        default { "" }
+        range   { 0 1 }
+    }
+    parm {
+        name    "blend"
+        label   "State Blend"
+        type    ramp_flt
+        default { "2" }
+        disablewhen "{ useclipgraph == 1 }"
+        hidewhen "{ useclipgraph == 1 }"
+        range   { 1! 10 }
+        parmtag { "rampshowcontrolsdefault" "0" }
+    }
+    parm {
+        name    "transitiondescription"
+        label   "Transition Description"
+        type    string
+        invisible
+        default { "`chs(\"DESCRIPTIVE_PARM/description\")`" }
+    }
+}

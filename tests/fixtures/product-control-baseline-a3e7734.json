@@ -1,0 +1,334 @@
+{
+  "source_revision": "a3e7734e0f69b663be5bbd7d1f97bbdcb2d90b7d",
+  "source_sha256": {
+    "packages/houdini-bridge/src/houdini_bridge/product_control_definitions.py": "8a2f459fe27abe2efb4116a8c9c54a88c84608a93a4d1947578b50681007d871",
+    "packages/houdini-bridge/src/houdini_bridge/native_pyro_domains.py": "de7a6ccc82fed8c42f58b42d119edb125f7c0c1bae5ba1010ed385eb42122ebe",
+    "packages/houdini-bridge/src/houdini_bridge/native_flip_rbd_domains.py": "4358611600482eb7b6f6e6242a516329fef64911a07a95c0b52a1809225968f5",
+    "packages/houdini-bridge/src/houdini_bridge/native_particle_ocean_geometry_domains.py": "dfff58e9be7f6985674a5e1bfe4556efcc0dfdf1e66ae0e09ec72f402bf5e001"
+  },
+  "mutable_native_fields": {
+    "pyro_fire_v1": {
+      "flame_height": [
+        "role",
+        "aliases",
+        "native_conversion",
+        "required_gates",
+        "native_status",
+        "blocker",
+        "semantic_contract",
+        "unit",
+        "requires_context",
+        "evidence_scope"
+      ]
+    },
+    "particles_v1": {
+      "size_variance": [
+        "aliases",
+        "native_status",
+        "blocker",
+        "semantic_contract",
+        "unit",
+        "context_parms",
+        "evidence_scope"
+      ]
+    },
+    "rbd_destruction_v1": {
+      "velocity_variance": [
+        "role",
+        "aliases",
+        "native_type",
+        "unit",
+        "native_program",
+        "context_parms"
+      ]
+    }
+  },
+  "versions": {
+    "21.0.631": {
+      "pyro_smoke_v1": {
+        "full_native_sha256": "0d8a3752b8956437746c664c5340eb0ee842659b8a36f1693713822b8083e7c4",
+        "unaffected_native_sha256": "0d8a3752b8956437746c664c5340eb0ee842659b8a36f1693713822b8083e7c4",
+        "product_metadata_sha256": "27e344323e359441101e7505384e3e82320853b68c4f76a411f8ada2e3edc50b",
+        "control_names": [
+          "denoise_mix",
+          "density_scale",
+          "dissipation",
+          "disturbance",
+          "field_sharpen",
+          "shredding",
+          "simulation_substeps",
+          "source_scale",
+          "turbulence",
+          "volume_samples",
+          "volume_step_rate",
+          "voxel_size"
+        ]
+      },
+      "pyro_fire_v1": {
+        "full_native_sha256": "e1a27704e74ef723d2777794ecf1fa3462c2db3f1c209c0700cb293b67b29c3b",
+        "unaffected_native_sha256": "8ad56bfbdde4d5dfaa3ac4526abed4751a27c7d4c357b1b1178344420c89867f",
+        "product_metadata_sha256": "c8385232b36984a12ce8b9fdb3d2d87efd8cbaf6afc87fcb115e89929e1c85fb",
+        "control_names": [
+          "burn_rate",
+          "cooling_rate",
+          "emission_contrast",
+          "emission_intensity",
+          "flame_disturbance",
+          "flame_height",
+          "flame_lift",
+          "fuel_rate",
+          "glow_amount",
+          "temperature_scale",
+          "velocity_detail",
+          "voxel_size"
+        ]
+      },
+      "water_flip_v1": {
+        "full_native_sha256": "061498b095921e9f23269db07fd9ed6ceb64602eebd1e3e7c76d62f2eef1f44c",
+        "unaffected_native_sha256": "061498b095921e9f23269db07fd9ed6ceb64602eebd1e3e7c76d62f2eef1f44c",
+        "product_metadata_sha256": "9371508895bf34afaa761124ed34f746eaca1958db2afb094411e35d4801f109",
+        "control_names": [
+          "collision_passes",
+          "collision_separation",
+          "droplet_scale",
+          "meshing_detail",
+          "particle_separation",
+          "substeps",
+          "surface_resolution",
+          "surface_tension",
+          "viscosity"
+        ]
+      },
+      "rbd_destruction_v1": {
+        "full_native_sha256": "06d86f8c4ac3e3b188bd5aa916316a3c6a03afb243f7fb4b47d7970f497b909c",
+        "unaffected_native_sha256": "4762bfa2e0008a7eabab2bdafcf2ee310448889efd94552cb83cd53a58da03a4",
+        "product_metadata_sha256": "155075835755d2cd72e17d9b2c4ef6a8f8db10c0f0691b4179130fc474f56bd1",
+        "control_names": [
+          "activation_frame",
+          "constraint_strength",
+          "drag",
+          "fracture_scale",
+          "fracture_variance",
+          "impact_spread",
+          "impact_threshold",
+          "impulse_scale",
+          "piece_scale",
+          "substeps",
+          "velocity_variance"
+        ]
+      },
+      "particles_v1": {
+        "full_native_sha256": "2de45bc0987ae7456eb05629be561c6fccf200c467189202f36bf435c56f280a",
+        "unaffected_native_sha256": "3189b91e25d165071d3111f824529526a80b62d7845af8f7176bc95a57be7580",
+        "product_metadata_sha256": "ccda9f611cc27f03aa4ff25541a5244003c17bebd9c024647f845a22057060d7",
+        "control_names": [
+          "birth_rate",
+          "cluster_strength",
+          "collision_radius",
+          "drag",
+          "emission_variance",
+          "force_noise",
+          "force_strength",
+          "life",
+          "life_variance",
+          "motion_blur_scale",
+          "size",
+          "size_variance",
+          "speed",
+          "trail_length",
+          "velocity_variance"
+        ]
+      },
+      "swarm_flocking_v1": {
+        "full_native_sha256": "360b46a27eabb26dba892f884e9fda99880444acd3b85446acab3ee10014aae8",
+        "unaffected_native_sha256": "360b46a27eabb26dba892f884e9fda99880444acd3b85446acab3ee10014aae8",
+        "product_metadata_sha256": "443d8435cbfbb838cf4daecfb41948856d150db050823532c65c6130aa31db6a",
+        "control_names": [
+          "alignment",
+          "cohesion",
+          "goal_attraction",
+          "neighbor_radius",
+          "noise_strength",
+          "separation",
+          "target_noise"
+        ]
+      },
+      "water_ocean_v1": {
+        "full_native_sha256": "696c8816f808182293ce0b054a8c28cac272c0f1439d407523fb2570ad70efb9",
+        "unaffected_native_sha256": "696c8816f808182293ce0b054a8c28cac272c0f1439d407523fb2570ad70efb9",
+        "product_metadata_sha256": "054bf9750f7e951937592b7da6c9fa2ce661cb68fdefaaae4159957490d5084f",
+        "control_names": [
+          "chop",
+          "crest_threshold",
+          "directional_spread",
+          "foam",
+          "foam_amount",
+          "spectrum_amplitude",
+          "wave_scale",
+          "wind_direction",
+          "wind_speed"
+        ]
+      },
+      "procedural_geometry_v1": {
+        "full_native_sha256": "09ad26e2dd809a5cf2bdb5403fedfe6a612b71d0338534c6f8035cfdbfa2f857",
+        "unaffected_native_sha256": "09ad26e2dd809a5cf2bdb5403fedfe6a612b71d0338534c6f8035cfdbfa2f857",
+        "product_metadata_sha256": "73f9200708a93da9cd426d7a4546ae6c22768ac35a8d2b4962f9e5f869d3af2a",
+        "control_names": [
+          "deformation",
+          "density",
+          "rotation",
+          "rotation_variance",
+          "scale",
+          "scale_variance",
+          "scatter_density",
+          "scatter_variance",
+          "seed",
+          "variation"
+        ]
+      }
+    },
+    "22.0.429": {
+      "pyro_smoke_v1": {
+        "full_native_sha256": "0d8a3752b8956437746c664c5340eb0ee842659b8a36f1693713822b8083e7c4",
+        "unaffected_native_sha256": "0d8a3752b8956437746c664c5340eb0ee842659b8a36f1693713822b8083e7c4",
+        "product_metadata_sha256": "27e344323e359441101e7505384e3e82320853b68c4f76a411f8ada2e3edc50b",
+        "control_names": [
+          "denoise_mix",
+          "density_scale",
+          "dissipation",
+          "disturbance",
+          "field_sharpen",
+          "shredding",
+          "simulation_substeps",
+          "source_scale",
+          "turbulence",
+          "volume_samples",
+          "volume_step_rate",
+          "voxel_size"
+        ]
+      },
+      "pyro_fire_v1": {
+        "full_native_sha256": "e1a27704e74ef723d2777794ecf1fa3462c2db3f1c209c0700cb293b67b29c3b",
+        "unaffected_native_sha256": "8ad56bfbdde4d5dfaa3ac4526abed4751a27c7d4c357b1b1178344420c89867f",
+        "product_metadata_sha256": "c8385232b36984a12ce8b9fdb3d2d87efd8cbaf6afc87fcb115e89929e1c85fb",
+        "control_names": [
+          "burn_rate",
+          "cooling_rate",
+          "emission_contrast",
+          "emission_intensity",
+          "flame_disturbance",
+          "flame_height",
+          "flame_lift",
+          "fuel_rate",
+          "glow_amount",
+          "temperature_scale",
+          "velocity_detail",
+          "voxel_size"
+        ]
+      },
+      "water_flip_v1": {
+        "full_native_sha256": "061498b095921e9f23269db07fd9ed6ceb64602eebd1e3e7c76d62f2eef1f44c",
+        "unaffected_native_sha256": "061498b095921e9f23269db07fd9ed6ceb64602eebd1e3e7c76d62f2eef1f44c",
+        "product_metadata_sha256": "9371508895bf34afaa761124ed34f746eaca1958db2afb094411e35d4801f109",
+        "control_names": [
+          "collision_passes",
+          "collision_separation",
+          "droplet_scale",
+          "meshing_detail",
+          "particle_separation",
+          "substeps",
+          "surface_resolution",
+          "surface_tension",
+          "viscosity"
+        ]
+      },
+      "rbd_destruction_v1": {
+        "full_native_sha256": "06d86f8c4ac3e3b188bd5aa916316a3c6a03afb243f7fb4b47d7970f497b909c",
+        "unaffected_native_sha256": "4762bfa2e0008a7eabab2bdafcf2ee310448889efd94552cb83cd53a58da03a4",
+        "product_metadata_sha256": "155075835755d2cd72e17d9b2c4ef6a8f8db10c0f0691b4179130fc474f56bd1",
+        "control_names": [
+          "activation_frame",
+          "constraint_strength",
+          "drag",
+          "fracture_scale",
+          "fracture_variance",
+          "impact_spread",
+          "impact_threshold",
+          "impulse_scale",
+          "piece_scale",
+          "substeps",
+          "velocity_variance"
+        ]
+      },
+      "particles_v1": {
+        "full_native_sha256": "2de45bc0987ae7456eb05629be561c6fccf200c467189202f36bf435c56f280a",
+        "unaffected_native_sha256": "3189b91e25d165071d3111f824529526a80b62d7845af8f7176bc95a57be7580",
+        "product_metadata_sha256": "ccda9f611cc27f03aa4ff25541a5244003c17bebd9c024647f845a22057060d7",
+        "control_names": [
+          "birth_rate",
+          "cluster_strength",
+          "collision_radius",
+          "drag",
+          "emission_variance",
+          "force_noise",
+          "force_strength",
+          "life",
+          "life_variance",
+          "motion_blur_scale",
+          "size",
+          "size_variance",
+          "speed",
+          "trail_length",
+          "velocity_variance"
+        ]
+      },
+      "swarm_flocking_v1": {
+        "full_native_sha256": "360b46a27eabb26dba892f884e9fda99880444acd3b85446acab3ee10014aae8",
+        "unaffected_native_sha256": "360b46a27eabb26dba892f884e9fda99880444acd3b85446acab3ee10014aae8",
+        "product_metadata_sha256": "443d8435cbfbb838cf4daecfb41948856d150db050823532c65c6130aa31db6a",
+        "control_names": [
+          "alignment",
+          "cohesion",
+          "goal_attraction",
+          "neighbor_radius",
+          "noise_strength",
+          "separation",
+          "target_noise"
+        ]
+      },
+      "water_ocean_v1": {
+        "full_native_sha256": "696c8816f808182293ce0b054a8c28cac272c0f1439d407523fb2570ad70efb9",
+        "unaffected_native_sha256": "696c8816f808182293ce0b054a8c28cac272c0f1439d407523fb2570ad70efb9",
+        "product_metadata_sha256": "054bf9750f7e951937592b7da6c9fa2ce661cb68fdefaaae4159957490d5084f",
+        "control_names": [
+          "chop",
+          "crest_threshold",
+          "directional_spread",
+          "foam",
+          "foam_amount",
+          "spectrum_amplitude",
+          "wave_scale",
+          "wind_direction",
+          "wind_speed"
+        ]
+      },
+      "procedural_geometry_v1": {
+        "full_native_sha256": "09ad26e2dd809a5cf2bdb5403fedfe6a612b71d0338534c6f8035cfdbfa2f857",
+        "unaffected_native_sha256": "09ad26e2dd809a5cf2bdb5403fedfe6a612b71d0338534c6f8035cfdbfa2f857",
+        "product_metadata_sha256": "73f9200708a93da9cd426d7a4546ae6c22768ac35a8d2b4962f9e5f869d3af2a",
+        "control_names": [
+          "deformation",
+          "density",
+          "rotation",
+          "rotation_variance",
+          "scale",
+          "scale_variance",
+          "scatter_density",
+          "scatter_variance",
+          "seed",
+          "variation"
+        ]
+      }
+    }
+  }
+}

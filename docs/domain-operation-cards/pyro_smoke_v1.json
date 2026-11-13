@@ -1,0 +1,3787 @@
+{
+  "schema": "bridge.domain_operation_card_document/1.0",
+  "kind": "prospective_case_contract_not_execution_evidence",
+  "domain_pack": "pyro_smoke_v1",
+  "domain_pack_version": "1.0.0",
+  "work_package": "W2",
+  "owner": "Z",
+  "formal_runtime_owner": "R",
+  "status": "BLOCKED",
+  "baseline_id": "7046477d4daba24610f601c257909b52b95834326b7c1d29801c50662231f499",
+  "source_snapshot_id": "f90b44bf88cadb30cce4cffe0d68449c057d29b97096aa4665066756cfb657fb",
+  "versions": [
+    {
+      "houdini_version": "21.0.631",
+      "status": "BLOCKED",
+      "input_versions": {
+        "domain_pack": "pyro_smoke_v1",
+        "domain_pack_version": "1.0.0",
+        "catalog_source_snapshot_id": "f90b44bf88cadb30cce4cffe0d68449c057d29b97096aa4665066756cfb657fb",
+        "runtime_interface": "ABSENT_NOT_FROZEN",
+        "houdini_version_must_be_explicit": true
+      },
+      "expected_topology": {
+        "roles": [
+          "source:Sop/sphere",
+          "pyro_source:Sop/pyrosource",
+          "rasterize:Sop/volumerasterizeattributes",
+          "solver:Sop/pyrosolver",
+          "output:Sop/null"
+        ],
+        "edges_and_bindings": [
+          "source[0] -> pyro_source[0]",
+          "pyro_source[0] -> rasterize[0]",
+          "rasterize volume[0] -> solver[0]",
+          "solver[0] -> output[0]"
+        ],
+        "assertions": [
+          "density/temperature/v named volumes before solver; sphere geometry directly into solver rejected",
+          "source emission extent/density/velocity/timing controlled at real source roles; every declared edge equals actual readback"
+        ],
+        "port_gaps": "every BLOCKED port must receive exact installed definition/HOM fact before execution",
+        "role_path_map": {
+          "status": "BLOCKED",
+          "reason": "R has not frozen legal owned_roots/context layout; cannot assign /stage, /out or /mat ownership from self-reported manifest"
+        }
+      },
+      "current_host_nodes": [
+        {
+          "role": "source",
+          "category": "sop",
+          "type_candidates": [
+            "sphere"
+          ],
+          "required_parameter_aliases": [
+            [
+              "radx",
+              "radius"
+            ]
+          ],
+          "input_role": null
+        },
+        {
+          "role": "solver",
+          "category": "sop",
+          "type_candidates": [
+            "pyrosolver",
+            "pyrosolver::2.0"
+          ],
+          "required_parameter_aliases": [
+            [
+              "divsize",
+              "voxelsize"
+            ],
+            [
+              "disturbance",
+              "disturbancescale"
+            ],
+            [
+              "shredding",
+              "shreddingscale"
+            ],
+            [
+              "dissipation",
+              "dissipationscale"
+            ],
+            [
+              "turbulence",
+              "turbulencescale"
+            ],
+            [
+              "densityscale",
+              "smokeamount"
+            ]
+          ],
+          "input_role": "source"
+        },
+        {
+          "role": "output",
+          "category": "sop",
+          "type_candidates": [
+            "null"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": "solver"
+        },
+        {
+          "role": "render_settings",
+          "category": "lop",
+          "type_candidates": [
+            "karmarendersettings"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": null
+        }
+      ],
+      "current_host_connections": [
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 0
+        },
+        {
+          "source_role": "solver",
+          "source_output": 0,
+          "destination_role": "output",
+          "destination_input": 0
+        }
+      ],
+      "control_coverage": [
+        {
+          "control": "denoise_mix",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "nuke",
+          "current_host_declaration": {
+            "id": "denoise_mix",
+            "node_role": "external_nuke",
+            "parameter_aliases": [],
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "invalidates_from": "composite",
+            "value_type": "float",
+            "application": "nuke"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            1.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "composite"
+            ],
+            "components": []
+          },
+          "expected_role": "external_nuke",
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXTERNAL_NUKE_CONTROL_OWNER_R"
+          ]
+        },
+        {
+          "control": "density_scale",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "density_scale",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "densityscale",
+              "smokeamount"
+            ],
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            100.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": null,
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "BLOCKED_EXPECTED_ROLE_OR_MACHINE_FIELD_UNRESOLVED",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        },
+        {
+          "control": "dissipation",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "dissipation",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "dissipation",
+              "dissipationscale"
+            ],
+            "minimum": 0.0,
+            "maximum": 5.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            5.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": "solver",
+          "expected_operator": "Sop/pyrosolver",
+          "expected_machine_fields": [
+            "dissipation",
+            "dissipationscale"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "21.0.631",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/otls/OPlibSop.hda",
+                "size_bytes": 15722206,
+                "sha256": "5018624a3f850b498df5696e7294dae8d442a847b6c61b9717025495d76bf5e2"
+              },
+              "operator": "Sop/pyrosolver",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "c01a9fb6e18a72863555dd6e0b03754acdc696f3196c5c077e1140d8f05ae755",
+              "machine_field": "dissipation",
+              "native_parameter": {
+                "name": "dissipation",
+                "type": "float",
+                "size": 1,
+                "label": "Dissipation",
+                "default_tokens": [
+                  "0.1"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0!",
+                  "1!"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "disturbance",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "disturbance",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "disturbance",
+              "disturbancescale"
+            ],
+            "minimum": 0.0,
+            "maximum": 10.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            10.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": "solver",
+          "expected_operator": "Sop/pyrosolver",
+          "expected_machine_fields": [
+            "disturbance",
+            "disturbancescale"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "21.0.631",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/otls/OPlibSop.hda",
+                "size_bytes": 15722206,
+                "sha256": "5018624a3f850b498df5696e7294dae8d442a847b6c61b9717025495d76bf5e2"
+              },
+              "operator": "Sop/pyrosolver",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "c01a9fb6e18a72863555dd6e0b03754acdc696f3196c5c077e1140d8f05ae755",
+              "machine_field": "disturbance",
+              "native_parameter": {
+                "name": "disturbance",
+                "type": "float",
+                "size": 1,
+                "label": "Disturbance",
+                "default_tokens": [
+                  "0.5"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0",
+                  "10"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "field_sharpen",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "field_sharpen",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "sharpen",
+              "sharpening"
+            ],
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            100.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": null,
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "BLOCKED_EXPECTED_ROLE_OR_MACHINE_FIELD_UNRESOLVED",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        },
+        {
+          "control": "shredding",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "shredding",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "shredding",
+              "shreddingscale"
+            ],
+            "minimum": 0.0,
+            "maximum": 10.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            10.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": "solver",
+          "expected_operator": "Sop/pyrosolver",
+          "expected_machine_fields": [
+            "shredding",
+            "shreddingscale"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "21.0.631",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/otls/OPlibSop.hda",
+                "size_bytes": 15722206,
+                "sha256": "5018624a3f850b498df5696e7294dae8d442a847b6c61b9717025495d76bf5e2"
+              },
+              "operator": "Sop/pyrosolver",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "c01a9fb6e18a72863555dd6e0b03754acdc696f3196c5c077e1140d8f05ae755",
+              "machine_field": "shredding",
+              "native_parameter": {
+                "name": "shredding",
+                "type": "float",
+                "size": 1,
+                "label": "Shredding",
+                "default_tokens": [
+                  "0.5"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0",
+                  "10"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "simulation_substeps",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "simulation_substeps",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "substeps",
+              "minsubsteps",
+              "timesteps"
+            ],
+            "minimum": 1.0,
+            "maximum": 100.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "int",
+            "application": "houdini"
+          },
+          "current_runtime_type": "int",
+          "public_range": [
+            1.0,
+            100.0
+          ],
+          "proposed_case_value": 1,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": "solver",
+          "expected_operator": "Sop/pyrosolver",
+          "expected_machine_fields": [
+            "substeps",
+            "minsubsteps",
+            "timesteps"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "21.0.631",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/otls/OPlibSop.hda",
+                "size_bytes": 15722206,
+                "sha256": "5018624a3f850b498df5696e7294dae8d442a847b6c61b9717025495d76bf5e2"
+              },
+              "operator": "Sop/pyrosolver",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "c01a9fb6e18a72863555dd6e0b03754acdc696f3196c5c077e1140d8f05ae755",
+              "machine_field": "substeps",
+              "native_parameter": {
+                "name": "substeps",
+                "type": "integer",
+                "size": 1,
+                "label": "Max Substeps",
+                "default_tokens": [
+                  "1"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "1!",
+                  "10"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "integer"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "source_scale",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "source_scale",
+            "node_role": "source",
+            "parameter_aliases": [
+              "radx",
+              "radius",
+              "scale"
+            ],
+            "minimum": 0.001,
+            "maximum": 1000.0,
+            "invalidates_from": "source_layout_control",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.001,
+            1000.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "source"
+            ],
+            "components": []
+          },
+          "expected_role": "source",
+          "expected_operator": "Sop/sphere",
+          "expected_machine_fields": [
+            "radx",
+            "radius",
+            "scale"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        },
+        {
+          "control": "turbulence",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "turbulence",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "turbulence",
+              "turbulencescale"
+            ],
+            "minimum": 0.0,
+            "maximum": 10.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            10.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": "solver",
+          "expected_operator": "Sop/pyrosolver",
+          "expected_machine_fields": [
+            "turbulence",
+            "turbulencescale"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "21.0.631",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/otls/OPlibSop.hda",
+                "size_bytes": 15722206,
+                "sha256": "5018624a3f850b498df5696e7294dae8d442a847b6c61b9717025495d76bf5e2"
+              },
+              "operator": "Sop/pyrosolver",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "c01a9fb6e18a72863555dd6e0b03754acdc696f3196c5c077e1140d8f05ae755",
+              "machine_field": "turbulence",
+              "native_parameter": {
+                "name": "turbulence",
+                "type": "float",
+                "size": 1,
+                "label": "Turbulence",
+                "default_tokens": [
+                  "0.1"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0",
+                  "1"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "volume_samples",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "volume_samples",
+            "node_role": "render_settings",
+            "parameter_aliases": [
+              "volumesamples",
+              "volumequality"
+            ],
+            "minimum": 1.0,
+            "maximum": 100000.0,
+            "invalidates_from": "render",
+            "value_type": "int",
+            "application": "houdini"
+          },
+          "current_runtime_type": "int",
+          "public_range": [
+            1.0,
+            100000.0
+          ],
+          "proposed_case_value": 1,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "render"
+            ],
+            "components": []
+          },
+          "expected_role": null,
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "BLOCKED_EXPECTED_ROLE_OR_MACHINE_FIELD_UNRESOLVED",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        },
+        {
+          "control": "volume_step_rate",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "volume_step_rate",
+            "node_role": "render_settings",
+            "parameter_aliases": [
+              "volumesteprate",
+              "volume_step_rate"
+            ],
+            "minimum": 0.01,
+            "maximum": 100.0,
+            "invalidates_from": "render",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.01,
+            100.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "render"
+            ],
+            "components": []
+          },
+          "expected_role": "render_settings",
+          "expected_operator": "Lop/karmarendersettings",
+          "expected_machine_fields": [
+            "volumesteprate",
+            "volume_step_rate"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "21.0.631",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/otls/OPlibLop.hda",
+                "size_bytes": 5676886,
+                "sha256": "f9aaa63878cd4280c2a09fd6d65e5522b553ff517642a0e73f133a487893ed5d"
+              },
+              "operator": "Lop/karmarendersettings",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "527cb7ac0e2e100e21bc0a88ea9dabc20a9938c66233de1a6545e7ec8df4ce8e",
+              "machine_field": "volumesteprate",
+              "native_parameter": {
+                "name": "volumesteprate",
+                "type": "float",
+                "size": 1,
+                "label": "Volume Step Rate",
+                "default_tokens": [
+                  "0.25"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0!",
+                  "1"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "voxel_size",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "voxel_size",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "divsize",
+              "voxelsize"
+            ],
+            "minimum": 0.005,
+            "maximum": 1.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.005,
+            1.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": "solver",
+          "expected_operator": "Sop/pyrosolver",
+          "expected_machine_fields": [
+            "divsize",
+            "voxelsize"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "21.0.631",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/otls/OPlibSop.hda",
+                "size_bytes": 15722206,
+                "sha256": "5018624a3f850b498df5696e7294dae8d442a847b6c61b9717025495d76bf5e2"
+              },
+              "operator": "Sop/pyrosolver",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "c01a9fb6e18a72863555dd6e0b03754acdc696f3196c5c077e1140d8f05ae755",
+              "machine_field": "divsize",
+              "native_parameter": {
+                "name": "divsize",
+                "type": "float",
+                "size": 1,
+                "label": "Voxel Size",
+                "default_tokens": [
+                  "0.1"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0!",
+                  "1"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        }
+      ],
+      "native_node_documentation_snapshot": {
+        "status": "DOCUMENTED_NODE_FACTS_WITH_GAPS",
+        "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/domain-native-documentation.json",
+        "source_sha256": "43ba32c0d518d94b0dbf57e6f8bc395c2c8f38718a51b26bb969669ce5d45d8c",
+        "archive": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/help/nodes.zip",
+        "archive_sha256": "7c83e14d77ddaebf0f918244c1747509633b2721a39468eb4ae3efc694886916",
+        "note": "node documentation existence does not establish parameter ABI or runtime geometry"
+      },
+      "stages": {
+        "formal_build": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "inspect_all_nodes_controls_connections": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "feedback_all_controls": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "save_reopen_structure_and_data": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "formal_output": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "real_host_live": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "visual_acceptance": {
+          "status": "NOT_RUN",
+          "evidence": null
+        }
+      },
+      "recovery": {
+        "status": "NOT_RUN",
+        "tested": false,
+        "owner": "R",
+        "evidence_owner": "E",
+        "domain_assertion_owner": "Z",
+        "requirements": [
+          "interrupt the process actually executing this case while operation active",
+          "supervisor observes identity and STOP_CONFIRMED before restart",
+          "restart controller and original task from real serialized scene, same request_id",
+          "completed side effects not repeated; incomplete work reconciled through formal control authorization",
+          "recovered topology/ALL controls/domain data/producer artifact content match saved actual state",
+          "case_id/build_id/provider/host identity/operation_id/scene hash and phase facts bound by E"
+        ],
+        "forbidden_substitutes": [
+          "immediately exiting helper process",
+          "manual RECONCILE edit",
+          "reopen original in-memory substitute scene",
+          "load-time expected-data rebuilding"
+        ]
+      }
+    },
+    {
+      "houdini_version": "22.0.429",
+      "status": "BLOCKED",
+      "input_versions": {
+        "domain_pack": "pyro_smoke_v1",
+        "domain_pack_version": "1.0.0",
+        "catalog_source_snapshot_id": "f90b44bf88cadb30cce4cffe0d68449c057d29b97096aa4665066756cfb657fb",
+        "runtime_interface": "ABSENT_NOT_FROZEN",
+        "houdini_version_must_be_explicit": true
+      },
+      "expected_topology": {
+        "roles": [
+          "source:Sop/sphere",
+          "pyro_source:Sop/pyrosource",
+          "rasterize:Sop/volumerasterizeattributes",
+          "solver:Sop/pyrosolver",
+          "output:Sop/null"
+        ],
+        "edges_and_bindings": [
+          "source[0] -> pyro_source[0]",
+          "pyro_source[0] -> rasterize[0]",
+          "rasterize volume[0] -> solver[0]",
+          "solver[0] -> output[0]"
+        ],
+        "assertions": [
+          "density/temperature/v named volumes before solver; sphere geometry directly into solver rejected",
+          "source emission extent/density/velocity/timing controlled at real source roles; every declared edge equals actual readback"
+        ],
+        "port_gaps": "every BLOCKED port must receive exact installed definition/HOM fact before execution",
+        "role_path_map": {
+          "status": "BLOCKED",
+          "reason": "R has not frozen legal owned_roots/context layout; cannot assign /stage, /out or /mat ownership from self-reported manifest"
+        }
+      },
+      "current_host_nodes": [
+        {
+          "role": "source",
+          "category": "sop",
+          "type_candidates": [
+            "sphere"
+          ],
+          "required_parameter_aliases": [
+            [
+              "radx",
+              "radius"
+            ]
+          ],
+          "input_role": null
+        },
+        {
+          "role": "solver",
+          "category": "sop",
+          "type_candidates": [
+            "pyrosolver",
+            "pyrosolver::2.0"
+          ],
+          "required_parameter_aliases": [
+            [
+              "divsize",
+              "voxelsize"
+            ],
+            [
+              "disturbance",
+              "disturbancescale"
+            ],
+            [
+              "shredding",
+              "shreddingscale"
+            ],
+            [
+              "dissipation",
+              "dissipationscale"
+            ],
+            [
+              "turbulence",
+              "turbulencescale"
+            ],
+            [
+              "densityscale",
+              "smokeamount"
+            ]
+          ],
+          "input_role": "source"
+        },
+        {
+          "role": "output",
+          "category": "sop",
+          "type_candidates": [
+            "null"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": "solver"
+        },
+        {
+          "role": "render_settings",
+          "category": "lop",
+          "type_candidates": [
+            "karmarendersettings"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": null
+        }
+      ],
+      "current_host_connections": [
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 0
+        },
+        {
+          "source_role": "solver",
+          "source_output": 0,
+          "destination_role": "output",
+          "destination_input": 0
+        }
+      ],
+      "control_coverage": [
+        {
+          "control": "denoise_mix",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "nuke",
+          "current_host_declaration": {
+            "id": "denoise_mix",
+            "node_role": "external_nuke",
+            "parameter_aliases": [],
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "invalidates_from": "composite",
+            "value_type": "float",
+            "application": "nuke"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            1.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "composite"
+            ],
+            "components": []
+          },
+          "expected_role": "external_nuke",
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXTERNAL_NUKE_CONTROL_OWNER_R"
+          ]
+        },
+        {
+          "control": "density_scale",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "density_scale",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "densityscale",
+              "smokeamount"
+            ],
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            100.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": null,
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "BLOCKED_EXPECTED_ROLE_OR_MACHINE_FIELD_UNRESOLVED",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        },
+        {
+          "control": "dissipation",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "dissipation",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "dissipation",
+              "dissipationscale"
+            ],
+            "minimum": 0.0,
+            "maximum": 5.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            5.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": "solver",
+          "expected_operator": "Sop/pyrosolver",
+          "expected_machine_fields": [
+            "dissipation",
+            "dissipationscale"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "22.0.429",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/otls/OPlibSop.hda",
+                "size_bytes": 17292461,
+                "sha256": "c24559e89d9f2895e32d2fc26a96b922c00a47a75de212f60a56928042df1a7f"
+              },
+              "operator": "Sop/pyrosolver",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "2a7b1b70836bdeeebea8b030f070ffa98ab7a221a1ab8a2005c71174ad10a2d1",
+              "machine_field": "dissipation",
+              "native_parameter": {
+                "name": "dissipation",
+                "type": "float",
+                "size": 1,
+                "label": "Dissipation",
+                "default_tokens": [
+                  "0.1"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0!",
+                  "1!"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "disturbance",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "disturbance",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "disturbance",
+              "disturbancescale"
+            ],
+            "minimum": 0.0,
+            "maximum": 10.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            10.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": "solver",
+          "expected_operator": "Sop/pyrosolver",
+          "expected_machine_fields": [
+            "disturbance",
+            "disturbancescale"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "22.0.429",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/otls/OPlibSop.hda",
+                "size_bytes": 17292461,
+                "sha256": "c24559e89d9f2895e32d2fc26a96b922c00a47a75de212f60a56928042df1a7f"
+              },
+              "operator": "Sop/pyrosolver",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "2a7b1b70836bdeeebea8b030f070ffa98ab7a221a1ab8a2005c71174ad10a2d1",
+              "machine_field": "disturbance",
+              "native_parameter": {
+                "name": "disturbance",
+                "type": "float",
+                "size": 1,
+                "label": "Disturbance",
+                "default_tokens": [
+                  "0.5"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0",
+                  "10"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "field_sharpen",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "field_sharpen",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "sharpen",
+              "sharpening"
+            ],
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            100.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": null,
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "BLOCKED_EXPECTED_ROLE_OR_MACHINE_FIELD_UNRESOLVED",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        },
+        {
+          "control": "shredding",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "shredding",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "shredding",
+              "shreddingscale"
+            ],
+            "minimum": 0.0,
+            "maximum": 10.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            10.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": "solver",
+          "expected_operator": "Sop/pyrosolver",
+          "expected_machine_fields": [
+            "shredding",
+            "shreddingscale"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "22.0.429",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/otls/OPlibSop.hda",
+                "size_bytes": 17292461,
+                "sha256": "c24559e89d9f2895e32d2fc26a96b922c00a47a75de212f60a56928042df1a7f"
+              },
+              "operator": "Sop/pyrosolver",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "2a7b1b70836bdeeebea8b030f070ffa98ab7a221a1ab8a2005c71174ad10a2d1",
+              "machine_field": "shredding",
+              "native_parameter": {
+                "name": "shredding",
+                "type": "float",
+                "size": 1,
+                "label": "Shredding",
+                "default_tokens": [
+                  "0.5"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0",
+                  "10"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "simulation_substeps",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "simulation_substeps",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "substeps",
+              "minsubsteps",
+              "timesteps"
+            ],
+            "minimum": 1.0,
+            "maximum": 100.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "int",
+            "application": "houdini"
+          },
+          "current_runtime_type": "int",
+          "public_range": [
+            1.0,
+            100.0
+          ],
+          "proposed_case_value": 1,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": "solver",
+          "expected_operator": "Sop/pyrosolver",
+          "expected_machine_fields": [
+            "substeps",
+            "minsubsteps",
+            "timesteps"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "22.0.429",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/otls/OPlibSop.hda",
+                "size_bytes": 17292461,
+                "sha256": "c24559e89d9f2895e32d2fc26a96b922c00a47a75de212f60a56928042df1a7f"
+              },
+              "operator": "Sop/pyrosolver",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "2a7b1b70836bdeeebea8b030f070ffa98ab7a221a1ab8a2005c71174ad10a2d1",
+              "machine_field": "substeps",
+              "native_parameter": {
+                "name": "substeps",
+                "type": "integer",
+                "size": 1,
+                "label": "Max Substeps",
+                "default_tokens": [
+                  "1"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "1!",
+                  "10"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "integer"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "source_scale",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "source_scale",
+            "node_role": "source",
+            "parameter_aliases": [
+              "radx",
+              "radius",
+              "scale"
+            ],
+            "minimum": 0.001,
+            "maximum": 1000.0,
+            "invalidates_from": "source_layout_control",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.001,
+            1000.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "source"
+            ],
+            "components": []
+          },
+          "expected_role": "source",
+          "expected_operator": "Sop/sphere",
+          "expected_machine_fields": [
+            "radx",
+            "radius",
+            "scale"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        },
+        {
+          "control": "turbulence",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "turbulence",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "turbulence",
+              "turbulencescale"
+            ],
+            "minimum": 0.0,
+            "maximum": 10.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            10.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": "solver",
+          "expected_operator": "Sop/pyrosolver",
+          "expected_machine_fields": [
+            "turbulence",
+            "turbulencescale"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "22.0.429",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/otls/OPlibSop.hda",
+                "size_bytes": 17292461,
+                "sha256": "c24559e89d9f2895e32d2fc26a96b922c00a47a75de212f60a56928042df1a7f"
+              },
+              "operator": "Sop/pyrosolver",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "2a7b1b70836bdeeebea8b030f070ffa98ab7a221a1ab8a2005c71174ad10a2d1",
+              "machine_field": "turbulence",
+              "native_parameter": {
+                "name": "turbulence",
+                "type": "float",
+                "size": 1,
+                "label": "Turbulence",
+                "default_tokens": [
+                  "0.1"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0",
+                  "1"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "volume_samples",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "volume_samples",
+            "node_role": "render_settings",
+            "parameter_aliases": [
+              "volumesamples",
+              "volumequality"
+            ],
+            "minimum": 1.0,
+            "maximum": 100000.0,
+            "invalidates_from": "render",
+            "value_type": "int",
+            "application": "houdini"
+          },
+          "current_runtime_type": "int",
+          "public_range": [
+            1.0,
+            100000.0
+          ],
+          "proposed_case_value": 1,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "render"
+            ],
+            "components": []
+          },
+          "expected_role": null,
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "BLOCKED_EXPECTED_ROLE_OR_MACHINE_FIELD_UNRESOLVED",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        },
+        {
+          "control": "volume_step_rate",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "volume_step_rate",
+            "node_role": "render_settings",
+            "parameter_aliases": [
+              "volumesteprate",
+              "volume_step_rate"
+            ],
+            "minimum": 0.01,
+            "maximum": 100.0,
+            "invalidates_from": "render",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.01,
+            100.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "render"
+            ],
+            "components": []
+          },
+          "expected_role": "render_settings",
+          "expected_operator": "Lop/karmarendersettings",
+          "expected_machine_fields": [
+            "volumesteprate",
+            "volume_step_rate"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "22.0.429",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/otls/OPlibLop.hda",
+                "size_bytes": 6149196,
+                "sha256": "19048d06f2ff55f9de8a521ad36784ee2fe959b7127fcec0f911a4640bc1fc82"
+              },
+              "operator": "Lop/karmarendersettings",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "cc263cb8a2e6e1f964363999322d8395f7c52d7160ea723173a24b23568783fe",
+              "machine_field": "volumesteprate",
+              "native_parameter": {
+                "name": "volumesteprate",
+                "type": "float",
+                "size": 1,
+                "label": "Volume Step Rate",
+                "default_tokens": [
+                  "0.25"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0!",
+                  "1"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "voxel_size",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "voxel_size",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "divsize",
+              "voxelsize"
+            ],
+            "minimum": 0.005,
+            "maximum": 1.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.005,
+            1.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": "solver",
+          "expected_operator": "Sop/pyrosolver",
+          "expected_machine_fields": [
+            "divsize",
+            "voxelsize"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "22.0.429",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/otls/OPlibSop.hda",
+                "size_bytes": 17292461,
+                "sha256": "c24559e89d9f2895e32d2fc26a96b922c00a47a75de212f60a56928042df1a7f"
+              },
+              "operator": "Sop/pyrosolver",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "2a7b1b70836bdeeebea8b030f070ffa98ab7a221a1ab8a2005c71174ad10a2d1",
+              "machine_field": "divsize",
+              "native_parameter": {
+                "name": "divsize",
+                "type": "float",
+                "size": 1,
+                "label": "Voxel Size",
+                "default_tokens": [
+                  "0.1"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0!",
+                  "1"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        }
+      ],
+      "native_node_documentation_snapshot": {
+        "status": "DOCUMENTED_NODE_FACTS_WITH_GAPS",
+        "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/domain-native-documentation.json",
+        "source_sha256": "43ba32c0d518d94b0dbf57e6f8bc395c2c8f38718a51b26bb969669ce5d45d8c",
+        "archive": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/help/nodes.zip",
+        "archive_sha256": "6ca2ef18ce0d1f142d3415e27885b36f69b3537344a04621c89f9fab6937ad53",
+        "note": "node documentation existence does not establish parameter ABI or runtime geometry"
+      },
+      "stages": {
+        "formal_build": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "inspect_all_nodes_controls_connections": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "feedback_all_controls": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "save_reopen_structure_and_data": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "formal_output": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "real_host_live": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "visual_acceptance": {
+          "status": "NOT_RUN",
+          "evidence": null
+        }
+      },
+      "recovery": {
+        "status": "NOT_RUN",
+        "tested": false,
+        "owner": "R",
+        "evidence_owner": "E",
+        "domain_assertion_owner": "Z",
+        "requirements": [
+          "interrupt the process actually executing this case while operation active",
+          "supervisor observes identity and STOP_CONFIRMED before restart",
+          "restart controller and original task from real serialized scene, same request_id",
+          "completed side effects not repeated; incomplete work reconciled through formal control authorization",
+          "recovered topology/ALL controls/domain data/producer artifact content match saved actual state",
+          "case_id/build_id/provider/host identity/operation_id/scene hash and phase facts bound by E"
+        ],
+        "forbidden_substitutes": [
+          "immediately exiting helper process",
+          "manual RECONCILE edit",
+          "reopen original in-memory substitute scene",
+          "load-time expected-data rebuilding"
+        ]
+      }
+    },
+    {
+      "houdini_version": "22.0.459",
+      "kind": "current_preparation_expectation_not_execution_evidence",
+      "status": "BLOCKED",
+      "input_versions": {
+        "domain_pack": "pyro_smoke_v1",
+        "domain_pack_version": "1.0.0",
+        "houdini_version_must_be_explicit": true
+      },
+      "expected_nodes": {
+        "default": [
+          {
+            "role": "geometry_network",
+            "category": "obj",
+            "input_role": null,
+            "type_candidates": [
+              "geo"
+            ],
+            "required_parameter_aliases": []
+          },
+          {
+            "role": "source",
+            "category": "sop",
+            "input_role": null,
+            "parent_role": "geometry_network",
+            "type_candidates": [
+              "sphere"
+            ],
+            "required_parameter_aliases": [
+              [
+                "rad"
+              ]
+            ]
+          },
+          {
+            "role": "source_points",
+            "category": "sop",
+            "input_role": "source",
+            "parent_role": "geometry_network",
+            "type_candidates": [
+              "pyrosource"
+            ],
+            "required_parameter_aliases": [
+              [
+                "mode"
+              ],
+              [
+                "particlesep"
+              ],
+              [
+                "attributes"
+              ],
+              [
+                "attribute#"
+              ],
+              [
+                "fval#"
+              ]
+            ]
+          },
+          {
+            "role": "source_control",
+            "category": "sop",
+            "input_role": "source_points",
+            "parent_role": "geometry_network",
+            "type_candidates": [
+              "attribwrangle"
+            ],
+            "required_parameter_aliases": [
+              [
+                "class"
+              ],
+              [
+                "group"
+              ],
+              [
+                "snippet"
+              ]
+            ]
+          },
+          {
+            "role": "source_volume",
+            "category": "sop",
+            "input_role": "source_control",
+            "parent_role": "geometry_network",
+            "type_candidates": [
+              "volumerasterizeattributes"
+            ],
+            "required_parameter_aliases": [
+              [
+                "attributes"
+              ],
+              [
+                "voxelsize"
+              ]
+            ]
+          },
+          {
+            "role": "solver",
+            "category": "sop",
+            "input_role": "source_volume",
+            "parent_role": "geometry_network",
+            "type_candidates": [
+              "pyrosolver"
+            ],
+            "required_parameter_aliases": [
+              [
+                "conv_vdb"
+              ],
+              [
+                "dissipation"
+              ],
+              [
+                "disturbance"
+              ],
+              [
+                "divsize"
+              ],
+              [
+                "enable_dissipation"
+              ],
+              [
+                "enable_disturbance"
+              ],
+              [
+                "enable_shredding"
+              ],
+              [
+                "enable_turbulence"
+              ],
+              [
+                "export_enable#"
+              ],
+              [
+                "export_fieldname#"
+              ],
+              [
+                "export_visible#"
+              ],
+              [
+                "minimalsolve"
+              ],
+              [
+                "numfields"
+              ],
+              [
+                "numsources"
+              ],
+              [
+                "shredding"
+              ],
+              [
+                "shredding_field"
+              ],
+              [
+                "source_activate#"
+              ],
+              [
+                "source_activate1"
+              ],
+              [
+                "source_rank#"
+              ],
+              [
+                "source_vfield#"
+              ],
+              [
+                "source_vfield1"
+              ],
+              [
+                "source_vnormalize#"
+              ],
+              [
+                "source_vnormalize1"
+              ],
+              [
+                "source_volume#"
+              ],
+              [
+                "source_volume1"
+              ],
+              [
+                "source_voperator#"
+              ],
+              [
+                "source_voperator1"
+              ],
+              [
+                "source_vscale#"
+              ],
+              [
+                "source_vscale1"
+              ],
+              [
+                "srclimitframerange"
+              ],
+              [
+                "substeps"
+              ],
+              [
+                "turbulence"
+              ],
+              [
+                "turbulence_influencefield"
+              ]
+            ]
+          },
+          {
+            "role": "field_sharpen",
+            "category": "sop",
+            "input_role": "solver",
+            "parent_role": "geometry_network",
+            "type_candidates": [
+              "volumeconvolve3"
+            ],
+            "required_parameter_aliases": [
+              [
+                "group"
+              ],
+              [
+                "convolvezm"
+              ],
+              [
+                "convolvezz"
+              ],
+              [
+                "convolvezp"
+              ],
+              [
+                "normalize"
+              ]
+            ]
+          },
+          {
+            "role": "field_clamp",
+            "category": "sop",
+            "input_role": "field_sharpen",
+            "parent_role": "geometry_network",
+            "type_candidates": [
+              "volumewrangle"
+            ],
+            "required_parameter_aliases": [
+              [
+                "group"
+              ],
+              [
+                "bindeach"
+              ],
+              [
+                "snippet"
+              ]
+            ]
+          },
+          {
+            "role": "output",
+            "category": "sop",
+            "input_role": "field_clamp",
+            "parent_role": "geometry_network",
+            "type_candidates": [
+              "null"
+            ],
+            "required_parameter_aliases": []
+          },
+          {
+            "role": "usd_network",
+            "category": "obj",
+            "input_role": null,
+            "type_candidates": [
+              "lopnet"
+            ],
+            "required_parameter_aliases": []
+          },
+          {
+            "role": "render_network",
+            "category": "obj",
+            "input_role": null,
+            "type_candidates": [
+              "ropnet"
+            ],
+            "required_parameter_aliases": []
+          },
+          {
+            "role": "geometry_import",
+            "category": "lop",
+            "input_role": null,
+            "parent_role": "usd_network",
+            "type_candidates": [
+              "sopimport"
+            ],
+            "required_parameter_aliases": [
+              [
+                "soppath"
+              ],
+              [
+                "enable_pathprefix"
+              ],
+              [
+                "pathprefix"
+              ]
+            ]
+          },
+          {
+            "role": "camera",
+            "category": "lop",
+            "input_role": "geometry_import",
+            "parent_role": "usd_network",
+            "type_candidates": [
+              "camera"
+            ],
+            "required_parameter_aliases": [
+              [
+                "primpath"
+              ],
+              [
+                "focalLength"
+              ],
+              [
+                "fStop"
+              ],
+              [
+                "xn__shutteropen_0ta"
+              ],
+              [
+                "xn__shutterclose_nva"
+              ]
+            ]
+          },
+          {
+            "role": "light",
+            "category": "lop",
+            "input_role": "camera",
+            "parent_role": "usd_network",
+            "type_candidates": [
+              "light"
+            ],
+            "required_parameter_aliases": [
+              [
+                "primpath"
+              ],
+              [
+                "lighttype"
+              ],
+              [
+                "radius"
+              ],
+              [
+                "exposure"
+              ]
+            ]
+          },
+          {
+            "role": "render_settings",
+            "category": "lop",
+            "input_role": "light",
+            "parent_role": "usd_network",
+            "type_candidates": [
+              "karmarendersettings"
+            ],
+            "required_parameter_aliases": [
+              [
+                "primpath"
+              ],
+              [
+                "camera"
+              ],
+              [
+                "samplesperpixel"
+              ],
+              [
+                "volumesteprate"
+              ],
+              [
+                "enablemblur"
+              ],
+              [
+                "pixelfiltersize"
+              ],
+              [
+                "denoiser"
+              ]
+            ]
+          },
+          {
+            "role": "render_var",
+            "category": "lop",
+            "input_role": "render_settings",
+            "parent_role": "usd_network",
+            "type_candidates": [
+              "rendervar"
+            ],
+            "required_parameter_aliases": [
+              [
+                "primpath"
+              ],
+              [
+                "sourceName"
+              ],
+              [
+                "sourceType"
+              ],
+              [
+                "dataType"
+              ]
+            ]
+          },
+          {
+            "role": "render_product",
+            "category": "lop",
+            "input_role": "render_var",
+            "parent_role": "usd_network",
+            "type_candidates": [
+              "renderproduct"
+            ],
+            "required_parameter_aliases": [
+              [
+                "primpattern"
+              ],
+              [
+                "orderedVars"
+              ],
+              [
+                "productType"
+              ],
+              [
+                "productName"
+              ],
+              [
+                "camera"
+              ]
+            ]
+          },
+          {
+            "role": "settings_binding",
+            "category": "lop",
+            "input_role": "render_product",
+            "parent_role": "usd_network",
+            "type_candidates": [
+              "rendersettings"
+            ],
+            "required_parameter_aliases": [
+              [
+                "primpattern"
+              ],
+              [
+                "createprims"
+              ],
+              [
+                "products"
+              ],
+              [
+                "camera"
+              ]
+            ]
+          },
+          {
+            "role": "render",
+            "category": "rop",
+            "input_role": null,
+            "parent_role": "render_network",
+            "type_candidates": [
+              "usdrender"
+            ],
+            "required_parameter_aliases": [
+              [
+                "loppath"
+              ],
+              [
+                "rendersettings"
+              ],
+              [
+                "override_camera"
+              ],
+              [
+                "outputimage"
+              ],
+              [
+                "execute"
+              ]
+            ]
+          }
+        ]
+      },
+      "expected_connections": {
+        "default": [
+          {
+            "source_role": "source",
+            "source_output": 0,
+            "destination_role": "source_points",
+            "destination_input": 0
+          },
+          {
+            "source_role": "source_points",
+            "source_output": 0,
+            "destination_role": "source_control",
+            "destination_input": 0
+          },
+          {
+            "source_role": "source_control",
+            "source_output": 0,
+            "destination_role": "source_volume",
+            "destination_input": 0
+          },
+          {
+            "source_role": "source_volume",
+            "source_output": 0,
+            "destination_role": "solver",
+            "destination_input": 0
+          },
+          {
+            "source_role": "solver",
+            "source_output": 0,
+            "destination_role": "field_sharpen",
+            "destination_input": 0
+          },
+          {
+            "source_role": "field_sharpen",
+            "source_output": 0,
+            "destination_role": "field_clamp",
+            "destination_input": 0
+          },
+          {
+            "source_role": "field_clamp",
+            "source_output": 0,
+            "destination_role": "output",
+            "destination_input": 0
+          },
+          {
+            "source_role": "geometry_import",
+            "source_output": 0,
+            "destination_role": "camera",
+            "destination_input": 0,
+            "require_same_parent": true
+          },
+          {
+            "source_role": "camera",
+            "source_output": 0,
+            "destination_role": "light",
+            "destination_input": 0,
+            "require_same_parent": true
+          },
+          {
+            "source_role": "light",
+            "source_output": 0,
+            "destination_role": "render_settings",
+            "destination_input": 0,
+            "require_same_parent": true
+          },
+          {
+            "source_role": "render_settings",
+            "source_output": 0,
+            "destination_role": "render_var",
+            "destination_input": 0,
+            "require_same_parent": true
+          },
+          {
+            "source_role": "render_var",
+            "source_output": 0,
+            "destination_role": "render_product",
+            "destination_input": 0,
+            "require_same_parent": true
+          },
+          {
+            "source_role": "render_product",
+            "source_output": 0,
+            "destination_role": "settings_binding",
+            "destination_input": 0,
+            "require_same_parent": true
+          }
+        ]
+      },
+      "control_coverage": {
+        "default": [
+          {
+            "minimum": 0.005,
+            "maximum": 1.0,
+            "value_type": "float",
+            "invalidates_from": "generation_simulation",
+            "application": "houdini",
+            "native_conversion": "voxel_size",
+            "required_gates": [],
+            "native_status": "mapped",
+            "targets": [
+              [
+                "solver",
+                "divsize"
+              ],
+              [
+                "source_volume",
+                "voxelsize"
+              ]
+            ],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "divsize",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "divsize",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/volumerasterizeattributes",
+                  "parameter": "voxelsize",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "47700808b461aa73b395d941a13b6d478d0bd24552a2507b7dfc3da97ca426c5",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "voxel_size",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "divsize"
+            ]
+          },
+          {
+            "minimum": 0.0,
+            "maximum": 10.0,
+            "value_type": "float",
+            "invalidates_from": "generation_simulation",
+            "application": "houdini",
+            "native_conversion": "disturbance",
+            "required_gates": [
+              [
+                "solver",
+                "enable_disturbance",
+                1
+              ]
+            ],
+            "native_status": "mapped",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "disturbance",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "enable_disturbance",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "disturbance",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "disturbance"
+            ]
+          },
+          {
+            "minimum": 0.0,
+            "maximum": 10.0,
+            "value_type": "float",
+            "invalidates_from": "generation_simulation",
+            "application": "houdini",
+            "native_conversion": "shredding",
+            "required_gates": [
+              [
+                "solver",
+                "enable_shredding",
+                1
+              ],
+              [
+                "solver",
+                "shredding_field",
+                "density"
+              ]
+            ],
+            "native_status": "mapped",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "shredding",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "enable_shredding",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "shredding_field",
+                  "type": "string",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "shredding",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "shredding"
+            ]
+          },
+          {
+            "minimum": 0.0,
+            "maximum": 5.0,
+            "value_type": "float",
+            "invalidates_from": "generation_simulation",
+            "application": "houdini",
+            "native_conversion": "dissipation",
+            "required_gates": [
+              [
+                "solver",
+                "enable_dissipation",
+                1
+              ]
+            ],
+            "native_status": "mapped",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "dissipation",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "enable_dissipation",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "dissipation",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "dissipation"
+            ]
+          },
+          {
+            "minimum": 0.0,
+            "maximum": 10.0,
+            "value_type": "float",
+            "invalidates_from": "generation_simulation",
+            "application": "houdini",
+            "native_conversion": "turbulence",
+            "required_gates": [
+              [
+                "solver",
+                "enable_turbulence",
+                1
+              ],
+              [
+                "solver",
+                "turbulence_influencefield",
+                "density"
+              ]
+            ],
+            "native_status": "mapped",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "turbulence",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "enable_turbulence",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "turbulence_influencefield",
+                  "type": "string",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "turbulence",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "turbulence"
+            ]
+          },
+          {
+            "minimum": 0.01,
+            "maximum": 100.0,
+            "value_type": "float",
+            "invalidates_from": "render",
+            "application": "houdini",
+            "native_conversion": "volume_step_rate",
+            "required_gates": [],
+            "native_status": "blocked",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [],
+              "missing": [
+                {
+                  "role": "render_settings",
+                  "parameter": "volumesteprate",
+                  "operators": []
+                }
+              ]
+            },
+            "blocker": "H22_459_NATIVE_TEMPLATE_REQUIRED",
+            "id": "volume_step_rate",
+            "node_role": "render_settings",
+            "parameter_aliases": [
+              "volumesteprate"
+            ]
+          },
+          {
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "value_type": "float",
+            "invalidates_from": "composite",
+            "application": "nuke",
+            "native_conversion": "denoise_mix",
+            "required_gates": [],
+            "native_status": "external",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [],
+              "missing": []
+            },
+            "id": "denoise_mix",
+            "node_role": "external_nuke",
+            "parameter_aliases": []
+          },
+          {
+            "minimum": 0.001,
+            "maximum": 1000.0,
+            "value_type": "float",
+            "invalidates_from": "source_layout_control",
+            "application": "houdini",
+            "native_conversion": "source_scale",
+            "required_gates": [],
+            "native_status": "blocked",
+            "unit": "scene units radius",
+            "native_size": 3,
+            "forward": "(radius,radius,radius)",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [],
+              "missing": [
+                {
+                  "role": "source",
+                  "parameter": "rad",
+                  "operators": [
+                    "Sop/sphere"
+                  ]
+                }
+              ]
+            },
+            "blocker": "H22_459_NATIVE_TEMPLATE_REQUIRED",
+            "id": "source_scale",
+            "node_role": "source",
+            "parameter_aliases": [
+              "rad"
+            ]
+          },
+          {
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "value_type": "float",
+            "invalidates_from": "source_layout_control",
+            "application": "houdini",
+            "native_conversion": "density_scale",
+            "required_gates": [
+              [
+                "solver",
+                "source_activate1",
+                1
+              ],
+              [
+                "solver",
+                "source_voperator1",
+                "add"
+              ],
+              [
+                "solver",
+                "source_volume1",
+                "density"
+              ],
+              [
+                "solver",
+                "source_vfield1",
+                "density"
+              ],
+              [
+                "solver",
+                "source_vnormalize1",
+                1
+              ]
+            ],
+            "native_status": "mapped",
+            "unit": "density field units per solver second",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "source_vscale#",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "source_activate#",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "source_voperator#",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "source_volume#",
+                  "type": "string",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "source_vfield#",
+                  "type": "string",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "source_vnormalize#",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "density_scale",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "source_vscale1"
+            ]
+          },
+          {
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "value_type": "float",
+            "invalidates_from": "shaping_meshing",
+            "application": "houdini",
+            "native_conversion": "field_sharpen",
+            "required_gates": [
+              [
+                "solver",
+                "conv_vdb",
+                0
+              ],
+              [
+                "field_sharpen",
+                "normalize",
+                1
+              ]
+            ],
+            "native_status": "blocked",
+            "semantic_contract": "normalized_vendor_stencil_strength/1",
+            "targets": [
+              [
+                "field_sharpen",
+                "convolvezm"
+              ],
+              [
+                "field_sharpen",
+                "convolvezz"
+              ],
+              [
+                "field_sharpen",
+                "convolvezp"
+              ]
+            ],
+            "unit": "dimensionless stencil strength",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "conv_vdb",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": [
+                {
+                  "role": "field_sharpen",
+                  "parameter": "convolvezz5",
+                  "operators": [
+                    "Sop/volumeconvolve3"
+                  ]
+                },
+                {
+                  "role": "field_sharpen",
+                  "parameter": "normalize",
+                  "operators": [
+                    "Sop/volumeconvolve3"
+                  ]
+                },
+                {
+                  "role": "field_sharpen",
+                  "parameter": "convolvezm",
+                  "operators": [
+                    "Sop/volumeconvolve3"
+                  ]
+                },
+                {
+                  "role": "field_sharpen",
+                  "parameter": "convolvezz",
+                  "operators": [
+                    "Sop/volumeconvolve3"
+                  ]
+                },
+                {
+                  "role": "field_sharpen",
+                  "parameter": "convolvezp",
+                  "operators": [
+                    "Sop/volumeconvolve3"
+                  ]
+                }
+              ]
+            },
+            "blocker": "H22_459_NATIVE_TEMPLATE_REQUIRED",
+            "id": "field_sharpen",
+            "node_role": "field_sharpen",
+            "parameter_aliases": [
+              "convolvezz5"
+            ]
+          },
+          {
+            "minimum": 1.0,
+            "maximum": 100.0,
+            "value_type": "int",
+            "invalidates_from": "generation_simulation",
+            "application": "houdini",
+            "native_conversion": "simulation_substeps",
+            "required_gates": [],
+            "native_status": "mapped",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "substeps",
+                  "type": "integer",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "simulation_substeps",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "substeps"
+            ]
+          },
+          {
+            "minimum": 1.0,
+            "maximum": 100000.0,
+            "value_type": "int",
+            "invalidates_from": "render",
+            "application": "houdini",
+            "native_conversion": "volume_samples",
+            "required_gates": [
+              [
+                "render_settings",
+                "engine",
+                "cpu"
+              ],
+              [
+                "render_settings",
+                "convergence_mode",
+                "Variance"
+              ],
+              [
+                "render_settings",
+                "varianceaa_minsamples",
+                1
+              ],
+              [
+                "render_settings",
+                "varianceaa_maxsamples",
+                1
+              ]
+            ],
+            "native_status": "blocked",
+            "semantic_contract": "normalized_secondary_volume_samples/1",
+            "unit": "indirect volume secondary samples with normalized base min=max=1",
+            "targets": [
+              [
+                "render_settings",
+                "varianceaa_minsamples"
+              ],
+              [
+                "render_settings",
+                "varianceaa_maxsamples"
+              ],
+              [
+                "render_settings",
+                "volumequality"
+              ]
+            ],
+            "forward": "base min=max=1; volumequality=float(samples)",
+            "inverse": "base min=max=1; samples=int(volumequality)",
+            "renderer_support": [
+              "Karma CPU Variance"
+            ],
+            "existing_base_policy": "require actual min=max=1; reject before writes otherwise",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [],
+              "missing": [
+                {
+                  "role": "render_settings",
+                  "parameter": "volumequality",
+                  "operators": []
+                },
+                {
+                  "role": "render_settings",
+                  "parameter": "engine",
+                  "operators": []
+                },
+                {
+                  "role": "render_settings",
+                  "parameter": "convergence_mode",
+                  "operators": []
+                },
+                {
+                  "role": "render_settings",
+                  "parameter": "varianceaa_minsamples",
+                  "operators": []
+                },
+                {
+                  "role": "render_settings",
+                  "parameter": "varianceaa_maxsamples",
+                  "operators": []
+                },
+                {
+                  "role": "render_settings",
+                  "parameter": "varianceaa_minsamples",
+                  "operators": []
+                },
+                {
+                  "role": "render_settings",
+                  "parameter": "varianceaa_maxsamples",
+                  "operators": []
+                },
+                {
+                  "role": "render_settings",
+                  "parameter": "volumequality",
+                  "operators": []
+                }
+              ]
+            },
+            "blocker": "H22_459_NATIVE_TEMPLATE_REQUIRED",
+            "id": "volume_samples",
+            "node_role": "render_settings",
+            "parameter_aliases": [
+              "volumequality"
+            ]
+          }
+        ]
+      },
+      "native_basis": {
+        "status": "UNRESOLVED",
+        "scope": "Independent459HDA static fields and prospective software topology only; no compiled template, host process, writer execution or whole-domain validation.",
+        "sources": [
+          {
+            "path": "docs/native-basis/hda-interface-22.0.459.json",
+            "sha256": "e8d9ee7a16f14baa2327ae45412b2acee60ef4849d4e3aa099aea229586379c7",
+            "version": "22.0.459",
+            "native_execution": false
+          },
+          {
+            "path": "docs/native-basis/supporting-sources-22.0.459.json",
+            "sha256": "7b1bd4e1b187de823db9555bca10f40e9278dd88fb790cce8c874576405e1c3a",
+            "version": "22.0.459",
+            "native_execution": false
+          }
+        ],
+        "originals": "docs/native-basis/h22-459-originals/",
+        "captured_hda_operators": 55,
+        "node_templates": {
+          "default": [
+            {
+              "role": "geometry_network",
+              "candidates": [
+                {
+                  "operator": "Obj/geo",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "source",
+              "candidates": [
+                {
+                  "operator": "Sop/sphere",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "source_points",
+              "candidates": [
+                {
+                  "operator": "Sop/pyrosource",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "0074074f1fc8b184cbfdfed5bd8bd67ddd80e8f714aa22ebb89c8e704d35acaa",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "source_control",
+              "candidates": [
+                {
+                  "operator": "Sop/attribwrangle",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "b47a35a99cfd15f0c85143a3fed309c1a2f30704183ef7565bd52af1f7306c77",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "source_volume",
+              "candidates": [
+                {
+                  "operator": "Sop/volumerasterizeattributes",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "47700808b461aa73b395d941a13b6d478d0bd24552a2507b7dfc3da97ca426c5",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "solver",
+              "candidates": [
+                {
+                  "operator": "Sop/pyrosolver",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "field_sharpen",
+              "candidates": [
+                {
+                  "operator": "Sop/volumeconvolve3",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "field_clamp",
+              "candidates": [
+                {
+                  "operator": "Sop/volumewrangle",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "aa477e2d5cd8364e369b5c608ce85e0f77b1f21ee5d894eef420cdefa44c18bb",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "output",
+              "candidates": [
+                {
+                  "operator": "Sop/null",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "usd_network",
+              "candidates": [
+                {
+                  "operator": "Obj/lopnet",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "render_network",
+              "candidates": [
+                {
+                  "operator": "Obj/ropnet",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "geometry_import",
+              "candidates": [
+                {
+                  "operator": "Lop/sopimport",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "camera",
+              "candidates": [
+                {
+                  "operator": "Lop/camera",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "e7961a7d50953ca0a1d9cbd8f5349db34a4ec33fb98118f6d852e91765564612",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "light",
+              "candidates": [
+                {
+                  "operator": "Lop/light",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "34498e2f239d0566a47fc65928f9d42db17b8d7e487a99d3e0acc66b407abf38",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render_settings",
+              "candidates": [
+                {
+                  "operator": "Lop/karmarendersettings",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "cc263cb8a2e6e1f964363999322d8395f7c52d7160ea723173a24b23568783fe",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render_var",
+              "candidates": [
+                {
+                  "operator": "Lop/rendervar",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "c296736e72c9e2881b3867ff634cfe6253e5e5848e4f63bc9ff01420cbc39aea",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render_product",
+              "candidates": [
+                {
+                  "operator": "Lop/renderproduct",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "db75399202e08a57d1c5a1b29b42a2f871b690b9f23fe5db955a185bcb015cab",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "settings_binding",
+              "candidates": [
+                {
+                  "operator": "Lop/rendersettings",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "325937f14987a4b23ec74be88ac1bb0a424e351a469776e41b15952dbef9ac3d",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render",
+              "candidates": [
+                {
+                  "operator": "Driver/usdrender",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            }
+          ]
+        },
+        "blocked_controls": {
+          "default": [
+            {
+              "id": "volume_step_rate",
+              "blocker": "H22_459_NATIVE_TEMPLATE_REQUIRED",
+              "native_basis": {
+                "version": "22.0.459",
+                "source": "docs/native-basis/hda-interface-22.0.459.json",
+                "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+                "native_execution": false,
+                "observed": [],
+                "missing": [
+                  {
+                    "role": "render_settings",
+                    "parameter": "volumesteprate",
+                    "operators": []
+                  }
+                ]
+              }
+            },
+            {
+              "id": "source_scale",
+              "blocker": "H22_459_NATIVE_TEMPLATE_REQUIRED",
+              "native_basis": {
+                "version": "22.0.459",
+                "source": "docs/native-basis/hda-interface-22.0.459.json",
+                "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+                "native_execution": false,
+                "observed": [],
+                "missing": [
+                  {
+                    "role": "source",
+                    "parameter": "rad",
+                    "operators": [
+                      "Sop/sphere"
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": "field_sharpen",
+              "blocker": "H22_459_NATIVE_TEMPLATE_REQUIRED",
+              "native_basis": {
+                "version": "22.0.459",
+                "source": "docs/native-basis/hda-interface-22.0.459.json",
+                "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+                "native_execution": false,
+                "observed": [
+                  {
+                    "operator": "Sop/pyrosolver",
+                    "parameter": "conv_vdb",
+                    "type": "toggle",
+                    "size": 1,
+                    "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                    "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                  }
+                ],
+                "missing": [
+                  {
+                    "role": "field_sharpen",
+                    "parameter": "convolvezz5",
+                    "operators": [
+                      "Sop/volumeconvolve3"
+                    ]
+                  },
+                  {
+                    "role": "field_sharpen",
+                    "parameter": "normalize",
+                    "operators": [
+                      "Sop/volumeconvolve3"
+                    ]
+                  },
+                  {
+                    "role": "field_sharpen",
+                    "parameter": "convolvezm",
+                    "operators": [
+                      "Sop/volumeconvolve3"
+                    ]
+                  },
+                  {
+                    "role": "field_sharpen",
+                    "parameter": "convolvezz",
+                    "operators": [
+                      "Sop/volumeconvolve3"
+                    ]
+                  },
+                  {
+                    "role": "field_sharpen",
+                    "parameter": "convolvezp",
+                    "operators": [
+                      "Sop/volumeconvolve3"
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": "volume_samples",
+              "blocker": "H22_459_NATIVE_TEMPLATE_REQUIRED",
+              "native_basis": {
+                "version": "22.0.459",
+                "source": "docs/native-basis/hda-interface-22.0.459.json",
+                "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+                "native_execution": false,
+                "observed": [],
+                "missing": [
+                  {
+                    "role": "render_settings",
+                    "parameter": "volumequality",
+                    "operators": []
+                  },
+                  {
+                    "role": "render_settings",
+                    "parameter": "engine",
+                    "operators": []
+                  },
+                  {
+                    "role": "render_settings",
+                    "parameter": "convergence_mode",
+                    "operators": []
+                  },
+                  {
+                    "role": "render_settings",
+                    "parameter": "varianceaa_minsamples",
+                    "operators": []
+                  },
+                  {
+                    "role": "render_settings",
+                    "parameter": "varianceaa_maxsamples",
+                    "operators": []
+                  },
+                  {
+                    "role": "render_settings",
+                    "parameter": "varianceaa_minsamples",
+                    "operators": []
+                  },
+                  {
+                    "role": "render_settings",
+                    "parameter": "varianceaa_maxsamples",
+                    "operators": []
+                  },
+                  {
+                    "role": "render_settings",
+                    "parameter": "volumequality",
+                    "operators": []
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "native_execution": false
+      },
+      "software_validation": "NOT_RUN",
+      "live_validation": "NOT_RUN",
+      "blockers": [
+        "WHOLE_DOMAIN_NATIVE_BASIS_UNRESOLVED",
+        "CURRENT_FORMAL_LIFECYCLE_AND_OUTPUT_NOT_ACCEPTED"
+      ]
+    }
+  ],
+  "common_assertions": [
+    "Before any write verify task authorization, actual node ownership/context/type and exact native field writable/not disabled/not locked/not driven/referenced. Initialize documented modes/gates before dependent probe.",
+    "Every required and runtime control is covered; feedback changes at most five controls per formal patch, in bounded batches; inspect ALL changed targets and inverse semantic readback.",
+    "All declared ports/edges equal actual node.info inputs; include output ports and context parents, not only connection verified flags.",
+    "Save/reopen uses GraphRun.task_save/task_reopen or formal scene.save_hip/scene.reopen_task_hip; compare node type, every key parameter, ALL connections and actual domain data; no expected-data reconstruction on load.",
+    "Rejected wrong type/range/context/role/field/domain/version, locked/driven/disabled and partial-write failure leave all prior parameters/connections plus unrelated user edits intact.",
+    "Feedback readback includes semantic_control/node/parameter before-after/readback_verified/invalidates_from; invalidate transitive actual data consumers and affected caches/artifacts; unchanged branches remain unchanged."
+  ],
+  "output_contract": {
+    "type_and_data": "volume:density/temperature/velocity",
+    "rendered_image_only_after_formal_render": true,
+    "producer_operation_id": null,
+    "artifact_id": null,
+    "artifact_version": null,
+    "content_sha256": null,
+    "frames": [
+      1,
+      2
+    ],
+    "colorspace": "scene_linear for final render, not forced onto intermediate geometry/volume/material",
+    "status": "BLOCKED",
+    "interface": "I2/I3"
+  },
+  "resource_confirmation": {
+    "status": "BLOCKED",
+    "required": [
+      "task-owned roots and save/budget roots accepted by R and supervisor",
+      "explicit version and authorized isolated task input, no private media upload",
+      "frames exactly [1,2], maximum 12 explicit frames and render budget <=120 seconds",
+      "operator to confirm geometry complexity/memory/render settings budget without exceeding public allowance",
+      "licenses/resource availability checked only by future authorized operator; none invoked here"
+    ]
+  },
+  "live_human_judgment": {
+    "status": "NOT_RUN",
+    "items": [
+      "edge_frequency",
+      "density_gradient",
+      "silhouette_iou",
+      "temporal_coherence",
+      "visual plausibility and correct native geometry/data",
+      "collision/artifact/render noise and temporal continuity as applicable",
+      "reference privacy and protected dimensions retained"
+    ]
+  },
+  "next_action": {
+    "Z": "resolve each BLOCKED role/field/units/gates/conversion and implement domain assertions in separately owned code work",
+    "R": "freeze runtime-interface with hashes; legal context roots, domain-data save/reopen, actual producer route and supervised recovery",
+    "E": "validate case/build/provider binding after R freeze",
+    "M": "dispatch/review/integrate without promoting historical receipts",
+    "P": "publish only after I5 build freeze"
+  },
+  "required_versions": {
+    "houdini": [
+      "21.0.631",
+      "22.0.459"
+    ],
+    "nuke": [
+      "17.0v1"
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "schema": "bridge.native-fixture-source/1",
+  "file": "flip-rbd-source-refs.json",
+  "sha256": "81d95c43af9bb7ad31f1f7b38b0af958db351c291c589c61a635a2822710e064",
+  "origin": "preserved takeover candidate outputs/m1-takeover/flip-rbd-domains/source-refs.json",
+  "content": "unchanged historical version-specific interface capture; not a current native execution receipt",
+  "versions": [
+    "21.0.631",
+    "22.0.429"
+  ]
+}

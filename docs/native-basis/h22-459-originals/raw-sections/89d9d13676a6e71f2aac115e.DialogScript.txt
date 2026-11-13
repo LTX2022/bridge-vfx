@@ -1,0 +1,974 @@
+# Dialog script for crowdsource::3.0 automatically generated
+
+{
+    name	crowdsource::3.0
+    script	crowdsource
+    label	"Crowd Source"
+
+    help {
+	""
+    }
+
+    inputlabel	1	Agents
+    inputlabel	2	"Custom Surface/Points"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+    outputlabel	1	"Sub-Network Output #1"
+
+    group {
+        name    "setup"
+        label   "Setup"
+
+        parm {
+            name    "layout"
+            label   "Layout"
+            type    ordinal
+            default { "0" }
+            disablewhen "{ hasinput(1) == 1 }"
+            menu {
+                "0" "Random"
+                "1" "Formation"
+            }
+            range   { 0 1 }
+        }
+        parm {
+            name    "layoutorient"
+            label   "Orientation"
+            type    ordinal
+            default { "zx" }
+            menu {
+                "xy"    "XY Plane"
+                "yz"    "YZ Plane"
+                "zx"    "ZX Plane"
+            }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "size"
+            label   "Area Size"
+            type    vector2
+            size    2
+            default { "10" "10" }
+            disablewhen "{ hasinput(1) == 1 }"
+            hidewhen "{ layout == 1 }"
+            range   { -1 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "formationrows"
+            label   "Rows"
+            type    integer
+            default { "4" }
+            disablewhen "{ hasinput(1) == 1 }"
+            hidewhen "{ layout == 0 }"
+            range   { 1! 10 }
+        }
+        parm {
+            name    "formationcols"
+            label   "Columns"
+            type    integer
+            default { "5" }
+            disablewhen "{ hasinput(1) == 1 }"
+            hidewhen "{ layout == 0 }"
+            range   { 1! 10 }
+        }
+        parm {
+            name    "formationspacing"
+            label   "Spacing"
+            type    float
+            default { "1" }
+            disablewhen "{ hasinput(1) == 1 }"
+            hidewhen "{ layout == 0 }"
+            range   { 0.1! 10 }
+        }
+        parm {
+            name    "densityperarea"
+            label   "Use Area Size for Scatter Density"
+            type    toggle
+            default { "0" }
+            hidewhen "{ layout == 1 hasinput(1) == 0 }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "scatteragent"
+            label   "Number of Agents"
+            type    integer
+            default { "20" }
+            hidewhen "{ layout == 1 hasinput(1) == 0 } { densityperarea == 1 }"
+            range   { 0! 10000 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "scatteragentperarea"
+            label   "Number / Unit Area "
+            type    float
+            default { "1" }
+            hidewhen "{ densityperarea == 0 } { layout == 1 hasinput(1) == 0 }"
+            range   { 0 10 }
+        }
+        parm {
+            name    "scatterseed"
+            label   "Random Seed"
+            type    float
+            default { "0" }
+            hidewhen "{ layout == 1 hasinput(1) == 0 }"
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "maxiterations"
+            label   "Relax"
+            type    integer
+            default { "10" }
+            hidewhen "{ layout == 1 hasinput(1) == 0 }"
+            range   { 0! 100 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "pscalemultiplier"
+            label   "Particle Scale Multiplier"
+            type    float
+            default { "1" }
+            hidewhen "{ layout == 1 hasinput(1) == 0 }"
+            range   { 0 5 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "sepparm"
+            label   "Separator"
+            type    separator
+            default { "" }
+            hidewhen "{ layout == 1 }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "densityattrib"
+            label   "Density Attribute"
+            type    string
+            default { "density" }
+            hidewhen "{ layout == 1 }"
+            menureplace {
+                [ "opmenu -l -a scatter_densityAttrib densityattrib" ]
+            }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "densityscale"
+            label   "Density Scale"
+            type    float
+            default { "10" }
+            hidewhen "{ layout == 1 }"
+            range   { 0.1 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "units" "m-2" }
+        }
+        parm {
+            name    "forcetotal"
+            label   "Match Number of Agents"
+            type    toggle
+            default { "off" }
+            hidewhen "{ layout == 1 }"
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "sepparm18"
+            label   "Separator"
+            type    separator
+            default { "" }
+            range   { 0 1 }
+        }
+        parm {
+            name    "state"
+            label   "Initial State"
+            type    string
+            default { "" }
+            menureplace {
+                [ "import crowdstoolutils" ]
+                [ "return crowdstoolutils.buildClipMenu(hou.pwd())" ]
+                language python
+            }
+            range   { 0 1 }
+        }
+        parm {
+            name    "scale"
+            label   "Scale"
+            type    float
+            default { "1" }
+            range   { 0.01! 2 }
+        }
+        parm {
+            name    "initialvel"
+            label   "Initial Velocity"
+            type    float
+            size    3
+            default { "0" "0" "1" }
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "setheadingfromvelocity"
+            label   "Set Heading from Velocity"
+            type    toggle
+            default { "0" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "heading"
+            label   "Heading"
+            type    float
+            size    3
+            default { "0" "0" "1" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "up"
+            label   "Up"
+            type    float
+            size    3
+            default { "0" "1" "0" }
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "sepparm5"
+            label   "Separator"
+            type    separator
+            default { "" }
+        }
+        parm {
+            name    "creategroup"
+            label   "Create Group"
+            type    toggle
+            nolabel
+            joinnext
+            default { "0" }
+            range   { 0 1 }
+        }
+        parm {
+            name    "agentgroup"
+            label   "Group Name"
+            type    string
+            default { "$OS" }
+            disablewhen "{ creategroup == 0 }"
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "setcolor"
+            label   "Set Color"
+            type    toggle
+            nolabel
+            joinnext
+            default { "0" }
+            range   { 0 1 }
+        }
+        parm {
+            name    "agenetcolor"
+            label   "Color"
+            type    color
+            size    3
+            default { "0" "0.5" "1" }
+            disablewhen "{ setcolor == 0 }"
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "refdir"
+            label   "Reference Direction"
+            type    vector
+            size    3
+            default { "0" "0" "1" }
+            range   { -1 1 }
+        }
+        parm {
+            name    "refup"
+            label   "Reference Up"
+            type    vector
+            size    3
+            default { "0" "1" "0" }
+            range   { -1 1 }
+        }
+    }
+
+    group {
+        name    "setup_1"
+        label   "Randomize"
+
+        parm {
+            name    "randmethod"
+            label   "Randomization By"
+            type    ordinal
+            default { "ppnum" }
+            disablewhen "{ hasinput(1) == 0 }"
+            menu {
+                "ppnum"     "Point Number"
+                "custom"    "Custom Attribute"
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "randattrib"
+            label   "Custom Attribute"
+            type    string
+            default { "id" }
+            disablewhen "{ hasinput(1) == 0 }"
+            hidewhen "{ randmethod != custom }"
+            menureplace {
+                [ "hou.pwd().generateInputAttribMenu(1, hou.attribType.Point, hou.attribData.Int)" ]
+                language python
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "sepparm15"
+            label   "Separator"
+            type    separator
+            default { "" }
+            range   { 0 1 }
+        }
+        parm {
+            name    "randomizeagent"
+            label   "Randomize Agent Primitive"
+            type    toggle
+            default { "0" }
+            range   { 0 1 }
+        }
+        parm {
+            name    "randomizeagentmethod"
+            label   "Method"
+            type    ordinal
+            default { "0" }
+            hidewhen "{ randomizeagent != 1 }"
+            menu {
+                "customdiscrete"    "Custom Distribution"
+                "bynumber"          "By Number"
+            }
+        }
+        parm {
+            name    "randomizeagentmin"
+            label   "Min Primitive Number"
+            type    integer
+            default { "0" }
+            hidewhen "{ randomizeagent != 1 } { randomizeagentmethod != bynumber }"
+            range   { 0 10 }
+        }
+        parm {
+            name    "randomizeagentmax"
+            label   "Max Primitive Number"
+            type    integer
+            default { [ "nprims(opinputpath(\".\", 0)) - 1" hscript-expr ] }
+            hidewhen "{ randomizeagent != 1 } { randomizeagentmethod != bynumber }"
+            range   { 0 10 }
+        }
+        parm {
+            name    "randomizeagentseed"
+            label   "Seed"
+            type    float
+            default { "1" }
+            hidewhen "{ randomizeagent != 1 }"
+            range   { 0 10 }
+        }
+        groupsimple {
+            name    "folder2"
+            label   "Agents"
+            hidewhen "{ randomizeagent != 1 } { randomizeagentmethod != customdiscrete }"
+
+            multiparm {
+                name    "numagentpatterns"
+                label    "Agent Groups"
+                default 1
+
+                parm {
+                    name    "agentnames_#"
+                    label   "Agent Names"
+                    type    string
+                    joinnext
+                    default { "" }
+                    menutoggle {
+                        [ "import crowdstoolutils" ]
+                        [ "" ]
+                        [ "input_agents = hou.node(\"./INPUT_AGENTS\")" ]
+                        [ "geo = input_agents.geometry()" ]
+                        [ "agentnames = geo.findPointAttrib(\"agentname\") if geo else None" ]
+                        [ "" ]
+                        [ "names = []" ]
+                        [ "if agentnames:" ]
+                        [ "    names = crowdstoolutils.buildMenuStringList(agentnames.strings())" ]
+                        [ "" ]
+                        [ "return names" ]
+                        language python
+                    }
+                }
+                parm {
+                    name    "agentweight_#"
+                    label   "Weight"
+                    type    float
+                    default { "1" }
+                    range   { 0! 10 }
+                }
+            }
+
+        }
+
+        parm {
+            name    "sepparm14"
+            label   "Separator"
+            type    separator
+            default { "" }
+            range   { 0 1 }
+        }
+        parm {
+            name    "randomizedefaultstate"
+            label   "Randomize Initial State"
+            type    toggle
+            default { "0" }
+            range   { 0 1 }
+        }
+        parm {
+            name    "randomizestatemethod"
+            label   "Method"
+            type    ordinal
+            default { "0" }
+            hidewhen "{ randomizedefaultstate != 1 }"
+            menu {
+                "customdiscrete"    "Custom Distribution"
+                "bynumber"          "By Number"
+            }
+        }
+        parm {
+            name    "defaultstateprefix"
+            label   "Initial State Prefix"
+            type    string
+            default { "idle" }
+            hidewhen "{ randomizedefaultstate != 1 } { randomizestatemethod != bynumber }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "defaultstatemindiscrete"
+            label   "Min Value"
+            type    integer
+            default { "1" }
+            hidewhen "{ randomizedefaultstate != 1 } { randomizestatemethod != bynumber }"
+            range   { 0 100 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "defaultstatemaxdiscrete"
+            label   "Max Value"
+            type    integer
+            default { "10" }
+            hidewhen "{ randomizedefaultstate != 1 } { randomizestatemethod != bynumber }"
+            range   { 0 100 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "defaultstatestepsize"
+            label   "Step Size"
+            type    float
+            default { "1" }
+            hidewhen "{ randomizedefaultstate != 1 } { randomizestatemethod != bynumber }"
+            range   { 1 100 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "defaultstateseed"
+            label   "Seed"
+            type    float
+            default { "0.23" }
+            hidewhen "{ randomizedefaultstate != 1 }"
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback" "" }
+        }
+        groupsimple {
+            name    "folder0"
+            label   "States"
+            hidewhen "{ randomizedefaultstate != 1 } { randomizestatemethod != customdiscrete }"
+
+            multiparm {
+                name    "numstatepatterns"
+                label    "State Groups"
+                default 1
+
+                parm {
+                    name    "statepattern_#"
+                    label   "States"
+                    type    string
+                    joinnext
+                    default { "walk" }
+                    menutoggle {
+                        [ "import crowdstoolutils" ]
+                        [ "return crowdstoolutils.buildClipMenu(hou.pwd())" ]
+                        language python
+                    }
+                }
+                parm {
+                    name    "stateweight_#"
+                    label   "Weight"
+                    type    float
+                    default { "1" }
+                    range   { 0! 10 }
+                }
+            }
+
+        }
+
+        parm {
+            name    "sepparm3"
+            label   "Separator"
+            type    separator
+            default { "" }
+            range   { 0 1 }
+        }
+        parm {
+            name    "randomizecliptime"
+            label   "Randomize Clip Time"
+            type    toggle
+            default { "0" }
+            range   { 0 1 }
+        }
+        parm {
+            name    "randomcliptime"
+            label   "Clip Time"
+            type    float
+            joinnext
+            default { "$T" }
+            hidewhen "{ randomizecliptime == 0 }"
+            range   { 0! 1 }
+        }
+        parm {
+            name    "cliptimeunits"
+            label   "Clip Time Units"
+            type    ordinal
+            nolabel
+            default { "seconds" }
+            disablewhen "{ randomizecliptime == 0 }"
+            hidewhen "{ randomizecliptime == 0 }"
+            menu {
+                "seconds"   "Seconds"
+                "phase"     "Phase"
+            }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "relativetoclipstarttime"
+            label   "Relative to Clip Start Time"
+            type    toggle
+            default { "1" }
+            disablewhen "{ randomizecliptime == 0 } { cliptimeunits != seconds }"
+            hidewhen "{ randomizecliptime == 0 } { cliptimeunits != seconds }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "cliptimerandomness"
+            label   "Random Clip Offset"
+            type    float
+            default { "0.5" }
+            hidewhen "{ randomizecliptime == 0 }"
+            range   { 0! 1 }
+        }
+        parm {
+            name    "randomizecliptimeseed"
+            label   "Seed"
+            type    float
+            default { "1" }
+            hidewhen "{ randomizecliptime == 0 }"
+            range   { 0 10 }
+        }
+        parm {
+            name    "sepparm4"
+            label   "Separator"
+            type    separator
+            default { "" }
+            range   { 0 1 }
+        }
+        parm {
+            name    "randomizelayer"
+            label   "Randomize Current Layer"
+            type    toggle
+            default { "0" }
+            range   { 0 1 }
+        }
+        parm {
+            name    "randomizelayermethod"
+            label   "Method"
+            type    ordinal
+            default { "0" }
+            hidewhen "{ randomizelayer != 1 }"
+            menu {
+                "customdiscrete"    "Custom Distribution"
+                "bynumber"          "By Number"
+            }
+        }
+        parm {
+            name    "layerprefix"
+            label   "Layer Prefix"
+            type    string
+            default { "variation_" }
+            hidewhen "{ randomizelayer != 1 } { randomizelayermethod != bynumber }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "layermin"
+            label   "Min Value"
+            type    integer
+            default { "1" }
+            hidewhen "{ randomizelayer != 1 } { randomizelayermethod != bynumber }"
+            range   { 0 100 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "layermax"
+            label   "Max Value"
+            type    integer
+            default { "10" }
+            hidewhen "{ randomizelayer != 1 } { randomizelayermethod != bynumber }"
+            range   { 0 100 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "layerstepsize"
+            label   "Step Size"
+            type    float
+            default { "1" }
+            hidewhen "{ randomizelayer != 1 } { randomizelayermethod != bynumber }"
+            range   { 1 100 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "layerseed"
+            label   "Seed"
+            type    float
+            default { "0" }
+            hidewhen "{ randomizelayer != 1 }"
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback" "" }
+        }
+        groupsimple {
+            name    "folder1"
+            label   "Layers"
+            hidewhen "{ randomizelayer != 1 } { randomizelayermethod != customdiscrete }"
+
+            multiparm {
+                name    "numlayerpatterns"
+                label    "Layer Groups"
+                default 1
+
+                parm {
+                    name    "layerpattern_#"
+                    label   "Layers"
+                    type    string
+                    joinnext
+                    default { "" }
+                    menutoggle {
+                        [ "import crowdstoolutils" ]
+                        [ "return crowdstoolutils.buildLayerMenu(hou.node(\"switch_setcurrentlayers\"))" ]
+                        language python
+                    }
+                }
+                parm {
+                    name    "layerweight_#"
+                    label   "Weight"
+                    type    float
+                    default { "1" }
+                    range   { 0 10 }
+                }
+            }
+
+        }
+
+        parm {
+            name    "sepparm19"
+            label   "Separator"
+            type    separator
+            default { "" }
+            range   { 0 1 }
+        }
+        parm {
+            name    "randomizescale"
+            label   "Randomize Scale"
+            type    toggle
+            default { "0" }
+            range   { 0 1 }
+        }
+        parm {
+            name    "randomscale"
+            label   "Scale"
+            type    float
+            default { "1" }
+            hidewhen "{ randomizescale != 1 }"
+            range   { 0 10 }
+        }
+        parm {
+            name    "randomscaleoffset"
+            label   "Randomness"
+            type    float
+            default { "0.2" }
+            hidewhen "{ randomizescale != 1 }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "randomscaleseed"
+            label   "Seed"
+            type    float
+            default { "0.43" }
+            hidewhen "{ randomizescale != 1 }"
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback" "" }
+        }
+        parm {
+            name    "sepparm9"
+            label   "Separator"
+            type    separator
+            default { "" }
+            range   { 0 1 }
+        }
+        parm {
+            name    "randomizeinitvel"
+            label   "Randomize Initial Velocity"
+            type    toggle
+            default { "0" }
+            range   { 0 1 }
+        }
+        parm {
+            name    "randominitvel"
+            label   "Initial Velocity"
+            type    float
+            size    3
+            default { "0" "0" "1" }
+            hidewhen "{ randomizeinitvel != 1 }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "randominitveloffset"
+            label   "Randomness"
+            type    float
+            size    3
+            default { "0" "0" "0" }
+            hidewhen "{ randomizeinitvel != 1 }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "randominitvelseed"
+            label   "Seed"
+            type    float
+            default { "0.65" }
+            hidewhen "{ randomizeinitvel != 1 }"
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback" "" }
+        }
+        parm {
+            name    "sepparm11"
+            label   "Separator"
+            type    separator
+            default { "" }
+            range   { 0 1 }
+        }
+        parm {
+            name    "randomizeheading"
+            label   "Randomize Heading"
+            type    toggle
+            default { "0" }
+            range   { 0 1 }
+        }
+        parm {
+            name    "randomheading"
+            label   "Heading"
+            type    float
+            size    3
+            default { "0" "0" "1" }
+            hidewhen "{ randomizeheading != 1 }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "randomheadingoffset"
+            label   "Randomness"
+            type    float
+            size    3
+            default { "0" "0" "0" }
+            hidewhen "{ randomizeheading != 1 }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "randomheadingseed"
+            label   "Seed"
+            type    float
+            default { "0.65" }
+            hidewhen "{ randomizeheading != 1 }"
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback" "" }
+        }
+        parm {
+            name    "sepparm12"
+            label   "Separator"
+            type    separator
+            default { "" }
+            range   { 0 1 }
+        }
+        parm {
+            name    "randomizeup"
+            label   "Randomize Up"
+            type    toggle
+            default { "0" }
+            range   { 0 1 }
+        }
+        parm {
+            name    "randomup"
+            label   "Up"
+            type    float
+            size    3
+            default { "0" "1" "0" }
+            hidewhen "{ randomizeup != 1 }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "randomupoffset"
+            label   "Randomness"
+            type    float
+            size    3
+            default { "0" "0" "0" }
+            hidewhen "{ randomizeup != 1 }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "randomupseed"
+            label   "Seed"
+            type    float
+            default { "0.65" }
+            hidewhen "{ randomizeup != 1 }"
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback" "" }
+        }
+        parm {
+            name    "sepparm13"
+            label   "Separator"
+            type    separator
+            default { "" }
+            range   { 0 1 }
+        }
+    }
+
+    parm {
+        name    "sepparm2"
+        label   "Separator"
+        type    separator
+        invisible
+        default { "" }
+        range   { 0 1 }
+    }
+    parm {
+        name    "vis"
+        label   "Visualize As Proxy"
+        type    toggle
+        invisible
+        default { "1" }
+        range   { 0 1 }
+    }
+    parm {
+        name    "viewportlod"
+        label   "Display As"
+        type    ordinal
+        invisible
+        default { "full" }
+        menu {
+            "full"      "Full Geometry"
+            "points"    "Point Cloud"
+            "box"       "Bounding Box"
+            "centroid"  "Centroid"
+            "hidden"    "Hidden"
+        }
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_callback" "" }
+    }
+    parm {
+        name    "showid"
+        label   "Show ID"
+        type    toggle
+        invisible
+        default { "off" }
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_callback" "" }
+    }
+    parm {
+        name    "usecustomcolor"
+        label   "Custom Color"
+        type    toggle
+        invisible
+        default { "off" }
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_callback" "" }
+    }
+    parm {
+        name    "customcolor"
+        label   "Color"
+        type    color
+        invisible
+        size    3
+        default { "1" "1" "1" }
+        disablewhen "{ usecustomcolor == 0 }"
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_callback" "" }
+    }
+    parm {
+        name    "randomcolor"
+        label   "Random"
+        type    toggle
+        invisible
+        default { "on" }
+        disablewhen "{ usecustomcolor == 0 }"
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_callback" "" }
+    }
+    parm {
+        name    "color4_seed"
+        label   "Random Seed"
+        type    float
+        invisible
+        default { "5.07" }
+        disablewhen "{ randomcolor == 0 } { usecustomcolor == 0 }"
+        range   { 0 10 }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_callback" "" }
+    }
+    parm {
+        name    "clipname"
+        label   "Clipname"
+        type    string
+        invisible
+        default { "" }
+        range   { 0 1 }
+    }
+    parm {
+        name    "cliptime"
+        label   "Clip Time"
+        type    float
+        invisible
+        default { "0" }
+        range   { 0 10 }
+    }
+    parm {
+        name    "clipweight"
+        label   "Clip Weight"
+        type    float
+        invisible
+        default { "0" }
+        range   { 0 10 }
+    }
+}

@@ -1,0 +1,483 @@
+# Dialog script for popsource::2.0 automatically generated
+
+{
+    name	popsource::2.0
+    script	popsource
+    label	"POP Source"
+
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Input 1"
+    inputlabel	2	"Input 2"
+    inputlabel	3	"Input 3"
+    inputlabel	4	"Input 4"
+
+    parm {
+        name    "showguide"
+        label   "Show Guide Geometry"
+        type    toggle
+        nolabel
+        joinnext
+        default { "on" }
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "guidecolor"
+        label   "Guide"
+        type    color
+        size    3
+        default { "0" "0" "1" }
+        disablewhen "{ showguide == 0 }"
+        range   { 0! 1! }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    group {
+        name    "folder0"
+        label   "Source"
+
+        parm {
+            name    "emittype"
+            label   "Emission Type"
+            type    ordinal
+            default { "surface" }
+            menu {
+                "allpoint"  "All Points"
+                "allgeo"    "All Geometry"
+                "point"     "Points"
+                "surface"   "Scatter onto Surfaces"
+            }
+            range   { 0 1 }
+            export  all
+        }
+        parm {
+            name    "usecontextgeo"
+            label   "Geometry Source"
+            type    ordinal
+            default { "0" }
+            menu {
+                "none"      "Use Parameter Values"
+                "dop"       "Use DOP Objects"
+                "first"     "Use First Context Geometry"
+                "second"    "Use Second Context Geometry"
+                "third"     "Use Third Context Geometry"
+                "fourth"    "Use Fourth Context Geometry"
+            }
+            range   { 0 1 }
+        }
+        parm {
+            name    "dopobjects"
+            label   "DOP Objects"
+            type    string
+            default { "" }
+            hidewhen "{ usecontextgeo != dop }"
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "soppath"
+            label   "SOP"
+            type    oppath
+            default { "" }
+            disablewhen "{ usecontextgeo != none }"
+            range   { 0 1 }
+            parmtag { "oprelative" "." }
+        }
+        parm {
+            name    "usetransform"
+            label   "Use Object Transform"
+            type    toggle
+            default { "1" }
+            disablewhen "{ usecontextgeo != none }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "source"
+            label   "Source Group"
+            type    string
+            default { "" }
+            menutoggle {
+                [ "opmenu -l sopsolver1/blast_not_in_group group" ]
+            }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "sourcegrouptype"
+            label   "Group Type"
+            type    ordinal
+            default { "guess" }
+            menu {
+                "guess"         "Guess from Group"
+                "breakpoints"   "Breakpoints"
+                "edges"         "Edges"
+                "points"        "Points"
+                "prims"         "Primitives"
+            }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback" "" }
+        }
+        parm {
+            name    "emitattrib"
+            label   "Emission Attribute"
+            type    string
+            default { "" }
+            disablewhen "{ emittype != surface }"
+            menutoggle {
+                [ "opmenu -l sopsolver1/scatter20 densityattrib" ]
+            }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "relaxpoints"
+            label   "Relax Points"
+            type    toggle
+            nolabel
+            joinnext
+            default { "off" }
+            disablewhen "{ emittype != surface }"
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback" "" }
+        }
+        parm {
+            name    "relaxiterations"
+            label   "Relax Iterations"
+            type    integer
+            default { "10" }
+            disablewhen "{ emittype != surface } { relaxpoints == 0 }"
+            range   { 0! 100 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback" "" }
+        }
+        parm {
+            name    "scaleradiiby"
+            label   "Scale Radii By"
+            type    float
+            default { "1" }
+            disablewhen "{ emittype != surface } { relaxpoints == 0 }"
+            range   { 0! 2 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback" "" }
+        }
+        parm {
+            name    "usemaxradius"
+            label   "Use Max Relax Radius"
+            type    toggle
+            nolabel
+            joinnext
+            default { "on" }
+            disablewhen "{ emittype != surface } { relaxpoints == 0 }"
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback" "" }
+        }
+        parm {
+            name    "maxradius"
+            label   "Max Relax Radius"
+            type    float
+            default { "10" }
+            disablewhen "{ emittype != surface } { usemaxradius == 0 } { relaxpoints == 0 }"
+            range   { 0! 100 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback" "" }
+            parmtag { "units" "m-1" }
+        }
+        parm {
+            name    "scalebyarea"
+            label   "Scale Point Count by Area"
+            type    toggle
+            default { "0" }
+            disablewhen "{ emittype != surface }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "areascale"
+            label   "Reference Area"
+            type    float
+            default { "10" }
+            disablewhen "{ emittype != surface } { scalebyarea == 0 }"
+            range   { 0 10 }
+            parmtag { "units" "m2" }
+        }
+        parm {
+            name    "removeoverlap"
+            label   "Remove Overlapping"
+            type    ordinal
+            default { "0" }
+            menu {
+                "none"      "None"
+                "existing"  "With Existing"
+            }
+            range   { 0 1 }
+        }
+    }
+
+    group {
+        name    "folder0_1"
+        label   "Birth"
+
+        parm {
+            name    "impulseactiveate"
+            label   "Impulse Activation"
+            type    float
+            default { "1" }
+            range   { 0 10 }
+            export  all
+        }
+        parm {
+            name    "impulserate"
+            label   "Impulse Count"
+            type    float
+            default { "0" }
+            disablewhen "{ emittype == allpoint } { emittype == allgeo }"
+            range   { 0 100000 }
+            export  all
+        }
+        parm {
+            name    "constantactivate"
+            label   "Const. Activation"
+            type    float
+            default { "1" }
+            disablewhen "{ emittype == allpoint } { emittype == allgeo }"
+            range   { 0 10 }
+            export  all
+        }
+        parm {
+            name    "constantrate"
+            label   "Const. Birth Rate"
+            type    float
+            default { "5000" }
+            disablewhen "{ emittype == allpoint } { emittype == allgeo }"
+            range   { 0 1e+06 }
+            export  all
+        }
+        parm {
+            name    "usesimpointlimit"
+            label   "Max Sim Points"
+            type    toggle
+            nolabel
+            joinnext
+            default { "0" }
+            disablewhen "{ emittype == allpoint } { emittype == allgeo }"
+        }
+        parm {
+            name    "simpointlimit"
+            label   "Max Sim Points"
+            type    intlog
+            default { "1e+06" }
+            disablewhen "{ usesimpointlimit == 0 } { emittype == allpoint } { emittype == allgeo }"
+            range   { 1 1e+07 }
+        }
+        parm {
+            name    "useframepointlimit"
+            label   "Max Points per Frame"
+            type    toggle
+            nolabel
+            joinnext
+            default { "1" }
+            disablewhen "{ emittype == allpoint } { emittype == allgeo }"
+        }
+        parm {
+            name    "framepointlimit"
+            label   "Max Points per Frame"
+            type    intlog
+            default { "1e+06" }
+            disablewhen "{ useframepointlimit == 0 } { emittype == allpoint } { emittype == allgeo }"
+            range   { 1 1e+07 }
+        }
+        parm {
+            name    "probemit"
+            label   "Probabilistic Emission"
+            type    toggle
+            default { "1" }
+            disablewhen "{ emittype == allpoint } { emittype == allgeo }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "group"
+            label   "Just Born Group"
+            type    string
+            default { "" }
+            range   { 0 1 }
+        }
+        parm {
+            name    "seed"
+            label   "Seed"
+            type    float
+            default { "0" }
+            range   { 0 10 }
+        }
+        parm {
+            name    "life"
+            label   "Life Expectancy"
+            type    float
+            default { "100" }
+            range   { 0 100 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "parmvop" "1" }
+            parmtag { "shaderparmcontexts" "sop" }
+        }
+        parm {
+            name    "lifevar"
+            label   "Life Variance"
+            type    float
+            default { "0" }
+            range   { 0 5 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "parmvop" "1" }
+            parmtag { "shaderparmcontexts" "sop" }
+        }
+        parm {
+            name    "jitterbirthtime"
+            label   "Jitter Birth Time"
+            type    ordinal
+            default { "positive" }
+            menu {
+                "none"      "None"
+                "negative"  "Negative"
+                "positive"  "Positive"
+            }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "parmvop" "1" }
+            parmtag { "shaderparmcontexts" "cvex" }
+        }
+        parm {
+            name    "jittersource"
+            label   "Interpolate Source"
+            type    ordinal
+            default { "none" }
+            disablewhen "{ jitterbirthtime == none }"
+            menu {
+                "none"      "None"
+                "forward"   "Forward"
+                "back"      "Back"
+            }
+            range   { 0 1 }
+        }
+        parm {
+            name    "jittermethod"
+            label   "Interpolation Method"
+            type    ordinal
+            default { "0" }
+            hidewhen "{ jitterbirthtime == none } { jittersource == none }"
+            menu {
+                "topology"  "Match Topology"
+                "velocity"  "Use Point Velocity"
+            }
+            range   { 0 1 }
+        }
+    }
+
+    group {
+        name    "folder0_2"
+        label   "Attributes"
+
+        parm {
+            name    "initialstate"
+            label   "Initial State"
+            type    ordinal
+            default { "free" }
+            disablewhen "{ emittype != surface } { usecontextgeo != none }"
+            menu {
+                "free"      "Free Flying"
+                "stopped"   "Stopped"
+                "stuck"     "Stuck"
+                "slide"     "Sliding"
+            }
+            range   { 0 1 }
+        }
+        parm {
+            name    "inheritattrib"
+            label   "Inherit Attributes"
+            type    string
+            default { "*" }
+            menutoggle {
+                [ "opmenu -l sopsolver1/remove_unwanted_attribute ptkeep" ]
+            }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "initvel"
+            label   "Initial Velocity"
+            type    ordinal
+            default { "0" }
+            menu {
+                "use"   "Use inherited velocity"
+                "add"   "Add to inherited velocity"
+                "set"   "Set initial velocity"
+            }
+            range   { 0 1 }
+        }
+        parm {
+            name    "inheritvel"
+            label   "Inherit Velocity"
+            type    float
+            default { "1" }
+            disablewhen "{ initvel == set }"
+            range   { 0 10 }
+        }
+        parm {
+            name    "vel"
+            label   "Velocity"
+            type    direction
+            size    3
+            default { "0" "0" "0" }
+            disablewhen "{ initvel == use }"
+            range   { 0 1 }
+            parmtag { "units" "m1s-1" }
+        }
+        parm {
+            name    "var"
+            label   "Variance"
+            type    direction
+            size    3
+            default { "1" "1" "1" }
+            disablewhen "{ initvel == use }"
+            range   { 0 1 }
+            parmtag { "units" "m1s-1" }
+        }
+        parm {
+            name    "doid"
+            label   "Add ID Attributes"
+            type    toggle
+            default { "1" }
+            range   { 0 1 }
+        }
+    }
+
+    group {
+        name    "folder0_3"
+        label   "Stream"
+
+        parm {
+            name    "streamname"
+            label   "Stream Name"
+            type    string
+            default { "$OS" }
+            range   { 0 1 }
+        }
+    }
+
+    group {
+        name    "folder0_4"
+        label   "Bindings"
+
+        parm {
+            name    "bindgeo"
+            label   "Geometry"
+            type    string
+            default { "Geometry" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+    }
+
+}

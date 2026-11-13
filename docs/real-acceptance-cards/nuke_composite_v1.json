@@ -1,0 +1,341 @@
+{
+  "domain_pack": "nuke_composite_v1",
+  "case_id": "nuke_composite_v1__build_inspect",
+  "case_ids": [
+    "nuke_composite_v1__build_inspect",
+    "nuke_composite_v1__causal_candidate",
+    "nuke_composite_v1__approval_recovery"
+  ],
+  "domain_pack_version": "1.0.0",
+  "kind": "current_software_contract_checklist_not_execution_evidence",
+  "status": "PREPARATION_NOT_ACCEPTED",
+  "applications": [
+    "nuke"
+  ],
+  "required_versions": {
+    "nuke": [
+      "17.0v1"
+    ]
+  },
+  "native_basis_status": "UNRESOLVED",
+  "native_basis": {
+    "static_definitions": [
+      "plugins/nuke/nuke_bridge_addon.py",
+      "packages/nuke-bridge/src/nuke_bridge/operation_receipts.py"
+    ],
+    "meaning": "Current software mappings and static references are not whole-domain native validation; resolve exact operator/parameter/port and output-consumption gaps before marking VERIFIED_SOURCE."
+  },
+  "expected_nodes": {
+    "17.0v1": [
+      {
+        "role": "input_effect_render",
+        "type_candidates": [
+          "Read"
+        ]
+      },
+      {
+        "role": "effect_controls",
+        "source": "plugins/nuke/nuke_bridge_addon.py: _COMPOSITE_CONTROL_MAPPING and build_graph"
+      },
+      {
+        "role": "effect_premult",
+        "type_candidates": [
+          "Premult"
+        ]
+      },
+      {
+        "role": "final_image",
+        "type_candidates": [
+          "NoOp"
+        ]
+      },
+      {
+        "role": "final_write",
+        "type_candidates": [
+          "Write"
+        ]
+      }
+    ]
+  },
+  "expected_connections": {
+    "17.0v1": [
+      "registered effect Read -> configured effect chain -> Premult -> final NoOp -> Write; optional matte Copy and plate Merge2 must match registered inputs"
+    ]
+  },
+  "key_parameters": {
+    "semantic": [
+      {
+        "name": "blur_size",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 500.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "composite"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "nuke"
+      },
+      {
+        "name": "defocus_size",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 500.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "composite"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "nuke"
+      },
+      {
+        "name": "denoise_mix",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "composite"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "nuke"
+      },
+      {
+        "name": "sharpen_amount",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 100.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "composite"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "nuke"
+      },
+      {
+        "name": "glow_size",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 500.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "composite"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "nuke"
+      },
+      {
+        "name": "glow_mix",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 10.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "composite"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "nuke"
+      },
+      {
+        "name": "edge_size",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 100.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "composite"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "nuke"
+      },
+      {
+        "name": "grain_mix",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 10.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "composite"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "nuke"
+      },
+      {
+        "name": "premult",
+        "value_type": "bool",
+        "minimum": null,
+        "maximum": null,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "composite"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "nuke"
+      }
+    ],
+    "versioned_native_mapping": {
+      "17.0v1": [
+        {
+          "name": "blur_size",
+          "value_type": "float",
+          "minimum": 0.0,
+          "maximum": 500.0,
+          "choices": [],
+          "invalidates_stage_nodes": [
+            "composite"
+          ],
+          "requires_simulation_cache": false,
+          "invalidates_components": [],
+          "application": "nuke"
+        },
+        {
+          "name": "defocus_size",
+          "value_type": "float",
+          "minimum": 0.0,
+          "maximum": 500.0,
+          "choices": [],
+          "invalidates_stage_nodes": [
+            "composite"
+          ],
+          "requires_simulation_cache": false,
+          "invalidates_components": [],
+          "application": "nuke"
+        },
+        {
+          "name": "denoise_mix",
+          "value_type": "float",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "choices": [],
+          "invalidates_stage_nodes": [
+            "composite"
+          ],
+          "requires_simulation_cache": false,
+          "invalidates_components": [],
+          "application": "nuke"
+        },
+        {
+          "name": "sharpen_amount",
+          "value_type": "float",
+          "minimum": 0.0,
+          "maximum": 100.0,
+          "choices": [],
+          "invalidates_stage_nodes": [
+            "composite"
+          ],
+          "requires_simulation_cache": false,
+          "invalidates_components": [],
+          "application": "nuke"
+        },
+        {
+          "name": "glow_size",
+          "value_type": "float",
+          "minimum": 0.0,
+          "maximum": 500.0,
+          "choices": [],
+          "invalidates_stage_nodes": [
+            "composite"
+          ],
+          "requires_simulation_cache": false,
+          "invalidates_components": [],
+          "application": "nuke"
+        },
+        {
+          "name": "glow_mix",
+          "value_type": "float",
+          "minimum": 0.0,
+          "maximum": 10.0,
+          "choices": [],
+          "invalidates_stage_nodes": [
+            "composite"
+          ],
+          "requires_simulation_cache": false,
+          "invalidates_components": [],
+          "application": "nuke"
+        },
+        {
+          "name": "edge_size",
+          "value_type": "float",
+          "minimum": 0.0,
+          "maximum": 100.0,
+          "choices": [],
+          "invalidates_stage_nodes": [
+            "composite"
+          ],
+          "requires_simulation_cache": false,
+          "invalidates_components": [],
+          "application": "nuke"
+        },
+        {
+          "name": "grain_mix",
+          "value_type": "float",
+          "minimum": 0.0,
+          "maximum": 10.0,
+          "choices": [],
+          "invalidates_stage_nodes": [
+            "composite"
+          ],
+          "requires_simulation_cache": false,
+          "invalidates_components": [],
+          "application": "nuke"
+        },
+        {
+          "name": "premult",
+          "value_type": "bool",
+          "minimum": null,
+          "maximum": null,
+          "choices": [],
+          "invalidates_stage_nodes": [
+            "composite"
+          ],
+          "requires_simulation_cache": false,
+          "invalidates_components": [],
+          "application": "nuke"
+        }
+      ]
+    }
+  },
+  "save_reopen": [
+    "Use the production generator and task-owned host; persist project content/version/owner and the original operation receipt.",
+    "Stop the actual owned worker and verify trusted stop, then reopen the saved HIP/NK in a new host identity.",
+    "Read back every role, native type, port, connection and semantic control; preserve unrelated artist changes."
+  ],
+  "stop_recovery": [
+    "Interrupt the actual case worker, not an auxiliary process.",
+    "Retain the heavy slot while stop is unknown; verify task/session/nonce/process/generation/build/scene epoch.",
+    "Restart the controller, restore the same operation from persistent facts, and verify no duplicate execution/registration."
+  ],
+  "artifact_checks": [
+    "Consume only task-owned registered input IDs/versions/hash and exact frames.",
+    "Validate applicable outputs: diagnostic_preview, editable_scene",
+    "Require producer operation, scene/version, format/dimensions/channels, color/premultiplication and dependency facts; reject missing typed metadata.",
+    "Check missing/repeated/frozen/abrupt frames against a frozen activity interval; pixel change alone does not establish correct motion."
+  ],
+  "raw_evidence_path": "outputs/live-validation/nuke_composite_v1/<new-run-id>",
+  "human_checks": [
+    "Editable topology and save/reopen match the approved controls.",
+    "Compare the registered reference and feedback result; judge actual motion, silhouette, timing, material, lighting and composition.",
+    "Accept visual quality separately from software, format and process-stop checks."
+  ],
+  "resource_requirements": {
+    "explicit_frames_max": 12,
+    "seconds_max": 120,
+    "disk_bytes": "explicit positive task budget; include output/cache/temp/logs",
+    "cache": "separate exact path/frame/content-version/estimated-bytes/invalidation confirmation before execution",
+    "concurrency": "one heavy DCC job; unknown stop keeps slot"
+  },
+  "blockers": [
+    "Full 54-row current-build evidence and independent M1 reception remain incomplete.",
+    "Whole-domain native basis and applicable output/actual worker recovery are not verified by this card."
+  ],
+  "composite": false
+}

@@ -1,0 +1,24 @@
+# hqueue.zip 官方文档索引（Houdini 22.0.368）
+
+共 18 页。用 `--page hqueue.zip:<内部路径>` 读取全文。
+
+| 页面 | 标题 |
+|---|---|
+| `api.txt` | Remote API |
+| `configuration.txt` | Configuration |
+| `database.txt` | Switching the Database Engine |
+| `faqs.txt` | FAQs |
+| `gettingstarted.txt` | Installation |
+| `index.txt` | HQueue |
+| `jobdetails.txt` | Jobs specification details |
+| `logging.txt` | Logging |
+| `managingclientgroups.txt` | Managing client groups |
+| `managingclients.txt` | Managing clients |
+| `managingjobs.txt` | Managing jobs |
+| `managingnotes.txt` | Notes |
+| `multiclient.txt` | Multiple clients, single machine |
+| `networkfolders.txt` | Network Folders |
+| `overview.txt` | About HQueue |
+| `resourcedetails.txt` | Resources |
+| `submittingjobs.txt` | How to submit jobs |
+| `uninstalling.txt` | Uninstalling |

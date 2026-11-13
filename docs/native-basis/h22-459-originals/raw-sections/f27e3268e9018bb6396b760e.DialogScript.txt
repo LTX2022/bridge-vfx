@@ -1,0 +1,489 @@
+# Dialog script for crowdobject automatically generated
+
+{
+    name	crowdobject
+    script	crowdobject
+    label	"Crowd Object"
+
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Constraint Solvers"
+
+    parm {
+        name    "usesimframe"
+        label   "Creation Frame Specifies Simulation Frame"
+        type    toggle
+        default { "0" }
+        range   { 0 1 }
+        parmtag { "autoscope" "0000" }
+    }
+    parm {
+        name    "createframe"
+        label   "Creation Frame"
+        type    float
+        default { "ch(opcreator(\".\")+\"/startframe\")" }
+        range   { 1 100 }
+        parmtag { "autoscope" "0000" }
+    }
+    parm {
+        name    "solvefirstframe"
+        label   "Solve on Creation Frame"
+        type    toggle
+        default { "on" }
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "object_name"
+        label   "Object Name"
+        type    string
+        default { "$OS" }
+        range   { 0 1 }
+    }
+    parm {
+        name    "packtype"
+        label   "Pack Type"
+        type    string
+        invisible
+        default { "packbyname" }
+        menu {
+            "useexisting"   "Use Existing Packed Primitives"
+            "packbyname"    "Pack By Name"
+        }
+        range   { 0 1 }
+    }
+    parm {
+        name    "active"
+        label   "Create Active Objects"
+        type    toggle
+        invisible
+        default { "1" }
+        range   { 0 1 }
+    }
+    parm {
+        name    "display"
+        label   "Display Geometry"
+        type    toggle
+        default { "1" }
+        range   { 0 1 }
+    }
+    parm {
+        name    "enableragdoll"
+        label   "Enable Ragdoll Data"
+        type    toggle
+        default { "1" }
+        range   { 0 1 }
+    }
+    group {
+        name    "folder0_1"
+        label   "Crowd"
+
+        groupsimple {
+            name    "group_initialgeometry"
+            label   "Initial Geometry"
+
+            parm {
+                name    "initialgeometrysource"
+                label   "Source"
+                type    ordinal
+                default { "0" }
+                menu {
+                    "sop"       "SOP"
+                    "first"     "First Context Geometry"
+                    "second"    "Second Context Geometry"
+                    "third"     "Third Context Geometry"
+                    "fourth"    "Fourth Context Geometry"
+                }
+            }
+            parm {
+                name    "initialgeometry"
+                label   "Initial Geometry"
+                type    oppath
+                default { "" }
+                disablewhen "{ initialgeometrysource != sop }"
+                parmtag { "opfilter" "!!SOP!!" }
+                parmtag { "oprelative" "." }
+            }
+            parm {
+                name    "usetransform"
+                label   "Use Object Transform"
+                type    toggle
+                default { "on" }
+                disablewhen "{ initialgeometrysource != sop }"
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            groupcollapsible {
+                name    "crowdattributes"
+                label   "Attributes"
+
+                parm {
+                    name    "doid"
+                    label   "Add ID Attributes"
+                    type    toggle
+                    default { "1" }
+                }
+                parm {
+                    name    "life"
+                    label   "Life Expectancy"
+                    type    float
+                    default { "100" }
+                    range   { 0 10 }
+                }
+            }
+
+        }
+
+        groupsimple {
+            name    "group_clipgraph"
+            label   "Clip Transition Graph"
+
+            parm {
+                name    "clipgraphsource"
+                label   "Source"
+                type    ordinal
+                default { "0" }
+                menu {
+                    "sop"       "SOP"
+                    "first"     "First Context Geometry"
+                    "second"    "Second Context Geometry"
+                    "third"     "Third Context Geometry"
+                    "fourth"    "Fourth Context Geometry"
+                }
+            }
+            parm {
+                name    "clipgraph"
+                label   "Clip Transition Graph"
+                type    oplist
+                default { "" }
+                disablewhen "{ clipgraphsource != sop }"
+                range   { 0 1 }
+                parmtag { "opfilter" "!!SOP!!" }
+                parmtag { "oprelative" "." }
+            }
+        }
+
+        groupsimple {
+            name    "group_clipproperties"
+            label   "Clip Properties"
+
+            parm {
+                name    "clippropertiessource"
+                label   "Source"
+                type    ordinal
+                default { "0" }
+                menu {
+                    "sop"       "SOP"
+                    "first"     "First Context Geometry"
+                    "second"    "Second Context Geometry"
+                    "third"     "Third Context Geometry"
+                    "fourth"    "Fourth Context Geometry"
+                }
+            }
+            parm {
+                name    "clipproperties"
+                label   "Clip Properties"
+                type    oplist
+                default { "" }
+                disablewhen "{ clippropertiessource != sop }"
+                range   { 0 1 }
+                parmtag { "opfilter" "!!SOP!!" }
+                parmtag { "oprelative" "." }
+            }
+        }
+
+        groupsimple {
+            name    "group_targetgeometry"
+            label   "Target Geometry"
+
+            parm {
+                name    "targetgeometrysource"
+                label   "Source"
+                type    ordinal
+                default { "0" }
+                menu {
+                    "sop"       "SOP"
+                    "first"     "First Context Geometry"
+                    "second"    "Second Context Geometry"
+                    "third"     "Third Context Geometry"
+                    "fourth"    "Fourth Context Geometry"
+                }
+            }
+            parm {
+                name    "targetgeometry"
+                label   "Target Geometry"
+                type    oppath
+                default { "" }
+                disablewhen "{ targetgeometrysource != sop }"
+                parmtag { "opfilter" "!!SOP!!" }
+                parmtag { "oprelative" "." }
+            }
+            parm {
+                name    "usetargetgeometrytransform"
+                label   "Use Object Transform"
+                type    toggle
+                default { "on" }
+                disablewhen "{ targetgeometrysource != sop }"
+                parmtag { "autoscope" "0000000000000000" }
+            }
+        }
+
+    }
+
+    group {
+        name    "folder0_1_1"
+        label   "Bullet Data"
+
+        parm {
+            name    "showguide"
+            label   "Show Guide Geometry"
+            type    toggle
+            default { "off" }
+            disablewhen "{ enableragdoll == 0 }"
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "color"
+            label   "Color"
+            type    color
+            size    3
+            default { "0" "0" "1" }
+            disablewhen "{ showguide == 0 } { enableragdoll == 0 }"
+            range   { 0! 1! }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "bullet_deactivated_color"
+            label   "Deactivated Color"
+            type    color
+            size    3
+            default { "1" "0" "0" }
+            disablewhen "{ showguide == 0 } { enableragdoll == 0 }"
+            range   { 0! 1! }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "sepparm"
+            label   "Separator"
+            type    separator
+            default { "" }
+            range   { 0 1 }
+        }
+        parm {
+            name    "bullet_georep"
+            label   "Geometry Representation"
+            type    string
+            default { "convexhull" }
+            disablewhen "{ enableragdoll == 0 }"
+            menu {
+                "convexhull"    "Convex Hull"
+                "concave"       "Concave"
+                "box"           "Box"
+                "capsule"       "Capsule"
+                "cylinder"      "Cylinder"
+                "compound"      "Compound"
+                "sphere"        "Sphere"
+                "plane"         "Plane"
+            }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "geo_triangulate"
+            label   "Triangulate Polygons (not working yet)"
+            type    toggle
+            invisible
+            default { "on" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "bullet_geoconvexhull"
+            label   "Polygons As Convex Hulls"
+            type    toggle
+            invisible
+            default { "on" }
+            disablewhen "{ bullet_georep != as-is }"
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "bullet_groupconnected"
+            label   "Create Convex Hull per Set of Connected Primitives"
+            type    toggle
+            default { "off" }
+            disablewhen "{ bullet_georep != convexhull } { enableragdoll == 0 }"
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "bullet_autofit"
+            label   "AutoFit Primitive Boxes, Capsules, Cylinders, Spheres, or Planes to Geometry"
+            type    toggle
+            default { "on" }
+            disablewhen "{ bullet_georep == compound } { bullet_georep == convexhull } { bullet_georep == concave } { enableragdoll == 0 }"
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "bullet_primT"
+            label   "Position"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            disablewhen "{ bullet_autofit == 1 } { bullet_georep == compound } { bullet_georep == convexhull } { bullet_georep == concave } { enableragdoll == 0 }"
+            range   { -1 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "bullet_primR"
+            label   "Rotation"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            disablewhen "{ bullet_autofit == 1 } { bullet_georep == compound } { bullet_georep == convexhull } { bullet_georep == concave } { enableragdoll == 0 }"
+            range   { -1 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "bullet_primS"
+            label   "Box Size"
+            type    vector
+            size    3
+            default { "1" "1" "1" }
+            disablewhen "{ bullet_autofit == 1 } { bullet_georep != box } { enableragdoll == 0 }"
+            range   { -1 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "bullet_radius"
+            label   "Radius"
+            type    float
+            default { "1" }
+            disablewhen "{ bullet_autofit == 1 } { bullet_georep == compound } { bullet_georep == convexhull } { bullet_georep == concave } { bullet_georep == box } { bullet_georep == plane } { enableragdoll == 0 }"
+            range   { 0.1 5 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "bullet_length"
+            label   "Length"
+            type    float
+            default { "1" }
+            disablewhen "{ bullet_autofit == 1 } { bullet_georep == convexhull } { bullet_georep == concave } { bullet_georep == sphere } { bullet_georep == compound } { bullet_georep == box } { bullet_georep == plane } { enableragdoll == 0 }"
+            range   { 0.1 5 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "bullet_collision_margin"
+            label   "Collision Padding"
+            type    float
+            default { "0.02" }
+            disablewhen "{ bullet_georep == plane } { enableragdoll == 0 }"
+            range   { 0! 0.5 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "bullet_adjust_geometry"
+            label   "Shrink Collision Geometry"
+            type    toggle
+            default { "on" }
+            disablewhen "{ bullet_georep == plane } { bullet_georep == concave } { enableragdoll == 0 }"
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "bullet_adjust_factor"
+            label   "Adjustment Factor"
+            type    float
+            invisible
+            default { "1" }
+            disablewhen "{ bullet_georep == sphere } { bullet_georep == box } { bullet_georep == capsule } { bullet_adjust_geometry == 0 } { bullet_georep == cylinder } { bullet_georep == plane }"
+            range   { 1! 5 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "bullet_shrink_amount"
+            label   "Shrink Amount"
+            type    float
+            default { "ch(\"bullet_collision_margin\")" }
+            disablewhen "{ bullet_georep == plane } { bullet_georep == concave } { bullet_adjust_geometry == 0 } { enableragdoll == 0 }"
+            range   { 0! 5 }
+        }
+        parm {
+            name    "bullet_add_impact"
+            label   "Add Impact Data"
+            type    toggle
+            default { "on" }
+            disablewhen "{ enableragdoll == 0 }"
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "bullet_want_deactivate"
+            label   "Enable Sleeping"
+            type    toggle
+            default { "on" }
+            disablewhen "{ enableragdoll == 0 }"
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "bullet_linear_sleep_threshold"
+            label   "Linear Threshold"
+            type    float
+            default { "0.8" }
+            disablewhen "{ bullet_want_deactivate == 0 } { enableragdoll == 0 }"
+            range   { 0! 2 }
+        }
+        parm {
+            name    "bullet_angular_sleep_threshold"
+            label   "Angular Threshold"
+            type    float
+            default { "1" }
+            disablewhen "{ bullet_want_deactivate == 0 } { enableragdoll == 0 }"
+            range   { 0! 2 }
+        }
+    }
+
+    group {
+        name    "folder0_1_2"
+        label   "Physical"
+
+        parm {
+            name    "density"
+            label   "Density"
+            type    float
+            default { "1000" }
+            disablewhen "{ computemass == 0 } { enableragdoll == 0 }"
+            range   { 0! 10 }
+        }
+        parm {
+            name    "inertialtensorstiffness"
+            label   "Rotational Stiffness"
+            type    float
+            default { "1" }
+            disablewhen "{ enableragdoll == 0 }"
+            range   { 0 10 }
+        }
+        parm {
+            name    "bounce"
+            label   "Bounce"
+            type    float
+            default { "0.5" }
+            disablewhen "{ enableragdoll == 0 }"
+            range   { 0! 1 }
+        }
+        parm {
+            name    "friction"
+            label   "Friction"
+            type    float
+            default { "1" }
+            disablewhen "{ enableragdoll == 0 }"
+            range   { 0! 10 }
+        }
+    }
+
+}

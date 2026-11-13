@@ -1,0 +1,180 @@
+# Dialog script for volumewrangle automatically generated
+
+{
+    name	volumewrangle
+    script	volumewrangle
+    label	"Volume Wrangle"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Volumes to Process with Wrangle"
+    inputlabel	2	"Auxiliary Input 1, access with volumesample(1, ...)"
+    inputlabel	3	"Auxiliary Input 2, access with volumesample(2, ...)"
+    inputlabel	4	"Auxiliary Input 3, access with volumesample(3, ...)"
+
+    group {
+        name    "folder0"
+        label   "Code"
+
+        parm {
+            name    "group"
+            label   "Group"
+            type    string
+            default { "" }
+            menutoggle {
+                [ "opmenu -l -a blast1 group" ]
+            }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_action" "import soputils\nkwargs['geometrytype'] = hou.geometryType.Primitives\nkwargs['inputindex'] = 0\nsoputils.selectGroupParm(kwargs)" }
+            parmtag { "script_action_help" "Select geometry from an available viewport." }
+            parmtag { "script_action_icon" "BUTTONS_reselect" }
+        }
+        parm {
+            name    "bindeach"
+            label   "Bind Each Volume to Density"
+            type    toggle
+            default { "off" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "snippet"
+            label   "VEXpression"
+            type    string
+            default { "" }
+            menureplace {
+                [ "import vexpressionmenu" ]
+                [ "" ]
+                [ "return vexpressionmenu.buildSnippetMenu('volumewrangle/snippet', kwargs=kwargs)" ]
+                language python
+            }
+            range   { 0 1 }
+            export  all
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "editor" "1" }
+            parmtag { "editorlang" "VEX" }
+            parmtag { "editorlines" "8-30" }
+            parmtag { "script_action" "import vexpressionmenu\n\nnode = kwargs['node']\nparmname = 'snippet'\n\nvexpressionmenu.createSpareParmsFromChCalls(node, parmname)" }
+            parmtag { "script_action_help" "Creates spare parameters for each unique call of ch() " }
+            parmtag { "script_action_icon" "BUTTONS_create_parm_from_ch" }
+        }
+        parm {
+            name    "exportlist"
+            label   "Volumes to Write to"
+            type    string
+            default { "*" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "vex_strict"
+            label   "Enforce Prototypes"
+            type    toggle
+            default { "off" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback" "" }
+        }
+        parm {
+            name    "vex_strictvariables"
+            label   "Standard Variable Names Only"
+            type    toggle
+            default { "on" }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    group {
+        name    "folder0_1"
+        label   "Bindings"
+
+        parm {
+            name    "autobind"
+            label   "Autobind by Name"
+            type    toggle
+            default { "1" }
+            disablewhen "{ bindeach == 1 }"
+        }
+        multiparm {
+            name    "bindings"
+            label    "Number of Bindings"
+            default 0
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "multistartoffset" "1" }
+
+            parm {
+                name    "bindprimname#"
+                label   "Primitive Name"
+                type    string
+                default { "" }
+                disablewhen "{ bindeach == 1 } { autobind == 1 }"
+            }
+            parm {
+                name    "bindprim#"
+                label   "Primitive"
+                type    integer
+                default { "0" }
+                disablewhen "{ bindeach == 1 } { autobind == 1 }"
+                range   { 0 10 }
+            }
+            parm {
+                name    "bindname#"
+                label   "VEX Parameter"
+                type    string
+                default { "" }
+                disablewhen "{ bindeach == 1 } { autobind == 1 }"
+            }
+        }
+
+        parm {
+            name    "vex_geometrygenerator"
+            label   "Only Output Created Geometry"
+            type    toggle
+            default { "off" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "vdb_signedflood"
+            label   "Signed-Flood Fill Output SDF VDBs"
+            type    toggle
+            default { "on" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "vex_cwdpath"
+            label   "Evaluation Node Path"
+            type    oppath
+            default { "." }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "oprelative" "." }
+        }
+        parm {
+            name    "vex_outputmask"
+            label   "Export Parameters"
+            type    string
+            default { "*" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "vex_precision"
+            label   "VEX Precision"
+            type    string
+            default { "auto" }
+            menu {
+                "auto"  "Auto"
+                "32"    "32"
+                "64"    "64"
+            }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+    }
+
+}

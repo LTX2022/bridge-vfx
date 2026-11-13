@@ -1,0 +1,354 @@
+{
+version 0.8
+code	[ 0	locks=0 ]	(	"#include <crowd_cliplayers.h>
+#include <crowd_transitions.h>
+#include <locomotion.h>
+
+void
+finish_transition(
+    string clipnames[]; float cliptimes[]; float clipweights[];
+    float clipretimes[]; int cliplooped[]; string cliptransformgroups[];
+    int cliplayerids[]; int agentcliplayer_parents[];
+    int agentcliplayer_modes[]; float agentcliplayer_weights[];
+    int agentcliplayer_clipblendstates[]; float agentcliplayer_clipblendtimes[];
+    int agentcliplayer_nextstate; float locomotion_cliptimes[]; float locomotion_clipretimes[];
+    const int parm_hascliplayers; int transition; float transition_length;
+    float transition_duration; float transition_delay; string state; string nextstate;
+    string previousstate; float stateduration;
+    const int detachfromparent; int agentrel_parentid)
+{
+    // If the transition graph is used, the transition could be interrupted
+    // while a single intermediate transition clip is playing. So, we need to
+    // carefully check whether there are actually any clips that should be
+    // erased.
+    int in_clip_transition = len(clipnames) > 1 &&
+            crowdcliplayer_isbaselayer(cliplayerids[1], agentcliplayer_nextstate);
+
+    if (in_clip_transition)
+    {
+        crowdclip_remove(0, clipnames, cliptimes, clipweights, clipretimes,
+                         cliplooped, cliptransformgroups, cliplayerids,
+                         agentcliplayer_clipblendstates,
+                         agentcliplayer_clipblendtimes, locomotion_cliptimes,
+                         locomotion_clipretimes);
+        clipweights[0] = 1.0;
+    }
+
+    if (parm_hascliplayers && transition)
+    {
+        // Remove old layers.
+        for (int i = 0; i < agentcliplayer_nextstate; ++i)
+        {
+            crowdcliplayer_remove(0, agentcliplayer_parents,
+                                  agentcliplayer_modes, agentcliplayer_weights);
+        }
+
+        // Adjust parents of remaining layers.
+        for (int i = 0; i < len(agentcliplayer_parents); ++i)
+            agentcliplayer_parents[i] -= agentcliplayer_nextstate;
+
+        // Remove old clips and adjust layer indices.
+        for (int i = 0; i < len(clipnames); )
+        {
+            if (cliplayerids[i] < agentcliplayer_nextstate)
+            {
+                crowdclip_remove(i, clipnames, cliptimes, clipweights,
+                                 clipretimes, cliplooped, cliptransformgroups,
+                                 cliplayerids, agentcliplayer_clipblendstates,
+                                 agentcliplayer_clipblendtimes,
+                                 locomotion_cliptimes, locomotion_clipretimes);
+            }
+            else
+            {
+                cliplayerids[i] -= agentcliplayer_nextstate;
+                ++i;
+            }
+        }
+
+        crowdcliplayer_updatenextstate(len(agentcliplayer_modes) - 1,
+                                       agentcliplayer_nextstate);
+    }
+
+    // Update transition-related attributes.
+    if (transition)
+    {
+        previousstate = state;
+        state = nextstate;
+        nextstate = \"\";
+        stateduration = 0;
+    }
+
+    transition = 0;
+    transition_length = 0;
+    transition_duration = 0;
+    transition_delay = 0;
+    
+    if (detachfromparent)
+        agentrel_parentid = -1;
+}
+
+string clip_properties = \"opinput:-1\";
+string metadata_input = \"opinput:-2\";
+
+int @transition_pathprim = -1;
+int @transition_pathedge = -1;
+int @agentrel_parentid = -1;
+
+// Check whether the current state matches the input state pattern
+int in_input_state = match(parm_instate, s@state);
+int could_start_transition = (!i@occurred && !len(s@nextstate));
+
+int can_interrupt = 0;
+if (parm_enableinterrupt)
+{
+    // Ensure that a transition can't repeatedly interrupt itself.
+    can_interrupt = (parm_outstate != s@nextstate);
+}
+
+// Check if we meet the conditions for starting a transition.
+if (in_input_state && i@agentinit && i@triggerval > 0 &&
+    (could_start_transition || can_interrupt))
+{
+    // If we interrupted a transition, properly end the transition to update all the necessary attribs.
+    if (!could_start_transition)
+    {
+        // Behave as though the state transition is ending (e.g. wipe any
+        // layered clips from the old state). The transition might be
+        // interrupted while a single intermediate transition clip is playing.
+        i@transition = 1;
+        // Remain in the original state, since that is also the source state
+        // for the interrupting transition.
+        s@nextstate = s@state;
+
+        finish_transition(s[]@clipnames, f[]@cliptimes, f[]@clipweights,
+                         f[]@clipretimes, i[]@cliplooped,
+                         s[]@cliptransformgroups, i[]@cliplayerids,
+                         i[]@agentcliplayer_parents,
+                         i[]@agentcliplayer_modes,
+                         f[]@agentcliplayer_weights,
+                         i[]@agentcliplayer_clipblendstates,
+                         f[]@agentcliplayer_clipblendtimes,
+                         i@agentcliplayer_nextstate,
+                         f[]@locomotion_cliptimes,
+                         f[]@locomotion_clipretimes,
+                         parm_hascliplayers,
+                         i@transition, f@transition_length, f@transition_duration, f@transition_delay,
+                         s@state, s@nextstate, s@previousstate, f@stateduration,
+                         parm_detachfromparent, i@agentrel_parentid);
+    }
+
+    // Only take one transition per timestep.
+    i@occurred = 1;
+    
+    s@nextstate = parm_outstate;
+        
+    // Set up a random delay if necessary.
+    if (parm_randomstart)
+    {
+        f@transition_delay =
+            parm_randomstartoffset * rand(@id, parm_randomstartseed);
+    }
+    else
+        f@transition_delay = 0;
+
+    f@transition_length = parm_duration;
+}
+
+// Update an active transition.
+if (in_input_state && s@nextstate == parm_outstate && len(s@nextstate))
+{    
+    // If there is a random delay, advance the countdown.
+    if (f@transition_delay > 0)
+        f@transition_delay -= @TimeInc;
+    
+    int action = TRANSITION_DELAY;
+    int nextstate_id = locomotion_findstateid(@OpInput4, s@nextstate);
+    string clipname_b;
+    float start_time_b = 0;
+    
+    if (f@transition_delay <= 0)
+    {
+        // Since we're in a SOP solver, grab the simulation time from the metadata input.
+        float sim_time = detail(metadata_input, \"simtime\");
+
+        // If there's an active state / clip transition, continue it.
+        if (f@transition_duration > 0)
+        {
+            action = TRANSITION_ADVANCE;
+        }
+        else if (parm_useclipgraph)
+        {
+            // Check clip graph to find the next clip transition, and possibly
+            // delay until the transition window.
+            action = crowdtransition_find(
+                @OpInput2,
+                @OpInput3,
+                @OpInput4,
+                clip_properties,
+                @primnum,
+                s@agentname,
+                @id,
+                sim_time,
+                nextstate_id,
+                parm_useoutclip ? parm_outclip : \"\",
+                s[]@clipnames[0],
+                f[]@cliptimes[0],
+                clipname_b,
+                start_time_b,
+                f@transition_length,
+                i@transition_pathprim,
+                i@transition_pathedge);
+        }
+        else
+        {
+            // No clip graph - trigger the state transition.
+            action = TRANSITION_NEW_STATE;
+
+            // Choose a destination clip for the new state.
+            if (parm_useoutclip)
+                clipname_b = parm_outclip;
+            else
+            {
+                clipname_b = locomotion_chooseclip(
+                    clip_properties, @OpInput4, nextstate_id, s@agentname, @id,
+                    @primnum, s[]@clipnames[0], sim_time);
+            }
+
+            // Determine the start time. If the new state uses the same clip,
+            // continue from the current time for a smooth transition.
+            if (clipname_b == s[]@clipnames[0])
+                start_time_b = f[]@cliptimes[0];
+            else
+            {
+                int clip_id = crowdclip_findclipid(clip_properties, s@agentname, clipname_b);
+                start_time_b = crowdclip_starttime(clip_properties, clip_id, @primnum, clipname_b);
+            }
+        }
+    }
+    
+    // Start a transition between clips / states if necessary.
+    if (action == TRANSITION_NEW_STATE || action == TRANSITION_NEW_CLIP)
+    {
+        if (action == TRANSITION_NEW_STATE)
+            i@transition = 1;
+        
+        f@transition_delay = 0;
+        f@transition_duration = 0;
+
+        // Update clips.
+        crowdclip_insert(1, s[]@clipnames, f[]@cliptimes, f[]@clipweights,
+                         f[]@clipretimes, i[]@cliplooped,
+                         s[]@cliptransformgroups, i[]@cliplayerids,
+                         i[]@agentcliplayer_clipblendstates,
+                         f[]@agentcliplayer_clipblendtimes,
+                         f[]@locomotion_cliptimes, f[]@locomotion_clipretimes);
+
+        s[]@clipnames[1] = clipname_b;
+        f[]@cliptimes[1] = start_time_b;
+        f[]@locomotion_cliptimes[1] = start_time_b;
+
+        f[]@clipretimes[1] = f[]@clipretimes[0];
+        f[]@locomotion_clipretimes[1] = f[]@locomotion_clipretimes[0];
+
+        int clip_id = crowdclip_findclipid(
+            clip_properties, s@agentname, s[]@clipnames[1]);
+
+        // If we're not yet transitioning to a new state, the blended clip just
+        // goes into the bottom layer of the current state.
+        if (parm_hascliplayers && i@transition)
+        {
+            // Ensure there is a bottom layer for the old state.
+            if (len(i[]@agentcliplayer_modes) == 0)
+            {
+                crowdcliplayer_insert(0, i[]@agentcliplayer_modes,
+                                      i[]@agentcliplayer_parents,
+                                      f[]@agentcliplayer_weights);
+                
+                crowdcliplayer_updatenextstate(0, i@agentcliplayer_nextstate);
+            }
+            
+            // Set up the layer to blend between the two states.
+            int blend_layer_idx = crowdcliplayer_blendindex(i@agentcliplayer_nextstate);
+            crowdcliplayer_insert(blend_layer_idx,
+                                  i[]@agentcliplayer_modes,
+                                  i[]@agentcliplayer_parents,
+                                  f[]@agentcliplayer_weights);
+            
+            // Set up bottom layer of the new state.
+            int layer_idx = i@agentcliplayer_nextstate;
+            crowdcliplayer_insert(layer_idx,
+                                  i[]@agentcliplayer_modes,
+                                  i[]@agentcliplayer_parents,
+                                  f[]@agentcliplayer_weights);
+            
+            // Assign clip to the bottom layer of the new state.
+            i[]@cliplayerids[1] = layer_idx;
+            
+            // Parent the two states' topmost layers.
+            i[]@agentcliplayer_parents[blend_layer_idx - 1] = blend_layer_idx;
+            i[]@agentcliplayer_parents[layer_idx] = blend_layer_idx;
+        }
+    }
+    
+    // Check if a state transition should finish.
+    if (action != TRANSITION_DELAY && f@transition_duration >= f@transition_length)
+    {
+        finish_transition(s[]@clipnames, f[]@cliptimes, f[]@clipweights,
+                         f[]@clipretimes, i[]@cliplooped,
+                         s[]@cliptransformgroups, i[]@cliplayerids,
+                         i[]@agentcliplayer_parents,
+                         i[]@agentcliplayer_modes,
+                         f[]@agentcliplayer_weights,
+                         i[]@agentcliplayer_clipblendstates,
+                         f[]@agentcliplayer_clipblendtimes,
+                         i@agentcliplayer_nextstate,
+                         f[]@locomotion_cliptimes,
+                         f[]@locomotion_clipretimes,
+                         parm_hascliplayers,
+                         i@transition, f@transition_length, f@transition_duration, f@transition_delay,
+                         s@state, s@nextstate, s@previousstate, f@stateduration,
+                         parm_detachfromparent, i@agentrel_parentid);
+
+        // Don't allow another transition to take place for this timestep.
+        i@occurred = 1;
+    }
+    else if (action != TRANSITION_DELAY)
+    {
+        // Advance the transition.
+        f@transition_duration += @TimeInc;
+        
+        // Update the clip weights.
+        float progress = clamp(f@transition_duration / f@transition_length, 0, 1);
+        f[]@clipweights[1] = chramp(\"../../blend\", progress, 0);
+        f[]@clipweights[0] = 1 - f[]@clipweights[1];
+        
+        // Update the layer blend weights.
+        if (parm_hascliplayers && i@transition)
+        {
+            f[]@agentcliplayer_weights[0] = f[]@clipweights[0];
+            f[]@agentcliplayer_weights[i@agentcliplayer_nextstate] = f[]@clipweights[1];
+        }
+    }
+}
+"	)
+expandcode	[ 0	locks=0 ]	(	"on"	)
+exportlist	[ 0	locks=0 ]	(	"occurred nextstate previousstate state stateduration transition_duration transition_delay transition_length transition clipweights clipnames cliptimes locomotion_cliptimes *clipretimes cliplooped cliptransformgroups cliplayerids agentcliplayer_parents agentcliplayer_modes agentcliplayer_weights agentcliplayer_nextstate agentcliplayer_clipblendstates agentcliplayer_clipblendtimes transition_pathprim transition_pathedge agentrel_parentid"	)
+forcecodegeneration	[ 0	locks=0 ]	(	"on"	)
+includes	[ 0	locks=0 ]	(	""	)
+name1	[ 0	locks=0 ]	(	parm_instate	)
+name10	[ 0	locks=0 ]	(	""	)
+name11	[ 0	locks=0 ]	(	""	)
+name12	[ 0	locks=0 ]	(	parm_detachfromparent	)
+name2	[ 0	locks=0 ]	(	""	)
+name3	[ 0	locks=0 ]	(	parm_outstate	)
+name4	[ 0	locks=0 ]	(	parm_useoutclip	)
+name5	[ 0	locks=0 ]	(	parm_outclip	)
+name6	[ 0	locks=0 ]	(	""	)
+name7	[ 0	locks=0 ]	(	""	)
+name8	[ 0	locks=0 ]	(	""	)
+name9	[ 0	locks=0 ]	(	""	)
+namenum	[ 0	locks=0 ]	(	12	)
+outercode	[ 0	locks=0 ]	(	""	)
+strict	[ 0	locks=0 ]	(	"off"	)
+strictvariables	[ 0	locks=0 ]	(	"on"	)
+}

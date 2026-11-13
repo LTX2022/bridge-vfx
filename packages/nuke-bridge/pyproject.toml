@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nuke-bridge"
+version = "2.0.0rc1"
+description = "Local structured Nuke bridge with reference-safe native compositing"
+requires-python = ">=3.9"
+dependencies = ["dcc-task-runtime==2.0.0rc1"]
+
+[project.scripts]
+nuke-bridge = "nuke_bridge.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

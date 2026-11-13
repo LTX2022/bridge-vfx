@@ -1,0 +1,177 @@
+# Dialog script for popflock automatically generated 10/03/13 18:32:12
+
+{
+    name	popflock
+    script	popflock
+    label	"POP Flock"
+
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Stream to Flock"
+    inputlabel	2	"Input 2"
+    inputlabel	3	"Input 3"
+    inputlabel	4	"Input 4"
+
+    parm {
+	name	"activate"
+	label	"Activation"
+	type	integer
+	default	{ "1" }
+	range	{ 0 1 }
+	export	none
+    }
+    parm {
+	name	"usegroup"
+	label	"Label"
+	type	toggle
+	nolabel
+	joinnext
+	default	{ "0" }
+	range	{ 0 1 }
+	export	none
+    }
+    parm {
+	name	"partgroup"
+	label	"Group"
+	type	string
+	default	{ "" }
+	disablewhen	"{ usegroup == 0 }"
+	menutoggle	{
+	    [ "import doppoptoolutils" ]
+	    [ "" ]
+	    [ "return doppoptoolutils.buildGroupMenu(hou.pwd())" ]
+	    language	python
+	}
+	range	{ 0 1 }
+	export	none
+    }
+    parm {
+	name	"ignoremass"
+	label	"Ignore Mass"
+	type	toggle
+	default	{ "on" }
+	range	{ 0 1 }
+	export	none
+	parmtag	{ "autoscope" "0000000000000000" }
+    }
+    group {
+	name	"folder0"
+	label	"Central Force"
+	tabbreak
+
+	parm {
+	    name	"numcenters"
+	    label	"Number of Centers"
+	    type	integer
+	    default	{ "1" }
+	    range	{ 1! 100 }
+	    export	all
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"centralforce"
+	    label	"Central Attraction"
+	    type	float
+	    default	{ "1" }
+	    range	{ 0 1 }
+	    export	all
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "parmvop" "1" }
+	    parmtag	{ "shaderparmcontexts" "sop" }
+	}
+	parm {
+	    name	"centerpeakdist"
+	    label	"Central Peak Dist"
+	    type	float
+	    default	{ "0.1" }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "parmvop" "1" }
+	    parmtag	{ "shaderparmcontexts" "sop" }
+	    parmtag	{ "units" "m1" }
+	}
+	parm {
+	    name	"centermaxdist"
+	    label	"Central Max Dist"
+	    type	float
+	    default	{ "100" }
+	    range	{ 0 10 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "units" "m1" }
+	}
+    }
+
+    group {
+	name	"folder1"
+	label	"Interaction Force"
+	tabbreak
+
+	parm {
+	    name	"interactionforce"
+	    label	"Avoid Force"
+	    type	float
+	    default	{ "10" }
+	    range	{ 0 1 }
+	    export	all
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "parmvop" "1" }
+	    parmtag	{ "shaderparmcontexts" "sop" }
+	}
+	parm {
+	    name	"maxinteract"
+	    label	"Avoid Max Dist"
+	    type	float
+	    default	{ "0.1" }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "parmvop" "1" }
+	    parmtag	{ "shaderparmcontexts" "sop" }
+	    parmtag	{ "units" "m1" }
+	}
+	parm {
+	    name	"velmatchforce"
+	    label	"Vel Match Force"
+	    type	float
+	    default	{ "0.1" }
+	    range	{ 0 1 }
+	    export	all
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "parmvop" "1" }
+	    parmtag	{ "shaderparmcontexts" "sop" }
+	}
+	parm {
+	    name	"maxvel"
+	    label	"Vel Match Max Dist"
+	    type	float
+	    default	{ "0.2" }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "parmvop" "1" }
+	    parmtag	{ "shaderparmcontexts" "sop" }
+	    parmtag	{ "units" "m1" }
+	}
+    }
+
+    group {
+	name	"folder0_1"
+	label	"Bindings"
+
+	parm {
+	    name	"bindgeo"
+	    label	"Geometry"
+	    type	string
+	    default	{ "Geometry" }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+    }
+
+}

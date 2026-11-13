@@ -1,0 +1,4155 @@
+{
+  "schema": "bridge.domain_operation_card_document/1.0",
+  "kind": "prospective_case_contract_not_execution_evidence",
+  "domain_pack": "swarm_flocking_v1",
+  "domain_pack_version": "1.0.0",
+  "work_package": "W5",
+  "owner": "Z",
+  "formal_runtime_owner": "R",
+  "status": "BLOCKED",
+  "baseline_id": "7046477d4daba24610f601c257909b52b95834326b7c1d29801c50662231f499",
+  "source_snapshot_id": "f90b44bf88cadb30cce4cffe0d68449c057d29b97096aa4665066756cfb657fb",
+  "versions": [
+    {
+      "houdini_version": "21.0.631",
+      "status": "BLOCKED",
+      "input_versions": {
+        "domain_pack": "swarm_flocking_v1",
+        "domain_pack_version": "1.0.0",
+        "catalog_source_snapshot_id": "f90b44bf88cadb30cce4cffe0d68449c057d29b97096aa4665066756cfb657fb",
+        "runtime_interface": "ABSENT_NOT_FROZEN",
+        "houdini_version_must_be_explicit": true
+      },
+      "expected_topology": {
+        "roles": [
+          "source:Sop/sphere",
+          "simulation:Sop/dopnet",
+          "particle_object:Dop/popobject",
+          "emission:Dop/popsource::2.0",
+          "flock:Dop/popflock",
+          "seek:Dop/popsteerseek",
+          "solver:Dop/popsolver::2.0",
+          "simulation_output:Dop/output",
+          "particle_size:Sop/attribadjustfloat",
+          "instances:Sop/copytopoints::2.0",
+          "output:Sop/null"
+        ],
+        "edges_and_bindings": [
+          "source[0] -> simulation[0]",
+          "particle_object[0] -> solver[0]",
+          "emission[0] -> flock[0]",
+          "flock[0] -> seek[0]",
+          "seek[0] -> solver[2]",
+          "solver[0] -> simulation_output[0]",
+          "simulation[0] -> particle_size[0]",
+          "instance_source[0] -> instances[0]",
+          "particle_size[0] -> instances[1]",
+          "instances[0] -> output[0]"
+        ],
+        "assertions": [
+          "retain task-owned DOP context and source/force/solver roles",
+          "target_noise/noise_strength belong to verified target/force role, never generic solver aliases"
+        ],
+        "port_gaps": "every BLOCKED port must receive exact installed definition/HOM fact before execution",
+        "role_path_map": {
+          "status": "BLOCKED",
+          "reason": "R has not frozen legal owned_roots/context layout; cannot assign /stage, /out or /mat ownership from self-reported manifest"
+        }
+      },
+      "current_host_nodes": [
+        {
+          "role": "source",
+          "category": "sop",
+          "type_candidates": [
+            "sphere"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": null
+        },
+        {
+          "role": "simulation",
+          "category": "sop",
+          "type_candidates": [
+            "dopnet"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": null
+        },
+        {
+          "role": "particle_object",
+          "category": "dop",
+          "type_candidates": [
+            "popobject"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": null
+        },
+        {
+          "role": "emission",
+          "category": "dop",
+          "type_candidates": [
+            "popsource::2.0"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": null
+        },
+        {
+          "role": "flock",
+          "category": "dop",
+          "type_candidates": [
+            "popflock"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": null
+        },
+        {
+          "role": "seek",
+          "category": "dop",
+          "type_candidates": [
+            "popsteerseek"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": null
+        },
+        {
+          "role": "solver",
+          "category": "dop",
+          "type_candidates": [
+            "popsolver::2.0"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": null
+        },
+        {
+          "role": "simulation_output",
+          "category": "dop",
+          "type_candidates": [
+            "output"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": null
+        },
+        {
+          "role": "particle_size",
+          "category": "sop",
+          "type_candidates": [
+            "attribadjustfloat"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": null
+        },
+        {
+          "role": "instance_source",
+          "category": "sop",
+          "type_candidates": [
+            "sphere"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": null
+        },
+        {
+          "role": "instances",
+          "category": "sop",
+          "type_candidates": [
+            "copytopoints::2.0"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": null
+        },
+        {
+          "role": "output",
+          "category": "sop",
+          "type_candidates": [
+            "null"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": null
+        }
+      ],
+      "current_host_connections": [
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "simulation",
+          "destination_input": 0
+        },
+        {
+          "source_role": "particle_object",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 0
+        },
+        {
+          "source_role": "emission",
+          "source_output": 0,
+          "destination_role": "flock",
+          "destination_input": 0
+        },
+        {
+          "source_role": "flock",
+          "source_output": 0,
+          "destination_role": "seek",
+          "destination_input": 0
+        },
+        {
+          "source_role": "seek",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 2
+        },
+        {
+          "source_role": "solver",
+          "source_output": 0,
+          "destination_role": "simulation_output",
+          "destination_input": 0
+        },
+        {
+          "source_role": "simulation",
+          "source_output": 0,
+          "destination_role": "particle_size",
+          "destination_input": 0
+        },
+        {
+          "source_role": "instance_source",
+          "source_output": 0,
+          "destination_role": "instances",
+          "destination_input": 0
+        },
+        {
+          "source_role": "particle_size",
+          "source_output": 0,
+          "destination_role": "instances",
+          "destination_input": 1
+        },
+        {
+          "source_role": "instances",
+          "source_output": 0,
+          "destination_role": "output",
+          "destination_input": 0
+        }
+      ],
+      "control_coverage": [
+        {
+          "control": "alignment",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "alignment",
+            "node_role": "flock",
+            "parameter_aliases": [
+              "velmatchforce"
+            ],
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            100.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": "flock",
+          "expected_operator": "Dop/popflock",
+          "expected_machine_fields": [
+            "velmatchforce"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "21.0.631",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/otls/OPlibPopDop.hda",
+                "size_bytes": 1455634,
+                "sha256": "f58750de177009e300343ba3a58d7a326fb4702a78f97b7e97730dd55fe42e3c"
+              },
+              "operator": "Dop/popflock",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+              "machine_field": "velmatchforce",
+              "native_parameter": {
+                "name": "velmatchforce",
+                "type": "float",
+                "size": 1,
+                "label": "Vel Match Force",
+                "default_tokens": [
+                  "0.1"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0",
+                  "1"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "cohesion",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "cohesion",
+            "node_role": "flock",
+            "parameter_aliases": [
+              "centralforce"
+            ],
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            100.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": "flock",
+          "expected_operator": "Dop/popflock",
+          "expected_machine_fields": [
+            "centralforce"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "21.0.631",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/otls/OPlibPopDop.hda",
+                "size_bytes": 1455634,
+                "sha256": "f58750de177009e300343ba3a58d7a326fb4702a78f97b7e97730dd55fe42e3c"
+              },
+              "operator": "Dop/popflock",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+              "machine_field": "centralforce",
+              "native_parameter": {
+                "name": "centralforce",
+                "type": "float",
+                "size": 1,
+                "label": "Central Attraction",
+                "default_tokens": [
+                  "1"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0",
+                  "1"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "goal_attraction",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "goal_attraction",
+            "node_role": "seek",
+            "parameter_aliases": [
+              "forcescale"
+            ],
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            100.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": "seek",
+          "expected_operator": "Dop/popsteerseek",
+          "expected_machine_fields": [
+            "forcescale"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "21.0.631",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/otls/OPlibPopDop.hda",
+                "size_bytes": 1455634,
+                "sha256": "f58750de177009e300343ba3a58d7a326fb4702a78f97b7e97730dd55fe42e3c"
+              },
+              "operator": "Dop/popsteerseek",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "f3fa66faf01dfd9f408bb48772b9c82616ff6a4c7aaede773ffd23862282df9a",
+              "machine_field": "forcescale",
+              "native_parameter": {
+                "name": "forcescale",
+                "type": "float",
+                "size": 1,
+                "label": "Force Scale",
+                "default_tokens": [
+                  "10"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0",
+                  "10"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "neighbor_radius",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "neighbor_radius",
+            "node_role": "flock",
+            "parameter_aliases": [
+              "centermaxdist"
+            ],
+            "minimum": 0.001,
+            "maximum": 10000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.001,
+            10000.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": "flock",
+          "expected_operator": "Dop/popflock",
+          "expected_machine_fields": [
+            "centermaxdist"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "21.0.631",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/otls/OPlibPopDop.hda",
+                "size_bytes": 1455634,
+                "sha256": "f58750de177009e300343ba3a58d7a326fb4702a78f97b7e97730dd55fe42e3c"
+              },
+              "operator": "Dop/popflock",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+              "machine_field": "centermaxdist",
+              "native_parameter": {
+                "name": "centermaxdist",
+                "type": "float",
+                "size": 1,
+                "label": "Central Max Dist",
+                "default_tokens": [
+                  "100"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0",
+                  "10"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "noise_strength",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "noise_strength",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "noiseamplitude",
+              "noisestrength"
+            ],
+            "minimum": 0.0,
+            "maximum": 1000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            1000.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": null,
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "BLOCKED_EXPECTED_ROLE_OR_MACHINE_FIELD_UNRESOLVED",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        },
+        {
+          "control": "separation",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "separation",
+            "node_role": "flock",
+            "parameter_aliases": [
+              "interactionforce"
+            ],
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            100.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": "flock",
+          "expected_operator": "Dop/popflock",
+          "expected_machine_fields": [
+            "interactionforce"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "21.0.631",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/otls/OPlibPopDop.hda",
+                "size_bytes": 1455634,
+                "sha256": "f58750de177009e300343ba3a58d7a326fb4702a78f97b7e97730dd55fe42e3c"
+              },
+              "operator": "Dop/popflock",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+              "machine_field": "interactionforce",
+              "native_parameter": {
+                "name": "interactionforce",
+                "type": "float",
+                "size": 1,
+                "label": "Avoid Force",
+                "default_tokens": [
+                  "10"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0",
+                  "1"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "target_noise",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "target_noise",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "targetnoise",
+              "goalnoise",
+              "noiseamplitude"
+            ],
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            100.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": null,
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "BLOCKED_EXPECTED_ROLE_OR_MACHINE_FIELD_UNRESOLVED",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        }
+      ],
+      "native_node_documentation_snapshot": {
+        "status": "DOCUMENTED_NODE_FACTS_WITH_GAPS",
+        "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/domain-native-documentation.json",
+        "source_sha256": "43ba32c0d518d94b0dbf57e6f8bc395c2c8f38718a51b26bb969669ce5d45d8c",
+        "archive": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/help/nodes.zip",
+        "archive_sha256": "7c83e14d77ddaebf0f918244c1747509633b2721a39468eb4ae3efc694886916",
+        "note": "node documentation existence does not establish parameter ABI or runtime geometry"
+      },
+      "stages": {
+        "formal_build": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "inspect_all_nodes_controls_connections": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "feedback_all_controls": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "save_reopen_structure_and_data": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "formal_output": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "real_host_live": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "visual_acceptance": {
+          "status": "NOT_RUN",
+          "evidence": null
+        }
+      },
+      "recovery": {
+        "status": "NOT_RUN",
+        "tested": false,
+        "owner": "R",
+        "evidence_owner": "E",
+        "domain_assertion_owner": "Z",
+        "requirements": [
+          "interrupt the process actually executing this case while operation active",
+          "supervisor observes identity and STOP_CONFIRMED before restart",
+          "restart controller and original task from real serialized scene, same request_id",
+          "completed side effects not repeated; incomplete work reconciled through formal control authorization",
+          "recovered topology/ALL controls/domain data/producer artifact content match saved actual state",
+          "case_id/build_id/provider/host identity/operation_id/scene hash and phase facts bound by E"
+        ],
+        "forbidden_substitutes": [
+          "immediately exiting helper process",
+          "manual RECONCILE edit",
+          "reopen original in-memory substitute scene",
+          "load-time expected-data rebuilding"
+        ]
+      }
+    },
+    {
+      "houdini_version": "22.0.429",
+      "status": "BLOCKED",
+      "input_versions": {
+        "domain_pack": "swarm_flocking_v1",
+        "domain_pack_version": "1.0.0",
+        "catalog_source_snapshot_id": "f90b44bf88cadb30cce4cffe0d68449c057d29b97096aa4665066756cfb657fb",
+        "runtime_interface": "ABSENT_NOT_FROZEN",
+        "houdini_version_must_be_explicit": true
+      },
+      "expected_topology": {
+        "roles": [
+          "source:Sop/sphere",
+          "simulation:Sop/dopnet",
+          "particle_object:Dop/popobject",
+          "emission:Dop/popsource::2.0",
+          "flock:Dop/popflock",
+          "seek:Dop/popsteerseek",
+          "solver:Dop/popsolver::2.0",
+          "simulation_output:Dop/output",
+          "particle_size:Sop/attribadjustfloat",
+          "instances:Sop/copytopoints::2.0",
+          "output:Sop/null"
+        ],
+        "edges_and_bindings": [
+          "source[0] -> simulation[0]",
+          "particle_object[0] -> solver[0]",
+          "emission[0] -> flock[0]",
+          "flock[0] -> seek[0]",
+          "seek[0] -> solver[2]",
+          "solver[0] -> simulation_output[0]",
+          "simulation[0] -> particle_size[0]",
+          "instance_source[0] -> instances[0]",
+          "particle_size[0] -> instances[1]",
+          "instances[0] -> output[0]"
+        ],
+        "assertions": [
+          "retain task-owned DOP context and source/force/solver roles",
+          "target_noise/noise_strength belong to verified target/force role, never generic solver aliases"
+        ],
+        "port_gaps": "every BLOCKED port must receive exact installed definition/HOM fact before execution",
+        "role_path_map": {
+          "status": "BLOCKED",
+          "reason": "R has not frozen legal owned_roots/context layout; cannot assign /stage, /out or /mat ownership from self-reported manifest"
+        }
+      },
+      "current_host_nodes": [
+        {
+          "role": "source",
+          "category": "sop",
+          "type_candidates": [
+            "sphere"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": null
+        },
+        {
+          "role": "simulation",
+          "category": "sop",
+          "type_candidates": [
+            "dopnet"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": null
+        },
+        {
+          "role": "particle_object",
+          "category": "dop",
+          "type_candidates": [
+            "popobject"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": null
+        },
+        {
+          "role": "emission",
+          "category": "dop",
+          "type_candidates": [
+            "popsource::2.0"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": null
+        },
+        {
+          "role": "flock",
+          "category": "dop",
+          "type_candidates": [
+            "popflock"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": null
+        },
+        {
+          "role": "seek",
+          "category": "dop",
+          "type_candidates": [
+            "popsteerseek"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": null
+        },
+        {
+          "role": "solver",
+          "category": "dop",
+          "type_candidates": [
+            "popsolver::2.0"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": null
+        },
+        {
+          "role": "simulation_output",
+          "category": "dop",
+          "type_candidates": [
+            "output"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": null
+        },
+        {
+          "role": "particle_size",
+          "category": "sop",
+          "type_candidates": [
+            "attribadjustfloat"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": null
+        },
+        {
+          "role": "instance_source",
+          "category": "sop",
+          "type_candidates": [
+            "sphere"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": null
+        },
+        {
+          "role": "instances",
+          "category": "sop",
+          "type_candidates": [
+            "copytopoints::2.0"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": null
+        },
+        {
+          "role": "output",
+          "category": "sop",
+          "type_candidates": [
+            "null"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": null
+        }
+      ],
+      "current_host_connections": [
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "simulation",
+          "destination_input": 0
+        },
+        {
+          "source_role": "particle_object",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 0
+        },
+        {
+          "source_role": "emission",
+          "source_output": 0,
+          "destination_role": "flock",
+          "destination_input": 0
+        },
+        {
+          "source_role": "flock",
+          "source_output": 0,
+          "destination_role": "seek",
+          "destination_input": 0
+        },
+        {
+          "source_role": "seek",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 2
+        },
+        {
+          "source_role": "solver",
+          "source_output": 0,
+          "destination_role": "simulation_output",
+          "destination_input": 0
+        },
+        {
+          "source_role": "simulation",
+          "source_output": 0,
+          "destination_role": "particle_size",
+          "destination_input": 0
+        },
+        {
+          "source_role": "instance_source",
+          "source_output": 0,
+          "destination_role": "instances",
+          "destination_input": 0
+        },
+        {
+          "source_role": "particle_size",
+          "source_output": 0,
+          "destination_role": "instances",
+          "destination_input": 1
+        },
+        {
+          "source_role": "instances",
+          "source_output": 0,
+          "destination_role": "output",
+          "destination_input": 0
+        }
+      ],
+      "control_coverage": [
+        {
+          "control": "alignment",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "alignment",
+            "node_role": "flock",
+            "parameter_aliases": [
+              "velmatchforce"
+            ],
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            100.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": "flock",
+          "expected_operator": "Dop/popflock",
+          "expected_machine_fields": [
+            "velmatchforce"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "22.0.429",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/otls/OPlibPopDop.hda",
+                "size_bytes": 1460061,
+                "sha256": "c6c44f5811669da6d908caa840292e9e0b53aff772e63f83c4ab718d36faa974"
+              },
+              "operator": "Dop/popflock",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+              "machine_field": "velmatchforce",
+              "native_parameter": {
+                "name": "velmatchforce",
+                "type": "float",
+                "size": 1,
+                "label": "Vel Match Force",
+                "default_tokens": [
+                  "0.1"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0",
+                  "1"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "cohesion",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "cohesion",
+            "node_role": "flock",
+            "parameter_aliases": [
+              "centralforce"
+            ],
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            100.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": "flock",
+          "expected_operator": "Dop/popflock",
+          "expected_machine_fields": [
+            "centralforce"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "22.0.429",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/otls/OPlibPopDop.hda",
+                "size_bytes": 1460061,
+                "sha256": "c6c44f5811669da6d908caa840292e9e0b53aff772e63f83c4ab718d36faa974"
+              },
+              "operator": "Dop/popflock",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+              "machine_field": "centralforce",
+              "native_parameter": {
+                "name": "centralforce",
+                "type": "float",
+                "size": 1,
+                "label": "Central Attraction",
+                "default_tokens": [
+                  "1"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0",
+                  "1"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "goal_attraction",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "goal_attraction",
+            "node_role": "seek",
+            "parameter_aliases": [
+              "forcescale"
+            ],
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            100.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": "seek",
+          "expected_operator": "Dop/popsteerseek",
+          "expected_machine_fields": [
+            "forcescale"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "22.0.429",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/otls/OPlibPopDop.hda",
+                "size_bytes": 1460061,
+                "sha256": "c6c44f5811669da6d908caa840292e9e0b53aff772e63f83c4ab718d36faa974"
+              },
+              "operator": "Dop/popsteerseek",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "f3fa66faf01dfd9f408bb48772b9c82616ff6a4c7aaede773ffd23862282df9a",
+              "machine_field": "forcescale",
+              "native_parameter": {
+                "name": "forcescale",
+                "type": "float",
+                "size": 1,
+                "label": "Force Scale",
+                "default_tokens": [
+                  "10"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0",
+                  "10"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "neighbor_radius",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "neighbor_radius",
+            "node_role": "flock",
+            "parameter_aliases": [
+              "centermaxdist"
+            ],
+            "minimum": 0.001,
+            "maximum": 10000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.001,
+            10000.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": "flock",
+          "expected_operator": "Dop/popflock",
+          "expected_machine_fields": [
+            "centermaxdist"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "22.0.429",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/otls/OPlibPopDop.hda",
+                "size_bytes": 1460061,
+                "sha256": "c6c44f5811669da6d908caa840292e9e0b53aff772e63f83c4ab718d36faa974"
+              },
+              "operator": "Dop/popflock",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+              "machine_field": "centermaxdist",
+              "native_parameter": {
+                "name": "centermaxdist",
+                "type": "float",
+                "size": 1,
+                "label": "Central Max Dist",
+                "default_tokens": [
+                  "100"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0",
+                  "10"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "noise_strength",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "noise_strength",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "noiseamplitude",
+              "noisestrength"
+            ],
+            "minimum": 0.0,
+            "maximum": 1000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            1000.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": null,
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "BLOCKED_EXPECTED_ROLE_OR_MACHINE_FIELD_UNRESOLVED",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        },
+        {
+          "control": "separation",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "separation",
+            "node_role": "flock",
+            "parameter_aliases": [
+              "interactionforce"
+            ],
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            100.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": "flock",
+          "expected_operator": "Dop/popflock",
+          "expected_machine_fields": [
+            "interactionforce"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "22.0.429",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/otls/OPlibPopDop.hda",
+                "size_bytes": 1460061,
+                "sha256": "c6c44f5811669da6d908caa840292e9e0b53aff772e63f83c4ab718d36faa974"
+              },
+              "operator": "Dop/popflock",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+              "machine_field": "interactionforce",
+              "native_parameter": {
+                "name": "interactionforce",
+                "type": "float",
+                "size": 1,
+                "label": "Avoid Force",
+                "default_tokens": [
+                  "10"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0",
+                  "1"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "target_noise",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "target_noise",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "targetnoise",
+              "goalnoise",
+              "noiseamplitude"
+            ],
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            100.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": null,
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "BLOCKED_EXPECTED_ROLE_OR_MACHINE_FIELD_UNRESOLVED",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        }
+      ],
+      "native_node_documentation_snapshot": {
+        "status": "DOCUMENTED_NODE_FACTS_WITH_GAPS",
+        "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/domain-native-documentation.json",
+        "source_sha256": "43ba32c0d518d94b0dbf57e6f8bc395c2c8f38718a51b26bb969669ce5d45d8c",
+        "archive": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/help/nodes.zip",
+        "archive_sha256": "6ca2ef18ce0d1f142d3415e27885b36f69b3537344a04621c89f9fab6937ad53",
+        "note": "node documentation existence does not establish parameter ABI or runtime geometry"
+      },
+      "stages": {
+        "formal_build": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "inspect_all_nodes_controls_connections": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "feedback_all_controls": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "save_reopen_structure_and_data": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "formal_output": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "real_host_live": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "visual_acceptance": {
+          "status": "NOT_RUN",
+          "evidence": null
+        }
+      },
+      "recovery": {
+        "status": "NOT_RUN",
+        "tested": false,
+        "owner": "R",
+        "evidence_owner": "E",
+        "domain_assertion_owner": "Z",
+        "requirements": [
+          "interrupt the process actually executing this case while operation active",
+          "supervisor observes identity and STOP_CONFIRMED before restart",
+          "restart controller and original task from real serialized scene, same request_id",
+          "completed side effects not repeated; incomplete work reconciled through formal control authorization",
+          "recovered topology/ALL controls/domain data/producer artifact content match saved actual state",
+          "case_id/build_id/provider/host identity/operation_id/scene hash and phase facts bound by E"
+        ],
+        "forbidden_substitutes": [
+          "immediately exiting helper process",
+          "manual RECONCILE edit",
+          "reopen original in-memory substitute scene",
+          "load-time expected-data rebuilding"
+        ]
+      }
+    },
+    {
+      "houdini_version": "22.0.459",
+      "kind": "current_preparation_expectation_not_execution_evidence",
+      "status": "BLOCKED",
+      "input_versions": {
+        "domain_pack": "swarm_flocking_v1",
+        "domain_pack_version": "1.0.0",
+        "houdini_version_must_be_explicit": true
+      },
+      "expected_nodes": {
+        "default": [
+          {
+            "role": "geometry_network",
+            "category": "obj",
+            "input_role": null,
+            "type_candidates": [
+              "geo"
+            ],
+            "required_parameter_aliases": []
+          },
+          {
+            "role": "source",
+            "category": "sop",
+            "input_role": null,
+            "parent_role": "geometry_network",
+            "type_candidates": [
+              "sphere"
+            ],
+            "required_parameter_aliases": []
+          },
+          {
+            "role": "simulation",
+            "category": "sop",
+            "input_role": null,
+            "parent_role": "geometry_network",
+            "type_candidates": [
+              "dopnet"
+            ],
+            "required_parameter_aliases": []
+          },
+          {
+            "role": "particle_object",
+            "category": "dop",
+            "input_role": null,
+            "parent_role": "simulation",
+            "type_candidates": [
+              "popobject"
+            ],
+            "required_parameter_aliases": []
+          },
+          {
+            "role": "emission",
+            "category": "dop",
+            "input_role": null,
+            "parent_role": "simulation",
+            "type_candidates": [
+              "popsource::2.0"
+            ],
+            "required_parameter_aliases": [
+              [
+                "emittype"
+              ],
+              [
+                "usecontextgeo"
+              ],
+              [
+                "initvel"
+              ],
+              [
+                "constantrate"
+              ],
+              [
+                "life"
+              ],
+              [
+                "lifevar"
+              ],
+              [
+                "vel"
+              ],
+              [
+                "var"
+              ],
+              [
+                "doid"
+              ],
+              [
+                "constantactivate"
+              ],
+              [
+                "impulseactiveate"
+              ],
+              [
+                "scalebyarea"
+              ],
+              [
+                "emitattrib"
+              ],
+              [
+                "usesimpointlimit"
+              ],
+              [
+                "useframepointlimit"
+              ],
+              [
+                "removeoverlap"
+              ]
+            ]
+          },
+          {
+            "role": "flock",
+            "category": "dop",
+            "input_role": null,
+            "parent_role": "simulation",
+            "type_candidates": [
+              "popflock"
+            ],
+            "required_parameter_aliases": [
+              [
+                "centralforce"
+              ],
+              [
+                "interactionforce"
+              ],
+              [
+                "velmatchforce"
+              ],
+              [
+                "centermaxdist"
+              ],
+              [
+                "activate"
+              ],
+              [
+                "usegroup"
+              ],
+              [
+                "ignoremass"
+              ]
+            ]
+          },
+          {
+            "role": "seek",
+            "category": "dop",
+            "input_role": null,
+            "parent_role": "simulation",
+            "type_candidates": [
+              "popsteerseek"
+            ],
+            "required_parameter_aliases": [
+              [
+                "forcescale"
+              ],
+              [
+                "goal"
+              ],
+              [
+                "activate"
+              ],
+              [
+                "usegroup"
+              ],
+              [
+                "output"
+              ],
+              [
+                "attracttype"
+              ],
+              [
+                "uselocalgoal"
+              ],
+              [
+                "uselocalforce"
+              ],
+              [
+                "ignoremass"
+              ],
+              [
+                "bindgeo"
+              ]
+            ]
+          },
+          {
+            "role": "noise_force",
+            "category": "dop",
+            "input_role": null,
+            "parent_role": "simulation",
+            "type_candidates": [
+              "popforce"
+            ],
+            "required_parameter_aliases": [
+              [
+                "amp"
+              ],
+              [
+                "force"
+              ],
+              [
+                "activate"
+              ],
+              [
+                "usegroup"
+              ],
+              [
+                "uselocalforce"
+              ],
+              [
+                "uselocalnoise"
+              ],
+              [
+                "ignoremass"
+              ],
+              [
+                "swirlsize"
+              ],
+              [
+                "swirlscale"
+              ],
+              [
+                "pulselength"
+              ],
+              [
+                "rough"
+              ],
+              [
+                "atten"
+              ],
+              [
+                "turb"
+              ],
+              [
+                "offset"
+              ],
+              [
+                "bindgeo"
+              ]
+            ]
+          },
+          {
+            "role": "solver",
+            "category": "dop",
+            "input_role": null,
+            "parent_role": "simulation",
+            "type_candidates": [
+              "popsolver::2.0"
+            ],
+            "required_parameter_aliases": [
+              [
+                "integratevel"
+              ],
+              [
+                "integratepos"
+              ],
+              [
+                "doage"
+              ],
+              [
+                "doreapparticles"
+              ],
+              [
+                "externalforce"
+              ]
+            ]
+          },
+          {
+            "role": "simulation_output",
+            "category": "dop",
+            "input_role": null,
+            "parent_role": "simulation",
+            "type_candidates": [
+              "output"
+            ],
+            "required_parameter_aliases": []
+          },
+          {
+            "role": "particle_size",
+            "category": "sop",
+            "input_role": null,
+            "parent_role": "geometry_network",
+            "type_candidates": [
+              "attribadjustfloat"
+            ],
+            "required_parameter_aliases": [
+              [
+                "singlevalue"
+              ],
+              [
+                "attrib"
+              ],
+              [
+                "class"
+              ],
+              [
+                "adjustvalue"
+              ],
+              [
+                "operation"
+              ],
+              [
+                "valuetype"
+              ],
+              [
+                "unitsettings"
+              ],
+              [
+                "doblend"
+              ],
+              [
+                "enable_postprocess"
+              ],
+              [
+                "group"
+              ]
+            ]
+          },
+          {
+            "role": "instance_source",
+            "category": "sop",
+            "input_role": null,
+            "parent_role": "geometry_network",
+            "type_candidates": [
+              "sphere"
+            ],
+            "required_parameter_aliases": []
+          },
+          {
+            "role": "instances",
+            "category": "sop",
+            "input_role": null,
+            "parent_role": "geometry_network",
+            "type_candidates": [
+              "copytopoints::2.0"
+            ],
+            "required_parameter_aliases": []
+          },
+          {
+            "role": "output",
+            "category": "sop",
+            "input_role": null,
+            "parent_role": "geometry_network",
+            "type_candidates": [
+              "null"
+            ],
+            "required_parameter_aliases": []
+          },
+          {
+            "role": "usd_network",
+            "category": "obj",
+            "input_role": null,
+            "type_candidates": [
+              "lopnet"
+            ],
+            "required_parameter_aliases": []
+          },
+          {
+            "role": "render_network",
+            "category": "obj",
+            "input_role": null,
+            "type_candidates": [
+              "ropnet"
+            ],
+            "required_parameter_aliases": []
+          },
+          {
+            "role": "geometry_import",
+            "category": "lop",
+            "input_role": null,
+            "parent_role": "usd_network",
+            "type_candidates": [
+              "sopimport"
+            ],
+            "required_parameter_aliases": [
+              [
+                "soppath"
+              ],
+              [
+                "enable_pathprefix"
+              ],
+              [
+                "pathprefix"
+              ]
+            ]
+          },
+          {
+            "role": "camera",
+            "category": "lop",
+            "input_role": "geometry_import",
+            "parent_role": "usd_network",
+            "type_candidates": [
+              "camera"
+            ],
+            "required_parameter_aliases": [
+              [
+                "primpath"
+              ],
+              [
+                "focalLength"
+              ],
+              [
+                "fStop"
+              ],
+              [
+                "xn__shutteropen_0ta"
+              ],
+              [
+                "xn__shutterclose_nva"
+              ]
+            ]
+          },
+          {
+            "role": "light",
+            "category": "lop",
+            "input_role": "camera",
+            "parent_role": "usd_network",
+            "type_candidates": [
+              "light"
+            ],
+            "required_parameter_aliases": [
+              [
+                "primpath"
+              ],
+              [
+                "lighttype"
+              ],
+              [
+                "radius"
+              ],
+              [
+                "exposure"
+              ]
+            ]
+          },
+          {
+            "role": "render_settings",
+            "category": "lop",
+            "input_role": "light",
+            "parent_role": "usd_network",
+            "type_candidates": [
+              "karmarendersettings"
+            ],
+            "required_parameter_aliases": [
+              [
+                "primpath"
+              ],
+              [
+                "camera"
+              ],
+              [
+                "samplesperpixel"
+              ],
+              [
+                "volumesteprate"
+              ],
+              [
+                "enablemblur"
+              ],
+              [
+                "pixelfiltersize"
+              ],
+              [
+                "denoiser"
+              ]
+            ]
+          },
+          {
+            "role": "render_var",
+            "category": "lop",
+            "input_role": "render_settings",
+            "parent_role": "usd_network",
+            "type_candidates": [
+              "rendervar"
+            ],
+            "required_parameter_aliases": [
+              [
+                "primpath"
+              ],
+              [
+                "sourceName"
+              ],
+              [
+                "sourceType"
+              ],
+              [
+                "dataType"
+              ]
+            ]
+          },
+          {
+            "role": "render_product",
+            "category": "lop",
+            "input_role": "render_var",
+            "parent_role": "usd_network",
+            "type_candidates": [
+              "renderproduct"
+            ],
+            "required_parameter_aliases": [
+              [
+                "primpattern"
+              ],
+              [
+                "orderedVars"
+              ],
+              [
+                "productType"
+              ],
+              [
+                "productName"
+              ],
+              [
+                "camera"
+              ]
+            ]
+          },
+          {
+            "role": "settings_binding",
+            "category": "lop",
+            "input_role": "render_product",
+            "parent_role": "usd_network",
+            "type_candidates": [
+              "rendersettings"
+            ],
+            "required_parameter_aliases": [
+              [
+                "primpattern"
+              ],
+              [
+                "createprims"
+              ],
+              [
+                "products"
+              ],
+              [
+                "camera"
+              ]
+            ]
+          },
+          {
+            "role": "render",
+            "category": "rop",
+            "input_role": null,
+            "parent_role": "render_network",
+            "type_candidates": [
+              "usdrender"
+            ],
+            "required_parameter_aliases": [
+              [
+                "loppath"
+              ],
+              [
+                "rendersettings"
+              ],
+              [
+                "override_camera"
+              ],
+              [
+                "outputimage"
+              ],
+              [
+                "execute"
+              ]
+            ]
+          }
+        ]
+      },
+      "expected_connections": {
+        "default": [
+          {
+            "source_role": "source",
+            "source_output": 0,
+            "destination_role": "simulation",
+            "destination_input": 0
+          },
+          {
+            "source_role": "particle_object",
+            "source_output": 0,
+            "destination_role": "solver",
+            "destination_input": 0
+          },
+          {
+            "source_role": "emission",
+            "source_output": 0,
+            "destination_role": "flock",
+            "destination_input": 0
+          },
+          {
+            "source_role": "flock",
+            "source_output": 0,
+            "destination_role": "seek",
+            "destination_input": 0
+          },
+          {
+            "source_role": "noise_force",
+            "source_output": 0,
+            "destination_role": "solver",
+            "destination_input": 1
+          },
+          {
+            "source_role": "seek",
+            "source_output": 0,
+            "destination_role": "solver",
+            "destination_input": 2
+          },
+          {
+            "source_role": "solver",
+            "source_output": 0,
+            "destination_role": "simulation_output",
+            "destination_input": 0
+          },
+          {
+            "source_role": "simulation",
+            "source_output": 0,
+            "destination_role": "particle_size",
+            "destination_input": 0
+          },
+          {
+            "source_role": "instance_source",
+            "source_output": 0,
+            "destination_role": "instances",
+            "destination_input": 0
+          },
+          {
+            "source_role": "particle_size",
+            "source_output": 0,
+            "destination_role": "instances",
+            "destination_input": 1
+          },
+          {
+            "source_role": "instances",
+            "source_output": 0,
+            "destination_role": "output",
+            "destination_input": 0
+          },
+          {
+            "source_role": "geometry_import",
+            "source_output": 0,
+            "destination_role": "camera",
+            "destination_input": 0,
+            "require_same_parent": true
+          },
+          {
+            "source_role": "camera",
+            "source_output": 0,
+            "destination_role": "light",
+            "destination_input": 0,
+            "require_same_parent": true
+          },
+          {
+            "source_role": "light",
+            "source_output": 0,
+            "destination_role": "render_settings",
+            "destination_input": 0,
+            "require_same_parent": true
+          },
+          {
+            "source_role": "render_settings",
+            "source_output": 0,
+            "destination_role": "render_var",
+            "destination_input": 0,
+            "require_same_parent": true
+          },
+          {
+            "source_role": "render_var",
+            "source_output": 0,
+            "destination_role": "render_product",
+            "destination_input": 0,
+            "require_same_parent": true
+          },
+          {
+            "source_role": "render_product",
+            "source_output": 0,
+            "destination_role": "settings_binding",
+            "destination_input": 0,
+            "require_same_parent": true
+          }
+        ]
+      },
+      "control_coverage": {
+        "default": [
+          {
+            "minimum": 0,
+            "maximum": 100,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [
+              [
+                "flock",
+                "activate",
+                1
+              ],
+              [
+                "flock",
+                "usegroup",
+                0
+              ],
+              [
+                "flock",
+                "ignoremass",
+                1
+              ]
+            ],
+            "invalidates_from": "generation_simulation",
+            "unit": "native central attraction force scalar; physical unit NOT_CAPTURED",
+            "native_status": "mapped",
+            "context_parms": [
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "simulation",
+                "@node"
+              ],
+              [
+                "particle_object",
+                "@node"
+              ],
+              [
+                "emission",
+                "@node"
+              ],
+              [
+                "flock",
+                "@node"
+              ],
+              [
+                "seek",
+                "@node"
+              ],
+              [
+                "noise_force",
+                "@node"
+              ],
+              [
+                "solver",
+                "@node"
+              ],
+              [
+                "simulation_output",
+                "@node"
+              ],
+              [
+                "particle_size",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "instances",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "simulation",
+                "@input/0"
+              ],
+              [
+                "solver",
+                "@input/0"
+              ],
+              [
+                "flock",
+                "@input/0"
+              ],
+              [
+                "seek",
+                "@input/0"
+              ],
+              [
+                "solver",
+                "@input/1"
+              ],
+              [
+                "solver",
+                "@input/2"
+              ],
+              [
+                "simulation_output",
+                "@input/0"
+              ],
+              [
+                "particle_size",
+                "@input/0"
+              ],
+              [
+                "instances",
+                "@input/0"
+              ],
+              [
+                "instances",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Dop/popflock",
+                  "parameter": "centralforce",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popflock",
+                  "parameter": "activate",
+                  "type": "integer",
+                  "size": 1,
+                  "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popflock",
+                  "parameter": "usegroup",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popflock",
+                  "parameter": "ignoremass",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                }
+              ],
+              "missing": []
+            },
+            "id": "cohesion",
+            "node_role": "flock",
+            "parameter_aliases": [
+              "centralforce"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 100,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [
+              [
+                "flock",
+                "activate",
+                1
+              ],
+              [
+                "flock",
+                "usegroup",
+                0
+              ],
+              [
+                "flock",
+                "ignoremass",
+                1
+              ]
+            ],
+            "invalidates_from": "generation_simulation",
+            "unit": "native avoidance force scalar; physical unit NOT_CAPTURED",
+            "native_status": "mapped",
+            "context_parms": [
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "simulation",
+                "@node"
+              ],
+              [
+                "particle_object",
+                "@node"
+              ],
+              [
+                "emission",
+                "@node"
+              ],
+              [
+                "flock",
+                "@node"
+              ],
+              [
+                "seek",
+                "@node"
+              ],
+              [
+                "noise_force",
+                "@node"
+              ],
+              [
+                "solver",
+                "@node"
+              ],
+              [
+                "simulation_output",
+                "@node"
+              ],
+              [
+                "particle_size",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "instances",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "simulation",
+                "@input/0"
+              ],
+              [
+                "solver",
+                "@input/0"
+              ],
+              [
+                "flock",
+                "@input/0"
+              ],
+              [
+                "seek",
+                "@input/0"
+              ],
+              [
+                "solver",
+                "@input/1"
+              ],
+              [
+                "solver",
+                "@input/2"
+              ],
+              [
+                "simulation_output",
+                "@input/0"
+              ],
+              [
+                "particle_size",
+                "@input/0"
+              ],
+              [
+                "instances",
+                "@input/0"
+              ],
+              [
+                "instances",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Dop/popflock",
+                  "parameter": "interactionforce",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popflock",
+                  "parameter": "activate",
+                  "type": "integer",
+                  "size": 1,
+                  "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popflock",
+                  "parameter": "usegroup",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popflock",
+                  "parameter": "ignoremass",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                }
+              ],
+              "missing": []
+            },
+            "id": "separation",
+            "node_role": "flock",
+            "parameter_aliases": [
+              "interactionforce"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 100,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [
+              [
+                "flock",
+                "activate",
+                1
+              ],
+              [
+                "flock",
+                "usegroup",
+                0
+              ],
+              [
+                "flock",
+                "ignoremass",
+                1
+              ]
+            ],
+            "invalidates_from": "generation_simulation",
+            "unit": "native velocity matching force scalar; physical unit NOT_CAPTURED",
+            "native_status": "mapped",
+            "context_parms": [
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "simulation",
+                "@node"
+              ],
+              [
+                "particle_object",
+                "@node"
+              ],
+              [
+                "emission",
+                "@node"
+              ],
+              [
+                "flock",
+                "@node"
+              ],
+              [
+                "seek",
+                "@node"
+              ],
+              [
+                "noise_force",
+                "@node"
+              ],
+              [
+                "solver",
+                "@node"
+              ],
+              [
+                "simulation_output",
+                "@node"
+              ],
+              [
+                "particle_size",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "instances",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "simulation",
+                "@input/0"
+              ],
+              [
+                "solver",
+                "@input/0"
+              ],
+              [
+                "flock",
+                "@input/0"
+              ],
+              [
+                "seek",
+                "@input/0"
+              ],
+              [
+                "solver",
+                "@input/1"
+              ],
+              [
+                "solver",
+                "@input/2"
+              ],
+              [
+                "simulation_output",
+                "@input/0"
+              ],
+              [
+                "particle_size",
+                "@input/0"
+              ],
+              [
+                "instances",
+                "@input/0"
+              ],
+              [
+                "instances",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Dop/popflock",
+                  "parameter": "velmatchforce",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popflock",
+                  "parameter": "activate",
+                  "type": "integer",
+                  "size": 1,
+                  "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popflock",
+                  "parameter": "usegroup",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popflock",
+                  "parameter": "ignoremass",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                }
+              ],
+              "missing": []
+            },
+            "id": "alignment",
+            "node_role": "flock",
+            "parameter_aliases": [
+              "velmatchforce"
+            ]
+          },
+          {
+            "minimum": 0.001,
+            "maximum": 10000,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [
+              [
+                "flock",
+                "activate",
+                1
+              ],
+              [
+                "flock",
+                "usegroup",
+                0
+              ],
+              [
+                "flock",
+                "ignoremass",
+                1
+              ]
+            ],
+            "invalidates_from": "generation_simulation",
+            "unit": "native central maximum distance; vendor scene length token m1",
+            "native_status": "mapped",
+            "context_parms": [
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "simulation",
+                "@node"
+              ],
+              [
+                "particle_object",
+                "@node"
+              ],
+              [
+                "emission",
+                "@node"
+              ],
+              [
+                "flock",
+                "@node"
+              ],
+              [
+                "seek",
+                "@node"
+              ],
+              [
+                "noise_force",
+                "@node"
+              ],
+              [
+                "solver",
+                "@node"
+              ],
+              [
+                "simulation_output",
+                "@node"
+              ],
+              [
+                "particle_size",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "instances",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "simulation",
+                "@input/0"
+              ],
+              [
+                "solver",
+                "@input/0"
+              ],
+              [
+                "flock",
+                "@input/0"
+              ],
+              [
+                "seek",
+                "@input/0"
+              ],
+              [
+                "solver",
+                "@input/1"
+              ],
+              [
+                "solver",
+                "@input/2"
+              ],
+              [
+                "simulation_output",
+                "@input/0"
+              ],
+              [
+                "particle_size",
+                "@input/0"
+              ],
+              [
+                "instances",
+                "@input/0"
+              ],
+              [
+                "instances",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Dop/popflock",
+                  "parameter": "centermaxdist",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popflock",
+                  "parameter": "activate",
+                  "type": "integer",
+                  "size": 1,
+                  "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popflock",
+                  "parameter": "usegroup",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popflock",
+                  "parameter": "ignoremass",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                }
+              ],
+              "missing": []
+            },
+            "id": "neighbor_radius",
+            "node_role": "flock",
+            "parameter_aliases": [
+              "centermaxdist"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 100,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [
+              [
+                "seek",
+                "activate",
+                1.0
+              ],
+              [
+                "seek",
+                "usegroup",
+                0
+              ],
+              [
+                "seek",
+                "output",
+                "1"
+              ],
+              [
+                "seek",
+                "attracttype",
+                "position"
+              ],
+              [
+                "seek",
+                "uselocalgoal",
+                0
+              ],
+              [
+                "seek",
+                "uselocalforce",
+                0
+              ],
+              [
+                "seek",
+                "ignoremass",
+                1
+              ]
+            ],
+            "invalidates_from": "generation_simulation",
+            "unit": "native goal force scale; vendor token kg1m1s-2, physical conversion NOT_CAPTURED",
+            "native_status": "mapped",
+            "context_parms": [
+              [
+                "seek",
+                "goal"
+              ],
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "simulation",
+                "@node"
+              ],
+              [
+                "particle_object",
+                "@node"
+              ],
+              [
+                "emission",
+                "@node"
+              ],
+              [
+                "flock",
+                "@node"
+              ],
+              [
+                "seek",
+                "@node"
+              ],
+              [
+                "noise_force",
+                "@node"
+              ],
+              [
+                "solver",
+                "@node"
+              ],
+              [
+                "simulation_output",
+                "@node"
+              ],
+              [
+                "particle_size",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "instances",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "simulation",
+                "@input/0"
+              ],
+              [
+                "solver",
+                "@input/0"
+              ],
+              [
+                "flock",
+                "@input/0"
+              ],
+              [
+                "seek",
+                "@input/0"
+              ],
+              [
+                "solver",
+                "@input/1"
+              ],
+              [
+                "solver",
+                "@input/2"
+              ],
+              [
+                "simulation_output",
+                "@input/0"
+              ],
+              [
+                "particle_size",
+                "@input/0"
+              ],
+              [
+                "instances",
+                "@input/0"
+              ],
+              [
+                "instances",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Dop/popsteerseek",
+                  "parameter": "forcescale",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "f3fa66faf01dfd9f408bb48772b9c82616ff6a4c7aaede773ffd23862282df9a",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popsteerseek",
+                  "parameter": "activate",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "f3fa66faf01dfd9f408bb48772b9c82616ff6a4c7aaede773ffd23862282df9a",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popsteerseek",
+                  "parameter": "usegroup",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "f3fa66faf01dfd9f408bb48772b9c82616ff6a4c7aaede773ffd23862282df9a",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popsteerseek",
+                  "parameter": "output",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "f3fa66faf01dfd9f408bb48772b9c82616ff6a4c7aaede773ffd23862282df9a",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popsteerseek",
+                  "parameter": "attracttype",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "f3fa66faf01dfd9f408bb48772b9c82616ff6a4c7aaede773ffd23862282df9a",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popsteerseek",
+                  "parameter": "uselocalgoal",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "f3fa66faf01dfd9f408bb48772b9c82616ff6a4c7aaede773ffd23862282df9a",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popsteerseek",
+                  "parameter": "uselocalforce",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "f3fa66faf01dfd9f408bb48772b9c82616ff6a4c7aaede773ffd23862282df9a",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popsteerseek",
+                  "parameter": "ignoremass",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "f3fa66faf01dfd9f408bb48772b9c82616ff6a4c7aaede773ffd23862282df9a",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                }
+              ],
+              "missing": []
+            },
+            "id": "goal_attraction",
+            "node_role": "seek",
+            "parameter_aliases": [
+              "forcescale"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 100,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 3,
+            "application": "houdini",
+            "required_gates": [
+              [
+                "seek",
+                "activate",
+                1.0
+              ],
+              [
+                "seek",
+                "usegroup",
+                0
+              ],
+              [
+                "seek",
+                "output",
+                "1"
+              ],
+              [
+                "seek",
+                "attracttype",
+                "position"
+              ],
+              [
+                "seek",
+                "uselocalgoal",
+                0
+              ],
+              [
+                "seek",
+                "uselocalforce",
+                0
+              ],
+              [
+                "seek",
+                "ignoremass",
+                1
+              ]
+            ],
+            "invalidates_from": "generation_simulation",
+            "unit": "shared goal perturbation radius in scene units",
+            "native_status": "mapped",
+            "semantic_contract": "owned_swarm_goal_channels/1",
+            "context_parms": [
+              [
+                "seek",
+                "@swarm_basis"
+              ],
+              [
+                "seek",
+                "@swarm_channels"
+              ],
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "simulation",
+                "@node"
+              ],
+              [
+                "particle_object",
+                "@node"
+              ],
+              [
+                "emission",
+                "@node"
+              ],
+              [
+                "flock",
+                "@node"
+              ],
+              [
+                "seek",
+                "@node"
+              ],
+              [
+                "noise_force",
+                "@node"
+              ],
+              [
+                "solver",
+                "@node"
+              ],
+              [
+                "simulation_output",
+                "@node"
+              ],
+              [
+                "particle_size",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "instances",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "simulation",
+                "@input/0"
+              ],
+              [
+                "solver",
+                "@input/0"
+              ],
+              [
+                "flock",
+                "@input/0"
+              ],
+              [
+                "seek",
+                "@input/0"
+              ],
+              [
+                "solver",
+                "@input/1"
+              ],
+              [
+                "solver",
+                "@input/2"
+              ],
+              [
+                "simulation_output",
+                "@input/0"
+              ],
+              [
+                "particle_size",
+                "@input/0"
+              ],
+              [
+                "instances",
+                "@input/0"
+              ],
+              [
+                "instances",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ],
+            "product_status": "approved",
+            "product_definition": {
+              "decision_id": "S01",
+              "unit": "SU",
+              "definition": "Target-position perturbation radius a: uniform samples inside a 3D ball centered on actual goal_base, updated each scene second with linear interpolation between samples; one shared moving goal for the whole swarm.",
+              "zero": "Exactly goal_base.",
+              "negative": "Reject.",
+              "scope": "Seek target position only; preserve particle source, initial v and goal_attraction; add no force. Protect existing drivers.",
+              "required_basis": [
+                "actual goal_base and reference space",
+                "fixed seed and independent control sub-seed",
+                "time origin, actual FPS and time scale"
+              ],
+              "capture_blockers": [
+                "versioned legal goal-animation/noise graph, seed/time and vector types",
+                "goal input/expression consumption, existing-driver protection and reopening"
+              ],
+              "proposal_sha256": "7a5d8f699ee879c9d613832d9520ceb71580080f6ebadfd187fbd3b0389f4f9e",
+              "decision_record": "handover/CONTROL_DECISIONS_20261004.md",
+              "approved_sections": [
+                2,
+                3
+              ],
+              "common_rules": {
+                "units": "Lengths use current scene units (SU), velocities SU/s; read actual FPS and time scale. No SI conversion without explicit scale and mass bases.",
+                "validation": "Require finite values and each control's zero policy; reject unsigned negatives, missing bases, incompatible combinations and budget excess. No clamping, rounding, implicit conversion or renaming.",
+                "randomness": "Use fixed task seed, stable entity IDs and independent control sub-seeds; reopening reproduces samples and changing one control does not resample another. New percentages are bounded amplitudes, not statistical variance.",
+                "basis": "Freeze bases, coordinate spaces, distributions, time scales and controlled stages. Missing axes, targets, events, source geometry or stable IDs remain explicit missing inputs; preserve unrelated artist fields.",
+                "ranges": "Preserve existing names and validation ranges. Mathematical conditions, version-specific native hard limits, product limits and scene budgets remain distinct; unsupported endpoints stay blocked. Range, alias or endpoint changes require a specific decision.",
+                "readback": "Observe actual parameters, attributes, channels, topology or semantic programs and their input SHA, not requested values. Cache/render authorization, 12-frame/120-second limits and total disk budget remain required; product approval does not authorize real jobs.",
+                "existing_definitions": "Preserve particle life/velocity variance, Crowd path_variance and Geometry scale_variance; preserve the existing RBD activation_frame constant active step."
+              },
+              "common_capture_requirements": {
+                "versions": [
+                  "21.0.631",
+                  "22.0.429"
+                ],
+                "interface": "For each version, capture raw definition/help/SDK sources and hashes, exact operators/machine parameters, types/tuples, menu tokens, defaults/expressions, hard/soft ranges, disable/hide state, indexed input/output roles, editable boundaries and downstream consumption.",
+                "attributes": "Attribute routes additionally need class/storage/tuple, coordinate space, stable IDs and actual downstream consumption rules; labels, help anchors, sliders and other-version tokens are not machine interface proof.",
+                "runtime": "Static evidence bounds pure contracts/native API substitutes. Instance state, geometry/fields, save/reopen and dynamic effects require separately authorized real-host evidence. Recovered JSON excerpts do not replace missing original HDA bytes."
+              },
+              "preparation_capture_requirements": {
+                "versions": [
+                  "22.0.459"
+                ],
+                "interface": "For each version, capture raw definition/help/SDK sources and hashes, exact operators/machine parameters, types/tuples, menu tokens, defaults/expressions, hard/soft ranges, disable/hide state, indexed input/output roles, editable boundaries and downstream consumption.",
+                "attributes": "Attribute routes additionally need class/storage/tuple, coordinate space, stable IDs and actual downstream consumption rules; labels, help anchors, sliders and other-version tokens are not machine interface proof.",
+                "runtime": "Static evidence bounds pure contracts/native API substitutes. Instance state, geometry/fields, save/reopen and dynamic effects require separately authorized real-host evidence. Recovered JSON excerpts do not replace missing original HDA bytes.",
+                "status": "PARTIAL_STATIC_BASIS_RUNTIME_FACTS_REQUIRED"
+              }
+            },
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Dop/popsteerseek",
+                  "parameter": "goal",
+                  "type": "vector",
+                  "size": 3,
+                  "section_sha256": "f3fa66faf01dfd9f408bb48772b9c82616ff6a4c7aaede773ffd23862282df9a",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popsteerseek",
+                  "parameter": "activate",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "f3fa66faf01dfd9f408bb48772b9c82616ff6a4c7aaede773ffd23862282df9a",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popsteerseek",
+                  "parameter": "usegroup",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "f3fa66faf01dfd9f408bb48772b9c82616ff6a4c7aaede773ffd23862282df9a",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popsteerseek",
+                  "parameter": "output",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "f3fa66faf01dfd9f408bb48772b9c82616ff6a4c7aaede773ffd23862282df9a",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popsteerseek",
+                  "parameter": "attracttype",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "f3fa66faf01dfd9f408bb48772b9c82616ff6a4c7aaede773ffd23862282df9a",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popsteerseek",
+                  "parameter": "uselocalgoal",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "f3fa66faf01dfd9f408bb48772b9c82616ff6a4c7aaede773ffd23862282df9a",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popsteerseek",
+                  "parameter": "uselocalforce",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "f3fa66faf01dfd9f408bb48772b9c82616ff6a4c7aaede773ffd23862282df9a",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popsteerseek",
+                  "parameter": "ignoremass",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "f3fa66faf01dfd9f408bb48772b9c82616ff6a4c7aaede773ffd23862282df9a",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                }
+              ],
+              "missing": []
+            },
+            "id": "target_noise",
+            "node_role": "seek",
+            "parameter_aliases": [
+              "goal"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 1000,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [
+              [
+                "noise_force",
+                "activate",
+                1.0
+              ],
+              [
+                "noise_force",
+                "usegroup",
+                0
+              ],
+              [
+                "noise_force",
+                "uselocalforce",
+                0
+              ],
+              [
+                "noise_force",
+                "uselocalnoise",
+                0
+              ],
+              [
+                "noise_force",
+                "ignoremass",
+                1
+              ],
+              [
+                "solver",
+                "externalforce",
+                1
+              ],
+              [
+                "solver",
+                "integratevel",
+                1
+              ],
+              [
+                "solver",
+                "integratepos",
+                1
+              ],
+              [
+                "noise_force",
+                "force",
+                [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ]
+            ],
+            "invalidates_from": "generation_simulation",
+            "unit": "native POP noise amplitude with Ignore Mass; SI conversion not captured",
+            "native_status": "mapped",
+            "context_parms": [
+              [
+                "seek",
+                "@swarm_basis"
+              ],
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "simulation",
+                "@node"
+              ],
+              [
+                "particle_object",
+                "@node"
+              ],
+              [
+                "emission",
+                "@node"
+              ],
+              [
+                "flock",
+                "@node"
+              ],
+              [
+                "seek",
+                "@node"
+              ],
+              [
+                "noise_force",
+                "@node"
+              ],
+              [
+                "solver",
+                "@node"
+              ],
+              [
+                "simulation_output",
+                "@node"
+              ],
+              [
+                "particle_size",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "instances",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "simulation",
+                "@input/0"
+              ],
+              [
+                "solver",
+                "@input/0"
+              ],
+              [
+                "flock",
+                "@input/0"
+              ],
+              [
+                "seek",
+                "@input/0"
+              ],
+              [
+                "solver",
+                "@input/1"
+              ],
+              [
+                "solver",
+                "@input/2"
+              ],
+              [
+                "simulation_output",
+                "@input/0"
+              ],
+              [
+                "particle_size",
+                "@input/0"
+              ],
+              [
+                "instances",
+                "@input/0"
+              ],
+              [
+                "instances",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ],
+            "product_status": "approved",
+            "product_definition": {
+              "decision_id": "S02",
+              "unit": "native POP noise amplitude with Ignore Mass; SI conversion not captured",
+              "definition": "Owned POP noise-force native amplitude scalar, using the existing particle force_noise interpretation with Ignore Mass; no claim of SI acceleration. Preserve frequency, seed and roughness, freezing explicit bases when their context is missing.",
+              "zero": "This new noise-force contribution is zero.",
+              "negative": "Reject.",
+              "scope": "Independent editable swarm noise-force branch; preserve flock, seek and their weights. Existing particle force_noise is a design basis, not proof of a swarm graph.",
+              "required_basis": [
+                "explicit frequency, seed and roughness",
+                "actual time-noise context",
+                "Ignore Mass convention"
+              ],
+              "capture_blockers": [
+                "versioned legal swarm POP Force branch and connections",
+                "amplitude/gates/time-noise context and actual solver external-force consumption"
+              ],
+              "proposal_sha256": "7a5d8f699ee879c9d613832d9520ceb71580080f6ebadfd187fbd3b0389f4f9e",
+              "decision_record": "handover/CONTROL_DECISIONS_20261004.md",
+              "approved_sections": [
+                2,
+                3
+              ],
+              "common_rules": {
+                "units": "Lengths use current scene units (SU), velocities SU/s; read actual FPS and time scale. No SI conversion without explicit scale and mass bases.",
+                "validation": "Require finite values and each control's zero policy; reject unsigned negatives, missing bases, incompatible combinations and budget excess. No clamping, rounding, implicit conversion or renaming.",
+                "randomness": "Use fixed task seed, stable entity IDs and independent control sub-seeds; reopening reproduces samples and changing one control does not resample another. New percentages are bounded amplitudes, not statistical variance.",
+                "basis": "Freeze bases, coordinate spaces, distributions, time scales and controlled stages. Missing axes, targets, events, source geometry or stable IDs remain explicit missing inputs; preserve unrelated artist fields.",
+                "ranges": "Preserve existing names and validation ranges. Mathematical conditions, version-specific native hard limits, product limits and scene budgets remain distinct; unsupported endpoints stay blocked. Range, alias or endpoint changes require a specific decision.",
+                "readback": "Observe actual parameters, attributes, channels, topology or semantic programs and their input SHA, not requested values. Cache/render authorization, 12-frame/120-second limits and total disk budget remain required; product approval does not authorize real jobs.",
+                "existing_definitions": "Preserve particle life/velocity variance, Crowd path_variance and Geometry scale_variance; preserve the existing RBD activation_frame constant active step."
+              },
+              "common_capture_requirements": {
+                "versions": [
+                  "21.0.631",
+                  "22.0.429"
+                ],
+                "interface": "For each version, capture raw definition/help/SDK sources and hashes, exact operators/machine parameters, types/tuples, menu tokens, defaults/expressions, hard/soft ranges, disable/hide state, indexed input/output roles, editable boundaries and downstream consumption.",
+                "attributes": "Attribute routes additionally need class/storage/tuple, coordinate space, stable IDs and actual downstream consumption rules; labels, help anchors, sliders and other-version tokens are not machine interface proof.",
+                "runtime": "Static evidence bounds pure contracts/native API substitutes. Instance state, geometry/fields, save/reopen and dynamic effects require separately authorized real-host evidence. Recovered JSON excerpts do not replace missing original HDA bytes."
+              },
+              "preparation_capture_requirements": {
+                "versions": [
+                  "22.0.459"
+                ],
+                "interface": "For each version, capture raw definition/help/SDK sources and hashes, exact operators/machine parameters, types/tuples, menu tokens, defaults/expressions, hard/soft ranges, disable/hide state, indexed input/output roles, editable boundaries and downstream consumption.",
+                "attributes": "Attribute routes additionally need class/storage/tuple, coordinate space, stable IDs and actual downstream consumption rules; labels, help anchors, sliders and other-version tokens are not machine interface proof.",
+                "runtime": "Static evidence bounds pure contracts/native API substitutes. Instance state, geometry/fields, save/reopen and dynamic effects require separately authorized real-host evidence. Recovered JSON excerpts do not replace missing original HDA bytes.",
+                "status": "PARTIAL_STATIC_BASIS_RUNTIME_FACTS_REQUIRED"
+              }
+            },
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Dop/popforce",
+                  "parameter": "amp",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "4f5b4cc5f9678396de535449fbdea62a57dbd54bb16b4fa977d0e73fae5b591d",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popforce",
+                  "parameter": "activate",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "4f5b4cc5f9678396de535449fbdea62a57dbd54bb16b4fa977d0e73fae5b591d",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popforce",
+                  "parameter": "usegroup",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "4f5b4cc5f9678396de535449fbdea62a57dbd54bb16b4fa977d0e73fae5b591d",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popforce",
+                  "parameter": "uselocalforce",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "4f5b4cc5f9678396de535449fbdea62a57dbd54bb16b4fa977d0e73fae5b591d",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popforce",
+                  "parameter": "uselocalnoise",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "4f5b4cc5f9678396de535449fbdea62a57dbd54bb16b4fa977d0e73fae5b591d",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popforce",
+                  "parameter": "ignoremass",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "4f5b4cc5f9678396de535449fbdea62a57dbd54bb16b4fa977d0e73fae5b591d",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popsolver::2.0",
+                  "parameter": "externalforce",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "90db8ddcc3d50919629609292ab2ce5c6d8c8473527a0f650583a444c40c0d84",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popsolver::2.0",
+                  "parameter": "integratevel",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "90db8ddcc3d50919629609292ab2ce5c6d8c8473527a0f650583a444c40c0d84",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popsolver::2.0",
+                  "parameter": "integratepos",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "90db8ddcc3d50919629609292ab2ce5c6d8c8473527a0f650583a444c40c0d84",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                },
+                {
+                  "operator": "Dop/popforce",
+                  "parameter": "force",
+                  "type": "direction",
+                  "size": 3,
+                  "section_sha256": "4f5b4cc5f9678396de535449fbdea62a57dbd54bb16b4fa977d0e73fae5b591d",
+                  "archive_sha256": "3457429edf7d98873ab63f7b599fa3994c840689c8cfe7aab2472f4c43dc2f4d"
+                }
+              ],
+              "missing": []
+            },
+            "id": "noise_strength",
+            "node_role": "noise_force",
+            "parameter_aliases": [
+              "amp"
+            ]
+          }
+        ]
+      },
+      "native_basis": {
+        "status": "UNRESOLVED",
+        "scope": "Independent459HDA static fields and prospective software topology only; no compiled template, host process, writer execution or whole-domain validation.",
+        "sources": [
+          {
+            "path": "docs/native-basis/hda-interface-22.0.459.json",
+            "sha256": "e8d9ee7a16f14baa2327ae45412b2acee60ef4849d4e3aa099aea229586379c7",
+            "version": "22.0.459",
+            "native_execution": false
+          },
+          {
+            "path": "docs/native-basis/supporting-sources-22.0.459.json",
+            "sha256": "7b1bd4e1b187de823db9555bca10f40e9278dd88fb790cce8c874576405e1c3a",
+            "version": "22.0.459",
+            "native_execution": false
+          }
+        ],
+        "originals": "docs/native-basis/h22-459-originals/",
+        "captured_hda_operators": 55,
+        "node_templates": {
+          "default": [
+            {
+              "role": "geometry_network",
+              "candidates": [
+                {
+                  "operator": "Obj/geo",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "source",
+              "candidates": [
+                {
+                  "operator": "Sop/sphere",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "simulation",
+              "candidates": [
+                {
+                  "operator": "Sop/dopnet",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "particle_object",
+              "candidates": [
+                {
+                  "operator": "Dop/popobject",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "2327dd305f24a6b1416c23aa3c54fb4e3acdd0d9fe3e4bc83c4e5e6786d50f99",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "emission",
+              "candidates": [
+                {
+                  "operator": "Dop/popsource::2.0",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "f0da84834be59b92f29b40b5d84f616f0e8a9471cc17d41a5c4b109dd5b31bbd",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "flock",
+              "candidates": [
+                {
+                  "operator": "Dop/popflock",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "seek",
+              "candidates": [
+                {
+                  "operator": "Dop/popsteerseek",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "f3fa66faf01dfd9f408bb48772b9c82616ff6a4c7aaede773ffd23862282df9a",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "noise_force",
+              "candidates": [
+                {
+                  "operator": "Dop/popforce",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "4f5b4cc5f9678396de535449fbdea62a57dbd54bb16b4fa977d0e73fae5b591d",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "solver",
+              "candidates": [
+                {
+                  "operator": "Dop/popsolver::2.0",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "90db8ddcc3d50919629609292ab2ce5c6d8c8473527a0f650583a444c40c0d84",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "simulation_output",
+              "candidates": [
+                {
+                  "operator": "Dop/output",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "f9e21908dd5b1800272186f0a1c444e4506b7057e5540fb32e4ff9c649fa1499",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "particle_size",
+              "candidates": [
+                {
+                  "operator": "Sop/attribadjustfloat",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "23de8cbbf6748d8d9dd96b8ffdf2fda6b3717909f60b57aa51d3e56ecaaffd89",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "instance_source",
+              "candidates": [
+                {
+                  "operator": "Sop/sphere",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "instances",
+              "candidates": [
+                {
+                  "operator": "Sop/copytopoints::2.0",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "output",
+              "candidates": [
+                {
+                  "operator": "Sop/null",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "usd_network",
+              "candidates": [
+                {
+                  "operator": "Obj/lopnet",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "render_network",
+              "candidates": [
+                {
+                  "operator": "Obj/ropnet",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "geometry_import",
+              "candidates": [
+                {
+                  "operator": "Lop/sopimport",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "camera",
+              "candidates": [
+                {
+                  "operator": "Lop/camera",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "e7961a7d50953ca0a1d9cbd8f5349db34a4ec33fb98118f6d852e91765564612",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "light",
+              "candidates": [
+                {
+                  "operator": "Lop/light",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "34498e2f239d0566a47fc65928f9d42db17b8d7e487a99d3e0acc66b407abf38",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render_settings",
+              "candidates": [
+                {
+                  "operator": "Lop/karmarendersettings",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "cc263cb8a2e6e1f964363999322d8395f7c52d7160ea723173a24b23568783fe",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render_var",
+              "candidates": [
+                {
+                  "operator": "Lop/rendervar",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "c296736e72c9e2881b3867ff634cfe6253e5e5848e4f63bc9ff01420cbc39aea",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render_product",
+              "candidates": [
+                {
+                  "operator": "Lop/renderproduct",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "db75399202e08a57d1c5a1b29b42a2f871b690b9f23fe5db955a185bcb015cab",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "settings_binding",
+              "candidates": [
+                {
+                  "operator": "Lop/rendersettings",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "325937f14987a4b23ec74be88ac1bb0a424e351a469776e41b15952dbef9ac3d",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render",
+              "candidates": [
+                {
+                  "operator": "Driver/usdrender",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            }
+          ]
+        },
+        "blocked_controls": {
+          "default": []
+        },
+        "native_execution": false
+      },
+      "software_validation": "NOT_RUN",
+      "live_validation": "NOT_RUN",
+      "blockers": [
+        "WHOLE_DOMAIN_NATIVE_BASIS_UNRESOLVED",
+        "CURRENT_FORMAL_LIFECYCLE_AND_OUTPUT_NOT_ACCEPTED"
+      ]
+    }
+  ],
+  "common_assertions": [
+    "Before any write verify task authorization, actual node ownership/context/type and exact native field writable/not disabled/not locked/not driven/referenced. Initialize documented modes/gates before dependent probe.",
+    "Every required and runtime control is covered; feedback changes at most five controls per formal patch, in bounded batches; inspect ALL changed targets and inverse semantic readback.",
+    "All declared ports/edges equal actual node.info inputs; include output ports and context parents, not only connection verified flags.",
+    "Save/reopen uses GraphRun.task_save/task_reopen or formal scene.save_hip/scene.reopen_task_hip; compare node type, every key parameter, ALL connections and actual domain data; no expected-data reconstruction on load.",
+    "Rejected wrong type/range/context/role/field/domain/version, locked/driven/disabled and partial-write failure leave all prior parameters/connections plus unrelated user edits intact.",
+    "Feedback readback includes semantic_control/node/parameter before-after/readback_verified/invalidates_from; invalidate transitive actual data consumers and affected caches/artifacts; unchanged branches remain unchanged."
+  ],
+  "output_contract": {
+    "type_and_data": "geometry:agent points/velocity/neighbors/trajectories/instances",
+    "rendered_image_only_after_formal_render": true,
+    "producer_operation_id": null,
+    "artifact_id": null,
+    "artifact_version": null,
+    "content_sha256": null,
+    "frames": [
+      1,
+      2
+    ],
+    "colorspace": "scene_linear for final render, not forced onto intermediate geometry/volume/material",
+    "status": "BLOCKED",
+    "interface": "I2/I3"
+  },
+  "resource_confirmation": {
+    "status": "BLOCKED",
+    "required": [
+      "task-owned roots and save/budget roots accepted by R and supervisor",
+      "explicit version and authorized isolated task input, no private media upload",
+      "frames exactly [1,2], maximum 12 explicit frames and render budget <=120 seconds",
+      "operator to confirm geometry complexity/memory/render settings budget without exceeding public allowance",
+      "licenses/resource availability checked only by future authorized operator; none invoked here"
+    ]
+  },
+  "live_human_judgment": {
+    "status": "NOT_RUN",
+    "items": [
+      "cluster_count",
+      "neighbor_variance",
+      "alignment_score",
+      "trajectory_coherence",
+      "visual plausibility and correct native geometry/data",
+      "collision/artifact/render noise and temporal continuity as applicable",
+      "reference privacy and protected dimensions retained"
+    ]
+  },
+  "next_action": {
+    "Z": "resolve each BLOCKED role/field/units/gates/conversion and implement domain assertions in separately owned code work",
+    "R": "freeze runtime-interface with hashes; legal context roots, domain-data save/reopen, actual producer route and supervised recovery",
+    "E": "validate case/build/provider binding after R freeze",
+    "M": "dispatch/review/integrate without promoting historical receipts",
+    "P": "publish only after I5 build freeze"
+  },
+  "required_versions": {
+    "houdini": [
+      "21.0.631",
+      "22.0.459"
+    ],
+    "nuke": [
+      "17.0v1"
+    ]
+  }
+}

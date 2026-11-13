@@ -1,0 +1,775 @@
+{
+  "domain_pack": "explosion_composite_v1",
+  "case_id": "explosion_composite_v1__build_inspect",
+  "case_ids": [
+    "explosion_composite_v1__build_inspect",
+    "explosion_composite_v1__causal_candidate",
+    "explosion_composite_v1__approval_recovery"
+  ],
+  "domain_pack_version": "1.0.0",
+  "kind": "current_software_contract_checklist_not_execution_evidence",
+  "status": "PREPARATION_NOT_ACCEPTED",
+  "applications": [
+    "houdini",
+    "nuke"
+  ],
+  "required_versions": {
+    "houdini": [
+      "21.0.631",
+      "22.0.459"
+    ],
+    "nuke": [
+      "17.0v1"
+    ]
+  },
+  "native_basis_status": "UNRESOLVED",
+  "native_basis": {
+    "static_definitions": [
+      "docs/native-basis/hda-interface-capture.json",
+      "docs/native-basis/native-boundary-metadata-supplement.json",
+      "docs/native-basis/hda-interface-22.0.459.json",
+      "docs/native-basis/supporting-sources-22.0.459.json"
+    ],
+    "meaning": "Current software mappings and static references are not whole-domain native validation; resolve exact operator/parameter/port and output-consumption gaps before marking VERIFIED_SOURCE.",
+    "versioned_preparation": {
+      "22.0.459": {
+        "status": "UNRESOLVED",
+        "reason": "No standalone versioned native explosion graph. Registered branch artifacts, B trusted inputs and common render/composite consumption remain required.",
+        "sources": [
+          {
+            "path": "docs/native-basis/hda-interface-22.0.459.json",
+            "sha256": "e8d9ee7a16f14baa2327ae45412b2acee60ef4849d4e3aa099aea229586379c7",
+            "version": "22.0.459",
+            "native_execution": false
+          },
+          {
+            "path": "docs/native-basis/supporting-sources-22.0.459.json",
+            "sha256": "7b1bd4e1b187de823db9555bca10f40e9278dd88fb790cce8c874576405e1c3a",
+            "version": "22.0.459",
+            "native_execution": false
+          }
+        ],
+        "native_execution": false
+      }
+    }
+  },
+  "expected_nodes": {
+    "21.0.631": {
+      "default": [
+        {
+          "role": "source",
+          "category": "sop",
+          "type_candidates": [
+            "sphere"
+          ],
+          "required_parameter_aliases": [
+            [
+              "radx",
+              "radius"
+            ]
+          ],
+          "input_role": null
+        },
+        {
+          "role": "pyro",
+          "category": "sop",
+          "type_candidates": [
+            "pyrosolver",
+            "pyrosolver::2.0"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": "source"
+        },
+        {
+          "role": "particles",
+          "category": "sop",
+          "type_candidates": [
+            "popnet"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": "source"
+        },
+        {
+          "role": "fracture",
+          "category": "sop",
+          "type_candidates": [
+            "rbdmaterialfracture"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": "source"
+        },
+        {
+          "role": "output",
+          "category": "sop",
+          "type_candidates": [
+            "merge"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": "pyro"
+        }
+      ]
+    },
+    "22.0.429": {
+      "default": [
+        {
+          "role": "source",
+          "category": "sop",
+          "type_candidates": [
+            "sphere"
+          ],
+          "required_parameter_aliases": [
+            [
+              "radx",
+              "radius"
+            ]
+          ],
+          "input_role": null
+        },
+        {
+          "role": "pyro",
+          "category": "sop",
+          "type_candidates": [
+            "pyrosolver",
+            "pyrosolver::2.0"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": "source"
+        },
+        {
+          "role": "particles",
+          "category": "sop",
+          "type_candidates": [
+            "popnet"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": "source"
+        },
+        {
+          "role": "fracture",
+          "category": "sop",
+          "type_candidates": [
+            "rbdmaterialfracture"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": "source"
+        },
+        {
+          "role": "output",
+          "category": "sop",
+          "type_candidates": [
+            "merge"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": "pyro"
+        }
+      ]
+    },
+    "22.0.459": {
+      "default": {
+        "status": "UNRESOLVED",
+        "blocker": "COMPOSITE_REGISTERED_UPSTREAM_DATAFLOW_NOT_IMPLEMENTED",
+        "required_route": [
+          "pyro_smoke_v1",
+          "pyro_fire_v1",
+          "particles_v1",
+          "procedural_geometry_v1",
+          "rbd_destruction_v1",
+          "material_lookdev_v1",
+          "lighting_camera_render_v1",
+          "nuke_composite_v1"
+        ],
+        "native_execution": false
+      }
+    }
+  },
+  "expected_connections": {
+    "21.0.631": {
+      "default": [
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "pyro",
+          "destination_input": 0
+        },
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "particles",
+          "destination_input": 0
+        },
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "fracture",
+          "destination_input": 0
+        },
+        {
+          "source_role": "pyro",
+          "source_output": 0,
+          "destination_role": "output",
+          "destination_input": 0
+        }
+      ]
+    },
+    "22.0.429": {
+      "default": [
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "pyro",
+          "destination_input": 0
+        },
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "particles",
+          "destination_input": 0
+        },
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "fracture",
+          "destination_input": 0
+        },
+        {
+          "source_role": "pyro",
+          "source_output": 0,
+          "destination_role": "output",
+          "destination_input": 0
+        }
+      ]
+    },
+    "22.0.459": {
+      "default": {
+        "status": "UNRESOLVED",
+        "blocker": "COMPOSITE_REGISTERED_UPSTREAM_DATAFLOW_NOT_IMPLEMENTED",
+        "required_route": [
+          "pyro_smoke_v1",
+          "pyro_fire_v1",
+          "particles_v1",
+          "procedural_geometry_v1",
+          "rbd_destruction_v1",
+          "material_lookdev_v1",
+          "lighting_camera_render_v1",
+          "nuke_composite_v1"
+        ],
+        "native_execution": false
+      }
+    }
+  },
+  "key_parameters": {
+    "semantic": [
+      {
+        "name": "fire_energy",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 10.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "fire_simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [
+          "fire"
+        ],
+        "application": "houdini"
+      },
+      {
+        "name": "smoke_dissipation",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 5.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "smoke_simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [
+          "smoke"
+        ],
+        "application": "houdini"
+      },
+      {
+        "name": "spark_rate",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 10000000.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "particles_simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [
+          "particles"
+        ],
+        "application": "houdini"
+      },
+      {
+        "name": "debris_scale",
+        "value_type": "float",
+        "minimum": 0.001,
+        "maximum": 1000.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "rbd_generation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [
+          "rbd"
+        ],
+        "application": "houdini"
+      },
+      {
+        "name": "shockwave_scale",
+        "value_type": "float",
+        "minimum": 0.001,
+        "maximum": 10000.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "shockwave_generation"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [
+          "shockwave"
+        ],
+        "application": "houdini"
+      },
+      {
+        "name": "fire_scale",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 100.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "fire_simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [
+          "fire"
+        ],
+        "application": "houdini"
+      },
+      {
+        "name": "smoke_scale",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 100.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "smoke_simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [
+          "smoke"
+        ],
+        "application": "houdini"
+      },
+      {
+        "name": "debris_energy",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 1000.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "rbd_simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [
+          "rbd"
+        ],
+        "application": "houdini"
+      },
+      {
+        "name": "comp_contrast",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 10.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "composite"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [
+          "composite"
+        ],
+        "application": "nuke"
+      },
+      {
+        "name": "shockwave_thickness",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 1000.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "shockwave_generation"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [
+          "shockwave"
+        ],
+        "application": "houdini"
+      },
+      {
+        "name": "debris_amount",
+        "value_type": "int",
+        "minimum": 0.0,
+        "maximum": 1000000.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "rbd_generation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [
+          "rbd"
+        ],
+        "application": "houdini"
+      }
+    ],
+    "versioned_native_mapping": {
+      "21.0.631": {
+        "default": [
+          {
+            "id": "fire_energy",
+            "node_role": "pyro",
+            "parameter_aliases": [
+              "burn",
+              "burnrate"
+            ],
+            "minimum": 0.0,
+            "maximum": 10.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          {
+            "id": "smoke_dissipation",
+            "node_role": "pyro",
+            "parameter_aliases": [
+              "dissipation",
+              "dissipationscale"
+            ],
+            "minimum": 0.0,
+            "maximum": 5.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          {
+            "id": "spark_rate",
+            "node_role": "particles",
+            "parameter_aliases": [
+              "constantrate",
+              "birthrate"
+            ],
+            "minimum": 0.0,
+            "maximum": 10000000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          {
+            "id": "debris_scale",
+            "node_role": "fracture",
+            "parameter_aliases": [
+              "piecesize",
+              "fracturescale"
+            ],
+            "minimum": 0.001,
+            "maximum": 1000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          {
+            "id": "shockwave_scale",
+            "node_role": "source",
+            "parameter_aliases": [
+              "scale",
+              "uniformscale"
+            ],
+            "minimum": 0.001,
+            "maximum": 10000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          {
+            "id": "fire_scale",
+            "node_role": "pyro",
+            "parameter_aliases": [
+              "burn",
+              "burnrate",
+              "flamescale"
+            ],
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          {
+            "id": "smoke_scale",
+            "node_role": "pyro",
+            "parameter_aliases": [
+              "densityscale",
+              "smokeamount"
+            ],
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          {
+            "id": "debris_energy",
+            "node_role": "fracture",
+            "parameter_aliases": [
+              "debrisenergy",
+              "velocityscale",
+              "impulse"
+            ],
+            "minimum": 0.0,
+            "maximum": 1000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          {
+            "id": "comp_contrast",
+            "node_role": "external_nuke",
+            "parameter_aliases": [],
+            "minimum": 0.0,
+            "maximum": 10.0,
+            "invalidates_from": "composite",
+            "value_type": "float",
+            "application": "nuke"
+          },
+          {
+            "id": "shockwave_thickness",
+            "node_role": "source",
+            "parameter_aliases": [
+              "thickness",
+              "radius"
+            ],
+            "minimum": 0.0,
+            "maximum": 1000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          {
+            "id": "debris_amount",
+            "node_role": "fracture",
+            "parameter_aliases": [
+              "piececount",
+              "fracturecount"
+            ],
+            "minimum": 0.0,
+            "maximum": 1000000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "int",
+            "application": "houdini"
+          }
+        ]
+      },
+      "22.0.429": {
+        "default": [
+          {
+            "id": "fire_energy",
+            "node_role": "pyro",
+            "parameter_aliases": [
+              "burn",
+              "burnrate"
+            ],
+            "minimum": 0.0,
+            "maximum": 10.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          {
+            "id": "smoke_dissipation",
+            "node_role": "pyro",
+            "parameter_aliases": [
+              "dissipation",
+              "dissipationscale"
+            ],
+            "minimum": 0.0,
+            "maximum": 5.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          {
+            "id": "spark_rate",
+            "node_role": "particles",
+            "parameter_aliases": [
+              "constantrate",
+              "birthrate"
+            ],
+            "minimum": 0.0,
+            "maximum": 10000000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          {
+            "id": "debris_scale",
+            "node_role": "fracture",
+            "parameter_aliases": [
+              "piecesize",
+              "fracturescale"
+            ],
+            "minimum": 0.001,
+            "maximum": 1000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          {
+            "id": "shockwave_scale",
+            "node_role": "source",
+            "parameter_aliases": [
+              "scale",
+              "uniformscale"
+            ],
+            "minimum": 0.001,
+            "maximum": 10000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          {
+            "id": "fire_scale",
+            "node_role": "pyro",
+            "parameter_aliases": [
+              "burn",
+              "burnrate",
+              "flamescale"
+            ],
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          {
+            "id": "smoke_scale",
+            "node_role": "pyro",
+            "parameter_aliases": [
+              "densityscale",
+              "smokeamount"
+            ],
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          {
+            "id": "debris_energy",
+            "node_role": "fracture",
+            "parameter_aliases": [
+              "debrisenergy",
+              "velocityscale",
+              "impulse"
+            ],
+            "minimum": 0.0,
+            "maximum": 1000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          {
+            "id": "comp_contrast",
+            "node_role": "external_nuke",
+            "parameter_aliases": [],
+            "minimum": 0.0,
+            "maximum": 10.0,
+            "invalidates_from": "composite",
+            "value_type": "float",
+            "application": "nuke"
+          },
+          {
+            "id": "shockwave_thickness",
+            "node_role": "source",
+            "parameter_aliases": [
+              "thickness",
+              "radius"
+            ],
+            "minimum": 0.0,
+            "maximum": 1000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          {
+            "id": "debris_amount",
+            "node_role": "fracture",
+            "parameter_aliases": [
+              "piececount",
+              "fracturecount"
+            ],
+            "minimum": 0.0,
+            "maximum": 1000000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "int",
+            "application": "houdini"
+          }
+        ]
+      },
+      "22.0.459": {
+        "default": {
+          "status": "UNRESOLVED",
+          "blocker": "COMPOSITE_REGISTERED_UPSTREAM_DATAFLOW_NOT_IMPLEMENTED",
+          "required_route": [
+            "pyro_smoke_v1",
+            "pyro_fire_v1",
+            "particles_v1",
+            "procedural_geometry_v1",
+            "rbd_destruction_v1",
+            "material_lookdev_v1",
+            "lighting_camera_render_v1",
+            "nuke_composite_v1"
+          ],
+          "native_execution": false
+        }
+      }
+    }
+  },
+  "save_reopen": [
+    "Use the production generator and task-owned host; persist project content/version/owner and the original operation receipt.",
+    "Stop the actual owned worker and verify trusted stop, then reopen the saved HIP/NK in a new host identity.",
+    "Read back every role, native type, port, connection and semantic control; preserve unrelated artist changes."
+  ],
+  "stop_recovery": [
+    "Interrupt the actual case worker, not an auxiliary process.",
+    "Retain the heavy slot while stop is unknown; verify task/session/nonce/process/generation/build/scene epoch.",
+    "Restart the controller, restore the same operation from persistent facts, and verify no duplicate execution/registration."
+  ],
+  "artifact_checks": [
+    "Consume only task-owned registered input IDs/versions/hash and exact frames.",
+    "Validate applicable outputs: diagnostic_preview, editable_scene, simulation_cache",
+    "Require producer operation, scene/version, format/dimensions/channels, color/premultiplication and dependency facts; reject missing typed metadata.",
+    "Check missing/repeated/frozen/abrupt frames against a frozen activity interval; pixel change alone does not establish correct motion."
+  ],
+  "raw_evidence_path": "outputs/live-validation/explosion_composite_v1/<new-run-id>",
+  "human_checks": [
+    "Editable topology and save/reopen match the approved controls.",
+    "Compare the registered reference and feedback result; judge actual motion, silhouette, timing, material, lighting and composition.",
+    "Accept visual quality separately from software, format and process-stop checks."
+  ],
+  "resource_requirements": {
+    "explicit_frames_max": 12,
+    "seconds_max": 120,
+    "disk_bytes": "explicit positive task budget; include output/cache/temp/logs",
+    "cache": "separate exact path/frame/content-version/estimated-bytes/invalidation confirmation before execution",
+    "concurrency": "one heavy DCC job; unknown stop keeps slot"
+  },
+  "blockers": [
+    "Full 54-row current-build evidence and independent M1 reception remain incomplete.",
+    "Whole-domain native basis and applicable output/actual worker recovery are not verified by this card.",
+    "B: freeze center/radius-time function and credible lower bound, debris source geometry, stable IDs and registered parent-transform dependencies; shared composer execution is not implemented."
+  ],
+  "composite": true
+}

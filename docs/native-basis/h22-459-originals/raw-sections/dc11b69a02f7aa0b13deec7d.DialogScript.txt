@@ -1,0 +1,40 @@
+{
+    name	mtlxdisplacement
+    script	mtlxdisplacement
+    label	"MtlX Displacement"
+
+    rendermask	mtlx
+    shadertype	displacement
+    externalshader	1
+
+    input	float	displacement	"Displacement"
+    input	float	scale	"Scale"
+    output	displacement	out	"out"
+
+    signature	"Float"	default	{ float float displacement script=ND_displacement_float }
+    signature	"Vector 3"	vector3	{ vector float displacement script=ND_displacement_vector3 }
+
+    parm {
+        name    "displacement"
+        label   "Displacement"
+        type    float
+        default { "0" }
+        range   { 0 10 }
+    }
+    parm {
+        name    "displacement_vector3"
+        label   "Displacement"
+        type    vector
+        size    3
+        default { "0" "0" "0" }
+        range   { 0 10 }
+        parmtag { "sidefx::shader_parmname" "displacement" }
+    }
+    parm {
+        name    "scale"
+        label   "Scale"
+        type    float
+        default { "1" }
+        range   { 0 10 }
+    }
+}

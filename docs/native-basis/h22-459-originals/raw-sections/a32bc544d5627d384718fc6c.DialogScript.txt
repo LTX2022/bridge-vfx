@@ -1,0 +1,263 @@
+# Dialog script for attribwrangle automatically generated
+
+{
+    name	attribwrangle
+    script	attribwrangle
+    label	"Attribute Wrangle"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Geometry to Process with Wrangle"
+    inputlabel	2	"Ancillary Input, point(1, ...) to Access"
+    inputlabel	3	"Ancillary Input, point(2, ...) to Access"
+    inputlabel	4	"Ancillary Input, point(3, ...) to Access"
+
+    group {
+        name    "folder0"
+        label   "Code"
+
+        parm {
+            name    "group"
+            label   "Group"
+            type    string
+            default { "" }
+            menutoggle {
+                [ "opmenu -l -a attribvop1 bindgroup" ]
+            }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_action" "import soputils\nkwargs['geometrytype'] = kwargs['node'].parmTuple('grouptype')\nkwargs['inputindex'] = 0\nsoputils.selectGroupParm(kwargs)" }
+            parmtag { "script_action_help" "Select geometry from an available viewport." }
+            parmtag { "script_action_icon" "BUTTONS_reselect" }
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
+                0 1 0xffffffff 0 grouptype 0
+        }
+        parm {
+            name    "grouptype"
+            label   "Group Type"
+            type    ordinal
+            default { "guess" }
+            menu {
+                "guess"     "Guess from Group"
+                "vertices"  "Vertices"
+                "edges"     "Edges"
+                "points"    "Points"
+                "prims"     "Primitives"
+            }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "class"
+            label   "Run Over"
+            type    ordinal
+            default { "point" }
+            menu {
+                "detail"    "Detail (only once)"
+                "primitive" "Primitives"
+                "point"     "Points"
+                "vertex"    "Vertices"
+                "number"    "Numbers"
+            }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "vex_numcount"
+            label   "Number Count"
+            type    integer
+            default { "10" }
+            hidewhen "{ class != number }"
+            range   { 0! 10000 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "vex_threadjobsize"
+            label   "Thread Job Size"
+            type    integer
+            default { "1024" }
+            hidewhen "{ class != number }"
+            range   { 1! 10000 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "snippet"
+            label   "VEXpression"
+            type    string
+            default { "" }
+            menureplace {
+                [ "import vexpressionmenu" ]
+                [ "" ]
+                [ "return vexpressionmenu.buildSnippetMenu('attribwrangle/snippet', kwargs=kwargs)" ]
+                language python
+            }
+            range   { 0 1 }
+            export  all
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "editor" "1" }
+            parmtag { "editorlang" "VEX" }
+            parmtag { "editorlines" "8-30" }
+            parmtag { "script_action" "import vexpressionmenu\n\nnode = kwargs['node']\nparmname = 'snippet'\n\nvexpressionmenu.createSpareParmsFromChCalls(node, parmname)" }
+            parmtag { "script_action_help" "Creates spare parameters for each unique call of ch() " }
+            parmtag { "script_action_icon" "BUTTONS_create_parm_from_ch" }
+        }
+        parm {
+            name    "exportlist"
+            label   "Attributes to Create"
+            type    string
+            default { "*" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "vex_strict"
+            label   "Enforce Prototypes"
+            type    toggle
+            default { "off" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback" "" }
+        }
+        parm {
+            name    "vex_strictvariables"
+            label   "Standard Variable Names Only"
+            type    toggle
+            default { "on" }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    group {
+        name    "folder0_1"
+        label   "Bindings"
+
+        parm {
+            name    "autobind"
+            label   "Autobind by Name"
+            type    toggle
+            default { "on" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        multiparm {
+            name    "bindings"
+            label    "Number of Bindings"
+            default 0
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "multistartoffset" "1" }
+
+            parm {
+                name    "bindname#"
+                label   "Attribute Name"
+                type    string
+                default { "" }
+                range   { 0 1 }
+            }
+            parm {
+                name    "bindparm#"
+                label   "VEX Parameter"
+                type    string
+                default { "" }
+                range   { 0 1 }
+            }
+        }
+
+        parm {
+            name    "groupautobind"
+            label   "Autobind Groups by Name"
+            type    toggle
+            default { "on" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        multiparm {
+            name    "groupbindings"
+            label    "Group Bindings"
+            default 0
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "multistartoffset" "1" }
+
+            parm {
+                name    "bindgroupname#"
+                label   "Group Name"
+                type    string
+                default { "" }
+                range   { 0 1 }
+            }
+            parm {
+                name    "bindgroupparm#"
+                label   "VEX Parameter"
+                type    string
+                default { "" }
+                range   { 0 1 }
+            }
+        }
+
+        parm {
+            name    "vex_cwdpath"
+            label   "Evaluation Node Path"
+            type    oppath
+            default { "." }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "oprelative" "." }
+        }
+        parm {
+            name    "vex_outputmask"
+            label   "Export Parameters"
+            type    string
+            default { "*" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "vex_updatenmls"
+            label   "Update Normals If Displaced"
+            type    toggle
+            default { "off" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback" "" }
+        }
+        parm {
+            name    "vex_matchattrib"
+            label   "Attribute to Match"
+            type    string
+            default { "id" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "vex_inplace"
+            label   "Compute Results In Place"
+            type    toggle
+            default { "off" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "vex_selectiongroup"
+            label   "Output Selection Group"
+            type    string
+            default { "" }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "vex_precision"
+            label   "VEX Precision"
+            type    string
+            default { "auto" }
+            menu {
+                "auto"  "Auto"
+                "32"    "32-bit"
+                "64"    "64-bit"
+            }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+    }
+
+}

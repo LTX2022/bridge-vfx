@@ -1,0 +1,9 @@
+# audio3d.zip 官方文档索引（Houdini 22.0.368）
+
+共 3 页。用 `--page audio3d.zip:<内部路径>` 读取全文。
+
+| 页面 | 标题 |
+|---|---|
+| `cookbook.txt` | 3D audio cookbook |
+| `filters.txt` | Spatial audio filters |
+| `index.txt` | Spatial audio |

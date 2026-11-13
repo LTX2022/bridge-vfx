@@ -1,0 +1,1833 @@
+#
+# PROPRIETARY INFORMATION.  This software is proprietary to
+# Side Effects Software Inc., and is not to be reproduced,
+# transmitted, or disclosed in any way without written permission.
+#
+# NAME:	karmautils.py # ( Python )
+#
+# COMMENTS:
+#
+''' Utility functions for the Karma LOPs '''
+
+from __future__ import annotations
+
+import json
+import os
+import math
+import hou                                         #pylint: disable=import-error
+from pxr import Usd, UsdGeom, UsdRender, Sdf, Gf   #pylint: disable=import-error
+
+#pylint: disable=too-many-lines
+
+def _error(lop: hou.OpNode, msg: str):
+    lop.addError(msg)
+
+def _warning(lop: hou.OpNode, msg: str):
+    lop.addWarning(msg)
+
+# GLOBAL VARIABLRES (used elswehre too)
+AOV_NAME = "driver:parameters:aov:husk:name"
+AOV_CHANNELPREFIX = "driver:parameters:aov:husk:channel_prefix"
+AOV_FORMAT = "driver:parameters:aov:husk:format"
+AOV_FILTER = "driver:parameters:aov:karma:filter"
+
+_SHADOW_HOLDOUT = "holdout_shadow"
+_DENOISE_SUFFIX = "_denoise"
+
+class _FrameRange:      #pylint: disable=too-few-public-methods
+    def __init__(self, fstart, fend, finc):
+        self.fstart = min(fstart, fend)
+        self.fend = max(fstart, fend)
+        self.finc = max(1e-9, math.fabs(finc))
+        _fs = self.fstart
+        _end = self.fend + self.finc*0.5
+        self.frames = []
+        while _fs <= _end:
+            self.frames.append(_fs)
+            _fs += self.finc
+        self.nframes = len(self.frames)
+        self.animated = self.frames[1:]
+
+_AOVS = [
+    # The columns are
+    #   - RenderVar/AOV name
+    #   - Data Type
+    #   - LPE Light Mode (0=None, 1=Per-Light, 2=Per-Light + Emission)
+    #   - Source Type ("lpe", "raw", "primvar")
+    #   - Source Name
+    ( "beauty",                 "color4",       2, "lpe",  "C.*[LO]", ),
+    ( "beautyunshadowed",       "color",        2, "lpe",  "unoccluded;C.*[LO]", ),
+    ( "shadow",                 "color",        2, "lpe",  "shadow;C.*[LO]", ),
+    ( "combineddiffuse",        "color",        2, "lpe",  "C<RD>.*L", ),
+    ( "directdiffuse",          "color",        2, "lpe",  "C<RD>L", ),
+    ( "indirectdiffuse",        "color",        2, "lpe",  "C<RD>.+L", ),
+    ( "combineddiffuseunshadowed", "color",     2, "lpe",  "unoccluded;C<RD>.*L", ),
+    ( "directdiffuseunshadowed",   "color",     2, "lpe",  "unoccluded;C<RD>L", ),
+    ( "indirectdiffuseunshadowed", "color",     2, "lpe",  "unoccluded;C<RD>.+L", ),
+    ( "combineddiffuseshadow",  "color",        1, "lpe",  "shadow;C<RD>.*L", ),
+    ( "directdiffuseshadow",    "color",        1, "lpe",  "shadow;C<RD>L", ),
+    ( "indirectdiffuseshadow",  "color",        1, "lpe",  "shadow;C<RD>.+L", ),
+    ( "combinedglossyreflection",  "color",     2, "lpe",  "C<RG>.*L", ),
+    ( "directglossyreflection", "color",        2, "lpe",  "C<RG>L", ),
+    ( "indirectglossyreflection",  "color",     2, "lpe",  "C<RG>.+L", ),
+    ( "glossytransmission",     "color",        2, "lpe",  "C<TG>.*L", ),
+    ( "visiblelights",          "color",        1, "lpe",  "CL", ),
+    ( "combinedemission",       "color",        0, "lpe",  "C.*O", ),
+    ( "directemission",         "color",        0, "lpe",  "CO", ),
+    ( "indirectemission",       "color",        0, "lpe",  "C.+O", ),
+    ( "combinedvolume",         "color",        2, "lpe",  "CV.*L", ),
+    ( "directvolume",           "color",        2, "lpe",  "CVL", ),
+    ( "indirectvolume",         "color",        2, "lpe",  "CV.+L", ),
+    ( "coat",                   "color",        2, "lpe",  "C<...'coat'>.*L", ),
+    ( "sss",                    "color",        2, "lpe",  "C<TD>.*L", ),
+    ( "hitP",                   "point",        0, "raw",  "ray:hitP", ),
+    ( "hitP_camera",            "point",        0, "raw",  "ray:hitP_camera", ),
+    ( "hitPz",                  "float",        0, "raw",  "ray:hitPz", ),
+    ( "element",                "int",          0, "raw",  "ray:element", ),
+    ( "primid",                 "int",          0, "raw",  "ray:primid", ),
+    ( "hituv",                  "float3",       0, "primvar",  "st", ),
+    ( "hitN",                   "normal",       0, "raw",  "ray:hitN", ),
+    ( "hitNg",                  "normal",       0, "raw",  "ray:hitNg", ),
+    ( "hitN_facingratio",       "half",         0, "raw",  "ray:hitN_facingratio", ),
+    ( "hitNg_facingratio",      "half",         0, "raw",  "ray:hitNg_facingratio", ),
+    ( "motionvectors",          "vectorh",      0, "raw",  "ray:motionvector", ),
+    ( "velocity",               "vectorh",      0, "raw",  "ray:velocity", ),
+    ( "albedo",                 "color",        0, "lpe",  "CDA", ),
+    ( "ambientocclusion",       "color",        0, "raw",  "AO", ),
+    ( "outline",                "color4",       0, "raw",  "outline", ),
+    ( "outline_contour",        "color4",       0, "raw",  "outline_contour", ),
+    ( "outline_crease",         "color4",       0, "raw",  "outline_crease", ),
+    ( "outline_depth",          "color4",       0, "raw",  "outline_depth", ),
+    ( "export_outline_id",      "float",        0, "raw",  "export_outline_id", ),
+    ( "export_outline_thickness", "float",      0, "raw",  "export_outline_thickness", ),
+    ( "export_outline_color",   "color",        0, "raw",  "export_outline_color", ),
+]
+
+_AOV_NAMEMAP = {
+    "beauty"            : "C",
+    "ambientocclusion"  : "AO",
+    "hitN"              : "N",
+    "hitNg"             : "Ng",
+    "hitP"              : "P",
+    "hitP_camera"       : "P_camera",
+    "hitPz"             : "depth",
+    "hituv"             : "UV",
+    "hitN_facingratio"  : "Facingratio_N",
+    "hitNg_facingratio" : "Facingratio_Ng",
+}
+_AOV_PREFIXMAP = {
+    "element"   : "id",
+    "primid"    : "id",
+    "depth"     : "z",
+    "UV"        : "uv",
+    "AO"        : "ao",
+}
+
+_RAY_IMPORTMAP = {
+    # "ray:autobias":"default",
+    "ray:backface":"bool",
+    # "ray:conespread"
+    # "ray:contrib":"default",
+    "ray:curveattribP":"default",
+    "ray:curveattribTanV":"default",
+    "ray:curveattribwidth":"float",
+    "ray:direction":"default",
+    "ray:dPdz":"default",
+    # "ray:element":"default",
+    # "ray:far":"default",
+    # "ray:hdinst":"default",
+    # "ray:hdprim":"default",
+    "ray:hitdist":"float",
+    "ray:hitN":"default",
+    "ray:hitN_camera":"default",
+    "ray:hitN_facing":"float",
+    "ray:hitN_facingratio":"float",
+    "ray:hitNg":"default",
+    "ray:hitNg_camera":"default",
+    "ray:hitNg_facing":"float",
+    "ray:hitNg_facingratio":"float",
+    "ray:hitP":"default",
+    "ray:hitP_camera":"default",
+    "ray:hitPz":"default",
+    "ray:hituv":"vec2",
+    "ray:isshadowray":"bool",
+    "ray:level":"int",
+    # "ray:mask": "",
+    "ray:motionvector":"default",
+    # "ray:near":"default",
+    "ray:objectid":"default",
+    "ray:origin":"default",
+    # "ray:pixelsamples":"int",
+    "ray:primid":"int",
+    "ray:time":"float",
+    "ray:velocity":"default",
+    # "ray:volumelevel":"int",
+}
+
+def update_rayimport_signature(kwargs):
+    '''
+    Callback for setting the signature for kma_rayimport::2.0, when the user
+    selects one of the ray imports.
+    '''
+
+    new_signature = _RAY_IMPORTMAP.get(kwargs['script_value'],None)
+    if new_signature:
+        kwargs['node'].parm('signature').set(new_signature)
+    else:
+        kwargs['node'].parm('signature').revertToDefaults()
+
+def update_rayimport_menu():
+    '''
+    Provides the menu of options for kma_rayimport::2.0
+    '''
+    menu = []
+
+    for ray_name in _RAY_IMPORTMAP:
+        menu.append(ray_name)
+        menu.append(ray_name)
+
+    return menu
+
+def _get_attr(prim: Usd.UsdPrim, name: str, usd_type: Usd.Token) -> Usd.Attribute:
+    # Find an existing attribute or create a new one
+    attr : Usd.Attribute = prim.GetAttribute(name)
+    if not attr:
+        attr = prim.CreateAttribute(name, usd_type)
+    return attr
+
+def _set_values(attr: Usd.Attribute, values: list, frange: _FrameRange, tdep: bool):
+    # Create an animated attribute
+    if tdep:
+        attr.SetVariability(Sdf.VariabilityVarying)
+        for i in range(frange.nframes):
+            attr.Set(values[i], frange.frames[i])
+    else:
+        attr.Set(values[0])
+
+def _create_token_attr(prim: Usd.UsdPrim, name: str, value: Usd.Token):
+    # Find/Create a token attribute
+    attr: Usd.Attribute = _get_attr(prim, name, Sdf.ValueTypeNames.Token)
+    attr.Set(value)
+
+def _create_token(prim: Usd.UsdPrim, name: str,
+            lop: hou.OpNode, parm_name: str, frange: _FrameRange):
+    # Find/Create a string attribute
+    attr: Usd.Attribute = _get_attr(prim, name, Sdf.ValueTypeNames.Token)
+    parm = lop.parm(parm_name)
+    values = [parm.evalAsStringAtFrame(frange.fstart)]
+    _tdep = parm.isTimeDependent()
+    if _tdep:
+        for _f in frange.animated:
+            values.append(parm.evalAsStringAtFrame(_f))
+    _set_values(attr, values, frange, _tdep)
+
+def _create_string_attr(prim: Usd.UsdPrim, name: str, value: str):
+    # Find/Create a string attribute
+    attr: Usd.Attribute = _get_attr(prim, name, Sdf.ValueTypeNames.String)
+    attr.Set(value)
+
+def _create_string(prim: Usd.UsdPrim, name: str,
+            lop: hou.OpNode, parm_name: str, frange: _FrameRange):
+    # Find/Create a string attribute
+    attr: Usd.Attribute = _get_attr(prim, name, Sdf.ValueTypeNames.String)
+    parm = lop.parm(parm_name)
+    values = [parm.evalAsStringAtFrame(frange.fstart)]
+    _tdep = parm.isTimeDependent()
+    if _tdep:
+        for _f in frange.animated:
+            values.append(parm.evalAsStringAtFrame(_f))
+    _set_values(attr, values, frange, _tdep)
+
+def _is_multiparm_block(parm):
+    if not parm:
+        return False
+    tplate = parm.parmTemplate()
+    return tplate \
+        and tplate.type() == hou.parmTemplateType.Folder \
+        and tplate.folderType() == hou.folderType.MultiparmBlock
+
+def _eval_string_array(lop: hou.OpNode, parm_name: str, frame: float):
+    parm = lop.parm(parm_name)
+    values = []
+    _tdep = parm.isTimeDependent()
+    if _is_multiparm_block(parm):
+        for i in range(parm.evalAsIntAtFrame(frame)):
+            parm = lop.parm(f"{parm_name}{i+1}")
+            values += parm.evalAsStringAtFrame(frame).split()
+            if parm.isTimeDependent():
+                _tdep = True
+    else:
+        values = parm.evalAsStringAtFrame(frame).split()
+    return values, _tdep
+
+def _create_string_array(prim: Usd.UsdPrim, name: str,
+            lop: hou.OpNode, parm_name: str, frange: _FrameRange):
+    # Find/Create a string attribute
+    attr: Usd.Attribute = _get_attr(prim, name, Sdf.ValueTypeNames.StringArray)
+    values, _tdep = _eval_string_array(lop, parm_name, frange.fstart)
+    values = [values]
+    if _tdep:
+        for _f in frange.animated:
+            values.append(_eval_string_array(lop, parm_name, _f))
+    _set_values(attr, values, frange, _tdep)
+
+def _create_bool_attr(prim: Usd.UsdPrim, name: str, value: bool):
+    # Find/Create a bool attribute
+    attr: Usd.Attribute = _get_attr(prim, name, Sdf.ValueTypeNames.Bool)
+    attr.Set(value)
+
+def _create_bool(prim: Usd.UsdPrim, name: str,
+            lop: hou.OpNode, parm_name: str, frange: _FrameRange):
+    # Find/Create a bool attribute
+    attr: Usd.Attribute = _get_attr(prim, name, Sdf.ValueTypeNames.Bool)
+    parm = lop.parm(parm_name)
+    values = [parm.evalAtFrame(frange.fstart) != 0]
+    _tdep = parm.isTimeDependent()
+    if _tdep:
+        for _f in frange.animated:
+            values.append(parm.evalAtFrame(_f) != 0)
+    _set_values(attr, values, frange, _tdep)
+
+def _create_not_bool(prim: Usd.UsdPrim, name: str,
+            lop: hou.OpNode, parm_name: str, frange: _FrameRange):
+    # Find/Create a bool attribute
+    attr: Usd.Attribute = _get_attr(prim, name, Sdf.ValueTypeNames.Bool)
+    parm = lop.parm(parm_name)
+    values = [not parm.evalAtFrame(frange.fstart)]
+    _tdep = parm.isTimeDependent()
+    if _tdep:
+        for _f in frange.animated:
+            values.append(not parm.evalAtFrame(_f))
+    _set_values(attr, values, frange, _tdep)
+
+def _create_int_attr(prim: Usd.UsdPrim, name: str, value: int):
+    attr: Usd.Attribute = _get_attr(prim, name, Sdf.ValueTypeNames.Int)
+    attr.Set(value)
+
+def _create_int(prim: Usd.UsdPrim, name: str,
+            lop: hou.OpNode, parm_name: str, frange: _FrameRange):
+    # Find/Create a integer attribute
+    attr: Usd.Attribute = _get_attr(prim, name, Sdf.ValueTypeNames.Int)
+    parm = lop.parm(parm_name)
+    values = [int(parm.evalAtFrame(frange.fstart))]
+    _tdep = parm.isTimeDependent()
+    if _tdep:
+        for _f in frange.animated:
+            values.append(int(parm.evalAtFrame(_f)))
+    _set_values(attr, values, frange, _tdep)
+
+def _create_int2(prim: Usd.UsdPrim, name: str,
+            lop: hou.OpNode, parm_names: list[str], frange: _FrameRange):
+    # Find/Create a vector attribute
+    attr: Usd.Attribute = _get_attr(prim, name, Sdf.ValueTypeNames.Int2)
+    _p0 = lop.parm(parm_names[0])
+    _p1 = lop.parm(parm_names[1])
+    values = [Gf.Vec2i([_p0.evalAtFrame(frange.fstart),
+                        _p1.evalAtFrame(frange.fstart)])]
+    _tdep = _p0.isTimeDependent() or _p1.isTimeDependent()
+    if _tdep:
+        for _f in frange.animated:
+            values.append(Gf.Vec2i([_p0.evalAtFrame(_f),
+                                    _p1.evalAtFrame(_f)]))
+    _set_values(attr, values, frange, _tdep)
+
+def _create_float2(prim: Usd.UsdPrim, name: str,
+            lop: hou.OpNode, parm_names: list[str], frange: _FrameRange):
+    # Find/Create a vector attribute
+    attr: Usd.Attribute = _get_attr(prim, name, Sdf.ValueTypeNames.Float2)
+    _p0 = lop.parm(parm_names[0])
+    _p1 = lop.parm(parm_names[1])
+    values = [Gf.Vec2f([_p0.evalAtFrame(frange.fstart),
+                        _p1.evalAtFrame(frange.fstart)])]
+    _tdep =    _p0.isTimeDependent() or _p1.isTimeDependent()
+    if _tdep:
+        for _f in frange.animated:
+            values.append(Gf.Vec2f([_p0.evalAtFrame(_f),
+                                    _p1.evalAtFrame(_f)]))
+    _set_values(attr, values, frange, _tdep)
+
+def _create_float3(prim: Usd.UsdPrim, name: str,
+            lop: hou.OpNode, parm_names: list[str], frange: _FrameRange):
+    return _create_vec3(prim, name, lop, parm_names, frange)
+
+def _create_float4(prim: Usd.UsdPrim, name: str,
+            lop: hou.OpNode, parm_names: list[str], frange: _FrameRange):
+    # Find/Create a vector attribute
+    attr: Usd.Attribute = _get_attr(prim, name, Sdf.ValueTypeNames.Float4)
+    _p0 = lop.parm(parm_names[0])
+    _p1 = lop.parm(parm_names[1])
+    _p2 = lop.parm(parm_names[2])
+    _p3 = lop.parm(parm_names[3])
+    values = [Gf.Vec4f([_p0.evalAtFrame(frange.fstart),
+                        _p1.evalAtFrame(frange.fstart),
+                        _p2.evalAtFrame(frange.fstart),
+                        _p3.evalAtFrame(frange.fstart)])]
+    _tdep =    _p0.isTimeDependent() or _p1.isTimeDependent() \
+            or _p2.isTimeDependent() or _p3.isTimeDependent()
+    if _tdep:
+        for _f in frange.animated:
+            values.append(Gf.Vec4f([_p0.evalAtFrame(_f),
+                                    _p1.evalAtFrame(_f),
+                                    _p2.evalAtFrame(_f),
+                                    _p3.evalAtFrame(_f)]))
+    _set_values(attr, values, frange, _tdep)
+
+def _create_vec3(prim: Usd.UsdPrim, name: str,
+            lop: hou.OpNode, parm_names: list[str], frange: _FrameRange,
+            value_type: Sdf.ValueTypeName = Sdf.ValueTypeNames.Float3):
+    #pylint: disable=too-many-arguments
+    # Find/Create a vector attribute
+    attr: Usd.Attribute = _get_attr(prim, name, value_type)
+    _p0 = lop.parm(parm_names[0])
+    _p1 = lop.parm(parm_names[1])
+    _p2 = lop.parm(parm_names[2])
+    values = [Gf.Vec3f([_p0.evalAtFrame(frange.fstart),
+                       _p1.evalAtFrame(frange.fstart),
+                       _p2.evalAtFrame(frange.fstart)])]
+    _tdep = _p0.isTimeDependent() or _p1.isTimeDependent() or _p2.isTimeDependent()
+    if _tdep:
+        for _f in frange.animated:
+            values.append(Gf.Vec3f([_p0.evalAtFrame(_f),
+                                    _p1.evalAtFrame(_f),
+                                    _p2.evalAtFrame(_f)]))
+    _set_values(attr, values, frange, _tdep)
+
+def _create_float_attr(prim: Usd.UsdPrim, name: str, value: float):
+    attr: Usd.Attribute = _get_attr(prim, name, Sdf.ValueTypeNames.Float)
+    attr.Set(value)
+
+def _create_float(prim: Usd.UsdPrim, name: str,
+            lop: hou.OpNode, parm_name: str, frange: _FrameRange):
+    # Find/Create a float attribute
+    attr: Usd.Attribute = _get_attr(prim, name, Sdf.ValueTypeNames.Float)
+    parm = lop.parm(parm_name)
+    values = [parm.evalAtFrame(frange.fstart)]
+    _tdep = parm.isTimeDependent()
+    if _tdep:
+        for _f in frange.animated:
+            values.append(parm.evalAtFrame(_f))
+    _set_values(attr, values, frange, _tdep)
+
+def _create_double_attr(prim: Usd.UsdPrim, name: str, value: float):
+    attr: Usd.Attribute = _get_attr(prim, name, Sdf.ValueTypeNames.Double)
+    attr.Set(value)
+
+def _ramp_basis(basis: hou.rampBasis):
+    return {
+        hou.rampBasis.Linear            : 'Linear',
+        hou.rampBasis.Constant          : 'Constant',
+        hou.rampBasis.CatmullRom        : 'CatmullRom',
+        hou.rampBasis.MonotoneCubic     : 'MonotoneCubic',
+        hou.rampBasis.Bezier            : 'Bezier',
+        hou.rampBasis.BSpline           : 'Bspline',
+        hou.rampBasis.Hermite           : 'Hermite',
+    }.get(basis, 'linear')
+
+def _create_ramp(prim: Usd.UsdPrim, name: str,
+            lop: hou.OpNode, parm_name: str, frange: _FrameRange):
+    parm = lop.parm(parm_name)
+    ramp = parm.evalAtFrame(frange.fstart)
+    iscolor = ramp.isColor()
+    kattr: Usd.Attribute = _get_attr(prim, f"{name}:keys", Sdf.ValueTypeNames.FloatArray)
+    vattr: Usd.Attribute = _get_attr(prim, f"{name}:values",
+                Sdf.ValueTypeNames.Color3fArray if iscolor else Sdf.ValueTypeNames.FloatArray)
+    iattr: Usd.Attribute = _get_attr(prim, f"{name}:interp", Sdf.ValueTypeNames.StringArray)
+    # Need to convert tuple to array as USD converts the tuple to a Gf.Vec*
+    kattr.Set(list(ramp.keys()))
+    if iscolor:
+        values = [Gf.Vec3f(clr[0], clr[1], clr[2]) for clr in ramp.values()]
+    else:
+        values = list(ramp.values())
+    vattr.Set(values)
+    iattr.Set([x.name() for x in ramp.basis()])
+
+def _custom_metadata(lop: hou.OpNode,
+            prim: Usd.UsdPrim,
+            frange: _FrameRange):
+    custom_metadata: hou.Parm = lop.parm("custom_metadata")
+    if not custom_metadata:
+        return
+    nmeta: int = custom_metadata.evalAtFrame(frange.fstart)
+    for idx in range(1, nmeta+1):
+        mdtype: str = lop.parm(f"metadata_type_{idx}").evalAtFrame(frange.fstart)
+        key: str = lop.parm(f"metadata_key_{idx}").evalAtFrame(frange.fstart)
+        if not key:
+            return  # Skip empy key
+        key = f"driver:parameters:husk:{key}"
+        if mdtype == "string":
+            _create_string(prim, key, lop, f"metadata_string_{idx}", frange)
+        elif mdtype == "int":
+            _create_int(prim, key, lop, f"metadata_int_{idx}", frange)
+        elif mdtype == "float":
+            _create_float(prim, key, lop, f"metadata_float_{idx}", frange)
+        elif mdtype == "color":
+            _create_vec3(prim, key, lop, [
+                            f"metadata_color_{idx}r",
+                            f"metadata_color_{idx}g",
+                            f"metadata_color_{idx}b",
+                        ], frange, Sdf.ValueTypeNames.Color3f)
+
+def _make_prim_path_prefixes(stage: Usd.Stage, components: list[str]):
+    for path in components:
+        if not stage.GetPrimAtPath(path):
+            UsdGeom.Scope.Define(stage, path)
+
+def _make_prim_path(stage: Usd.Stage, parentprimpath: str):
+    _make_prim_path_prefixes(stage, Sdf.Path(parentprimpath).GetPrefixes())
+
+def _eval_parm(node: hou.OpNode, name: str, frame: float, defval=None):
+    parm = node.parm(name)
+    return parm.evalAtFrame(frame) if parm else defval
+
+def _create_render_var(stage: Usd.Stage,
+            parentprimpath: str,
+            name: str,
+            suffix: str,
+            dtype: str,
+            source_type: str,
+            source_name: str,
+            pfilter: str,
+            precision: str,
+            outputcs: str,
+            channel_lower_rgb: bool,
+            cryptomatte: tuple(int, str),
+            upe: str,
+            clipdepth: float) -> Usd.Prim:
+    # Create a new RenderVar prim with the given parameters
+    #pylint: disable=too-many-arguments
+    #pylint: disable=too-many-locals
+    data_type_map = {
+        "point"         : "point3f",
+        "normal"        : "normal3f",
+        "vector"        : "vector3f",
+        "vectorh"       : "vector3f",
+        "color"         : "color3f",
+        "color4"        : "color4f",
+        "float3"        : "float3",
+        "float"         : "float",
+        "half"          : "float",
+        "int"           : "int",
+    }
+    path : str = parentprimpath + '/' + name + suffix
+
+    rvar : UsdRender.Var = UsdRender.Var.Define(stage, path)
+    prim : Usd.Prim = rvar.GetPrim()
+    prim.AddAppliedSchema('KarmaRenderVarAPI')
+    prim.AddAppliedSchema('HuskRenderVarAPI')
+
+    aov_name : str = _AOV_NAMEMAP.get(name, name)
+    ch_prefix : str = _AOV_PREFIXMAP.get(aov_name, aov_name)
+    aov_name += suffix
+    ch_prefix += suffix
+
+    _create_token_attr(prim, "dataType", data_type_map.get(dtype, dtype))
+    _create_token_attr(prim, AOV_FORMAT , precision)
+    _create_string_attr(prim, AOV_NAME, aov_name)
+    _create_string_attr(prim, "sourceType", source_type)
+    _create_string_attr(prim, "sourceName", source_name)
+    if aov_name != "C":
+        _create_string_attr(prim, AOV_CHANNELPREFIX , ch_prefix)
+
+    if pfilter:
+        _create_string_attr(prim, AOV_FILTER , pfilter)
+    _create_int_attr(prim, "driver:parameters:aov:husk:clearValue", 0)
+    _create_bool_attr(prim, "driver:parameters:aov:husk:multiSampled", source_type == "lpe")
+    if outputcs:
+        _create_string_attr(prim, "driver:parameters:aov:husk:output_colorspace", outputcs)
+    if channel_lower_rgb:
+        _create_bool_attr(prim, "driver:parameters:aov:husk:channel_lower_rgb", True)
+    if suffix:
+        _create_bool_attr(prim, "driver:parameters:aov:karma:cryptomatte", False)
+    elif len(cryptomatte):
+        _create_bool_attr(prim, "driver:parameters:aov:karma:cryptomatte", True)
+        _create_int_attr(prim,
+                    "driver:parameters:aov:karma:cryptomatterank", cryptomatte[0])
+        _create_string_attr(prim,
+                    "driver:parameters:aov:karma:cryptomattesidecar", cryptomatte[1])
+    if upe:
+        _create_string_attr(prim, "driver:parameters:aov:karma:utilitypathexpression", upe)
+    if clipdepth > 0 and source_name == "ray:hitPz":
+        _create_float_attr(prim, "driver:parameters:aov:karma:defaultvalue", clipdepth)
+
+    return prim
+
+def _get_rvar_husk_name(rvar: Usd.Prim) -> str:
+    if rvar:
+        attr: Usd.Attribute = rvar.GetAttribute("driver:parameters:aov:husk:name")
+        if attr:
+            return attr.Get()
+    return None
+
+def _get_beauty_holdout(render_vars: list(Usd.Prim)) -> tuple(Usd.Prim, Usd.Prim):
+    ''' Find the render vars for beauty and holdout_shadow '''
+    beauty = None
+    holdout_shadow = None
+    for rvar in render_vars:
+        name = _get_rvar_husk_name(rvar)
+        if name in { "C", "beauty"}:
+            beauty = name
+        elif name == _SHADOW_HOLDOUT:
+            holdout_shadow = _SHADOW_HOLDOUT
+        if beauty and holdout_shadow:
+            break
+    return (beauty, holdout_shadow)
+
+def _create_aov(lop: hou.OpNode,
+            stage: Usd.Stage,
+            parentprimpath: str,
+            aov: list[str,str,int,str,str],
+            tags: tuple(str,...),
+            frange: _FrameRange,
+            toonaovs = False) -> list(Usd.Prim):
+    # Create RenderVar prims for a given AOV.  If there are per-light AOVs,
+    # this function may create multiple RenderVars (one for each light tag)
+    #pylint: disable=too-many-locals
+    #pylint: disable=too-many-arguments
+    #pylint: disable=too-many-branches
+    #pylint: disable=too-many-statements
+    _precision_map: dict = {
+        "color4"        : "color4h",
+        "color"         : "color3h",
+        "vectorh"       : "float3h",
+        "int"           : "float",
+    }
+    name : str = aov[0]
+    dtype : str = aov[1]
+    lpe_mode : int = aov[2]
+    source_type : str = aov[3]
+    source_name : str = aov[4]
+
+    enable : bool = False
+
+    outline_enable = False
+    outline_enable_parm = lop.parm("outline_enable")
+    if outline_enable_parm:
+        outline_enable = outline_enable_parm.evalAtFrame(frange.fstart)
+
+    outline_linesaovs = False
+    outline_linesaovs_parm = lop.parm("outline_linesaovs")
+    if outline_linesaovs_parm:
+        outline_linesaovs = outline_linesaovs_parm.evalAtFrame(frange.fstart)
+
+    outline_debug = False
+    outline_debug_parm  = lop.parm("outline_debug")
+    if outline_debug_parm:
+        outline_debug  = outline_debug_parm.evalAtFrame(frange.fstart)
+
+    if name == "outline":
+        enable = outline_enable
+    elif name in {"outline_contour", "outline_crease", "outline_depth"}:
+        enable = (outline_enable and outline_linesaovs)
+    elif name in {"export_outline_id", "export_outline_thickness", "export_outline_color"}:
+        enable = (outline_enable and outline_debug)
+    elif name in {"reflecteddirectdiffuse", "reflectedalbedodiffuse",
+                  "reflectedglossy", "reflectedcoat", "transmittedglossydiffuse",
+                  "toon_diffuse", "toon_glossy", "toon_coat", "outline", "toon_outline",
+                  "albedo", "directdiffuse", "indirectdiffuse", "sss"} and toonaovs:
+        enable = True
+    else:
+        enable = _eval_parm(lop, aov[0], frange.fstart)
+
+    clipdepth = 0.0
+    hitPzfarclip_parm = lop.parm("hitPzfarclip")        # pylint: disable=invalid-name
+    if hitPzfarclip_parm and hitPzfarclip_parm.evalAsInt() > 0:
+        cameras = _glob_prim_paths(stage, _eval_parm(lop, "camera", frange.fstart))
+        if cameras and len(cameras) > 0:
+            prim = stage.GetPrimAtPath(cameras[0])
+            if prim:
+                cam = UsdGeom.Camera(prim)
+                clipping_range = cam.GetClippingRangeAttr().Get(frange.fstart)
+                clipdepth = clipping_range[1]
+
+    created_prims = []
+    if not enable:
+        return created_prims
+    pfilter: str = _eval_parm(lop, name+'filter', frange.fstart, '["ubox",{}]')
+    precision: str = _eval_parm(lop, name+'precision', frange.fstart,
+                                        _precision_map.get(dtype, dtype))
+    outputcs: str = _eval_parm(lop, name+'outputcs', frange.fstart) if dtype == "color" else None
+    channel_lower_rgb: bool = _eval_parm(lop, name+"channel_lower_rgb", frange.fstart)
+    if channel_lower_rgb is None:
+        channel_lower_rgb = _eval_parm(lop, "channel_lower_rgb", frange.fstart, False)
+    dooutputcs : str  = name + 'dooutputcs'
+    if dooutputcs in lop.parms():
+        dooutputcs = _eval_parm(lop, dooutputcs, frange.fstart)
+        if not dooutputcs:
+            outputcs = None
+    created_prims.append(_create_render_var(stage, parentprimpath,
+            name, "", dtype, source_type, source_name,
+            pfilter, precision, outputcs, channel_lower_rgb, (), "", clipdepth))
+    if lpe_mode > 0 and tags and _eval_parm(lop, name + 'perlpe', frange.fstart):
+        if lpe_mode > 1:
+            lpe = source_name.replace("[LO]", "O")
+            lpe = lpe.replace("L", "O")
+            created_prims.append(_create_render_var(stage, parentprimpath,
+                name, "_emission", dtype, source_type, lpe,
+                pfilter, precision, outputcs, channel_lower_rgb, (), "", 0))
+        for tag in tags:
+            light_expr = f"<L.'{tag}'>"
+            if '[LO]' in source_name:
+                lpe = source_name.replace("[LO]", light_expr)
+            else:
+                lpe = source_name.replace("L", light_expr)
+            created_prims.append(_create_render_var(stage, parentprimpath,
+                name, "_" + tag, dtype, source_type, lpe,
+                pfilter, precision, outputcs, channel_lower_rgb, (), "", 0))
+    return created_prims
+
+def _add_tags(tags: list[str,...], light: Usd.Light, is_light: bool, frame: float):
+    # For a given light (or mesh light), find the tags associated with the light
+    if not light.IsActive() or UsdGeom.Imageable(light).ComputeVisibility() == "invisible":
+        return
+    if is_light:
+        props = [x for x in light.GetProperties()
+                    if 'karma:light:lpetag' == ":".join(x.GetName().split(":")[-3:])]
+    else:
+        props = [light.GetProperty("primvars:karma:object:lpetag")]
+    for prop in props:
+        if prop.IsValid():
+            lpe = prop.Get(frame) if prop.GetNumTimeSamples() else prop.Get()
+            if lpe:
+                tags.add(lpe)
+
+def _glob_prim_paths(stage: Usd.Stage, pattern: str) -> tuple(Usd.SdfPath, ...):
+    # Expand primitives on the stage given a pattern.  We need to have our own
+    # version of this since the loputils version doesn't take a stage
+    rule = hou.LopSelectionRule()
+    rule.setPathPattern(pattern)
+    return rule.expandedPaths(None, False, False, stage)
+
+def _glob_prims(stage: Usd.Stage, pattern: str) -> tuple(Usd.UsdPrim, ...):
+    # Expand primitives on the stage given a pattern.  We need to have our own
+    # version of this since the loputils version doesn't take a stage
+    return tuple(stage.GetPrimAtPath(path) for path in _glob_prim_paths(stage, pattern))
+
+def _get_lpetags(stage: Usd.Stage, node: hou.OpNode, frame: float) -> set():
+    #pylint: disable=too-many-locals
+    lop: hou.OpNode = node.parent()
+    needtags: bool = False
+    for aov in _AOVS:
+        name: str = aov[0]
+        lpe_mode: int = aov[2]
+        if lpe_mode > 0 and _eval_parm(lop, name + 'perlpe', frame):
+            needtags = True
+            break
+    if not needtags:
+        return set()
+
+    tags: set = set()
+    lights = _glob_prims(stage, "%type:Light")
+    geos = []
+    doomitlpes: hou.Parm = lop.parm("doomitlpes")
+    lpeaovlimit_parm: hou.Parm = lop.parm("lpeaovlimit")
+    lpeaovlimit: int = lpeaovlimit_parm.evalAtFrame(frame) if lpeaovlimit_parm else 0
+
+    for light in lights:
+        _add_tags(tags, light, True, frame)
+    for geo in geos:
+        _add_tags(tags, geo, False, frame)
+    if doomitlpes and doomitlpes.evalAtFrame(frame):
+        pattern = _eval_parm(lop, "omitlpes", frame)
+        for lpe in list(tags):
+            if hou.text.patternMatch(pattern, lpe):
+                tags.remove(lpe)
+    if tags and lpeaovlimit > 0:
+        tags = sorted(tags)[:lpeaovlimit]
+    return tags
+
+def _render_vars(node: hou.OpNode,
+                stage: Usd.Stage,
+                frange: _FrameRange):
+    #pylint: disable=too-many-locals
+    ''' Create render vars for a karmastandardrendervars node.  The node passed
+    in is the Python LOP inside the karmastandardrendervars node. '''
+    lop : hou.OpNode = node.parent()
+    parentprimpath : str = _eval_parm(lop, 'parentprimpath', frange.fstart)
+
+    tags: set = _get_lpetags(stage, node, frange.fstart)
+
+    _make_prim_path(stage, parentprimpath)
+    for aov in _AOVS:
+        _create_aov(lop, stage, parentprimpath, aov, tags, frange)
+
+    #pylint: enable=too-many-locals
+
+def renderVars(node: hou.OpNode, stage: Usd.Stage,      #pylint: disable=invalid-name
+            fstart: float, fend: float, finc: float):
+    ''' Create render vars for a karmastandardrendervars node.  The node passed
+    in is the Python LOP inside the karmastandardrendervars node. This iterates
+    over frame context.'''
+    frange: _FrameRange = _FrameRange(fstart, fend, finc)
+    _render_vars(node, stage, frange)
+
+def _create_product(lop: hou.OpNode,    #pylint: disable=too-many-arguments
+            stage: Usd.Stage,
+            parentprimpath: str,
+            primname: str,
+            product_parm: str,
+            ordered_vars: list[Sdf.PrimPath],
+            camera_pattern: str,
+            outputcs: str,
+            frange: _FrameRange) -> Usd.Prim:
+    ''' Create a single render product '''
+    #pylint: disable=too-many-locals
+    path: str = parentprimpath + '/' + primname
+    prod: UsdRender.Product = UsdRender.Product.Define(stage, path)
+    prim: Usd.Prim = prod.GetPrim()
+    prim.AddAppliedSchema("HuskRenderProductAPI")
+    if camera_pattern:
+        camera = _glob_prim_paths(stage, camera_pattern)
+        if not camera:
+            _warning(lop, f"Product {primname} has no valid camera")
+            camera = [camera_pattern]
+        if len(camera) > 1:
+            _warning(lop, f"Product {primname} has too many cameras specified")
+            camera = [camera[0]]
+        prod.CreateCameraRel().SetTargets(camera)
+
+    _custom_metadata(lop, prim, frange)
+    for meta in [
+            ( "image_artist",           "artist"),
+            ( "image_comment",          "comment"),
+            ( "image_hostname",         "hostname"),
+            ( "image_exr_compression",  "OpenEXR:compression"),
+        ]:
+        parm = lop.parm(meta[0])
+        if parm:
+            _create_string(prim, f"driver:parameters:husk:{meta[1]}", lop, meta[0], frange)
+    for meta in [
+            ( "image_dwa_compression",  "OpenEXR:dwa_compression"),
+        ]:
+        parm = lop.parm(meta[0])
+        if parm:
+            _create_int(prim, f"driver:parameters:husk:{meta[1]}", lop, meta[0], frange)
+
+    if ordered_vars:
+        prod.CreateOrderedVarsRel().SetTargets(ordered_vars)
+    else:
+        _warning(lop, f"Product {primname} has no orderd render vars")
+    _create_token_attr(prim, "productType", "raster")
+    _create_string(prim, "productName", lop, product_parm, frange)
+    if outputcs:
+        _create_string_attr(prim, "driver:parameters:husk:output_colorspace", outputcs)
+
+    return prim
+
+def _split_product_name(prod_name, aov_name):
+    ''' Insert the aov_name before the extension of the product name. '''
+    root, ext = os.path.splitext(prod_name)
+    return f"{root}_{aov_name}{ext}"
+
+def _split_product_by_rendervar(stage: Usd.Stage,
+                source_product: Usd.Prim, frange: _FrameRange):
+    ''' Split a render product into multiple render products.  One for each
+        rendervar '''
+    #pylint: disable=too-many-locals
+    source_path = source_product.GetPath()
+    prod = UsdRender.Product(source_product)
+    prod_name = prod.GetProductNameAttr()
+    if prod.GetProductTypeAttr().Get() in ('karma:deep', 'karma:checkpoint'):
+        # Deep and checkpoint products should remain un-split
+        return [source_product]
+    _frames = frange.frames if prod_name.GetVariability() else [frange.start]
+    if len(_frames) == 1 and prod_name.Get() == "ip":
+        return [source_product]
+    result = []
+    for rvar_path in prod.GetOrderedVarsRel().GetTargets():
+        rvar_prim = stage.GetPrimAtPath(rvar_path)
+        aov_name = rvar_prim.GetAttribute("driver:parameters:aov:husk:name").Get()
+        new_prim = stage.DefinePrim(f"{source_path}_{aov_name}").GetPrim()
+        new_prim.GetReferences().AddInternalReference(source_path)
+        new_prod = UsdRender.Product(new_prim)
+        new_prod_name = new_prod.CreateProductNameAttr()
+        new_prod.CreateOrderedVarsRel().SetTargets([rvar_path])
+        for frame in _frames:
+            split_name = _split_product_name(prod_name.Get(frame), aov_name)
+            new_prod_name.Set(split_name, frame)
+        result.append(new_prim)
+    return result
+
+def _render_products(node: hou.OpNode,
+            stage: Usd.Stage, frange: _FrameRange):
+    ''' Create render products for karmarenderproducts node. '''
+    #pylint: disable=too-many-locals
+    lop : hou.OpNode = node.parent()
+    parentprimpath : str = _eval_parm(lop, 'parentprimpath', frange.fstart)
+    base_ordered_vars : str = _eval_parm(lop, 'orderedVars', frange.fstart)
+    base_camera : str = _eval_parm(lop, "camera", frange.fstart)
+    base_dooutputcs : bool = _eval_parm(lop, "dooutputcs", frange.fstart)
+    base_outputcs : str = _eval_parm(lop, "outputcs", frange.fstart) if base_dooutputcs else ""
+    nproducts: int = _eval_parm(lop, "products", frange.fstart)
+    _make_prim_path(stage, parentprimpath)
+    for product in range(nproducts):
+        if not _eval_parm(lop, f"enable_{product}", frange.fstart):
+            continue
+
+        primname = _eval_parm(lop, f"primname_{product}", frange.fstart)
+        if not primname:
+            _warning(lop, f"Product {product} is missing a primname")
+            continue
+
+        def _product_parm(parmname: str, base: str, product: str):
+            doit = _eval_parm(lop, f"do{parmname}_{product}", frange.fstart)
+            if doit == "block":         # for color space (clear the base)
+                return ""
+            if doit in (False, "none"):
+                return base
+            return _eval_parm(lop, f"{parmname}_{product}", frange.fstart)
+        ordered_vars: str = _product_parm("orderedVars", base_ordered_vars, product)
+        camera: str = _product_parm("camera", base_camera, product)
+        outputcs: str = _product_parm("outputcs", base_outputcs, product)
+        _create_product(lop, stage, parentprimpath, primname,
+                    f"productName_{product}",
+                    _glob_prim_paths(stage, ordered_vars),
+                    camera,
+                    outputcs,
+                    frange)
+
+def renderProducts(node: hou.OpNode, stage: Usd.Stage,  #pylint: disable=invalid-name
+            fstart: float, fend: float, finc: float):
+    ''' Create render products for karmarenderproducts node. Iterates over
+    the frame context.'''
+    frange: _FrameRange = _FrameRange(fstart, fend, finc)
+    _render_products(node, stage, frange)
+
+def _make_oracle(lop: hou.OpNode, frame: float) -> str:
+    style: str = _eval_parm(lop, "oracle", frame)
+    options: dict = {
+        "minrays"       : _eval_parm(lop, "oracle_minsamples", frame),
+        "plane"         : _eval_parm(lop, "oracle_plane", frame),
+        "variance"      : _eval_parm(lop, "oracle_variance", frame),
+        "ociomode"      : _eval_parm(lop, "oracle_ociomode", frame),
+        "ociodisplay"   : _eval_parm(lop, "oracle_ociodisplay", frame),
+        "ocioview"      : _eval_parm(lop, "oracle_ocioview", frame),
+        "ociocolorspace": _eval_parm(lop, "oracle_ociocolorspace", frame),
+    }
+    return json.dumps([style, options])
+
+def _make_aov_pattern(lop: hou.OpNode, parm_name: str, frame: float) -> str:
+    return ','.join([x for x in _eval_parm(lop, parm_name, frame).split() if x])
+
+def _make_denoiser(lop: hou.OpNode, frame: float) -> list[str, dict]:
+    style: str = _eval_parm(lop, "denoiser", frame)
+    if style == "off":
+        return None
+
+    suffix = ''
+    if _eval_parm(lop, "denoise_separate_aovs", frame):
+        suffix = _DENOISE_SUFFIX
+
+    options = {
+        "engine"                : style,
+        "use_albedo_input"      : _eval_parm(lop, "denoise_usealbedo", frame) != 0,
+        "use_n_input"           : _eval_parm(lop, "denoise_useN", frame) != 0,
+        "forcecpu"              : _eval_parm(lop, "denoise_cpu_only", frame) != 0,
+        "aovs"                  : [x+suffix for x in
+                                    _eval_parm(lop, "denoise_aovs", frame).split() if x],
+    }
+    return ["denoise", options]
+
+def _make_tonemap(lop: hou.OpNode, frame: float) -> list[str, dict]:
+    style: str = _eval_parm(lop, "tonemap", frame)
+    if style == "off":
+        return None
+    toe = "tonemap_toe"
+    shoulder = "tonemap_shoulder"
+    if style == "unreal":
+        toe = "tonemap_utoe"
+        shoulder = "tonemap_ushoulder"
+    options = {
+        "operator"              : style,
+        "planes"                : _make_aov_pattern(lop, "tonemap_aovs", frame),
+        "toe"                   : _eval_parm(lop, toe, frame),
+        "shoulder"              : _eval_parm(lop, shoulder, frame),
+        "slope"                 : _eval_parm(lop, "tonemap_slope", frame),
+        "linear"                : _eval_parm(lop, "tonemap_linear", frame),
+        "linearAngle"           : _eval_parm(lop, "tonemap_linearangle", frame),
+        "toeLength"             : _eval_parm(lop, "tonemap_toelength", frame),
+        "shoulderLength"        : _eval_parm(lop, "tonemap_shoulderlength", frame),
+        "shoulderAngle"         : _eval_parm(lop, "tonemap_shoulderangle", frame),
+    }
+    return ["tonemap", options]
+
+def _make_ocio(lop: hou.OpNode, frame: float) -> list[str, dict]:
+    num: int = _eval_parm(lop, "ocio", frame)
+    ocio: list = []
+    for i in range(1,num+1):
+        if not _eval_parm(lop, f"ocio_enable{i}", frame):
+            continue
+        options = {
+            "planes"    : _make_aov_pattern(lop, f"ocio_planes{i}", frame),
+            "input"     : _eval_parm(lop, f"ocio_inputspace{i}", frame),
+            "output"    : _eval_parm(lop, f"ocio_outputspace{i}", frame),
+            "looks"     : _eval_parm(lop, f"ocio_looks{i}", frame),
+        }
+        ocio.append(["ocio", options])
+    return ocio
+
+def _denoise_rendervars(lop: hou.OpNode,
+                        stage: Usd.Stage,
+                        parentprimpath: str,
+                        frame: float) -> list[Usd.Prim]:
+    #pylint: disable=too-many-locals
+    allvars = stage.GetPrimAtPath(parentprimpath)
+    newvars = []
+    if not allvars:
+        return newvars
+    _driver_name = "driver:parameters:aov:husk:name"
+    _old_driver_name = "driver:parameters:aov:name"
+    denoise_aovs: str = _eval_parm(lop, "denoise_aovs", frame)
+    for aov_name in denoise_aovs.split():
+        path: str = parentprimpath + '/' + aov_name
+        rvar = stage.GetPrimAtPath(path)
+        if not rvar:
+            for child in allvars.GetAllChildren():
+                nameprop = child.GetProperty(_driver_name)
+                if not nameprop.IsValid():
+                    nameprop = child.GetProperty(_old_driver_name)
+                if not nameprop:
+                    print("No name:", _driver_name)
+                    for _p in child.GetPropertyNames():
+                        print("  -", _p)
+                    continue
+                name = nameprop.Get(frame)
+                if name == aov_name:
+                    rvar = child
+                    break
+            if not rvar:
+                print("Missing render var:", path)  # debug
+                continue
+        baseprim = rvar.GetPrim()
+        baseprim_path = baseprim.GetPath()
+        denoise_rvar = stage.DefinePrim(str(baseprim_path) + _DENOISE_SUFFIX)
+        denoise = denoise_rvar.GetPrim()
+        denoise.GetReferences().AddInternalReference(baseprim_path)
+        newvars.append(denoise)
+
+        nameprop = denoise.GetProperty(_driver_name)
+        if not nameprop.IsValid():
+            nameprop = denoise.GetProperty(_old_driver_name)
+        if nameprop.IsValid():
+            name = nameprop.Get(frame)
+            _create_string_attr(denoise, _driver_name, name + _DENOISE_SUFFIX)
+    return newvars
+
+def _make_imagefilters(lop: hou.OpNode, frame: float,
+            beauty: str, holdout_shadow: str) -> str:
+    filters: list[str] = _make_ocio(lop, frame)
+    for filt in [
+                    _make_denoiser(lop, frame),
+                    _make_tonemap(lop, frame),
+               ]:
+        if filt:
+            filters.append(filt)
+    if beauty and holdout_shadow:
+        filters.append(["background", {
+                "destination" : beauty,
+                "foreground" : beauty,
+                "shadows" : holdout_shadow,
+                "shadowcatcherenable" : True,
+                "shadowcatcheralpha" : _eval_parm(lop, "holdout_shadow_alpha", frame, 1.0)
+        }])
+    return json.dumps(filters)
+
+def _get_cop_aov_prim(lop: hou.OpNode, stage: Usd.Stage, prim: Usd.Prim, name: str) -> Usd.Prim:
+    child_path = f"_internal_cop_filterlist_{name}"
+    child = prim.GetPrimAtPath(child_path)
+    depth_parms = {
+        "dataType"              : "float",
+        "sourceName"            : "ray:hitPz",
+        "sourceType"            : "raw",
+        "husk:channel_prefix"   : "z",
+        "husk:format"           : "float",
+        "karma:filter"          : '["minmax",{"mode":"zmin"}]',
+    }
+    normal_parms = {
+        "dataType"              : "normal3f",
+        "sourceName"            : "ray:hitN",
+        "sourceType"            : "raw",
+        "husk:channel_prefix"   : "N",
+        "husk:format"           : "half3",
+        "karma:filter"          : '["ubox",{}]',
+    }
+    albedo_parms = {
+        "dataType"              : "color3f",
+        "sourceName"            : "CDA",
+        "sourceType"            : "lpe",
+        "husk:channel_prefix"   : "albedo",
+        "husk:format"           : "color3f",
+        "karma:filter"          : '["ubox",{}]',
+    }
+    parms = {
+        'depth'  : depth_parms,
+        'N'      : normal_parms,
+        'albedo' : albedo_parms,
+    }.get(name, {})
+    if not child:
+        varprimpath: str = _eval_parm(lop, 'rendervarsparentprimpath', 1)
+        child_var: UsdRender.Var = UsdRender.Var.Define(stage, f"{varprimpath}/{child_path}")
+        child = child_var.GetPrim()
+        child.AddAppliedSchema('HuskRenderVarAPI')
+        _create_string_attr(child, "driver:parameters:aov:husk:name", name)
+        _create_bool_attr(child, "driver:parameters:aov:husk:bypassSave", True)
+        _create_bool_attr(child, "driver:parameters:aov:husk:multiSampled", False)
+        _create_float_attr(child, "driver:parameters:aov:husk:clearValue", 0.0)
+        for key, value in parms.items():
+            if key.startswith('husk:') or key.startswith('karma:'):
+                _create_string_attr(child, f"driver:parameters:aov:{key}", value)
+            else:
+                _create_string_attr(child, key, value)
+    return child
+
+def _find_existing_cop_aov(prod: Usd.Prim, rvars: Usd.Relationship, name: str) -> bool:
+    for path in rvars.GetTargets():
+        rvprim = prod.GetPrimAtPath(path)
+        name_attr: Usd.Attribute = rvprim.GetAttribute("driver:parameters:aov:husk:name")
+        if name_attr and name_attr.Get() == name:
+            return True
+    return False
+
+def _create_cop_aovs_for_product(lop: hou.OpNode,
+            stage: Usd.Stage,
+            settings_prim: Usd.Prim,
+            product_prim: Usd.Prim):
+    prod = UsdRender.Product(product_prim)
+    product_type = product_prim.GetAttribute("productType")
+    if not product_type or product_type.Get() != "raster":
+        # Skip non-raster products
+        return
+    rvars: Usd.Relationship = prod.GetOrderedVarsRel()
+    for aov in ['depth', 'albedo', 'N']:
+        if not _find_existing_cop_aov(product_prim, rvars, aov):
+            rvar: Usd.Prim = _get_cop_aov_prim(lop, stage, settings_prim, aov)
+            if rvar:
+                rvars.AddTarget(rvar.GetPath())
+
+def _create_cop_aovs(lop: hou.OpNode,
+            stage: Usd.Stage,
+            prim: Usd.Prim,
+            products: list[Usd.Prim]):
+    for prod in products:
+        _create_cop_aovs_for_product(lop, stage, prim, prod)
+
+def _create_settings(lop: hou.OpNode,   #pylint: disable=too-many-arguments
+            stage: Usd.Stage,
+            path: str,
+            products: list[Usd.Prim],
+            force_headlight: bool,
+            has_velocity: bool,
+            frange: _FrameRange,
+            beauty: str,
+            holdout_shadow: str) -> Usd.Prim:
+    ''' Create a single render settings primitive '''
+    #pylint: disable=too-many-locals
+    #pylint: disable=too-many-branches
+    #pylint: disable=too-many-statements
+    # The prim should have been created by the rendersettings node in the HDA
+    prim: Usd.Prim = stage.GetPrimAtPath(path)
+    prim.AddAppliedSchema("KarmaRenderSettingsAPI")
+    prim.AddAppliedSchema("HuskRenderSettingsAPI")
+    settings: UsdRender.Settings = UsdRender.Settings(prim)
+
+    token_parms = (
+        ("aspectRatioConformPolicy",    "aspectRatioConformPolicy"),
+        ("bucketorder",                 "karma:global:bucketorder"),
+        ("convergence_mode",            "karma:global:convergence_mode"),
+        ("imagemode",                   "karma:global:imagemode"),
+        ("light_sampling_mode",         "karma:global:light_sampling_mode"),
+
+        # Object defaults
+        ("blurstyle",                   "karma:object:blurstyle"),
+        ("cull_backface",               "karma:object:cull_backface"),
+        ("curve_style",                 "karma:object:curve_style"),
+        ("instance_vblur",              "karma:object:instance_vblur"),
+        ("point_style",                 "karma:object:point_style"),
+        ("vblur",                       "karma:object:vblur"),
+    )
+    not_bool_parms = (
+        # Opposite sense
+        ("enablemblur",                 "disableMotionBlur"),
+        ("husk_disable_materials",      "husk:scene_materials"),
+        ("husk_disable_lights",         "husk:scene_lights"),
+    )
+    bool_parms = (
+        ("abortmissingtexture",         "karma:global:abortmissingtexture"),
+        ("abortnogpudevice",            "karma:global:abortnogpudevice"),
+        ("autoraybias",                 "karma:global:autoraybias"),
+        ("colorlimitindlinked",         "karma:global:colorlimitindlinked"),
+        ("constrainmaxrough",           "karma:global:constrainmaxrough"),
+        ("enabledof",                   "karma:global:enable_dof"),
+        ("guiding_enable",              "karma:global:guiding_enable"),
+        ("usecacheratio",               "karma:global:usecacheratio"),
+        ("dcmusehitdist",               "karma:global:dcm_usehitdist"),
+        ("dcmexcludeholdouts",          "karma:global:dcm_excludeholdouts"),
+
+        ("outline_enable",              "karma:global:outline_enable"),
+        ("outline_mode",                "karma:global:outline_mode"),
+        ("outline_primary",             "karma:global:outline_primary"),
+        ("outline_secondary",           "karma:global:outline_secondary"),
+        ("outline_apply",               "karma:global:outline_apply"),
+        ("outline_linesaovs",           "karma:global:outline_linesaovs"),
+        ("outline_debug",               "karma:global:outline_debug"),
+
+        ("causticsenable",              "karma:object:causticsenable"),
+        ("mblur",                       "karma:object:mblur"),
+        ("samplesfromstage",            "karma:object:samplesfromstage"),
+    )
+    int_parms = (
+        ("bucketsize",                  "karma:global:bucketsize"),
+        ("cachesize",                   "karma:global:cachesize"),
+        ("guiding_samples",             "karma:global:guiding_samples"),
+        ("pathtracedsamples",           "karma:global:pathtracedsamples"),
+        ("russianroulette_cutoff",      "karma:global:russianroulette_cutoff"),
+        ("samplesperpixel",             "karma:global:samplesperpixel"),
+        ("screendoorlimit",             "karma:global:screendoorlimit"),
+
+        ("outline_primary_samples",     "karma:global:outline_primary_samples"),
+        ("outline_primary_stencils",    "karma:global:outline_primary_stencils"),
+        ("outline_secondary_samples",   "karma:global:outline_secondary_samples"),
+        ("outline_secondary_stencils",  "karma:global:outline_secondary_stencils"),
+
+        ("curve_basis",                 "karma:object:curve_basis"),
+        ("geosamples",                  "karma:object:geosamples"),
+        ("instance_samples",            "karma:object:instance_samples"),
+        ("varianceaa_maxsamples",       "karma:object:varianceaa_maxsamples"),
+        ("varianceaa_minsamples",       "karma:object:varianceaa_minsamples"),
+        ("xformsamples",                "karma:object:xformsamples"),
+    )
+    float_parms = (
+        ("pixelAspectRatio",            "pixelAspectRatio"),
+        ("cacheratio",                  "karma:global:cacheratio"),
+        ("colorlimit",                  "karma:global:colorlimit"),
+        ("colorlimitindirect",          "karma:global:colorlimitindirect"),
+        ("dicingqualityscale",          "karma:global:dicingqualityscale"),
+        ("light_sampling_quality",      "karma:global:light_sampling_quality"),
+        ("offscreenquality",            "karma:global:offscreenquality"),
+        ("pixelfilterscale",            "karma:global:pixelfilterscale"),
+        ("raybias",                     "karma:global:raybias"),
+
+        ("outline_radius",              "karma:global:outline_radius"),
+        ("outline_intensity",           "karma:global:outline_intensity"),
+        ("outline_fitmin",              "karma:global:outline_fitmin"),
+        ("outline_fitmax",              "karma:global:outline_fitmax"),
+        ("outline_depthblend",          "karma:global:outline_depthblend"),
+        ("outline_depththreshold",      "karma:global:outline_depththreshold"),
+
+        ("causticsroughnessclamp",      "karma:object:causticsroughnessclamp"),
+        ("diffuselimit",                "karma:object:diffuselimit"),
+        ("diffusequality",              "karma:object:diffusequality"),
+        ("reflectionlimit",             "karma:object:reflectlimit"),
+        ("reflectquality",              "karma:object:reflectquality"),
+        ("refractionlimit",             "karma:object:refractlimit"),
+        ("refractquality",              "karma:object:refractquality"),
+        ("ssslimit",                    "karma:object:ssslimit"),
+        ("sssquality",                  "karma:object:sssquality"),
+        ("varianceaa_thresh",           "karma:object:varianceaa_thresh"),
+        ("volumelimit",                 "karma:object:volumelimit"),
+        ("volumequality",               "karma:object:volumequality"),
+        ("volumesteprate",              "karma:object:volumesteprate"),
+        ("volumevblurscale",            "karma:object:volumevblurscale"),
+    )
+    str_parms = (
+        ("diffusecomponents",           "karma:global:diffusecomponents"),
+        ("exportcomponents",            "karma:global:exportcomponents"),
+        ("globalaovmaterial",           "karma:global:globalaovmaterial"),
+        #("imagefilter",                 "karma:global:imagefilter"),
+        ("pixelfilter",                 "karma:global:pixelfilter"),
+        #("pixeloracle",                 "karma:global:pixeloracle"),
+        ("refractcomponents",           "karma:global:refractcomponents"),
+        ("ssscomponents",               "karma:global:ssscomponents"),
+        ("volumecomponents",            "karma:global:volumecomponents"),
+        ("truedisplace",                "karma:object:truedisplace"),
+    )
+
+    camera = _glob_prim_paths(stage, _eval_parm(lop, "camera", frange.fstart))
+    if not camera:
+        _warning(lop, f"Product {path} has no valid camera")
+        camera = [_eval_parm(lop, "camera", frange.fstart)]
+    if len(camera) > 1:
+        _warning(lop, f"Render Settings {path} has too many cameras specified")
+        camera = [camera[0]]
+    settings.CreateCameraRel().SetTargets(camera)
+    settings.CreateProductsRel().SetTargets([x.GetPath() for x in products])
+
+    for _p in token_parms:
+        _create_token(prim, _p[1], lop, _p[0], frange)
+
+    if force_headlight:
+        _create_bool_attr(prim, "karma:global:disable_lighting", True)
+    for _p in bool_parms:
+        _create_bool(prim, _p[1], lop, _p[0], frange)
+    for _p in not_bool_parms:
+        # Bool parameters which have the opposite sense
+        _create_not_bool(prim, _p[1], lop, _p[0], frange)
+
+    if lop.parm("enableimageblur"):
+        _create_bool(prim, "karma:global:image_blur", lop, "enableimageblur", frange)
+    elif has_velocity:
+        # Handle old .hip files that might have the disableimageblur parameter
+        if lop.parm("disableimageblur"):
+            _create_not_bool(prim, "karma:global:image_blur", lop, "disableimageblur", frange)
+        else:
+            _create_bool_attr(prim, "karma:global:image_blur", True)
+    else:
+        _create_bool_attr(prim, "karma:global:image_blur", True)
+
+    for _p in int_parms:
+        _create_int(prim, _p[1], lop, _p[0], frange)
+
+    for _p in float_parms:
+        _create_float(prim, _p[1], lop, _p[0], frange)
+
+    for _p in str_parms:
+        _create_string(prim, _p[1], lop, _p[0], frange)
+
+    _p = lop.parm("cop_imagefilters")
+    if _is_multiparm_block(_p):
+        prim.AddAppliedSchema('HuskRenderProductAPI')
+        ordered_image_filters = prim.CreateRelationship("husk:orderedImageFilters")
+        added = False
+        for i in range(_p.evalAsIntAtFrame(frange.fstart)):
+            enable = lop.parm(f"cop_filter_enable_{i+1}")
+            if not enable or enable.evalAsIntAtFrame(frange.fstart):
+                path = lop.parm(f"cop_filter_{i+1}")
+                filt = path.evalAsStringAtFrame(frange.fstart)
+                if filt and len(filt):
+                    ordered_image_filters.AddTarget(filt)
+                    added = True
+        if added:
+            p = lop.parm("cop_createaovs")
+            if not p:
+                p = lop.parm("cop_create_aovs") # Backward compatability
+        if added and p and p.evalAtFrame(frange.fstart):
+            _create_cop_aovs(lop, stage, prim, products)
+
+    _usedicingcamera = lop.parm("usedicingcamera")
+    if _usedicingcamera and _usedicingcamera.evalAtFrame(frange.fstart):
+        _create_string(prim, "karma:global:dicingcamera", lop, "dicingcamera", frange)
+
+    # Backward compatbility for the pixelfiltersize (deprecated after H21)
+    _pixelfiltersize_name = "pixelfiltersize"
+    _pixelfiltersize = lop.parm(_pixelfiltersize_name)
+    if _pixelfiltersize:
+        _need_filtersize = _pixelfiltersize.evalAtFrame(frange.fstart) != 2
+        if not _need_filtersize and _pixelfiltersize.isTimeDependent():
+            for _f in frange.animated:
+                _need_filtersize = _pixelfiltersize.evalAtFrame(_f) != 2
+        if _need_filtersize:
+            _create_float(prim, "karma:global:" + _pixelfiltersize_name,
+                                lop, _pixelfiltersize_name, frange)
+
+    default_delegate = "BRAY_HdKarma"
+    if lop.parm("engine").evalAsStringAtFrame(frange.fstart) == "xpu":
+        default_delegate = "BRAY_HdKarmaXPU"
+    _create_string_attr(prim, "husk:default_delegate", default_delegate)
+
+    # TODO: Handle animated parameters on oracles or filters
+    _create_string_attr(prim, "karma:global:pixeloracle",
+                    _make_oracle(lop, frange.fstart))
+    _create_string_attr(prim, "karma:global:imagefilter",
+                    _make_imagefilters(lop, frange.fstart, beauty, holdout_shadow))
+
+    _create_int2(prim, "resolution", lop,
+                ["resolutionx", "resolutiony"], frange)
+    _create_float4(prim, "dataWindowNDC", lop,
+                ["dataWindowNDC1", "dataWindowNDC2", "dataWindowNDC3", "dataWindowNDC4"],
+                frange)
+    _create_vec3(prim, "karma:global:outline_color", lop,
+                ["outline_colorr", "outline_colorg", "outline_colorb"], frange)
+
+    return prim
+
+def huskImageMetadata(node: hou.OpNode,
+        stage: Usd.Stage,
+        primlist: list(Usd.Prim),
+        fstart: float, fend: float, finc: float):
+    ''' Add metadata to a render product/render var. '''
+    # "stage" is an unused argument (but required to get an editable stage)
+    #pylint: disable=invalid-name, too-many-arguments, unused-argument
+    frange = _FrameRange(fstart, fend, finc)
+    lop: hou.OpNode = node.parent()
+    for prim in primlist:
+        _custom_metadata(lop, prim, frange)
+
+def _render_properties(node: hou.OpNode,
+            stage: Usd.Stage,
+            frange: _FrameRange,
+            existing_vars: list(Usd.Prim)):
+    ''' Create a RenderSettings primitive by evaluating the Karma Render Settings LOP '''
+    #pylint: disable=too-many-locals
+    #pylint: disable=too-many-statements
+    #pylint: disable=too-many-branches
+    lop: hou.OpNode = node.parent()
+    primpath: str = _eval_parm(lop, 'primpath', frange.fstart)
+    # Products
+    productprimpath: str = _eval_parm(lop, 'renderproductsparentprimpath', frange.fstart)
+    # RenderVars
+    varprimpath: str = _eval_parm(lop, 'rendervarsparentprimpath', frange.fstart)
+    _make_prim_path_prefixes(stage, Sdf.Path(primpath).GetPrefixes()[:-1])
+
+    _make_prim_path(stage, productprimpath)
+    _make_prim_path(stage, varprimpath)
+
+    force_headlight: bool = _eval_parm(lop, 'force_headlight', frange.fstart)
+
+    vars2: list[Usd.Prim] = []  # Render vars from second input
+    prod2: list[Usd.Prim] = []  # Render products from second input
+    if _eval_parm(lop, "importsecondaryinputvars", frange.fstart):
+        vars2 = _glob_prims(stage, "/Render/** & %type:RenderVar")
+    if _eval_parm(lop, "importsecondaryinputvars", frange.fstart):
+        prod2 = _glob_prims(stage, "/Render/** & %type:RenderProduct")
+
+    # Create the render vars
+    tags: set = _get_lpetags(stage, node, frange.fstart)
+    render_vars: list[Usd.Prim] = []
+    channel_lower_rgb = _eval_parm(lop, "channel_lower_rgb", frange.fstart)
+    for aov in _AOVS:
+        if force_headlight and aov[3] == "lpe" and aov[0] != "beauty":
+            continue
+        render_vars += _create_aov(lop, stage, varprimpath, aov, tags, frange)
+
+    render_vars += existing_vars[:]
+
+    if _eval_parm(lop, "denoiser", frange.fstart) != "off" and \
+        _eval_parm(lop, "denoise_separate_aovs", frange.fstart):
+        # We're adding the denoiser filter and need separate AOVs for denoising
+        render_vars += _denoise_rendervars(lop, stage, varprimpath, frange.fstart)
+
+    beauty: str = None
+    holdout_shadow: str = None
+    if _eval_parm(lop, "holdout_shadows", frange.fstart):
+        beauty, holdout_shadow = _get_beauty_holdout(render_vars)
+        if not beauty and render_vars:
+            beauty = _get_rvar_husk_name(render_vars[0])
+        if beauty and not holdout_shadow:
+            prim = UsdRender.Var.Define(stage, varprimpath + "/__holdout_shadow")
+            prim: Usd.Prim = prim.GetPrim()
+            prim.AddAppliedSchema('KarmaRenderVarAPI')
+            prim.AddAppliedSchema('HuskRenderVarAPI')
+            render_vars.append(prim)
+            _create_token_attr(prim, "dataType", "color3f")
+            _create_token_attr(prim, "sourceName", "holdouts;shadow;CDL")
+            _create_token_attr(prim, "sourceType", "lpe")
+            _create_token_attr(prim, "driver:parameters:aov:husk:name", _SHADOW_HOLDOUT)
+            _create_token_attr(prim, "driver:parameters:aov:husk:format", "color3h")
+            holdout_shadow = _SHADOW_HOLDOUT
+
+    nextra: int = _eval_parm(lop, "extrarendervars", frange.fstart)
+    for i in range(1, nextra+1):
+        if not _eval_parm(lop, f"enable{i}", frange.fstart):
+            continue
+        name: str = _eval_parm(lop, f"name{i}", frange.fstart)
+        split: bool = _eval_parm(lop, f"split{i}", frange.fstart)
+        aovformat: str = _eval_parm(lop, f"format{i}", frange.fstart)
+        dtype: str = _eval_parm(lop, f"dataType{i}", frange.fstart)
+        source_name: str = _eval_parm(lop, f"sourceName{i}", frange.fstart)
+        source_type: str = _eval_parm(lop, f"sourceType{i}", frange.fstart)
+        pfilter: str = _eval_parm(lop, f"filter{i}", frange.fstart)
+        dooutputcs: bool = _eval_parm(lop, f"dooutputcs{i}", frange.fstart)
+        outputcs: str = _eval_parm(lop, f"outputcs{i}", frange.fstart) if dooutputcs else None
+        cryptomatte: tuple(int, str) = ()
+        if not name:
+            continue
+        if _eval_parm(lop, f"cryptomatte{i}", frange.fstart):
+            cryptomatte = ( _eval_parm(lop, f"cryptomatterank{i}", frange.fstart),
+                            _eval_parm(lop, f"cryptomattesidecar{i}", frange.fstart))
+        upe: str = _eval_parm(lop, f"utilitypathexpression{i}", frange.fstart)
+        render_vars.append(_create_render_var(stage, varprimpath,
+                name, '', dtype,
+                source_type, source_name, pfilter, aovformat,
+                outputcs, channel_lower_rgb, cryptomatte, upe, 0))
+        if split:
+            for tag in tags:
+                light_expr = f"<L.'{tag}'>"
+                if '[LO]' in source_name:
+                    lpe = source_name.replace("[LO]", light_expr)
+                else:
+                    lpe = source_name.replace("L", light_expr)
+                render_vars.append(_create_render_var(stage, varprimpath,
+                        name, "_" + tag, dtype,
+                        source_type, lpe, pfilter, aovformat,
+                        outputcs, channel_lower_rgb, cryptomatte, upe, 0))
+    # Append in render vars from 2nd input
+    render_vars += vars2
+
+    base_dooutputcs : bool = _eval_parm(lop, "dooutputcs", frange.fstart)
+    base_outputcs : str = _eval_parm(lop, "outputcs", frange.fstart) if base_dooutputcs else None
+
+    created_products = [_create_product(lop, stage, productprimpath,
+                "renderproduct",
+                "picture",
+                [x.GetPath() for x in render_vars],
+                None,   # No camera
+                base_outputcs,
+                frange)
+    ]
+
+    _split_products = lop.parm("splitrendervars")
+    if _split_products:
+        _split_products = _split_products.evalAsInt()
+    if _split_products:
+        _new_products = []
+        for _prod in created_products:
+            _new_products += _split_product_by_rendervar(stage, _prod, frange)
+        created_products = _new_products
+
+    if _eval_parm(lop, "dcm", frange.fstart):
+        dcm_prod = _create_product(lop, stage, productprimpath,
+                "dcm",
+                "dcmfilename",
+                _glob_prim_paths(stage, _eval_parm(lop, "dcmvars", frange.fstart)),
+                None,
+                None,
+                frange)
+        dcm_prod.AddAppliedSchema('KarmaRenderProductAPI')
+        _create_token_attr(dcm_prod, "productType", "karma:deep")
+        _create_int(dcm_prod, "karma:product:dcmcompression", lop, "dcmcompression", frange)
+        _create_int(dcm_prod, "karma:product:dcmofsize", lop, "dcmofsize", frange)
+        _create_float(dcm_prod, "karma:product:dcmzbias", lop, "dcmzbias", frange)
+        created_products.append(dcm_prod)
+
+    if _eval_parm(lop, "outputcheckpoint", frange.fstart):
+        checkpoint_rvar: UsdRender.Var = UsdRender.Var.Define(stage,
+                    varprimpath + "/ignored_checkpoint_rendervar")
+        prim: Usd.Prim = checkpoint_rvar.GetPrim()
+        _create_token_attr(prim, "dataType", "color3f")
+        _create_string_attr(prim, "sourceName", "ignored_checkpoint")
+        _create_string_attr(prim, "sourceType", "raw")
+        _create_string_attr(prim, "driver:parameters:aov:husk:name", "ignored_checkpoint")
+        checkpoint_prod = _create_product(lop, stage, productprimpath,
+                "checkpoint",
+                "productName",
+                [checkpoint_rvar.GetPath()],
+                None,   # No camera
+                None,   # No color space
+                frange)
+        checkpoint_prod.AddAppliedSchema('KarmaRenderProductAPI')
+        _create_token_attr(checkpoint_prod, "productType", "karma:checkpoint")
+        _create_bool(checkpoint_prod, "resume", lop, "resume", frange)
+        _create_float(checkpoint_prod, "saveFrequency", lop, "savefrequency", frange)
+        created_products.append(checkpoint_prod)
+
+    created_products += prod2
+
+    has_velocity: bool = False
+    for var in render_vars:
+        attr: Usd.Attribute = var.GetAttribute("sourceName")
+        if attr.Get() == 'velocity' or attr.Get() == 'motionvectors':
+            has_velocity = True
+            break
+
+    prim: Usd.Prim = _create_settings(lop, stage, primpath, created_products,
+                            force_headlight, has_velocity, frange, beauty, holdout_shadow)
+
+def renderProperties(node: hou.OpNode, stage: Usd.Stage, #pylint: disable=invalid-name
+        fstart: float, fend: float, finc: float,
+        existingvars: list(Usd.Prim)):
+    ''' Create a RenderSettings primitive by evaluating the Karma Render Settings LOP.
+    Iterates over the frame context passed in.'''
+    #pylint: disable=too-many-arguments
+    frange = _FrameRange(fstart, fend, finc)
+    _render_properties(node, stage, frange, existingvars)
+
+def _color_ramp(ramp, name):
+    keys = ramp.keys()
+    values = ramp.values()
+    basis = ramp.basis()
+
+    values_tokens = []
+    for val in values:
+        for _v in val:
+            values_tokens.append(f'"{_v}"')
+    values_string = "( " + ' '.join(values_tokens) + " )"
+
+    keys_string = " ".join(str(x) for x in keys)
+    keys_string.replace(",", "")
+    keys_string = "( " + keys_string + " )"
+
+    __basis_map = {
+        "Constant" : "constant",
+        "Linear" : "linear",
+        "MonotoneCubic" : "monotonecubic",
+        "CatmullRom" : "catmullrom",
+        "Bezier" : "bezier"
+    }
+
+    basis_tokens = []
+    for _b in basis:
+        token = __basis_map.get(_b.name(), "linear")
+        basis_tokens.append(f'"{token}"')
+    basis_string = "( " + ' '.join(basis_tokens) + " )"
+
+    ramp = f" {name}_basis {basis_string} {name}_keys {keys_string} {name}_values {values_string}"
+    return ramp
+
+def _eval_toon_shading(node):
+    #pylint: disable=too-many-locals
+    cvex_shader = node.parm("cvex_shader").eval()
+
+    apply_albedo = node.parm("apply_albedo").eval()
+    cvex_shader += f" apply_albedo {apply_albedo}"
+
+    difframp_parm = node.parm("difframp").eval()
+    difframp = _color_ramp(difframp_parm, "difframp")
+    difframp_min = node.parm("difframp_min").eval()
+    difframp_max = node.parm("difframp_max").eval()
+    difframp += f" difframp_min {difframp_min} difframp_max {difframp_max}"
+    cvex_shader += difframp
+
+    glossramp_parm = node.parm("glossramp").eval()
+    glossramp = _color_ramp(glossramp_parm, "glossramp")
+    glossramp_min = node.parm("glossramp_min").eval()
+    glossramp_max = node.parm("glossramp_max").eval()
+    glossramp += f" glossramp_min {glossramp_min} glossramp_max {glossramp_max}"
+    cvex_shader += glossramp
+
+    coatramp_parm = node.parm("coatramp").eval()
+    coatramp = _color_ramp(coatramp_parm, "coatramp")
+    coatramp_min = node.parm("coatramp_min").eval()
+    coatramp_max = node.parm("coatramp_max").eval()
+    coatramp += f" coatramp_min {coatramp_min} coatramp_max {coatramp_max}"
+    cvex_shader += coatramp
+
+    difftex_blend = node.parm("difftex_blend").eval()
+    cvex_shader += f" difftex_blend {difftex_blend}"
+
+    return cvex_shader
+
+def toonShading(node: hou.OpNode, stage: Usd.Stage,   #pylint: disable=invalid-name
+            fstart: float, fend: float, finc: float ):
+    ''' Method called by the karmatoonshading LOP '''
+    #pylint: disable=too-many-locals
+    lop: hou.OpNode = node.parent()
+    frange = _FrameRange(fstart, fend, finc)
+
+    # Global settings
+    rendersettings_path: str = _eval_parm(lop, 'primpath', frange.fstart)
+    prim: Usd.Prim = stage.GetPrimAtPath(rendersettings_path)
+
+    cvex_shader_args: str = _eval_toon_shading(lop)
+
+    # Force outline_enable
+    _create_bool_attr(prim, "karma:global:outline_enable", True)
+
+    outline_glossy = lop.parm("outline_glossy").eval()
+    cvex_shader_args += f" outline_glossy {outline_glossy}"
+    if not outline_glossy:
+        # Disable outline in beauty to mix it with toon shading
+        _create_bool_attr(prim, "karma:global:outline_apply", False)
+
+    _create_string_attr(prim, "karma:global:raystack_cvex_shader", cvex_shader_args)
+
+
+    # Needed AOVs
+    render_vars: list[Usd.Prim] = []
+    varprimpath: str = _eval_parm(lop, 'rendervarsparentprimpath', frange.fstart)
+
+    tags: set = set()
+
+    # Exports from the shader:
+
+    # Standard exports:
+    aov = ( "albedo",  "color",        2, "lpe",  "C[DV]A", )
+    render_vars += _create_aov(lop, stage, varprimpath, aov, tags, frange, True)
+
+    aov = ( "directdiffuse",  "color",        2, "lpe",  "C<RD>L", )
+    render_vars += _create_aov(lop, stage, varprimpath, aov, tags, frange, True)
+
+    aov = ( "indirectdiffuse",  "color",        2, "lpe",  "C<RD>.+L", )
+    render_vars += _create_aov(lop, stage, varprimpath, aov, tags, frange, True)
+
+    aov = ( "sss",  "color",        2, "lpe",  "C<TD>.*L", )
+    render_vars += _create_aov(lop, stage, varprimpath, aov, tags, frange, True)
+
+    # Diffuse related LPEs:
+    # Needed to do toon shade in reflection
+    aov = ( "reflecteddirectdiffuse",  "color",        2, "lpe",  "CG+D.*[<L.>O]", )
+    render_vars += _create_aov(lop, stage, varprimpath, aov, tags, frange, True)
+
+    # Needed to de-colorise diffuse in reflection
+    aov = ( "reflectedalbedodiffuse",  "color",        2, "lpe",  "CG+DA", )
+    render_vars += _create_aov(lop, stage, varprimpath, aov, tags, frange, True)
+
+    # Specular related LPEs:
+    aov = ( "reflectedglossy",  "color",        2, "lpe",  "CGG*[<L.>O]", )
+    render_vars += _create_aov(lop, stage, varprimpath, aov, tags, frange, True)
+
+    aov = ( "reflectedcoat",  "color",        2, "lpe",  "CG*<RG.'coat'>*[<L.>O]", )
+    render_vars += _create_aov(lop, stage, varprimpath, aov, tags, frange, True)
+
+    aov = ( "transmittedglossydiffuse",  "color",        2, "lpe",  "C<TG>GD+[<L.>O]", )
+    render_vars += _create_aov(lop, stage, varprimpath, aov, tags, frange, True)
+
+    # Exports from ray filter
+    aov = ( "toon_diffuse",  "color",        0, "raw",  "toon_diffuse", )
+    render_vars += _create_aov(lop, stage, varprimpath, aov, tags, frange, True)
+
+    aov = ( "toon_glossy",  "color",        0, "raw",  "toon_glossy", )
+    render_vars += _create_aov(lop, stage, varprimpath, aov, tags, frange, True)
+
+    aov = ( "toon_coat",  "color",        0, "raw",  "toon_coat", )
+    render_vars += _create_aov(lop, stage, varprimpath, aov, tags, frange, True)
+
+    # Force outline AOV
+    aov = ( "outline",  "color4",        0, "raw",  "outline", )
+    render_vars += _create_aov(lop, stage, varprimpath, aov, tags, frange, True)
+
+    aov = ( "toon_outline",  "color4",        0, "raw",  "toon_outline", )
+    render_vars += _create_aov(lop, stage, varprimpath, aov, tags, frange, True)
+
+    renderproducts_path: str = _eval_parm(lop, 'renderproductsparentprimpath', frange.fstart)
+    renderproducts_path += "/renderproduct"
+    prod: UsdRender.Product = UsdRender.Product.Get(stage, renderproducts_path)
+    rvars: Usd.Relationship = prod.GetOrderedVarsRel()
+
+    for _x in render_vars:
+        #print(_x)
+        rvars.AddTarget(_x.GetPath())
+
+def _slapcompfilter(lop: hou.OpNode, node: hou.OpNode, stage: Usd.Stage,
+                parent: Usd.Prim, frange: _FrameRange):
+    #pylint: disable=too-many-branches
+    #pylint: disable=too-many-statements
+    #pylint: disable=too-many-locals
+    primpath: str = f"{parent.GetPath()}/{node.name()}"
+    scfilter: Usd.HoudiniImageFilter = stage.DefinePrim(primpath, "HoudiniImageFilter")
+    prim: Usd.Prim = scfilter.GetPrim()
+    _create_string_attr(prim, "type", node.type().name())
+    _create_bool_attr(prim, "bypass", node.isBypassed())
+    for parm in node.parmTuples():
+        pname: str = parm.name()
+        multiparm = parm.parentMultiParm()
+        if multiparm and multiparm.parmTemplate().type() == hou.parmTemplateType.Ramp:
+            # Skip ramp parameters
+            #print(pname, multiparm, multiparm.name())
+            continue
+        chnames: list[str,...] = [x.name() for x in parm]  # Individual parameter names
+        usdname: str = f"filterparm:{pname}"
+        ptype: hou.parmTemplateType = parm.parmTemplate().type()
+        tsize: int = len(chnames)
+        if ptype == hou.parmTemplateType.Int:
+            if tsize == 1:
+                _create_int(prim, usdname, node, pname, frange)
+            elif tsize == 2:
+                _create_int2(prim, usdname, node, chnames, frange)
+            else:
+                _warning(lop, "Currently integer tuples are not supported")
+        elif ptype == hou.parmTemplateType.Float:
+            if tsize == 1:
+                _create_float(prim, usdname, node, pname, frange)
+            elif tsize == 2:
+                _create_float2(prim, usdname, node, chnames, frange)
+            elif tsize == 3:
+                _create_float3(prim, usdname, node, chnames, frange)
+            elif tsize == 4:
+                _create_float4(prim, usdname, node, chnames, frange)
+            else:
+                _warning(lop, f"Currently float[{tsize}] tuples are not supported")
+        elif ptype == hou.parmTemplateType.String:
+            if tsize == 1:
+                _create_string(prim, usdname, node, pname, frange)
+            else:
+                _warning(lop, "Currently string tuples are not supported")
+        elif ptype == hou.parmTemplateType.Toggle:
+            if tsize == 1:
+                _create_bool(prim, usdname, node, pname, frange)
+            else:
+                _warning(lop, "Currently toggle tuples are not supported")
+        elif ptype == hou.parmTemplateType.Menu:
+            if tsize == 1:
+                tplate = parm.parmTemplate()
+                if tplate.isButtonStrip() or tplate.isIconStrip():
+                    _create_int(prim, usdname, node, pname, frange)
+                else:
+                    _create_string(prim, usdname, node, pname, frange)
+            else:
+                _warning(lop, "Currently menu tuples are not supported")
+        elif ptype == hou.parmTemplateType.Ramp:
+            _create_ramp(prim, usdname, node, pname, frange)
+        elif ptype in (hou.parmTemplateType.Button,
+                       hou.parmTemplateType.Separator,
+                       hou.parmTemplateType.Label,
+                       hou.parmTemplateType.FolderSet,
+                       hou.parmTemplateType.Folder,
+                       hou.parmTemplateType.Data):
+            pass
+        else:
+            _error(lop, f"Coding error: Unhandled parameter type: {ptype}")
+    return prim
+
+def imagefilter(node: hou.OpNode, stage: Usd.Stage, fstart: float, fend: float, finc: float ):
+    '''
+        Create HoudiniImageFilterList and HoudiniImageFilter primitives
+        for the slapcomp primitive
+    '''
+    lop: hou.OpNode = node.parent()
+    frange = _FrameRange(fstart, fend, finc)
+    filterlist_path: str = _eval_parm(lop, "filterlist", fstart)
+    filterlist: hou.OpNode = lop.node(filterlist_path)
+    if not filterlist or filterlist.type().name() != 'copnet_filterlist':
+        _warning(lop, f"Invalid filter list: {filterlist_path}")
+        return
+    primpath: str = _eval_parm(lop, "primpath", fstart)
+    _make_prim_path_prefixes(stage, Sdf.Path(primpath).GetPrefixes()[:-1])
+    slap: Usd.HoudiniImageFilterList = stage.DefinePrim(primpath,
+                                                    "HoudiniImageFilterList")
+    prim: Usd.Prim = slap.GetPrim()
+    _create_token(prim, "AOVs", lop, "aovs", frange)
+    _create_string_array(prim, "AOVlist", lop, "aovlist", frange)
+    for name in [ "depthscope", "albedoscope", "normalscope" ]:
+        _create_string(prim, name, lop, name, frange)
+
+    slapcomp_filters = slap.CreateRelationship("orderedFilters")
+    for kid in filterlist.children():
+        slapcomp_filters.AddTarget(_slapcompfilter(lop, kid, stage, prim, frange).GetPath())
+
+slapcomp = imagefilter  # backward compatibility
+
+# WARNING: Compiled render kernels cannot be shared by different users/machines
+#          at the moment. When that is supported, or when there are other Karma
+#          preferences that can be shared, use `hou.findFile()` to look for a
+#          shared config file.
+
+_KARMA_PREFS_FILE = hou.text.expandString('$HOUDINI_USER_PREF_DIR/karmasettings.json')
+_KARMA_SHOW_XPU_PRECOMPILE_INFO_PREF_NAME = 'showxpuprecompileinfo'
+_KARMA_SHOW_XPU_PRECOMPILE_INFO_TEXT = \
+    "Here's a tip: you can pre-compile render kernels, and improve interactivity."
+_KARMA_SHOW_XPU_PRECOMPILE_INFO_DETAILS = \
+    """Runtime render kernel compilation can slow down interactive workflows with KarmaXPU
+
+You can pre-compile render kernels by going to the 'Render' menu, and selecting
+'Pre-compile KarmaXPU Render Kernels'. This process compiles all render kernels
+for various features up-front, instead of compiling them on-demand while rendering.
+
+The pre-compile process may take a couple of hours on low-end machines. Changes
+to Houdini or GPU drivers can make the compiled render kernels out of date.
+
+"""
+
+def precompile_info_dialog():
+    ''' Show dialog for pre-compiling XPU shaders.
+        This dialog only runs with GUIs, and non-MacOS platforms (which can't
+        have Optix GPUs).
+    '''
+
+    if hou.isUIAvailable() and not hou.applicationPlatformInfo().startswith('macos'):
+        #pylint: disable=import-outside-toplevel
+        import hutil
+
+        karma_prefs = {}
+        if os.path.exists(_KARMA_PREFS_FILE):
+            karma_prefs = hutil.json.loadFromFile(_KARMA_PREFS_FILE)
+
+        if karma_prefs.get(_KARMA_SHOW_XPU_PRECOMPILE_INFO_PREF_NAME, True):
+            choice = hou.ui.displayMessage(_KARMA_SHOW_XPU_PRECOMPILE_INFO_TEXT,
+                                buttons=('OK','OK - Never Show Again'),
+                                severity=hou.severityType.Message,
+                                help=_KARMA_SHOW_XPU_PRECOMPILE_INFO_DETAILS,
+                                default_choice=0,
+                                close_choice=0,
+                                title='Tip: Pre-compile Render Kernels')
+            if choice:
+                karma_prefs[_KARMA_SHOW_XPU_PRECOMPILE_INFO_PREF_NAME] = False
+                hutil.json.dumpToFile(karma_prefs, _KARMA_PREFS_FILE)

@@ -1,0 +1,45 @@
+# gallery.zip 官方文档索引（Houdini 22.0.368）
+
+共 39 页。用 `--page gallery.zip:<内部路径>` 读取全文。
+
+| 页面 | 标题 |
+|---|---|
+| `index.txt` | Galleries |
+| `shop/index.txt` | ﻿= Shader galleries |
+| `shop/vopmaterial/UVmap.txt` | ﻿#type: node |
+| `shop/vopmaterial/backgroundPlate.txt` | #type: node |
+| `shop/vopmaterial/basicflame.txt` | #type: node |
+| `shop/vopmaterial/basicliquid.txt` | #type: node |
+| `shop/vopmaterial/basicsmoke.txt` | #type: node |
+| `shop/vopmaterial/billowysmoke.txt` | #type: node |
+| `shop/vopmaterial/checkerboard.txt` | #type: node |
+| `shop/vopmaterial/chrome.txt` | Chrome |
+| `shop/vopmaterial/clay.txt` | ﻿#type: node |
+| `shop/vopmaterial/cloud.txt` | Cloud |
+| `shop/vopmaterial/constant.txt` | #type: node |
+| `shop/vopmaterial/constantsmoke.txt` | #type: node |
+| `shop/vopmaterial/decal.txt` | #type: node |
+| `shop/vopmaterial/displacement.txt` | Displacement |
+| `shop/vopmaterial/dustpuff.txt` | #type: node |
+| `shop/vopmaterial/environmentbox.txt` | Environment Box |
+| `shop/vopmaterial/fluidfire.txt` | #type: node |
+| `shop/vopmaterial/glass.txt` | Glass |
+| `shop/vopmaterial/glow.txt` | #type: node |
+| `shop/vopmaterial/hair.txt` | Hair |
+| `shop/vopmaterial/index.txt` | Materials gallery |
+| `shop/vopmaterial/liquidsmoke.txt` | #type: node |
+| `shop/vopmaterial/marble.txt` | Marble |
+| `shop/vopmaterial/oceansurface.txt` | #type: node |
+| `shop/vopmaterial/ramp.txt` | Ramp |
+| `shop/vopmaterial/shadowMatte.txt` | #type: node |
+| `shop/vopmaterial/showNormal.txt` | #type: node |
+| `shop/vopmaterial/showShadingPoint.txt` | #type: node |
+| `shop/vopmaterial/showTangent.txt` | #type: node |
+| `shop/vopmaterial/showUV.txt` | ﻿#type: node |
+| `shop/vopmaterial/spritefog.txt` | #type: node |
+| `shop/vopmaterial/stainlesssteel.txt` | Stainless steel |
+| `shop/vopmaterial/stone.txt` | Stone |
+| `shop/vopmaterial/tbd.txt` | #type: include |
+| `shop/vopmaterial/uniformvolume.txt` | #type: node |
+| `shop/vopmaterial/wireframe.txt` | Wireframe |
+| `shop/vopmaterial/wispysmoke.txt` | #type: node |

@@ -1,0 +1,704 @@
+{
+  "schema": "bridge.native_459_migration_audit/1",
+  "native_execution": false,
+  "version": "22.0.459",
+  "counts": {
+    "captured_dialogs": 55,
+    "identical_comparable_dialogs": 48,
+    "different_comparable_dialogs": 2,
+    "not_comparable_or_uncaptured": 33
+  },
+  "operators": [
+    {
+      "operator": "Sop/attribadjustfloat",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "23de8cbbf6748d8d9dd96b8ffdf2fda6b3717909f60b57aa51d3e56ecaaffd89",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "23de8cbbf6748d8d9dd96b8ffdf2fda6b3717909f60b57aa51d3e56ecaaffd89",
+      "byte_identical": true
+    },
+    {
+      "operator": "Sop/attribadjustvector",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "62227f1437dbe00e9da89567ffbd2dbf7ec3e4dea9a1eaf1c7e78672235e0775",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "62227f1437dbe00e9da89567ffbd2dbf7ec3e4dea9a1eaf1c7e78672235e0775",
+      "byte_identical": true
+    },
+    {
+      "operator": "Sop/attribwrangle",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "b47a35a99cfd15f0c85143a3fed309c1a2f30704183ef7565bd52af1f7306c77",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "b47a35a99cfd15f0c85143a3fed309c1a2f30704183ef7565bd52af1f7306c77",
+      "byte_identical": true
+    },
+    {
+      "operator": "Sop/clusterpoints",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "ac1d3c67cb0bca6d3e4b1800e5b5ee4f52ef611465e3d1a29d075ce566717e17",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "ac1d3c67cb0bca6d3e4b1800e5b5ee4f52ef611465e3d1a29d075ce566717e17",
+      "byte_identical": true
+    },
+    {
+      "operator": "Sop/crowdsource",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "b9aed6ddbac94f5ffc00735ae0ba5d99f3172da92b12b783a6f37b0f682d75c4",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "b9aed6ddbac94f5ffc00735ae0ba5d99f3172da92b12b783a6f37b0f682d75c4",
+      "byte_identical": true
+    },
+    {
+      "operator": "Sop/crowdsource::3.0",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "9dd9aa43c9f46fb7eb274defc99f0d7e4728eb54ffd3ec30772a55c71edd3bcc",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "9dd9aa43c9f46fb7eb274defc99f0d7e4728eb54ffd3ec30772a55c71edd3bcc",
+      "byte_identical": true
+    },
+    {
+      "operator": "Sop/dopimportfield",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "17ae72f9ef9833bd1631e69ed2675fc3da1b5bef0a6e6e3c9e2c7ba2640a8287",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "17ae72f9ef9833bd1631e69ed2675fc3da1b5bef0a6e6e3c9e2c7ba2640a8287",
+      "byte_identical": true
+    },
+    {
+      "operator": "Sop/flipcollide",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "8ffb37959a3b73d8fd53db8bbc3aa0b53471c94178a2a7fccd1bffa6d4b21a83",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "8ffb37959a3b73d8fd53db8bbc3aa0b53471c94178a2a7fccd1bffa6d4b21a83",
+      "byte_identical": true
+    },
+    {
+      "operator": "Sop/flipcontainer",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "3559d9700a6aef15f186ac2566cf302fb6355d0d21b47056eea7c6f016777104",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "3559d9700a6aef15f186ac2566cf302fb6355d0d21b47056eea7c6f016777104",
+      "byte_identical": true
+    },
+    {
+      "operator": "Sop/flipsolver",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "e3be31e692144229fc2c984f36013455feab9a4bf4eca2c9a05b78044618aed5",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "e3be31e692144229fc2c984f36013455feab9a4bf4eca2c9a05b78044618aed5",
+      "byte_identical": true
+    },
+    {
+      "operator": "Sop/flipsource",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "5a74ef711777bdb1e6b944001ac851cf64ff3ce84d808a94510045aed49e82b6",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "5a74ef711777bdb1e6b944001ac851cf64ff3ce84d808a94510045aed49e82b6",
+      "byte_identical": true
+    },
+    {
+      "operator": "Sop/oceanevaluate::2.0",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "f47ab618b57e08da6adc432e3a902290305978cf21eb866ac05f252e2e1bdd29",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "f47ab618b57e08da6adc432e3a902290305978cf21eb866ac05f252e2e1bdd29",
+      "byte_identical": true
+    },
+    {
+      "operator": "Sop/oceanfoam",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "9087fcef6ad82300b9ed20483c05de5010565baf950a9e21ccd0b2ae32550d29",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "9087fcef6ad82300b9ed20483c05de5010565baf950a9e21ccd0b2ae32550d29",
+      "byte_identical": true
+    },
+    {
+      "operator": "Sop/oceanspectrum",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "c3a3faf4cd4ce74db9d7353a262fb35b10a55a1deb4adc9ac7badcc23c8eddfa",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "c3a3faf4cd4ce74db9d7353a262fb35b10a55a1deb4adc9ac7badcc23c8eddfa",
+      "byte_identical": true
+    },
+    {
+      "operator": "Sop/particlefluidsurface::2.0",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "c199e313145f241e29c4c9873f7cb18fbffa7db04f3185de68084faa1d0b805d",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "c199e313145f241e29c4c9873f7cb18fbffa7db04f3185de68084faa1d0b805d",
+      "byte_identical": true
+    },
+    {
+      "operator": "Sop/pyrosolver",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "2a7b1b70836bdeeebea8b030f070ffa98ab7a221a1ab8a2005c71174ad10a2d1",
+      "byte_identical": false
+    },
+    {
+      "operator": "Sop/pyrosource",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "0074074f1fc8b184cbfdfed5bd8bd67ddd80e8f714aa22ebb89c8e704d35acaa",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "0074074f1fc8b184cbfdfed5bd8bd67ddd80e8f714aa22ebb89c8e704d35acaa",
+      "byte_identical": true
+    },
+    {
+      "operator": "Sop/rbdbulletsolver",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "2fdca903735043c169d43f9c8fcc85d884e52633bf28e33f5905d1be1d37e2af",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "2fdca903735043c169d43f9c8fcc85d884e52633bf28e33f5905d1be1d37e2af",
+      "byte_identical": true
+    },
+    {
+      "operator": "Sop/rbdconfigure",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "ff0ed8fd19eda1b806e09fddfc18298bedb383102c5d1e1c963e6da681c61005",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "ff0ed8fd19eda1b806e09fddfc18298bedb383102c5d1e1c963e6da681c61005",
+      "byte_identical": true
+    },
+    {
+      "operator": "Sop/rbdmaterialfracture",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "0ed3e6278d358545cd4feefee7666a81b849fba8a0ef8d1bcc4bb6c1925b2d1e",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "0ed3e6278d358545cd4feefee7666a81b849fba8a0ef8d1bcc4bb6c1925b2d1e",
+      "byte_identical": true
+    },
+    {
+      "operator": "Sop/tetconform",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "0f15b257a65208662c36db76b5206f20cdf7af1ef115fc4df9ddb31b7e2c7f39",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "0f15b257a65208662c36db76b5206f20cdf7af1ef115fc4df9ddb31b7e2c7f39",
+      "byte_identical": true
+    },
+    {
+      "operator": "Sop/vellumconstraints",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+      "byte_identical": true
+    },
+    {
+      "operator": "Sop/vellumconstraints_grain",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "17c3f57ff091a6e9ef586db4b1c268a5cee96c3b82ab8b87414552d2810e97eb",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "17c3f57ff091a6e9ef586db4b1c268a5cee96c3b82ab8b87414552d2810e97eb",
+      "byte_identical": true
+    },
+    {
+      "operator": "Sop/vellumsolver",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "91e6811b8ad06b252aefcbba3a22ef51affc233ddc2cb8005f0f24830f57a1b2",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "91e6811b8ad06b252aefcbba3a22ef51affc233ddc2cb8005f0f24830f57a1b2",
+      "byte_identical": true
+    },
+    {
+      "operator": "Sop/volumerasterizeattributes",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "47700808b461aa73b395d941a13b6d478d0bd24552a2507b7dfc3da97ca426c5",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "47700808b461aa73b395d941a13b6d478d0bd24552a2507b7dfc3da97ca426c5",
+      "byte_identical": true
+    },
+    {
+      "operator": "Sop/volumewrangle",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "aa477e2d5cd8364e369b5c608ce85e0f77b1f21ee5d894eef420cdefa44c18bb",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "f15071e8c452e1a86d5ff28ca3bfc290bb09193ac549808dd7f14fb292b0b4a3",
+      "byte_identical": false
+    },
+    {
+      "operator": "Dop/popcollisiondetect",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "ca71275874686fc43e7cbf749adf6610975eba1c5792e68e54d95f483ae51b69",
+      "historical_comparison_kind": null,
+      "old_dialog_sha256": null,
+      "byte_identical": null
+    },
+    {
+      "operator": "Dop/popdrag",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "9f91b306e67ec7d58190ab4fe8048580f7ce1f9737977e1b4995007be2bfd7e7",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "9f91b306e67ec7d58190ab4fe8048580f7ce1f9737977e1b4995007be2bfd7e7",
+      "byte_identical": true
+    },
+    {
+      "operator": "Dop/popflock",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "eb2107c0e8f2f13d34c40209682e2d5060bd063c469f8e089706c6ad7de225d7",
+      "byte_identical": true
+    },
+    {
+      "operator": "Dop/popforce",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "4f5b4cc5f9678396de535449fbdea62a57dbd54bb16b4fa977d0e73fae5b591d",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "4f5b4cc5f9678396de535449fbdea62a57dbd54bb16b4fa977d0e73fae5b591d",
+      "byte_identical": true
+    },
+    {
+      "operator": "Dop/popsolver::2.0",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "90db8ddcc3d50919629609292ab2ce5c6d8c8473527a0f650583a444c40c0d84",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "90db8ddcc3d50919629609292ab2ce5c6d8c8473527a0f650583a444c40c0d84",
+      "byte_identical": true
+    },
+    {
+      "operator": "Dop/popsource::2.0",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "f0da84834be59b92f29b40b5d84f616f0e8a9471cc17d41a5c4b109dd5b31bbd",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "f0da84834be59b92f29b40b5d84f616f0e8a9471cc17d41a5c4b109dd5b31bbd",
+      "byte_identical": true
+    },
+    {
+      "operator": "Dop/popsteerpath",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "7919bf5833be4dbda326f4e47773cb35dd131712473919a368b2beef432e015f",
+      "historical_comparison_kind": null,
+      "old_dialog_sha256": null,
+      "byte_identical": null
+    },
+    {
+      "operator": "Dop/popsteerseek",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "f3fa66faf01dfd9f408bb48772b9c82616ff6a4c7aaede773ffd23862282df9a",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "f3fa66faf01dfd9f408bb48772b9c82616ff6a4c7aaede773ffd23862282df9a",
+      "byte_identical": true
+    },
+    {
+      "operator": "Dop/popsteerwander",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "ae7eae0d57b64f8aca37e177d697d6b64fd0221c00f4a593cd4f2a80022a573b",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "ae7eae0d57b64f8aca37e177d697d6b64fd0221c00f4a593cd4f2a80022a573b",
+      "byte_identical": true
+    },
+    {
+      "operator": "Dop/crowdobject",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "826586a37a68fbf8a93efc4348fb371c8cf1c3e3650c70d4662b02ea73f76414",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "826586a37a68fbf8a93efc4348fb371c8cf1c3e3650c70d4662b02ea73f76414",
+      "byte_identical": true
+    },
+    {
+      "operator": "Dop/crowdsolver::3.0",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "4d5d2ba65a51886afbf1a21a3b3cc81f7571ea11ace7c6606f5cffb16f234846",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "4d5d2ba65a51886afbf1a21a3b3cc81f7571ea11ace7c6606f5cffb16f234846",
+      "byte_identical": true
+    },
+    {
+      "operator": "Dop/crowdstate",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "0a0dd6af2e3e8bc922383e29cb4dc3da8793a6a746ba6f8eca490b6336b7f7cb",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "0a0dd6af2e3e8bc922383e29cb4dc3da8793a6a746ba6f8eca490b6336b7f7cb",
+      "byte_identical": true
+    },
+    {
+      "operator": "Dop/crowdstate::3.0",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "321161fa16d39c8319ddaac10700f66e67a37afbf73814eac7cdff2cad380e7f",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "321161fa16d39c8319ddaac10700f66e67a37afbf73814eac7cdff2cad380e7f",
+      "byte_identical": true
+    },
+    {
+      "operator": "Dop/crowdtransition::3.0",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "8c18710b1195775f14d837de2f000ed28cec163d84750e53d62633fe8f858f61",
+      "historical_comparison_kind": null,
+      "old_dialog_sha256": null,
+      "byte_identical": null
+    },
+    {
+      "operator": "Dop/output",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "f9e21908dd5b1800272186f0a1c444e4506b7057e5540fb32e4ff9c649fa1499",
+      "historical_comparison_kind": null,
+      "old_dialog_sha256": null,
+      "byte_identical": null,
+      "historical_comparison_note": "Prior source member dop/output.txt is not DialogScript; do not interpret its different hash as changed native interface."
+    },
+    {
+      "operator": "Dop/popobject",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "2327dd305f24a6b1416c23aa3c54fb4e3acdd0d9fe3e4bc83c4e5e6786d50f99",
+      "historical_comparison_kind": null,
+      "old_dialog_sha256": null,
+      "byte_identical": null,
+      "historical_comparison_note": "Prior source member dop/popobject.txt is not DialogScript; do not interpret its different hash as changed native interface."
+    },
+    {
+      "operator": "Lop/camera",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "e7961a7d50953ca0a1d9cbd8f5349db34a4ec33fb98118f6d852e91765564612",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "e7961a7d50953ca0a1d9cbd8f5349db34a4ec33fb98118f6d852e91765564612",
+      "byte_identical": true
+    },
+    {
+      "operator": "Lop/domelight",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "b843338c6eb1282407f4b8b49316d6a96b7b54e4fa6d94d6078b85f35b95e2b8",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "b843338c6eb1282407f4b8b49316d6a96b7b54e4fa6d94d6078b85f35b95e2b8",
+      "byte_identical": true
+    },
+    {
+      "operator": "Lop/domelight::3.0",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "a66d176b49bfd075774358a3fbd7443470abcdf948cc0323bf8cdb2d8fede9f1",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "a66d176b49bfd075774358a3fbd7443470abcdf948cc0323bf8cdb2d8fede9f1",
+      "byte_identical": true
+    },
+    {
+      "operator": "Lop/karmarenderproducts::2.0",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "79f20103bd462716ffd0abd61bd827f1c1a8eb52eb97df3631c4531bc0d94915",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "79f20103bd462716ffd0abd61bd827f1c1a8eb52eb97df3631c4531bc0d94915",
+      "byte_identical": true
+    },
+    {
+      "operator": "Lop/karmarendersettings",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "cc263cb8a2e6e1f964363999322d8395f7c52d7160ea723173a24b23568783fe",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "cc263cb8a2e6e1f964363999322d8395f7c52d7160ea723173a24b23568783fe",
+      "byte_identical": true
+    },
+    {
+      "operator": "Lop/light",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "34498e2f239d0566a47fc65928f9d42db17b8d7e487a99d3e0acc66b407abf38",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "34498e2f239d0566a47fc65928f9d42db17b8d7e487a99d3e0acc66b407abf38",
+      "byte_identical": true
+    },
+    {
+      "operator": "Lop/renderproduct",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "db75399202e08a57d1c5a1b29b42a2f871b690b9f23fe5db955a185bcb015cab",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "db75399202e08a57d1c5a1b29b42a2f871b690b9f23fe5db955a185bcb015cab",
+      "byte_identical": true
+    },
+    {
+      "operator": "Lop/rendersettings",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "325937f14987a4b23ec74be88ac1bb0a424e351a469776e41b15952dbef9ac3d",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "325937f14987a4b23ec74be88ac1bb0a424e351a469776e41b15952dbef9ac3d",
+      "byte_identical": true
+    },
+    {
+      "operator": "Lop/rendervar",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "c296736e72c9e2881b3867ff634cfe6253e5e5848e4f63bc9ff01420cbc39aea",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "c296736e72c9e2881b3867ff634cfe6253e5e5848e4f63bc9ff01420cbc39aea",
+      "byte_identical": true
+    },
+    {
+      "operator": "Vop/mtlxdisplacement",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "1527b1923d54bec3f099b36617a8db4dc7056ec98a42e6d670dc7c52a92df37a",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "1527b1923d54bec3f099b36617a8db4dc7056ec98a42e6d670dc7c52a92df37a",
+      "byte_identical": true
+    },
+    {
+      "operator": "Vop/mtlxnormalmap",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "2345f1d8e2b5fff05dba81e6dc824e25d4d1ae157db6f87fa0ec2b10add4e735",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "2345f1d8e2b5fff05dba81e6dc824e25d4d1ae157db6f87fa0ec2b10add4e735",
+      "byte_identical": true
+    },
+    {
+      "operator": "Vop/mtlxstandard_surface",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "bf269382a2fa56dc0c7de6127e55b80d203638f5d97972f681b7885a8291f2c2",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "bf269382a2fa56dc0c7de6127e55b80d203638f5d97972f681b7885a8291f2c2",
+      "byte_identical": true
+    },
+    {
+      "operator": "Vop/mtlxsurfacematerial",
+      "status": "CAPTURED_STATIC_DIALOG",
+      "section_sha256": "5a0934ff520aa834b217a280d02dccec597b375334155b5e3ee11b5266dd095d",
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "5a0934ff520aa834b217a280d02dccec597b375334155b5e3ee11b5266dd095d",
+      "byte_identical": true
+    },
+    {
+      "operator": "Driver/usdrender",
+      "status": "NOT_IN_AUDITED_HDA_LIBRARIES",
+      "section_sha256": null,
+      "historical_comparison_kind": null,
+      "old_dialog_sha256": null,
+      "byte_identical": null
+    },
+    {
+      "operator": "Lop/sopimport",
+      "status": "NOT_IN_AUDITED_HDA_LIBRARIES",
+      "section_sha256": null,
+      "historical_comparison_kind": null,
+      "old_dialog_sha256": null,
+      "byte_identical": null
+    },
+    {
+      "operator": "Lop/subnet",
+      "status": "NOT_IN_AUDITED_HDA_LIBRARIES",
+      "section_sha256": null,
+      "historical_comparison_kind": null,
+      "old_dialog_sha256": null,
+      "byte_identical": null,
+      "historical_comparison_note": "Prior source member lop/subnet.txt is not DialogScript; do not interpret its different hash as changed native interface."
+    },
+    {
+      "operator": "Obj/dopnet",
+      "status": "NOT_IN_AUDITED_HDA_LIBRARIES",
+      "section_sha256": null,
+      "historical_comparison_kind": null,
+      "old_dialog_sha256": null,
+      "byte_identical": null,
+      "historical_comparison_note": "Prior source member obj/dopnet.txt is not DialogScript; do not interpret its different hash as changed native interface."
+    },
+    {
+      "operator": "Obj/geo",
+      "status": "NOT_IN_AUDITED_HDA_LIBRARIES",
+      "section_sha256": null,
+      "historical_comparison_kind": null,
+      "old_dialog_sha256": null,
+      "byte_identical": null,
+      "historical_comparison_note": "Prior source member obj/geo.txt is not DialogScript; do not interpret its different hash as changed native interface."
+    },
+    {
+      "operator": "Obj/lopnet",
+      "status": "NOT_IN_AUDITED_HDA_LIBRARIES",
+      "section_sha256": null,
+      "historical_comparison_kind": null,
+      "old_dialog_sha256": null,
+      "byte_identical": null,
+      "historical_comparison_note": "Prior source member None is not DialogScript; do not interpret its different hash as changed native interface."
+    },
+    {
+      "operator": "Obj/matnet",
+      "status": "NOT_IN_AUDITED_HDA_LIBRARIES",
+      "section_sha256": null,
+      "historical_comparison_kind": null,
+      "old_dialog_sha256": null,
+      "byte_identical": null,
+      "historical_comparison_note": "Prior source member None is not DialogScript; do not interpret its different hash as changed native interface."
+    },
+    {
+      "operator": "Obj/ropnet",
+      "status": "NOT_IN_AUDITED_HDA_LIBRARIES",
+      "section_sha256": null,
+      "historical_comparison_kind": null,
+      "old_dialog_sha256": null,
+      "byte_identical": null,
+      "historical_comparison_note": "Prior source member None is not DialogScript; do not interpret its different hash as changed native interface."
+    },
+    {
+      "operator": "Obj/subnet",
+      "status": "NOT_IN_AUDITED_HDA_LIBRARIES",
+      "section_sha256": null,
+      "historical_comparison_kind": null,
+      "old_dialog_sha256": null,
+      "byte_identical": null,
+      "historical_comparison_note": "Prior source member None is not DialogScript; do not interpret its different hash as changed native interface."
+    },
+    {
+      "operator": "Sop/box",
+      "status": "NOT_IN_AUDITED_HDA_LIBRARIES",
+      "section_sha256": null,
+      "historical_comparison_kind": null,
+      "old_dialog_sha256": null,
+      "byte_identical": null,
+      "historical_comparison_note": "Prior source member sop/box.txt is not DialogScript; do not interpret its different hash as changed native interface."
+    },
+    {
+      "operator": "Sop/copytopoints",
+      "status": "NOT_IN_AUDITED_HDA_LIBRARIES",
+      "section_sha256": null,
+      "historical_comparison_kind": null,
+      "old_dialog_sha256": null,
+      "byte_identical": null,
+      "historical_comparison_note": "Prior source member sop/copytopoints.txt is not DialogScript; do not interpret its different hash as changed native interface."
+    },
+    {
+      "operator": "Sop/copytopoints::2.0",
+      "status": "NOT_IN_AUDITED_HDA_LIBRARIES",
+      "section_sha256": null,
+      "historical_comparison_kind": null,
+      "old_dialog_sha256": null,
+      "byte_identical": null,
+      "historical_comparison_note": "Prior source member sop/copytopoints.txt is not DialogScript; do not interpret its different hash as changed native interface."
+    },
+    {
+      "operator": "Sop/dopnet",
+      "status": "NOT_IN_AUDITED_HDA_LIBRARIES",
+      "section_sha256": null,
+      "historical_comparison_kind": null,
+      "old_dialog_sha256": null,
+      "byte_identical": null,
+      "historical_comparison_note": "Prior source member sop/dopnet.txt is not DialogScript; do not interpret its different hash as changed native interface."
+    },
+    {
+      "operator": "Sop/grid",
+      "status": "NOT_IN_AUDITED_HDA_LIBRARIES",
+      "section_sha256": null,
+      "historical_comparison_kind": null,
+      "old_dialog_sha256": null,
+      "byte_identical": null,
+      "historical_comparison_note": "Prior source member sop/grid.txt is not DialogScript; do not interpret its different hash as changed native interface."
+    },
+    {
+      "operator": "Sop/guidegroom",
+      "status": "NOT_IN_AUDITED_HDA_LIBRARIES",
+      "section_sha256": null,
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "1f9ce0dd73d2b51ddccd93977c4ecca8c84e84bd8fc8d9e72621873784aa63b4",
+      "byte_identical": null
+    },
+    {
+      "operator": "Sop/guidegroom::2.0",
+      "status": "NOT_IN_AUDITED_HDA_LIBRARIES",
+      "section_sha256": null,
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "8db8e573cb1ffb022706b582488e15ada485cb275b489a4c3023ac754e534869",
+      "byte_identical": null
+    },
+    {
+      "operator": "Sop/guideprocess",
+      "status": "NOT_IN_AUDITED_HDA_LIBRARIES",
+      "section_sha256": null,
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "9c11336f567a896bfbfa5a6db6242bbc7446db6ef4db60f06f6b709b58e5074e",
+      "byte_identical": null
+    },
+    {
+      "operator": "Sop/hairclump::2.0",
+      "status": "NOT_IN_AUDITED_HDA_LIBRARIES",
+      "section_sha256": null,
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "5c5891bc61b473ff812ccc47060bb52a2334ee3fb12b4d6eabdea4838e5fef78",
+      "byte_identical": null
+    },
+    {
+      "operator": "Sop/hairgen",
+      "status": "NOT_IN_AUDITED_HDA_LIBRARIES",
+      "section_sha256": null,
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "1518bd31e4247f2509bbfd79e2d0b7f53e568b304b548121ff8df49c33bdb0f3",
+      "byte_identical": null
+    },
+    {
+      "operator": "Sop/hairgen::2.0",
+      "status": "NOT_IN_AUDITED_HDA_LIBRARIES",
+      "section_sha256": null,
+      "historical_comparison_kind": "DialogScript",
+      "old_dialog_sha256": "0b4c2322ae9bdce66b6860226717f23b46390115f87d44caecf21c550a8d8b42",
+      "byte_identical": null
+    },
+    {
+      "operator": "Sop/merge",
+      "status": "NOT_IN_AUDITED_HDA_LIBRARIES",
+      "section_sha256": null,
+      "historical_comparison_kind": null,
+      "old_dialog_sha256": null,
+      "byte_identical": null,
+      "historical_comparison_note": "Prior source member sop/merge.txt is not DialogScript; do not interpret its different hash as changed native interface."
+    },
+    {
+      "operator": "Sop/null",
+      "status": "NOT_IN_AUDITED_HDA_LIBRARIES",
+      "section_sha256": null,
+      "historical_comparison_kind": null,
+      "old_dialog_sha256": null,
+      "byte_identical": null,
+      "historical_comparison_note": "Prior source member sop/null.txt is not DialogScript; do not interpret its different hash as changed native interface."
+    },
+    {
+      "operator": "Sop/ray",
+      "status": "NOT_IN_AUDITED_HDA_LIBRARIES",
+      "section_sha256": null,
+      "historical_comparison_kind": null,
+      "old_dialog_sha256": null,
+      "byte_identical": null
+    },
+    {
+      "operator": "Sop/scatter::2.0",
+      "status": "NOT_IN_AUDITED_HDA_LIBRARIES",
+      "section_sha256": null,
+      "historical_comparison_kind": null,
+      "old_dialog_sha256": null,
+      "byte_identical": null,
+      "historical_comparison_note": "Prior source member sop/scatter.txt is not DialogScript; do not interpret its different hash as changed native interface."
+    },
+    {
+      "operator": "Sop/sphere",
+      "status": "NOT_IN_AUDITED_HDA_LIBRARIES",
+      "section_sha256": null,
+      "historical_comparison_kind": null,
+      "old_dialog_sha256": null,
+      "byte_identical": null,
+      "historical_comparison_note": "Prior source member sop/sphere.txt is not DialogScript; do not interpret its different hash as changed native interface."
+    },
+    {
+      "operator": "Sop/stash",
+      "status": "NOT_IN_AUDITED_HDA_LIBRARIES",
+      "section_sha256": null,
+      "historical_comparison_kind": null,
+      "old_dialog_sha256": null,
+      "byte_identical": null
+    },
+    {
+      "operator": "Sop/trail",
+      "status": "NOT_IN_AUDITED_HDA_LIBRARIES",
+      "section_sha256": null,
+      "historical_comparison_kind": null,
+      "old_dialog_sha256": null,
+      "byte_identical": null
+    },
+    {
+      "operator": "Sop/xform",
+      "status": "NOT_IN_AUDITED_HDA_LIBRARIES",
+      "section_sha256": null,
+      "historical_comparison_kind": null,
+      "old_dialog_sha256": null,
+      "byte_identical": null,
+      "historical_comparison_note": "Prior source member sop/xform.txt is not DialogScript; do not interpret its different hash as changed native interface."
+    }
+  ],
+  "runtime_support": "NOT_VALIDATED",
+  "scope": "New 459 sources compared only against like-kind historical DialogScript; detailed family checks in migration-comparison-459.json",
+  "limitations": [
+    "Dynamic instance names cannot be inferred from DialogScript patterns.",
+    "Compiled UI bytes establish file identity/naming only, not writable templates.",
+    "Port label declarations do not prove full runtime arity or native consumer execution.",
+    "All real/native execution is NOT_RUN."
+  ]
+}

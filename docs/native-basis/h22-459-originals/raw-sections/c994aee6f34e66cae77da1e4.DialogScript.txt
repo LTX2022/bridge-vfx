@@ -1,0 +1,532 @@
+# Dialog script for popsolver::2.0 automatically generated 07/29/15 14:02:48
+
+{
+    name	popsolver::2.0
+    script	popsolver::2.0
+    label	"POP Solver"
+
+
+    help {
+	""
+    }
+
+    inputlabel	1	Object
+    inputlabel	2	Pre-Solve
+    inputlabel	3	"Sources (post-solve)"
+
+    group {
+	name	"folder2"
+	label	"Substeps"
+
+	parm {
+	    name	"timescale"
+	    label	"Time Scale"
+	    type	float
+	    default	{ "1" }
+	    range	{ 0 10 }
+	    export	none
+	}
+	parm {
+	    name	"minimumsubsteps"
+	    label	"Min Substeps"
+	    type	integer
+	    default	{ "1" }
+	    range	{ 0 10 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"substeps"
+	    label	"Max Substeps"
+	    type	integer
+	    default	{ "1" }
+	    range	{ 0 10 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"cflcond"
+	    label	"CFL Condition"
+	    type	float
+	    default	{ "1" }
+	    range	{ 0 10 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"quantize"
+	    label	"Quantize to Max Substeps"
+	    type	toggle
+	    default	{ "off" }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "script_callback" "" }
+	}
+    }
+
+    group {
+	name	"folder2_1"
+	label	"Update"
+
+	parm {
+	    name	"implicitdrag"
+	    label	"Use Implicit Drag"
+	    type	toggle
+	    default	{ "on" }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "parmvop" "1" }
+	    parmtag	{ "shaderparmcontexts" "cvex" }
+	}
+	parm {
+	    name	"dragexp"
+	    label	"Drag Exponent"
+	    type	float
+	    default	{ "2" }
+	    range	{ 1! 2! }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "parmvop" "1" }
+	    parmtag	{ "shaderparmcontexts" "cvex" }
+	}
+	parm {
+	    name	"doage"
+	    label	"Age Particles"
+	    type	toggle
+	    default	{ "1" }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"externalforce"
+	    label	"External Forces"
+	    type	toggle
+	    default	{ "on" }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"integratevel"
+	    label	"Integrate Velocity"
+	    type	toggle
+	    default	{ "1" }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"usemass"
+	    label	"Use Mass"
+	    type	toggle
+	    default	{ "on" }
+	    disablewhen	"{ integratevel == 0 }"
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "parmvop" "1" }
+	    parmtag	{ "shaderparmcontexts" "cvex" }
+	}
+	parm {
+	    name	"integratepos"
+	    label	"Integrate Positions"
+	    type	toggle
+	    default	{ "1" }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"doreapparticles"
+	    label	"Reap Particles"
+	    type	toggle
+	    default	{ "1" }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"reapatend"
+	    label	"Reap At Frame End"
+	    type	toggle
+	    default	{ "1" }
+	    disablewhen	"{ doreapparticles == 0 }"
+	    range	{ 0 1 }
+	    export	none
+	}
+    }
+
+    group {
+	name	"folder2_2"
+	label	"Collision Behavior"
+
+	parm {
+	    name	"docollision"
+	    label	"Enable Collision Detection"
+	    type	toggle
+	    default	{ "on" }
+	    disablewhen	"{ integratepos == 0 }"
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"hitattribute"
+	    label	"Add Hit Attributes"
+	    type	toggle
+	    default	{ "1" }
+	    disablewhen	"{ integratepos == 0 } { docollision == 0 }"
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"behaviorgroup"
+	    label	"Group to Affect"
+	    type	string
+	    default	{ "" }
+	    disablewhen	"{ integratepos == 0 } { hitattribute == 0 } { docollision == 0 }"
+	    menutoggle	{
+		[ "opmenu -l popcollisionbehavior1 partgroup" ]
+	    }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "script_callback" "" }
+	}
+	parm {
+	    name	"creategroup"
+	    label	"Create Group"
+	    type	toggle
+	    nolabel
+	    joinnext
+	    default	{ "off" }
+	    disablewhen	"{ integratepos == 0 } { hitattribute == 0 } { docollision == 0 }"
+	    range	{ 0! 1! }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"creategroupname"
+	    label	"Collide Group"
+	    type	string
+	    default	{ "" }
+	    disablewhen	"{ integratepos == 0 } { creategroup == 0 } { hitattribute == 0 } { docollision == 0 }"
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"usecolor"
+	    label	"Use Color"
+	    type	toggle
+	    nolabel
+	    joinnext
+	    default	{ "off" }
+	    disablewhen	"{ integratepos == 0 } { hitattribute == 0 } { docollision == 0 }"
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"hitcolor"
+	    label	"Color Hits"
+	    type	color
+	    size	3
+	    default	{ "1" "0" "0" }
+	    disablewhen	"{ integratepos == 0 } { usecolor == 0 } { hitattribute == 0 } { docollision == 0 }"
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"addhittotal"
+	    label	"Compute Hit Total"
+	    type	toggle
+	    default	{ "on" }
+	    disablewhen	"{ integratepos == 0 } { hitattribute == 0 } { docollision == 0 }"
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"movetohit"
+	    label	"Move to Hit"
+	    type	toggle
+	    default	{ "off" }
+	    disablewhen	"{ integratepos == 0 } { hitattribute == 0 } { docollision == 0 }"
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"collisionresponse"
+	    label	"Response"
+	    type	ordinal
+	    default	{ "none" }
+	    disablewhen	"{ integratepos == 0 } { hitattribute == 0 } { docollision == 0 }"
+	    menu	{
+		"none"	"Unchanged"
+		"die"	"Die"
+		"stopped"	"Stop"
+		"stuck"	"Stick"
+		"slide"	"Slide"
+	    }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	groupcollapsible {
+	    name	"folder1"
+	    label	"Attributes"
+
+	    parm {
+		name	"addhitnum"
+		label	"Add Hit Num Attribute"
+		type	toggle
+		default	{ "on" }
+		disablewhen	"{ integratepos == 0 } { hitattribute == 0 } { docollision == 0 }"
+		range	{ 0 1 }
+		export	none
+		parmtag	{ "autoscope" "0000000000000000" }
+		parmtag	{ "script_callback" "" }
+	    }
+	    parm {
+		name	"addhitpos"
+		label	"Add Hit Pos Attribute"
+		type	toggle
+		default	{ "on" }
+		disablewhen	"{ integratepos == 0 } { hitattribute == 0 } { docollision == 0 }"
+		range	{ 0 1 }
+		export	none
+		parmtag	{ "autoscope" "0000000000000000" }
+		parmtag	{ "script_callback" "" }
+	    }
+	    parm {
+		name	"addhitnml"
+		label	"Add Hit Normal Attribute"
+		type	toggle
+		default	{ "on" }
+		disablewhen	"{ integratepos == 0 } { hitattribute == 0 } { docollision == 0 }"
+		range	{ 0 1 }
+		export	none
+		parmtag	{ "autoscope" "0000000000000000" }
+		parmtag	{ "script_callback" "" }
+	    }
+	    parm {
+		name	"addhitv"
+		label	"Add Hit Velocity Attribute"
+		type	toggle
+		default	{ "on" }
+		disablewhen	"{ integratepos == 0 } { hitattribute == 0 } { docollision == 0 }"
+		range	{ 0 1 }
+		export	none
+		parmtag	{ "autoscope" "0000000000000000" }
+		parmtag	{ "script_callback" "" }
+	    }
+	    parm {
+		name	"addhittime"
+		label	"Add Hit Time Attribute"
+		type	toggle
+		default	{ "on" }
+		disablewhen	"{ integratepos == 0 } { hitattribute == 0 } { docollision == 0 }"
+		range	{ 0 1 }
+		export	none
+		parmtag	{ "autoscope" "0000000000000000" }
+		parmtag	{ "script_callback" "" }
+	    }
+	    parm {
+		name	"addhitpath"
+		label	"Add Hit Path Attribute"
+		type	toggle
+		default	{ "on" }
+		disablewhen	"{ integratepos == 0 } { hitattribute == 0 } { docollision == 0 }"
+		range	{ 0 1 }
+		export	none
+		parmtag	{ "autoscope" "0000000000000000" }
+		parmtag	{ "script_callback" "" }
+	    }
+	    parm {
+		name	"addhitprim"
+		label	"Add Hit Prim Attribute"
+		type	toggle
+		default	{ "on" }
+		disablewhen	"{ integratepos == 0 } { hitattribute == 0 } { docollision == 0 }"
+		range	{ 0 1 }
+		export	none
+		parmtag	{ "autoscope" "0000000000000000" }
+		parmtag	{ "script_callback" "" }
+	    }
+	    parm {
+		name	"addhituv"
+		label	"Add Hit UV Attribute"
+		type	toggle
+		default	{ "on" }
+		disablewhen	"{ integratepos == 0 } { hitattribute == 0 } { docollision == 0 }"
+		range	{ 0 1 }
+		export	none
+		parmtag	{ "autoscope" "0000000000000000" }
+		parmtag	{ "script_callback" "" }
+	    }
+	}
+
+	parm {
+	    name	"addimpacts"
+	    label	"Add Impact Data"
+	    type	toggle
+	    default	{ "off" }
+	    disablewhen	"{ docollision == 0 }"
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"docollisionfeedback"
+	    label	"Enable Collision Feedback"
+	    type	toggle
+	    default	{ "on" }
+	    disablewhen	"{ docollision == 0 }"
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+    }
+
+    group {
+	name	"folder2_3"
+	label	"Sleeping"
+
+	parm {
+	    name	"doautosleep"
+	    label	"Enable Auto Sleep"
+	    type	toggle
+	    default	{ "0" }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"sleep_startasleep"
+	    label	"Start Asleep"
+	    type	toggle
+	    default	{ "0" }
+	    disablewhen	"{ doautosleep == 0 }"
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"sleep_velocitythreshold"
+	    label	"Velocity Threshold"
+	    type	float
+	    default	{ "0.01" }
+	    disablewhen	"{ doautosleep == 0 }"
+	    range	{ 0! 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "parmvop" "1" }
+	    parmtag	{ "shaderparmcontexts" "cvex" }
+	    parmtag	{ "units" "m1s-1" }
+	}
+	parm {
+	    name	"sleep_delay"
+	    label	"Sleep Delay"
+	    type	float
+	    default	{ "0.1" }
+	    disablewhen	"{ doautosleep == 0 }"
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "parmvop" "1" }
+	    parmtag	{ "shaderparmcontexts" "cvex" }
+	    parmtag	{ "units" "s1" }
+	}
+	parm {
+	    name	"sleep_docolor"
+	    label	"Color Sleeping"
+	    type	toggle
+	    nolabel
+	    joinnext
+	    default	{ "0" }
+	    disablewhen	"{ doautosleep == 0 }"
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"sleep_color"
+	    label	"Sleeping Color"
+	    type	color
+	    size	3
+	    default	{ "1" "0" "0" }
+	    disablewhen	"{ sleep_docolor == 0 } { doautosleep == 0 }"
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+    }
+
+    group {
+	name	"folder2_4"
+	label	"Bindings"
+
+	parm {
+	    name	"geodata"
+	    label	"Geometry"
+	    type	string
+	    default	{ "Geometry" }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+    }
+
+    group {
+	name	"folder2_5"
+	label	"Distribution"
+
+	parm {
+	    name	"address"
+	    label	"Tracker Address"
+	    type	string
+	    default	{ "" }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"port"
+	    label	"Tracker Port"
+	    type	integer
+	    default	{ "8000" }
+	    range	{ 0 10 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"jobname"
+	    label	"Job Name"
+	    type	string
+	    default	{ "${OS}_$F" }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"slice"
+	    label	"Slice"
+	    type	integer
+	    default	{ "0" }
+	    range	{ 0 10 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"numslice"
+	    label	"Number of Slices"
+	    type	integer
+	    default	{ "1" }
+	    range	{ 0 10 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+    }
+
+}

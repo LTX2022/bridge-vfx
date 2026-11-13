@@ -1,0 +1,952 @@
+# Dialog script for flipsolver automatically generated
+
+{
+    name	flipsolver
+    script	flipsolver
+    label	"FLIP Solver"
+
+    help {
+	""
+    }
+
+    inputlabel	1	Sources
+    inputlabel	2	Container
+    inputlabel	3	Collisions
+    inputlabel	4	"Boundary Flow"
+    outputlabel	1	"Fluid Particles"
+    outputlabel	2	Container
+    outputlabel	3	Collisions
+
+    parm {
+        name    "resimulate"
+        label   "Reset Simulation"
+        type    button
+        default { "0" }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "startframe"
+        label   "Start Frame"
+        type    integer
+        default { "1" }
+        range   { 1 240 }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_callback_language" "python" }
+    }
+    group {
+        name    "folder1"
+        label   "Setup"
+
+        groupcollapsible {
+            name    "folder2"
+            label   "General"
+            parmtag { "group_default" "1" }
+
+            parm {
+                name    "overrideres"
+                label   "Override Resolution"
+                type    toggle
+                nolabel
+                joinnext
+                default { "0" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "particlesep"
+                label   "Particle Separation"
+                type    float
+                default { "0.1" }
+                disablewhen "{ overrideres == 0 }"
+                range   { 0 10 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "units" "m1" }
+            }
+            parm {
+                name    "gridscale"
+                label   "Grid Scale"
+                type    float
+                default { "2" }
+                disablewhen "{ overrideres == 0 }"
+                range   { 0! 10 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "timescale"
+                label   "Time Scale"
+                type    float
+                default { "1" }
+                range   { 0 10 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+        groupcollapsible {
+            name    "folder3"
+            label   "Simulation"
+            parmtag { "group_default" "1" }
+
+            parm {
+                name    "substep"
+                label   "Global Substeps"
+                type    integer
+                default { "1" }
+                range   { 1! 10 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "minimumsubsteps"
+                label   "Min Substeps"
+                type    integer
+                default { "1" }
+                range   { 1! 10 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "substeps"
+                label   "Max Substeps"
+                type    integer
+                default { "2" }
+                range   { 1! 10 }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "sepparm3"
+                label   "Spacer"
+                type    separator
+                default { "" }
+                parmtag { "sidefx::layout_height" "small" }
+                parmtag { "sidefx::look" "blank" }
+            }
+            parm {
+                name    "cacheenabled"
+                label   "Cache Simulation"
+                type    toggle
+                nolabel
+                joinnext
+                default { "on" }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "cachemaxsize"
+                label   "Cache Memory (MB)"
+                type    integer
+                default { "5000" }
+                range   { 0! 1000 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+    }
+
+    group {
+        name    "folder1_1"
+        label   "Waterline"
+
+        groupcollapsible {
+            name    "waterlinesettings"
+            label   "Waterline"
+            disablewhentab "{ dowaterline != 1 }"
+            parmtag { "group_default" "1" }
+            parmtag { "sidefx::header_toggle" "dowaterline" }
+
+            parm {
+                name    "waterorigin"
+                label   "Water Origin"
+                type    vector
+                size    3
+                default { "0" "0" "0" }
+                range   { -1 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "waterline"
+                label   "Waterline"
+                type    float
+                default { "0" }
+                range   { -10 10 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+                parmtag { "units" "m1" }
+            }
+            parm {
+                name    "water_velocity"
+                label   "Additional Velocity"
+                type    vector
+                size    3
+                default { "0" "0" "0" }
+                range   { -1 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+                parmtag { "units" "m1s-1" }
+            }
+        }
+
+        groupcollapsible {
+            name    "folder5"
+            label   "Boundary Conditions"
+            parmtag { "group_default" "1" }
+
+            parm {
+                name    "boundarytype"
+                label   "Type"
+                type    ordinal
+                default { "1" }
+                menu {
+                    "velocity"  "Velocity Driven"
+                    "pressure"  "Pressure Driven"
+                }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "initialsurface"
+                label   "Initial Surface"
+                type    toggle
+                default { "1" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "pressureband"
+                label   "Pressure Band"
+                type    float
+                default { "1" }
+                hidewhen "{ boundarytype != pressure }"
+                range   { 0 10 }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "velocityband"
+                label   "Velocity Band"
+                type    float
+                default { "2" }
+                hidewhen "{ boundarytype != velocity }"
+                range   { 0 10 }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "sourceband"
+                label   "Source Band"
+                type    float
+                default { "2" }
+                range   { 0 10 }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+        parm {
+            name    "dowaterline"
+            label   "Enable Waterline"
+            type    toggle
+            default { "0" }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    group {
+        name    "folder1_2"
+        label   "Collision"
+
+        groupcollapsible {
+            name    "folder6"
+            label   "Collision Behavior"
+            parmtag { "group_default" "1" }
+
+            parm {
+                name    "collision"
+                label   "Particle Collisions"
+                type    ordinal
+                default { "particle" }
+                menu {
+                    "none"      "None"
+                    "particle"  "Particle"
+                    "movetoiso" "Move Outside Collision"
+                }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "usetransparency"
+                label   "Use Transparency"
+                type    toggle
+                nolabel
+                joinnext
+                default { "off" }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "transparency"
+                label   "Transparency"
+                type    float
+                default { "1" }
+                disablewhen "{ usetransparency == 0 }"
+                range   { 0! 1! }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "extrapdist"
+                label   "Surface Extrapolation"
+                type    float
+                default { "0.5" }
+                range   { 0! 1! }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "enablestick"
+                label   "Stick on Collision"
+                type    toggle
+                default { "off" }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            groupcollapsible {
+                name    "folder4"
+                label   "Stick on Collision"
+                disablewhentab "{ enablestick == 0 }"
+                parmtag { "group_default" "0" }
+                parmtag { "sidefx::header_toggle" "enablestick" }
+
+                parm {
+                    name    "stickscale"
+                    label   "Stick Scale"
+                    type    float
+                    default { "0.1" }
+                    range   { 0! 1! }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "parmvop" "1" }
+                    parmtag { "shaderparmcontexts" "cvex" }
+                }
+                parm {
+                    name    "stickusemaxdist"
+                    label   "Use Max Distance"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "on" }
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "parmvop" "1" }
+                    parmtag { "shaderparmcontexts" "cvex" }
+                }
+                parm {
+                    name    "stickdist"
+                    label   "Max Distance"
+                    type    float
+                    default { "0.05" }
+                    disablewhen "{ stickusemaxdist == 0 }"
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "parmvop" "1" }
+                    parmtag { "shaderparmcontexts" "cvex" }
+                    parmtag { "units" "m1" }
+                }
+                parm {
+                    name    "stickusemaxcells"
+                    label   "Use Max Cells"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "off" }
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "parmvop" "1" }
+                    parmtag { "shaderparmcontexts" "cvex" }
+                }
+                parm {
+                    name    "stickcells"
+                    label   "Max Cells"
+                    type    float
+                    default { "1" }
+                    disablewhen "{ stickusemaxcells == 0 }"
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "parmvop" "1" }
+                    parmtag { "shaderparmcontexts" "cvex" }
+                }
+                parm {
+                    name    "stickbias"
+                    label   "Stick Bias"
+                    type    float
+                    default { "0.5" }
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "parmvop" "1" }
+                    parmtag { "shaderparmcontexts" "cvex" }
+                }
+                parm {
+                    name    "sticknormalscale"
+                    label   "Normal Scale"
+                    type    float
+                    default { "1" }
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "parmvop" "1" }
+                    parmtag { "shaderparmcontexts" "cvex" }
+                }
+                parm {
+                    name    "sticktangentscale"
+                    label   "Tangent Scale"
+                    type    float
+                    default { "1" }
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "parmvop" "1" }
+                    parmtag { "shaderparmcontexts" "cvex" }
+                }
+                parm {
+                    name    "stickusecontrolfield"
+                    label   "Use Control Field"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "off" }
+                    disablewhen "{ enablestick == 0 }"
+                    hidewhen "{ enablestick == 0 }"
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "parmvop" "1" }
+                    parmtag { "shaderparmcontexts" "cvex" }
+                }
+                parm {
+                    name    "stickcontrolfield"
+                    label   "Control Field"
+                    type    string
+                    default { "stick" }
+                    disablewhen "{ enablestick == 0 } { stickusecontrolfield == 0 }"
+                    hidewhen "{ enablestick == 0 }"
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+            }
+
+        }
+
+        groupcollapsible {
+            name    "folder13"
+            label   "Ground"
+            parmtag { "sidefx::header_parm" "useground" }
+
+            parm {
+                name    "useground"
+                label   "Add Ground Plane"
+                type    ordinal
+                default { "0" }
+                menu {
+                    "none"          "None"
+                    "ground"        "Ground Plane"
+                    "heightfield"   "Height Field"
+                }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "ground_heightfield"
+                label   "Height Field"
+                type    oppath
+                default { "" }
+                hidewhen "{ useground != heightfield }"
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "opfilter" "!!SOP!!" }
+                parmtag { "oprelative" "." }
+            }
+            parm {
+                name    "ground_pos"
+                label   "Ground Position"
+                type    vector
+                size    3
+                default { "0" "0" "0" }
+                hidewhen "{ useground != ground }"
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "ground_up"
+                label   "Ground Up"
+                type    vector
+                size    3
+                default { "0" "1" "0" }
+                hidewhen "{ useground != ground }"
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+    }
+
+    group {
+        name    "folder1_3"
+        label   "Fluid Behavior"
+
+        parm {
+            name    "veltransfer"
+            label   "Velocity Transfer"
+            type    ordinal
+            default { "apic" }
+            menu {
+                "flip"  "FLIP (Splashy)"
+                "apic"  "APIC (Swirly)"
+            }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "smoothing"
+            label   "Velocity Smoothing"
+            type    float
+            default { "0.1" }
+            disablewhen "{ veltransfer != flip }"
+            range   { 0! 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "units" "" }
+        }
+        parm {
+            name    "doincompressibleair"
+            label   "Enforce Air Incompressibility"
+            type    toggle
+            default { "off" }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        groupcollapsible {
+            name    "folder8"
+            label   "Air Incompressibility"
+            disablewhentab "{ doincompressibleair == 0 }"
+            parmtag { "sidefx::header_toggle" "doincompressibleair" }
+
+            parm {
+                name    "applycollisionstoair"
+                label   "Apply Moving Collisions"
+                type    toggle
+                default { "off" }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "minairregionsize"
+                label   "Min Air Region Voxels"
+                type    integer
+                default { "0" }
+                range   { 0 10 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+        parm {
+            name    "partsep"
+            label   "Apply Particle Separation"
+            type    toggle
+            default { "off" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        groupcollapsible {
+            name    "separation"
+            label   "Enforce Particle Separation"
+            disablewhentab "{ partsep == 0 }"
+            parmtag { "sidefx::header_toggle" "partsep" }
+
+            parm {
+                name    "partsepiter"
+                label   "Separation Iterations"
+                type    integer
+                default { "1" }
+                disablewhen "{ partsep == 0 }"
+                range   { 0 10 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "partsepamount"
+                label   "Separation Rate"
+                type    float
+                default { "1" }
+                disablewhen "{ partsep == 0 }"
+                range   { 0! 1! }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "partsepscale"
+                label   "Separation Scale"
+                type    float
+                default { "1.0985" }
+                disablewhen "{ partsep == 0 }"
+                range   { 0 10 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+        parm {
+            name    "dodroplets"
+            label   "Detect Droplets"
+            type    toggle
+            default { "off" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        groupcollapsible {
+            name    "droplets"
+            label   "Detect Droplets"
+            parmtag { "sidefx::header_toggle" "dodroplets" }
+
+            parm {
+                name    "dropletmindensity"
+                label   "Min Particle Density"
+                type    float
+                default { "0.5" }
+                disablewhen "{ dodroplets == 0 }"
+                range   { 0 2 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "dropletmaxdensity"
+                label   "Max Particle Density"
+                type    float
+                default { "1" }
+                disablewhen "{ dodroplets == 0 }"
+                range   { 0 2 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "dropletbehavior"
+                label   "Behavior"
+                type    ordinal
+                default { "0" }
+                disablewhen "{ dodroplets == 0 }"
+                menu {
+                    "0" "Blend With Fluid"
+                    "1" "Kill On Detection"
+                    "2" "Kill At Fluid"
+                }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "dropletvelblend"
+                label   "Velocity Blend"
+                type    float
+                default { "0.2" }
+                disablewhen "{ dropletbehavior != 0 } { dodroplets == 0 }"
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+        parm {
+            name    "doreseeding"
+            label   "Enable Reseeding"
+            type    toggle
+            default { "1" }
+            disablewhen "{ donarrowband == 1 }"
+            parmtag { "script_callback_language" "python" }
+        }
+        groupcollapsible {
+            name    "reseeding"
+            label   "Reseeding"
+            disablewhentab "{ doreseeding == 0 }"
+            parmtag { "sidefx::header_toggle" "doreseeding" }
+
+            parm {
+                name    "birththreshold"
+                label   "Birth Threshold"
+                type    float
+                default { "0.5" }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "deaththreshold"
+                label   "Death Threshold"
+                type    float
+                default { "1.5" }
+                range   { 1 2 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "sepparm"
+                label   "Spacer"
+                type    separator
+                default { "" }
+                parmtag { "sidefx::layout_height" "small" }
+                parmtag { "sidefx::look" "blank" }
+            }
+            parm {
+                name    "oversamplebounds"
+                label   "Oversample At Boundaries"
+                type    toggle
+                default { "on" }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "oversampling"
+                label   "Surface Oversampling"
+                type    float
+                default { "1.5" }
+                disablewhen "{ oversamplebounds == 0 }"
+                range   { 1 2 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "oversamplingbandwidth"
+                label   "Oversampling Bandwidth"
+                type    float
+                default { "1" }
+                disablewhen "{ oversamplebounds == 0 }"
+                range   { 0 4 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "sepparm2"
+                label   "Spacer"
+                type    separator
+                default { "" }
+                parmtag { "sidefx::layout_height" "small" }
+                parmtag { "sidefx::look" "blank" }
+            }
+            parm {
+                name    "seed"
+                label   "Random Seed"
+                type    float
+                default { "0" }
+                disablewhen "{ donarrowband == 0 }"
+                range   { 0! 10 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+    }
+
+    group {
+        name    "folder1_4"
+        label   "Visualization"
+
+        parm {
+            name    "showcollision"
+            label   "Show Collision"
+            type    toggle
+            default { "1" }
+            parmtag { "script_callback_language" "python" }
+        }
+        groupcollapsible {
+            name    "folder14"
+            label   "Particles"
+            parmtag { "group_default" "1" }
+
+            parm {
+                name    "vis_pointsasspheres"
+                label   "Points as Spheres"
+                type    toggle
+                default { "1" }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "vis_colorbyspeed"
+                label   "Color by Speed"
+                type    toggle
+                default { "1" }
+                range   { 0! 10 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "vis_maxspeed"
+                label   "Max Speed"
+                type    float
+                default { "5" }
+                disablewhen "{ vis_colorbyspeed == 0 }"
+                range   { 0 10 }
+                parmtag { "script_callback_language" "python" }
+                parmtag { "units" "m1s-1" }
+            }
+            parm {
+                name    "vis_ramp"
+                label   "Visualization Ramp"
+                type    ramp_rgb
+                default { "3" }
+                disablewhen "{ vis_colorbyspeed == 0 }"
+                range   { 1! 10 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "parmvop" "1" }
+                parmtag { "rampbasis_var" "vecramp_the_basis_strings" }
+                parmtag { "rampbasisdefault" "linear" }
+                parmtag { "rampcolordefault" "1pos ( 0 ) 1c ( 0 0 1 ) 1interp ( linear ) 2pos ( 0.49936467409133911 ) 2c ( 0 0.5 1 ) 2interp ( linear ) 3pos ( 1 ) 3c ( 1 1 1 ) 3interp ( linear )" }
+                parmtag { "rampcolortype" "rgb" }
+                parmtag { "rampkeys_var" "vecramp_the_key_positions" }
+                parmtag { "rampshowcontrolsdefault" "0" }
+                parmtag { "rampvalues_var" "vecramp_the_key_values" }
+            }
+        }
+
+    }
+
+    group {
+        name    "folder1_5"
+        label   "Advanced"
+
+        groupcollapsible {
+            name    "folder15"
+            label   "Solving"
+            parmtag { "group_default" "1" }
+
+            parm {
+                name    "donarrowband"
+                label   "Enable Particle Narrow Band"
+                type    toggle
+                default { "on" }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "usemgpreconditioner"
+                label   "Use Multigrid Preconditioner for Pressure Projection"
+                type    toggle
+                default { "on" }
+                disablewhen "{ useadaptivepressure == 1 }"
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "useadaptivepressure"
+                label   "Solve Pressure with Adaptivity"
+                type    toggle
+                default { "off" }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "useadaptiveviscosity"
+                label   "Solve Viscosity with Adaptivity"
+                type    toggle
+                default { "on" }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+        parm {
+            name    "explicitcache"
+            label   "Save Checkpoints"
+            type    toggle
+            default { "off" }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        groupcollapsible {
+            name    "folder9"
+            label   "Checkpoints"
+            disablewhen "{ explicitcache == 0 }"
+            parmtag { "sidefx::header_toggle" "explicitcache" }
+
+            parm {
+                name    "checkpoint_basename"
+                label   "Base Name"
+                type    string
+                default { "$HIPNAME.$OS" }
+                menureplace {
+                    "$OS"                                           "Node Name"
+                    "`opname(\"..\")`_$OS"                          "Parent + Node Name"
+                    "$HIPNAME.$OS"                                  "Scene + Node Name"
+                    "`strreplace(opfullpath(\".\"),\"/\",\"_\")`"   "Unique Node Name"
+                }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "editor" "0" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "checkpoint_basedir"
+                label   "Base Folder"
+                type    directory
+                joinnext
+                default { "$HIP/geo" }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "checkpoint_openbasedir"
+                label   "Open Directory"
+                type    button
+                nolabel
+                default { "0" }
+                parmtag { "button_icon" "BUTTONS_folder" }
+                parmtag { "script_callback" "hou.phm().openPath(kwargs)" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "checkpoint_enableversion"
+                label   "Enable Version"
+                type    toggle
+                nolabel
+                joinnext
+                default { "on" }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "checkpoint_version"
+                label   "Version"
+                type    integer
+                default { "1" }
+                disablewhen "{ checkpoint_enableversion != 1 }"
+                range   { 1! 25 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "labelparm8"
+                label   "Output File"
+                type    label
+                default { "`chs(\"checkpoint_basedir\")``ifs(ch(\"checkpoint_enableversion\"), \"/v\"+chs(\"checkpoint_version\"), \"\")`/`chs(\"checkpoint_basename\")``ifs(ch(\"checkpoint_enableversion\"), \"_v\"+chs(\"checkpoint_version\"), \"\")`.\\$SF.sim" }
+                hidewhen "{ explicitcache == 0 }"
+                parmtag { "sidefx::look" "block" }
+            }
+            parm {
+                name    "sepparm4"
+                label   "Separator"
+                type    separator
+                default { "" }
+            }
+            parm {
+                name    "explicitcachensteps"
+                label   "Checkpoint Trail Length"
+                type    integer
+                default { "0" }
+                range   { 0! 10 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "explicitcachecheckpointspacing"
+                label   "Checkpoint Interval"
+                type    integer
+                default { "1" }
+                range   { 1! 100 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+    }
+
+}

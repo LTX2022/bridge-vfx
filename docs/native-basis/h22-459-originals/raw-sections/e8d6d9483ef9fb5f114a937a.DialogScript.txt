@@ -1,0 +1,347 @@
+# Dialog script for popcollisiondetect automatically generated 10/21/14 11:02:23
+
+{
+    name	popcollisiondetect
+    script	popcollisiondetect
+    label	"POP Collision Detect"
+
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Sub-Network Input #1"
+
+    parm {
+	name	"activate"
+	label	"Activation"
+	type	float
+	default	{ "1" }
+	range	{ 0 1 }
+	export	none
+    }
+    parm {
+	name	"usegroup"
+	label	"Label"
+	type	toggle
+	nolabel
+	joinnext
+	default	{ "0" }
+	range	{ 0 1 }
+	export	none
+    }
+    parm {
+	name	"partgroup"
+	label	"Group"
+	type	string
+	default	{ "" }
+	disablewhen	"{ usegroup == 0 }"
+	menutoggle	{
+	    [ "import doppoptoolutils" ]
+	    [ "" ]
+	    [ "return doppoptoolutils.buildGroupMenu(hou.pwd())" ]
+	    language	python
+	}
+	range	{ 0 1 }
+	export	none
+    }
+    parm {
+	name	"showguide"
+	label	"Show Guide Geometry"
+	type	toggle
+	nolabel
+	joinnext
+	default	{ "on" }
+	range	{ 0 1 }
+	export	none
+	parmtag	{ "autoscope" "0000000000000000" }
+    }
+    parm {
+	name	"guidecolor"
+	label	"Guide"
+	type	color
+	size	3
+	default	{ "0" "0" "1" }
+	disablewhen	"{ showguide == 0 }"
+	range	{ 0! 1! }
+	export	none
+	parmtag	{ "autoscope" "0000000000000000" }
+    }
+    group {
+	name	"folder1"
+	label	"Collision"
+
+	parm {
+	    name	"collider"
+	    label	"Collision Target"
+	    type	ordinal
+	    default	{ "soppath" }
+	    menu	{
+		"relationship"	"Relationship"
+		"dopobjects"	"DOP Objects"
+		"soppath"	"SOP"
+		"first"	"First Context Geometry"
+		"second"	"Second Context Geometry"
+		"third"	"Third Context Geometry"
+		"fourth"	"Fourth Context Geometry"
+	    }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"soppath"
+	    label	"SOP Path"
+	    type	oppath
+	    default	{ "" }
+	    hidewhen	"{ collider != soppath }"
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "opfilter" "!!SOP!!" }
+	    parmtag	{ "oprelative" "." }
+	}
+	parm {
+	    name	"relationship"
+	    label	"Relationship"
+	    type	string
+	    default	{ "SIM_RelationshipCollide" }
+	    hidewhen	"{ collider != relationship }"
+	    menu	{
+		[ "opmenu -l gascollisiondetect1 relationship" ]
+	    }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"dopobjects"
+	    label	"DOP Objects"
+	    type	string
+	    default	{ "" }
+	    hidewhen	"{ collider != dopobjects }"
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"animategeo"
+	    label	"Use Deforming Geometry"
+	    type	toggle
+	    default	{ "on" }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"defaultpscale"
+	    label	"Default Particle Size"
+	    type	float
+	    default	{ "0.001" }
+	    range	{ 0 10 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+    }
+
+    group {
+	name	"folder1_1"
+	label	"Behavior"
+
+	parm {
+	    name	"accumulate"
+	    label	"Accumulate Hits"
+	    type	toggle
+	    default	{ "off" }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"creategroup"
+	    label	"Group"
+	    type	toggle
+	    nolabel
+	    joinnext
+	    default	{ "0" }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"creategroupname"
+	    label	"Group Name"
+	    type	string
+	    default	{ "" }
+	    disablewhen	"{ creategroup == 0 }"
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"preservegroup"
+	    label	"Preserve Group"
+	    type	toggle
+	    default	{ "off" }
+	    disablewhen	"{ creategroup == 0 }"
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"usecolor"
+	    label	"Color Hits"
+	    type	toggle
+	    nolabel
+	    joinnext
+	    default	{ "1" }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"hitcolor"
+	    label	"Color Hits"
+	    type	color
+	    size	3
+	    default	{ "1" "0" "0" }
+	    disablewhen	"{ usecolor == 0 }"
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"addhittotal"
+	    label	"Compute Hit Total"
+	    type	toggle
+	    default	{ "1" }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"movetohit"
+	    label	"Move to Hit"
+	    type	toggle
+	    default	{ "off" }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"response"
+	    label	"Response"
+	    type	ordinal
+	    default	{ "none" }
+	    menu	{
+		"none"	"None"
+		"die"	"Die"
+		"stopped"	"Stop"
+		"stuck"	"Stick"
+		"slide"	"Slide"
+	    }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"labelparm"
+	    label	"Label"
+	    type	label
+	    nolabel
+	    default	{ "Note: Bouncing is handled using Static or RBD Objects" }
+	    range	{ 0 1 }
+	    export	none
+	}
+    }
+
+    group {
+	name	"folder1_2"
+	label	"Attributes"
+
+	parm {
+	    name	"addhitnum"
+	    label	"Add Hit Num Attribute"
+	    type	toggle
+	    default	{ "on" }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"addhitpos"
+	    label	"Add Hit Pos Attribute"
+	    type	toggle
+	    default	{ "on" }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"addhitnml"
+	    label	"Add Hit Normal Attribute"
+	    type	toggle
+	    default	{ "on" }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"addhitv"
+	    label	"Add Hit Velocity Attribute"
+	    type	toggle
+	    default	{ "on" }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"addhittime"
+	    label	"Add Hit Time Attribute"
+	    type	toggle
+	    default	{ "on" }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"addhitpath"
+	    label	"Add Hit Path Attribute"
+	    type	toggle
+	    default	{ "on" }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"addhitprim"
+	    label	"Add Hit Prim Attribute"
+	    type	toggle
+	    default	{ "on" }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"addhituv"
+	    label	"Add Hit UV Attribute"
+	    type	toggle
+	    default	{ "on" }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+    }
+
+    group {
+	name	"folder1_3"
+	label	"Bindings"
+
+	parm {
+	    name	"bindgeo"
+	    label	"Geometry"
+	    type	string
+	    default	{ "Geometry" }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+    }
+
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "bridge-vfx",
+  "version": "0.1.0",
+  "description": "Bridge Houdini and Nuke workflows through the existing local graph MCP controller.",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Bridge VFX",
+        "shortDescription": "Editable Houdini and Nuke workflows with verified controller evidence"
+      }
+    }
+  }
+}

@@ -1,0 +1,319 @@
+# Dialog script for dopimportfield automatically generated
+
+{
+    name	dopimportfield
+    script	dopimportfield
+    label	"Dop Import Fields"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Sub-Network Input #1"
+    inputlabel	2	"Sub-Network Input #2"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+    outputlabel	1	"Sub-Network Output #1"
+
+    parm {
+        name    "doppath"
+        label   "DOP Network"
+        type    oppath
+        default { "" }
+        range   { 0 1 }
+        parmtag { "opfilter" "!!DOP!!" }
+        parmtag { "oprelative" "." }
+    }
+    parm {
+        name    "dopnode"
+        label   "DOP Node"
+        type    oppath
+        default { "" }
+        range   { 0 1 }
+        parmtag { "oprelative" "." }
+    }
+    parm {
+        name    "defobj"
+        label   "Default Object"
+        type    string
+        default { "" }
+        disablewhen "{ dopnode != \"\" }"
+        range   { 0 1 }
+    }
+    parm {
+        name    "doposxform"
+        label   "Transform Geometry With Position Data"
+        type    toggle
+        default { "on" }
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "doxform"
+        label   "Transform Geometry With Geometry Data"
+        type    toggle
+        default { "on" }
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "computeminmax"
+        label   "Compute Min/Max Values"
+        type    toggle
+        default { "0" }
+        range   { 0 1 }
+    }
+    parm {
+        name    "importsimsettings"
+        label   "Import Simulation Settings"
+        type    toggle
+        default { "1" }
+        range   { 0 1 }
+    }
+    parm {
+        name    "presets"
+        label   "Presets"
+        type    string
+        default { "choose" }
+        menu {
+            "smoke"         "Smoke"
+            "liquid"        "Liquid"
+            "dsdfire"       "Fire (DSD)"
+            "pyro"          "Pyro"
+            "flip"          "FLIP Fluid"
+            "upressmoke"    "Upres Smoke"
+            "upresliquid"   "Upres Liquid"
+            "upresdsdfire"  "Upres Fire (DSD)"
+            "uprespyro"     "Upres Pyro"
+            "particles"     "Particles"
+            "choose"        "Choose"
+        }
+        range   { 0 1 }
+        parmtag { "script_callback" "hou.pwd().hdaModule().invokePresetMenu(kwargs)" }
+        parmtag { "script_callback_language" "python" }
+    }
+    group {
+        name    "folder0"
+        label   "Import"
+
+        multiparm {
+            name    "fields"
+            label    "Fields to Import"
+
+            parm {
+                name    "enable#"
+                label   "Import"
+                type    toggle
+                joinnext
+                default { "1" }
+                range   { 0 1 }
+            }
+            parm {
+                name    "visible#"
+                label   "Visualization"
+                type    ordinal
+                default { "smoke" }
+                menu {
+                    "smoke"         "Smoke"
+                    "rainbow"       "Rainbow"
+                    "iso"           "Isosurface"
+                    "invisible"     "Invisible"
+                    "heightfield"   "Height Field"
+                    "nochange"      "No Change"
+                }
+                range   { 0 1 }
+            }
+            parm {
+                name    "objname#"
+                label   "Object"
+                type    string
+                joinnext
+                default { "" }
+                range   { 0 1 }
+            }
+            parm {
+                name    "fieldname#"
+                label   "Field"
+                type    string
+                default { "" }
+                range   { 0 1 }
+            }
+        }
+
+    }
+
+    group {
+        name    "folder0_1"
+        label   "Compression"
+
+        parm {
+            name    "delete_attributes"
+            label   "Attributes to Delete"
+            type    string
+            default { "" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        multiparm {
+            name    "attribute_numcasts"
+            label    "Attributes to Cast"
+            default 0
+            parmtag { "autoscope" "0000000000000000" }
+
+            parm {
+                name    "attribute_class#"
+                label   "Class"
+                type    string
+                default { "point" }
+                menu {
+                    "detail"    "Detail"
+                    "primitive" "Primitive"
+                    "point"     "Point"
+                    "vertex"    "Vertex"
+                }
+                range   { 0 1 }
+            }
+            parm {
+                name    "attribute_attribs#"
+                label   "Attributes"
+                type    string
+                default { "" }
+                range   { 0 1 }
+            }
+            parm {
+                name    "attribute_precision#"
+                label   "Precision"
+                type    string
+                default { "fpreal32" }
+                menu {
+                    "uint8"     "8-bit unsigned integer"
+                    "int8"      "8-bit signed integer"
+                    "int16"     "16-bit integer"
+                    "int32"     "32-bit integer"
+                    "int64"     "64-bit integer"
+                    "fpreal16"  "16-bit float"
+                    "fpreal32"  "32-bit float"
+                    "fpreal64"  "64-bit float"
+                }
+                range   { 0 1 }
+            }
+        }
+
+        multiparm {
+            name    "compression"
+            label    "Fields to Compress"
+
+            parm {
+                name    "compgroup#"
+                label   "Source Group"
+                type    string
+                default { "" }
+                menutoggle {
+                    [ "opmenu -l -a placeholder_for_menus group" ]
+                }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "constanttol#"
+                label   "Constant Tol"
+                type    float
+                default { "0" }
+                range   { 0! 1 }
+            }
+            parm {
+                name    "quantizetol#"
+                label   "Quantization Tol"
+                type    float
+                default { "0" }
+                range   { 0! 1 }
+            }
+            parm {
+                name    "dither#"
+                label   "Dithering"
+                type    ordinal
+                default { "ordered" }
+                menu {
+                    "none"      "None"
+                    "ordered"   "Ordered"
+                }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "usefp16_#"
+                label   "Use 16bit Float"
+                type    toggle
+                default { "0" }
+                range   { 0 1 }
+            }
+            parm {
+                name    "maskgroup#"
+                label   "Mask Group"
+                type    string
+                default { "" }
+                menutoggle {
+                    [ "opmenu -l -a placeholder_for_menus maskgrp" ]
+                }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "sop_input" "1" }
+            }
+            parm {
+                name    "maskexpand#"
+                label   "Mask Expansion"
+                type    integer
+                default { "1" }
+                range   { 0! 10 }
+            }
+            parm {
+                name    "domaskmin#"
+                label   "Min Mask"
+                type    toggle
+                nolabel
+                joinnext
+                default { "off" }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "maskmin#"
+                label   "Mask Minimum"
+                type    float
+                default { "0" }
+                disablewhen "{ domaskmin# == 0 }"
+                range   { -1 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "domaskmax#"
+                label   "Min Mask"
+                type    toggle
+                nolabel
+                joinnext
+                default { "off" }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "maskmax#"
+                label   "Mask Maximum"
+                type    float
+                default { "1" }
+                disablewhen "{ domaskmax# == 0 }"
+                range   { -1 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "invertmask#"
+                label   "Invert Mask"
+                type    toggle
+                default { "off" }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+        }
+
+    }
+
+}

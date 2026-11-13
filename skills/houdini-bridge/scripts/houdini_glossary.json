@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "description": "Houdini terminology corrections for ASR/OCR post-processing. Users may extend this file.",
+  "corrections": [
+    { "from": "houidni", "to": "Houdini", "case_sensitive": false },
+    { "from": "houdini", "to": "Houdini", "case_sensitive": false },
+    { "from": "solaris", "to": "Solaris", "case_sensitive": false },
+    { "from": "karma", "to": "Karma", "case_sensitive": false },
+    { "from": "vellum", "to": "Vellum", "case_sensitive": false },
+    { "from": "pyro", "to": "Pyro", "case_sensitive": false },
+    { "from": "vex", "to": "VEX", "case_sensitive": false },
+    { "from": "lop", "to": "LOP", "case_sensitive": false },
+    { "from": "sop", "to": "SOP", "case_sensitive": false },
+    { "from": "dop", "to": "DOP", "case_sensitive": false }
+  ]
+}

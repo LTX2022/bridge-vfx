@@ -1,0 +1,11 @@
+{
+  "schema": "bridge.native-fixture-source/1",
+  "file": "vellum-operator-facts.json",
+  "sha256": "5e8063ca5dc84d644bf3b487a661f50afc4b5a898ef09dd4cb1298306b33f3b2",
+  "origin": "preserved takeover candidate outputs/m1-takeover/vellum-domains/operator-facts.json",
+  "content": "unchanged historical version-specific interface capture; not a current native execution receipt",
+  "versions": [
+    "21.0.631",
+    "22.0.429"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+    name	mtlxsurfacematerial
+    script	mtlxsurfacematerial
+    label	"MtlX Surface Material"
+
+    rendermask	mtlx
+    shadertype	material
+    externalshader	1
+
+    input	surface	surfaceshader	"Surfaceshader"
+    input	surface	backsurfaceshader	"Backsurfaceshader"
+    input	displacement	displacementshader	"Displacementshader"
+    output	material	out	"out"
+
+    signature	"NDsurfacematerial"	default	{ surface surface displacement material script=ND_surfacematerial }
+
+    parm {
+        name    "surfaceshader"
+        label   "Surfaceshader"
+        type    string
+        default { "" }
+    }
+    parm {
+        name    "backsurfaceshader"
+        label   "Backsurfaceshader"
+        type    string
+        default { "" }
+    }
+    parm {
+        name    "displacementshader"
+        label   "Displacementshader"
+        type    string
+        default { "" }
+    }
+}

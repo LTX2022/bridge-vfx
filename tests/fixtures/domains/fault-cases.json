@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "id": "smoke_blurry",
+      "pack_id": "pyro_smoke_v1",
+      "feedback": "烟太模糊，不够细",
+      "component": "smoke",
+      "expected_dimensions": ["spatial_detail"],
+      "possible_stages": ["simulation", "render", "composite"],
+      "protected_dimensions": ["silhouette", "timing"],
+      "cache_kind": "houdini_simulation_cache"
+    },
+    {
+      "id": "fire_dull",
+      "pack_id": "pyro_fire_v1",
+      "feedback": "火苗太钝，缺少跳动和锐利的舔舐形态",
+      "component": "fire",
+      "expected_dimensions": ["morphology", "motion", "energy"],
+      "possible_stages": ["simulation", "material", "render", "composite"],
+      "protected_dimensions": ["position", "duration"],
+      "cache_kind": "houdini_simulation_cache"
+    },
+    {
+      "id": "particles_uniform",
+      "pack_id": "particles_v1",
+      "feedback": "粒子太均匀，聚散和大小变化不自然",
+      "component": "particles",
+      "expected_dimensions": ["distribution", "scale"],
+      "possible_stages": ["simulation", "render"],
+      "protected_dimensions": ["trajectory", "duration"],
+      "cache_kind": "houdini_simulation_cache"
+    },
+    {
+      "id": "ocean_flat",
+      "pack_id": "water_ocean_v1",
+      "feedback": "水浪太平，没有参考图里的浪尖层次",
+      "component": "ocean",
+      "expected_dimensions": ["morphology", "spatial_detail"],
+      "possible_stages": ["generation", "lighting", "camera"],
+      "protected_dimensions": ["direction", "horizon"],
+      "cache_kind": "none"
+    },
+    {
+      "id": "flip_chunky",
+      "pack_id": "water_flip_v1",
+      "feedback": "水花太黏、太块，液滴不够细",
+      "component": "flip_splash",
+      "expected_dimensions": ["interaction", "spatial_detail"],
+      "possible_stages": ["simulation", "meshing", "render"],
+      "protected_dimensions": ["splash_height", "timing"],
+      "cache_kind": "houdini_simulation_cache"
+    },
+    {
+      "id": "crowd_mechanical",
+      "pack_id": "crowd_agents_v1",
+      "feedback": "群集行动太机械，所有人速度和动作都一样",
+      "component": "crowd",
+      "expected_dimensions": ["motion", "timing", "distribution"],
+      "possible_stages": ["control", "simulation", "shaping"],
+      "protected_dimensions": ["route", "population"],
+      "cache_kind": "houdini_simulation_cache"
+    },
+    {
+      "id": "swarm_clumped",
+      "pack_id": "swarm_flocking_v1",
+      "feedback": "蜂群挤成一团，没有清楚的分离层次",
+      "component": "swarm",
+      "expected_dimensions": ["distribution", "interaction"],
+      "possible_stages": ["simulation", "render"],
+      "protected_dimensions": ["target", "overall_motion"],
+      "cache_kind": "houdini_simulation_cache"
+    },
+    {
+      "id": "cloth_stiff",
+      "pack_id": "vellum_cloth_v1",
+      "feedback": "布料太硬，褶皱少，而且看起来像塑料",
+      "component": "cloth",
+      "expected_dimensions": ["motion", "spatial_detail", "material"],
+      "possible_stages": ["simulation", "material", "lighting"],
+      "protected_dimensions": ["garment_shape", "contacts"],
+      "cache_kind": "houdini_simulation_cache"
+    },
+    {
+      "id": "softbody_bouncy",
+      "pack_id": "vellum_softbody_grains_v1",
+      "feedback": "软体回弹太快，接触以后一直抖",
+      "component": "softbody",
+      "expected_dimensions": ["motion", "interaction", "timing"],
+      "possible_stages": ["simulation"],
+      "protected_dimensions": ["volume", "collision_shape"],
+      "cache_kind": "houdini_simulation_cache"
+    },
+    {
+      "id": "hair_floating",
+      "pack_id": "hair_fur_v1",
+      "feedback": "毛发飘得像没有重量，还会穿过身体",
+      "component": "hair",
+      "expected_dimensions": ["motion", "interaction"],
+      "possible_stages": ["simulation", "shaping"],
+      "protected_dimensions": ["length", "density"],
+      "cache_kind": "houdini_simulation_cache"
+    },
+    {
+      "id": "rbd_large_fragments",
+      "pack_id": "rbd_destruction_v1",
+      "feedback": "碎块太大，爆开的冲击力也不够",
+      "component": "debris",
+      "expected_dimensions": ["scale", "energy"],
+      "possible_stages": ["generation", "simulation"],
+      "protected_dimensions": ["impact_origin", "event_time"],
+      "cache_kind": "houdini_simulation_cache"
+    },
+    {
+      "id": "procedural_repetition",
+      "pack_id": "procedural_geometry_v1",
+      "feedback": "散布重复感太强，尺寸和朝向都一样",
+      "component": "procedural_geometry",
+      "expected_dimensions": ["distribution", "scale"],
+      "possible_stages": ["generation"],
+      "protected_dimensions": ["count", "bounds"],
+      "cache_kind": "none"
+    },
+    {
+      "id": "material_plastic",
+      "pack_id": "material_lookdev_v1",
+      "feedback": "材质像塑料，高光太宽，表面细节不见了",
+      "component": "material",
+      "expected_dimensions": ["material", "spatial_detail"],
+      "possible_stages": ["material", "lighting", "render", "composite"],
+      "protected_dimensions": ["base_color", "pattern"],
+      "cache_kind": "none"
+    },
+    {
+      "id": "lighting_flat",
+      "pack_id": "lighting_camera_render_v1",
+      "feedback": "画面太平，轮廓和体积关系读不出来",
+      "component": "lighting",
+      "expected_dimensions": ["lighting", "morphology"],
+      "possible_stages": ["lighting", "camera", "render", "composite"],
+      "protected_dimensions": ["material", "simulation"],
+      "cache_kind": "none"
+    },
+    {
+      "id": "comp_halo",
+      "pack_id": "nuke_composite_v1",
+      "feedback": "合成边缘发灰还有光晕，特效没有贴进背景",
+      "component": "composite",
+      "expected_dimensions": ["composite"],
+      "possible_stages": ["composite"],
+      "protected_dimensions": ["effect_detail", "plate"],
+      "cache_kind": "none"
+    },
+    {
+      "id": "explosion_weak",
+      "pack_id": "explosion_composite_v1",
+      "feedback": "爆炸没有冲击力，但烟的形态已经正确",
+      "component": "explosion",
+      "expected_dimensions": ["energy", "timing"],
+      "possible_stages": ["simulation", "lighting", "render", "composite"],
+      "protected_dimensions": ["smoke"],
+      "cache_kind": "component_dependent"
+    }
+  ]
+}

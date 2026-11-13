@@ -1,0 +1,236 @@
+= SOP Import =
+#type: node
+#context: lop
+#internal: sopimport
+#icon: LOP/sopimport
+#group: geometry
+#since: 17.0
+
+"""Imports geometry from a SOP network into the USD scene graph."""
+
+
+== Overview ==
+
+The imported geometry is translated to a native USD representation which may consist of many different native USD primitive types (you can control the hierarchical structure of the imported USD using attributes on the source SOP geometry).
+
+See [how SOP import works|/solaris/sop_import] for detailed information on how the importer converts SOP information into USD.
+
+You can import SOP geometry by sublayering (composing it over the current contents of the scene tree) or referencing (attaching it at a certain branch of the scene tree). (See [sublayering|/solaris/glossary#sublayers] and [referencing|/solaris/glossary#references] for how these work in USD generally.)
+
+The layer containing the imported geometry has source metadata in format that tells Houdini's USD plugins to get the geometry from a SOP node instead of a file on disk.
+
+This node can put the imported geometry in the _active layer_, so it can be modified by LOP nodes connected to this node's output.
+
+In addition to the geometry itself, you can import Houdini attributes on the geometry as USD primvars.
+
+NOTE:
+    This node works by converting SOP geometry into a hierarchy of USD geometry prims, and then importing that USD data into the scene graph tree (by [sublayering or referencing|/solaris/glossary#sublayers]).
+
+    Knowing this will help you interpret some of the parameters, such as "which prim to reference in". They are speaking in terms of how to deal with the already-converted USD geometry prims.
+
+
+== How to ==
+
+:task:Separate polygon meshes by connectivity:
+    # In the SOP network, add a [Connectivity SOP|Node:sop/connectivity].
+
+        * Set the __Connectivity Type__ to __Primitive__.
+        * Set the __Attribute__ to `piece`.
+
+        This creates a `piece` integer attribute on the polygons, where each polygon in a connected island has the same `piece` attribute value as all other polygons in the island.
+
+        Unfortunately, SOP Import can't use an integer attribute to generate paths. We'll need to use this attribute to generate a string attribute.
+
+    # After the Connectivity node, add an [Attribute Create SOP|Node:sop/attribcreate].
+
+        * Set the __Name__ to `path`.
+        * Set the __Class__ to __Primitive__.
+        * Set the __Type__ to __String__.
+        * Set the __String__ value to a name or prim path you want to use for the connected islands. Within the name/path use `@piece` inside backticks. It will be replaced by the value of the `piece` attribute you created above.
+
+        For example, if you have four disconnected polygon islands, and set the `path` attribute to:
+
+        {{{
+        island`@piece`
+        }}}
+
+        Then the islands will be imported as mesh prims named `island0`, `island1`, `island2`, and `island3`, under the __Import Path Prefix__.
+
+
+== Enabling parameters ==
+
+Many parameters on this node are preceded by a checkbox to enable the parameter. These check boxes control which options will actually be authored by this node and passed to the SOP conversion process.
+
+If a parameter is not enabled, the node try to get the value from a detail attribute corresponding that option. You can create these attributes on the geometry with the [USD Configure SOP|Node:sop/usdconfigure]. If it doesn't find an attribute, it uses the default.
+
+Enabling an option on this node overrides the corresponding attribute on the geometry, if it exists.
+
+
+== Tips ==
+
+* You can import packed primitives from SOPs as USD native instances, or as a point instancer.
+
+* This node can generate material bindings using the `usdmaterialpath` string attribute. It can even produce a Material primitive to be bound to.
+
+    See [Bind Materials|#bindmaterials] for details.
+
+* Aside from `usdmaterialpath`, this node can create USD primvars for shading or geometry subsets from the `shop_materialpath` SOP attribute.
+
+    To retrieve both the geometry and generate USD materials for an object authored in Houdini, you can use a SOP Create node, or a combination of a SOP Import to import the geometry, a [Material Library LOP|Node:lop/materiallibrary] to bring in the materials, and a [Assign Material LOP|Node:lop/assignmaterial] to bind the two together.
+
+    You could also use a [Scene Import LOP|Node:lop/sceneimport] to import geometry and materials with a single node, but it provides fewer control over the import process.
+
+* Houdini's shape SOPs (such as box and torus) either create polygonal meshes, or have the option to create polygons instead of mathematical primitives. Even though USD has mathematical cube and torus primitives, if the original SOP output is a polygonal mesh, it will be imported into USD as a polygonal mesh.
+
+
+@parameters
+
+SOP Path:
+    Node path to the SOP node you want to import from.
+
+Load As Reference:
+    #id: asreference
+
+    When this is on, the geometry will be imported as a [payload|/solaris/glossary#payloads]. When this is off, the geometry will be imported by sublayering its hierarchy over the existing scene tree (see [sublayers and references|/solaris/glossary#sublayers]).
+
+Sublayer Style:
+    #id: copycontents
+
+    Only available when __Load As Reference__ is off. By default, geometry imported from SOPs is treated like geometry imported from a file on disk: you can only edit it by applying stronger [opinions|/solaris/glossary#compose] on top. Changing this parameter, allows this node to put the geometry in the _active layer_, so it can be modified by LOP nodes connected to this node's output.
+
+    The node does this by copying the contents generated from the SOP geometry into an anonymous in-memory USD layer. This is slower, but provides more options for how many USD layers you need to write to disk, and what goes in each layer. This is similar to the operation of a [Load Layer for Editing LOP|Node:lop/loadlayer].
+
+    * The __Copy SOP Layer Into New Active Layer__ style creates a new active layer into which the SOP layer contents are copied. 
+    * The __Merge SOP Layer Into Existing Active Layer__ style copies the SOP layer contents into the input node's active layer, resulting in no new layers on the stage.
+
+    NOTE:
+        Inside an [Edit Layer Block|Nodes:editlayer_begin] this parameter will be disabled, and __Merge SOP Layer Into Existing Active Layer__ will be used.
+
+Adjust Transforms for Input Hierarchy:
+    #id: adjustxformsforinput
+
+    Only available when __Load As Reference__ is off. When this is on (the default), the node automatically compensates for transform problems created if you round-trip geometry from LOPs to SOPs (as packed USD primitives) and then back to LOPs again. If you know you are not round-tripping LOPs -> SOP packed USD primitives -> LOPs, you can turn this off to make importing faster.
+
+    Packed Primitives in SOPs only have a single transform, representing the full local-to-world transformation of the packed geometry. If you export a USD geometry primitive to SOPs _as a packed USD primitive_, Houdini flattens the full transformation hierarchy under the USD prim into a single transformation matrix.
+
+    This creates a problem if you then "round-trip" the SOP packed primitive back into LOPs, as the descendants will have their own transforms, which are _also_ now incorporated into the root prim's transform imported from SOPs. This results in an incorrect double-application of the transforms.
+
+    When this parameter is on (the default), the node examines every transformation imported from SOPs, in the context of the prim's location in the scene graph hierarchy. If the prim (or its ancestors) already exist on the input stage, the node inverts the transformations of the ancestor prims, and applies them as additional local transformations on the prim. This ensures that the final world space location of the prim in LOPS will be the same as it was in SOPs.
+
+    If __Copy Contents Into Editable Layer__ is on, the node applies these additional transforms directly to the imported primitives, otherwise the node creates a new active layer and puts the transforms in the new layer as overrides.
+
+Bind Materials:
+    #id: bindmaterials
+    
+    Binds materials to the imported USD primitives based on the `usdmaterialpath` SOP attribute. The `usdmaterialpath` value can specify either the path to a material primitive, or the path to another primitive to copy the material binding from.
+
+    If the __Subset Attributes__ include a `materialBind` SOP attribute, material bindings can also be created for the resulting geometry subsets.
+
+    When creating missing materials, the `usdmaterialreffile` and `usdmaterialrefprim` attributes can optionally be used to author a reference to a material from the specified file.
+
+Reference Type:
+    #id: reftype
+
+    Only available when __Load As Reference__ is on. Control whether the SOP geometry is added to the reference primitive as a `Payload` or `Reference` composition arc. Also indicates whether this new composition arc should be made stronger or weaker than existing composition arcs on this primitive.
+
+    Weaker Payload:
+        Create a `Payload` composition arc that provides weaker opinions than existing payloads.
+
+    Stronger Payload:
+        Create a `Payload` composition arc that provides stronger opinions than existing payloads.
+
+    Weaker Reference:
+        Create a `Reference` composition arc that provides weaker opinions than existing references.
+
+    Stronger Reference:
+        Create a `Reference` composition arc that provides stronger opinions than existing references.
+
+Reference Primitive:
+    #id: refprim
+
+    Only available when __Load As Reference__ is on. This node treats the converted geometry like an external USD geometry file. This controls which root-level prim to import from the USD prim hierarchy generated by converting the SOP geometry. You should leave this set to __Reference Automatically Chosen Primitive__.
+
+    Reference Automatically Chosen Primitive:
+        If the referenced file has a [default primitive|/solaris/glossary#default_prim] set, use that. If there is no default prim, use the first `Xform` prim at the root. If there is no `Xform` prim at the root, use the first root prim of any type.
+
+    Reference Default Primitive:
+        If the referenced file has a [default primitive|/solaris/glossary#default_prim] set, use that. If not, display a warning on this node.
+
+    Reference Specific Primitive:
+        Reference in the scene graph path in the __Reference Primitive Path__ parameter.
+
+Reference Primitive Path:
+    #id: refprimpath
+    #contentfrom: reference#refprimpath
+
+:include reference#primpath:
+
+:include reference#instanceable:
+
+Parent Primitive Kind:
+    #id: parentprimkind
+
+    If the prim at __Primitive Path__ doesn't exist, this node will create it. If it has to create the prim, it will give any intermediate prims it has to create this [kind|/solaris/glossary#kind].
+
+:include reference#parentprimtype:
+
+~~~
+
+Enable Import Group:
+    #id: enable_group
+    When turned on, the __Import Group__ setting is used when translating the SOP geometry to USD.
+    Otherwise, the parameter's default value is used unless a `usdconfiggroup` detail attribute exists on the SOP geometry (for example, from the [USD Configure SOP|Node:sop/usdconfigure]).
+
+Import Group:
+    #id: group
+
+    Turn this on and specify a group name (or a space-separated list of [group syntax|/model/groups]) to import. If you turn this on but leave the field blank, it imports all geometry.
+
+Enable Import Group Type:
+    #id: enable_grouptype
+    When turned on, the __Import Group Type__ setting is used when translating the SOP geometry to USD.
+    Otherwise, the parameter's default value is used unless a `usdconfiggrouptype` detail attribute exists on the SOP geometry (for example, from the [USD Configure SOP|Node:sop/usdconfigure]).
+
+Import Group Type:
+    #id: grouptype
+    Specifies whether the __Import Group__ is a point or primitive group.
+
+Enable Import Path Prefix:
+    #id: enable_pathprefix
+    When turned on, the __Import Path Prefix__ setting is used when translating the SOP geometry to USD.
+    Otherwise, the parameter's default value is used unless a `usdconfigpathprefix` detail attribute exists on the SOP geometry (for example, from the [USD Configure SOP|Node:sop/usdconfigure]).
+
+Import Path Prefix:
+    #id: pathprefix
+
+    If a prim being imported has an automatically generated name (like `mesh_0`) because it had no path primitive, or if it has a path primitive but the path is relative (does not start with `/`), the node automatically prefixes the name/path fragment with this path. This is a way of keeping "un-pathed" prims organized under a single branch. (See [how to create geometry hierarchy|/solaris/sop_import].)
+
+    (The default is `/$OS` which puts "un-pathed" prims under a root prim with the name of this node.)
+
+Enable Layer Save Path:
+    #id: enable_savepath
+    When turned on, the __Layer Save Path__ setting is used when translating the SOP geometry to USD.
+    Otherwise, the parameter's default value is used unless a `usdconfigsavepath` detail attribute exists on the SOP geometry (for example, from the [USD Configure SOP|Node:sop/usdconfigure]).
+
+Layer Save Path:
+    #id: savepath
+
+    When turned on, sets the `Save Path` metadata for the layer containing the geometry to this file path. When you write out USD using a [USD Render ROP|Node:out/usd], the geometry is saved out to a `.usd` layer file using this file path (after [output processing|/solaris/output#processors]).
+
+~~~ Primitive Definitions ~~~
+
+:include _sopimport_shared#primdef_block/:
+
+~~~ Geometry Handling ~~~
+
+:include _sopimport_shared#geohandling_block/:
+
+~~~ Import Data ~~~
+
+:include _sopimport_shared#importdata_block/:
+
+@related
+
+:: [Node:lop/sopcreate]
+:: [Node:sop/usdconfigure]
+:: [Node:sop/usdimport]

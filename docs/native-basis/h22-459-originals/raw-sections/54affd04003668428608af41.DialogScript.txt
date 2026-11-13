@@ -1,0 +1,4103 @@
+# Dialog script for rbdbulletsolver automatically generated
+
+{
+    name	rbdbulletsolver
+    script	gamedev::simple_rbd
+    label	"RBD Bullet Solver"
+
+    help {
+	""
+    }
+
+    inputlabel	1	Geometry
+    inputlabel	2	"Constraint Geometry"
+    inputlabel	3	"Proxy Geometry"
+    inputlabel	4	"Collision Geometry"
+    parmtag { inputisref4 1 }
+    inputlabel	5	"Guide Sim"
+    parmtag { inputisref5 1 }
+    outputlabel	1	Geometry
+    outputlabel	2	"Constraint Geometry"
+    outputlabel	3	"Proxy Geometry"
+    outputlabel	4	"Simulation Points"
+
+    parm {
+        name    "resetsim"
+        label   "Reset Simulation"
+        type    button
+        default { "0" }
+        export  all
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_callback" "" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "startframe"
+        label   "Start Frame"
+        type    integer
+        default { "1" }
+        range   { 1 240 }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    group {
+        name    "folder"
+        label   "Setup"
+
+        groupcollapsible {
+            name    "folder3"
+            label   "General"
+            parmtag { "group_default" "1" }
+
+            parm {
+                name    "usescale"
+                label   "usescale"
+                type    toggle
+                nolabel
+                joinnext
+                default { "0" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "scale"
+                label   "Bullet World Scale"
+                type    float
+                default { "1" }
+                disablewhen "{ usescale == 0 }"
+                range   { 1e-09! 1000 }
+            }
+            parm {
+                name    "timescale"
+                label   "Time Scale"
+                type    float
+                default { "1" }
+                range   { 0 10 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+        }
+
+        groupcollapsible {
+            name    "folder35"
+            label   "Simulation"
+            parmtag { "group_default" "1" }
+
+            parm {
+                name    "substep"
+                label   "Global Substeps"
+                type    integer
+                default { "1" }
+                range   { 1! 10 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "substeps"
+                label   "Bullet Substeps"
+                type    integer
+                default { "10" }
+                range   { 1! 100 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "numiteration"
+                label   "Constraint Iterations"
+                type    integer
+                default { "10" }
+                range   { 1! 100 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "solvefirstframe"
+                label   "Solve on Creation Frame"
+                type    toggle
+                default { "off" }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "useemission"
+                label   "Emit RBDs"
+                type    toggle
+                joinnext
+                default { "0" }
+            }
+            parm {
+                name    "replicate"
+                label   "Replicate RBDs"
+                type    toggle
+                default { "0" }
+            }
+            parm {
+                name    "cacheenabled"
+                label   "Cache Simulation"
+                type    toggle
+                nolabel
+                joinnext
+                default { "on" }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "cachemaxsize"
+                label   "Cache Memory (MB)"
+                type    integer
+                default { "5000" }
+                disablewhen "{ cacheenabled == 0 }"
+                range   { 0! 25000 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+        }
+
+    }
+
+    group {
+        name    "folder_1"
+        label   "Properties"
+
+        groupcollapsible {
+            name    "folder6"
+            label   "Pieces"
+            parmtag { "group_default" "1" }
+
+            parm {
+                name    "sepparm6"
+                label   "Spacer"
+                type    separator
+                invisible
+                default { "" }
+                parmtag { "sidefx::layout_height" "small" }
+                parmtag { "sidefx::look" "blank" }
+            }
+            parm {
+                name    "margin"
+                label   "Collision Padding"
+                type    float
+                default { "0.02" }
+                range   { 0! 0.5 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "labelparm3"
+                label   "Physical"
+                type    label
+                invisible
+                default { "Physical" }
+                parmtag { "sidefx::look" "heading" }
+            }
+            groupsimple {
+                name    "folder4"
+                label   "Physical"
+                parmtag { "group_default" "1" }
+
+                parm {
+                    name    "density"
+                    label   "Density"
+                    type    float
+                    default { "1000" }
+                    range   { 0! 10000 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "inertialtensorstiffness"
+                    label   "Rotational Stiffness"
+                    type    float
+                    default { "1" }
+                    range   { 0 10 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "bounce"
+                    label   "Bounce"
+                    type    float
+                    default { "0.25" }
+                    range   { 0! 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "friction"
+                    label   "Friction"
+                    type    float
+                    default { "1" }
+                    range   { 0! 10 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+            }
+
+            parm {
+                name    "labelparm4"
+                label   "Override Attributes"
+                type    label
+                invisible
+                default { "Override Attributes" }
+                parmtag { "sidefx::look" "heading" }
+            }
+            groupsimple {
+                name    "folder34"
+                label   "Override Attributes"
+                parmtag { "group_default" "1" }
+
+                parm {
+                    name    "overwritefromsop"
+                    label   "Override Attributes from SOP"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "1" }
+                }
+                parm {
+                    name    "overwriteattributes"
+                    label   "Attributes"
+                    type    string
+                    default { "active animated deforming __pin __guide_*" }
+                    disablewhen "{ overwritefromsop == 0 }"
+                    menutoggle {
+                        [ "opmenu -l -a dopnet/rbd_object overwriteattributes" ]
+                    }
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "minactivationimpulseoverride"
+                    label   "Override Activation with Min Activation Impulse"
+                    type    toggle
+                    default { "0" }
+                    disablewhen "{ overwritefromsop == 0 }"
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+        }
+
+        groupcollapsible {
+            name    "folder21"
+            label   "Sleeping"
+            parmtag { "group_default" "1" }
+
+            parm {
+                name    "bullet_linear_sleep_threshold"
+                label   "Linear Threshold"
+                type    float
+                default { "0.8" }
+                range   { 0! 2 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "bullet_angular_sleep_threshold"
+                label   "Angular Threshold"
+                type    float
+                default { "1" }
+                range   { 0! 2 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+        }
+
+    }
+
+    group {
+        name    "folder_2"
+        label   "Collision"
+
+        parm {
+            name    "usecollisions"
+            label   "Enable Collision Geometry"
+            type    toggle
+            default { "1" }
+        }
+        parm {
+            name    "collision_detachfaces"
+            label   "Detach Faces"
+            type    toggle
+            invisible
+            default { "0" }
+            disablewhen "{ usecollisions == 0 }"
+        }
+        groupcollapsible {
+            name    "folder38"
+            label   "Collision Geometry"
+            parmtag { "group_default" "1" }
+            parmtag { "sidefx::header_toggle" "usecollisions" }
+
+            parm {
+                name    "collision_initialstate"
+                label   "Collision Type"
+                type    ordinal
+                default { "animatedstatic" }
+                disablewhen "{ usecollisions == 0 }"
+                menu {
+                    "static"            "Static"
+                    "animatedstatic"    "Animated"
+                    "deformingstatic"   "Deforming"
+                }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "collision_density"
+                label   "Density"
+                type    float
+                invisible
+                default { "1000" }
+                range   { 0! 10 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "collision_inertialtensorstiffness"
+                label   "Rotational Stiffness"
+                type    float
+                invisible
+                default { "1" }
+                range   { 0 10 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            groupsimple {
+                name    "folder12"
+                label   "Collision Shape"
+                disablewhen "{ usecollisions == 0 }"
+                grouptag { "sidefx::look" "blank" }
+
+                parm {
+                    name    "collision_bullet_georep"
+                    label   "Collision Shape"
+                    type    string
+                    default { "convexhull" }
+                    menu {
+                        "convexhull"    "Convex Hull"
+                        "concave"       "Concave"
+                        "box"           "Box"
+                        "capsule"       "Capsule"
+                        "cylinder"      "Cylinder"
+                        "compound"      "Compound"
+                        "sphere"        "Sphere"
+                        "plane"         "Plane"
+                    }
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "collision_margin"
+                    label   "Collision Padding"
+                    type    float
+                    default { "0.02" }
+                    disablewhen "{ collision_detachfaces == 1 }"
+                    range   { 0! 0.5 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+            }
+
+            parm {
+                name    "labelparm5"
+                label   "Physical"
+                type    label
+                invisible
+                default { "Physical" }
+                parmtag { "sidefx::look" "heading" }
+            }
+            groupsimple {
+                name    "folder8"
+                label   "Physical"
+                disablewhen "{ usecollisions == 0 }"
+
+                parm {
+                    name    "collision_bounce"
+                    label   "Bounce"
+                    type    float
+                    default { "0.5" }
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "collision_friction"
+                    label   "Friction"
+                    type    float
+                    default { "1" }
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+            }
+
+            parm {
+                name    "labelparm6"
+                label   "Override Attributes"
+                type    label
+                invisible
+                default { "Override Attributes" }
+                parmtag { "sidefx::look" "heading" }
+            }
+            groupsimple {
+                name    "folder41"
+                label   "Override Attributes"
+                disablewhen "{ usecollisions == 0 }"
+
+                parm {
+                    name    "collision_overwritefromsop"
+                    label   "Overwrite Attributes from SOP"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "off" }
+                    disablewhen "{ usecollisions == 0 }"
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "collision_overwriteattributes"
+                    label   "Attributes"
+                    type    string
+                    default { "active animated deforming" }
+                    disablewhen "{ usecollisions == 0 } { collision_overwritefromsop == 0 }"
+                    menutoggle {
+                        [ "opmenu -l -a dopnet/collision_object overwriteattributes" ]
+                    }
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+        }
+
+        groupcollapsible {
+            name    "setupfolder_2"
+            label   "Ground Collision"
+            parmtag { "group_default" "1" }
+            parmtag { "sidefx::header_parm" "useground" }
+
+            parm {
+                name    "useground"
+                label   "Ground Type"
+                type    integer
+                default { "0" }
+                menu {
+                    "0" "None"
+                    "1" "Ground Plane"
+                    "2" "Height Field"
+                }
+                range   { 0 10 }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "ground_pos"
+                label   "Position"
+                type    vector
+                size    3
+                default { "0" "0" "0" }
+                hidewhen "{ useground != 1 }"
+                range   { -10 10 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "ground_rot"
+                label   "Rotation"
+                type    vector
+                size    3
+                default { "0" "0" "0" }
+                hidewhen "{ useground != 1 }"
+                range   { -1 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "heighfield"
+                label   "Height Field"
+                type    oppath
+                default { "" }
+                hidewhen "{ useground != 2 }"
+                parmtag { "oprelative" "." }
+            }
+            parm {
+                name    "ground_animategeo"
+                label   "Use Deforming Geometry"
+                type    toggle
+                default { "off" }
+                hidewhen "{ useground != 2 }"
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "ground_margin"
+                label   "Collision Padding"
+                type    float
+                default { "0.02" }
+                hidewhen "{ useground != 2 }"
+                range   { 0! 0.5 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            groupcollapsible {
+                name    "folder5"
+                label   "Physical"
+                hidewhen "{ useground == 0 }"
+                parmtag { "group_default" "1" }
+
+                parm {
+                    name    "ground_bounce"
+                    label   "Bounce"
+                    type    float
+                    default { "0.5" }
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "ground_friction"
+                    label   "Friction"
+                    type    float
+                    default { "1" }
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "ground_dynamicfriction"
+                    label   "Dynamic Friction Scale"
+                    type    float
+                    default { "1" }
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+            }
+
+        }
+
+    }
+
+    group {
+        name    "folder_3"
+        label   "Forces"
+
+        parm {
+            name    "addgravity"
+            label   "Gravity"
+            type    toggle
+            nolabel
+            default { "1" }
+            parmtag { "script_callback_language" "python" }
+        }
+        groupcollapsible {
+            name    "folder36"
+            label   "Gravity"
+            parmtag { "sidefx::header_parm" "gravity" }
+            parmtag { "sidefx::header_toggle" "addgravity" }
+
+            parm {
+                name    "gravity"
+                label   "Force"
+                type    vector
+                size    3
+                default { "0" "-9.80665" "0" }
+                disablewhen "{ addgravity == 0 }"
+                range   { -1 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "units" "m1s-2" }
+            }
+        }
+
+        groupcollapsible {
+            name    "folder28"
+            label   "Drag"
+            parmtag { "sidefx::header_parm" "drag_airresist" }
+            parmtag { "sidefx::header_toggle" "adddrag" }
+
+            parm {
+                name    "adddrag"
+                label   "Add Drag"
+                type    toggle
+                default { "off" }
+            }
+            parm {
+                name    "drag_usegroup"
+                label   "Use Group"
+                type    toggle
+                nolabel
+                joinnext
+                default { "off" }
+                disablewhen "{ adddrag == 0 }"
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "drag_partgroup"
+                label   "Group"
+                type    string
+                default { "" }
+                disablewhen "{ adddrag == 0 } { drag_usegroup == 0 }"
+                menutoggle {
+                    [ "opmenu -l -a dopnet/popdrag partgroup" ]
+                }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "drag_airresist"
+                label   "Air Resistance"
+                type    float
+                default { "0.00075" }
+                disablewhen "{ adddrag == 0 }"
+                range   { 0 0.1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "units" "kg1s-1" }
+            }
+            parm {
+                name    "sepparm10"
+                label   "Spacer"
+                type    separator
+                default { "" }
+                parmtag { "sidefx::layout_height" "small" }
+                parmtag { "sidefx::look" "blank" }
+            }
+            parm {
+                name    "drag_windvelocity"
+                label   "Wind Velocity"
+                type    float
+                size    3
+                default { "0" "0" "0" }
+                disablewhen "{ adddrag == 0 }"
+                range   { 0 10 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "parmvop" "1" }
+                parmtag { "shaderparmcontexts" "cvex" }
+                parmtag { "units" "m1s-1" }
+            }
+            parm {
+                name    "drag_ignoremass"
+                label   "Ignore Mass"
+                type    toggle
+                default { "on" }
+                disablewhen "{ adddrag == 0 }"
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "drag_uselocaldrag"
+                label   "Use VEXpressions"
+                type    toggle
+                default { "off" }
+                disablewhen "{ adddrag == 0 }"
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "parmvop" "1" }
+                parmtag { "shaderparmcontexts" "cvex" }
+            }
+            parm {
+                name    "drag_localdragexpression"
+                label   " "
+                type    string
+                nolabel
+                default { "" }
+                disablewhen "{ adddrag == 0 }"
+                hidewhen "{ drag_uselocaldrag == 0 }"
+                menureplace {
+                    [ "import vexpressionmenu" ]
+                    [ "" ]
+                    [ "return vexpressionmenu.buildSnippetMenu('popdrag/localdragexpression', kwargs=kwargs)" ]
+                    language python
+                }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "editor" "1" }
+                parmtag { "editorlang" "vex" }
+                parmtag { "editorlines" "8-40" }
+                parmtag { "script_action" "import vexpressionmenu\n\nnode = kwargs['node']\nparmname = 'drag_localdragexpression'\n\nvexpressionmenu.createSpareParmsFromChCalls(node, parmname)" }
+                parmtag { "script_action_help" "Creates spare parameters for each unique call of ch() " }
+                parmtag { "script_action_icon" "BUTTONS_create_parm_from_ch" }
+            }
+            parm {
+                name    "drag_cwdpath"
+                label   "Evaluation Node Path"
+                type    oppath
+                default { "." }
+                disablewhen "{ adddrag == 0 }"
+                hidewhen "{ drag_uselocaldrag == 0 }"
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "oprelative" "." }
+            }
+        }
+
+        groupcollapsible {
+            name    "folder29"
+            label   "Drag Spin"
+            parmtag { "sidefx::header_parm" "dragspin_spinresist" }
+            parmtag { "sidefx::header_toggle" "adddragspin" }
+
+            parm {
+                name    "adddragspin"
+                label   "Add Drag Spin"
+                type    toggle
+                default { "off" }
+            }
+            parm {
+                name    "dragspin_usegroup"
+                label   "Use Group"
+                type    toggle
+                nolabel
+                joinnext
+                default { "off" }
+                disablewhen "{ adddragspin == 0 }"
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "dragspin_partgroup"
+                label   "Group"
+                type    string
+                default { "" }
+                disablewhen "{ adddragspin == 0 } { dragspin_usegroup == 0 }"
+                menutoggle {
+                    [ "opmenu -l -a dopnet/popdragspin partgroup" ]
+                }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "dragspin_spinresist"
+                label   "Spin Resistance"
+                type    float
+                default { "5e-05" }
+                disablewhen "{ adddragspin == 0 }"
+                range   { 0 0.1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "units" "kg1s-1" }
+            }
+            parm {
+                name    "sepparm9"
+                label   "Spacer"
+                type    separator
+                default { "" }
+                parmtag { "sidefx::layout_height" "small" }
+                parmtag { "sidefx::look" "blank" }
+            }
+            parm {
+                name    "dragspin_goalaxis"
+                label   "Goal Axis"
+                type    float
+                size    3
+                default { "0" "1" "0" }
+                disablewhen "{ adddragspin == 0 }"
+                range   { 0 10 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "parmvop" "1" }
+                parmtag { "shaderparmcontexts" "cvex" }
+                parmtag { "units" "m1s-1" }
+            }
+            parm {
+                name    "dragspin_goalspinspeed"
+                label   "Goal Spin Speed"
+                type    float
+                default { "0" }
+                disablewhen "{ adddragspin == 0 }"
+                range   { 0 10 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "dragspin_localdrag"
+                label   "Axis Relative to Particle's Orientation"
+                type    toggle
+                default { "on" }
+                disablewhen "{ adddragspin == 0 }"
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "dragspin_uselocaldrag"
+                label   "Use VEXpressions"
+                type    toggle
+                default { "off" }
+                disablewhen "{ adddragspin == 0 }"
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "parmvop" "1" }
+                parmtag { "shaderparmcontexts" "cvex" }
+            }
+            parm {
+                name    "dragspin_localdragexpression"
+                label   " "
+                type    string
+                nolabel
+                default { "" }
+                disablewhen "{ adddragspin == 0 }"
+                hidewhen "{ dragspin_uselocaldrag == 0 }"
+                menureplace {
+                    [ "import vexpressionmenu" ]
+                    [ "" ]
+                    [ "return vexpressionmenu.buildSnippetMenu('popdragspin/localdragexpression', kwargs=kwargs)" ]
+                    language python
+                }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "editor" "1" }
+                parmtag { "editorlang" "vex" }
+                parmtag { "editorlines" "8-40" }
+                parmtag { "script_action" "import vexpressionmenu\n\nnode = kwargs['node']\nparmname = 'dragspin_localdragexpression'\n\nvexpressionmenu.createSpareParmsFromChCalls(node, parmname)" }
+                parmtag { "script_action_help" "Creates spare parameters for each unique call of ch() " }
+                parmtag { "script_action_icon" "BUTTONS_create_parm_from_ch" }
+            }
+            parm {
+                name    "dragspin_cwdpath"
+                label   "Evaluation Node Path"
+                type    oppath
+                default { "." }
+                disablewhen "{ adddragspin == 0 }"
+                hidewhen "{ dragspin_uselocaldrag == 0 }"
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "oprelative" "." }
+            }
+        }
+
+    }
+
+    group {
+        name    "folder_4"
+        label   "Constraints"
+
+        parm {
+            name    "enable_constraintbreaks"
+            label   "Enable Break Treshold"
+            type    toggle
+            default { "1" }
+            parmtag { "script_callback_language" "python" }
+        }
+        groupcollapsible {
+            name    "folder26_1"
+            label   "Break Thresholds"
+            disablewhen "{ enable_constraintbreaks == 0 }"
+            parmtag { "group_default" "1" }
+            parmtag { "sidefx::header_toggle" "enable_constraintbreaks" }
+
+            multiswitcher {
+                name    "breaks"
+                label    "Number of Breaks"
+                default 1
+                disablewhen "{ constraint_reloadfromsops == 1 }"
+
+                parm {
+                    name    "constraint_names#"
+                    label   "Constraint Names"
+                    type    string
+                    default { "Soft Hard" }
+                    menutoggle {
+                        [ "kwargs['node'].hdaViewerStateModule().getConstraintNames(kwargs)" ]
+                        language python
+                    }
+                }
+                parm {
+                    name    "constraint_group#"
+                    label   "Group"
+                    type    string
+                    default { "" }
+                    menutoggle {
+                        [ "opmenu -l -a store_primid group" ]
+                    }
+                    parmtag { "script_action" "import soputils\nkwargs['geometrytype'] = hou.geometryType.Primitives\nkwargs['inputindex'] = 1\nsoputils.selectGroupParm(kwargs)" }
+                    parmtag { "script_action_help" "Select geometry from an available viewport." }
+                    parmtag { "script_action_icon" "BUTTONS_reselect" }
+                }
+                parm {
+                    name    "constraint_mode#"
+                    label   "Mode"
+                    type    integer
+                    default { "0" }
+                    menu {
+                        "0" "Delete Constraints"
+                        "1" "Switch to Next Constraint"
+                    }
+                    range   { 0 10 }
+                }
+                parm {
+                    name    "constraint_useatframe#"
+                    label   "At Frame"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "0" }
+                }
+                parm {
+                    name    "constraint_atframe#"
+                    label   "At Frame"
+                    type    float
+                    joinnext
+                    default { "0" }
+                    disablewhen "{ constraint_useatframe# == 0 }"
+                    range   { 0 100 }
+                }
+                parm {
+                    name    "constraint_relatframe#"
+                    label   "Relative to Start Frame"
+                    type    toggle
+                    default { "0" }
+                    disablewhen "{ constraint_useatframe# == 0 }"
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "constraint_usefromframe#"
+                    label   "From Frame"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "0" }
+                }
+                parm {
+                    name    "constraint_fromframe#"
+                    label   "From Frame"
+                    type    float
+                    joinnext
+                    default { "0" }
+                    disablewhen "{ constraint_usefromframe# == 0 }"
+                    range   { 0 100 }
+                }
+                parm {
+                    name    "constraint_relfromframe#"
+                    label   "Relative to Start Frame"
+                    type    toggle
+                    default { "0" }
+                    disablewhen "{ constraint_usefromframe# == 0 }"
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "constraint_useangle#"
+                    label   "Useangle"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "off" }
+                    range   { 0 10 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "constraint_anglethreshold#"
+                    label   "Angle Threshold"
+                    type    float
+                    joinnext
+                    default { "0" }
+                    disablewhen "{ constraint_useangle# == 0 }"
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "constraint_scaleangle#"
+                    label   "scaleangle"
+                    type    integer
+                    nolabel
+                    joinnext
+                    default { "0" }
+                    disablewhen "{ constraint_useangle# == 0 }"
+                    menu {
+                        "0" "No Scaling"
+                        "1" "Scale by Attribute"
+                    }
+                    range   { 0 10 }
+                }
+                parm {
+                    name    "constraint_useanglevar#"
+                    label   "Var"
+                    type    toggle
+                    nolabel
+                    default { "0" }
+                    disablewhen "{ constraint_useangle# == 0 }"
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "constraint_anglevar#"
+                    label   "Angle Variance"
+                    type    float
+                    default { "0.1" }
+                    hidewhen "{ constraint_useangle# == 0 } { constraint_useanglevar# == 0 }"
+                    range   { 0! 1! }
+                }
+                parm {
+                    name    "constraint_angleattrib#"
+                    label   "Angle Attribute"
+                    type    string
+                    joinnext
+                    default { "" }
+                    hidewhen "{ constraint_useangle# == 0 } { constraint_scaleangle# == 0 }"
+                    menureplace {
+                        [ "node = kwargs['node']" ]
+                        [ "geo = node.node('IN_CONSTRAINT_GEOMETRY').geometry()" ]
+                        [ "attribs = sorted([x.name() for x in geo.primAttribs() if x.size() == 1 and x.dataType() == hou.attribData.Float])" ]
+                        [ "return [x for x in attribs for y in range(2)]" ]
+                        language python
+                    }
+                }
+                parm {
+                    name    "constraint_angleattribupdate#"
+                    label   "Update from Input"
+                    type    toggle
+                    default { "0" }
+                    disablewhen "{ useemission == 1 }"
+                    hidewhen "{ constraint_useangle# == 0 } { constraint_scaleangle# == 0 }"
+                }
+                parm {
+                    name    "constraint_usedistance#"
+                    label   "Usedistance"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "on" }
+                    range   { 0 10 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "constraint_distancethreshold#"
+                    label   "Distance Threshold"
+                    type    float
+                    joinnext
+                    default { "1" }
+                    disablewhen "{ constraint_usedistance# == 0 }"
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "constraint_scaledistance#"
+                    label   "scaledistance"
+                    type    integer
+                    nolabel
+                    joinnext
+                    default { "0" }
+                    disablewhen "{ constraint_usedistance# == 0 }"
+                    menu {
+                        "0" "No Scaling"
+                        "1" "Scale by Attribute"
+                    }
+                    range   { 0 10 }
+                }
+                parm {
+                    name    "constraint_usedistancevar#"
+                    label   "Var"
+                    type    toggle
+                    nolabel
+                    default { "0" }
+                    disablewhen "{ constraint_usedistance# == 0 }"
+                }
+                parm {
+                    name    "constraint_distancevar#"
+                    label   "Distance Variance"
+                    type    float
+                    default { "0.1" }
+                    hidewhen "{ constraint_usedistance# == 0 } { constraint_usedistancevar# == 0 }"
+                    range   { 0! 1! }
+                }
+                parm {
+                    name    "constraint_distanceattrib#"
+                    label   "Distance Attribute"
+                    type    string
+                    joinnext
+                    default { "" }
+                    hidewhen "{ constraint_usedistance# == 0 } { constraint_scaledistance# == 0 }"
+                    menureplace {
+                        [ "node = kwargs['node']" ]
+                        [ "geo = node.node('IN_CONSTRAINT_GEOMETRY').geometry()" ]
+                        [ "attribs = sorted([x.name() for x in geo.primAttribs() if x.size() == 1 and x.dataType() == hou.attribData.Float])" ]
+                        [ "return [x for x in attribs for y in range(2)]" ]
+                        language python
+                    }
+                }
+                parm {
+                    name    "constraint_distanceattribupdate#"
+                    label   "Update from Input"
+                    type    toggle
+                    default { "0" }
+                    disablewhen "{ useemission == 1 }"
+                    hidewhen "{ constraint_usedistance# == 0 } { constraint_scaledistance# == 0 }"
+                }
+                parm {
+                    name    "constraint_useforce#"
+                    label   "Useforce"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "off" }
+                    range   { 0 10 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "constraint_forcethreshold#"
+                    label   "Force Threshold"
+                    type    float
+                    joinnext
+                    default { "0" }
+                    disablewhen "{ constraint_useforce# == 0 }"
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "constraint_scaleforce#"
+                    label   "scaleforce"
+                    type    integer
+                    nolabel
+                    joinnext
+                    default { "0" }
+                    disablewhen "{ constraint_useforce# == 0 }"
+                    menu {
+                        "0" "No Scaling"
+                        "1" "Scale by Attribute"
+                    }
+                    range   { 0 10 }
+                }
+                parm {
+                    name    "constraint_useforcevar#"
+                    label   "Var"
+                    type    toggle
+                    nolabel
+                    default { "0" }
+                    disablewhen "{ constraint_useforce# == 0 }"
+                }
+                parm {
+                    name    "constraint_forcevar#"
+                    label   "Force Variance"
+                    type    float
+                    default { "0.1" }
+                    hidewhen "{ constraint_useforce# == 0 } { constraint_useforcevar# == 0 }"
+                    range   { 0! 1! }
+                }
+                parm {
+                    name    "constraint_forceattrib#"
+                    label   "Force Attribute"
+                    type    string
+                    joinnext
+                    default { "" }
+                    hidewhen "{ constraint_useforce# == 0 } { constraint_scaleforce# == 0 }"
+                    menureplace {
+                        [ "node = kwargs['node']" ]
+                        [ "geo = node.node('IN_CONSTRAINT_GEOMETRY').geometry()" ]
+                        [ "attribs = sorted([x.name() for x in geo.primAttribs() if x.size() == 1 and x.dataType() == hou.attribData.Float])" ]
+                        [ "return [x for x in attribs for y in range(2)]" ]
+                        language python
+                    }
+                }
+                parm {
+                    name    "constraint_forceattribupdate#"
+                    label   "Update from Input"
+                    type    toggle
+                    default { "0" }
+                    disablewhen "{ useemission == 1 }"
+                    hidewhen "{ constraint_useforce# == 0 } { constraint_scaleforce# == 0 }"
+                }
+                parm {
+                    name    "constraint_useimpact#"
+                    label   "Useimpact"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "off" }
+                    range   { 0 10 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "constraint_impactthreshold#"
+                    label   "Impact Threshold"
+                    type    float
+                    joinnext
+                    default { "0" }
+                    disablewhen "{ constraint_useimpact# == 0 }"
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "constraint_scaleimpact#"
+                    label   "scaleimpact"
+                    type    integer
+                    nolabel
+                    joinnext
+                    default { "0" }
+                    disablewhen "{ constraint_useimpact# == 0 }"
+                    menu {
+                        "0" "No Scaling"
+                        "1" "Scale by Attribute"
+                    }
+                    range   { 0 10 }
+                }
+                parm {
+                    name    "constraint_useimpactvar#"
+                    label   "Var"
+                    type    toggle
+                    nolabel
+                    default { "0" }
+                    disablewhen "{ constraint_useimpact# == 0 }"
+                }
+                parm {
+                    name    "constraint_impactvar#"
+                    label   "Impact Variance"
+                    type    float
+                    default { "0.1" }
+                    hidewhen "{ constraint_useimpact# == 0 } { constraint_useimpactvar# == 0 }"
+                    range   { 0! 1! }
+                }
+                parm {
+                    name    "constraint_impactattrib#"
+                    label   "Impact Attribute"
+                    type    string
+                    joinnext
+                    default { "" }
+                    hidewhen "{ constraint_useimpact# == 0 } { constraint_scaleimpact# == 0 }"
+                    menureplace {
+                        [ "node = kwargs['node']" ]
+                        [ "geo = node.node('IN_CONSTRAINT_GEOMETRY').geometry()" ]
+                        [ "attribs = sorted([x.name() for x in geo.primAttribs() if x.size() == 1 and x.dataType() == hou.attribData.Float])" ]
+                        [ "return [x for x in attribs for y in range(2)]" ]
+                        language python
+                    }
+                }
+                parm {
+                    name    "constraint_impactattribupdate#"
+                    label   "Update from Input"
+                    type    toggle
+                    default { "0" }
+                    disablewhen "{ useemission == 1 }"
+                    hidewhen "{ constraint_useimpact# == 0 } { constraint_scaleimpact# == 0 }"
+                }
+                parm {
+                    name    "constraint_usetorque#"
+                    label   "Usetorque"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "off" }
+                    range   { 0 10 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "constraint_torquethreshold#"
+                    label   "Torque Threshold"
+                    type    float
+                    joinnext
+                    default { "0" }
+                    disablewhen "{ constraint_usetorque# == 0 }"
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "constraint_scaletorque#"
+                    label   "scaletorque"
+                    type    integer
+                    nolabel
+                    joinnext
+                    default { "0" }
+                    disablewhen "{ constraint_usetorque# == 0 }"
+                    menu {
+                        "0" "No Scaling"
+                        "1" "Scale by Attribute"
+                    }
+                    range   { 0 10 }
+                }
+                parm {
+                    name    "constraint_usetorquevar#"
+                    label   "Var"
+                    type    toggle
+                    nolabel
+                    default { "0" }
+                    disablewhen "{ constraint_usetorque# == 0 }"
+                }
+                parm {
+                    name    "constraint_torquevar#"
+                    label   "Torque Variance"
+                    type    float
+                    default { "0.1" }
+                    hidewhen "{ constraint_usetorque# == 0 } { constraint_usetorquevar# == 0 }"
+                    range   { 0! 1! }
+                }
+                parm {
+                    name    "constraint_torqueattrib#"
+                    label   "Torque Attribute"
+                    type    string
+                    joinnext
+                    default { "" }
+                    hidewhen "{ constraint_usetorque# == 0 } { constraint_scaletorque# == 0 }"
+                    menureplace {
+                        [ "node = kwargs['node']" ]
+                        [ "geo = node.node('IN_CONSTRAINT_GEOMETRY').geometry()" ]
+                        [ "attribs = sorted([x.name() for x in geo.primAttribs() if x.size() == 1 and x.dataType() == hou.attribData.Float])" ]
+                        [ "return [x for x in attribs for y in range(2)]" ]
+                        language python
+                    }
+                }
+                parm {
+                    name    "constraint_torqueattribupdate#"
+                    label   "Update from Input"
+                    type    toggle
+                    default { "0" }
+                    disablewhen "{ useemission == 1 }"
+                    hidewhen "{ constraint_usetorque# == 0 } { constraint_scaletorque# == 0 }"
+                }
+                parm {
+                    name    "constraint_useplasticflow#"
+                    label   "Useplasticflow"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "off" }
+                    range   { 0 10 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "constraint_plasticflowthreshold#"
+                    label   "Plastic Flow Threshold"
+                    type    float
+                    joinnext
+                    default { "0" }
+                    disablewhen "{ constraint_useplasticflow# == 0 }"
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "constraint_scaleplasticflow#"
+                    label   "scaleplasticflow"
+                    type    integer
+                    nolabel
+                    joinnext
+                    default { "0" }
+                    disablewhen "{ constraint_useplasticflow# == 0 }"
+                    menu {
+                        "0" "No Scaling"
+                        "1" "Scale by Attribute"
+                    }
+                    range   { 0 10 }
+                }
+                parm {
+                    name    "constraint_useplasticflowvar#"
+                    label   "Var"
+                    type    toggle
+                    nolabel
+                    default { "0" }
+                    disablewhen "{ constraint_useplasticflow# == 0 }"
+                }
+                parm {
+                    name    "constraint_plasticflowvar#"
+                    label   "Plastic Flow Variance"
+                    type    float
+                    default { "0.1" }
+                    hidewhen "{ constraint_useplasticflow# == 0 } { constraint_useplasticflowvar# == 0 }"
+                    range   { 0! 1! }
+                }
+                parm {
+                    name    "constraint_plasticflowattrib#"
+                    label   "Plastic Flow Attribute"
+                    type    string
+                    joinnext
+                    default { "" }
+                    hidewhen "{ constraint_useplasticflow# == 0 } { constraint_scaleplasticflow# == 0 }"
+                    menureplace {
+                        [ "node = kwargs['node']" ]
+                        [ "geo = node.node('IN_CONSTRAINT_GEOMETRY').geometry()" ]
+                        [ "attribs = sorted([x.name() for x in geo.primAttribs() if x.size() == 1 and x.dataType() == hou.attribData.Float])" ]
+                        [ "return [x for x in attribs for y in range(2)]" ]
+                        language python
+                    }
+                }
+                parm {
+                    name    "constraint_plasticflowattribupdate#"
+                    label   "Update from Input"
+                    type    toggle
+                    default { "0" }
+                    disablewhen "{ useemission == 1 }"
+                    hidewhen "{ constraint_useplasticflow# == 0 } { constraint_scaleplasticflow# == 0 }"
+                }
+                parm {
+                    name    "constraint_useangularplasticflow#"
+                    label   "Useangularplasticflow"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "off" }
+                    range   { 0 10 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "constraint_angularplasticflowthreshold#"
+                    label   "Angular Plastic Flow Threshold"
+                    type    float
+                    joinnext
+                    default { "0" }
+                    disablewhen "{ constraint_useangularplasticflow# == 0 }"
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "constraint_scaleangularplasticflow#"
+                    label   "scaleangularplasticflow"
+                    type    integer
+                    nolabel
+                    joinnext
+                    default { "0" }
+                    disablewhen "{ constraint_useangularplasticflow# == 0 }"
+                    menu {
+                        "0" "No Scaling"
+                        "1" "Scale by Attribute"
+                    }
+                    range   { 0 10 }
+                }
+                parm {
+                    name    "constraint_useangularplasticflowvar#"
+                    label   "Var"
+                    type    toggle
+                    nolabel
+                    default { "0" }
+                    disablewhen "{ constraint_useangularplasticflow# == 0 }"
+                }
+                parm {
+                    name    "constraint_angularplasticflowvar#"
+                    label   "Angular Plastic Flow Variance"
+                    type    float
+                    default { "0.1" }
+                    hidewhen "{ constraint_useangularplasticflow# == 0 } { constraint_useangularplasticflowvar# == 0 }"
+                    range   { 0! 1! }
+                }
+                parm {
+                    name    "constraint_angularplasticflowattrib#"
+                    label   "Angular Plastic Flow Attribute"
+                    type    string
+                    joinnext
+                    default { "" }
+                    hidewhen "{ constraint_useangularplasticflow# == 0 } { constraint_scaleangularplasticflow# == 0 }"
+                    menureplace {
+                        [ "node = kwargs['node']" ]
+                        [ "geo = node.node('IN_CONSTRAINT_GEOMETRY').geometry()" ]
+                        [ "attribs = sorted([x.name() for x in geo.primAttribs() if x.size() == 1 and x.dataType() == hou.attribData.Float])" ]
+                        [ "return [x for x in attribs for y in range(2)]" ]
+                        language python
+                    }
+                }
+                parm {
+                    name    "constraint_angularplasticflowattribupdate#"
+                    label   "Update from Input"
+                    type    toggle
+                    default { "0" }
+                    disablewhen "{ useemission == 1 }"
+                    hidewhen "{ constraint_useangularplasticflow# == 0 } { constraint_scaleangularplasticflow# == 0 }"
+                }
+                parm {
+                    name    "usesnippet#"
+                    label   "Use VEX Snippet"
+                    type    toggle
+                    default { "0" }
+                }
+                parm {
+                    name    "snippet#"
+                    label   "Snippet"
+                    type    string
+                    nolabel
+                    default { "// Second Input: Bullet Packed Geo\n// Third Input: SOP Geometry \n// Fourth Input: SOP Constraint Geometry \n//    use i@__primid for finding SOP constraint primitive number" }
+                    disablewhen "{ usesnippet# == 0 }"
+                    hidewhen "{ usesnippet# == 0 }"
+                    menureplace {
+                        [ "import vexpressionmenu" ]
+                        [ "" ]
+                        [ "return vexpressionmenu.buildSnippetMenu('rbdbulletsolver/constraintsnippet', kwargs=kwargs)" ]
+                        language python
+                    }
+                    parmtag { "editor" "1" }
+                    parmtag { "editorlang" "vex" }
+                    parmtag { "script_action" "import vexpressionmenu\n\nnode = kwargs['node']\nparmname = kwargs['parmtuple'].name()\n\nvexpressionmenu.createSpareParmsFromChCalls(node, parmname)" }
+                    parmtag { "script_action_help" "Creates spare parameters for each unique call of ch() " }
+                    parmtag { "script_action_icon" "BUTTONS_create_parm_from_ch" }
+                }
+            }
+
+            parm {
+                name    "vexpressionsoppath"
+                label   "VEX Snippet SOP Path"
+                type    oppath
+                default { "" }
+                disablewhen "{ constraint_reloadfromsops == 1 }"
+                parmtag { "oprelative" "." }
+            }
+        }
+
+        parm {
+            name    "labelparm7"
+            label   "Override Attributes"
+            type    label
+            invisible
+            default { "Override Attributes" }
+            parmtag { "sidefx::look" "heading" }
+        }
+        groupsimple {
+            name    "folder13"
+            label   "Override Attributes"
+            disablewhen "{ useemission == 1 } { constraint_reloadfromsops == 1 }"
+            parmtag { "group_default" "1" }
+
+            parm {
+                name    "enable_constraintupdates"
+                label   "Enable Attribute Update from SOPs"
+                type    toggle
+                nolabel
+                joinnext
+                default { "0" }
+                disablewhen "{ constraint_reloadfromsops == 1 } { useemission == 1 }"
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "constraint_attributes"
+                label   "Attributes"
+                type    string
+                default { "" }
+                disablewhen "{ enable_constraintupdates == 0 }"
+                menutoggle {
+                    [ "node = kwargs[\"node\"]" ]
+                    [ "geo = node.node(\"IN_CONSTRAINT_GEOMETRY\").geometry()" ]
+                    [ "return [y for y in sorted([x.name() for x in geo.primAttribs()]) for x in range(2)]" ]
+                    language python
+                }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "constraint_attribgroup"
+                label   "Group"
+                type    string
+                default { "" }
+                disablewhen "{ enable_constraintupdates == 0 }"
+                menutoggle {
+                    [ "opmenu -l -a store_primid group" ]
+                }
+                parmtag { "script_action" "import soputils\nkwargs['geometrytype'] = hou.geometryType.Primitives\nkwargs['inputindex'] = 1\nsoputils.selectGroupParm(kwargs)" }
+                parmtag { "script_action_help" "Select geometry from an available viewport." }
+                parmtag { "script_action_icon" "BUTTONS_reselect" }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+        parm {
+            name    "constraint_keepbroken"
+            label   "Export Broken Constraints"
+            type    toggle
+            default { "0" }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    group {
+        name    "folder_5"
+        label   "Guide"
+        disablewhentab "{ useemission == 1 }"
+
+        parm {
+            name    "useguides"
+            label   "Enable Guides"
+            type    toggle
+            default { "0" }
+            parmtag { "script_callback" "kwargs['node'].hdaViewerStateModule().showguidevis(kwargs)" }
+            parmtag { "script_callback_language" "python" }
+        }
+        groupcollapsible {
+            name    "folder7"
+            label   "Enable Guides"
+            parmtag { "group_default" "1" }
+            parmtag { "sidefx::header_toggle" "useguides" }
+
+            parm {
+                name    "guide_method"
+                label   "Guide Method"
+                type    integer
+                default { "0" }
+                disablewhen "{ useguides != 1 }"
+                menu usetokenvalue {
+                    "0" "Velocity"
+                    "1" "Target Velocity"
+                }
+                range   { 0 10 }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "guide_airresist"
+                label   "Air Resistance"
+                type    float
+                default { "10000" }
+                disablewhen "{ useguides != 1 }"
+                hidewhen "{ guide_method != 1 }"
+                range   { 0 100000 }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "guide_drag"
+                label   "Drag"
+                type    float
+                default { "1" }
+                disablewhen "{ useguides != 1 }"
+                hidewhen "{ guide_method != 1 }"
+                range   { 0 1000 }
+                parmtag { "script_callback_language" "python" }
+            }
+            groupcollapsible {
+                name    "folder49"
+                label   "Guide Blending"
+                parmtag { "group_default" "0" }
+                parmtag { "sidefx::header_parm" "guide_blend" }
+
+                parm {
+                    name    "guide_blend"
+                    label   "Blend"
+                    type    float
+                    default { "1" }
+                    disablewhen "{ useguides != 1 }"
+                    range   { 0! 1! }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "guide_blendposition"
+                    label   "Positions"
+                    type    float
+                    default { "1" }
+                    range   { 0! 1! }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "guide_blendrotation"
+                    label   "Rotations"
+                    type    float
+                    default { "1" }
+                    range   { 0! 1! }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+        }
+
+        groupcollapsible {
+            name    "folder44"
+            label   "Release Thresholds"
+            disablewhen "{ useguides != 1 }"
+            parmtag { "group_default" "1" }
+
+            parm {
+                name    "labelparm"
+                label   "Instantaneous"
+                type    label
+                invisible
+                default { "Instantaneous" }
+                parmtag { "sidefx::look" "heading" }
+            }
+            groupsimple {
+                name    "folder50"
+                label   "Instantaneous"
+
+                parm {
+                    name    "guide_uselinearthreshold"
+                    label   "Use Linear Threshold"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "1" }
+                }
+                parm {
+                    name    "guide_linearthreshold"
+                    label   "Linear Threshold"
+                    type    float
+                    default { "0.85" }
+                    disablewhen "{ guide_uselinearthreshold == 0 }"
+                    range   { 0! 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "guide_useangularthreshold"
+                    label   "Use Angular Threshold"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "1" }
+                }
+                parm {
+                    name    "guide_angularthreshold"
+                    label   "Angular Threshold"
+                    type    float
+                    default { "8" }
+                    disablewhen "{ guide_useangularthreshold == 0 }"
+                    range   { 0! 10 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "guide_usedistancethreshold"
+                    label   "Use Distance Threshold"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "0" }
+                }
+                parm {
+                    name    "guide_distancethreshold"
+                    label   "Distance Threshold"
+                    type    float
+                    default { "0.25" }
+                    disablewhen "{ guide_usedistancethreshold == 0 }"
+                    range   { 0! 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+            }
+
+            parm {
+                name    "labelparm2"
+                label   "Accumulated"
+                type    label
+                invisible
+                default { "Accumulated" }
+                parmtag { "sidefx::look" "heading" }
+            }
+            groupsimple {
+                name    "folder51"
+                label   "Accumulated"
+
+                parm {
+                    name    "guide_useaccumulatedlinearthreshold"
+                    label   "Use Linear Threshold"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "0" }
+                }
+                parm {
+                    name    "guide_accumulatedlinearthreshold"
+                    label   "Linear Threshold"
+                    type    float
+                    default { "0.85" }
+                    disablewhen "{ guide_useaccumulatedlinearthreshold == 0 }"
+                    range   { 0! 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "guide_useaccumulatedangularthreshold"
+                    label   "Use Angular Threshold"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "0" }
+                }
+                parm {
+                    name    "guide_accumulatedangularthreshold"
+                    label   "Angular Threshold"
+                    type    float
+                    default { "8" }
+                    disablewhen "{ guide_useaccumulatedangularthreshold == 0 }"
+                    range   { 0! 10 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "guide_useaccumulateddistancethreshold"
+                    label   "Use Distance Threshold"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "0" }
+                }
+                parm {
+                    name    "guide_accumulateddistancethreshold"
+                    label   "Distance Threshold"
+                    type    float
+                    default { "0.25" }
+                    disablewhen "{ guide_useaccumulateddistancethreshold == 0 }"
+                    range   { 0! 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+            }
+
+        }
+
+        groupcollapsible {
+            name    "folder2_1"
+            label   "Remove Intra-Guide Constraints"
+            disablewhen "{ useguides != 1 }"
+            parmtag { "sidefx::header_toggle" "guide_constraintcleanup" }
+
+            parm {
+                name    "guide_constraintcleanup"
+                label   "Remove Intra-Guide Constraints"
+                type    toggle
+                default { "1" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "guide_constraintgroup"
+                label   "Constraint Group"
+                type    string
+                default { "" }
+                disablewhen "{ guide_constraintcleanup == 0 }"
+                menutoggle {
+                    [ "opmenu -l -a cull_cross_piece_constraints group" ]
+                }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_action" "import soputils\nkwargs['geometrytype'] = hou.geometryType.Primitives\nkwargs['inputindex'] = 1\nsoputils.selectGroupParm(kwargs)" }
+                parmtag { "script_action_help" "Select geometry from an available viewport." }
+                parmtag { "script_action_icon" "BUTTONS_reselect" }
+            }
+        }
+
+        groupcollapsible {
+            name    "folder33"
+            label   "Post-Guide VEXpression"
+            disablewhen "{ useguides != 1 }"
+            parmtag { "sidefx::header_toggle" "guide_usewrangle" }
+
+            parm {
+                name    "guide_usewrangle"
+                label   "Use VEXpressions"
+                type    toggle
+                default { "0" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "guide_wranglegroup"
+                label   "VEXpression Group"
+                type    string
+                default { "__guided" }
+                disablewhen "{ guide_usewrangle == 0 }"
+                menutoggle {
+                    [ "opmenu -l -a dopnet/guide_wrangle partgroup" ]
+                }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "guide_wrangle"
+                label   "Guide VEXpression"
+                type    string
+                nolabel
+                default { "" }
+                disablewhen "{ guide_usewrangle == 0 }"
+                menureplace {
+                    [ "import vexpressionmenu" ]
+                    [ "" ]
+                    [ "return vexpressionmenu.buildSnippetMenu('rbdbulletsolver/guidewrangle', kwargs=kwargs)" ]
+                    language python
+                }
+                parmtag { "editor" "1" }
+                parmtag { "editorlang" "vex" }
+                parmtag { "editorlines" "5-40" }
+                parmtag { "script_action" "import vexpressionmenu\n\nnode = kwargs['node']\nparmname = 'guide_wrangle'\nvexpressionmenu.createSpareParmsFromChCalls(node, parmname)" }
+                parmtag { "script_action_help" "Creates spare parameters for each unique call of ch()" }
+                parmtag { "script_action_icon" "BUTTONS_create_parm_from_ch" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "guide_wrangle_cwdpath"
+                label   "Evaluation Node Path"
+                type    oppath
+                default { "." }
+                disablewhen "{ guide_usewrangle == 0 }"
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "oprelative" "." }
+            }
+        }
+
+    }
+
+    group {
+        name    "folder_6"
+        label   "Visualization"
+
+        parm {
+            name    "vis_displaygeo"
+            label   "Display Visualization Geometry"
+            type    toggle
+            default { "on" }
+            export  all
+        }
+        groupcollapsible {
+            name    "folder47"
+            label   "Visualize Geometries"
+            parmtag { "group_default" "1" }
+            parmtag { "sidefx::header_toggle" "vis_displaygeo" }
+
+            groupcollapsible {
+                name    "folder24"
+                label   "Geometry"
+                disablewhen "{ vis_displaygeo == 0 }"
+                parmtag { "group_default" "1" }
+
+                parm {
+                    name    "showgeorep"
+                    label   "Show Collision Shape"
+                    type    toggle
+                    default { "0" }
+                    disablewhen "{ vis_displaygeo == 0 }"
+                    parmtag { "script_callback" "kwargs['node'].hdaViewerStateModule().showguidevis(kwargs)" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "showactive"
+                    label   "Show Active (Green)"
+                    type    toggle
+                    default { "0" }
+                    disablewhen "{ vis_displaygeo == 0 }"
+                    export  all
+                }
+                parm {
+                    name    "showsleeping"
+                    label   "Show Sleeping (Red)"
+                    type    toggle
+                    default { "0" }
+                    disablewhen "{ vis_displaygeo == 0 }"
+                    export  all
+                }
+            }
+
+            groupcollapsible {
+                name    "folder23"
+                label   "Ground"
+                disablewhentab "{ vis_displaygeo == 0 }"
+                parmtag { "sidefx::header_parm" "shadeground" }
+                parmtag { "sidefx::header_toggle" "showground" }
+
+                parm {
+                    name    "showground"
+                    label   "Show Ground"
+                    type    toggle
+                    default { "1" }
+                    disablewhen "{ vis_displaygeo == 0 } { useground == 0 }"
+                    export  all
+                }
+                parm {
+                    name    "shadeground"
+                    label   "Show Ground as"
+                    type    ordinal
+                    default { "wireframe" }
+                    disablewhen "{ useground != 1 }"
+                    menu {
+                        "wireframe" "Wireframe"
+                        "shaded"    "Shaded"
+                    }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+            groupcollapsible {
+                name    "folder10"
+                label   "Collision Geometry"
+                parmtag { "group_default" "1" }
+
+                parm {
+                    name    "showcollision"
+                    label   "Show Geometry"
+                    type    toggle
+                    default { "1" }
+                    disablewhen "{ vis_displaygeo == 0 } { usecollisions == 0 }"
+                    export  all
+                }
+                parm {
+                    name    "showcollisiongeorep"
+                    label   "Show Collision Shape"
+                    type    toggle
+                    default { "0" }
+                    disablewhen "{ vis_displaygeo == 0 } { usecollisions == 0 } { showcollision == 0 }"
+                }
+                parm {
+                    name    "collisioncolor"
+                    label   "Color"
+                    type    color
+                    size    3
+                    default { "0" "0" "1" }
+                    disablewhen "{ showcollision == 0 } { showcollisiongeorep == 0 }"
+                    range   { 0 1 }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+            parm {
+                name    "showconstraints"
+                label   "Show Constraints"
+                type    toggle
+                default { "1" }
+                disablewhen "{ vis_displaygeo == 0 }"
+                export  all
+            }
+            groupcollapsible {
+                name    "folder0"
+                label   "Constraint Geometry"
+                disablewhentab "{ vis_displaygeo == 0 }"
+                parmtag { "sidefx::header_toggle" "showconstraints" }
+
+                parm {
+                    name    "vis_mode"
+                    label   "False Color Mode"
+                    type    ordinal
+                    default { "0" }
+                    disablewhen "{ showconstraints == 0 } { vis_displaygeo == 0 }"
+                    menu {
+                        "0" "None"
+                        "1" "Angle"
+                        "2" "Angular Plastic Flow"
+                        "3" "Distance"
+                        "4" "Force"
+                        "5" "Impact"
+                        "6" "Plastic Flow"
+                        "7" "Torque"
+                        "8" "Constraint Name"
+                        "9" "Custom"
+                    }
+                    export  all
+                    parmtag { "script_callback" "kwargs['node'].hdaViewerStateModule().enterState(kwargs)" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "customattrib"
+                    label   "Attribute"
+                    type    string
+                    default { "" }
+                    hidewhen "{ vis_mode != 9 }"
+                    menureplace {
+                        [ "node = kwargs['node']" ]
+                        [ "geo = node.node(\"CONSTRAINT_GEOMETRY\").geometry()" ]
+                        [ "attribs = sorted([x.name() for x in geo.primAttribs() if x.size() == 1 and x.dataType() in [hou.attribData.Float,hou.attribData.String]])" ]
+                        [ "attribs = [x for x in attribs if x not in ['angle', 'angularplasticflow', 'distance', 'force', 'impact', 'plasticflow', 'torque']]" ]
+                        [ "return [x for x in attribs for y in range(2)]" ]
+                        language python
+                    }
+                    export  all
+                }
+                parm {
+                    name    "showconstraintguides"
+                    label   "Show Guides"
+                    type    toggle
+                    default { "0" }
+                    disablewhen "{ showconstraints == 0 } { vis_displaygeo == 0 }"
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "showconstraintguideslinks"
+                    label   "Show Object Links"
+                    type    toggle
+                    default { "0" }
+                    disablewhen "{ showconstraints == 0 } { vis_displaygeo == 0 }"
+                    hidewhen "{ showconstraintguides == 0 }"
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "showconstraintguidesradius"
+                    label   "Guide Radius"
+                    type    float
+                    default { "0.05" }
+                    disablewhen "{ showconstraints == 0 } { vis_displaygeo == 0 }"
+                    hidewhen "{ showconstraintguides == 0 }"
+                    range   { 0! 0.5 }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+            groupcollapsible {
+                name    "folder43"
+                label   "Guide"
+
+                parm {
+                    name    "showguided"
+                    label   "Show Guided (Blue)"
+                    type    toggle
+                    default { "0" }
+                    disablewhen "{ vis_displaygeo == 0 } { useguides == 0 }"
+                    export  all
+                }
+                parm {
+                    name    "showguidecapture"
+                    label   "Show Guide Capture"
+                    type    toggle
+                    default { "0" }
+                    disablewhen "{ vis_displaygeo == 0 } { useguides == 0 }"
+                    parmtag { "script_callback" "kwargs['node'].hdaViewerStateModule().showguidevis(kwargs)" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "guidecaptureframe"
+                    label   "Guide Capture Frame"
+                    type    float
+                    default { [ "ch(\"startframe\")" hscript-expr ] }
+                    disablewhen "{ vis_displaygeo == 0 } { useguides == 0 } { showguidecapture == 0 }"
+                    range   { 0 240 }
+                }
+                parm {
+                    name    "guidecaptureblend"
+                    label   "Guide Capture Blend"
+                    type    toggle
+                    default { "off" }
+                    disablewhen "{ vis_displaygeo == 0 } { useguides == 0 } { showguidecapture == 0 } { guide_addblend == 0 }"
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback" "kwargs['node'].hdaViewerStateModule().showguidevis(kwargs)" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "showguideneighborcount"
+                    label   "Show Guide Neighbor Count"
+                    type    toggle
+                    default { "0" }
+                    disablewhen "{ vis_displaygeo == 0 } { useguides == 0 } { guide_useguidedneighbors == 0 }"
+                    parmtag { "script_callback" "kwargs['node'].hdaViewerStateModule().showguidevis(kwargs)" }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+            groupcollapsible {
+                name    "folder46"
+                label   "Impact Data"
+                parmtag { "sidefx::header_toggle" "showimpacts" }
+
+                parm {
+                    name    "showimpacts"
+                    label   "Show Impacts"
+                    type    toggle
+                    default { "off" }
+                    disablewhen "{ vis_displaygeo == 0 } { useimpact == 0 }"
+                    export  all
+                }
+            }
+
+        }
+
+        groupcollapsible {
+            name    "folder31"
+            label   "Inspector"
+            parmtag { "sidefx::header_parm" "inspectorattribs" }
+
+            parm {
+                name    "inspectorattribs"
+                label   "Attributes"
+                type    string
+                default { "* ^P ^pivot ^rest ^N ^scale ^orient ^xform ^path" }
+                menutoggle {
+                    [ "node = kwargs['node']" ]
+                    [ "geos = ['GEOMETRY', 'CONSTRAINT_GEOMETRY', 'PROXY_GEOMETRY', 'SIM_POINTS']" ]
+                    [ "geo = geos[max(0, node.outputForViewFlag())] " ]
+                    [ "geometry = node.node(geo).geometry()" ]
+                    [ "if geo == 'CONSTRAINT_GEOMETRY':" ]
+                    [ "    attribs = []" ]
+                    [ "else:" ]
+                    [ "    attribs = [x.name() for x in geometry.pointAttribs()]" ]
+                    [ "attribs += [x.name() for x in geometry.primAttribs()]" ]
+                    [ "return sorted([x for x in set(attribs) for y in range(2)])" ]
+                    language python
+                }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "inspectorfontsize"
+                label   "Font Size"
+                type    integer
+                default { "3" }
+                range   { 1! 8! }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "inspectorprecision"
+                label   "Float Precision"
+                type    integer
+                default { "6" }
+                range   { 1! 24! }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+    }
+
+    group {
+        name    "folder_7"
+        label   "Advanced"
+
+        groupcollapsible {
+            name    "folder11"
+            label   "Bullet Solver"
+
+            parm {
+                name    "sleepingtime"
+                label   "Sleeping Time"
+                type    float
+                default { "2" }
+                range   { 0! 5 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "contactbreakingthreshold"
+                label   "Contact Breaking Threshold"
+                type    float
+                default { "0.02" }
+                range   { 0! 0.1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "implicitdrag"
+                label   "Use Implicit Drag"
+                type    toggle
+                default { "on" }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "splitimpulse"
+                label   "Split Impulse"
+                type    toggle
+                default { "on" }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "penetrationthreshold"
+                label   "Penetration Threshold"
+                type    float
+                default { "-0.02" }
+                hidewhen "{ splitimpulse == 0 }"
+                range   { -1 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "splitimpulseerp"
+                label   "Split Impulse ERP"
+                type    float
+                default { "0.8" }
+                hidewhen "{ splitimpulse == 0 }"
+                range   { 0! 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+        }
+
+        groupcollapsible {
+            name    "folder1"
+            label   "Constraint Solver"
+            parmtag { "sidefx::header_parm" "constraintsolvertype" }
+
+            parm {
+                name    "constraintsolvertype"
+                label   "Constraint Solver"
+                type    ordinal
+                default { "gaussseidelcolor" }
+                menu {
+                    "gaussseidelisland" "Islands"
+                    "gaussseidelcolor"  "Graph Coloring"
+                }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "constraintsolvertolerance"
+                label   "Solve Tolerance"
+                type    float
+                default { "0.0001" }
+                range   { 0! 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "globalcfm"
+                label   "Constraint Force Mixing"
+                type    float
+                default { "0" }
+                range   { 0! 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "globalerp"
+                label   "Error Reduction"
+                type    float
+                default { "0.2" }
+                range   { 0! 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "randomize_order"
+                label   "Randomize Constraint Order"
+                type    toggle
+                default { "off" }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "ensureindependentislands"
+                label   "Ensure Islands are Independent"
+                type    toggle
+                default { "on" }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+        }
+
+        groupcollapsible {
+            name    "folder48"
+            label   "Emission Solver"
+
+            parm {
+                name    "emission_cachemaxsize"
+                label   "Emission Cache Memory (MB)"
+                type    integer
+                default { "ch(\"cachemaxsize\")" }
+                disablewhen "{ useemission == 0 }"
+                range   { 0! 25000 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+        }
+
+        groupcollapsible {
+            name    "folder37"
+            label   "Collision"
+
+            parm {
+                name    "collision_solvefirstframe"
+                label   "Solve on Creation Frame"
+                type    toggle
+                default { "ch(\"solvefirstframe\")" }
+                disablewhen "{ usecollisions == 0 }"
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+        }
+
+        groupcollapsible {
+            name    "folder26"
+            label   "Constraints"
+            parmtag { "group_default" "1" }
+
+            parm {
+                name    "constraint_reloadfromsops"
+                label   "Overwrite with SOP"
+                type    toggle
+                default { "0" }
+                disablewhen "{ useemission == 1 }"
+                range   { 0 10 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            groupcollapsible {
+                name    "folder14"
+                label   "Glue"
+
+                parm {
+                    name    "glue_dataname"
+                    label   "Data Name"
+                    type    string
+                    joinnext
+                    default { "Glue" }
+                    menureplace {
+                        [ "kwargs['node'].hdaViewerStateModule().getConstraintNames(kwargs)" ]
+                        language python
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "glue_defaultparmop"
+                    label   "Default Operation"
+                    type    ordinal
+                    nolabel
+                    default { "initial" }
+                    menu {
+                        "initial"   "Set Initial"
+                        "always"    "Set Always"
+                        "never"     "Set Never"
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "glue_strength"
+                    label   "Strength"
+                    type    float
+                    default { "1" }
+                    range   { 0 10 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "glue_impulse_halflife"
+                    label   "Half-Life"
+                    type    float
+                    default { "1" }
+                    range   { 0 10 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "glue_propagate_rate"
+                    label   "Propagation Rate"
+                    type    float
+                    default { "1" }
+                    range   { 0 10 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "glue_propagationiterations"
+                    label   "Propagation Iterations"
+                    type    integer
+                    default { "1" }
+                    range   { 0 10 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+            }
+
+            groupcollapsible {
+                name    "folder15"
+                label   "Soft"
+
+                parm {
+                    name    "soft_dataname"
+                    label   "Data Name"
+                    type    string
+                    joinnext
+                    default { "Soft" }
+                    menureplace {
+                        [ "kwargs['node'].hdaViewerStateModule().getConstraintNames(kwargs)" ]
+                        language python
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "soft_defaultparmop"
+                    label   "Default Operation"
+                    type    ordinal
+                    nolabel
+                    default { "initial" }
+                    menu {
+                        "initial"   "Set Initial"
+                        "always"    "Set Always"
+                        "never"     "Set Never"
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "soft_stiffness"
+                    label   "Stiffness"
+                    type    float
+                    default { "1" }
+                    range   { 0! 100 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "soft_dampingratio"
+                    label   "Damping Ratio"
+                    type    float
+                    default { "1" }
+                    range   { 0! 5 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "soft_enableangular"
+                    label   "Override Angular Stiffness and Damping Ratio"
+                    type    toggle
+                    default { "0" }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "soft_angularstiffness"
+                    label   "Angular Stiffness"
+                    type    float
+                    default { "1" }
+                    disablewhen "{ soft_enableangular != 1 }"
+                    range   { 0! 100 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "soft_angulardampingratio"
+                    label   "Angular Damping Ratio"
+                    type    float
+                    default { "1" }
+                    disablewhen "{ soft_enableangular != 1 }"
+                    range   { 0! 5 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "sepparm4"
+                    label   "Separator"
+                    type    separator
+                    default { "" }
+                }
+                parm {
+                    name    "soft_restlength"
+                    label   "Rest Length"
+                    type    float
+                    default { "1" }
+                    range   { 0! 2 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "units" "m1" }
+                }
+                parm {
+                    name    "soft_numiterations"
+                    label   "Constraint Iterations"
+                    type    integer
+                    default { "-1" }
+                    range   { -1! 100 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "soft_disablecollisions"
+                    label   "Disable Collisions"
+                    type    toggle
+                    default { "off" }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "soft_enableplasticity"
+                    label   "Enable Plasticity"
+                    type    toggle
+                    default { "off" }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                groupcollapsible {
+                    name    "folder20"
+                    label   "Plasticity"
+                    disablewhen "{ soft_enableplasticity != 1 && == soft_enableangular == == 0 }"
+                    parmtag { "sidefx::header_parm" "soft_enableangularplasticity" }
+                    parmtag { "sidefx::header_toggle" "soft_enableplasticity" }
+
+                    parm {
+                        name    "soft_plasticrate"
+                        label   "Rate"
+                        type    float
+                        default { "1" }
+                        disablewhen "{ soft_enableplasticity != 1 }"
+                        range   { 0! 100 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "soft_plasticthreshold"
+                        label   "Threshold"
+                        type    float
+                        default { "1" }
+                        disablewhen "{ soft_enableplasticity != 1 }"
+                        range   { 0! 100 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "soft_plastichardening"
+                        label   "Hardening"
+                        type    float
+                        default { "1" }
+                        disablewhen "{ soft_enableplasticity != 1 }"
+                        range   { 0! 100 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "soft_plasticthresholdratio"
+                        label   "Ratio of Current Rest Length"
+                        type    toggle
+                        default { "on" }
+                        disablewhen "{ soft_enableplasticity != 1 }"
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "soft_enableangularplasticity"
+                        label   "Enable Angular Plasticity"
+                        type    toggle
+                        default { "off" }
+                        disablewhen "{ soft_enableangular != 1 }"
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "soft_angularplasticrate"
+                        label   "Angular Rate"
+                        type    float
+                        default { "1" }
+                        disablewhen "{ soft_enableangular != 1 } { soft_enableangularplasticity != 1 }"
+                        range   { 0! 100 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "soft_angularplasticthreshold"
+                        label   "Angular Threshold"
+                        type    float
+                        default { "1" }
+                        disablewhen "{ soft_enableangular != 1 } { soft_enableangularplasticity != 1 }"
+                        range   { 0! 100 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "soft_angularplastichardening"
+                        label   "Angular Hardening"
+                        type    float
+                        default { "1" }
+                        disablewhen "{ soft_enableangular != 1 } { soft_enableangularplasticity != 1 }"
+                        range   { 0! 100 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                }
+
+                parm {
+                    name    "soft_guidescale"
+                    label   "Guide Scale"
+                    type    float
+                    default { "1" }
+                    range   { 0 10 }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+            groupcollapsible {
+                name    "folder16"
+                label   "Hard"
+
+                parm {
+                    name    "hard_dataname"
+                    label   "Data Name"
+                    type    string
+                    joinnext
+                    default { "Hard" }
+                    menureplace {
+                        [ "kwargs['node'].hdaViewerStateModule().getConstraintNames(kwargs)" ]
+                        language python
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "hard_defaultparmop"
+                    label   "Default Operation"
+                    type    ordinal
+                    nolabel
+                    default { "initial" }
+                    menu {
+                        "initial"   "Set Initial"
+                        "always"    "Set Always"
+                        "never"     "Set Never"
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "hard_cfm"
+                    label   "Constraint Force Mixing"
+                    type    float
+                    default { "1" }
+                    range   { 0! 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "hard_erp"
+                    label   "Error Reduction"
+                    type    float
+                    default { "1" }
+                    range   { 0! 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "sepparm5"
+                    label   "Separator"
+                    type    separator
+                    default { "" }
+                }
+                parm {
+                    name    "hard_restlength"
+                    label   "Rest Length"
+                    type    float
+                    default { "1" }
+                    range   { 0! 2 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "units" "m1" }
+                }
+                parm {
+                    name    "hard_numiterations"
+                    label   "Constraint Iterations"
+                    type    integer
+                    default { "-1" }
+                    range   { -1! 100 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "hard_disablecollisions"
+                    label   "Disable Collisions"
+                    type    toggle
+                    default { "off" }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                groupcollapsible {
+                    name    "folder30"
+                    label   "Angular Motor"
+                    parmtag { "sidefx::header_parm" "hard_numangularmotors" }
+
+                    parm {
+                        name    "hard_numangularmotors"
+                        label   "Number of Motors"
+                        type    integer
+                        default { "0" }
+                        range   { 0! 3! }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "hard_axis1"
+                        label   "Axis 1"
+                        type    vector
+                        size    3
+                        default { "1" "0" "0" }
+                        disablewhen "{ hard_numangularmotors <= 0 }"
+                        range   { -1 1 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "hard_axis2"
+                        label   "Axis 2"
+                        type    vector
+                        size    3
+                        default { "0" "1" "0" }
+                        disablewhen "{ hard_numangularmotors < 2 }"
+                        range   { -1 1 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "hard_targetw"
+                        label   "Relative Angular Velocity"
+                        type    float
+                        size    3
+                        default { "0" "0" "0" }
+                        disablewhen "{ hard_numangularmotors <= 0 }"
+                        range   { 0 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "hard_maxangularimpulse"
+                        label   "Max Impulse"
+                        type    float
+                        size    3
+                        default { "1" "1" "1" }
+                        disablewhen "{ hard_numangularmotors <= 0 }"
+                        range   { 0! 100 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                }
+
+                parm {
+                    name    "hard_guidescale"
+                    label   "Guide Scale"
+                    type    float
+                    default { "1" }
+                    range   { 0 10 }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+            groupcollapsible {
+                name    "folder18"
+                label   "ConeTwist"
+                grouptag { "export_disable" "1" }
+                parmtag { "sidefx::header_toggle" "useconetwist" }
+
+                parm {
+                    name    "useconetwist"
+                    label   "Enable Cone Twist Constraint"
+                    type    toggle
+                    default { "1" }
+                }
+                parm {
+                    name    "conetwist_dataname"
+                    label   "Data Name"
+                    type    string
+                    joinnext
+                    default { "ConeTwist" }
+                    disablewhen "{ useconetwist == 0 }"
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "conetwist_defaultparmop"
+                    label   "Default Operation"
+                    type    ordinal
+                    nolabel
+                    default { "initial" }
+                    disablewhen "{ useconetwist == 0 }"
+                    menu {
+                        "initial"   "Set Initial"
+                        "always"    "Set Always"
+                        "never"     "Set Never"
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "conetwist_enablesoft"
+                    label   "Enable Soft Constraint"
+                    type    toggle
+                    default { "on" }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                groupcollapsible {
+                    name    "folder9"
+                    label   "Rotation Limits"
+                    parmtag { "group_default" "1" }
+
+                    parm {
+                        name    "conetwist_max_twist"
+                        label   "Max Twist"
+                        type    float
+                        default { "1" }
+                        disablewhen "{ useconetwist == 0 }"
+                        range   { 0 180 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "conetwist_max_out_rotation"
+                        label   "Max Out Rotation"
+                        type    float
+                        default { "1" }
+                        disablewhen "{ useconetwist == 0 }"
+                        range   { 0 180 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "conetwist_max_up_rotation"
+                        label   "Max Up Rotation"
+                        type    float
+                        default { "1" }
+                        disablewhen "{ useconetwist == 0 }"
+                        range   { 0 180 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "conetwist_softness"
+                        label   "Softness"
+                        type    float
+                        default { "1" }
+                        disablewhen "{ useconetwist == 0 }"
+                        range   { 0 1 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "conetwist_computeinitialerror"
+                        label   "Allow Initial Violation of Limits"
+                        type    toggle
+                        default { "on" }
+                        disablewhen "{ useconetwist == 0 }"
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "sepparm"
+                        label   "Separator"
+                        type    separator
+                        default { "" }
+                    }
+                    parm {
+                        name    "conetwist_angularlimitstiffness"
+                        label   "Angular Limit Stiffness"
+                        type    float
+                        default { "1" }
+                        disablewhen "{ conetwist_enablesoft == 0 }"
+                        hidewhen "{ conetwist_enablesoft == 0 }"
+                        range   { 0! 1000 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "conetwist_angularlimitdampingratio"
+                        label   "Angular Limit Damping Ratio"
+                        type    float
+                        default { "1" }
+                        disablewhen "{ conetwist_enablesoft == 0 }"
+                        hidewhen "{ conetwist_enablesoft == 0 }"
+                        range   { 0! 50 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "conetwist_cfm"
+                        label   "Constraint Force Mixing"
+                        type    float
+                        default { "1" }
+                        disablewhen "{ useconetwist == 0 }"
+                        hidewhen "{ conetwist_enablesoft == 1 }"
+                        range   { 0 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "conetwist_bias_factor"
+                        label   "Bias Factor"
+                        type    float
+                        default { "1" }
+                        disablewhen "{ useconetwist == 0 }"
+                        hidewhen "{ conetwist_enablesoft == 1 }"
+                        range   { 0 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "conetwist_relaxation_factor"
+                        label   "Relaxation Factor"
+                        type    float
+                        default { "1" }
+                        disablewhen "{ useconetwist == 0 }"
+                        hidewhen "{ conetwist_enablesoft == 1 }"
+                        range   { 0 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                }
+
+                groupcollapsible {
+                    name    "folder42"
+                    label   "Translation Limits"
+                    parmtag { "group_default" "1" }
+
+                    parm {
+                        name    "conetwist_twisttranslationrange"
+                        label   "Twist Translation Range"
+                        type    float_minmax
+                        size    2
+                        default { "1" "1" }
+                        range   { -1 1 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "conetwist_outtranslationrange"
+                        label   "Out Translation Range"
+                        type    float_minmax
+                        size    2
+                        default { "1" "1" }
+                        range   { -1 1 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "conetwist_uptranslationrange"
+                        label   "Up Translation Range"
+                        type    float_minmax
+                        size    2
+                        default { "1" "1" }
+                        range   { -1 1 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "conetwist_positionlimitstiffness"
+                        label   "Position Limit Stiffness"
+                        type    float
+                        default { "1" }
+                        disablewhen "{ conetwist_enablesoft == 0 }"
+                        hidewhen "{ conetwist_enablesoft == 0 }"
+                        range   { 0! 1000 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "conetwist_positionlimitdampingratio"
+                        label   "Position Limit Damping Ratio"
+                        type    float
+                        default { "1" }
+                        disablewhen "{ conetwist_enablesoft == 0 }"
+                        hidewhen "{ conetwist_enablesoft == 0 }"
+                        range   { 0! 50 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "conetwist_positioncfm"
+                        label   "Position CFM"
+                        type    float
+                        default { "1" }
+                        disablewhen "{ useconetwist == 0 }"
+                        hidewhen "{ conetwist_enablesoft == 1 }"
+                        range   { 0 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "conetwist_positionerp"
+                        label   "Position ERP"
+                        type    float
+                        default { "1" }
+                        disablewhen "{ useconetwist == 0 }"
+                        hidewhen "{ conetwist_enablesoft == 1 }"
+                        range   { 0 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                }
+
+                groupcollapsible {
+                    name    "folder45"
+                    label   "Anchors"
+                    parmtag { "group_default" "1" }
+
+                    parm {
+                        name    "conetwist_goal_twist_axis"
+                        label   "Goal Twist Axis"
+                        type    vector
+                        size    3
+                        default { "1" "0" "0" }
+                        disablewhen "{ useconetwist == 0 }"
+                        range   { -1 1 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "conetwist_goal_up_axis"
+                        label   "Goal Up Axis"
+                        type    vector
+                        size    3
+                        default { "0" "1" "0" }
+                        disablewhen "{ useconetwist == 0 }"
+                        range   { -1 1 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "conetwist_constrained_twist_axis"
+                        label   "Constrained Twist Axis"
+                        type    vector
+                        size    3
+                        default { "1" "0" "0" }
+                        disablewhen "{ useconetwist == 0 }"
+                        range   { -1 1 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "conetwist_constrained_up_axis"
+                        label   "Constrained Up Axis"
+                        type    vector
+                        size    3
+                        default { "0" "1" "0" }
+                        disablewhen "{ useconetwist == 0 }"
+                        range   { -1 1 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "conetwist_restlength"
+                        label   "Rest Length"
+                        type    float
+                        default { "1" }
+                        disablewhen "{ useconetwist == 0 }"
+                        range   { 0! 2 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "units" "m1" }
+                    }
+                }
+
+                parm {
+                    name    "conetwist_numiterations"
+                    label   "Constraint Iterations"
+                    type    integer
+                    default { "-1" }
+                    disablewhen "{ useconetwist == 0 }"
+                    range   { -1! 100 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "conetwist_disablecollisions"
+                    label   "Disable Collisions"
+                    type    toggle
+                    default { "off" }
+                    disablewhen "{ useconetwist == 0 }"
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                groupcollapsible {
+                    name    "folder25"
+                    label   "Motor"
+                    disablewhentab "{ useconetwist == 0 }"
+                    parmtag { "group_default" "0" }
+                    parmtag { "sidefx::header_toggle" "conetwist_motor_enabled" }
+
+                    parm {
+                        name    "conetwist_motor_enabled"
+                        label   "Enable Motor"
+                        type    toggle
+                        default { "off" }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "conetwist_motor_targetcurrentpose"
+                        label   "Target Current Pose"
+                        type    toggle
+                        default { "off" }
+                        disablewhen "{ conetwist_motor_enabled == 0 }"
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "conetwist_motor_targetr"
+                        label   "Motor Target"
+                        type    vector
+                        size    3
+                        default { "0" "0" "0" }
+                        disablewhen "{ conetwist_motor_enabled == 0 } { conetwist_motor_targetcurrentpose != 0 }"
+                        range   { 0 360 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "conetwist_motor_targetp"
+                        label   "Target Position"
+                        type    vector
+                        size    3
+                        default { "0" "0" "0" }
+                        disablewhen "{ conetwist_motor_enabled == 0 } { conetwist_motor_targetcurrentpose != 0 }"
+                        hidewhen "{ conetwist_enablesoft == 0 }"
+                        range   { -1 1 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "conetwist_motor_hastargetprev"
+                        label   "Use Initial Motor Target"
+                        type    toggle
+                        default { "off" }
+                        disablewhen "{ conetwist_motor_enabled == 0 } { conetwist_motor_targetcurrentpose != 0 }"
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "conetwist_motor_targetprevr"
+                        label   "Previous Target Rotation"
+                        type    vector
+                        size    3
+                        default { "0" "0" "0" }
+                        disablewhen "{ conetwist_motor_enabled == 0 } { conetwist_motor_hastargetprev == 0 } { conetwist_motor_targetcurrentpose != 0 }"
+                        range   { 0 360 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "conetwist_motor_targetprevp"
+                        label   "Previous Target Position"
+                        type    vector
+                        size    3
+                        default { "0" "0" "0" }
+                        disablewhen "{ conetwist_motor_enabled == 0 } { conetwist_motor_hastargetprev == 0 } { conetwist_motor_targetcurrentpose != 0 }"
+                        hidewhen "{ conetwist_enablesoft == 0 }"
+                        range   { -1 1 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "sepparm2"
+                        label   "Separator"
+                        type    separator
+                        default { "" }
+                    }
+                    parm {
+                        name    "conetwist_motor_targetangularstiffness"
+                        label   "Target Angular Stiffness"
+                        type    float
+                        default { "1" }
+                        disablewhen "{ conetwist_motor_enabled == 0 }"
+                        hidewhen "{ conetwist_enablesoft == 0 }"
+                        range   { 0! 100 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "conetwist_motor_targetangulardampingratio"
+                        label   "Target Angular Damping Ratio"
+                        type    float
+                        default { "1" }
+                        disablewhen "{ conetwist_motor_enabled == 0 }"
+                        hidewhen "{ conetwist_enablesoft == 0 }"
+                        range   { 0! 5 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "conetwist_motor_targetpositionstiffness"
+                        label   "Target Position Stiffness"
+                        type    float
+                        default { "1" }
+                        disablewhen "{ conetwist_motor_enabled == 0 }"
+                        hidewhen "{ conetwist_enablesoft == 0 }"
+                        range   { 0! 100 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "conetwist_motor_targetpositiondampingratio"
+                        label   "Target Position Damping Ratio"
+                        type    float
+                        default { "1" }
+                        disablewhen "{ conetwist_motor_enabled == 0 }"
+                        hidewhen "{ conetwist_enablesoft == 0 }"
+                        range   { 0! 5 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "conetwist_motor_normalizemaximpulse"
+                        label   "Ignore Mass"
+                        type    toggle
+                        default { "on" }
+                        disablewhen "{ conetwist_motor_enabled == 0 }"
+                        hidewhen "{ conetwist_enablesoft == 1 }"
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "conetwist_motor_maximpulse"
+                        label   "Max Impulse"
+                        type    float
+                        default { "1" }
+                        disablewhen "{ conetwist_motor_enabled == 0 }"
+                        hidewhen "{ conetwist_enablesoft == 1 }"
+                        range   { 0! 100 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "conetwist_motor_erp"
+                        label   "Motor Correction Time"
+                        type    float
+                        default { "1" }
+                        disablewhen "{ conetwist_motor_enabled == 0 } { conetwist_motor_targetcurrentpose != 0 }"
+                        hidewhen "{ conetwist_enablesoft == 1 }"
+                        range   { 0 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "conetwist_motor_cfm"
+                        label   "Motor CFM"
+                        type    float
+                        default { "1" }
+                        disablewhen "{ conetwist_motor_enabled == 0 }"
+                        hidewhen "{ conetwist_enablesoft == 1 }"
+                        range   { 0 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                }
+
+                parm {
+                    name    "conetwist_guidescale"
+                    label   "Guide Scale"
+                    type    float
+                    default { "1" }
+                    disablewhen "{ useconetwist == 0 }"
+                    range   { 0 10 }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+            groupcollapsible {
+                name    "folder17"
+                label   "Slider"
+                grouptag { "export_disable" "1" }
+                parmtag { "sidefx::header_toggle" "useslider" }
+
+                parm {
+                    name    "useslider"
+                    label   "Enable Slider Constraint"
+                    type    toggle
+                    default { "0" }
+                }
+                parm {
+                    name    "slider_dataname"
+                    label   "Data Name"
+                    type    string
+                    joinnext
+                    default { "Slider" }
+                    disablewhen "{ useslider == 0 }"
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "slider_defaultparmop"
+                    label   "Default Operation"
+                    type    ordinal
+                    nolabel
+                    default { "initial" }
+                    disablewhen "{ useslider == 0 }"
+                    menu {
+                        "initial"   "Set Initial"
+                        "always"    "Set Always"
+                        "never"     "Set Never"
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "slider_max_rotation"
+                    label   "Max Rotation"
+                    type    float
+                    default { "180" }
+                    disablewhen "{ useslider == 0 }"
+                    range   { 0 180 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "slide_range"
+                    label   "Slide Range"
+                    type    float
+                    size    2
+                    default { "0" "0" }
+                    disablewhen "{ useslider == 0 }"
+                    range   { 0 10 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "slider_numiterations"
+                    label   "Constraint Iterations"
+                    type    integer
+                    default { "-1" }
+                    disablewhen "{ useslider == 0 }"
+                    range   { -1! 100 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "slider_disablecollisions"
+                    label   "Disable Collisions"
+                    type    toggle
+                    default { "off" }
+                    disablewhen "{ useslider == 0 }"
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                groupcollapsible {
+                    name    "folder22"
+                    label   "Axes"
+                    disablewhentab "{ useslider == 0 }"
+                    disablewhen "{ useslider == 0 }"
+
+                    parm {
+                        name    "slider_goal_hinge_axis"
+                        label   "Goal Hinge Axis"
+                        type    vector
+                        size    3
+                        default { "1" "0" "0" }
+                        range   { -1 1 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "slider_goal_up_axis"
+                        label   "Goal Up Axis"
+                        type    vector
+                        size    3
+                        default { "0" "1" "0" }
+                        range   { -1 1 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "slider_constrained_hinge_axis"
+                        label   "Constrained Hinge Axis"
+                        type    vector
+                        size    3
+                        default { "1" "0" "0" }
+                        range   { -1 1 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "slider_constrained_up_axis"
+                        label   "Constrained Up Axis"
+                        type    vector
+                        size    3
+                        default { "0" "1" "0" }
+                        range   { -1 1 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                }
+
+                groupcollapsible {
+                    name    "folder22_1"
+                    label   "Hinge"
+                    disablewhentab "{ useslider == 0 }"
+
+                    parm {
+                        name    "slider_hinge_position_softness"
+                        label   "Position Softness"
+                        type    float
+                        default { "1" }
+                        range   { 0 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "slider_hinge_position_damping"
+                        label   "Position Damping"
+                        type    float
+                        default { "1" }
+                        range   { 0 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "slider_hinge_position_cfm"
+                        label   "Position CFM"
+                        type    float
+                        default { "0" }
+                        range   { 0 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "slider_hinge_angle_softness"
+                        label   "Angle Softness"
+                        type    float
+                        default { "1" }
+                        range   { 0 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "slider_hinge_angle_damping"
+                        label   "Angle Damping"
+                        type    float
+                        default { "1" }
+                        range   { 0 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "slider_hinge_angle_cfm"
+                        label   "Angle CFM"
+                        type    float
+                        default { "0" }
+                        range   { 0 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                }
+
+                groupcollapsible {
+                    name    "folder22_2"
+                    label   "Orthogonal"
+                    disablewhentab "{ useslider == 0 }"
+
+                    parm {
+                        name    "slider_ortho_position_softness"
+                        label   "Position Softness"
+                        type    float
+                        default { "1" }
+                        range   { 0 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "slider_ortho_position_cfm"
+                        label   "Position CFM"
+                        type    float
+                        default { "0" }
+                        range   { 0 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "slider_ortho_angle_softness"
+                        label   "Angle Softness"
+                        type    float
+                        default { "1" }
+                        range   { 0 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                    parm {
+                        name    "slider_ortho_angle_cfm"
+                        label   "Angle CFM"
+                        type    float
+                        default { "0" }
+                        range   { 0 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                    }
+                }
+
+                parm {
+                    name    "slider_guidescale"
+                    label   "Guide Scale"
+                    type    float
+                    default { "1" }
+                    disablewhen "{ useslider == 0 }"
+                    range   { 0 10 }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+            parm {
+                name    "usespring"
+                label   "Enable Spring Constraint"
+                type    toggle
+                invisible
+                default { "0" }
+            }
+            groupcollapsible {
+                name    "folder19"
+                label   "Spring"
+                hidewhentab "{ usespring == 0 }"
+
+                parm {
+                    name    "spring_dataname"
+                    label   "Data Name"
+                    type    string
+                    joinnext
+                    default { "Spring" }
+                    disablewhen "{ usespring == 0 }"
+                    menureplace {
+                        [ "kwargs['node'].hdaViewerStateModule().getConstraintNames(kwargs)" ]
+                        language python
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "spring_defaultparmop"
+                    label   "Default Operation"
+                    type    ordinal
+                    nolabel
+                    default { "initial" }
+                    disablewhen "{ usespring == 0 }"
+                    menu {
+                        "initial"   "Set Initial"
+                        "always"    "Set Always"
+                        "never"     "Set Never"
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "spring_strength"
+                    label   "Strength"
+                    type    float
+                    default { "1" }
+                    disablewhen "{ usespring == 0 }"
+                    range   { 0! 100 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "units" "kg1s-2" }
+                }
+                parm {
+                    name    "spring_damping"
+                    label   "Damping"
+                    type    float
+                    default { "1" }
+                    disablewhen "{ usespring == 0 }"
+                    range   { 0! 100 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "spring_restlength"
+                    label   "Rest Length"
+                    type    float
+                    default { "1" }
+                    disablewhen "{ usespring == 0 }"
+                    range   { 0! 2 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "units" "m1" }
+                }
+                parm {
+                    name    "spring_numiterations"
+                    label   "Constraint Iterations"
+                    type    integer
+                    default { "-1" }
+                    disablewhen "{ usespring == 0 }"
+                    range   { -1! 100 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "spring_disablecollisions"
+                    label   "Disable Collisions"
+                    type    toggle
+                    default { "off" }
+                    disablewhen "{ usespring == 0 }"
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "spring_guidescale"
+                    label   "Guide Scale"
+                    type    float
+                    default { "1" }
+                    range   { 0 10 }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+        }
+
+        groupcollapsible {
+            name    "folder26_2"
+            label   "Guide"
+            disablewhen "{ useguides == 0 } { useemission == 1 }"
+            parmtag { "group_default" "1" }
+
+            parm {
+                name    "guide_nosetup"
+                label   "Use Pre-Configured Setup"
+                type    toggle
+                default { "1" }
+                parmtag { "script_callback_language" "python" }
+            }
+            groupcollapsible {
+                name    "folder2"
+                label   "Use Pre-Configured Setup"
+                disablewhen "{ useguides == 0 }"
+                parmtag { "sidefx::header_toggle" "guide_nosetup" }
+
+                parm {
+                    name    "guide_group"
+                    label   "Group"
+                    type    string
+                    default { "" }
+                    disablewhen "{ guide_nosetup == 1 }"
+                    menutoggle {
+                        [ "splitnode = kwargs['node'].node('guide/split2')" ]
+                        [ "splitnode.cook()" ]
+                        [ "parm = splitnode.parm('group')" ]
+                        [ "retval = []" ]
+                        [ "labels = parm.menuLabels()" ]
+                        [ "for x, item in enumerate(parm.menuItems()):" ]
+                        [ "    retval.append(item)" ]
+                        [ "    retval.append(labels[x])" ]
+                        [ "return retval" ]
+                        language python
+                    }
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_action" "import soputils\nnode = kwargs['node']\nkwargs['geometrytype'] = hou.geometryType.Primitives\nkwargs['inputindex'] = 2 * node.node(\"switch_use_proxy\").evalParm(\"input\")\nsoputils.selectGroupParm(kwargs)" }
+                    parmtag { "script_action_help" "Select geometry from an available viewport." }
+                    parmtag { "script_action_icon" "BUTTONS_reselect" }
+                }
+                parm {
+                    name    "guide_startframe"
+                    label   "Start Frame"
+                    type    integer
+                    default { [ "ch(\"startframe\")" hscript-expr ] }
+                    disablewhen "{ guide_nosetup == 1 }"
+                    range   { 0 100 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "guide_endframe"
+                    label   "End Frame"
+                    type    integer
+                    default { "240" }
+                    disablewhen "{ guide_nosetup == 1 }"
+                    range   { 0 100 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "guide_releaseonendframe"
+                    label   "Release on End Frame"
+                    type    toggle
+                    default { "0" }
+                    disablewhen "{ guide_nosetup == 1 }"
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "guide_mode"
+                    label   "Mode"
+                    type    integer
+                    default { "0" }
+                    disablewhen "{ guide_nosetup == 1 }"
+                    menu {
+                        "0" "Near Point"
+                        "1" "Near Surface"
+                    }
+                    range   { 0! 10 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "guide_maxdist"
+                    label   "Max Distance"
+                    type    float
+                    default { "-1" }
+                    disablewhen "{ guide_nosetup == 1 }"
+                    range   { -1! 10 }
+                }
+                parm {
+                    name    "guide_strength"
+                    label   "Strength"
+                    type    float
+                    default { "1" }
+                    disablewhen "{ guide_nosetup == 1 }"
+                    range   { 0! 1 }
+                }
+                parm {
+                    name    "guide_disttostrenth"
+                    label   "Distance to Strength"
+                    type    toggle
+                    default { "1" }
+                    disablewhen "{ guide_nosetup == 1 }"
+                }
+                parm {
+                    name    "guide_dist"
+                    label   "Distance"
+                    type    vector2
+                    size    2
+                    default { "0" "5" }
+                    disablewhen "{ guide_nosetup == 1 } { guide_disttostrenth == 0 }"
+                    range   { 0! 1 }
+                }
+                parm {
+                    name    "guide_mult"
+                    label   "Strength Multiplier"
+                    type    vector2
+                    size    2
+                    default { "1" "0.25" }
+                    disablewhen "{ guide_nosetup == 1 } { guide_disttostrenth == 0 }"
+                    range   { 0! 1! }
+                }
+                parm {
+                    name    "guide_addblend"
+                    label   "Add Blend"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "off" }
+                    disablewhen "{ guide_nosetup == 1 }"
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "guide_blendattribute"
+                    label   "Blend"
+                    type    float
+                    default { "1" }
+                    disablewhen "{ guide_nosetup == 1 } { guide_addblend == 0 }"
+                    range   { 0! 1! }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "guide_dotransferattribs"
+                    label   "Transfer Attributes"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "0" }
+                    disablewhen "{ guide_nosetup == 1 }"
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "guide_transferattribs"
+                    label   "Transfer Attributes"
+                    type    string
+                    default { "" }
+                    disablewhen "{ guide_nosetup == 1 } { guide_dotransferattribs == 0 }"
+                    menutoggle {
+                        [ "node = kwargs[\"node\"].node(\"GUIDE\")" ]
+                        [ "geo = node.geometry()" ]
+                        [ "" ]
+                        [ "retval = []" ]
+                        [ "for attribname in [x.name() for x in geo.pointAttribs()]:" ]
+                        [ "    if attribname.startswith(\"__\") or attribname in [\"P\",\"name\"]:" ]
+                        [ "        continue" ]
+                        [ "    retval += [attribname] * 2" ]
+                        [ "" ]
+                        [ "return sorted(retval)" ]
+                        language python
+                    }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "guide_usesnippet"
+                    label   "Use VEXpressions"
+                    type    toggle
+                    default { "0" }
+                    disablewhen "{ guide_nosetup == 1 }"
+                }
+                parm {
+                    name    "guide_snippet"
+                    label   "Snippet"
+                    type    string
+                    nolabel
+                    default { "" }
+                    disablewhen "{ guide_nosetup == 1 }"
+                    hidewhen "{ guide_usesnippet == 0 }"
+                    menureplace {
+                        [ "import vexpressionmenu" ]
+                        [ "" ]
+                        [ "return vexpressionmenu.buildSnippetMenu('rbdbulletsolver/guidesnippet', kwargs=kwargs)" ]
+                        language python
+                    }
+                    parmtag { "editor" "1" }
+                    parmtag { "editorlang" "vex" }
+                    parmtag { "editorlines" "5-40" }
+                    parmtag { "script_action" "import vexpressionmenu\n\nnode = kwargs['node']\nparmname = 'guide_snippet'\nvexpressionmenu.createSpareParmsFromChCalls(node, parmname)" }
+                    parmtag { "script_action_help" "Creates spare parameters for each unique call of ch()" }
+                    parmtag { "script_action_icon" "BUTTONS_create_parm_from_ch" }
+                }
+                parm {
+                    name    "guide_cwdpath"
+                    label   "Evaluation Node Path"
+                    type    oppath
+                    default { "." }
+                    disablewhen "{ guide_nosetup == 1 }"
+                    hidewhen "{ guide_usesnippet == 0 }"
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "oprelative" "." }
+                }
+            }
+
+            parm {
+                name    "guide_useguidedneighbors"
+                label   "Use Guided Neighbors"
+                type    toggle
+                default { "off" }
+                disablewhen "{ useguides == 0 }"
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback" "kwargs['node'].hdaViewerStateModule().showguidevis(kwargs)" }
+                parmtag { "script_callback_language" "python" }
+            }
+            groupcollapsible {
+                name    "folder32"
+                label   "Guided Neighbors"
+                parmtag { "sidefx::header_toggle" "guide_useguidedneighbors" }
+
+                parm {
+                    name    "guide_neighbor_nptsperarea"
+                    label   "Points per Area"
+                    type    float
+                    default { "100" }
+                    disablewhen "{ guide_nosetup == 1 } { guide_useguidedneighbors == 0 }"
+                    range   { 0! 10 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "guide_neighbor_searchradius"
+                    label   "Search Radius"
+                    type    float
+                    default { "0.1" }
+                    disablewhen "{ guide_nosetup == 1 } { guide_useguidedneighbors == 0 }"
+                    range   { 0! 10 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "guide_neighbor_maxsearchpoints"
+                    label   "Max Search Points"
+                    type    integer
+                    default { "100" }
+                    disablewhen "{ guide_nosetup == 1 } { guide_useguidedneighbors == 0 }"
+                    range   { 0! 1000 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "guide_neighbor_maxconnections"
+                    label   "Max Connections"
+                    type    integer
+                    default { "1" }
+                    disablewhen "{ guide_nosetup == 1 } { guide_useguidedneighbors == 0 }"
+                    range   { 1! 5 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "guide_neighbor_ensureneighbor"
+                    label   "Ensure Neighbor "
+                    type    toggle
+                    default { "0" }
+                    disablewhen "{ guide_useguidedneighbors == 0 } { guide_nosetup == 1 }"
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "guide_minneighbors"
+                    label   "Minimum Neighbors"
+                    type    integer
+                    default { "1" }
+                    disablewhen "{ guide_useguidedneighbors == 0 }"
+                    range   { 0! 10 }
+                }
+            }
+
+        }
+
+        groupcollapsible {
+            name    "folder26_3"
+            label   "Checkpoints"
+            parmtag { "group_default" "0" }
+            parmtag { "sidefx::header_toggle" "savecheckpoints" }
+
+            parm {
+                name    "savecheckpoints"
+                label   "Save Checkpoints"
+                type    toggle
+                default { "off" }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "checkpoint_basename"
+                label   "Base Name"
+                type    string
+                default { "$HIPNAME.$OS" }
+                disablewhen "{ savecheckpoints == 0 }"
+                menureplace {
+                    "$OS"                                           "Node Name"
+                    "`opname(\"..\")`_$OS"                          "Parent + Node Name"
+                    "$HIPNAME.$OS"                                  "Scene + Node Name"
+                    "`strreplace(opfullpath(\".\"),\"/\",\"_\")`"   "Unique Node Name"
+                }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "editor" "0" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "checkpoint_basedir"
+                label   "Base Folder"
+                type    directory
+                joinnext
+                default { "$HIP/geo" }
+                disablewhen "{ savecheckpoints == 0 }"
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "checkpoint_openbasedir"
+                label   "Open Directory"
+                type    button
+                nolabel
+                default { "0" }
+                disablewhen "{ savecheckpoints == 0 }"
+                parmtag { "button_icon" "BUTTONS_folder" }
+                parmtag { "script_callback" "hou.phm().openPath(kwargs)" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "checkpoint_enableversion"
+                label   "Enable Version"
+                type    toggle
+                nolabel
+                joinnext
+                default { "on" }
+                disablewhen "{ savecheckpoints == 0 }"
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "checkpoint_version"
+                label   "Version"
+                type    integer
+                default { "1" }
+                disablewhen "{ checkpoint_enableversion != 1 } { savecheckpoints == 0 }"
+                range   { 1! 25 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "labelparm8"
+                label   "Output File"
+                type    label
+                default { "`chs(\"checkpoint_basedir\")``ifs(ch(\"checkpoint_enableversion\"), \"/v\"+chs(\"checkpoint_version\"), \"\")`/`chs(\"checkpoint_basename\")``ifs(ch(\"checkpoint_enableversion\"), \"_v\"+chs(\"checkpoint_version\"), \"\")`.\\$SF.sim" }
+                hidewhen "{ savecheckpoints == 0 }"
+                parmtag { "sidefx::look" "block" }
+            }
+            parm {
+                name    "sepparm3"
+                label   "Separator"
+                type    separator
+                default { "" }
+            }
+            parm {
+                name    "checkpoint_explicitcachensteps"
+                label   "Checkpoint Trail Length"
+                type    integer
+                default { "0" }
+                disablewhen "{ savecheckpoints == 0 }"
+                range   { 0! 10 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "checkpoint_explicitcachespacing"
+                label   "Checkpoint Interval"
+                type    integer
+                default { "1" }
+                disablewhen "{ savecheckpoints == 0 }"
+                range   { 1! 100 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+    }
+
+    group {
+        name    "folder_8"
+        label   "Output"
+
+        parm {
+            name    "useimpact"
+            label   "Add Impact Data"
+            type    toggle
+            default { "off" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        groupcollapsible {
+            name    "folder39"
+            label   "Impact Data"
+            parmtag { "sidefx::header_parm" "impacts_fetchimpacts" }
+            parmtag { "sidefx::header_toggle" "useimpact" }
+
+            parm {
+                name    "impacts_timethreshold"
+                label   "Time Threshold"
+                type    float
+                default { "0.1" }
+                disablewhen "{ useimpact == 0 }"
+                range   { 0 10 }
+            }
+            parm {
+                name    "impacts_impactthreshold"
+                label   "Impact Threshold"
+                type    float
+                default { "100" }
+                disablewhen "{ useimpact == 0 }"
+                range   { 0 10 }
+            }
+            parm {
+                name    "useimpactanalysis"
+                label   "Add Impact Analysis"
+                type    toggle
+                default { "on" }
+                disablewhen "{ useimpact == 0 }"
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "impacts_distancethreshold"
+                label   "Distance Threshold"
+                type    float
+                default { "0.05" }
+                disablewhen "{ useimpact == 0 }"
+                hidewhen "{ useimpactanalysis == 0 }"
+                range   { 0 10 }
+            }
+            parm {
+                name    "impacts_forceimpactobject"
+                label   "Force Impact Object"
+                type    string
+                default { "" }
+                disablewhen "{ useimpact == 0 }"
+                hidewhen "{ useimpactanalysis == 0 }"
+                menureplace {
+                    ""                  "All"
+                    "rbd_object"        "Self Collisions"
+                    "collision_object"  "Collision Object"
+                    "groundplane"       "Ground Plane"
+                }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "impacts_fetchimpacts"
+                label   "Fetch Impacts"
+                type    button
+                default { "0" }
+                disablewhen "{ useimpact == 0 }"
+                parmtag { "script_callback" "kwargs['node'].hm().fetchImpacts(kwargs)" }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+        groupcollapsible {
+            name    "folder27"
+            label   "Attributes"
+            parmtag { "group_default" "1" }
+
+            parm {
+                name    "doage"
+                label   "Age Attribute"
+                type    toggle
+                default { "0" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "doactiveage"
+                label   "Add Active Age Attribute"
+                type    toggle
+                default { "0" }
+                hidewhen "{ doage == 0 }"
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "justactivatedgroup"
+                label   "Just Activated"
+                type    string
+                joinnext
+                default { "" }
+                disablewhen "{ doactiveage == 0 }"
+                hidewhen "{ doage == 0 }"
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "justactivatedtype"
+                label   "Type"
+                type    ordinal
+                nolabel
+                default { "0" }
+                disablewhen "{ doactiveage == 0 }"
+                hidewhen "{ doage == 0 }"
+                menu {
+                    "0" "Group"
+                    "1" "Attribute"
+                }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+        groupcollapsible {
+            name    "folder40"
+            label   "Attribute Transfer"
+            parmtag { "sidefx::header_parm" "transferattributes" }
+
+            parm {
+                name    "transferattributes"
+                label   "Transfer Attributes"
+                type    string
+                default { "age w" }
+                menutoggle {
+                    [ "node= kwargs['node']" ]
+                    [ "labels = node.node('dopimport').parm('transferattributes').menuItems()" ]
+                    [ "return [x for x in labels for y in range(2) if not x.startswith('__')]" ]
+                    language python
+                }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "transfertogeo"
+                label   "Transfer to Geometry"
+                type    toggle
+                default { "1" }
+            }
+            parm {
+                name    "transfertoproxy"
+                label   "Transfer to Proxy Geometry"
+                type    toggle
+                default { "1" }
+            }
+        }
+
+    }
+
+}

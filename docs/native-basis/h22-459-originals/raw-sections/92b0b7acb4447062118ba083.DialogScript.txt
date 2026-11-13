@@ -1,0 +1,105 @@
+# Dialog script for output automatically generated
+
+{
+    name	output
+    script	output
+    label	Output
+
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Input 1"
+    inputlabel	2	"Input 2"
+    inputlabel	3	"Input 3"
+    inputlabel	4	"Input 4"
+
+    parm {
+        name    "execute"
+        label   "Save to Disk"
+        type    button
+        joinnext
+        default { "0" }
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "takecontrol" "always" }
+    }
+    parm {
+        name    "executebackground"
+        label   "Save to Disk in Background"
+        type    button
+        default { "0" }
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_callback" "" }
+        parmtag { "takecontrol" "always" }
+    }
+    parm {
+        name    "f"
+        label   "Start/End/Inc"
+        type    float
+        size    3
+        default { "$FSTART" "$FEND" "1" }
+        disablewhen "{ trange == off }"
+        range   { 0 10 }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "sidefx::notify_var_change_skip_hidden" "1" }
+        parmtag { "sidefx::notify_var_change_skip_disable" "1" }
+    }
+    parm {
+        name    "take"
+        label   "Render with Take"
+        type    string
+        default { "_current_" }
+        menu {
+            [ "opmenu -l render take" ]
+        }
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "dopoutput"
+        label   "Output File"
+        type    file
+        default { "$HIP/sim/$HIPNAME.`opname(\"..\")`.$SF.sim" }
+        menureplace {
+            [ "opmenu -l rop_dop1 dopoutput" ]
+        }
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "filechooser_mode" "write" }
+    }
+    parm {
+        name    "usesimframes"
+        label   "Output Every Sim Frame Using $SF"
+        type    toggle
+        default { "on" }
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "mkpath"
+        label   "Create Intermediate Directories"
+        type    toggle
+        default { "on" }
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "initsim"
+        label   "Initialize Simulation OPs"
+        type    toggle
+        default { "off" }
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "alfprogress"
+        label   "Alfred Style Progress"
+        type    toggle
+        default { "off" }
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+}

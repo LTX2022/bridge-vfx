@@ -1,0 +1,229 @@
+# tops.zip 官方文档索引（Houdini 22.0.368）
+
+共 223 页。用 `--page tops.zip:<内部路径>` 读取全文。
+
+| 页面 | 标题 |
+|---|---|
+| `attributes.txt` | Using attributes |
+| `commonhowto.txt` | Common how-tos |
+| `computervisionworkflow.txt` | ML Computer Vision workflow |
+| `cooking.txt` | Cooking/Executing the TOP network |
+| `custom_scheduler.txt` | Custom schedulers |
+| `custom_tags.txt` | Custom File Tags and Handlers |
+| `data.txt` | External configuration and data |
+| `datalayer.txt` | PDG Data Layer (PDGD) |
+| `events.txt` | Event handling |
+| `examples.txt` | PDG examples |
+| `farm_troubleshooting.txt` | Troubleshooting PDG scheduler issues on the farm |
+| `filetags.txt` | File tags |
+| `index.txt` | Executing tasks with PDG/TOPs |
+| `intro.txt` | Introduction to PDG and TOPs |
+| `jobapi.txt` | Job API |
+| `looping.txt` | Feedback loops |
+| `nodes.txt` | Commonly used TOP nodes |
+| `partitioners.txt` | Partitioner Node Callbacks |
+| `partitioners_overview.txt` | PDG Partitioners |
+| `paths.txt` | File paths |
+| `pdg/ActiveItemBlock.txt` | pdg.ActiveItemBlock |
+| `pdg/AttribError.txt` | pdg.AttribError |
+| `pdg/AttributeConfig.txt` | pdg.AttributeConfig |
+| `pdg/AttributeDictionary.txt` | pdg.AttributeDictionary |
+| `pdg/AttributeFile.txt` | pdg.AttributeFile |
+| `pdg/AttributeFloat.txt` | pdg.AttributeFloat |
+| `pdg/AttributeGeometry.txt` | pdg.AttributeGeometry |
+| `pdg/AttributeInfo.txt` | pdg.AttributeInfo |
+| `pdg/AttributeInt.txt` | pdg.AttributeInt |
+| `pdg/AttributeOwner.txt` | pdg.AttributeOwner |
+| `pdg/AttributePattern.txt` | pdg.AttributePattern |
+| `pdg/AttributePyObject.txt` | pdg.AttributePyObject |
+| `pdg/AttributeSplit.txt` | pdg.AttributeSplit |
+| `pdg/AttributeString.txt` | pdg.AttributeString |
+| `pdg/AttributeUtils.txt` | pdg.AttributeUtils |
+| `pdg/BasePattern.txt` | pdg.BasePattern |
+| `pdg/BaseType.txt` | pdg.BaseType |
+| `pdg/BatchWorkItem.txt` | pdg.BatchWorkItem |
+| `pdg/BatchWorkItem_BatchSerialization.txt` | pdg.BatchWorkItem.BatchSerialization |
+| `pdg/ConstWorkItemList.txt` | pdg.ConstWorkItemList |
+| `pdg/CookError.txt` | pdg.CookError |
+| `pdg/CookOptions.txt` | pdg.CookOptions |
+| `pdg/DeferredTask.txt` | pdg.DeferredTask |
+| `pdg/Dependency.txt` | pdg.Dependency |
+| `pdg/DependencyHolder.txt` | pdg.DependencyHolder |
+| `pdg/DependencyType.txt` | pdg.DependencyType |
+| `pdg/Dictionary.txt` | pdg.Dictionary |
+| `pdg/EvaluationContext.txt` | pdg.EvaluationContext |
+| `pdg/EvaluationOptions.txt` | pdg.EvaluationOptions |
+| `pdg/Event.txt` | pdg.Event |
+| `pdg/EventEmitter.txt` | pdg.EventEmitter |
+| `pdg/EventHandler.txt` | pdg.EventHandler |
+| `pdg/EventType.txt` | pdg.EventType |
+| `pdg/ExpressionError.txt` | pdg.ExpressionError |
+| `pdg/FeedbackBegin.txt` | pdg.FeedbackBegin |
+| `pdg/File.txt` | pdg.File |
+| `pdg/FileDependency.txt` | pdg.FileDependency |
+| `pdg/Filter.txt` | pdg.Filter |
+| `pdg/FilterPattern.txt` | pdg.FilterPattern |
+| `pdg/FrameUtils.txt` | pdg.FrameUtils |
+| `pdg/Graph.txt` | pdg.Graph |
+| `pdg/GraphContext.txt` | pdg.GraphContext |
+| `pdg/IgnoreAttributeWarningsBlock.txt` | pdg.IgnoreAttributeWarningsBlock |
+| `pdg/InjectBlock.txt` | pdg.InjectBlock |
+| `pdg/JobScriptInfo.txt` | pdg.JobScriptInfo |
+| `pdg/LockAttributesBlock.txt` | pdg.LockAttributesBlock |
+| `pdg/Mapper.txt` | pdg.Mapper |
+| `pdg/MemoryInfo.txt` | pdg.MemoryInfo |
+| `pdg/Node.txt` | pdg.Node |
+| `pdg/NodeCallbackType.txt` | pdg.NodeCallbackType |
+| `pdg/NodeInterface.txt` | pdg.NodeInterface |
+| `pdg/NodeOptions.txt` | pdg.NodeOptions |
+| `pdg/NodeStats.txt` | pdg.NodeStats |
+| `pdg/PartitionHolder.txt` | pdg.PartitionHolder |
+| `pdg/Partitioner.txt` | pdg.Partitioner |
+| `pdg/PathMap.txt` | pdg.PathMap |
+| `pdg/PathMapEditBlock.txt` | pdg.PathMapEditBlock |
+| `pdg/PathMapEntry.txt` | pdg.PathMapEntry |
+| `pdg/Port.txt` | pdg.Port |
+| `pdg/Processor.txt` | pdg.Processor |
+| `pdg/PyDeferredTask.txt` | pdg.PyDeferredTask |
+| `pdg/PyDependencyType.txt` | pdg.PyDependencyType |
+| `pdg/PyEventHandler.txt` | pdg.PyEventHandler |
+| `pdg/PyNodeCallbackType.txt` | pdg.PyNodeCallbackType |
+| `pdg/PySchedulerType.txt` | pdg.PySchedulerType |
+| `pdg/PyWorkItemData.txt` | pdg.PyWorkItemData |
+| `pdg/PyWorkItemDataType.txt` | pdg.PyWorkItemDataType |
+| `pdg/Scheduler.txt` | pdg.Scheduler |
+| `pdg/SchedulerBase.txt` | pdg.SchedulerBase |
+| `pdg/SchedulerType.txt` | pdg.SchedulerType |
+| `pdg/ScriptWorkItemData.txt` | pdg.ScriptWorkItemData |
+| `pdg/Service.txt` | pdg.Service |
+| `pdg/ServiceAddClientsBlock.txt` | pdg.ServiceAddClientsBlock |
+| `pdg/ServiceClientInfo.txt` | pdg.ServiceClientInfo |
+| `pdg/ServiceError.txt` | pdg.ServiceError |
+| `pdg/ServiceManager.txt` | pdg.ServiceManager |
+| `pdg/ServiceType.txt` | pdg.ServiceType |
+| `pdg/TransferPair.txt` | pdg.TransferPair |
+| `pdg/TypeInstance.txt` | pdg.TypeInstance |
+| `pdg/TypeRegistry.txt` | pdg.TypeRegistry |
+| `pdg/ValuePattern.txt` | pdg.ValuePattern |
+| `pdg/WorkItem.txt` | pdg.WorkItem |
+| `pdg/WorkItemData.txt` | pdg.WorkItemData |
+| `pdg/WorkItemDataType.txt` | pdg.WorkItemDataType |
+| `pdg/WorkItemDirty.txt` | pdg.WorkItemDirty |
+| `pdg/WorkItemHolder.txt` | pdg.WorkItemHolder |
+| `pdg/WorkItemList.txt` | pdg.WorkItemList |
+| `pdg/WorkItemOptions.txt` | pdg.WorkItemOptions |
+| `pdg/WorkItemStats.txt` | pdg.WorkItemStats |
+| `pdg/WorkItem_Serialization.txt` | pdg.WorkItem.Serialization |
+| `pdg/acceptResult.txt` | pdg.acceptResult |
+| `pdg/attribCollisionStrategy.txt` | pdg.attribCollisionStrategy |
+| `pdg/attribCopyType.txt` | pdg.attribCopyType |
+| `pdg/attribErrorLevel.txt` | pdg.attribErrorLevel |
+| `pdg/attribFlag.txt` | pdg.attribFlag |
+| `pdg/attribMatchType.txt` | pdg.attribMatchType |
+| `pdg/attribMergeType.txt` | pdg.attribMergeType |
+| `pdg/attribOrigin.txt` | pdg.attribOrigin |
+| `pdg/attribOverwrite.txt` | pdg.attribOverwrite |
+| `pdg/attribSaveType.txt` | pdg.attribSaveType |
+| `pdg/attribType.txt` | pdg.attribType |
+| `pdg/batchActivation.txt` | pdg.batchActivation |
+| `pdg/cacheMode.txt` | pdg.cacheMode |
+| `pdg/cacheResult.txt` | pdg.cacheResult |
+| `pdg/cloneMode.txt` | pdg.cloneMode |
+| `pdg/cookType.txt` | pdg.cookType |
+| `pdg/dataType.txt` | pdg.dataType |
+| `pdg/debugLevelCache.txt` | pdg.debugLevelCache |
+| `pdg/debugLevelExpression.txt` | pdg.debugLevelExpression |
+| `pdg/debugLevelNode.txt` | pdg.debugLevelNode |
+| `pdg/debugLevelScheduler.txt` | pdg.debugLevelScheduler |
+| `pdg/debugLevelService.txt` | pdg.debugLevelService |
+| `pdg/debugLevelTransfer.txt` | pdg.debugLevelTransfer |
+| `pdg/debugLevelTypeRegistration.txt` | pdg.debugLevelTypeRegistration |
+| `pdg/debugLevelWorkItem.txt` | pdg.debugLevelWorkItem |
+| `pdg/debugLogType.txt` | pdg.debugLogType |
+| `pdg/debugging.txt` | pdg.debugging |
+| `pdg/dirtyHandlerType.txt` | pdg.dirtyHandlerType |
+| `pdg/fileTransferType.txt` | pdg.fileTransferType |
+| `pdg/fileType.txt` | pdg.fileType |
+| `pdg/generateWhen.txt` | pdg.generateWhen |
+| `pdg/generationType.txt` | pdg.generationType |
+| `pdg/index.txt` | pdg |
+| `pdg/language.txt` | pdg.language |
+| `pdg/nodeStatType.txt` | pdg.nodeStatType |
+| `pdg/nodeSubtype.txt` | pdg.nodeSubtype |
+| `pdg/nodeType.txt` | pdg.nodeType |
+| `pdg/pathMapMatchType.txt` | pdg.pathMapMatchType |
+| `pdg/platform.txt` | pdg.platform |
+| `pdg/portType.txt` | pdg.portType |
+| `pdg/regenerateReason.txt` | pdg.regenerateReason |
+| `pdg/regenerateResult.txt` | pdg.regenerateResult |
+| `pdg/registeredType.txt` | pdg.registeredType |
+| `pdg/result.txt` | pdg.result |
+| `pdg/scheduleResult.txt` | pdg.scheduleResult |
+| `pdg/serviceBlockCookType.txt` | pdg.serviceBlockCookType |
+| `pdg/serviceClientLogType.txt` | pdg.serviceClientLogType |
+| `pdg/serviceOwner.txt` | pdg.serviceOwner |
+| `pdg/serviceResetType.txt` | pdg.serviceResetType |
+| `pdg/serviceSchedulerType.txt` | pdg.serviceSchedulerType |
+| `pdg/serviceState.txt` | pdg.serviceState |
+| `pdg/tickResult.txt` | pdg.tickResult |
+| `pdg/transferResult.txt` | pdg.transferResult |
+| `pdg/workItemCacheState.txt` | pdg.workItemCacheState |
+| `pdg/workItemCookType.txt` | pdg.workItemCookType |
+| `pdg/workItemDataSource.txt` | pdg.workItemDataSource |
+| `pdg/workItemDirtyType.txt` | pdg.workItemDirtyType |
+| `pdg/workItemExecutionType.txt` | pdg.workItemExecutionType |
+| `pdg/workItemLogType.txt` | pdg.workItemLogType |
+| `pdg/workItemReadyResult.txt` | pdg.workItemReadyResult |
+| `pdg/workItemStatType.txt` | pdg.workItemStatType |
+| `pdg/workItemState.txt` | pdg.workItemState |
+| `pdg/workItemType.txt` | pdg.workItemType |
+| `pdgd/AppendValuesMessage.txt` | pdgd.AppendValuesMessage |
+| `pdgd/DataBackend.txt` | pdgd.DataBackend |
+| `pdgd/DataBackendQueryResults.txt` | pdgd.DataBackendQueryResults |
+| `pdgd/DataLayerBackendType.txt` | pdgd.BackendType |
+| `pdgd/DataLayerInterface.txt` | pdgd.DataLayerInterface |
+| `pdgd/DataLayerInterfaceManager.txt` | pdgd.DataLayerInterfaceManager |
+| `pdgd/DataLayerInterfaceType.txt` | pdgd.DataLayerInterfaceType |
+| `pdgd/DataLayerServer.txt` | pdgd.DataLayerServer |
+| `pdgd/DataLayerServerManager.txt` | pdgd.DataLayerServerManager |
+| `pdgd/DataLayerServerType.txt` | pdgd.DataLayerServerType |
+| `pdgd/DataLayerVisualizer.txt` | pdgd.DataLayerVisualizer |
+| `pdgd/DataLayerVisualizerManager.txt` | pdgd.DataLayerVisualizerManager |
+| `pdgd/DataLayerVisualizerType.txt` | pdgd.DataLayerVisualizerType |
+| `pdgd/GlobalDataLayerInstance.txt` | pdgd.GlobalDataLayerInstance |
+| `pdgd/Message.txt` | pdgd.Message |
+| `pdgd/MessageType.txt` | pdgd.Message.MessageType |
+| `pdgd/ObjectProperty.txt` | pdgd.ObjectProperty |
+| `pdgd/ObjectPropertyType.txt` | pdgd.ObjectProperty.Type |
+| `pdgd/ObjectSnapshot.txt` | pdgd.ObjectSnapshot |
+| `pdgd/ObjectSnapshotMessage.txt` | pdgd.ObjectSnapshotMessage |
+| `pdgd/PropertyNames.txt` | pdgd.PropertyNames |
+| `pdgd/QueryDefinition.txt` | pdgd.QueryDefinition |
+| `pdgd/QueryDefinitionFilter.txt` | pdgd.QueryDefinitionFilter |
+| `pdgd/RemoveValuesMessage.txt` | pdgd.RemoveValuesMessage |
+| `pdgd/SetValuesMessage.txt` | pdgd.SetValuesMessage |
+| `pdgd/SubscriptionHandler.txt` | pdgd.SubscriptionHandler |
+| `pdgd/SubscriptionHandlerManager.txt` | pdgd.SubscriptionHandlerManager |
+| `pdgd/SubscriptionHandlerType.txt` | pdgd.SubscriptionHandlerType |
+| `pdgd/TypeInstance.txt` | pdgd.TypeInstance |
+| `pdgd/TypeRegistry.txt` | pdgd.TypeRegistry |
+| `pdgd/index.txt` | pdgd |
+| `pdgd/registeredType.txt` | pdgd.registeredType |
+| `pdgutils/FileReader.txt` | pdgutils.FileReader |
+| `pdgutils/PDGNetMessageType.txt` | pdgutils.PDGNetMessageType |
+| `pdgutils/index.txt` | pdgutils |
+| `perf.txt` | Visualizing work item performance |
+| `pilotpdg.txt` | PilotPDG |
+| `processors.txt` | Processor Node Callbacks |
+| `schedulers.txt` | Integrating PDG with render farm schedulers |
+| `schedulers_callbacks.txt` | Scheduler Node Callbacks |
+| `servers.txt` | Service Blocks |
+| `services.txt` | PDG Services |
+| `stocknodes.txt` | Running external programs |
+| `tips.txt` | Tips and tricks |
+| `tutorial_pdgfxworkflow.txt` | PDG Tutorial 1 \|> FX Workflow |
+| `tutorial_pdghdaprocessor.txt` | PDG Tutorial 3 \|> HDA Processor |
+| `tutorial_pdgimagemanipulation.txt` | PDG Tutorial 2 \|> Image Manipulation |
+| `ui.txt` | PDG node network interface |
+| `wait.txt` | Waiting for upstream results |
+| `wedge.txt` | Wedging attributes |

@@ -1,0 +1,356 @@
+{
+  "version": "22.0.459",
+  "dialog_sha256": "cc263cb8a2e6e1f964363999322d8395f7c52d7160ea723173a24b23568783fe",
+  "archive": {
+    "path": "/Applications/Houdini/Houdini22.0.459/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/otls/OPlibLop.hda",
+    "bytes": 6150226,
+    "sha256": "82ea9d10928bb8bd0fecba63f30068e60faa887abf4d2a6c25136dcc89574645",
+    "format": "INDX",
+    "entry_count": 119,
+    "index_parser_source": "/Users/user/Documents/Code_Project/Bridge/tools/capture_native_schema.py",
+    "index_parser_sha256": "c50aad0aa93ac3c535a50477a77002cff5f9d7aa6689f089b90f5675114c9d95"
+  },
+  "parameters": {
+    "pixelfilter": {
+      "name": "pixelfilter",
+      "type": "string",
+      "size": 1,
+      "label": "Pixel Filter",
+      "default_tokens": [
+        "gauss"
+      ],
+      "menu_tokens": [],
+      "menu_modifiers": [],
+      "menu_uses_token_value": false,
+      "range_tokens": [],
+      "disable_when": "",
+      "hide_when": "",
+      "disable_when_tab": "",
+      "naming_tokens": "",
+      "tags_tokens": [
+        "autoscope",
+        "0000000000000000",
+        "spare_category",
+        "Image",
+        "uiscope",
+        "None",
+        "usdapischema",
+        "KarmaRenderSettingsAPI",
+        "usdvaluetype",
+        "string"
+      ],
+      "menu_script_tokens": [
+        "box",
+        "Box Filter",
+        "gauss",
+        "Gaussian Filter",
+        "blackman",
+        "Blackman Filter",
+        "blackmanharris",
+        "Blackman-Harris Filter"
+      ],
+      "container_kind": "parm",
+      "children": [],
+      "ancestors": [
+        "karmarendersettings",
+        "folder2_1_1_2",
+        "__imageoutput"
+      ],
+      "flags": [],
+      "raw_fields": {
+        "name": "pixelfilter",
+        "label": "Pixel Filter",
+        "type": "string",
+        "default": [
+          "gauss"
+        ],
+        "menureplace": [
+          "box",
+          "Box Filter",
+          "gauss",
+          "Gaussian Filter",
+          "blackman",
+          "Blackman Filter",
+          "blackmanharris",
+          "Blackman-Harris Filter"
+        ],
+        "parmtag": [
+          "autoscope",
+          "0000000000000000",
+          "spare_category",
+          "Image",
+          "uiscope",
+          "None",
+          "usdapischema",
+          "KarmaRenderSettingsAPI",
+          "usdvaluetype",
+          "string"
+        ]
+      }
+    },
+    "pixelfilterscale": {
+      "name": "pixelfilterscale",
+      "type": "float",
+      "size": 1,
+      "label": "Pixel Filter Scale",
+      "default_tokens": [
+        "1"
+      ],
+      "menu_tokens": [],
+      "menu_modifiers": [],
+      "menu_uses_token_value": false,
+      "range_tokens": [
+        "0!",
+        "5"
+      ],
+      "disable_when": "",
+      "hide_when": "",
+      "disable_when_tab": "",
+      "naming_tokens": "",
+      "tags_tokens": [
+        "autoscope",
+        "0000000000000000",
+        "spare_category",
+        "Image",
+        "uiscope",
+        "None",
+        "usdapischema",
+        "KarmaRenderSettingsAPI",
+        "usdvaluetype",
+        "float"
+      ],
+      "menu_script_tokens": [],
+      "container_kind": "parm",
+      "children": [],
+      "ancestors": [
+        "karmarendersettings",
+        "folder2_1_1_2",
+        "__imageoutput"
+      ],
+      "flags": [],
+      "raw_fields": {
+        "name": "pixelfilterscale",
+        "label": "Pixel Filter Scale",
+        "type": "float",
+        "default": [
+          "1"
+        ],
+        "range": [
+          "0!",
+          "5"
+        ],
+        "parmtag": [
+          "autoscope",
+          "0000000000000000",
+          "spare_category",
+          "Image",
+          "uiscope",
+          "None",
+          "usdapischema",
+          "KarmaRenderSettingsAPI",
+          "usdvaluetype",
+          "float"
+        ]
+      }
+    },
+    "pixelfiltersize": {
+      "name": "pixelfiltersize",
+      "type": "float",
+      "size": 1,
+      "label": "Pixel Filter Size",
+      "default_tokens": [
+        "2"
+      ],
+      "menu_tokens": [],
+      "menu_modifiers": [],
+      "menu_uses_token_value": false,
+      "range_tokens": [
+        "1",
+        "5"
+      ],
+      "disable_when": "",
+      "hide_when": "",
+      "disable_when_tab": "",
+      "naming_tokens": "",
+      "tags_tokens": [],
+      "menu_script_tokens": [],
+      "container_kind": "parm",
+      "children": [],
+      "ancestors": [
+        "karmarendersettings",
+        "folder2_1_1_2",
+        "__imageoutput"
+      ],
+      "flags": [
+        "invisible"
+      ],
+      "raw_fields": {
+        "name": "pixelfiltersize",
+        "label": "Pixel Filter Size",
+        "type": "float",
+        "invisible": true,
+        "default": [
+          "2"
+        ],
+        "range": [
+          "1",
+          "5"
+        ]
+      }
+    }
+  },
+  "consumer": {
+    "source": "/Applications/Houdini/Houdini22.0.459/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/python3.13libs/husd/karmautils.py",
+    "bytes": 81374,
+    "sha256": "82c06a7e159ed0ad688759a36dd3b04167e86703b76426c1cee2668e640dac46",
+    "raw_copy": "raw-extra/7ce09c0897a1d5fa144056a0.txt",
+    "lines": [
+      {
+        "line": 1198,
+        "text": "    float_parms = ("
+      },
+      {
+        "line": 1199,
+        "text": "        (\"pixelAspectRatio\",            \"pixelAspectRatio\"),"
+      },
+      {
+        "line": 1200,
+        "text": "        (\"cacheratio\",                  \"karma:global:cacheratio\"),"
+      },
+      {
+        "line": 1201,
+        "text": "        (\"colorlimit\",                  \"karma:global:colorlimit\"),"
+      },
+      {
+        "line": 1202,
+        "text": "        (\"colorlimitindirect\",          \"karma:global:colorlimitindirect\"),"
+      },
+      {
+        "line": 1203,
+        "text": "        (\"dicingqualityscale\",          \"karma:global:dicingqualityscale\"),"
+      },
+      {
+        "line": 1204,
+        "text": "        (\"light_sampling_quality\",      \"karma:global:light_sampling_quality\"),"
+      },
+      {
+        "line": 1205,
+        "text": "        (\"offscreenquality\",            \"karma:global:offscreenquality\"),"
+      },
+      {
+        "line": 1206,
+        "text": "        (\"pixelfilterscale\",            \"karma:global:pixelfilterscale\"),"
+      },
+      {
+        "line": 1207,
+        "text": "        (\"raybias\",                     \"karma:global:raybias\"),"
+      },
+      {
+        "line": 1208,
+        "text": ""
+      },
+      {
+        "line": 1209,
+        "text": "        (\"outline_radius\",              \"karma:global:outline_radius\"),"
+      },
+      {
+        "line": 1210,
+        "text": "        (\"outline_intensity\",           \"karma:global:outline_intensity\"),"
+      },
+      {
+        "line": 1211,
+        "text": "        (\"outline_fitmin\",              \"karma:global:outline_fitmin\"),"
+      },
+      {
+        "line": 1233,
+        "text": "        (\"exportcomponents\",            \"karma:global:exportcomponents\"),"
+      },
+      {
+        "line": 1234,
+        "text": "        (\"globalaovmaterial\",           \"karma:global:globalaovmaterial\"),"
+      },
+      {
+        "line": 1235,
+        "text": "        #(\"imagefilter\",                 \"karma:global:imagefilter\"),"
+      },
+      {
+        "line": 1236,
+        "text": "        (\"pixelfilter\",                 \"karma:global:pixelfilter\"),"
+      },
+      {
+        "line": 1237,
+        "text": "        #(\"pixeloracle\",                 \"karma:global:pixeloracle\"),"
+      },
+      {
+        "line": 1238,
+        "text": "        (\"refractcomponents\",           \"karma:global:refractcomponents\"),"
+      },
+      {
+        "line": 1239,
+        "text": "        (\"ssscomponents\",               \"karma:global:ssscomponents\"),"
+      },
+      {
+        "line": 1240,
+        "text": "        (\"volumecomponents\",            \"karma:global:volumecomponents\"),"
+      },
+      {
+        "line": 1241,
+        "text": "        (\"truedisplace\",                \"karma:object:truedisplace\"),"
+      },
+      {
+        "line": 1242,
+        "text": "    )"
+      },
+      {
+        "line": 1309,
+        "text": "    # Backward compatbility for the pixelfiltersize (deprecated after H21)"
+      },
+      {
+        "line": 1310,
+        "text": "    _pixelfiltersize_name = \"pixelfiltersize\""
+      },
+      {
+        "line": 1311,
+        "text": "    _pixelfiltersize = lop.parm(_pixelfiltersize_name)"
+      },
+      {
+        "line": 1312,
+        "text": "    if _pixelfiltersize:"
+      },
+      {
+        "line": 1313,
+        "text": "        _need_filtersize = _pixelfiltersize.evalAtFrame(frange.fstart) != 2"
+      },
+      {
+        "line": 1314,
+        "text": "        if not _need_filtersize and _pixelfiltersize.isTimeDependent():"
+      },
+      {
+        "line": 1315,
+        "text": "            for _f in frange.animated:"
+      },
+      {
+        "line": 1316,
+        "text": "                _need_filtersize = _pixelfiltersize.evalAtFrame(_f) != 2"
+      },
+      {
+        "line": 1317,
+        "text": "        if _need_filtersize:"
+      },
+      {
+        "line": 1318,
+        "text": "            _create_float(prim, \"karma:global:\" + _pixelfiltersize_name,"
+      },
+      {
+        "line": 1319,
+        "text": "                                lop, _pixelfiltersize_name, frange)"
+      },
+      {
+        "line": 1320,
+        "text": ""
+      }
+    ],
+    "scope": "static native source only; no function/menu/expression execution"
+  },
+  "conclusion": "459 publicly exposes pixelfilterscale and authors karma:global:pixelfilterscale; hidden deprecated pixelfiltersize only authors legacy field when evaluated !=2. This does not prove effective writer or executed filter width."
+}

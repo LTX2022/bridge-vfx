@@ -1,0 +1,1022 @@
+# Dialog script for camera automatically generated
+
+{
+    name	camera
+    script	camera
+    label	Camera
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Input Stage"
+
+    groupcollapsible {
+        name    "sample_group2"
+        label   "Frame Range/Subframes"
+        parmtag { "sidefx::header_parm" "sample_behavior" }
+
+        parm {
+            name    "sample_behavior"
+            baseparm
+            label   "Sampling Behavior"
+            export  none
+        }
+        parm {
+            name    "sample_f"
+            baseparm
+            label   "Start/End/Inc"
+            export  none
+        }
+        parm {
+            name    "sample_subframeenable"
+            baseparm
+            label   "Subframe Sampling"
+            export  none
+        }
+        groupsimple {
+            name    "sample_subframegroup2"
+            label   "Subframe Sampling"
+            disablewhen "{ sample_subframeenable == 0 }"
+            parmtag { "sidefx::header_toggle" "sample_subframeenable" }
+
+            parm {
+                name    "sample_shuttermode"
+                baseparm
+                label   "Shutter"
+                export  none
+            }
+            parm {
+                name    "sample_shutterrange"
+                baseparm
+                label   "Shutter Open/Close"
+                export  none
+            }
+            parm {
+                name    "sample_cameraprim"
+                baseparm
+                label   "Camera Prim"
+                export  none
+            }
+            parm {
+                name    "sample_count"
+                baseparm
+                label   "Samples"
+                export  none
+            }
+            parm {
+                name    "sample_includeframe"
+                baseparm
+                label   "Always Include Frame Sample"
+                export  none
+            }
+        }
+
+    }
+
+    parm {
+        name    "primpattern"
+        label   "Primitives"
+        type    string
+        default { "`lopinputprims('.', 0)`" }
+        hidewhen "{ createprims == on }"
+        menutoggle {
+            [ "import loputils" ]
+            [ "return loputils.createPrimPatternMenu(kwargs['node'], 0)" ]
+            language python
+        }
+        parmtag { "script_action" "import loputils\nloputils.selectPrimsInParm(kwargs, True)" }
+        parmtag { "script_action_help" "Select primitives in the Scene Viewer or Scene Graph Tree pane.\nCtrl-click to select using the primitive picker dialog.\nShift-click to select using the primitive pattern editor.\nAlt-click to toggle movement of the display flag." }
+        parmtag { "script_action_icon" "BUTTONS_reselect" }
+        parmtag { "sidefx::usdpathtype" "primlist" }
+    }
+    parm {
+        name    "primpath"
+        label   "Primitive Path"
+        type    string
+        default { "/cameras/$OS" }
+        hidewhen "{ createprims != on }"
+        menureplace {
+            [ "import loputils" ]
+            [ "return loputils.createPrimPathMenu()" ]
+            language python
+        }
+        parmtag { "script_action" "import loputils\nloputils.selectPrimsInParm(kwargs, False)" }
+        parmtag { "script_action_help" "Select a primitive in the Scene Viewer or Scene Graph Tree pane.\nCtrl-click to select using the primitive picker dialog.\nAlt-click to toggle movement of the display flag." }
+        parmtag { "script_action_icon" "BUTTONS_reselect" }
+        parmtag { "sidefx::usdpathtype" "prim" }
+    }
+    parm {
+        name    "createprims"
+        label   "Action"
+        type    ordinal
+        default { "on" }
+        menu {
+            "off"       "Edit"
+            "on"        "Create"
+            "forceedit" "Force Edit (Ignore Editable Flag)"
+        }
+    }
+    parm {
+        name    "initforedit"
+        label   "Initialize Parameters"
+        type    button
+        default { "donothing" }
+        menu {
+            [ "import loputils" ]
+            [ "return loputils.createInitializeParametersMenu(kwargs['node'].parm('createprims').eval(), 'Camera')" ]
+            language python
+        }
+        parmtag { "script_callback" "__import__('loputils').initializeParameters(kwargs['node'], kwargs['script_value'])" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "primcount"
+        label   "Primitive Count"
+        type    integer
+        invisible
+        default { "1" }
+        range   { 0 10 }
+    }
+    parm {
+        name    "primtype"
+        label   "Primitive Type"
+        type    string
+        invisible
+        default { "UsdGeomCamera" }
+        menu {
+            [ "import loputils" ]
+            [ "return loputils.createSchemaTypesMenu(True)" ]
+            language python
+        }
+    }
+    parm {
+        name    "primkind"
+        label   "Primitive Kind"
+        type    string
+        invisible
+        default { "" }
+        menu {
+            [ "import loputils" ]
+            [ "return loputils.createKindsMenu(True, False)" ]
+            language python
+        }
+    }
+    parm {
+        name    "specifier"
+        label   "Primitive Specifier"
+        type    string
+        invisible
+        default { "def" }
+        menu {
+            [ "import loputils" ]
+            [ "return loputils.createSpecifiersMenu()" ]
+            language python
+        }
+    }
+    parm {
+        name    "classancestor"
+        label   "Class Ancestor"
+        type    string
+        invisible
+        default { "" }
+        disablewhen "{ specifier == class }"
+        parmtag { "script_action" "import loputils\nloputils.selectPrimsInParm(kwargs, False)" }
+        parmtag { "script_action_help" "Select a primitive in the Scene Viewer or Scene Graph Tree pane.\nCtrl-click to select using the primitive picker dialog.\nAlt-click to toggle movement of the display flag." }
+        parmtag { "script_action_icon" "BUTTONS_reselect" }
+        parmtag { "sidefx::usdpathtype" "prim" }
+    }
+    parm {
+        name    "parentprimtype"
+        label   "Parent Primitive Type"
+        type    string
+        invisible
+        default { "UsdGeomXform" }
+        menu {
+            [ "import loputils" ]
+            [ "return loputils.createParentTypesMenu()" ]
+            language python
+        }
+    }
+    group {
+        name    "folder1"
+        label   "Transform"
+
+        parm {
+            name    "xn__xformOptransform_control_6fb"
+            label   "xformOp:transform"
+            type    string
+            default { "set" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'xform')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__xformOptransform_51a"
+            label   "xformOp:transform"
+            type    string
+            default { "xformcommonapi" }
+            disablewhen "{ xn__xformOptransform_control_6fb == block } { xn__xformOptransform_control_6fb == animationblock } { xn__xformOptransform_control_6fb == none }"
+            menu {
+                "append"                "Append"
+                "prepend"               "Prepend"
+                "overwriteorappend"     "Overwrite or Append"
+                "overwriteorprepend"    "Overwrite or Prepend"
+                "world"                 "Apply Transform in World Space"
+                "replace"               "Replace All Local Transforms"
+                "xformcommonapi"        "Apply XformCommonAPI"
+                "extendedxformcommonapi"    "Apply Extended XformCommonAPI (with Shear + Pivot Rotate)"
+            }
+            parmtag { "usdvaluetype" "xform" }
+        }
+        parm {
+            name    "xOrd"
+            label   "Transform Order"
+            type    ordinal
+            joinnext
+            default { "srt" }
+            disablewhen "{ xn__xformOptransform_control_6fb == block } { xn__xformOptransform_control_6fb == animationblock } { xn__xformOptransform_control_6fb == none } { xn__xformOptransform_51a == extendedxformcommonapi } { xn__xformOptransform_51a == xformcommonapi }"
+            menu {
+                "srt"   "Scale Rot Trans"
+                "str"   "Scale Trans Rot"
+                "rst"   "Rot Scale Trans"
+                "rts"   "Rot Trans Scale"
+                "tsr"   "Trans Scale Rot"
+                "trs"   "Trans Rot Scale"
+            }
+        }
+        parm {
+            name    "rOrd"
+            label   "Rotate Order"
+            type    ordinal
+            nolabel
+            default { "xyz" }
+            disablewhen "{ xn__xformOptransform_control_6fb == block } { xn__xformOptransform_control_6fb == animationblock } { xn__xformOptransform_control_6fb == none }"
+            menu {
+                "xyz"   "Rx Ry Rz"
+                "xzy"   "Rx Rz Ry"
+                "yxz"   "Ry Rx Rz"
+                "yzx"   "Ry Rz Rx"
+                "zxy"   "Rz Rx Ry"
+                "zyx"   "Rz Ry Rx"
+            }
+        }
+        parm {
+            name    "t"
+            label   "Translate"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            disablewhen "{ xn__xformOptransform_control_6fb == block } { xn__xformOptransform_control_6fb == animationblock } { xn__xformOptransform_control_6fb == none }"
+            range   { -1 1 }
+        }
+        parm {
+            name    "r"
+            label   "Rotate"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            disablewhen "{ xn__xformOptransform_control_6fb == block } { xn__xformOptransform_control_6fb == animationblock } { xn__xformOptransform_control_6fb == none }"
+            range   { 0 360 }
+        }
+        parm {
+            name    "s"
+            label   "Scale"
+            type    vector
+            size    3
+            default { "1" "1" "1" }
+            disablewhen "{ xn__xformOptransform_control_6fb == block } { xn__xformOptransform_control_6fb == animationblock } { xn__xformOptransform_control_6fb == none }"
+            range   { -1 1 }
+        }
+        parm {
+            name    "shear"
+            label   "Shear"
+            type    float
+            size    3
+            default { "0" "0" "0" }
+            disablewhen "{ xn__xformOptransform_control_6fb == block } { xn__xformOptransform_control_6fb == animationblock } { xn__xformOptransform_control_6fb == none } { xn__xformOptransform_51a == xformcommonapi }"
+            range   { 0 10 }
+        }
+        parm {
+            name    "scale"
+            label   "Uniform Scale"
+            type    float
+            default { "1" }
+            disablewhen "{ xn__xformOptransform_control_6fb == block } { xn__xformOptransform_control_6fb == animationblock } { xn__xformOptransform_control_6fb == none }"
+            range   { 0 10 }
+        }
+        groupcollapsible {
+            name    "parmgroup_pivotxform"
+            label   "Pivot Transform"
+            disablewhen "{ xn__xformOptransform_control_6fb == block } { xn__xformOptransform_control_6fb == animationblock } { xn__xformOptransform_control_6fb == none }"
+
+            parm {
+                name    "p"
+                label   "Pivot Translate"
+                type    vector
+                size    3
+                default { "0" "0" "0" }
+                disablewhen "{ xn__xformOptransform_control_6fb == block } { xn__xformOptransform_control_6fb == animationblock } { xn__xformOptransform_control_6fb == none }"
+                range   { -1 1 }
+            }
+            parm {
+                name    "pr"
+                label   "Pivot Rotate"
+                type    vector
+                size    3
+                default { "0" "0" "0" }
+                disablewhen "{ xn__xformOptransform_control_6fb == block } { xn__xformOptransform_control_6fb == animationblock } { xn__xformOptransform_control_6fb == none } { xn__xformOptransform_51a == xformcommonapi }"
+                range   { -1 1 }
+            }
+        }
+
+        groupcollapsible {
+            name    "folder0"
+            label   "Constraints"
+            disablewhen "{ xn__xformOptransform_control_6fb == block } { xn__xformOptransform_control_6fb == animationblock } { xn__xformOptransform_control_6fb == none }"
+
+            parm {
+                name    "lookatenable"
+                label   "Enable Look At"
+                type    toggle
+                default { "off" }
+            }
+            parm {
+                name    "keepposition"
+                label   "Keep Position"
+                type    toggle
+                invisible
+                default { "off" }
+                disablewhen "{ lookatenable == 0 }"
+            }
+            parm {
+                name    "lookatposition"
+                label   "Look At Position"
+                type    vector
+                size    3
+                default { "0" "0" "0" }
+                disablewhen "{ lookatenable == 0 }"
+                range   { -1 1 }
+            }
+            parm {
+                name    "lookatprim"
+                label   "Look At Primitive"
+                type    string
+                default { "" }
+                disablewhen "{ lookatenable == 0 }"
+                parmtag { "editor" "0" }
+                parmtag { "script_action" "import loputils\nloputils.selectPrimsInParm(kwargs, False)" }
+                parmtag { "script_action_help" "Select a primitive in the Scene Viewer or Scene Graph Tree pane.\nCtrl-click to select using the primitive picker dialog.\nAlt-click to toggle movement of the display flag." }
+                parmtag { "script_action_icon" "BUTTONS_reselect" }
+                parmtag { "script_callback" "" }
+                parmtag { "script_callback_language" "python" }
+                parmtag { "sidefx::usdpathtype" "prim" }
+            }
+            parm {
+                name    "lookatprimpos"
+                label   "Look At Primitive Position"
+                type    vector
+                invisible
+                size    3
+                default { [ "import loputils\nfrom pxr import Usd, UsdGeom\n\nlop_node = hou.node('.')\npath = lop_node.evalParm('lookatprim')\nif not path:\n    return 0\n\nstage = lop_node.stage()\nlook_at_prim = stage.GetPrimAtPath(path)\n\nif look_at_prim is None or not look_at_prim.IsA(UsdGeom.Imageable):\n    return 0\n\nxform = loputils.getPrimXform(lop_node, path)\n\nreturn xform.extractTranslates()[0]" python ] [ "import loputils\nfrom pxr import Usd, UsdGeom\n\nlop_node = hou.node('.')\npath = lop_node.evalParm('lookatprim')\nif not path:\n    return 0\n\nstage = lop_node.stage()\nlook_at_prim = stage.GetPrimAtPath(path)\n\nif look_at_prim is None or not look_at_prim.IsA(UsdGeom.Imageable):\n    return 0\n\nxform = loputils.getPrimXform(lop_node, path)\n\nreturn xform.extractTranslates()[1]" python ] [ "import loputils\nfrom pxr import Usd, UsdGeom\n\nlop_node = hou.node('.')\npath = lop_node.evalParm('lookatprim')\nif not path:\n    return 0\n\nstage = lop_node.stage()\nlook_at_prim = stage.GetPrimAtPath(path)\n\nif look_at_prim is None or not look_at_prim.IsA(UsdGeom.Imageable):\n    return 0\n\nxform = loputils.getPrimXform(lop_node, path)\n\nreturn xform.extractTranslates()[2]" python ] }
+                range   { -1 1 }
+                parmtag { "export_disable" "1" }
+            }
+            parm {
+                name    "lookatprimrot"
+                label   "Look At Primitive Rotation"
+                type    vector
+                invisible
+                size    3
+                default { [ "import loputils\nfrom pxr import Usd, UsdGeom\n\nlop_node = hou.node('.')\npath = lop_node.evalParm('lookatprim')\nif not path:\n    return 0\n\nstage = lop_node.stage()\nlook_at_prim = stage.GetPrimAtPath(path)\n\nif look_at_prim is None or not look_at_prim.IsA(UsdGeom.Imageable):\n    return 0\n\nxform = loputils.getPrimXform(lop_node, path)\n\nreturn xform.extractRotates()[0]" python ] [ "import loputils\nfrom pxr import Usd, UsdGeom\n\nlop_node = hou.node('.')\npath = lop_node.evalParm('lookatprim')\nif not path:\n    return 0\n\nstage = lop_node.stage()\nlook_at_prim = stage.GetPrimAtPath(path)\n\nif look_at_prim is None or not look_at_prim.IsA(UsdGeom.Imageable):\n    return 0\n\nxform = loputils.getPrimXform(lop_node, path)\n\nreturn xform.extractRotates()[1]" python ] [ "import loputils\nfrom pxr import Usd, UsdGeom\n\nlop_node = hou.node('.')\npath = lop_node.evalParm('lookatprim')\nif not path:\n    return 0\n\nstage = lop_node.stage()\nlook_at_prim = stage.GetPrimAtPath(path)\n\nif look_at_prim is None or not look_at_prim.IsA(UsdGeom.Imageable):\n    return 0\n\nxform = loputils.getPrimXform(lop_node, path)\n\nreturn xform.extractRotates()[2]" python ] }
+                range   { -1 1 }
+                parmtag { "export_disable" "1" }
+            }
+            parm {
+                name    "upvecmethod"
+                label   "Up Vector Method"
+                type    string
+                default { "yaxis" }
+                disablewhen "{ lookatenable == 0 }"
+                menu {
+                    "yaxis"     "Y Axis"
+                    "xaxis"     "X Axis"
+                    "custom"    "Custom"
+                }
+            }
+            parm {
+                name    "upvec"
+                label   "Up Vector"
+                type    vector
+                size    3
+                default { "0" "1" "0" }
+                disablewhen "{ lookatenable == 0 }"
+                hidewhen "{ upvecmethod != custom }"
+                range   { -1 1 }
+            }
+            parm {
+                name    "twist"
+                label   "Twist"
+                type    float
+                default { "0" }
+                disablewhen "{ lookatenable == 0 }"
+                range   { -180 180 }
+            }
+        }
+
+    }
+
+    group {
+        name    "folder1_1"
+        label   "View"
+
+        parm {
+            name    "projection_control"
+            label   "Projection"
+            type    string
+            default { "set" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'token')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "projection"
+            label   "Projection"
+            type    string
+            default { "perspective" }
+            disablewhen "{ projection_control == block } { projection_control == animationblock } { projection_control == none }"
+            menu {
+                "perspective"   "Perspective"
+                "orthographic"  "Orthographic"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "clippingRange_control"
+            label   "Clipping Range"
+            type    string
+            default { "set" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'float2')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "clippingRange"
+            label   "Clipping Range"
+            type    float
+            size    2
+            default { "1" "1e+06" }
+            disablewhen "{ clippingRange_control == block } { clippingRange_control == animationblock } { clippingRange_control == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float2" }
+        }
+        parm {
+            name    "focalLength_control"
+            label   "Focal Length"
+            type    string
+            default { "set" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'float')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "focalLength"
+            label   "Focal Length"
+            type    float
+            default { "50" }
+            disablewhen "{ focalLength_control == block } { focalLength_control == animationblock } { focalLength_control == none }"
+            range   { 1 100 }
+            parmtag { "usdvaluename" "" }
+        }
+        parm {
+            name    "focalLengthConverted"
+            label   "Focal Length (converted)"
+            type    float
+            invisible
+            default { [ "__import__('loputils').getConvertedCameraParmValue(pwd(), 'focalLength')" python ] }
+            range   { 0 10 }
+            parmtag { "usdcontrolparm" "focalLength_control" }
+            parmtag { "usdvaluename" "focalLength" }
+            parmtag { "usdvaluetype" "float" }
+        }
+        groupsimple {
+            name    "aperture_folder"
+            label   "Aperture"
+
+            parm {
+                name    "aperture"
+                label   "Control Aperture"
+                type    string
+                default { "set" }
+                menu {
+                    [ "import loputils" ]
+                    [ "menu = ['setratio', '![BUTTONS_set_or_create]Set Horizontal Aperture and Aspect Ratio']" ]
+                    [ "menu.extend(loputils.createEditPropertiesControlMenu(kwargs, 'float'))" ]
+                    [ "return menu" ]
+                    language python
+                }
+                parmtag { "script_callback_language" "python" }
+                parmtag { "sidefx::look" "icon" }
+            }
+            parm {
+                name    "horizontalAperture_control"
+                label   "Horizontal Aperture"
+                type    string
+                invisible
+                nolabel
+                default { [ "ifs(!strcmp(chs(\"aperture\"), \"setratio\"), \"set\", chs(\"aperture\"))" hscript-expr ] }
+                menujoin {
+                    [ "import loputils" ]
+                    [ "return loputils.createEditPropertiesControlMenu(kwargs, 'float')" ]
+                    language python
+                }
+                parmtag { "sidefx::look" "icon" }
+            }
+            parm {
+                name    "horizontalAperture"
+                label   "Horizontal Aperture"
+                type    float
+                default { "20.955" }
+                help    "Horizontal size of virtual camera sensor in millimeters."
+                disablewhen "{ horizontalAperture_control == block } { horizontalAperture_control == animationblock } { horizontalAperture_control == none }"
+                range   { 1 100 }
+                parmtag { "usdcontrolparm" "horizontalAperture_control" }
+                parmtag { "usdvaluename" "" }
+            }
+            parm {
+                name    "horizontalApertureConverted"
+                label   "Horizontal Aperture (converted)"
+                type    float
+                invisible
+                default { [ "__import__('loputils').getConvertedCameraParmValue(pwd(), 'horizontalAperture')" python ] }
+                range   { 0 10 }
+                parmtag { "usdcontrolparm" "horizontalAperture_control" }
+                parmtag { "usdvaluename" "horizontalAperture" }
+                parmtag { "usdvaluetype" "float" }
+            }
+            parm {
+                name    "verticalAperture_control"
+                label   "Vertical Aperture"
+                type    string
+                invisible
+                nolabel
+                default { [ "ifs(!strcmp(chs(\"aperture\"), \"setratio\"), \"set\", chs(\"aperture\"))" hscript-expr ] }
+                menujoin {
+                    [ "import loputils" ]
+                    [ "return loputils.createEditPropertiesControlMenu(kwargs, 'float')" ]
+                    language python
+                }
+                parmtag { "sidefx::look" "icon" }
+            }
+            parm {
+                name    "verticalAperture"
+                label   "Vertical Aperture"
+                type    float
+                default { "15.2908" }
+                help    "Vertical size of virtual camera sensor in millimeters."
+                disablewhen "{ verticalAperture_control == block } { verticalAperture_control == animationblock } { verticalAperture_control == none }"
+                hidewhen "{ aperture == setratio }"
+                range   { 1 100 }
+                parmtag { "usdvaluename" "" }
+            }
+            parm {
+                name    "verticalApertureSwitch"
+                label   "Vertical Aperture (switch)"
+                type    float
+                invisible
+                default { [ "if(!strcmp(chs(\"aperture\"), \"setratio\"), ch(\"horizontalAperture\") * ch(\"aspectratioy\") / ch(\"aspectratiox\"), ch(\"verticalAperture\"))" hscript-expr ] }
+                range   { 0 10 }
+                parmtag { "usdcontrolparm" "verticalAperture_control" }
+                parmtag { "usdvaluename" "" }
+            }
+            parm {
+                name    "verticalApertureConverted"
+                label   "Vertical Aperture (converted)"
+                type    float
+                invisible
+                default { [ "__import__('loputils').getConvertedCameraParmValue(pwd(), 'verticalApertureSwitch')" python ] }
+                range   { 0 10 }
+                parmtag { "usdcontrolparm" "verticalAperture_control" }
+                parmtag { "usdvaluename" "verticalAperture" }
+                parmtag { "usdvaluetype" "float" }
+            }
+            parm {
+                name    "aspectratio"
+                label   "Aspect Ratio"
+                type    vector2
+                joinnext
+                size    2
+                default { "16" "9" }
+                hidewhen "{ aperture != setratio }"
+                range   { -1 1 }
+                parmtag { "usdvaluename" "" }
+            }
+            parm {
+                name    "resMenu"
+                label   "Choose Aspect Ratio"
+                type    button
+                default { "0" }
+                hidewhen "{ aperture != setratio }"
+                menumini {
+                    [ "echo `pythonexprs(\"__import__('toolutils').parseDialogScriptMenu('FBaspectratios')\")`" ]
+                }
+                parmtag { "button_icon" "" }
+                parmtag { "script_callback" "opparm . aspectratio ( `arg(\"$script_value\", 0)` `arg(\"$script_value\", 1)` )" }
+                parmtag { "script_callback_language" "hscript" }
+            }
+            groupcollapsible {
+                name    "aperture_offset_folder"
+                label   "Offsets"
+
+                parm {
+                    name    "horizontalApertureOffset_control"
+                    label   "Horizontal Aperture Offset"
+                    type    string
+                    default { "set" }
+                    menujoin {
+                        [ "import loputils" ]
+                        [ "return loputils.createEditPropertiesControlMenu(kwargs, 'float')" ]
+                        language python
+                    }
+                    parmtag { "sidefx::look" "icon" }
+                }
+                parm {
+                    name    "horizontalApertureOffset"
+                    label   "Horizontal Aperture Offset"
+                    type    float
+                    default { "0" }
+                    disablewhen "{ horizontalApertureOffset_control == block } { horizontalApertureOffset_control == animationblock } { horizontalApertureOffset_control == none }"
+                    range   { 0 10 }
+                    parmtag { "usdvaluename" "" }
+                }
+                parm {
+                    name    "horizontalApertureOffsetConverted"
+                    label   "Horizontal Aperture Offset (converted)"
+                    type    float
+                    invisible
+                    default { [ "__import__('loputils').getConvertedCameraParmValue(pwd(), 'horizontalApertureOffset')" python ] }
+                    range   { 0 10 }
+                    parmtag { "usdcontrolparm" "horizontalApertureOffset_control" }
+                    parmtag { "usdvaluename" "horizontalApertureOffset" }
+                    parmtag { "usdvaluetype" "float" }
+                }
+                parm {
+                    name    "verticalApertureOffset_control"
+                    label   "Vertical Aperture Offset"
+                    type    string
+                    default { "set" }
+                    menujoin {
+                        [ "import loputils" ]
+                        [ "return loputils.createEditPropertiesControlMenu(kwargs, 'float')" ]
+                        language python
+                    }
+                    parmtag { "sidefx::look" "icon" }
+                }
+                parm {
+                    name    "verticalApertureOffset"
+                    label   "Vertical Aperture Offset"
+                    type    float
+                    default { "0" }
+                    disablewhen "{ verticalApertureOffset_control == block } { verticalApertureOffset_control == animationblock } { verticalApertureOffset_control == none }"
+                    range   { 0 10 }
+                    parmtag { "usdvaluename" "" }
+                }
+                parm {
+                    name    "verticalApertureOffsetConverted"
+                    label   "Vertical Aperture Offset (converted)"
+                    type    float
+                    invisible
+                    default { [ "__import__('loputils').getConvertedCameraParmValue(pwd(), 'verticalApertureOffset')" python ] }
+                    range   { 0 10 }
+                    parmtag { "usdcontrolparm" "verticalApertureOffset_control" }
+                    parmtag { "usdvaluename" "verticalApertureOffset" }
+                    parmtag { "usdvaluetype" "float" }
+                }
+            }
+
+        }
+
+    }
+
+    group {
+        name    "folder2"
+        label   "Viewport"
+
+        parm {
+            name    "xn__houdiniguidescale_control_thb"
+            label   "houdini:guidescale"
+            type    string
+            default { "set" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'float')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__houdiniguidescale_s3a"
+            label   "Scale Guide Geometry"
+            type    float
+            default { [ "1 / __import__('loputils').getMetersPerUnit(pwd())" python ] }
+            disablewhen "{ xn__houdiniguidescale_control_thb == block } { xn__houdiniguidescale_control_thb == animationblock } { xn__houdiniguidescale_control_thb == none }"
+            range   { 0 10 }
+            parmtag { "usdapischema" "HoudiniViewportGuideAPI" }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__houdiniinviewermenu_control_2kb"
+            label   "Show in Viewport Camera Menu"
+            type    string
+            default { "set" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'bool')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__houdiniinviewermenu_16a"
+            label   "Show in Viewport Camera Menu"
+            type    toggle
+            default { "1" }
+            disablewhen "{ xn__houdiniinviewermenu_control_2kb == block } { xn__houdiniinviewermenu_control_2kb == animationblock } { xn__houdiniinviewermenu_control_2kb == none }"
+            parmtag { "usdapischema" "HoudiniViewportGuideAPI" }
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__houdinibackgroundimage_control_ypb"
+            label   "Background Image"
+            type    string
+            default { "set" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'bool')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__houdinibackgroundimage_xcb"
+            label   "Background Image"
+            type    image
+            default { "" }
+            disablewhen "{ xn__houdinibackgroundimage_control_ypb == block } { xn__houdinibackgroundimage_control_ypb == animationblock } { xn__houdinibackgroundimage_control_ypb == none }"
+            parmtag { "sidefx::allow_video" "1" }
+            parmtag { "usdapischema" "HoudiniCameraPlateAPI" }
+            parmtag { "usdvaluetype" "asset" }
+        }
+        parm {
+            name    "xn__houdiniforegroundimage_control_ypb"
+            label   "Foreground Image"
+            type    string
+            default { "set" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'bool')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__houdiniforegroundimage_xcb"
+            label   "Foreground Image"
+            type    image
+            default { "" }
+            disablewhen "{ xn__houdiniforegroundimage_control_ypb == block } { xn__houdiniforegroundimage_control_ypb == animationblock } { xn__houdiniforegroundimage_control_ypb == none }"
+            parmtag { "usdapischema" "HoudiniCameraPlateAPI" }
+            parmtag { "usdvaluetype" "asset" }
+        }
+        parm {
+            name    "xn__houdinicanvasdistance_control_cob"
+            label   "Canvas Distance"
+            type    string
+            default { "none" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'double', '', True, False)" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__houdinicanvasdistance_bbb"
+            label   "Canvas Distance"
+            type    float
+            default { "1" }
+            range { 1 50 }
+            disablewhen "{ xn__houdinicanvasdistance_control_cob == block } { xn__houdinicanvasdistance_control_cob == animationblock } { xn__houdinicanvasdistance_control_cob == none }"
+            parmtag { "usdapischema" "HoudiniCanvasCameraAPI" }
+            parmtag { "usdvaluetype" "double" }
+        }
+    }
+
+    group {
+        name    "folder1_2"
+        label   "Sampling"
+
+        parm {
+            name    "xn__shutteropen_control_16a"
+            label   "Shutter Open"
+            type    string
+            default { "set" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'double')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__shutteropen_0ta"
+            label   "Shutter Open"
+            type    float
+            default { "-0.25" }
+            disablewhen "{ xn__shutteropen_control_16a == block } { xn__shutteropen_control_16a == animationblock } { xn__shutteropen_control_16a == none }"
+            range   { -1 1 }
+            parmtag { "usdvaluetype" "double" }
+        }
+        parm {
+            name    "xn__shutterclose_control_o8a"
+            label   "Shutter Close"
+            type    string
+            default { "set" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'double')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__shutterclose_nva"
+            label   "Shutter Close"
+            type    float
+            default { "0.25" }
+            disablewhen "{ xn__shutterclose_control_o8a == block } { xn__shutterclose_control_o8a == animationblock } { xn__shutterclose_control_o8a == none }"
+            range   { -1 1 }
+            parmtag { "usdvaluetype" "double" }
+        }
+        parm {
+            name    "focusDistance_control"
+            label   "Focus Distance"
+            type    string
+            default { "set" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'float')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "focusDistance"
+            label   "Focus Distance"
+            type    float
+            default { "5" }
+            disablewhen "{ focusDistance_control == block } { focusDistance_control == animationblock } { focusDistance_control == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "fStop_control"
+            label   "F-Stop"
+            type    string
+            default { "set" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'float')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "fStop"
+            label   "F-Stop"
+            type    float
+            default { "0" }
+            disablewhen "{ fStop_control == block } { fStop_control == animationblock } { fStop_control == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "exposure_control"
+            label   "Exposure"
+            type    string
+            default { "set" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'float')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "exposure"
+            label   "Exposure"
+            type    float
+            default { "0" }
+            disablewhen "{ exposure_control == block } { exposure_control == animationblock } { exposure_control == none }"
+            range   { -10 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "exposure_fstop_control"
+            label   "Exposure F-Stop"
+            type    string
+            default { "none" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'float')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__exposurefStop_bxa"
+            label   "Exposure F-Stop"
+            type    float
+            default { "1" }
+            disablewhen "{ exposure_fstop_control == block } { exposure_fstop_control == animationblock } { exposure_fstop_control == none }"
+            range   { 0.001 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "exposure_iso_control"
+            label   "Exposure ISO"
+            type    string
+            default { "none" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'float')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__exposureiso_1ta"
+            label   "Exposure ISO"
+            type    log
+            default { "100" }
+            disablewhen "{ exposure_iso_control == block } { exposure_iso_control == animationblock } { exposure_iso_control == none }"
+            range   { 0 3200 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "exposure_responsivity_control"
+            label   "Exposure Responsivity"
+            type    string
+            default { "none" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'float')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__exposureresponsivity_p8a"
+            label   "Exposure Responsivity"
+            type    float
+            default { "1" }
+            disablewhen "{ exposure_responsivity_control == block } { exposure_responsivity_control == animationblock } { exposure_responsivity_control == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "exposure_time_control"
+            label   "Exposure Time"
+            type    string
+            default { "none" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'float')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__exposuretime_ova"
+            label   "Exposure Time"
+            type    float
+            default { "1" }
+            disablewhen "{ exposure_time_control == block } { exposure_time_control == animationblock } { exposure_time_control == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+}

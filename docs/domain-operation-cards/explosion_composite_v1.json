@@ -1,0 +1,1665 @@
+{
+  "schema": "bridge.domain_operation_card_document/1.0",
+  "kind": "prospective_case_contract_not_execution_evidence",
+  "domain_pack": "explosion_composite_v1",
+  "domain_pack_version": "1.0.0",
+  "work_package": "W6",
+  "owner": "Z",
+  "formal_runtime_owner": "R",
+  "status": "BLOCKED",
+  "baseline_id": "7046477d4daba24610f601c257909b52b95834326b7c1d29801c50662231f499",
+  "source_snapshot_id": "f90b44bf88cadb30cce4cffe0d68449c057d29b97096aa4665066756cfb657fb",
+  "versions": [
+    {
+      "houdini_version": "21.0.631",
+      "status": "BLOCKED",
+      "input_versions": {
+        "domain_pack": "explosion_composite_v1",
+        "domain_pack_version": "1.0.0",
+        "catalog_source_snapshot_id": "f90b44bf88cadb30cce4cffe0d68449c057d29b97096aa4665066756cfb657fb",
+        "runtime_interface": "ABSENT_NOT_FROZEN",
+        "houdini_version_must_be_explicit": true
+      },
+      "expected_topology": {
+        "roles": [
+          "smoke:complete pyro_smoke branch",
+          "fire:complete pyro_fire branch",
+          "particles:complete particles branch",
+          "geometry:real shockwave/procedural geometry branch",
+          "rbd:complete RBD branch",
+          "material_binding:typed import/bind consumers",
+          "render:Driver/usdrender",
+          "output:typed branch outputs then rendered-image"
+        ],
+        "edges_and_bindings": [
+          "smoke volume -> volume import",
+          "fire volume -> volume import",
+          "particles geometry -> geometry import",
+          "shockwave geometry -> geometry import",
+          "RBD geometry -> geometry import",
+          "imports -> material bindings -> LOP scene -> RenderProduct -> Driver/usdrender"
+        ],
+        "assertions": [
+          "all five branches explicitly exist with real inputs and outputs; volume and geometry cannot merge without typed conversion",
+          "fire/smoke/particles/RBD/shockwave controls affect their own branch; protected smoke preserved for fire-energy feedback",
+          "upstream edit invalidates only affected producer/dependents plus render/composite; actual downstream consumption, not names/deps only"
+        ],
+        "port_gaps": "every BLOCKED port must receive exact installed definition/HOM fact before execution",
+        "role_path_map": {
+          "status": "BLOCKED",
+          "reason": "R has not frozen legal owned_roots/context layout; cannot assign /stage, /out or /mat ownership from self-reported manifest"
+        }
+      },
+      "current_host_nodes": [
+        {
+          "role": "source",
+          "category": "sop",
+          "type_candidates": [
+            "sphere"
+          ],
+          "required_parameter_aliases": [
+            [
+              "radx",
+              "radius"
+            ]
+          ],
+          "input_role": null
+        },
+        {
+          "role": "pyro",
+          "category": "sop",
+          "type_candidates": [
+            "pyrosolver",
+            "pyrosolver::2.0"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": "source"
+        },
+        {
+          "role": "particles",
+          "category": "sop",
+          "type_candidates": [
+            "popnet"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": "source"
+        },
+        {
+          "role": "fracture",
+          "category": "sop",
+          "type_candidates": [
+            "rbdmaterialfracture"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": "source"
+        },
+        {
+          "role": "output",
+          "category": "sop",
+          "type_candidates": [
+            "merge"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": "pyro"
+        }
+      ],
+      "current_host_connections": [
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "pyro",
+          "destination_input": 0
+        },
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "particles",
+          "destination_input": 0
+        },
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "fracture",
+          "destination_input": 0
+        },
+        {
+          "source_role": "pyro",
+          "source_output": 0,
+          "destination_role": "output",
+          "destination_input": 0
+        }
+      ],
+      "control_coverage": [
+        {
+          "control": "comp_contrast",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "nuke",
+          "current_host_declaration": {
+            "id": "comp_contrast",
+            "node_role": "external_nuke",
+            "parameter_aliases": [],
+            "minimum": 0.0,
+            "maximum": 10.0,
+            "invalidates_from": "composite",
+            "value_type": "float",
+            "application": "nuke"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            10.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "composite"
+            ],
+            "components": [
+              "composite"
+            ]
+          },
+          "expected_role": "external_nuke",
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXTERNAL_NUKE_CONTROL_OWNER_R"
+          ]
+        },
+        {
+          "control": "debris_amount",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "debris_amount",
+            "node_role": "fracture",
+            "parameter_aliases": [
+              "piececount",
+              "fracturecount"
+            ],
+            "minimum": 0.0,
+            "maximum": 1000000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "int",
+            "application": "houdini"
+          },
+          "current_runtime_type": "int",
+          "public_range": [
+            0.0,
+            1000000.0
+          ],
+          "proposed_case_value": 1,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "rbd_generation"
+            ],
+            "components": [
+              "rbd"
+            ]
+          },
+          "expected_role": null,
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "BLOCKED_EXPECTED_ROLE_OR_MACHINE_FIELD_UNRESOLVED",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        },
+        {
+          "control": "debris_energy",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "debris_energy",
+            "node_role": "fracture",
+            "parameter_aliases": [
+              "debrisenergy",
+              "velocityscale",
+              "impulse"
+            ],
+            "minimum": 0.0,
+            "maximum": 1000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            1000.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "rbd_simulation"
+            ],
+            "components": [
+              "rbd"
+            ]
+          },
+          "expected_role": null,
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "BLOCKED_EXPECTED_ROLE_OR_MACHINE_FIELD_UNRESOLVED",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        },
+        {
+          "control": "debris_scale",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "debris_scale",
+            "node_role": "fracture",
+            "parameter_aliases": [
+              "piecesize",
+              "fracturescale"
+            ],
+            "minimum": 0.001,
+            "maximum": 1000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.001,
+            1000.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "rbd_generation"
+            ],
+            "components": [
+              "rbd"
+            ]
+          },
+          "expected_role": null,
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "BLOCKED_EXPECTED_ROLE_OR_MACHINE_FIELD_UNRESOLVED",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        },
+        {
+          "control": "fire_energy",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "fire_energy",
+            "node_role": "pyro",
+            "parameter_aliases": [
+              "burn",
+              "burnrate"
+            ],
+            "minimum": 0.0,
+            "maximum": 10.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            10.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "fire_simulation"
+            ],
+            "components": [
+              "fire"
+            ]
+          },
+          "expected_role": null,
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "BLOCKED_EXPECTED_ROLE_OR_MACHINE_FIELD_UNRESOLVED",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        },
+        {
+          "control": "fire_scale",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "fire_scale",
+            "node_role": "pyro",
+            "parameter_aliases": [
+              "burn",
+              "burnrate",
+              "flamescale"
+            ],
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            100.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "fire_simulation"
+            ],
+            "components": [
+              "fire"
+            ]
+          },
+          "expected_role": null,
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "BLOCKED_EXPECTED_ROLE_OR_MACHINE_FIELD_UNRESOLVED",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        },
+        {
+          "control": "shockwave_scale",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "shockwave_scale",
+            "node_role": "source",
+            "parameter_aliases": [
+              "scale",
+              "uniformscale"
+            ],
+            "minimum": 0.001,
+            "maximum": 10000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.001,
+            10000.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "shockwave_generation"
+            ],
+            "components": [
+              "shockwave"
+            ]
+          },
+          "expected_role": null,
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "BLOCKED_EXPECTED_ROLE_OR_MACHINE_FIELD_UNRESOLVED",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        },
+        {
+          "control": "shockwave_thickness",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "shockwave_thickness",
+            "node_role": "source",
+            "parameter_aliases": [
+              "thickness",
+              "radius"
+            ],
+            "minimum": 0.0,
+            "maximum": 1000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            1000.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "shockwave_generation"
+            ],
+            "components": [
+              "shockwave"
+            ]
+          },
+          "expected_role": null,
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "BLOCKED_EXPECTED_ROLE_OR_MACHINE_FIELD_UNRESOLVED",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        },
+        {
+          "control": "smoke_dissipation",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "smoke_dissipation",
+            "node_role": "pyro",
+            "parameter_aliases": [
+              "dissipation",
+              "dissipationscale"
+            ],
+            "minimum": 0.0,
+            "maximum": 5.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            5.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "smoke_simulation"
+            ],
+            "components": [
+              "smoke"
+            ]
+          },
+          "expected_role": null,
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "BLOCKED_EXPECTED_ROLE_OR_MACHINE_FIELD_UNRESOLVED",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        },
+        {
+          "control": "smoke_scale",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "smoke_scale",
+            "node_role": "pyro",
+            "parameter_aliases": [
+              "densityscale",
+              "smokeamount"
+            ],
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            100.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "smoke_simulation"
+            ],
+            "components": [
+              "smoke"
+            ]
+          },
+          "expected_role": null,
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "BLOCKED_EXPECTED_ROLE_OR_MACHINE_FIELD_UNRESOLVED",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        },
+        {
+          "control": "spark_rate",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "spark_rate",
+            "node_role": "particles",
+            "parameter_aliases": [
+              "constantrate",
+              "birthrate"
+            ],
+            "minimum": 0.0,
+            "maximum": 10000000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            10000000.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "particles_simulation"
+            ],
+            "components": [
+              "particles"
+            ]
+          },
+          "expected_role": null,
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "BLOCKED_EXPECTED_ROLE_OR_MACHINE_FIELD_UNRESOLVED",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        }
+      ],
+      "native_node_documentation_snapshot": {
+        "status": "DOCUMENTED_NODE_FACTS_WITH_GAPS",
+        "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/domain-native-documentation.json",
+        "source_sha256": "43ba32c0d518d94b0dbf57e6f8bc395c2c8f38718a51b26bb969669ce5d45d8c",
+        "archive": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/help/nodes.zip",
+        "archive_sha256": "7c83e14d77ddaebf0f918244c1747509633b2721a39468eb4ae3efc694886916",
+        "note": "node documentation existence does not establish parameter ABI or runtime geometry"
+      },
+      "stages": {
+        "formal_build": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "inspect_all_nodes_controls_connections": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "feedback_all_controls": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "save_reopen_structure_and_data": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "formal_output": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "real_host_live": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "visual_acceptance": {
+          "status": "NOT_RUN",
+          "evidence": null
+        }
+      },
+      "recovery": {
+        "status": "NOT_RUN",
+        "tested": false,
+        "owner": "R",
+        "evidence_owner": "E",
+        "domain_assertion_owner": "Z",
+        "requirements": [
+          "interrupt the process actually executing this case while operation active",
+          "supervisor observes identity and STOP_CONFIRMED before restart",
+          "restart controller and original task from real serialized scene, same request_id",
+          "completed side effects not repeated; incomplete work reconciled through formal control authorization",
+          "recovered topology/ALL controls/domain data/producer artifact content match saved actual state",
+          "case_id/build_id/provider/host identity/operation_id/scene hash and phase facts bound by E"
+        ],
+        "forbidden_substitutes": [
+          "immediately exiting helper process",
+          "manual RECONCILE edit",
+          "reopen original in-memory substitute scene",
+          "load-time expected-data rebuilding"
+        ]
+      }
+    },
+    {
+      "houdini_version": "22.0.429",
+      "status": "BLOCKED",
+      "input_versions": {
+        "domain_pack": "explosion_composite_v1",
+        "domain_pack_version": "1.0.0",
+        "catalog_source_snapshot_id": "f90b44bf88cadb30cce4cffe0d68449c057d29b97096aa4665066756cfb657fb",
+        "runtime_interface": "ABSENT_NOT_FROZEN",
+        "houdini_version_must_be_explicit": true
+      },
+      "expected_topology": {
+        "roles": [
+          "smoke:complete pyro_smoke branch",
+          "fire:complete pyro_fire branch",
+          "particles:complete particles branch",
+          "geometry:real shockwave/procedural geometry branch",
+          "rbd:complete RBD branch",
+          "material_binding:typed import/bind consumers",
+          "render:Driver/usdrender",
+          "output:typed branch outputs then rendered-image"
+        ],
+        "edges_and_bindings": [
+          "smoke volume -> volume import",
+          "fire volume -> volume import",
+          "particles geometry -> geometry import",
+          "shockwave geometry -> geometry import",
+          "RBD geometry -> geometry import",
+          "imports -> material bindings -> LOP scene -> RenderProduct -> Driver/usdrender"
+        ],
+        "assertions": [
+          "all five branches explicitly exist with real inputs and outputs; volume and geometry cannot merge without typed conversion",
+          "fire/smoke/particles/RBD/shockwave controls affect their own branch; protected smoke preserved for fire-energy feedback",
+          "upstream edit invalidates only affected producer/dependents plus render/composite; actual downstream consumption, not names/deps only"
+        ],
+        "port_gaps": "every BLOCKED port must receive exact installed definition/HOM fact before execution",
+        "role_path_map": {
+          "status": "BLOCKED",
+          "reason": "R has not frozen legal owned_roots/context layout; cannot assign /stage, /out or /mat ownership from self-reported manifest"
+        }
+      },
+      "current_host_nodes": [
+        {
+          "role": "source",
+          "category": "sop",
+          "type_candidates": [
+            "sphere"
+          ],
+          "required_parameter_aliases": [
+            [
+              "radx",
+              "radius"
+            ]
+          ],
+          "input_role": null
+        },
+        {
+          "role": "pyro",
+          "category": "sop",
+          "type_candidates": [
+            "pyrosolver",
+            "pyrosolver::2.0"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": "source"
+        },
+        {
+          "role": "particles",
+          "category": "sop",
+          "type_candidates": [
+            "popnet"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": "source"
+        },
+        {
+          "role": "fracture",
+          "category": "sop",
+          "type_candidates": [
+            "rbdmaterialfracture"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": "source"
+        },
+        {
+          "role": "output",
+          "category": "sop",
+          "type_candidates": [
+            "merge"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": "pyro"
+        }
+      ],
+      "current_host_connections": [
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "pyro",
+          "destination_input": 0
+        },
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "particles",
+          "destination_input": 0
+        },
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "fracture",
+          "destination_input": 0
+        },
+        {
+          "source_role": "pyro",
+          "source_output": 0,
+          "destination_role": "output",
+          "destination_input": 0
+        }
+      ],
+      "control_coverage": [
+        {
+          "control": "comp_contrast",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "nuke",
+          "current_host_declaration": {
+            "id": "comp_contrast",
+            "node_role": "external_nuke",
+            "parameter_aliases": [],
+            "minimum": 0.0,
+            "maximum": 10.0,
+            "invalidates_from": "composite",
+            "value_type": "float",
+            "application": "nuke"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            10.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "composite"
+            ],
+            "components": [
+              "composite"
+            ]
+          },
+          "expected_role": "external_nuke",
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXTERNAL_NUKE_CONTROL_OWNER_R"
+          ]
+        },
+        {
+          "control": "debris_amount",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "debris_amount",
+            "node_role": "fracture",
+            "parameter_aliases": [
+              "piececount",
+              "fracturecount"
+            ],
+            "minimum": 0.0,
+            "maximum": 1000000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "int",
+            "application": "houdini"
+          },
+          "current_runtime_type": "int",
+          "public_range": [
+            0.0,
+            1000000.0
+          ],
+          "proposed_case_value": 1,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "rbd_generation"
+            ],
+            "components": [
+              "rbd"
+            ]
+          },
+          "expected_role": null,
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "BLOCKED_EXPECTED_ROLE_OR_MACHINE_FIELD_UNRESOLVED",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        },
+        {
+          "control": "debris_energy",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "debris_energy",
+            "node_role": "fracture",
+            "parameter_aliases": [
+              "debrisenergy",
+              "velocityscale",
+              "impulse"
+            ],
+            "minimum": 0.0,
+            "maximum": 1000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            1000.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "rbd_simulation"
+            ],
+            "components": [
+              "rbd"
+            ]
+          },
+          "expected_role": null,
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "BLOCKED_EXPECTED_ROLE_OR_MACHINE_FIELD_UNRESOLVED",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        },
+        {
+          "control": "debris_scale",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "debris_scale",
+            "node_role": "fracture",
+            "parameter_aliases": [
+              "piecesize",
+              "fracturescale"
+            ],
+            "minimum": 0.001,
+            "maximum": 1000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.001,
+            1000.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "rbd_generation"
+            ],
+            "components": [
+              "rbd"
+            ]
+          },
+          "expected_role": null,
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "BLOCKED_EXPECTED_ROLE_OR_MACHINE_FIELD_UNRESOLVED",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        },
+        {
+          "control": "fire_energy",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "fire_energy",
+            "node_role": "pyro",
+            "parameter_aliases": [
+              "burn",
+              "burnrate"
+            ],
+            "minimum": 0.0,
+            "maximum": 10.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            10.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "fire_simulation"
+            ],
+            "components": [
+              "fire"
+            ]
+          },
+          "expected_role": null,
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "BLOCKED_EXPECTED_ROLE_OR_MACHINE_FIELD_UNRESOLVED",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        },
+        {
+          "control": "fire_scale",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "fire_scale",
+            "node_role": "pyro",
+            "parameter_aliases": [
+              "burn",
+              "burnrate",
+              "flamescale"
+            ],
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            100.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "fire_simulation"
+            ],
+            "components": [
+              "fire"
+            ]
+          },
+          "expected_role": null,
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "BLOCKED_EXPECTED_ROLE_OR_MACHINE_FIELD_UNRESOLVED",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        },
+        {
+          "control": "shockwave_scale",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "shockwave_scale",
+            "node_role": "source",
+            "parameter_aliases": [
+              "scale",
+              "uniformscale"
+            ],
+            "minimum": 0.001,
+            "maximum": 10000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.001,
+            10000.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "shockwave_generation"
+            ],
+            "components": [
+              "shockwave"
+            ]
+          },
+          "expected_role": null,
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "BLOCKED_EXPECTED_ROLE_OR_MACHINE_FIELD_UNRESOLVED",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        },
+        {
+          "control": "shockwave_thickness",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "shockwave_thickness",
+            "node_role": "source",
+            "parameter_aliases": [
+              "thickness",
+              "radius"
+            ],
+            "minimum": 0.0,
+            "maximum": 1000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            1000.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "shockwave_generation"
+            ],
+            "components": [
+              "shockwave"
+            ]
+          },
+          "expected_role": null,
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "BLOCKED_EXPECTED_ROLE_OR_MACHINE_FIELD_UNRESOLVED",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        },
+        {
+          "control": "smoke_dissipation",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "smoke_dissipation",
+            "node_role": "pyro",
+            "parameter_aliases": [
+              "dissipation",
+              "dissipationscale"
+            ],
+            "minimum": 0.0,
+            "maximum": 5.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            5.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "smoke_simulation"
+            ],
+            "components": [
+              "smoke"
+            ]
+          },
+          "expected_role": null,
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "BLOCKED_EXPECTED_ROLE_OR_MACHINE_FIELD_UNRESOLVED",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        },
+        {
+          "control": "smoke_scale",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "smoke_scale",
+            "node_role": "pyro",
+            "parameter_aliases": [
+              "densityscale",
+              "smokeamount"
+            ],
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            100.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "smoke_simulation"
+            ],
+            "components": [
+              "smoke"
+            ]
+          },
+          "expected_role": null,
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "BLOCKED_EXPECTED_ROLE_OR_MACHINE_FIELD_UNRESOLVED",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        },
+        {
+          "control": "spark_rate",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "spark_rate",
+            "node_role": "particles",
+            "parameter_aliases": [
+              "constantrate",
+              "birthrate"
+            ],
+            "minimum": 0.0,
+            "maximum": 10000000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            10000000.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "particles_simulation"
+            ],
+            "components": [
+              "particles"
+            ]
+          },
+          "expected_role": null,
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "BLOCKED_EXPECTED_ROLE_OR_MACHINE_FIELD_UNRESOLVED",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        }
+      ],
+      "native_node_documentation_snapshot": {
+        "status": "DOCUMENTED_NODE_FACTS_WITH_GAPS",
+        "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/domain-native-documentation.json",
+        "source_sha256": "43ba32c0d518d94b0dbf57e6f8bc395c2c8f38718a51b26bb969669ce5d45d8c",
+        "archive": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/help/nodes.zip",
+        "archive_sha256": "6ca2ef18ce0d1f142d3415e27885b36f69b3537344a04621c89f9fab6937ad53",
+        "note": "node documentation existence does not establish parameter ABI or runtime geometry"
+      },
+      "stages": {
+        "formal_build": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "inspect_all_nodes_controls_connections": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "feedback_all_controls": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "save_reopen_structure_and_data": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "formal_output": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "real_host_live": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "visual_acceptance": {
+          "status": "NOT_RUN",
+          "evidence": null
+        }
+      },
+      "recovery": {
+        "status": "NOT_RUN",
+        "tested": false,
+        "owner": "R",
+        "evidence_owner": "E",
+        "domain_assertion_owner": "Z",
+        "requirements": [
+          "interrupt the process actually executing this case while operation active",
+          "supervisor observes identity and STOP_CONFIRMED before restart",
+          "restart controller and original task from real serialized scene, same request_id",
+          "completed side effects not repeated; incomplete work reconciled through formal control authorization",
+          "recovered topology/ALL controls/domain data/producer artifact content match saved actual state",
+          "case_id/build_id/provider/host identity/operation_id/scene hash and phase facts bound by E"
+        ],
+        "forbidden_substitutes": [
+          "immediately exiting helper process",
+          "manual RECONCILE edit",
+          "reopen original in-memory substitute scene",
+          "load-time expected-data rebuilding"
+        ]
+      }
+    },
+    {
+      "houdini_version": "22.0.459",
+      "kind": "current_preparation_expectation_not_execution_evidence",
+      "status": "BLOCKED",
+      "input_versions": {
+        "domain_pack": "explosion_composite_v1",
+        "domain_pack_version": "1.0.0",
+        "houdini_version_must_be_explicit": true
+      },
+      "expected_nodes": {
+        "default": {
+          "status": "UNRESOLVED",
+          "blocker": "COMPOSITE_REGISTERED_UPSTREAM_DATAFLOW_NOT_IMPLEMENTED",
+          "required_route": [
+            "pyro_smoke_v1",
+            "pyro_fire_v1",
+            "particles_v1",
+            "procedural_geometry_v1",
+            "rbd_destruction_v1",
+            "material_lookdev_v1",
+            "lighting_camera_render_v1",
+            "nuke_composite_v1"
+          ],
+          "native_execution": false
+        }
+      },
+      "expected_connections": {
+        "default": {
+          "status": "UNRESOLVED",
+          "blocker": "COMPOSITE_REGISTERED_UPSTREAM_DATAFLOW_NOT_IMPLEMENTED",
+          "required_route": [
+            "pyro_smoke_v1",
+            "pyro_fire_v1",
+            "particles_v1",
+            "procedural_geometry_v1",
+            "rbd_destruction_v1",
+            "material_lookdev_v1",
+            "lighting_camera_render_v1",
+            "nuke_composite_v1"
+          ],
+          "native_execution": false
+        }
+      },
+      "control_coverage": {
+        "default": {
+          "status": "UNRESOLVED",
+          "blocker": "COMPOSITE_REGISTERED_UPSTREAM_DATAFLOW_NOT_IMPLEMENTED",
+          "required_route": [
+            "pyro_smoke_v1",
+            "pyro_fire_v1",
+            "particles_v1",
+            "procedural_geometry_v1",
+            "rbd_destruction_v1",
+            "material_lookdev_v1",
+            "lighting_camera_render_v1",
+            "nuke_composite_v1"
+          ],
+          "native_execution": false
+        }
+      },
+      "native_basis": {
+        "status": "UNRESOLVED",
+        "reason": "No standalone versioned native explosion graph. Registered branch artifacts, B trusted inputs and common render/composite consumption remain required.",
+        "sources": [
+          {
+            "path": "docs/native-basis/hda-interface-22.0.459.json",
+            "sha256": "e8d9ee7a16f14baa2327ae45412b2acee60ef4849d4e3aa099aea229586379c7",
+            "version": "22.0.459",
+            "native_execution": false
+          },
+          {
+            "path": "docs/native-basis/supporting-sources-22.0.459.json",
+            "sha256": "7b1bd4e1b187de823db9555bca10f40e9278dd88fb790cce8c874576405e1c3a",
+            "version": "22.0.459",
+            "native_execution": false
+          }
+        ],
+        "native_execution": false
+      },
+      "software_validation": "NOT_RUN",
+      "live_validation": "NOT_RUN",
+      "blockers": [
+        "WHOLE_DOMAIN_NATIVE_BASIS_UNRESOLVED",
+        "CURRENT_FORMAL_LIFECYCLE_AND_OUTPUT_NOT_ACCEPTED"
+      ]
+    }
+  ],
+  "common_assertions": [
+    "Before any write verify task authorization, actual node ownership/context/type and exact native field writable/not disabled/not locked/not driven/referenced. Initialize documented modes/gates before dependent probe.",
+    "Every required and runtime control is covered; feedback changes at most five controls per formal patch, in bounded batches; inspect ALL changed targets and inverse semantic readback.",
+    "All declared ports/edges equal actual node.info inputs; include output ports and context parents, not only connection verified flags.",
+    "Save/reopen uses GraphRun.task_save/task_reopen or formal scene.save_hip/scene.reopen_task_hip; compare node type, every key parameter, ALL connections and actual domain data; no expected-data reconstruction on load.",
+    "Rejected wrong type/range/context/role/field/domain/version, locked/driven/disabled and partial-write failure leave all prior parameters/connections plus unrelated user edits intact.",
+    "Feedback readback includes semantic_control/node/parameter before-after/readback_verified/invalidates_from; invalidate transitive actual data consumers and affected caches/artifacts; unchanged branches remain unchanged."
+  ],
+  "output_contract": {
+    "type_and_data": "typed volume/geometry branches -> material/scene -> rendered-image",
+    "rendered_image_only_after_formal_render": true,
+    "producer_operation_id": null,
+    "artifact_id": null,
+    "artifact_version": null,
+    "content_sha256": null,
+    "frames": [
+      1,
+      2
+    ],
+    "colorspace": "scene_linear for final render, not forced onto intermediate geometry/volume/material",
+    "status": "BLOCKED",
+    "interface": "I2/I3"
+  },
+  "resource_confirmation": {
+    "status": "BLOCKED",
+    "required": [
+      "task-owned roots and save/budget roots accepted by R and supervisor",
+      "explicit version and authorized isolated task input, no private media upload",
+      "frames exactly [1,2], maximum 12 explicit frames and render budget <=120 seconds",
+      "operator to confirm geometry complexity/memory/render settings budget without exceeding public allowance",
+      "licenses/resource availability checked only by future authorized operator; none invoked here"
+    ]
+  },
+  "live_human_judgment": {
+    "status": "NOT_RUN",
+    "items": [
+      "component_alignment",
+      "energy_timing",
+      "silhouette_iou",
+      "temporal_coherence",
+      "visual plausibility and correct native geometry/data",
+      "collision/artifact/render noise and temporal continuity as applicable",
+      "reference privacy and protected dimensions retained"
+    ]
+  },
+  "next_action": {
+    "Z": "resolve each BLOCKED role/field/units/gates/conversion and implement domain assertions in separately owned code work",
+    "R": "freeze runtime-interface with hashes; legal context roots, domain-data save/reopen, actual producer route and supervised recovery",
+    "E": "validate case/build/provider binding after R freeze",
+    "M": "dispatch/review/integrate without promoting historical receipts",
+    "P": "publish only after I5 build freeze"
+  },
+  "required_versions": {
+    "houdini": [
+      "21.0.631",
+      "22.0.459"
+    ],
+    "nuke": [
+      "17.0v1"
+    ]
+  }
+}

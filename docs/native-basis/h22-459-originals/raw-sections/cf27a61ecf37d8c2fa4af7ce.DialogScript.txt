@@ -1,0 +1,71 @@
+{
+    name	mtlxnormalmap
+    script	mtlxnormalmap_1_38
+    label	"MtlX Normal Map (1.38)"
+
+    rendermask	mtlx
+    shadertype	generic
+    externalshader	1
+
+    input	vector	in	"Input"
+    input	ustring	space	"Space"
+    input	float	scale	"Scale"
+    input	vector	normal	"Normal"
+    input	vector	tangent	"Tangent"
+    output	vector	out	"out"
+
+    signature	"NDnormalmap"	default	{ vector ustring float vector vector vector script=ND_normalmap }
+    signature	"Vector 2"	vector2	{ vector ustring vector2 vector vector vector script=ND_normalmap_vector2 }
+
+    parm {
+        name    "in"
+        label   "Input"
+        type    vector
+        size    3
+        default { "0.5" "0.5" "1" }
+        range   { 0 10 }
+    }
+    parm {
+        name    "space"
+        label   "Space"
+        type    string
+        default { "tangent" }
+        menureplace {
+            "tangent"   "tangent"
+            "object"    "object"
+        }
+        parmtag { "sidefx::shader_isparmuniform" "1" }
+    }
+    parm {
+        name    "scale"
+        label   "Scale"
+        type    float
+        default { "1" }
+        range   { 0 10 }
+    }
+    parm {
+        name    "scale_vector2"
+        label   "Scale"
+        type    vector2
+        size    2
+        default { "1" "1" }
+        range   { 0 10 }
+        parmtag { "sidefx::shader_parmname" "scale" }
+    }
+    parm {
+        name    "normal"
+        label   "Normal"
+        type    vector
+        size    3
+        default { "0" "0" "0" }
+        range   { 0 10 }
+    }
+    parm {
+        name    "tangent"
+        label   "Tangent"
+        type    vector
+        size    3
+        default { "0" "0" "0" }
+        range   { 0 10 }
+    }
+}

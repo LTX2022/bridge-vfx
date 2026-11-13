@@ -1,0 +1,134 @@
+{
+  "source_kind": "installed_same_build_static_HOM_documentation",
+  "native_execution": "NOT_RUN",
+  "versions": [
+    {
+      "version": "21.0.631",
+      "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/help/hom.zip",
+      "archive_sha256": "e4c8f5503d1f96ab10ca17f865e468c05243d2a3fa7a96ccd0b7904b0929817c",
+      "members": [
+        {
+          "member": "hou/Attrib.txt",
+          "sha256": "60fb90b8ec2fdd45c7de6cb5fc3eab9c028f2e06234c770fa0fd96dcb0e316fd",
+          "excerpts": [
+            {
+              "line_start": 51,
+              "line_end": 65,
+              "text": "\n    Note that a string attribute's size must be 1.\n\n::`numericDataType(self)` -> [Hom:hou.numericData] enum value:\n    #cppname: HOM_Attrib::numericDataType\n    Return the numeric (int, float) attribute's precision.\n\n::`isArrayType(self)` -> `bool`:\n    #cppname: HOM_Attrib::isArrayType\n    Return True if the attribute is a type that contains array data (i.e. Float\n    Array, Integer Array, String Array) and False otherwise.\n\n::`qualifier(self)` -> `str`:\n    #cppname: HOM_Attrib::qualifier\n    Return the attribute's type qualifier.  The qualifier is a description"
+            },
+            {
+              "line_start": 52,
+              "line_end": 66,
+              "text": "    Note that a string attribute's size must be 1.\n\n::`numericDataType(self)` -> [Hom:hou.numericData] enum value:\n    #cppname: HOM_Attrib::numericDataType\n    Return the numeric (int, float) attribute's precision.\n\n::`isArrayType(self)` -> `bool`:\n    #cppname: HOM_Attrib::isArrayType\n    Return True if the attribute is a type that contains array data (i.e. Float\n    Array, Integer Array, String Array) and False otherwise.\n\n::`qualifier(self)` -> `str`:\n    #cppname: HOM_Attrib::qualifier\n    Return the attribute's type qualifier.  The qualifier is a description\n    of the data contained in the attribute.  An empty string is returned"
+            }
+          ]
+        },
+        {
+          "member": "hou/numericData.txt",
+          "sha256": "c919b55b1c78897eebb04b50984c7968529fc26256c8f293b0fbbf9b6f206581",
+          "excerpts": [
+            {
+              "line_start": 8,
+              "line_end": 18,
+              "text": "\n@values\n\n:: Int8\n:: UInt8\n:: Int16\n:: Int32\n:: Int64\n:: Float16\n:: Float32\n:: Float64"
+            },
+            {
+              "line_start": 9,
+              "line_end": 18,
+              "text": "@values\n\n:: Int8\n:: UInt8\n:: Int16\n:: Int32\n:: Int64\n:: Float16\n:: Float32\n:: Float64"
+            },
+            {
+              "line_start": 10,
+              "line_end": 18,
+              "text": "\n:: Int8\n:: UInt8\n:: Int16\n:: Int32\n:: Int64\n:: Float16\n:: Float32\n:: Float64"
+            },
+            {
+              "line_start": 11,
+              "line_end": 18,
+              "text": ":: Int8\n:: UInt8\n:: Int16\n:: Int32\n:: Int64\n:: Float16\n:: Float32\n:: Float64"
+            },
+            {
+              "line_start": 12,
+              "line_end": 18,
+              "text": ":: UInt8\n:: Int16\n:: Int32\n:: Int64\n:: Float16\n:: Float32\n:: Float64"
+            },
+            {
+              "line_start": 14,
+              "line_end": 18,
+              "text": ":: Int32\n:: Int64\n:: Float16\n:: Float32\n:: Float64"
+            },
+            {
+              "line_start": 15,
+              "line_end": 18,
+              "text": ":: Int64\n:: Float16\n:: Float32\n:: Float64"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "22.0.429",
+      "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/help/hom.zip",
+      "archive_sha256": "143162e01defa725c5e35f9a53bfb3ba339a91fa1edd0e99d73da8499be23d0c",
+      "members": [
+        {
+          "member": "hou/Attrib.txt",
+          "sha256": "60fb90b8ec2fdd45c7de6cb5fc3eab9c028f2e06234c770fa0fd96dcb0e316fd",
+          "excerpts": [
+            {
+              "line_start": 51,
+              "line_end": 65,
+              "text": "\n    Note that a string attribute's size must be 1.\n\n::`numericDataType(self)` -> [Hom:hou.numericData] enum value:\n    #cppname: HOM_Attrib::numericDataType\n    Return the numeric (int, float) attribute's precision.\n\n::`isArrayType(self)` -> `bool`:\n    #cppname: HOM_Attrib::isArrayType\n    Return True if the attribute is a type that contains array data (i.e. Float\n    Array, Integer Array, String Array) and False otherwise.\n\n::`qualifier(self)` -> `str`:\n    #cppname: HOM_Attrib::qualifier\n    Return the attribute's type qualifier.  The qualifier is a description"
+            },
+            {
+              "line_start": 52,
+              "line_end": 66,
+              "text": "    Note that a string attribute's size must be 1.\n\n::`numericDataType(self)` -> [Hom:hou.numericData] enum value:\n    #cppname: HOM_Attrib::numericDataType\n    Return the numeric (int, float) attribute's precision.\n\n::`isArrayType(self)` -> `bool`:\n    #cppname: HOM_Attrib::isArrayType\n    Return True if the attribute is a type that contains array data (i.e. Float\n    Array, Integer Array, String Array) and False otherwise.\n\n::`qualifier(self)` -> `str`:\n    #cppname: HOM_Attrib::qualifier\n    Return the attribute's type qualifier.  The qualifier is a description\n    of the data contained in the attribute.  An empty string is returned"
+            }
+          ]
+        },
+        {
+          "member": "hou/numericData.txt",
+          "sha256": "c919b55b1c78897eebb04b50984c7968529fc26256c8f293b0fbbf9b6f206581",
+          "excerpts": [
+            {
+              "line_start": 8,
+              "line_end": 18,
+              "text": "\n@values\n\n:: Int8\n:: UInt8\n:: Int16\n:: Int32\n:: Int64\n:: Float16\n:: Float32\n:: Float64"
+            },
+            {
+              "line_start": 9,
+              "line_end": 18,
+              "text": "@values\n\n:: Int8\n:: UInt8\n:: Int16\n:: Int32\n:: Int64\n:: Float16\n:: Float32\n:: Float64"
+            },
+            {
+              "line_start": 10,
+              "line_end": 18,
+              "text": "\n:: Int8\n:: UInt8\n:: Int16\n:: Int32\n:: Int64\n:: Float16\n:: Float32\n:: Float64"
+            },
+            {
+              "line_start": 11,
+              "line_end": 18,
+              "text": ":: Int8\n:: UInt8\n:: Int16\n:: Int32\n:: Int64\n:: Float16\n:: Float32\n:: Float64"
+            },
+            {
+              "line_start": 12,
+              "line_end": 18,
+              "text": ":: UInt8\n:: Int16\n:: Int32\n:: Int64\n:: Float16\n:: Float32\n:: Float64"
+            },
+            {
+              "line_start": 14,
+              "line_end": 18,
+              "text": ":: Int32\n:: Int64\n:: Float16\n:: Float32\n:: Float64"
+            },
+            {
+              "line_start": 15,
+              "line_end": 18,
+              "text": ":: Int64\n:: Float16\n:: Float32\n:: Float64"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

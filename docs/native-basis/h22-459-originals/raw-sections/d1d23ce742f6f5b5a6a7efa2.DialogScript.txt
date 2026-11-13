@@ -1,0 +1,369 @@
+# Dialog script for popsteerpath automatically generated
+
+{
+    name	popsteerpath
+    script	popsteerpath
+    label	"POP Steer Path"
+
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Stream to Interact"
+    inputlabel	2	"Input 2"
+    inputlabel	3	"Input 3"
+    inputlabel	4	"Input 4"
+
+    parm {
+        name    "activate"
+        label   "Activation"
+        type    float
+        default { "1" }
+        range   { 0! 1! }
+    }
+    parm {
+        name    "usegroup"
+        label   "Label"
+        type    toggle
+        nolabel
+        joinnext
+        default { "0" }
+        range   { 0 1 }
+    }
+    parm {
+        name    "partgroup"
+        label   "Group"
+        type    string
+        default { "" }
+        disablewhen "{ usegroup == 0 }"
+        menutoggle {
+            [ "import doppoptoolutils" ]
+            [ "" ]
+            [ "return doppoptoolutils.buildGroupMenu(hou.pwd())" ]
+            language python
+        }
+        range   { 0 1 }
+    }
+    parm {
+        name    "showguide"
+        label   "Show Guide Geometry"
+        type    toggle
+        nolabel
+        joinnext
+        default { "on" }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "guidecolor"
+        label   "Guide"
+        type    color
+        size    3
+        default { "0" "0" "1" }
+        disablewhen "{ showguide == 0 }"
+        range   { 0! 1! }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "output"
+        label   "Output Attribute"
+        type    ordinal
+        default { "1" }
+        menu {
+            "0" "Crowds steerforce"
+            "1" "POP force"
+        }
+        range   { 0 1 }
+    }
+    parm {
+        name    "state"
+        label   "State"
+        type    string
+        invisible
+        default { "`ifs(ch(\"statemethod\")==0,substr(opstreamname('.'),7,strlen(opstreamname('.'))-8),\"\")`" }
+        hidewhen "{ output == 1 }"
+        range   { 0 1 }
+    }
+    parm {
+        name    "weight"
+        label   "Weight"
+        type    float
+        default { "0.5" }
+        hidewhen "{ output == 1 }"
+        range   { 0 10 }
+    }
+    group {
+        name    "folder0"
+        label   "Parameters"
+
+        parm {
+            name    "pathsource"
+            label   "Source"
+            type    ordinal
+            default { "sop" }
+            menu {
+                "sop"       "SOP"
+                "dopdata"   "DOP Data"
+                "first"     "First Context Geometry"
+                "second"    "Second Context Geometry"
+                "third"     "Third Context Geometry"
+                "fourth"    "Fourth Context Geometry"
+            }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "soppath"
+            label   "SOP Path"
+            type    oppath
+            default { "" }
+            disablewhen "{ pathsource != sop }"
+            hidewhen "{ pathsource != sop }"
+            range   { 0 1 }
+            parmtag { "opfilter" "!!SOP!!" }
+            parmtag { "oprelative" "." }
+        }
+        parm {
+            name    "pathdopobject"
+            label   "DOP Object"
+            type    string
+            default { "pathdopobject" }
+            disablewhen "{ pathsource != dopdata }"
+            hidewhen "{ pathsource != dopdata }"
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "pathdopdata"
+            label   "DOP Data"
+            type    string
+            default { "Geometry" }
+            disablewhen "{ pathsource != dopdata }"
+            hidewhen "{ pathsource != dopdata }"
+            range   { 0 1 }
+        }
+        groupcollapsible {
+            name    "folder_matchbyattrib"
+            label   "Match by Attribute"
+            grouptag { "group_type" "collapsible" }
+            parmtag { "sidefx::header_toggle" "matchbyattrib" }
+
+            parm {
+                name    "matchbyattrib"
+                label   "Match by Attribute"
+                type    toggle
+                default { "off" }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "agentattrib"
+                label   "Agent Attribute"
+                type    string
+                default { "targetcurveid" }
+                disablewhen "{ matchbyattrib == 0 }"
+                menureplace {
+                    [ "import crowdstoolutils" ]
+                    [ "" ]
+                    [ "obj = crowdstoolutils.findCrowdObject(kwargs['node'])" ]
+                    [ "if not obj:" ]
+                    [ "    return []" ]
+                    [ "" ]
+                    [ "geo = obj.geometry()" ]
+                    [ "return geo.generateAttribMenu(hou.attribType.Point, max_size=1, array_type=False)" ]
+                    language python
+                }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "usecurveattrib"
+                label   "Use Curve Attribute"
+                type    toggle
+                nolabel
+                joinnext
+                default { "off" }
+                disablewhen "{ matchbyattrib == 0 }"
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "curveattrib"
+                label   "Curve Attribute"
+                type    string
+                default { "curveid" }
+                disablewhen "{ matchbyattrib == 0 } { usecurveattrib == 0 }"
+                menureplace {
+                    [ "curve_geo = hou.pwd().node(\"./curveresample/OUT\").geometry()" ]
+                    [ "if not curve_geo:" ]
+                    [ "    return []" ]
+                    [ "" ]
+                    [ "return curve_geo.generateAttribMenu(hou.attribType.Prim, max_size=1, array_type=False)" ]
+                    language python
+                }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+        parm {
+            name    "sepparm"
+            label   "Separator"
+            type    separator
+            default { "" }
+        }
+        parm {
+            name    "method"
+            label   "Method"
+            type    ordinal
+            default { "0" }
+            menu {
+                "0" "Curve Lookup"
+                "1" "Curve Point Walk"
+            }
+            range   { 0 1 }
+        }
+        parm {
+            name    "pathresample"
+            label   "Resample Path"
+            type    toggle
+            default { "1" }
+            hidewhen "{ method != 1 }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "segmentlength"
+            label   "Segment Length"
+            type    float
+            default { "1" }
+            disablewhen "{ pathresample != 1 }"
+            hidewhen "{ method != 1 }"
+            range   { 0 10 }
+        }
+        parm {
+            name    "timeatpoint"
+            label   "Time At Point"
+            type    float
+            default { "2" }
+            hidewhen "{ method != 2 }"
+            range   { 0 10 }
+        }
+        parm {
+            name    "pointradius"
+            label   "Point Radius"
+            type    float
+            default { "2" }
+            hidewhen "{ method != 2 }"
+            range   { 0 10 }
+        }
+        parm {
+            name    "reversepathdirection"
+            label   "Reverse Direction"
+            type    toggle
+            default { "0" }
+            range   { 0 1 }
+        }
+        parm {
+            name    "forcescale"
+            label   "Force Scale"
+            type    float
+            default { "10" }
+            range   { 0 10 }
+        }
+        parm {
+            name    "constraintforcescale"
+            label   "Constraint Force Scale"
+            type    float
+            default { "1" }
+            range   { 0 10 }
+        }
+        parm {
+            name    "searchradius"
+            label   "Search Radius"
+            type    float
+            default { "1000" }
+            range   { 0 10 }
+        }
+        parm {
+            name    "anticipation"
+            label   "Anticipation"
+            type    float
+            default { "1" }
+            range   { 0 10 }
+        }
+        parm {
+            name    "pathvariance"
+            label   "Path Variance"
+            type    float
+            default { "1" }
+            range   { 0 10 }
+        }
+        parm {
+            name    "ignoremass"
+            label   "Ignore Mass"
+            type    toggle
+            default { "on" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "parmvop" "1" }
+            parmtag { "shaderparmcontexts" "cvex" }
+        }
+        parm {
+            name    "uselocalforce"
+            label   "Use VEXpressions"
+            type    toggle
+            default { "off" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "parmvop" "1" }
+            parmtag { "shaderparmcontexts" "cvex" }
+        }
+        parm {
+            name    "localforceexpression"
+            label   " "
+            type    string
+            default { "" }
+            hidewhen "{ uselocalforce == 0 }"
+            menu {
+                [ "import vexpressionmenu" ]
+                [ "" ]
+                [ "return vexpressionmenu.buildSnippetMenu('popsteerpath/localforceexpression', kwargs=kwargs)" ]
+                language python
+            }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "editor" "1" }
+            parmtag { "editorlang" "vex" }
+            parmtag { "editorlines" "8-40" }
+            parmtag { "script_action" "import vexpressionmenu\n\nnode = kwargs['node']\nparmname = 'localforceexpression'\n\nvexpressionmenu.createSpareParmsFromChCalls(node, parmname)" }
+            parmtag { "script_action_help" "Creates spare parameters for each unique call of ch() " }
+            parmtag { "script_action_icon" "BUTTONS_create_parm_from_ch" }
+        }
+    }
+
+    group {
+        name    "folder0_1"
+        label   "Bindings"
+
+        parm {
+            name    "bindgeo"
+            label   "Geometry"
+            type    string
+            default { "Geometry" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "vex_cwdpath"
+            label   "Evaluation Node Path"
+            type    oppath
+            default { "." }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "oprelative" "." }
+        }
+    }
+
+}

@@ -1,0 +1,2558 @@
+{
+  "domain_pack": "vellum_cloth_v1",
+  "case_id": "vellum_cloth_v1__build_inspect",
+  "case_ids": [
+    "vellum_cloth_v1__build_inspect",
+    "vellum_cloth_v1__causal_candidate",
+    "vellum_cloth_v1__approval_recovery"
+  ],
+  "domain_pack_version": "1.0.0",
+  "kind": "current_software_contract_checklist_not_execution_evidence",
+  "status": "PREPARATION_NOT_ACCEPTED",
+  "applications": [
+    "houdini",
+    "nuke"
+  ],
+  "required_versions": {
+    "houdini": [
+      "21.0.631",
+      "22.0.459"
+    ],
+    "nuke": [
+      "17.0v1"
+    ]
+  },
+  "native_basis_status": "UNRESOLVED",
+  "native_basis": {
+    "static_definitions": [
+      "docs/native-basis/hda-interface-capture.json",
+      "docs/native-basis/native-boundary-metadata-supplement.json",
+      "docs/native-basis/hda-interface-22.0.459.json",
+      "docs/native-basis/supporting-sources-22.0.459.json"
+    ],
+    "meaning": "Current software mappings and static references are not whole-domain native validation; resolve exact operator/parameter/port and output-consumption gaps before marking VERIFIED_SOURCE.",
+    "versioned_preparation": {
+      "22.0.459": {
+        "status": "UNRESOLVED",
+        "scope": "Independent459HDA static fields and prospective software topology only; no compiled template, host process, writer execution or whole-domain validation.",
+        "sources": [
+          {
+            "path": "docs/native-basis/hda-interface-22.0.459.json",
+            "sha256": "e8d9ee7a16f14baa2327ae45412b2acee60ef4849d4e3aa099aea229586379c7",
+            "version": "22.0.459",
+            "native_execution": false
+          },
+          {
+            "path": "docs/native-basis/supporting-sources-22.0.459.json",
+            "sha256": "7b1bd4e1b187de823db9555bca10f40e9278dd88fb790cce8c874576405e1c3a",
+            "version": "22.0.459",
+            "native_execution": false
+          }
+        ],
+        "originals": "docs/native-basis/h22-459-originals/",
+        "captured_hda_operators": 55,
+        "node_templates": {
+          "default": [
+            {
+              "role": "geometry_network",
+              "candidates": [
+                {
+                  "operator": "Obj/geo",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "source",
+              "candidates": [
+                {
+                  "operator": "Sop/grid",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "collision_source",
+              "candidates": [
+                {
+                  "operator": "Sop/box",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "collision_transform",
+              "candidates": [
+                {
+                  "operator": "Sop/xform",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "cloth_wrinkle",
+              "candidates": [
+                {
+                  "operator": "Sop/attribwrangle",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "b47a35a99cfd15f0c85143a3fed309c1a2f30704183ef7565bd52af1f7306c77",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "constraints",
+              "candidates": [
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "solver",
+              "candidates": [
+                {
+                  "operator": "Sop/vellumsolver",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "91e6811b8ad06b252aefcbba3a22ef51affc233ddc2cb8005f0f24830f57a1b2",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "output",
+              "candidates": [
+                {
+                  "operator": "Sop/null",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "usd_network",
+              "candidates": [
+                {
+                  "operator": "Obj/lopnet",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "render_network",
+              "candidates": [
+                {
+                  "operator": "Obj/ropnet",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "geometry_import",
+              "candidates": [
+                {
+                  "operator": "Lop/sopimport",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "camera",
+              "candidates": [
+                {
+                  "operator": "Lop/camera",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "e7961a7d50953ca0a1d9cbd8f5349db34a4ec33fb98118f6d852e91765564612",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "light",
+              "candidates": [
+                {
+                  "operator": "Lop/light",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "34498e2f239d0566a47fc65928f9d42db17b8d7e487a99d3e0acc66b407abf38",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render_settings",
+              "candidates": [
+                {
+                  "operator": "Lop/karmarendersettings",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "cc263cb8a2e6e1f964363999322d8395f7c52d7160ea723173a24b23568783fe",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render_var",
+              "candidates": [
+                {
+                  "operator": "Lop/rendervar",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "c296736e72c9e2881b3867ff634cfe6253e5e5848e4f63bc9ff01420cbc39aea",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render_product",
+              "candidates": [
+                {
+                  "operator": "Lop/renderproduct",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "db75399202e08a57d1c5a1b29b42a2f871b690b9f23fe5db955a185bcb015cab",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "settings_binding",
+              "candidates": [
+                {
+                  "operator": "Lop/rendersettings",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "325937f14987a4b23ec74be88ac1bb0a424e351a469776e41b15952dbef9ac3d",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render",
+              "candidates": [
+                {
+                  "operator": "Driver/usdrender",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            }
+          ]
+        },
+        "blocked_controls": {
+          "default": []
+        },
+        "native_execution": false
+      }
+    }
+  },
+  "expected_nodes": {
+    "21.0.631": {
+      "default": [
+        {
+          "role": "geometry_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "geo"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "source",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "grid"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "collision_source",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "box"
+          ],
+          "required_parameter_aliases": [
+            [
+              "size"
+            ]
+          ]
+        },
+        {
+          "role": "collision_transform",
+          "category": "sop",
+          "input_role": "collision_source",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "xform"
+          ],
+          "required_parameter_aliases": [
+            [
+              "t"
+            ],
+            [
+              "s"
+            ]
+          ]
+        },
+        {
+          "role": "cloth_wrinkle",
+          "category": "sop",
+          "input_role": "source",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "attribwrangle"
+          ],
+          "required_parameter_aliases": [
+            [
+              "class"
+            ],
+            [
+              "group"
+            ],
+            [
+              "snippet"
+            ],
+            [
+              "vex_precision"
+            ]
+          ]
+        },
+        {
+          "role": "constraints",
+          "category": "sop",
+          "input_role": "cloth_wrinkle",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "vellumconstraints"
+          ],
+          "required_parameter_aliases": [
+            [
+              "constrainttype"
+            ],
+            [
+              "stretchstiffness"
+            ],
+            [
+              "stretchstiffnessexp"
+            ],
+            [
+              "stretchstiffnessscalemode"
+            ],
+            [
+              "bendstiffness"
+            ],
+            [
+              "bendtype"
+            ],
+            [
+              "bendstiffnessscalemode"
+            ],
+            [
+              "thickness"
+            ],
+            [
+              "dothickness"
+            ]
+          ]
+        },
+        {
+          "role": "solver",
+          "category": "sop",
+          "input_role": "constraints",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "vellumsolver"
+          ],
+          "required_parameter_aliases": [
+            [
+              "substeps"
+            ],
+            [
+              "niter"
+            ],
+            [
+              "collisionsiter"
+            ],
+            [
+              "veldamping"
+            ],
+            [
+              "enablecollisions"
+            ],
+            [
+              "friction"
+            ],
+            [
+              "static_threshold"
+            ],
+            [
+              "dynamic_scale"
+            ]
+          ]
+        },
+        {
+          "role": "output",
+          "category": "sop",
+          "input_role": "solver",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "null"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "usd_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "lopnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "render_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "ropnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "geometry_import",
+          "category": "lop",
+          "input_role": null,
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "sopimport"
+          ],
+          "required_parameter_aliases": [
+            [
+              "soppath"
+            ],
+            [
+              "enable_pathprefix"
+            ],
+            [
+              "pathprefix"
+            ]
+          ]
+        },
+        {
+          "role": "camera",
+          "category": "lop",
+          "input_role": "geometry_import",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "camera"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "focalLength"
+            ],
+            [
+              "fStop"
+            ],
+            [
+              "xn__shutteropen_0ta"
+            ],
+            [
+              "xn__shutterclose_nva"
+            ]
+          ]
+        },
+        {
+          "role": "light",
+          "category": "lop",
+          "input_role": "camera",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "light"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "lighttype"
+            ],
+            [
+              "radius"
+            ],
+            [
+              "exposure"
+            ]
+          ]
+        },
+        {
+          "role": "render_settings",
+          "category": "lop",
+          "input_role": "light",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "karmarendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "camera"
+            ],
+            [
+              "samplesperpixel"
+            ],
+            [
+              "volumesteprate"
+            ],
+            [
+              "enablemblur"
+            ],
+            [
+              "pixelfiltersize"
+            ],
+            [
+              "denoiser"
+            ]
+          ]
+        },
+        {
+          "role": "render_var",
+          "category": "lop",
+          "input_role": "render_settings",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendervar"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "sourceName"
+            ],
+            [
+              "sourceType"
+            ],
+            [
+              "dataType"
+            ]
+          ]
+        },
+        {
+          "role": "render_product",
+          "category": "lop",
+          "input_role": "render_var",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "renderproduct"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "orderedVars"
+            ],
+            [
+              "productType"
+            ],
+            [
+              "productName"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "settings_binding",
+          "category": "lop",
+          "input_role": "render_product",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "createprims"
+            ],
+            [
+              "products"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "render",
+          "category": "rop",
+          "input_role": null,
+          "parent_role": "render_network",
+          "type_candidates": [
+            "usdrender"
+          ],
+          "required_parameter_aliases": [
+            [
+              "loppath"
+            ],
+            [
+              "rendersettings"
+            ],
+            [
+              "override_camera"
+            ],
+            [
+              "outputimage"
+            ],
+            [
+              "execute"
+            ]
+          ]
+        }
+      ]
+    },
+    "22.0.429": {
+      "default": [
+        {
+          "role": "geometry_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "geo"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "source",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "grid"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "collision_source",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "box"
+          ],
+          "required_parameter_aliases": [
+            [
+              "size"
+            ]
+          ]
+        },
+        {
+          "role": "collision_transform",
+          "category": "sop",
+          "input_role": "collision_source",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "xform"
+          ],
+          "required_parameter_aliases": [
+            [
+              "t"
+            ],
+            [
+              "s"
+            ]
+          ]
+        },
+        {
+          "role": "cloth_wrinkle",
+          "category": "sop",
+          "input_role": "source",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "attribwrangle"
+          ],
+          "required_parameter_aliases": [
+            [
+              "class"
+            ],
+            [
+              "group"
+            ],
+            [
+              "snippet"
+            ],
+            [
+              "vex_precision"
+            ]
+          ]
+        },
+        {
+          "role": "constraints",
+          "category": "sop",
+          "input_role": "cloth_wrinkle",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "vellumconstraints"
+          ],
+          "required_parameter_aliases": [
+            [
+              "constrainttype"
+            ],
+            [
+              "stretchstiffness"
+            ],
+            [
+              "stretchstiffnessexp"
+            ],
+            [
+              "stretchstiffnessscalemode"
+            ],
+            [
+              "bendstiffness"
+            ],
+            [
+              "bendtype"
+            ],
+            [
+              "bendstiffnessscalemode"
+            ],
+            [
+              "thickness"
+            ],
+            [
+              "dothickness"
+            ]
+          ]
+        },
+        {
+          "role": "solver",
+          "category": "sop",
+          "input_role": "constraints",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "vellumsolver"
+          ],
+          "required_parameter_aliases": [
+            [
+              "substeps"
+            ],
+            [
+              "niter"
+            ],
+            [
+              "collisionsiter"
+            ],
+            [
+              "veldamping"
+            ],
+            [
+              "enablecollisions"
+            ],
+            [
+              "friction"
+            ],
+            [
+              "static_threshold"
+            ],
+            [
+              "dynamic_scale"
+            ]
+          ]
+        },
+        {
+          "role": "output",
+          "category": "sop",
+          "input_role": "solver",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "null"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "usd_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "lopnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "render_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "ropnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "geometry_import",
+          "category": "lop",
+          "input_role": null,
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "sopimport"
+          ],
+          "required_parameter_aliases": [
+            [
+              "soppath"
+            ],
+            [
+              "enable_pathprefix"
+            ],
+            [
+              "pathprefix"
+            ]
+          ]
+        },
+        {
+          "role": "camera",
+          "category": "lop",
+          "input_role": "geometry_import",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "camera"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "focalLength"
+            ],
+            [
+              "fStop"
+            ],
+            [
+              "xn__shutteropen_0ta"
+            ],
+            [
+              "xn__shutterclose_nva"
+            ]
+          ]
+        },
+        {
+          "role": "light",
+          "category": "lop",
+          "input_role": "camera",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "light"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "lighttype"
+            ],
+            [
+              "radius"
+            ],
+            [
+              "exposure"
+            ]
+          ]
+        },
+        {
+          "role": "render_settings",
+          "category": "lop",
+          "input_role": "light",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "karmarendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "camera"
+            ],
+            [
+              "samplesperpixel"
+            ],
+            [
+              "volumesteprate"
+            ],
+            [
+              "enablemblur"
+            ],
+            [
+              "pixelfiltersize"
+            ],
+            [
+              "denoiser"
+            ]
+          ]
+        },
+        {
+          "role": "render_var",
+          "category": "lop",
+          "input_role": "render_settings",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendervar"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "sourceName"
+            ],
+            [
+              "sourceType"
+            ],
+            [
+              "dataType"
+            ]
+          ]
+        },
+        {
+          "role": "render_product",
+          "category": "lop",
+          "input_role": "render_var",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "renderproduct"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "orderedVars"
+            ],
+            [
+              "productType"
+            ],
+            [
+              "productName"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "settings_binding",
+          "category": "lop",
+          "input_role": "render_product",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "createprims"
+            ],
+            [
+              "products"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "render",
+          "category": "rop",
+          "input_role": null,
+          "parent_role": "render_network",
+          "type_candidates": [
+            "usdrender"
+          ],
+          "required_parameter_aliases": [
+            [
+              "loppath"
+            ],
+            [
+              "rendersettings"
+            ],
+            [
+              "override_camera"
+            ],
+            [
+              "outputimage"
+            ],
+            [
+              "execute"
+            ]
+          ]
+        }
+      ]
+    },
+    "22.0.459": {
+      "default": [
+        {
+          "role": "geometry_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "geo"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "source",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "grid"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "collision_source",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "box"
+          ],
+          "required_parameter_aliases": [
+            [
+              "size"
+            ]
+          ]
+        },
+        {
+          "role": "collision_transform",
+          "category": "sop",
+          "input_role": "collision_source",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "xform"
+          ],
+          "required_parameter_aliases": [
+            [
+              "t"
+            ],
+            [
+              "s"
+            ]
+          ]
+        },
+        {
+          "role": "cloth_wrinkle",
+          "category": "sop",
+          "input_role": "source",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "attribwrangle"
+          ],
+          "required_parameter_aliases": [
+            [
+              "class"
+            ],
+            [
+              "group"
+            ],
+            [
+              "snippet"
+            ],
+            [
+              "vex_precision"
+            ]
+          ]
+        },
+        {
+          "role": "constraints",
+          "category": "sop",
+          "input_role": "cloth_wrinkle",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "vellumconstraints"
+          ],
+          "required_parameter_aliases": [
+            [
+              "constrainttype"
+            ],
+            [
+              "stretchstiffness"
+            ],
+            [
+              "stretchstiffnessexp"
+            ],
+            [
+              "stretchstiffnessscalemode"
+            ],
+            [
+              "bendstiffness"
+            ],
+            [
+              "bendtype"
+            ],
+            [
+              "bendstiffnessscalemode"
+            ],
+            [
+              "thickness"
+            ],
+            [
+              "dothickness"
+            ]
+          ]
+        },
+        {
+          "role": "solver",
+          "category": "sop",
+          "input_role": "constraints",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "vellumsolver"
+          ],
+          "required_parameter_aliases": [
+            [
+              "substeps"
+            ],
+            [
+              "niter"
+            ],
+            [
+              "collisionsiter"
+            ],
+            [
+              "veldamping"
+            ],
+            [
+              "enablecollisions"
+            ],
+            [
+              "friction"
+            ],
+            [
+              "static_threshold"
+            ],
+            [
+              "dynamic_scale"
+            ]
+          ]
+        },
+        {
+          "role": "output",
+          "category": "sop",
+          "input_role": "solver",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "null"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "usd_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "lopnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "render_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "ropnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "geometry_import",
+          "category": "lop",
+          "input_role": null,
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "sopimport"
+          ],
+          "required_parameter_aliases": [
+            [
+              "soppath"
+            ],
+            [
+              "enable_pathprefix"
+            ],
+            [
+              "pathprefix"
+            ]
+          ]
+        },
+        {
+          "role": "camera",
+          "category": "lop",
+          "input_role": "geometry_import",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "camera"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "focalLength"
+            ],
+            [
+              "fStop"
+            ],
+            [
+              "xn__shutteropen_0ta"
+            ],
+            [
+              "xn__shutterclose_nva"
+            ]
+          ]
+        },
+        {
+          "role": "light",
+          "category": "lop",
+          "input_role": "camera",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "light"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "lighttype"
+            ],
+            [
+              "radius"
+            ],
+            [
+              "exposure"
+            ]
+          ]
+        },
+        {
+          "role": "render_settings",
+          "category": "lop",
+          "input_role": "light",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "karmarendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "camera"
+            ],
+            [
+              "samplesperpixel"
+            ],
+            [
+              "volumesteprate"
+            ],
+            [
+              "enablemblur"
+            ],
+            [
+              "pixelfiltersize"
+            ],
+            [
+              "denoiser"
+            ]
+          ]
+        },
+        {
+          "role": "render_var",
+          "category": "lop",
+          "input_role": "render_settings",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendervar"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "sourceName"
+            ],
+            [
+              "sourceType"
+            ],
+            [
+              "dataType"
+            ]
+          ]
+        },
+        {
+          "role": "render_product",
+          "category": "lop",
+          "input_role": "render_var",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "renderproduct"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "orderedVars"
+            ],
+            [
+              "productType"
+            ],
+            [
+              "productName"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "settings_binding",
+          "category": "lop",
+          "input_role": "render_product",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "createprims"
+            ],
+            [
+              "products"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "render",
+          "category": "rop",
+          "input_role": null,
+          "parent_role": "render_network",
+          "type_candidates": [
+            "usdrender"
+          ],
+          "required_parameter_aliases": [
+            [
+              "loppath"
+            ],
+            [
+              "rendersettings"
+            ],
+            [
+              "override_camera"
+            ],
+            [
+              "outputimage"
+            ],
+            [
+              "execute"
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "expected_connections": {
+    "21.0.631": {
+      "default": [
+        {
+          "source_role": "collision_source",
+          "source_output": 0,
+          "destination_role": "collision_transform",
+          "destination_input": 0
+        },
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "cloth_wrinkle",
+          "destination_input": 0
+        },
+        {
+          "source_role": "cloth_wrinkle",
+          "source_output": 0,
+          "destination_role": "constraints",
+          "destination_input": 0
+        },
+        {
+          "source_role": "constraints",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 0
+        },
+        {
+          "source_role": "solver",
+          "source_output": 0,
+          "destination_role": "output",
+          "destination_input": 0
+        },
+        {
+          "source_role": "constraints",
+          "source_output": 1,
+          "destination_role": "solver",
+          "destination_input": 1
+        },
+        {
+          "source_role": "collision_transform",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 2
+        },
+        {
+          "source_role": "geometry_import",
+          "source_output": 0,
+          "destination_role": "camera",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "camera",
+          "source_output": 0,
+          "destination_role": "light",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "light",
+          "source_output": 0,
+          "destination_role": "render_settings",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_settings",
+          "source_output": 0,
+          "destination_role": "render_var",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_var",
+          "source_output": 0,
+          "destination_role": "render_product",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_product",
+          "source_output": 0,
+          "destination_role": "settings_binding",
+          "destination_input": 0,
+          "require_same_parent": true
+        }
+      ]
+    },
+    "22.0.429": {
+      "default": [
+        {
+          "source_role": "collision_source",
+          "source_output": 0,
+          "destination_role": "collision_transform",
+          "destination_input": 0
+        },
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "cloth_wrinkle",
+          "destination_input": 0
+        },
+        {
+          "source_role": "cloth_wrinkle",
+          "source_output": 0,
+          "destination_role": "constraints",
+          "destination_input": 0
+        },
+        {
+          "source_role": "constraints",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 0
+        },
+        {
+          "source_role": "solver",
+          "source_output": 0,
+          "destination_role": "output",
+          "destination_input": 0
+        },
+        {
+          "source_role": "constraints",
+          "source_output": 1,
+          "destination_role": "solver",
+          "destination_input": 1
+        },
+        {
+          "source_role": "collision_transform",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 2
+        },
+        {
+          "source_role": "geometry_import",
+          "source_output": 0,
+          "destination_role": "camera",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "camera",
+          "source_output": 0,
+          "destination_role": "light",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "light",
+          "source_output": 0,
+          "destination_role": "render_settings",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_settings",
+          "source_output": 0,
+          "destination_role": "render_var",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_var",
+          "source_output": 0,
+          "destination_role": "render_product",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_product",
+          "source_output": 0,
+          "destination_role": "settings_binding",
+          "destination_input": 0,
+          "require_same_parent": true
+        }
+      ]
+    },
+    "22.0.459": {
+      "default": [
+        {
+          "source_role": "collision_source",
+          "source_output": 0,
+          "destination_role": "collision_transform",
+          "destination_input": 0
+        },
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "cloth_wrinkle",
+          "destination_input": 0
+        },
+        {
+          "source_role": "cloth_wrinkle",
+          "source_output": 0,
+          "destination_role": "constraints",
+          "destination_input": 0
+        },
+        {
+          "source_role": "constraints",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 0
+        },
+        {
+          "source_role": "solver",
+          "source_output": 0,
+          "destination_role": "output",
+          "destination_input": 0
+        },
+        {
+          "source_role": "constraints",
+          "source_output": 1,
+          "destination_role": "solver",
+          "destination_input": 1
+        },
+        {
+          "source_role": "collision_transform",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 2
+        },
+        {
+          "source_role": "geometry_import",
+          "source_output": 0,
+          "destination_role": "camera",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "camera",
+          "source_output": 0,
+          "destination_role": "light",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "light",
+          "source_output": 0,
+          "destination_role": "render_settings",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_settings",
+          "source_output": 0,
+          "destination_role": "render_var",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_var",
+          "source_output": 0,
+          "destination_role": "render_product",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_product",
+          "source_output": 0,
+          "destination_role": "settings_binding",
+          "destination_input": 0,
+          "require_same_parent": true
+        }
+      ]
+    }
+  },
+  "key_parameters": {
+    "semantic": [
+      {
+        "name": "stretch_stiffness",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 1000000000000.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "bend_stiffness",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 1000000000000.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "damping",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 100.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "thickness",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 100.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "substeps",
+        "value_type": "int",
+        "minimum": 1.0,
+        "maximum": 100.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "collision_thickness",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 100.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "constraint_iterations",
+        "value_type": "int",
+        "minimum": 1.0,
+        "maximum": 10000.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "wrinkle_scale",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 100.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      }
+    ],
+    "versioned_native_mapping": {
+      "21.0.631": {
+        "default": [
+          {
+            "id": "stretch_stiffness",
+            "node_role": "constraints",
+            "parameter_aliases": [
+              "stretchstiffness"
+            ],
+            "minimum": 0,
+            "maximum": 1000000000000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "constraints",
+                "constrainttype",
+                "cloth"
+              ],
+              [
+                "constraints",
+                "stretchstiffnessscalemode",
+                "none"
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "bend_stiffness",
+            "node_role": "constraints",
+            "parameter_aliases": [
+              "bendstiffness"
+            ],
+            "minimum": 0,
+            "maximum": 1000000000000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "constraints",
+                "constrainttype",
+                "cloth"
+              ],
+              [
+                "constraints",
+                "bendtype",
+                "angle"
+              ],
+              [
+                "constraints",
+                "bendstiffnessscalemode",
+                "none"
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "damping",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "veldamping"
+            ],
+            "minimum": 0,
+            "maximum": 100,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "mapped"
+          },
+          {
+            "id": "thickness",
+            "node_role": "constraints",
+            "parameter_aliases": [
+              "thickness"
+            ],
+            "minimum": 0,
+            "maximum": 100,
+            "invalidates_from": "source_layout_control",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "constraints",
+                "constrainttype",
+                "cloth"
+              ],
+              [
+                "constraints",
+                "dothickness",
+                "on"
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "substeps",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "substeps"
+            ],
+            "minimum": 1,
+            "maximum": 100,
+            "invalidates_from": "generation_simulation",
+            "value_type": "int",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "mapped"
+          },
+          {
+            "id": "collision_thickness",
+            "node_role": "constraints",
+            "parameter_aliases": [
+              "thickness"
+            ],
+            "minimum": 0,
+            "maximum": 100,
+            "invalidates_from": "source_layout_control",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "constraints",
+                "constrainttype",
+                "cloth"
+              ],
+              [
+                "constraints",
+                "dothickness",
+                "on"
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "constraint_iterations",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "niter"
+            ],
+            "minimum": 1,
+            "maximum": 10000,
+            "invalidates_from": "generation_simulation",
+            "value_type": "int",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "mapped"
+          },
+          {
+            "id": "wrinkle_scale",
+            "node_role": "cloth_wrinkle",
+            "parameter_aliases": [
+              "snippet"
+            ],
+            "minimum": 0,
+            "maximum": 100,
+            "invalidates_from": "source_layout_control",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "mapped"
+          }
+        ]
+      },
+      "22.0.429": {
+        "default": [
+          {
+            "id": "stretch_stiffness",
+            "node_role": "constraints",
+            "parameter_aliases": [
+              "stretchstiffness"
+            ],
+            "minimum": 0,
+            "maximum": 1000000000000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "constraints",
+                "constrainttype",
+                "cloth"
+              ],
+              [
+                "constraints",
+                "stretchstiffnessscalemode",
+                "none"
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "bend_stiffness",
+            "node_role": "constraints",
+            "parameter_aliases": [
+              "bendstiffness"
+            ],
+            "minimum": 0,
+            "maximum": 1000000000000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "constraints",
+                "constrainttype",
+                "cloth"
+              ],
+              [
+                "constraints",
+                "bendtype",
+                "angle"
+              ],
+              [
+                "constraints",
+                "bendstiffnessscalemode",
+                "none"
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "damping",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "veldamping"
+            ],
+            "minimum": 0,
+            "maximum": 100,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "mapped"
+          },
+          {
+            "id": "thickness",
+            "node_role": "constraints",
+            "parameter_aliases": [
+              "thickness"
+            ],
+            "minimum": 0,
+            "maximum": 100,
+            "invalidates_from": "source_layout_control",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "constraints",
+                "constrainttype",
+                "cloth"
+              ],
+              [
+                "constraints",
+                "dothickness",
+                "on"
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "substeps",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "substeps"
+            ],
+            "minimum": 1,
+            "maximum": 100,
+            "invalidates_from": "generation_simulation",
+            "value_type": "int",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "mapped"
+          },
+          {
+            "id": "collision_thickness",
+            "node_role": "constraints",
+            "parameter_aliases": [
+              "thickness"
+            ],
+            "minimum": 0,
+            "maximum": 100,
+            "invalidates_from": "source_layout_control",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "constraints",
+                "constrainttype",
+                "cloth"
+              ],
+              [
+                "constraints",
+                "dothickness",
+                "on"
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "constraint_iterations",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "niter"
+            ],
+            "minimum": 1,
+            "maximum": 10000,
+            "invalidates_from": "generation_simulation",
+            "value_type": "int",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "mapped"
+          },
+          {
+            "id": "wrinkle_scale",
+            "node_role": "cloth_wrinkle",
+            "parameter_aliases": [
+              "snippet"
+            ],
+            "minimum": 0,
+            "maximum": 100,
+            "invalidates_from": "source_layout_control",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "mapped"
+          }
+        ]
+      },
+      "22.0.459": {
+        "default": [
+          {
+            "minimum": 0,
+            "maximum": 1000000000000.0,
+            "value_type": "float",
+            "application": "houdini",
+            "invalidates_from": "generation_simulation",
+            "required_gates": [
+              [
+                "constraints",
+                "constrainttype",
+                "cloth"
+              ],
+              [
+                "constraints",
+                "stretchstiffnessscalemode",
+                "none"
+              ]
+            ],
+            "unit": "effective native constraint stiffness; not a material Young modulus",
+            "native_status": "mapped",
+            "semantic_contract": "native_constraint_stiffness_times_ten_to_exponent/1",
+            "native_multiplier_parm": "stretchstiffnessexp",
+            "forward": "native=effective/(10**actual_exponent)",
+            "inverse": "effective=native*(10**actual_exponent)",
+            "existing_exponent_policy": "read and freeze actual token-value exponent; never normalize existing nodes",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "stretchstiffness",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "constrainttype",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "stretchstiffnessscalemode",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "stretch_stiffness",
+            "node_role": "constraints",
+            "parameter_aliases": [
+              "stretchstiffness"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 1000000000000.0,
+            "value_type": "float",
+            "application": "houdini",
+            "invalidates_from": "generation_simulation",
+            "required_gates": [
+              [
+                "constraints",
+                "constrainttype",
+                "cloth"
+              ],
+              [
+                "constraints",
+                "bendtype",
+                "angle"
+              ],
+              [
+                "constraints",
+                "bendstiffnessscalemode",
+                "none"
+              ]
+            ],
+            "unit": "effective native constraint stiffness; not a material Young modulus",
+            "native_status": "mapped",
+            "semantic_contract": "native_constraint_stiffness_times_ten_to_exponent/1",
+            "native_multiplier_parm": "bendstiffnessexp",
+            "forward": "native=effective/(10**actual_exponent)",
+            "inverse": "effective=native*(10**actual_exponent)",
+            "existing_exponent_policy": "read and freeze actual token-value exponent; never normalize existing nodes",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "bendstiffness",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "constrainttype",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "bendtype",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "bendstiffnessscalemode",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "bend_stiffness",
+            "node_role": "constraints",
+            "parameter_aliases": [
+              "bendstiffness"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 100,
+            "value_type": "float",
+            "application": "houdini",
+            "invalidates_from": "generation_simulation",
+            "required_gates": [],
+            "unit": "native direct velocity damping",
+            "native_status": "mapped",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/vellumsolver",
+                  "parameter": "veldamping",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "91e6811b8ad06b252aefcbba3a22ef51affc233ddc2cb8005f0f24830f57a1b2",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "damping",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "veldamping"
+            ]
+          },
+          {
+            "minimum": 1,
+            "maximum": 100,
+            "value_type": "int",
+            "application": "houdini",
+            "invalidates_from": "generation_simulation",
+            "required_gates": [],
+            "unit": "substeps per frame",
+            "native_status": "mapped",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/vellumsolver",
+                  "parameter": "substeps",
+                  "type": "integer",
+                  "size": 1,
+                  "section_sha256": "91e6811b8ad06b252aefcbba3a22ef51affc233ddc2cb8005f0f24830f57a1b2",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "substeps",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "substeps"
+            ]
+          },
+          {
+            "minimum": 1,
+            "maximum": 10000,
+            "value_type": "int",
+            "application": "houdini",
+            "invalidates_from": "generation_simulation",
+            "required_gates": [],
+            "unit": "constraint iterations per substep",
+            "native_status": "mapped",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/vellumsolver",
+                  "parameter": "niter",
+                  "type": "integer",
+                  "size": 1,
+                  "section_sha256": "91e6811b8ad06b252aefcbba3a22ef51affc233ddc2cb8005f0f24830f57a1b2",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "constraint_iterations",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "niter"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 100,
+            "value_type": "float",
+            "application": "houdini",
+            "invalidates_from": "source_layout_control",
+            "required_gates": [
+              [
+                "constraints",
+                "constrainttype",
+                "cloth"
+              ],
+              [
+                "constraints",
+                "dothickness",
+                "on"
+              ]
+            ],
+            "unit": "native collision thickness in scene units",
+            "native_status": "mapped",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "thickness",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "constrainttype",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "dothickness",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "thickness",
+            "node_role": "constraints",
+            "parameter_aliases": [
+              "thickness"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 100,
+            "value_type": "float",
+            "application": "houdini",
+            "invalidates_from": "source_layout_control",
+            "required_gates": [
+              [
+                "constraints",
+                "constrainttype",
+                "cloth"
+              ],
+              [
+                "constraints",
+                "dothickness",
+                "on"
+              ]
+            ],
+            "unit": "native collision thickness in scene units",
+            "native_status": "mapped",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "thickness",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "constrainttype",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "dothickness",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "collision_thickness",
+            "node_role": "constraints",
+            "parameter_aliases": [
+              "thickness"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 100,
+            "value_type": "float",
+            "application": "houdini",
+            "invalidates_from": "source_layout_control",
+            "required_gates": [],
+            "unit": "scene-unit wavelength; 0 restores upstream flat surface",
+            "native_status": "mapped",
+            "semantic_contract": "fixed_cloth_normal_wave_from_actual_source_and_half_native_thickness/1",
+            "context_parms": [
+              [
+                "cloth_wrinkle",
+                "class"
+              ],
+              [
+                "cloth_wrinkle",
+                "group"
+              ],
+              [
+                "cloth_wrinkle",
+                "vex_precision"
+              ],
+              [
+                "source",
+                "@cloth_source"
+              ],
+              [
+                "constraints",
+                "@cloth_thickness"
+              ],
+              [
+                "cloth_wrinkle",
+                "@cloth_stage"
+              ],
+              [
+                "cloth_wrinkle",
+                "@cloth_geometry"
+              ]
+            ],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/attribwrangle",
+                  "parameter": "snippet",
+                  "type": "string",
+                  "size": 1,
+                  "section_sha256": "b47a35a99cfd15f0c85143a3fed309c1a2f30704183ef7565bd52af1f7306c77",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "wrinkle_scale",
+            "node_role": "cloth_wrinkle",
+            "parameter_aliases": [
+              "snippet"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "save_reopen": [
+    "Use the production generator and task-owned host; persist project content/version/owner and the original operation receipt.",
+    "Stop the actual owned worker and verify trusted stop, then reopen the saved HIP/NK in a new host identity.",
+    "Read back every role, native type, port, connection and semantic control; preserve unrelated artist changes."
+  ],
+  "stop_recovery": [
+    "Interrupt the actual case worker, not an auxiliary process.",
+    "Retain the heavy slot while stop is unknown; verify task/session/nonce/process/generation/build/scene epoch.",
+    "Restart the controller, restore the same operation from persistent facts, and verify no duplicate execution/registration."
+  ],
+  "artifact_checks": [
+    "Consume only task-owned registered input IDs/versions/hash and exact frames.",
+    "Validate applicable outputs: diagnostic_preview, editable_scene, simulation_cache",
+    "Require producer operation, scene/version, format/dimensions/channels, color/premultiplication and dependency facts; reject missing typed metadata.",
+    "Check missing/repeated/frozen/abrupt frames against a frozen activity interval; pixel change alone does not establish correct motion."
+  ],
+  "raw_evidence_path": "outputs/live-validation/vellum_cloth_v1/<new-run-id>",
+  "human_checks": [
+    "Editable topology and save/reopen match the approved controls.",
+    "Compare the registered reference and feedback result; judge actual motion, silhouette, timing, material, lighting and composition.",
+    "Accept visual quality separately from software, format and process-stop checks."
+  ],
+  "resource_requirements": {
+    "explicit_frames_max": 12,
+    "seconds_max": 120,
+    "disk_bytes": "explicit positive task budget; include output/cache/temp/logs",
+    "cache": "separate exact path/frame/content-version/estimated-bytes/invalidation confirmation before execution",
+    "concurrency": "one heavy DCC job; unknown stop keeps slot"
+  },
+  "blockers": [
+    "Full 54-row current-build evidence and independent M1 reception remain incomplete.",
+    "Whole-domain native basis and applicable output/actual worker recovery are not verified by this card."
+  ],
+  "composite": true
+}

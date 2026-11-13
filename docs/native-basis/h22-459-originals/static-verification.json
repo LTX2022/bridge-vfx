@@ -1,0 +1,10 @@
+{
+  "scope": "installed original bytes and static parsers only",
+  "version": "22.0.459",
+  "native_execution": false,
+  "dialog_count": 55,
+  "compiled_ui_records": 82,
+  "consumer_cpio_records": 170,
+  "declarative_flag_order": "compared as an unordered flag set; menus and all raw bytes retain exact order",
+  "passed": true
+}

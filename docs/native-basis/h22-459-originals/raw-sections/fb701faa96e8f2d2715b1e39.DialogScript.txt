@@ -1,0 +1,300 @@
+# Dialog script for pyrosource automatically generated
+
+{
+    name	pyrosource
+    script	pyrosource
+    label	"Pyro Source"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Geometry to Source From"
+    inputlabel	2	"Rest Geometry"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+    outputlabel	1	Particles
+    outputlabel	2	"Instance Points"
+
+    parm {
+        name    "group"
+        label   "Group"
+        type    string
+        default { "" }
+        menutoggle {
+            [ "opmenu -l -a blast group" ]
+        }
+        parmtag { "script_action" "import soputils\nkwargs['geometrytype'] = kwargs['node'].parmTuple('grouptype')\nkwargs['inputindex'] = 0\nsoputils.selectGroupParm(kwargs)" }
+        parmtag { "script_action_help" "Select geometry from an available viewport." }
+        parmtag { "script_action_icon" "BUTTONS_reselect" }
+    }
+    parm {
+        name    "grouptype"
+        label   "Group Type"
+        type    ordinal
+        default { "guess" }
+        menu {
+            "guess"         "Guess from Group"
+            "breakpoints"   "Breakpoints"
+            "edges"         "Edges"
+            "points"        "Points"
+            "prims"         "Primitives"
+        }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "initialize"
+        label   " "
+        type    ordinal
+        default { "0" }
+        menu {
+            "none"          "Initialize	↓"
+            "sourceburn"    "Source Burn"
+            "source"        "Source Smoke"
+            "sourcecolor"   "Source Color"
+            "sourcefuel"    "Source Fuel"
+        }
+        parmtag { "script_callback" "hou.node(\".\").hdaModule().set()" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "mode"
+        label   "Mode"
+        type    ordinal
+        default { "1" }
+        menu {
+            "0" "Surface Scatter"
+            "1" "Keep Input"
+            "2" "Volume Scatter"
+        }
+    }
+    parm {
+        name    "particlesep"
+        label   "Particle Separation"
+        type    float
+        default { "0.1" }
+        range   { 0! 1 }
+    }
+    parm {
+        name    "particlescale"
+        label   "Particle Scale"
+        type    float
+        default { "2" }
+        range   { 0! 10 }
+    }
+    parm {
+        name    "sepparm2"
+        label   "Separator"
+        type    separator
+        default { "" }
+        hidewhen "{ hasinput(1) == 0 mode == 2 } { mode == 1 }"
+    }
+    parm {
+        name    "usedensityattrib"
+        label   "Use Density Attribute"
+        type    toggle
+        nolabel
+        joinnext
+        default { "off" }
+        hidewhen "{ mode != 0 }"
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "densityattrib"
+        label   "Density Attribute"
+        type    string
+        default { "scattering_density" }
+        disablewhen "{ usedensityattrib == 0 }"
+        hidewhen "{ mode != 0 }"
+        menureplace {
+            [ "opmenu -l -a surface_scatter densityattrib" ]
+        }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "pointattribs"
+        label   "Point Attributes"
+        type    string
+        default { "*" }
+        hidewhen "{ mode != 0 }"
+        menutoggle {
+            [ "inputs = hou.pwd().inputs()" ]
+            [ "if inputs and inputs[0]:" ]
+            [ "    geo = inputs[0].geometry()" ]
+            [ "    if geo:" ]
+            [ "        attrs = geo.pointAttribs()" ]
+            [ "        return [v.name() for p in zip(attrs, attrs) for v in p]" ]
+            [ "return []" ]
+            language python
+        }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "sop_input" "1" }
+    }
+    parm {
+        name    "vertattribs"
+        label   "Vertex Attributes"
+        type    string
+        default { "*" }
+        hidewhen "{ mode != 0 }"
+        menutoggle {
+            [ "inputs = hou.pwd().inputs()" ]
+            [ "if inputs and inputs[0]:" ]
+            [ "    geo = inputs[0].geometry()" ]
+            [ "    if geo:" ]
+            [ "        attrs = geo.vertexAttribs()" ]
+            [ "        return [v.name() for p in zip(attrs, attrs) for v in p]" ]
+            [ "return []" ]
+            language python
+        }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "sop_input" "1" }
+    }
+    parm {
+        name    "primattribs"
+        label   "Primitive Attributes"
+        type    string
+        default { "* ^shop_materialpath" }
+        hidewhen "{ mode != 0 }"
+        menutoggle {
+            [ "inputs = hou.pwd().inputs()" ]
+            [ "if inputs and inputs[0]:" ]
+            [ "    geo = inputs[0].geometry()" ]
+            [ "    if geo:" ]
+            [ "        attrs = geo.primAttribs()" ]
+            [ "        return [v.name() for p in zip(attrs, attrs) for v in p]" ]
+            [ "return []" ]
+            language python
+        }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "sop_input" "1" }
+    }
+    parm {
+        name    "detailattribs"
+        label   "Detail Attributes"
+        type    string
+        default { "" }
+        hidewhen "{ mode != 0 }"
+        menutoggle {
+            [ "inputs = hou.pwd().inputs()" ]
+            [ "if inputs and inputs[0]:" ]
+            [ "    geo = inputs[0].geometry()" ]
+            [ "    if geo:" ]
+            [ "        attrs = geo.globalAttribs()" ]
+            [ "        return [v.name() for p in zip(attrs, attrs) for v in p]" ]
+            [ "return []" ]
+            language python
+        }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "sop_input" "1" }
+    }
+    parm {
+        name    "radius"
+        label   "Deform Radius"
+        type    float
+        default { "0.1" }
+        hidewhen "{ hasinput(1) == 0 } { mode != 2 }"
+        range   { 0! 1 }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "minpt"
+        label   "Minimum Points"
+        type    integer
+        default { "1" }
+        hidewhen "{ hasinput(1) == 0 } { mode != 2 }"
+        range   { 0! 10 }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "maxpt"
+        label   "Maximum Points"
+        type    integer
+        default { "100" }
+        hidewhen "{ hasinput(1) == 0 } { mode != 2 }"
+        range   { 0! 10 }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "sepparm"
+        label   "Separator"
+        type    separator
+        default { "" }
+    }
+    multiparm {
+        name    "attributes"
+        label    "Attributes"
+        default 0
+        parmtag { "autoscope" "0000000000000000" }
+
+        parm {
+            name    "attribute#"
+            label   "Attribute"
+            type    ordinal
+            joinnext
+            default { "custom" }
+            menu {
+                "density"       "Density"
+                "temperature"   "Temperature"
+                "burn"          "Burn"
+                "fuel"          "Fuel"
+                "Cd"            "Color"
+                "Alpha"         "Alpha"
+                "v"             "Velocity"
+                "custom"        "Custom"
+            }
+            parmtag { "script_callback" "hou.node(\".\").hdaModule().setName(kwargs)" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "isvector#"
+            label   "Vector Attribute"
+            type    toggle
+            default { "0" }
+            disablewhen "{ attribute# != custom }"
+        }
+        parm {
+            name    "name#"
+            label   "Name"
+            type    string
+            default { "" }
+            disablewhen "{ attribute# != custom }"
+        }
+        parm {
+            name    "fval#"
+            label   "Default Value"
+            type    float
+            default { "1" }
+            hidewhen "{ attribute# == Cd } { attribute# == v } { attribute# == custom isvector# == 1 }"
+            range   { 0 10 }
+        }
+        parm {
+            name    "vval#"
+            label   "Default Value"
+            type    vector
+            size    3
+            default { "1" "1" "1" }
+            hidewhen "{ attribute# == density } { attribute# == fuel } { attribute# == burn } { attribute# == temperature } { attribute# == Cd } { attribute# == Alpha } { attribute# == custom isvector# == 0 }"
+            range   { -1 1 }
+        }
+        parm {
+            name    "cval#"
+            label   "Default Value"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            hidewhen "{ attribute# != Cd }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "scale#"
+            label   "Scale"
+            type    float
+            default { "1" }
+            hidewhen "{ attribute# == Cd }"
+            range   { 0 10 }
+        }
+    }
+
+}

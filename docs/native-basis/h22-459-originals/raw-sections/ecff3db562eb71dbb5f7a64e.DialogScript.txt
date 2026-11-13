@@ -1,0 +1,80 @@
+# Dialog script for flipcollide automatically generated
+
+{
+    name	flipcollide
+    script	jlait_flipcollide
+    label	"FLIP Collide"
+
+    help {
+	""
+    }
+
+    inputlabel	1	Sources
+    inputlabel	2	Container
+    inputlabel	3	Collisions
+    inputlabel	4	"New Collision Geometry"
+    outputlabel	1	Sources
+    outputlabel	2	Container
+    outputlabel	3	Collisions
+    outputlabel	4	Collision
+
+    parm {
+        name    "activate"
+        label   "Activation"
+        type    float
+        default { "1" }
+        range   { 0 1 }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "computevel"
+        label   "Compute Velocity"
+        type    toggle
+        default { "1" }
+        range   { 0! 1! }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "computevelsubstep"
+        label   "Velocity Substeps"
+        type    float
+        default { "1" }
+        disablewhen "{ computevel == 0 }"
+        range   { 1 10 }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "velscale"
+        label   "Velocity Scale"
+        type    float
+        default { "1" }
+        range   { 1 2 }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "dovolume"
+        label   "Volume Collide"
+        type    toggle
+        default { "1" }
+        range   { 0! 1! }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "dosurface"
+        label   "Surface Collide"
+        type    toggle
+        default { "1" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "objname"
+        label   "Object Name"
+        type    string
+        default { "$OS" }
+        disablewhen "{ dosurface == 0 }"
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_callback_language" "python" }
+    }
+}

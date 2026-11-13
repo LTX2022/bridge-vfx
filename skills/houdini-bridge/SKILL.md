@@ -1,0 +1,54 @@
+---
+name: houdini-bridge
+description: Inspect and operate a SideFX Houdini session through available structured commands for scoped edits, renders and bounded simulation trials. Check route and result evidence; use vfx-visual-twin for tutorial breakdown and cross-stage reference reconstruction.
+metadata:
+  version: "2.0.0-rc.1"
+  short-description: "Control Houdini and verify Karma outputs"
+---
+
+# Houdini Bridge
+
+This is an execution and inspection skill. A callable command, a saved HIP or a completed render does not establish a tutorial match. Use the active catalog to choose operations; treat the interfaces below as conditional on the installed route. Keep direct Houdini experiments, model-facing Bridge execution and visual acceptance separate when reporting capability.
+
+Install only from an extracted release ZIP with `python scripts/install_runtime.py --target <explicit-install-directory> --action install`. Installation is offline and does not change global Python, Houdini, Nuke, or WorkBuddy preferences. The directory contains `houdini-packages` and/or `nuke` registration files and an installed `run_runtime.py` launcher. Use that launcher for the packaged runtime: `python -I <explicit-install-directory>/run_runtime.py <module> <arguments>`. Installing a newer extracted release into the same target switches both runtime and plugin registrations. `--action rollback` restores the previous generation; `--action uninstall` removes owned runtime/registrations while preserving other plugin settings. See [installation lifecycle](references/installation-lifecycle.md).
+
+## Route the request
+
+- For a contained edit, use structured `scene.*`, `node.*`, `viewport.*`, or `help.*` commands. Prefer `node.create_batch` for a network of three or more nodes.
+- For reference-driven reconstruction, multi-stage feedback diagnosis, candidate comparison, or reusable repair experience, use the sibling `vfx-visual-twin` Skill. This Skill remains the Houdini execution boundary for the selected domain packs.
+- For a complete asset-to-render task, run the local `houdini_bridge task plan --spec <spec.json>` followed by `houdini_bridge task run --spec <spec.json> --watch`. Add `--json-events` for one NDJSON record per event (suitable for a UI progress bar). Each final frame is a separate durable work unit, so the percentage advances only after that frame has been verified; `Ctrl-C` requests cancellation. Use `task run --resume <task_id> --watch` only when the saved operation and compatible checkpoint permit resumption; a phase log or geometry cache alone cannot establish solver continuity. Verify stateful continuation against an overlapping continuous segment before claiming recovery.
+- For Pyro, FLIP, particles, crowds, Vellum, hair, RBD, procedural geometry, lookdev, or render work, read [specialist simulations](references/specialist-simulations.md) and require a live pack capability result before changing parameters.
+- For host observation, native parameter types, cold save/export or writer-registration failures, consult [native execution lessons](references/native-execution-lessons.md) for matching tested cases and their limits.
+- `code.exec_python` is disabled on every default server. It remains a v1-compatible audited escape hatch only when a trusted local operator explicitly launches Houdini with `HOUDINI_BRIDGE_ENABLE_CODE_EXEC=1` and explicitly requests that path; otherwise use a structured command or recipe.
+- Never expose `code.exec_python` to a `visual.reference_rebuild` planner. Visual-twin and causal-repair tasks use only registered structured `agent.fx.*` actions.
+
+## Required behavior
+
+1. Inspect before mutating: check scene state, target node paths, capability limits, and output location.
+2. Treat delete, overwrite, cache/export, and broad current-scene edits as destructive. Present the affected scope and wait for confirmation unless an approved task plan explicitly covers them.
+3. After each scene change, inspect the relevant output and errors. For stateful simulations, first check the active operation and approved preview budget, then advance an explicit short frame range sequentially. Do not trigger an unbounded solver cook merely to verify a parameter edit. A successful node creation is not a successful task.
+4. For any cache, USD, or render write, re-read the output and verify it was produced by this run. Never report success from a button press or process exit alone.
+5. For long jobs, use `task.status` or `task.events`. Show true progress when available; show phase and elapsed time when it is not.
+6. After interruption, query the exact saved operation ID before resuming. Resume only when its state and checkpoint allow it; an unknown result or unconfirmed stop requires reconciliation, not another submission. A responsive scene-info endpoint is not proof that the operation stopped. Do not rebuild steps whose gates already passed.
+7. Keep weak models on the golden path: first plan, then start one registered recipe, then inspect status/events/result. Do not expose raw mutation tools while a recipe is running.
+
+8. The supported executable matrix is Houdini FX 21.0 (Python 3.11) and 22.0 (Python 3.13). The bundled add-on has thin `python3.9libs`, `python3.10libs`, `python3.11libs`, and `python3.13libs` loaders backed by one shared implementation; never copy-edit one version in isolation.
+
+9. The model-to-Karma recipe defaults to CPU-safe rendering for acceptance. XPU may be probed when advertised, but an XPU-only result is not a release gate.
+
+## Main interfaces
+
+- Task host lifecycle (headless workers): `python -m houdini_bridge task-host start --task-id T --work-dir D --addon-root R` then `task-host stop --work-dir D`. The start receipt carries task id, session id, pid, port, process generation, protocol version (`task-host/1.0`) and the add-on build sha256; the port is transport, never identity. All sim cooks run in the serve loop — never inside request dispatch.
+- `capabilities.get`, `task.plan`, `task.start`, `task.status`, `task.events`, `task.cancel`, `task.resume`, `task.result`
+- `agent.fx.build_preview` builds the pack graph as a verified connection contract (`source_role/source_output -> destination_role/destination_input`, preflighted before any node is created, read back through native port indices). Build verification is static by design; frame evidence belongs to operations.
+- `agent.fx.simulate_segment` submits a persistent frame operation and returns a stable `operation_id` immediately; identical resubmits are idempotent (no rerun). `operation.status` polls, `operation.cancel` cancels; budget exhaustion keeps partial per-frame evidence (`BUDGET_REACHED`), cancellations are observed before the heavy slot is released. One heavy operation per host at a time.
+- `scene.save_hip` returns a save receipt (path, sha256, task structure digest); `scene.reopen_task_hip` reopens controller-registered task hips in headless workers only, reports load warnings instead of suppressing them and verifies the saved node structure. Ownership transfers by process generation; stale executors are refused.
+- `node.unlock_contents` unlocks task-owned locked assets only (`task_id` required, `propagate` default false). The deprecated `value` parameter is accepted only as `value: true`; `value: false` is rejected because the native API cannot re-lock instance contents.
+- `render.start`, `render.status`, `render.cancel`, `render.verify`
+- `scene.info`, `scene.save_hip`, `node.*`, `viewport.screenshot`, `help.*`, `debug.list`
+
+## Capability status tiers
+
+`available` (the current route exposes the required command), `software-verified` (relevant unit/contract tests pass), `live-verified` (a specific host/build and case produced checked native results), and `release-supported` (all declared versions and required cases pass). Existing lifecycle, softbody/cloth build, segment and save/reopen cases are case evidence, not proof of full softbody shots or arbitrary tutorial reproduction. All domain packs remain experimental; no pack is claimed release-supported. Recheck the matching evidence before using it for the current task. Experimental status permits authorized bounded trials without implying production readiness.
+
+Read [runtime contract](references/runtime-contract.md) for the task schema and status semantics. Read [model-to-karma](references/model-to-karma.md) before running a complete build. Read [verification gates](references/verification-gates.md) before declaring a render complete. Read [failure recovery](references/failure-recovery.md) after a failed gate and [version compatibility](references/version-compatibility.md) before relying on an untested Houdini build. The legacy protocol is retained in [bridge protocol](references/bridge-protocol.md).

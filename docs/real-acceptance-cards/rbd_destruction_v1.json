@@ -1,0 +1,3353 @@
+{
+  "domain_pack": "rbd_destruction_v1",
+  "case_id": "rbd_destruction_v1__build_inspect",
+  "case_ids": [
+    "rbd_destruction_v1__build_inspect",
+    "rbd_destruction_v1__causal_candidate",
+    "rbd_destruction_v1__approval_recovery"
+  ],
+  "domain_pack_version": "1.0.0",
+  "kind": "current_software_contract_checklist_not_execution_evidence",
+  "status": "PREPARATION_NOT_ACCEPTED",
+  "applications": [
+    "houdini",
+    "nuke"
+  ],
+  "required_versions": {
+    "houdini": [
+      "21.0.631",
+      "22.0.459"
+    ],
+    "nuke": [
+      "17.0v1"
+    ]
+  },
+  "native_basis_status": "UNRESOLVED",
+  "native_basis": {
+    "static_definitions": [
+      "docs/native-basis/hda-interface-capture.json",
+      "docs/native-basis/native-boundary-metadata-supplement.json",
+      "docs/native-basis/hda-interface-22.0.459.json",
+      "docs/native-basis/supporting-sources-22.0.459.json"
+    ],
+    "meaning": "Current software mappings and static references are not whole-domain native validation; resolve exact operator/parameter/port and output-consumption gaps before marking VERIFIED_SOURCE.",
+    "versioned_preparation": {
+      "22.0.459": {
+        "status": "UNRESOLVED",
+        "scope": "Independent459HDA static fields and prospective software topology only; no compiled template, host process, writer execution or whole-domain validation.",
+        "sources": [
+          {
+            "path": "docs/native-basis/hda-interface-22.0.459.json",
+            "sha256": "e8d9ee7a16f14baa2327ae45412b2acee60ef4849d4e3aa099aea229586379c7",
+            "version": "22.0.459",
+            "native_execution": false
+          },
+          {
+            "path": "docs/native-basis/supporting-sources-22.0.459.json",
+            "sha256": "7b1bd4e1b187de823db9555bca10f40e9278dd88fb790cce8c874576405e1c3a",
+            "version": "22.0.459",
+            "native_execution": false
+          }
+        ],
+        "originals": "docs/native-basis/h22-459-originals/",
+        "captured_hda_operators": 55,
+        "node_templates": {
+          "default": [
+            {
+              "role": "geometry_network",
+              "candidates": [
+                {
+                  "operator": "Obj/geo",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "source",
+              "candidates": [
+                {
+                  "operator": "Sop/box",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "fracture",
+              "candidates": [
+                {
+                  "operator": "Sop/rbdmaterialfracture",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "0ed3e6278d358545cd4feefee7666a81b849fba8a0ef8d1bcc4bb6c1925b2d1e",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "configure",
+              "candidates": [
+                {
+                  "operator": "Sop/rbdconfigure",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "ff0ed8fd19eda1b806e09fddfc18298bedb383102c5d1e1c963e6da681c61005",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "rbd_velocity",
+              "candidates": [
+                {
+                  "operator": "Sop/attribwrangle",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "b47a35a99cfd15f0c85143a3fed309c1a2f30704183ef7565bd52af1f7306c77",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "constraint_strength",
+              "candidates": [
+                {
+                  "operator": "Sop/attribwrangle",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "b47a35a99cfd15f0c85143a3fed309c1a2f30704183ef7565bd52af1f7306c77",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "solver",
+              "candidates": [
+                {
+                  "operator": "Sop/rbdbulletsolver",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "2fdca903735043c169d43f9c8fcc85d884e52633bf28e33f5905d1be1d37e2af",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "output",
+              "candidates": [
+                {
+                  "operator": "Sop/null",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "usd_network",
+              "candidates": [
+                {
+                  "operator": "Obj/lopnet",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "render_network",
+              "candidates": [
+                {
+                  "operator": "Obj/ropnet",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "geometry_import",
+              "candidates": [
+                {
+                  "operator": "Lop/sopimport",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "camera",
+              "candidates": [
+                {
+                  "operator": "Lop/camera",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "e7961a7d50953ca0a1d9cbd8f5349db34a4ec33fb98118f6d852e91765564612",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "light",
+              "candidates": [
+                {
+                  "operator": "Lop/light",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "34498e2f239d0566a47fc65928f9d42db17b8d7e487a99d3e0acc66b407abf38",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render_settings",
+              "candidates": [
+                {
+                  "operator": "Lop/karmarendersettings",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "cc263cb8a2e6e1f964363999322d8395f7c52d7160ea723173a24b23568783fe",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render_var",
+              "candidates": [
+                {
+                  "operator": "Lop/rendervar",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "c296736e72c9e2881b3867ff634cfe6253e5e5848e4f63bc9ff01420cbc39aea",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render_product",
+              "candidates": [
+                {
+                  "operator": "Lop/renderproduct",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "db75399202e08a57d1c5a1b29b42a2f871b690b9f23fe5db955a185bcb015cab",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "settings_binding",
+              "candidates": [
+                {
+                  "operator": "Lop/rendersettings",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "325937f14987a4b23ec74be88ac1bb0a424e351a469776e41b15952dbef9ac3d",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render",
+              "candidates": [
+                {
+                  "operator": "Driver/usdrender",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            }
+          ]
+        },
+        "blocked_controls": {
+          "default": [
+            {
+              "id": "fracture_scale",
+              "blocker": "PHYSICAL_FRAGMENT_SCALE_CONTRACT_REQUIRED",
+              "native_basis": {
+                "version": "22.0.459",
+                "source": "docs/native-basis/hda-interface-22.0.459.json",
+                "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+                "native_execution": false,
+                "observed": [],
+                "missing": []
+              }
+            },
+            {
+              "id": "fracture_variance",
+              "blocker": "FRACTURE_VARIANCE_DISTRIBUTION_CONTRACT_REQUIRED",
+              "native_basis": {
+                "version": "22.0.459",
+                "source": "docs/native-basis/hda-interface-22.0.459.json",
+                "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+                "native_execution": false,
+                "observed": [],
+                "missing": []
+              }
+            },
+            {
+              "id": "impact_spread",
+              "blocker": "IMPACT_SPREAD_SEMANTIC_CONVERSION_REQUIRED",
+              "native_basis": {
+                "version": "22.0.459",
+                "source": "docs/native-basis/hda-interface-22.0.459.json",
+                "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+                "native_execution": false,
+                "observed": [],
+                "missing": []
+              }
+            },
+            {
+              "id": "piece_scale",
+              "blocker": "ACTUAL_PIECE_SCALE_GEOMETRY_CONTRACT_REQUIRED",
+              "native_basis": {
+                "version": "22.0.459",
+                "source": "docs/native-basis/hda-interface-22.0.459.json",
+                "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+                "native_execution": false,
+                "observed": [],
+                "missing": []
+              }
+            },
+            {
+              "id": "velocity_variance",
+              "blocker": "RBD_VELOCITY_VARIANCE_ATTRIBUTE_CONTRACT_REQUIRED",
+              "native_basis": {
+                "version": "22.0.459",
+                "source": "docs/native-basis/hda-interface-22.0.459.json",
+                "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+                "native_execution": false,
+                "observed": [
+                  {
+                    "operator": "Sop/attribwrangle",
+                    "parameter": "snippet",
+                    "type": "string",
+                    "size": 1,
+                    "section_sha256": "b47a35a99cfd15f0c85143a3fed309c1a2f30704183ef7565bd52af1f7306c77",
+                    "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                  }
+                ],
+                "missing": []
+              }
+            },
+            {
+              "id": "impulse_scale",
+              "blocker": "RBD_IMPULSE_SCALE_SEMANTIC_CONVERSION_REQUIRED",
+              "native_basis": {
+                "version": "22.0.459",
+                "source": "docs/native-basis/hda-interface-22.0.459.json",
+                "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+                "native_execution": false,
+                "observed": [],
+                "missing": []
+              }
+            }
+          ]
+        },
+        "native_execution": false
+      }
+    }
+  },
+  "expected_nodes": {
+    "21.0.631": {
+      "default": [
+        {
+          "role": "geometry_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "geo"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "source",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "box"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "fracture",
+          "category": "sop",
+          "input_role": "source",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "rbdmaterialfracture"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "configure",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "rbdconfigure"
+          ],
+          "required_parameter_aliases": [
+            [
+              "attributes"
+            ],
+            [
+              "group#"
+            ],
+            [
+              "addactive#"
+            ],
+            [
+              "active#"
+            ],
+            [
+              "useactivebounds#"
+            ]
+          ]
+        },
+        {
+          "role": "rbd_velocity",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "attribwrangle"
+          ],
+          "required_parameter_aliases": [
+            [
+              "class"
+            ],
+            [
+              "group"
+            ],
+            [
+              "snippet"
+            ],
+            [
+              "vex_precision"
+            ],
+            [
+              "exportlist"
+            ],
+            [
+              "bindings"
+            ]
+          ]
+        },
+        {
+          "role": "constraint_strength",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "attribwrangle"
+          ],
+          "required_parameter_aliases": [
+            [
+              "class"
+            ],
+            [
+              "group"
+            ],
+            [
+              "snippet"
+            ]
+          ]
+        },
+        {
+          "role": "solver",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "rbdbulletsolver"
+          ],
+          "required_parameter_aliases": [
+            [
+              "substeps"
+            ],
+            [
+              "overwritefromsop"
+            ],
+            [
+              "overwriteattributes"
+            ],
+            [
+              "minactivationimpulseoverride"
+            ],
+            [
+              "glue_strength"
+            ],
+            [
+              "glue_defaultparmop"
+            ],
+            [
+              "glue_dataname"
+            ],
+            [
+              "adddrag"
+            ],
+            [
+              "drag_airresist"
+            ],
+            [
+              "drag_usegroup"
+            ],
+            [
+              "drag_uselocaldrag"
+            ],
+            [
+              "drag_windvelocity"
+            ],
+            [
+              "enable_constraintbreaks"
+            ],
+            [
+              "constraint_reloadfromsops"
+            ],
+            [
+              "breaks"
+            ],
+            [
+              "constraint_names#"
+            ],
+            [
+              "constraint_group#"
+            ],
+            [
+              "constraint_mode#"
+            ],
+            [
+              "constraint_useimpact#"
+            ],
+            [
+              "constraint_scaleimpact#"
+            ],
+            [
+              "constraint_impactthreshold#"
+            ]
+          ]
+        },
+        {
+          "role": "output",
+          "category": "sop",
+          "input_role": "solver",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "null"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "usd_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "lopnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "render_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "ropnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "geometry_import",
+          "category": "lop",
+          "input_role": null,
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "sopimport"
+          ],
+          "required_parameter_aliases": [
+            [
+              "soppath"
+            ],
+            [
+              "enable_pathprefix"
+            ],
+            [
+              "pathprefix"
+            ]
+          ]
+        },
+        {
+          "role": "camera",
+          "category": "lop",
+          "input_role": "geometry_import",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "camera"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "focalLength"
+            ],
+            [
+              "fStop"
+            ],
+            [
+              "xn__shutteropen_0ta"
+            ],
+            [
+              "xn__shutterclose_nva"
+            ]
+          ]
+        },
+        {
+          "role": "light",
+          "category": "lop",
+          "input_role": "camera",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "light"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "lighttype"
+            ],
+            [
+              "radius"
+            ],
+            [
+              "exposure"
+            ]
+          ]
+        },
+        {
+          "role": "render_settings",
+          "category": "lop",
+          "input_role": "light",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "karmarendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "camera"
+            ],
+            [
+              "samplesperpixel"
+            ],
+            [
+              "volumesteprate"
+            ],
+            [
+              "enablemblur"
+            ],
+            [
+              "pixelfiltersize"
+            ],
+            [
+              "denoiser"
+            ]
+          ]
+        },
+        {
+          "role": "render_var",
+          "category": "lop",
+          "input_role": "render_settings",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendervar"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "sourceName"
+            ],
+            [
+              "sourceType"
+            ],
+            [
+              "dataType"
+            ]
+          ]
+        },
+        {
+          "role": "render_product",
+          "category": "lop",
+          "input_role": "render_var",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "renderproduct"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "orderedVars"
+            ],
+            [
+              "productType"
+            ],
+            [
+              "productName"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "settings_binding",
+          "category": "lop",
+          "input_role": "render_product",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "createprims"
+            ],
+            [
+              "products"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "render",
+          "category": "rop",
+          "input_role": null,
+          "parent_role": "render_network",
+          "type_candidates": [
+            "usdrender"
+          ],
+          "required_parameter_aliases": [
+            [
+              "loppath"
+            ],
+            [
+              "rendersettings"
+            ],
+            [
+              "override_camera"
+            ],
+            [
+              "outputimage"
+            ],
+            [
+              "execute"
+            ]
+          ]
+        }
+      ]
+    },
+    "22.0.429": {
+      "default": [
+        {
+          "role": "geometry_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "geo"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "source",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "box"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "fracture",
+          "category": "sop",
+          "input_role": "source",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "rbdmaterialfracture"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "configure",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "rbdconfigure"
+          ],
+          "required_parameter_aliases": [
+            [
+              "attributes"
+            ],
+            [
+              "group#"
+            ],
+            [
+              "addactive#"
+            ],
+            [
+              "active#"
+            ],
+            [
+              "useactivebounds#"
+            ]
+          ]
+        },
+        {
+          "role": "rbd_velocity",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "attribwrangle"
+          ],
+          "required_parameter_aliases": [
+            [
+              "class"
+            ],
+            [
+              "group"
+            ],
+            [
+              "snippet"
+            ],
+            [
+              "vex_precision"
+            ],
+            [
+              "exportlist"
+            ],
+            [
+              "bindings"
+            ]
+          ]
+        },
+        {
+          "role": "constraint_strength",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "attribwrangle"
+          ],
+          "required_parameter_aliases": [
+            [
+              "class"
+            ],
+            [
+              "group"
+            ],
+            [
+              "snippet"
+            ]
+          ]
+        },
+        {
+          "role": "solver",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "rbdbulletsolver"
+          ],
+          "required_parameter_aliases": [
+            [
+              "substeps"
+            ],
+            [
+              "overwritefromsop"
+            ],
+            [
+              "overwriteattributes"
+            ],
+            [
+              "minactivationimpulseoverride"
+            ],
+            [
+              "glue_strength"
+            ],
+            [
+              "glue_defaultparmop"
+            ],
+            [
+              "glue_dataname"
+            ],
+            [
+              "adddrag"
+            ],
+            [
+              "drag_airresist"
+            ],
+            [
+              "drag_usegroup"
+            ],
+            [
+              "drag_uselocaldrag"
+            ],
+            [
+              "drag_windvelocity"
+            ],
+            [
+              "enable_constraintbreaks"
+            ],
+            [
+              "constraint_reloadfromsops"
+            ],
+            [
+              "breaks"
+            ],
+            [
+              "constraint_names#"
+            ],
+            [
+              "constraint_group#"
+            ],
+            [
+              "constraint_mode#"
+            ],
+            [
+              "constraint_useimpact#"
+            ],
+            [
+              "constraint_scaleimpact#"
+            ],
+            [
+              "constraint_impactthreshold#"
+            ]
+          ]
+        },
+        {
+          "role": "output",
+          "category": "sop",
+          "input_role": "solver",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "null"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "usd_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "lopnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "render_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "ropnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "geometry_import",
+          "category": "lop",
+          "input_role": null,
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "sopimport"
+          ],
+          "required_parameter_aliases": [
+            [
+              "soppath"
+            ],
+            [
+              "enable_pathprefix"
+            ],
+            [
+              "pathprefix"
+            ]
+          ]
+        },
+        {
+          "role": "camera",
+          "category": "lop",
+          "input_role": "geometry_import",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "camera"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "focalLength"
+            ],
+            [
+              "fStop"
+            ],
+            [
+              "xn__shutteropen_0ta"
+            ],
+            [
+              "xn__shutterclose_nva"
+            ]
+          ]
+        },
+        {
+          "role": "light",
+          "category": "lop",
+          "input_role": "camera",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "light"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "lighttype"
+            ],
+            [
+              "radius"
+            ],
+            [
+              "exposure"
+            ]
+          ]
+        },
+        {
+          "role": "render_settings",
+          "category": "lop",
+          "input_role": "light",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "karmarendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "camera"
+            ],
+            [
+              "samplesperpixel"
+            ],
+            [
+              "volumesteprate"
+            ],
+            [
+              "enablemblur"
+            ],
+            [
+              "pixelfiltersize"
+            ],
+            [
+              "denoiser"
+            ]
+          ]
+        },
+        {
+          "role": "render_var",
+          "category": "lop",
+          "input_role": "render_settings",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendervar"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "sourceName"
+            ],
+            [
+              "sourceType"
+            ],
+            [
+              "dataType"
+            ]
+          ]
+        },
+        {
+          "role": "render_product",
+          "category": "lop",
+          "input_role": "render_var",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "renderproduct"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "orderedVars"
+            ],
+            [
+              "productType"
+            ],
+            [
+              "productName"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "settings_binding",
+          "category": "lop",
+          "input_role": "render_product",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "createprims"
+            ],
+            [
+              "products"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "render",
+          "category": "rop",
+          "input_role": null,
+          "parent_role": "render_network",
+          "type_candidates": [
+            "usdrender"
+          ],
+          "required_parameter_aliases": [
+            [
+              "loppath"
+            ],
+            [
+              "rendersettings"
+            ],
+            [
+              "override_camera"
+            ],
+            [
+              "outputimage"
+            ],
+            [
+              "execute"
+            ]
+          ]
+        }
+      ]
+    },
+    "22.0.459": {
+      "default": [
+        {
+          "role": "geometry_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "geo"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "source",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "box"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "fracture",
+          "category": "sop",
+          "input_role": "source",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "rbdmaterialfracture"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "configure",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "rbdconfigure"
+          ],
+          "required_parameter_aliases": [
+            [
+              "attributes"
+            ],
+            [
+              "group#"
+            ],
+            [
+              "addactive#"
+            ],
+            [
+              "active#"
+            ],
+            [
+              "useactivebounds#"
+            ]
+          ]
+        },
+        {
+          "role": "rbd_velocity",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "attribwrangle"
+          ],
+          "required_parameter_aliases": [
+            [
+              "class"
+            ],
+            [
+              "group"
+            ],
+            [
+              "snippet"
+            ],
+            [
+              "vex_precision"
+            ],
+            [
+              "exportlist"
+            ],
+            [
+              "bindings"
+            ]
+          ]
+        },
+        {
+          "role": "constraint_strength",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "attribwrangle"
+          ],
+          "required_parameter_aliases": [
+            [
+              "class"
+            ],
+            [
+              "group"
+            ],
+            [
+              "snippet"
+            ]
+          ]
+        },
+        {
+          "role": "solver",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "rbdbulletsolver"
+          ],
+          "required_parameter_aliases": [
+            [
+              "substeps"
+            ],
+            [
+              "overwritefromsop"
+            ],
+            [
+              "overwriteattributes"
+            ],
+            [
+              "minactivationimpulseoverride"
+            ],
+            [
+              "glue_strength"
+            ],
+            [
+              "glue_defaultparmop"
+            ],
+            [
+              "glue_dataname"
+            ],
+            [
+              "adddrag"
+            ],
+            [
+              "drag_airresist"
+            ],
+            [
+              "drag_usegroup"
+            ],
+            [
+              "drag_uselocaldrag"
+            ],
+            [
+              "drag_windvelocity"
+            ],
+            [
+              "enable_constraintbreaks"
+            ],
+            [
+              "constraint_reloadfromsops"
+            ],
+            [
+              "breaks"
+            ],
+            [
+              "constraint_names#"
+            ],
+            [
+              "constraint_group#"
+            ],
+            [
+              "constraint_mode#"
+            ],
+            [
+              "constraint_useimpact#"
+            ],
+            [
+              "constraint_scaleimpact#"
+            ],
+            [
+              "constraint_impactthreshold#"
+            ]
+          ]
+        },
+        {
+          "role": "output",
+          "category": "sop",
+          "input_role": "solver",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "null"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "usd_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "lopnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "render_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "ropnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "geometry_import",
+          "category": "lop",
+          "input_role": null,
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "sopimport"
+          ],
+          "required_parameter_aliases": [
+            [
+              "soppath"
+            ],
+            [
+              "enable_pathprefix"
+            ],
+            [
+              "pathprefix"
+            ]
+          ]
+        },
+        {
+          "role": "camera",
+          "category": "lop",
+          "input_role": "geometry_import",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "camera"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "focalLength"
+            ],
+            [
+              "fStop"
+            ],
+            [
+              "xn__shutteropen_0ta"
+            ],
+            [
+              "xn__shutterclose_nva"
+            ]
+          ]
+        },
+        {
+          "role": "light",
+          "category": "lop",
+          "input_role": "camera",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "light"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "lighttype"
+            ],
+            [
+              "radius"
+            ],
+            [
+              "exposure"
+            ]
+          ]
+        },
+        {
+          "role": "render_settings",
+          "category": "lop",
+          "input_role": "light",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "karmarendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "camera"
+            ],
+            [
+              "samplesperpixel"
+            ],
+            [
+              "volumesteprate"
+            ],
+            [
+              "enablemblur"
+            ],
+            [
+              "pixelfiltersize"
+            ],
+            [
+              "denoiser"
+            ]
+          ]
+        },
+        {
+          "role": "render_var",
+          "category": "lop",
+          "input_role": "render_settings",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendervar"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "sourceName"
+            ],
+            [
+              "sourceType"
+            ],
+            [
+              "dataType"
+            ]
+          ]
+        },
+        {
+          "role": "render_product",
+          "category": "lop",
+          "input_role": "render_var",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "renderproduct"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "orderedVars"
+            ],
+            [
+              "productType"
+            ],
+            [
+              "productName"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "settings_binding",
+          "category": "lop",
+          "input_role": "render_product",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "createprims"
+            ],
+            [
+              "products"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "render",
+          "category": "rop",
+          "input_role": null,
+          "parent_role": "render_network",
+          "type_candidates": [
+            "usdrender"
+          ],
+          "required_parameter_aliases": [
+            [
+              "loppath"
+            ],
+            [
+              "rendersettings"
+            ],
+            [
+              "override_camera"
+            ],
+            [
+              "outputimage"
+            ],
+            [
+              "execute"
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "expected_connections": {
+    "21.0.631": {
+      "default": [
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "fracture",
+          "destination_input": 0
+        },
+        {
+          "source_role": "fracture",
+          "source_output": 0,
+          "destination_role": "configure",
+          "destination_input": 0
+        },
+        {
+          "source_role": "fracture",
+          "source_output": 1,
+          "destination_role": "configure",
+          "destination_input": 1
+        },
+        {
+          "source_role": "fracture",
+          "source_output": 2,
+          "destination_role": "configure",
+          "destination_input": 2
+        },
+        {
+          "source_role": "configure",
+          "source_output": 0,
+          "destination_role": "rbd_velocity",
+          "destination_input": 0
+        },
+        {
+          "source_role": "rbd_velocity",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 0
+        },
+        {
+          "source_role": "configure",
+          "source_output": 2,
+          "destination_role": "solver",
+          "destination_input": 2
+        },
+        {
+          "source_role": "configure",
+          "source_output": 1,
+          "destination_role": "constraint_strength",
+          "destination_input": 0
+        },
+        {
+          "source_role": "constraint_strength",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 1
+        },
+        {
+          "source_role": "solver",
+          "source_output": 0,
+          "destination_role": "output",
+          "destination_input": 0
+        },
+        {
+          "source_role": "geometry_import",
+          "source_output": 0,
+          "destination_role": "camera",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "camera",
+          "source_output": 0,
+          "destination_role": "light",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "light",
+          "source_output": 0,
+          "destination_role": "render_settings",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_settings",
+          "source_output": 0,
+          "destination_role": "render_var",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_var",
+          "source_output": 0,
+          "destination_role": "render_product",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_product",
+          "source_output": 0,
+          "destination_role": "settings_binding",
+          "destination_input": 0,
+          "require_same_parent": true
+        }
+      ]
+    },
+    "22.0.429": {
+      "default": [
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "fracture",
+          "destination_input": 0
+        },
+        {
+          "source_role": "fracture",
+          "source_output": 0,
+          "destination_role": "configure",
+          "destination_input": 0
+        },
+        {
+          "source_role": "fracture",
+          "source_output": 1,
+          "destination_role": "configure",
+          "destination_input": 1
+        },
+        {
+          "source_role": "fracture",
+          "source_output": 2,
+          "destination_role": "configure",
+          "destination_input": 2
+        },
+        {
+          "source_role": "configure",
+          "source_output": 0,
+          "destination_role": "rbd_velocity",
+          "destination_input": 0
+        },
+        {
+          "source_role": "rbd_velocity",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 0
+        },
+        {
+          "source_role": "configure",
+          "source_output": 2,
+          "destination_role": "solver",
+          "destination_input": 2
+        },
+        {
+          "source_role": "configure",
+          "source_output": 1,
+          "destination_role": "constraint_strength",
+          "destination_input": 0
+        },
+        {
+          "source_role": "constraint_strength",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 1
+        },
+        {
+          "source_role": "solver",
+          "source_output": 0,
+          "destination_role": "output",
+          "destination_input": 0
+        },
+        {
+          "source_role": "geometry_import",
+          "source_output": 0,
+          "destination_role": "camera",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "camera",
+          "source_output": 0,
+          "destination_role": "light",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "light",
+          "source_output": 0,
+          "destination_role": "render_settings",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_settings",
+          "source_output": 0,
+          "destination_role": "render_var",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_var",
+          "source_output": 0,
+          "destination_role": "render_product",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_product",
+          "source_output": 0,
+          "destination_role": "settings_binding",
+          "destination_input": 0,
+          "require_same_parent": true
+        }
+      ]
+    },
+    "22.0.459": {
+      "default": [
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "fracture",
+          "destination_input": 0
+        },
+        {
+          "source_role": "fracture",
+          "source_output": 0,
+          "destination_role": "configure",
+          "destination_input": 0
+        },
+        {
+          "source_role": "fracture",
+          "source_output": 1,
+          "destination_role": "configure",
+          "destination_input": 1
+        },
+        {
+          "source_role": "fracture",
+          "source_output": 2,
+          "destination_role": "configure",
+          "destination_input": 2
+        },
+        {
+          "source_role": "configure",
+          "source_output": 0,
+          "destination_role": "rbd_velocity",
+          "destination_input": 0
+        },
+        {
+          "source_role": "rbd_velocity",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 0
+        },
+        {
+          "source_role": "configure",
+          "source_output": 2,
+          "destination_role": "solver",
+          "destination_input": 2
+        },
+        {
+          "source_role": "configure",
+          "source_output": 1,
+          "destination_role": "constraint_strength",
+          "destination_input": 0
+        },
+        {
+          "source_role": "constraint_strength",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 1
+        },
+        {
+          "source_role": "solver",
+          "source_output": 0,
+          "destination_role": "output",
+          "destination_input": 0
+        },
+        {
+          "source_role": "geometry_import",
+          "source_output": 0,
+          "destination_role": "camera",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "camera",
+          "source_output": 0,
+          "destination_role": "light",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "light",
+          "source_output": 0,
+          "destination_role": "render_settings",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_settings",
+          "source_output": 0,
+          "destination_role": "render_var",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_var",
+          "source_output": 0,
+          "destination_role": "render_product",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_product",
+          "source_output": 0,
+          "destination_role": "settings_binding",
+          "destination_input": 0,
+          "require_same_parent": true
+        }
+      ]
+    }
+  },
+  "key_parameters": {
+    "semantic": [
+      {
+        "name": "fracture_scale",
+        "value_type": "float",
+        "minimum": 0.001,
+        "maximum": 1000.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "generation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "constraint_strength",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 1000000000000.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "impact_threshold",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 1000000000000.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "substeps",
+        "value_type": "int",
+        "minimum": 1.0,
+        "maximum": 100.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "drag",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 100.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "fracture_variance",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 100.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "generation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "impact_spread",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 1000.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "piece_scale",
+        "value_type": "float",
+        "minimum": 0.001,
+        "maximum": 1000.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "generation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "velocity_variance",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 1000.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "activation_frame",
+        "value_type": "int",
+        "minimum": -100000.0,
+        "maximum": 100000.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "impulse_scale",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 10000.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      }
+    ],
+    "versioned_native_mapping": {
+      "21.0.631": {
+        "default": [
+          {
+            "id": "fracture_scale",
+            "node_role": "fracture",
+            "parameter_aliases": [],
+            "minimum": 0.001,
+            "maximum": 1000,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "blocked",
+            "blocker": "PHYSICAL_FRAGMENT_SCALE_CONTRACT_REQUIRED"
+          },
+          {
+            "id": "constraint_strength",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "glue_strength"
+            ],
+            "minimum": 0,
+            "maximum": 1000000000000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "solver",
+                "glue_defaultparmop",
+                "always"
+              ],
+              [
+                "solver",
+                "glue_dataname",
+                "Glue"
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "impact_threshold",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "constraint_impactthreshold#"
+            ],
+            "minimum": 0,
+            "maximum": 1000000000000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "solver",
+                "enable_constraintbreaks",
+                1
+              ],
+              [
+                "solver",
+                "constraint_reloadfromsops",
+                0
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "substeps",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "substeps"
+            ],
+            "minimum": 1,
+            "maximum": 100,
+            "invalidates_from": "generation_simulation",
+            "value_type": "int",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "mapped"
+          },
+          {
+            "id": "drag",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "drag_airresist"
+            ],
+            "minimum": 0,
+            "maximum": 100,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "solver",
+                "adddrag",
+                1
+              ],
+              [
+                "solver",
+                "drag_usegroup",
+                0
+              ],
+              [
+                "solver",
+                "drag_uselocaldrag",
+                0
+              ],
+              [
+                "solver",
+                "drag_windvelocity",
+                [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "fracture_variance",
+            "node_role": "fracture",
+            "parameter_aliases": [],
+            "minimum": 0,
+            "maximum": 100,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "blocked",
+            "blocker": "FRACTURE_VARIANCE_DISTRIBUTION_CONTRACT_REQUIRED"
+          },
+          {
+            "id": "impact_spread",
+            "node_role": "solver",
+            "parameter_aliases": [],
+            "minimum": 0,
+            "maximum": 1000,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "blocked",
+            "blocker": "IMPACT_SPREAD_SEMANTIC_CONVERSION_REQUIRED"
+          },
+          {
+            "id": "piece_scale",
+            "node_role": "fracture",
+            "parameter_aliases": [],
+            "minimum": 0.001,
+            "maximum": 1000,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "blocked",
+            "blocker": "ACTUAL_PIECE_SCALE_GEOMETRY_CONTRACT_REQUIRED"
+          },
+          {
+            "id": "velocity_variance",
+            "node_role": "rbd_velocity",
+            "parameter_aliases": [
+              "snippet"
+            ],
+            "minimum": 0,
+            "maximum": 1000,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "blocked",
+            "blocker": "RBD_VELOCITY_VARIANCE_ATTRIBUTE_CONTRACT_REQUIRED"
+          },
+          {
+            "id": "activation_frame",
+            "node_role": "configure",
+            "parameter_aliases": [
+              "active#"
+            ],
+            "minimum": -100000,
+            "maximum": 100000,
+            "invalidates_from": "generation_simulation",
+            "value_type": "int",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "solver",
+                "overwritefromsop",
+                1
+              ],
+              [
+                "solver",
+                "minactivationimpulseoverride",
+                0
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "impulse_scale",
+            "node_role": "solver",
+            "parameter_aliases": [],
+            "minimum": 0,
+            "maximum": 10000,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "blocked",
+            "blocker": "RBD_IMPULSE_SCALE_SEMANTIC_CONVERSION_REQUIRED"
+          }
+        ]
+      },
+      "22.0.429": {
+        "default": [
+          {
+            "id": "fracture_scale",
+            "node_role": "fracture",
+            "parameter_aliases": [],
+            "minimum": 0.001,
+            "maximum": 1000,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "blocked",
+            "blocker": "PHYSICAL_FRAGMENT_SCALE_CONTRACT_REQUIRED"
+          },
+          {
+            "id": "constraint_strength",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "glue_strength"
+            ],
+            "minimum": 0,
+            "maximum": 1000000000000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "solver",
+                "glue_defaultparmop",
+                "always"
+              ],
+              [
+                "solver",
+                "glue_dataname",
+                "Glue"
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "impact_threshold",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "constraint_impactthreshold#"
+            ],
+            "minimum": 0,
+            "maximum": 1000000000000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "solver",
+                "enable_constraintbreaks",
+                1
+              ],
+              [
+                "solver",
+                "constraint_reloadfromsops",
+                0
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "substeps",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "substeps"
+            ],
+            "minimum": 1,
+            "maximum": 100,
+            "invalidates_from": "generation_simulation",
+            "value_type": "int",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "mapped"
+          },
+          {
+            "id": "drag",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "drag_airresist"
+            ],
+            "minimum": 0,
+            "maximum": 100,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "solver",
+                "adddrag",
+                1
+              ],
+              [
+                "solver",
+                "drag_usegroup",
+                0
+              ],
+              [
+                "solver",
+                "drag_uselocaldrag",
+                0
+              ],
+              [
+                "solver",
+                "drag_windvelocity",
+                [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "fracture_variance",
+            "node_role": "fracture",
+            "parameter_aliases": [],
+            "minimum": 0,
+            "maximum": 100,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "blocked",
+            "blocker": "FRACTURE_VARIANCE_DISTRIBUTION_CONTRACT_REQUIRED"
+          },
+          {
+            "id": "impact_spread",
+            "node_role": "solver",
+            "parameter_aliases": [],
+            "minimum": 0,
+            "maximum": 1000,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "blocked",
+            "blocker": "IMPACT_SPREAD_SEMANTIC_CONVERSION_REQUIRED"
+          },
+          {
+            "id": "piece_scale",
+            "node_role": "fracture",
+            "parameter_aliases": [],
+            "minimum": 0.001,
+            "maximum": 1000,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "blocked",
+            "blocker": "ACTUAL_PIECE_SCALE_GEOMETRY_CONTRACT_REQUIRED"
+          },
+          {
+            "id": "velocity_variance",
+            "node_role": "rbd_velocity",
+            "parameter_aliases": [
+              "snippet"
+            ],
+            "minimum": 0,
+            "maximum": 1000,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "blocked",
+            "blocker": "RBD_VELOCITY_VARIANCE_ATTRIBUTE_CONTRACT_REQUIRED"
+          },
+          {
+            "id": "activation_frame",
+            "node_role": "configure",
+            "parameter_aliases": [
+              "active#"
+            ],
+            "minimum": -100000,
+            "maximum": 100000,
+            "invalidates_from": "generation_simulation",
+            "value_type": "int",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "solver",
+                "overwritefromsop",
+                1
+              ],
+              [
+                "solver",
+                "minactivationimpulseoverride",
+                0
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "impulse_scale",
+            "node_role": "solver",
+            "parameter_aliases": [],
+            "minimum": 0,
+            "maximum": 10000,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "blocked",
+            "blocker": "RBD_IMPULSE_SCALE_SEMANTIC_CONVERSION_REQUIRED"
+          }
+        ]
+      },
+      "22.0.459": {
+        "default": [
+          {
+            "minimum": 0.001,
+            "maximum": 1000,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [],
+            "invalidates_from": "generation_simulation",
+            "unit": "NOT_CAPTURED",
+            "native_status": "blocked",
+            "blocker": "PHYSICAL_FRAGMENT_SCALE_CONTRACT_REQUIRED",
+            "product_status": "approved",
+            "product_definition": {
+              "decision_id": "R01",
+              "unit": "SU",
+              "definition": "Target fragment characteristic edge length for fracture sampling/cutting; read back closed-piece scale as V^(1/3). This is a creative target, not a guarantee of equal actual pieces or a whole-object scale.",
+              "zero": "Reject.",
+              "negative": "Reject.",
+              "scope": "Owned fracture generation; preserve input outline and total dimensions. Open surfaces without a volume basis remain missing inputs.",
+              "required_basis": [
+                "closed source volume and dimensions",
+                "piece/name identity",
+                "fragment and resource budget",
+                "material, packing and constraint relationships"
+              ],
+              "capture_blockers": [
+                "versioned general sampling/cutting operators, seeds/density and consuming ports",
+                "actual closed-volume and piece readback; no generic piecesize inferred from HDA labels"
+              ],
+              "proposal_sha256": "7a5d8f699ee879c9d613832d9520ceb71580080f6ebadfd187fbd3b0389f4f9e",
+              "decision_record": "handover/CONTROL_DECISIONS_20261004.md",
+              "approved_sections": [
+                2,
+                3
+              ],
+              "common_rules": {
+                "units": "Lengths use current scene units (SU), velocities SU/s; read actual FPS and time scale. No SI conversion without explicit scale and mass bases.",
+                "validation": "Require finite values and each control's zero policy; reject unsigned negatives, missing bases, incompatible combinations and budget excess. No clamping, rounding, implicit conversion or renaming.",
+                "randomness": "Use fixed task seed, stable entity IDs and independent control sub-seeds; reopening reproduces samples and changing one control does not resample another. New percentages are bounded amplitudes, not statistical variance.",
+                "basis": "Freeze bases, coordinate spaces, distributions, time scales and controlled stages. Missing axes, targets, events, source geometry or stable IDs remain explicit missing inputs; preserve unrelated artist fields.",
+                "ranges": "Preserve existing names and validation ranges. Mathematical conditions, version-specific native hard limits, product limits and scene budgets remain distinct; unsupported endpoints stay blocked. Range, alias or endpoint changes require a specific decision.",
+                "readback": "Observe actual parameters, attributes, channels, topology or semantic programs and their input SHA, not requested values. Cache/render authorization, 12-frame/120-second limits and total disk budget remain required; product approval does not authorize real jobs.",
+                "existing_definitions": "Preserve particle life/velocity variance, Crowd path_variance and Geometry scale_variance; preserve the existing RBD activation_frame constant active step."
+              },
+              "common_capture_requirements": {
+                "versions": [
+                  "21.0.631",
+                  "22.0.429"
+                ],
+                "interface": "For each version, capture raw definition/help/SDK sources and hashes, exact operators/machine parameters, types/tuples, menu tokens, defaults/expressions, hard/soft ranges, disable/hide state, indexed input/output roles, editable boundaries and downstream consumption.",
+                "attributes": "Attribute routes additionally need class/storage/tuple, coordinate space, stable IDs and actual downstream consumption rules; labels, help anchors, sliders and other-version tokens are not machine interface proof.",
+                "runtime": "Static evidence bounds pure contracts/native API substitutes. Instance state, geometry/fields, save/reopen and dynamic effects require separately authorized real-host evidence. Recovered JSON excerpts do not replace missing original HDA bytes."
+              },
+              "preparation_capture_requirements": {
+                "versions": [
+                  "22.0.459"
+                ],
+                "interface": "For each version, capture raw definition/help/SDK sources and hashes, exact operators/machine parameters, types/tuples, menu tokens, defaults/expressions, hard/soft ranges, disable/hide state, indexed input/output roles, editable boundaries and downstream consumption.",
+                "attributes": "Attribute routes additionally need class/storage/tuple, coordinate space, stable IDs and actual downstream consumption rules; labels, help anchors, sliders and other-version tokens are not machine interface proof.",
+                "runtime": "Static evidence bounds pure contracts/native API substitutes. Instance state, geometry/fields, save/reopen and dynamic effects require separately authorized real-host evidence. Recovered JSON excerpts do not replace missing original HDA bytes.",
+                "status": "PARTIAL_STATIC_BASIS_RUNTIME_FACTS_REQUIRED"
+              }
+            },
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [],
+              "missing": []
+            },
+            "id": "fracture_scale",
+            "node_role": "fracture",
+            "parameter_aliases": []
+          },
+          {
+            "minimum": 0,
+            "maximum": 1000000000000.0,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [
+              [
+                "solver",
+                "glue_defaultparmop",
+                "always"
+              ],
+              [
+                "solver",
+                "glue_dataname",
+                "Glue"
+              ]
+            ],
+            "invalidates_from": "generation_simulation",
+            "unit": "uniform effective native Glue strength; scalar physical unit NOT_CAPTURED",
+            "native_status": "mapped",
+            "semantic_contract": "uniform_native_glue_strength_with_unit_primitive_multiplier/1",
+            "context_parms": [
+              [
+                "solver",
+                "@input_geometry/1"
+              ]
+            ],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/rbdbulletsolver",
+                  "parameter": "glue_strength",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "2fdca903735043c169d43f9c8fcc85d884e52633bf28e33f5905d1be1d37e2af",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/rbdbulletsolver",
+                  "parameter": "glue_defaultparmop",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "2fdca903735043c169d43f9c8fcc85d884e52633bf28e33f5905d1be1d37e2af",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/rbdbulletsolver",
+                  "parameter": "glue_dataname",
+                  "type": "string",
+                  "size": 1,
+                  "section_sha256": "2fdca903735043c169d43f9c8fcc85d884e52633bf28e33f5905d1be1d37e2af",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "constraint_strength",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "glue_strength"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 1000000000000.0,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [
+              [
+                "solver",
+                "enable_constraintbreaks",
+                1
+              ],
+              [
+                "solver",
+                "constraint_reloadfromsops",
+                0
+              ]
+            ],
+            "invalidates_from": "generation_simulation",
+            "unit": "native impact threshold; physical unit conversion NOT_CAPTURED",
+            "native_status": "mapped",
+            "multiparm": "breaks",
+            "multiparm_templates": [
+              "constraint_names#",
+              "constraint_group#",
+              "constraint_mode#",
+              "constraint_useimpact#",
+              "constraint_scaleimpact#",
+              "constraint_impactthreshold#"
+            ],
+            "context_parms": [
+              [
+                "solver",
+                "@multiparm/breaks"
+              ],
+              [
+                "configure",
+                "@geometry/1"
+              ]
+            ],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/rbdbulletsolver",
+                  "parameter": "constraint_impactthreshold#",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "2fdca903735043c169d43f9c8fcc85d884e52633bf28e33f5905d1be1d37e2af",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/rbdbulletsolver",
+                  "parameter": "enable_constraintbreaks",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "2fdca903735043c169d43f9c8fcc85d884e52633bf28e33f5905d1be1d37e2af",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/rbdbulletsolver",
+                  "parameter": "constraint_reloadfromsops",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "2fdca903735043c169d43f9c8fcc85d884e52633bf28e33f5905d1be1d37e2af",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "impact_threshold",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "constraint_impactthreshold#"
+            ]
+          },
+          {
+            "minimum": 1,
+            "maximum": 100,
+            "value_type": "int",
+            "native_type": "integer",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [],
+            "invalidates_from": "generation_simulation",
+            "unit": "Bullet substeps per frame",
+            "native_status": "mapped",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/rbdbulletsolver",
+                  "parameter": "substeps",
+                  "type": "integer",
+                  "size": 1,
+                  "section_sha256": "2fdca903735043c169d43f9c8fcc85d884e52633bf28e33f5905d1be1d37e2af",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "substeps",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "substeps"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 100,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [
+              [
+                "solver",
+                "adddrag",
+                1
+              ],
+              [
+                "solver",
+                "drag_usegroup",
+                0
+              ],
+              [
+                "solver",
+                "drag_uselocaldrag",
+                0
+              ],
+              [
+                "solver",
+                "drag_windvelocity",
+                [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ]
+            ],
+            "invalidates_from": "generation_simulation",
+            "unit": "native air resistance; vendor token kg1s-1",
+            "native_status": "mapped",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/rbdbulletsolver",
+                  "parameter": "drag_airresist",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "2fdca903735043c169d43f9c8fcc85d884e52633bf28e33f5905d1be1d37e2af",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/rbdbulletsolver",
+                  "parameter": "adddrag",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "2fdca903735043c169d43f9c8fcc85d884e52633bf28e33f5905d1be1d37e2af",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/rbdbulletsolver",
+                  "parameter": "drag_usegroup",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "2fdca903735043c169d43f9c8fcc85d884e52633bf28e33f5905d1be1d37e2af",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/rbdbulletsolver",
+                  "parameter": "drag_uselocaldrag",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "2fdca903735043c169d43f9c8fcc85d884e52633bf28e33f5905d1be1d37e2af",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/rbdbulletsolver",
+                  "parameter": "drag_windvelocity",
+                  "type": "float",
+                  "size": 3,
+                  "section_sha256": "2fdca903735043c169d43f9c8fcc85d884e52633bf28e33f5905d1be1d37e2af",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "drag",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "drag_airresist"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 100,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [],
+            "invalidates_from": "generation_simulation",
+            "unit": "NOT_CAPTURED",
+            "native_status": "blocked",
+            "blocker": "FRACTURE_VARIANCE_DISTRIBUTION_CONTRACT_REQUIRED",
+            "product_status": "approved",
+            "product_definition": {
+              "decision_id": "R02",
+              "unit": "percent bounded random amplitude",
+              "definition": "For each stable sampling cell, target scale L*q with q uniform in [1/(1+p/100), 1+p/100]; p=100 gives [L/2, 2L]. Not actual fragment statistical variance.",
+              "zero": "Use the same target L for every cell.",
+              "negative": "Reject; L remains positive.",
+              "scope": "R01 target scales/seed generation with fixed seed; preserve constraint-strength variance and glass crack counts.",
+              "required_basis": [
+                "positive R01 target L",
+                "stable sampling-cell IDs",
+                "fixed task seed and independent control sub-seed"
+              ],
+              "capture_blockers": [
+                "versioned variable-scale sampling/cutting graph and actual consumption",
+                "clipped piece volume/topology readback; concrete strength variance is not a substitute"
+              ],
+              "proposal_sha256": "7a5d8f699ee879c9d613832d9520ceb71580080f6ebadfd187fbd3b0389f4f9e",
+              "decision_record": "handover/CONTROL_DECISIONS_20261004.md",
+              "approved_sections": [
+                2,
+                3
+              ],
+              "common_rules": {
+                "units": "Lengths use current scene units (SU), velocities SU/s; read actual FPS and time scale. No SI conversion without explicit scale and mass bases.",
+                "validation": "Require finite values and each control's zero policy; reject unsigned negatives, missing bases, incompatible combinations and budget excess. No clamping, rounding, implicit conversion or renaming.",
+                "randomness": "Use fixed task seed, stable entity IDs and independent control sub-seeds; reopening reproduces samples and changing one control does not resample another. New percentages are bounded amplitudes, not statistical variance.",
+                "basis": "Freeze bases, coordinate spaces, distributions, time scales and controlled stages. Missing axes, targets, events, source geometry or stable IDs remain explicit missing inputs; preserve unrelated artist fields.",
+                "ranges": "Preserve existing names and validation ranges. Mathematical conditions, version-specific native hard limits, product limits and scene budgets remain distinct; unsupported endpoints stay blocked. Range, alias or endpoint changes require a specific decision.",
+                "readback": "Observe actual parameters, attributes, channels, topology or semantic programs and their input SHA, not requested values. Cache/render authorization, 12-frame/120-second limits and total disk budget remain required; product approval does not authorize real jobs.",
+                "existing_definitions": "Preserve particle life/velocity variance, Crowd path_variance and Geometry scale_variance; preserve the existing RBD activation_frame constant active step."
+              },
+              "common_capture_requirements": {
+                "versions": [
+                  "21.0.631",
+                  "22.0.429"
+                ],
+                "interface": "For each version, capture raw definition/help/SDK sources and hashes, exact operators/machine parameters, types/tuples, menu tokens, defaults/expressions, hard/soft ranges, disable/hide state, indexed input/output roles, editable boundaries and downstream consumption.",
+                "attributes": "Attribute routes additionally need class/storage/tuple, coordinate space, stable IDs and actual downstream consumption rules; labels, help anchors, sliders and other-version tokens are not machine interface proof.",
+                "runtime": "Static evidence bounds pure contracts/native API substitutes. Instance state, geometry/fields, save/reopen and dynamic effects require separately authorized real-host evidence. Recovered JSON excerpts do not replace missing original HDA bytes."
+              },
+              "preparation_capture_requirements": {
+                "versions": [
+                  "22.0.459"
+                ],
+                "interface": "For each version, capture raw definition/help/SDK sources and hashes, exact operators/machine parameters, types/tuples, menu tokens, defaults/expressions, hard/soft ranges, disable/hide state, indexed input/output roles, editable boundaries and downstream consumption.",
+                "attributes": "Attribute routes additionally need class/storage/tuple, coordinate space, stable IDs and actual downstream consumption rules; labels, help anchors, sliders and other-version tokens are not machine interface proof.",
+                "runtime": "Static evidence bounds pure contracts/native API substitutes. Instance state, geometry/fields, save/reopen and dynamic effects require separately authorized real-host evidence. Recovered JSON excerpts do not replace missing original HDA bytes.",
+                "status": "PARTIAL_STATIC_BASIS_RUNTIME_FACTS_REQUIRED"
+              }
+            },
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [],
+              "missing": []
+            },
+            "id": "fracture_variance",
+            "node_role": "fracture",
+            "parameter_aliases": []
+          },
+          {
+            "minimum": 0,
+            "maximum": 1000,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [],
+            "invalidates_from": "generation_simulation",
+            "unit": "NOT_CAPTURED",
+            "native_status": "blocked",
+            "blocker": "IMPACT_SPREAD_SEMANTIC_CONVERSION_REQUIRED",
+            "product_status": "approved",
+            "product_definition": {
+              "decision_id": "R03",
+              "unit": "SU",
+              "definition": "Impulse distribution radius r: use actual piece-centroid distance d and weight max(0, 1-d/r) for r>0, multiplying the shared J0 vector. Not glass-specific crack spread.",
+              "zero": "Give only the explicitly hit piece weight one and every other piece zero; missing hit ID is rejected, not replaced by a nearest-piece guess.",
+              "negative": "Reject.",
+              "scope": "One radial impulse event shared with R06; preserve fracture topology, glue strength and Bullet world scale.",
+              "required_basis": [
+                "trusted impact center",
+                "explicit hit piece ID and actual centroids",
+                "shared J0 vector and activation time",
+                "stable impact event identity"
+              ],
+              "capture_blockers": [
+                "versioned editable packed-attribute impulse injection fields/nodes",
+                "event timing and per-piece solver consumption"
+              ],
+              "proposal_sha256": "7a5d8f699ee879c9d613832d9520ceb71580080f6ebadfd187fbd3b0389f4f9e",
+              "decision_record": "handover/CONTROL_DECISIONS_20261004.md",
+              "approved_sections": [
+                2,
+                3
+              ],
+              "common_rules": {
+                "units": "Lengths use current scene units (SU), velocities SU/s; read actual FPS and time scale. No SI conversion without explicit scale and mass bases.",
+                "validation": "Require finite values and each control's zero policy; reject unsigned negatives, missing bases, incompatible combinations and budget excess. No clamping, rounding, implicit conversion or renaming.",
+                "randomness": "Use fixed task seed, stable entity IDs and independent control sub-seeds; reopening reproduces samples and changing one control does not resample another. New percentages are bounded amplitudes, not statistical variance.",
+                "basis": "Freeze bases, coordinate spaces, distributions, time scales and controlled stages. Missing axes, targets, events, source geometry or stable IDs remain explicit missing inputs; preserve unrelated artist fields.",
+                "ranges": "Preserve existing names and validation ranges. Mathematical conditions, version-specific native hard limits, product limits and scene budgets remain distinct; unsupported endpoints stay blocked. Range, alias or endpoint changes require a specific decision.",
+                "readback": "Observe actual parameters, attributes, channels, topology or semantic programs and their input SHA, not requested values. Cache/render authorization, 12-frame/120-second limits and total disk budget remain required; product approval does not authorize real jobs.",
+                "existing_definitions": "Preserve particle life/velocity variance, Crowd path_variance and Geometry scale_variance; preserve the existing RBD activation_frame constant active step."
+              },
+              "common_capture_requirements": {
+                "versions": [
+                  "21.0.631",
+                  "22.0.429"
+                ],
+                "interface": "For each version, capture raw definition/help/SDK sources and hashes, exact operators/machine parameters, types/tuples, menu tokens, defaults/expressions, hard/soft ranges, disable/hide state, indexed input/output roles, editable boundaries and downstream consumption.",
+                "attributes": "Attribute routes additionally need class/storage/tuple, coordinate space, stable IDs and actual downstream consumption rules; labels, help anchors, sliders and other-version tokens are not machine interface proof.",
+                "runtime": "Static evidence bounds pure contracts/native API substitutes. Instance state, geometry/fields, save/reopen and dynamic effects require separately authorized real-host evidence. Recovered JSON excerpts do not replace missing original HDA bytes."
+              },
+              "preparation_capture_requirements": {
+                "versions": [
+                  "22.0.459"
+                ],
+                "interface": "For each version, capture raw definition/help/SDK sources and hashes, exact operators/machine parameters, types/tuples, menu tokens, defaults/expressions, hard/soft ranges, disable/hide state, indexed input/output roles, editable boundaries and downstream consumption.",
+                "attributes": "Attribute routes additionally need class/storage/tuple, coordinate space, stable IDs and actual downstream consumption rules; labels, help anchors, sliders and other-version tokens are not machine interface proof.",
+                "runtime": "Static evidence bounds pure contracts/native API substitutes. Instance state, geometry/fields, save/reopen and dynamic effects require separately authorized real-host evidence. Recovered JSON excerpts do not replace missing original HDA bytes.",
+                "status": "PARTIAL_STATIC_BASIS_RUNTIME_FACTS_REQUIRED"
+              }
+            },
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [],
+              "missing": []
+            },
+            "id": "impact_spread",
+            "node_role": "solver",
+            "parameter_aliases": []
+          },
+          {
+            "minimum": 0.001,
+            "maximum": 1000,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [],
+            "invalidates_from": "generation_simulation",
+            "unit": "NOT_CAPTURED",
+            "native_status": "blocked",
+            "blocker": "ACTUAL_PIECE_SCALE_GEOMETRY_CONTRACT_REQUIRED",
+            "product_status": "approved",
+            "product_definition": {
+              "decision_id": "R04",
+              "unit": "dimensionless multiplier",
+              "definition": "Uniform geometry multiplier about each actual piece's rest centroid; one preserves geometry. Keep collision shape consistent, preserve density, and update mass/inertia from actual new volume.",
+              "zero": "Reject.",
+              "negative": "Reject.",
+              "scope": "After fracture and before configure; preserve centroid position, rebuild attached constraint anchors and collision shapes. Not Exploded Scale or World Scale; overlaps/resource excess remain explicit failures.",
+              "required_basis": [
+                "actual pieces and rest centroids",
+                "packed pivots/full transforms",
+                "density and actual volume",
+                "attached constraint anchors and collision shapes"
+              ],
+              "capture_blockers": [
+                "versioned packed geometry/intrinsic editing and collision consumption",
+                "density-to-mass/inertia rules and editable constraint-anchor rebuilding"
+              ],
+              "proposal_sha256": "7a5d8f699ee879c9d613832d9520ceb71580080f6ebadfd187fbd3b0389f4f9e",
+              "decision_record": "handover/CONTROL_DECISIONS_20261004.md",
+              "approved_sections": [
+                2,
+                3
+              ],
+              "common_rules": {
+                "units": "Lengths use current scene units (SU), velocities SU/s; read actual FPS and time scale. No SI conversion without explicit scale and mass bases.",
+                "validation": "Require finite values and each control's zero policy; reject unsigned negatives, missing bases, incompatible combinations and budget excess. No clamping, rounding, implicit conversion or renaming.",
+                "randomness": "Use fixed task seed, stable entity IDs and independent control sub-seeds; reopening reproduces samples and changing one control does not resample another. New percentages are bounded amplitudes, not statistical variance.",
+                "basis": "Freeze bases, coordinate spaces, distributions, time scales and controlled stages. Missing axes, targets, events, source geometry or stable IDs remain explicit missing inputs; preserve unrelated artist fields.",
+                "ranges": "Preserve existing names and validation ranges. Mathematical conditions, version-specific native hard limits, product limits and scene budgets remain distinct; unsupported endpoints stay blocked. Range, alias or endpoint changes require a specific decision.",
+                "readback": "Observe actual parameters, attributes, channels, topology or semantic programs and their input SHA, not requested values. Cache/render authorization, 12-frame/120-second limits and total disk budget remain required; product approval does not authorize real jobs.",
+                "existing_definitions": "Preserve particle life/velocity variance, Crowd path_variance and Geometry scale_variance; preserve the existing RBD activation_frame constant active step."
+              },
+              "common_capture_requirements": {
+                "versions": [
+                  "21.0.631",
+                  "22.0.429"
+                ],
+                "interface": "For each version, capture raw definition/help/SDK sources and hashes, exact operators/machine parameters, types/tuples, menu tokens, defaults/expressions, hard/soft ranges, disable/hide state, indexed input/output roles, editable boundaries and downstream consumption.",
+                "attributes": "Attribute routes additionally need class/storage/tuple, coordinate space, stable IDs and actual downstream consumption rules; labels, help anchors, sliders and other-version tokens are not machine interface proof.",
+                "runtime": "Static evidence bounds pure contracts/native API substitutes. Instance state, geometry/fields, save/reopen and dynamic effects require separately authorized real-host evidence. Recovered JSON excerpts do not replace missing original HDA bytes."
+              },
+              "preparation_capture_requirements": {
+                "versions": [
+                  "22.0.459"
+                ],
+                "interface": "For each version, capture raw definition/help/SDK sources and hashes, exact operators/machine parameters, types/tuples, menu tokens, defaults/expressions, hard/soft ranges, disable/hide state, indexed input/output roles, editable boundaries and downstream consumption.",
+                "attributes": "Attribute routes additionally need class/storage/tuple, coordinate space, stable IDs and actual downstream consumption rules; labels, help anchors, sliders and other-version tokens are not machine interface proof.",
+                "runtime": "Static evidence bounds pure contracts/native API substitutes. Instance state, geometry/fields, save/reopen and dynamic effects require separately authorized real-host evidence. Recovered JSON excerpts do not replace missing original HDA bytes.",
+                "status": "PARTIAL_STATIC_BASIS_RUNTIME_FACTS_REQUIRED"
+              }
+            },
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [],
+              "missing": []
+            },
+            "id": "piece_scale",
+            "node_role": "fracture",
+            "parameter_aliases": []
+          },
+          {
+            "minimum": 0,
+            "maximum": 1000,
+            "value_type": "float",
+            "native_type": "string",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [],
+            "invalidates_from": "generation_simulation",
+            "unit": "SU/s per-axis initial velocity amplitude",
+            "native_status": "blocked",
+            "blocker": "RBD_VELOCITY_VARIANCE_ATTRIBUTE_CONTRACT_REQUIRED",
+            "native_program": "bridge.rbd-velocity-program/1",
+            "conditional_native_route": "bridge.rbd-velocity-program/1",
+            "runtime_scope": "initial_active_packed_pieces_only",
+            "context_parms": [
+              [
+                "rbd_velocity",
+                "@basis"
+              ],
+              [
+                "rbd_velocity",
+                "@program"
+              ],
+              [
+                "configure",
+                "@packed_geometry/0"
+              ],
+              [
+                "rbd_velocity",
+                "@packed_geometry/0"
+              ],
+              [
+                "solver",
+                "@input_geometry/0"
+              ]
+            ],
+            "product_status": "approved",
+            "product_definition": {
+              "decision_id": "R05",
+              "unit": "SU/s",
+              "definition": "Initial linear-velocity per-axis random amplitude: v=v_base+a*(u_x,u_y,u_z), with independent uniform [-1,1] samples; preserve angular velocity w. Not energy or statistical variance.",
+              "zero": "Preserve v_base.",
+              "negative": "Reject.",
+              "scope": "Owned pieces once at initial/activation event; fixed piece IDs and seed, no per-frame accumulation. Preserve baseline motion, drag and gravity.",
+              "required_basis": [
+                "frozen v_base and coordinate space",
+                "stable piece IDs",
+                "fixed task seed and independent control sub-seed",
+                "initial/activation timing and actual time scale"
+              ],
+              "capture_blockers": [
+                "versioned rbdconfigure v write path and attribute class/storage/tuple",
+                "Bullet read/overwrite timing and reopening without resampling; POP var is not RBD evidence"
+              ],
+              "proposal_sha256": "7a5d8f699ee879c9d613832d9520ceb71580080f6ebadfd187fbd3b0389f4f9e",
+              "decision_record": "handover/CONTROL_DECISIONS_20261004.md",
+              "approved_sections": [
+                2,
+                3
+              ],
+              "common_rules": {
+                "units": "Lengths use current scene units (SU), velocities SU/s; read actual FPS and time scale. No SI conversion without explicit scale and mass bases.",
+                "validation": "Require finite values and each control's zero policy; reject unsigned negatives, missing bases, incompatible combinations and budget excess. No clamping, rounding, implicit conversion or renaming.",
+                "randomness": "Use fixed task seed, stable entity IDs and independent control sub-seeds; reopening reproduces samples and changing one control does not resample another. New percentages are bounded amplitudes, not statistical variance.",
+                "basis": "Freeze bases, coordinate spaces, distributions, time scales and controlled stages. Missing axes, targets, events, source geometry or stable IDs remain explicit missing inputs; preserve unrelated artist fields.",
+                "ranges": "Preserve existing names and validation ranges. Mathematical conditions, version-specific native hard limits, product limits and scene budgets remain distinct; unsupported endpoints stay blocked. Range, alias or endpoint changes require a specific decision.",
+                "readback": "Observe actual parameters, attributes, channels, topology or semantic programs and their input SHA, not requested values. Cache/render authorization, 12-frame/120-second limits and total disk budget remain required; product approval does not authorize real jobs.",
+                "existing_definitions": "Preserve particle life/velocity variance, Crowd path_variance and Geometry scale_variance; preserve the existing RBD activation_frame constant active step."
+              },
+              "common_capture_requirements": {
+                "versions": [
+                  "21.0.631",
+                  "22.0.429"
+                ],
+                "interface": "For each version, capture raw definition/help/SDK sources and hashes, exact operators/machine parameters, types/tuples, menu tokens, defaults/expressions, hard/soft ranges, disable/hide state, indexed input/output roles, editable boundaries and downstream consumption.",
+                "attributes": "Attribute routes additionally need class/storage/tuple, coordinate space, stable IDs and actual downstream consumption rules; labels, help anchors, sliders and other-version tokens are not machine interface proof.",
+                "runtime": "Static evidence bounds pure contracts/native API substitutes. Instance state, geometry/fields, save/reopen and dynamic effects require separately authorized real-host evidence. Recovered JSON excerpts do not replace missing original HDA bytes."
+              },
+              "preparation_capture_requirements": {
+                "versions": [
+                  "22.0.459"
+                ],
+                "interface": "For each version, capture raw definition/help/SDK sources and hashes, exact operators/machine parameters, types/tuples, menu tokens, defaults/expressions, hard/soft ranges, disable/hide state, indexed input/output roles, editable boundaries and downstream consumption.",
+                "attributes": "Attribute routes additionally need class/storage/tuple, coordinate space, stable IDs and actual downstream consumption rules; labels, help anchors, sliders and other-version tokens are not machine interface proof.",
+                "runtime": "Static evidence bounds pure contracts/native API substitutes. Instance state, geometry/fields, save/reopen and dynamic effects require separately authorized real-host evidence. Recovered JSON excerpts do not replace missing original HDA bytes.",
+                "status": "PARTIAL_STATIC_BASIS_RUNTIME_FACTS_REQUIRED"
+              }
+            },
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/attribwrangle",
+                  "parameter": "snippet",
+                  "type": "string",
+                  "size": 1,
+                  "section_sha256": "b47a35a99cfd15f0c85143a3fed309c1a2f30704183ef7565bd52af1f7306c77",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "velocity_variance",
+            "node_role": "rbd_velocity",
+            "parameter_aliases": [
+              "snippet"
+            ]
+          },
+          {
+            "minimum": -100000,
+            "maximum": 100000,
+            "value_type": "int",
+            "native_type": "integer",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [
+              [
+                "solver",
+                "overwritefromsop",
+                1
+              ],
+              [
+                "solver",
+                "minactivationimpulseoverride",
+                0
+              ]
+            ],
+            "invalidates_from": "generation_simulation",
+            "unit": "integer scene frame; inactive before requested frame and active from it",
+            "native_status": "mapped",
+            "semantic_contract": "bridge.rbd-active-step/1",
+            "value_kind": "trusted_constant_activation_channel",
+            "multiparm": "attributes",
+            "multiparm_templates": [
+              "group#",
+              "addactive#",
+              "active#",
+              "useactivebounds#"
+            ],
+            "context_parms": [
+              [
+                "configure",
+                "@multiparm/attributes"
+              ],
+              [
+                "configure",
+                "@activation_channel"
+              ],
+              [
+                "solver",
+                "overwriteattributes"
+              ]
+            ],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/rbdconfigure",
+                  "parameter": "active#",
+                  "type": "integer",
+                  "size": 1,
+                  "section_sha256": "ff0ed8fd19eda1b806e09fddfc18298bedb383102c5d1e1c963e6da681c61005",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/rbdbulletsolver",
+                  "parameter": "overwritefromsop",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "2fdca903735043c169d43f9c8fcc85d884e52633bf28e33f5905d1be1d37e2af",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/rbdbulletsolver",
+                  "parameter": "minactivationimpulseoverride",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "2fdca903735043c169d43f9c8fcc85d884e52633bf28e33f5905d1be1d37e2af",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "activation_frame",
+            "node_role": "configure",
+            "parameter_aliases": [
+              "active#"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 10000,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [],
+            "invalidates_from": "generation_simulation",
+            "unit": "NOT_CAPTURED",
+            "native_status": "blocked",
+            "blocker": "RBD_IMPULSE_SCALE_SEMANTIC_CONVERSION_REQUIRED",
+            "product_status": "approved",
+            "product_definition": {
+              "decision_id": "R06",
+              "unit": "dimensionless multiplier",
+              "definition": "Scale trusted baseline impulse J0: J=value*weight(R03)*J0 per piece. Velocity injection requires actual mass and verified delta_v=J/m; J0 uses actual mass units*SU/s, not force or impact threshold.",
+              "zero": "No controlled impulse; preserve baseline velocity and other forces. One reuses J0.",
+              "negative": "Reject.",
+              "scope": "Shared R03 impact event consumed once at activation; no inferred impact event, J0 or mass.",
+              "required_basis": [
+                "trusted J0 vector and mass units",
+                "actual piece masses",
+                "R03 weights",
+                "shared impact event identity, hit piece, center and activation time"
+              ],
+              "capture_blockers": [
+                "versioned legal instantaneous impulse entry/attributes and units",
+                "mass readback, substep integration, event deduplication and reload consumption"
+              ],
+              "proposal_sha256": "7a5d8f699ee879c9d613832d9520ceb71580080f6ebadfd187fbd3b0389f4f9e",
+              "decision_record": "handover/CONTROL_DECISIONS_20261004.md",
+              "approved_sections": [
+                2,
+                3
+              ],
+              "common_rules": {
+                "units": "Lengths use current scene units (SU), velocities SU/s; read actual FPS and time scale. No SI conversion without explicit scale and mass bases.",
+                "validation": "Require finite values and each control's zero policy; reject unsigned negatives, missing bases, incompatible combinations and budget excess. No clamping, rounding, implicit conversion or renaming.",
+                "randomness": "Use fixed task seed, stable entity IDs and independent control sub-seeds; reopening reproduces samples and changing one control does not resample another. New percentages are bounded amplitudes, not statistical variance.",
+                "basis": "Freeze bases, coordinate spaces, distributions, time scales and controlled stages. Missing axes, targets, events, source geometry or stable IDs remain explicit missing inputs; preserve unrelated artist fields.",
+                "ranges": "Preserve existing names and validation ranges. Mathematical conditions, version-specific native hard limits, product limits and scene budgets remain distinct; unsupported endpoints stay blocked. Range, alias or endpoint changes require a specific decision.",
+                "readback": "Observe actual parameters, attributes, channels, topology or semantic programs and their input SHA, not requested values. Cache/render authorization, 12-frame/120-second limits and total disk budget remain required; product approval does not authorize real jobs.",
+                "existing_definitions": "Preserve particle life/velocity variance, Crowd path_variance and Geometry scale_variance; preserve the existing RBD activation_frame constant active step."
+              },
+              "common_capture_requirements": {
+                "versions": [
+                  "21.0.631",
+                  "22.0.429"
+                ],
+                "interface": "For each version, capture raw definition/help/SDK sources and hashes, exact operators/machine parameters, types/tuples, menu tokens, defaults/expressions, hard/soft ranges, disable/hide state, indexed input/output roles, editable boundaries and downstream consumption.",
+                "attributes": "Attribute routes additionally need class/storage/tuple, coordinate space, stable IDs and actual downstream consumption rules; labels, help anchors, sliders and other-version tokens are not machine interface proof.",
+                "runtime": "Static evidence bounds pure contracts/native API substitutes. Instance state, geometry/fields, save/reopen and dynamic effects require separately authorized real-host evidence. Recovered JSON excerpts do not replace missing original HDA bytes."
+              },
+              "preparation_capture_requirements": {
+                "versions": [
+                  "22.0.459"
+                ],
+                "interface": "For each version, capture raw definition/help/SDK sources and hashes, exact operators/machine parameters, types/tuples, menu tokens, defaults/expressions, hard/soft ranges, disable/hide state, indexed input/output roles, editable boundaries and downstream consumption.",
+                "attributes": "Attribute routes additionally need class/storage/tuple, coordinate space, stable IDs and actual downstream consumption rules; labels, help anchors, sliders and other-version tokens are not machine interface proof.",
+                "runtime": "Static evidence bounds pure contracts/native API substitutes. Instance state, geometry/fields, save/reopen and dynamic effects require separately authorized real-host evidence. Recovered JSON excerpts do not replace missing original HDA bytes.",
+                "status": "PARTIAL_STATIC_BASIS_RUNTIME_FACTS_REQUIRED"
+              }
+            },
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [],
+              "missing": []
+            },
+            "id": "impulse_scale",
+            "node_role": "solver",
+            "parameter_aliases": []
+          }
+        ]
+      }
+    }
+  },
+  "save_reopen": [
+    "Use the production generator and task-owned host; persist project content/version/owner and the original operation receipt.",
+    "Stop the actual owned worker and verify trusted stop, then reopen the saved HIP/NK in a new host identity.",
+    "Read back every role, native type, port, connection and semantic control; preserve unrelated artist changes."
+  ],
+  "stop_recovery": [
+    "Interrupt the actual case worker, not an auxiliary process.",
+    "Retain the heavy slot while stop is unknown; verify task/session/nonce/process/generation/build/scene epoch.",
+    "Restart the controller, restore the same operation from persistent facts, and verify no duplicate execution/registration."
+  ],
+  "artifact_checks": [
+    "Consume only task-owned registered input IDs/versions/hash and exact frames.",
+    "Validate applicable outputs: diagnostic_preview, editable_scene, simulation_cache",
+    "Require producer operation, scene/version, format/dimensions/channels, color/premultiplication and dependency facts; reject missing typed metadata.",
+    "Check missing/repeated/frozen/abrupt frames against a frozen activity interval; pixel change alone does not establish correct motion."
+  ],
+  "raw_evidence_path": "outputs/live-validation/rbd_destruction_v1/<new-run-id>",
+  "human_checks": [
+    "Editable topology and save/reopen match the approved controls.",
+    "Compare the registered reference and feedback result; judge actual motion, silhouette, timing, material, lighting and composition.",
+    "Accept visual quality separately from software, format and process-stop checks."
+  ],
+  "resource_requirements": {
+    "explicit_frames_max": 12,
+    "seconds_max": 120,
+    "disk_bytes": "explicit positive task budget; include output/cache/temp/logs",
+    "cache": "separate exact path/frame/content-version/estimated-bytes/invalidation confirmation before execution",
+    "concurrency": "one heavy DCC job; unknown stop keeps slot"
+  },
+  "blockers": [
+    "Full 54-row current-build evidence and independent M1 reception remain incomplete.",
+    "Whole-domain native basis and applicable output/actual worker recovery are not verified by this card."
+  ],
+  "composite": true
+}

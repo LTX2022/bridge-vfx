@@ -1,0 +1,316 @@
+# Dialog script for popsteerwander automatically generated 11/26/14 12:33:46
+
+{
+    name	popsteerwander
+    script	popsteerwander
+    label	"POP Steer Wander"
+
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Stream to Interact"
+
+    parm {
+	name	"activate"
+	label	"Activation"
+	type	float
+	default	{ "1" }
+	range	{ 0 1 }
+	export	none
+    }
+    parm {
+	name	"usegroup"
+	label	"Use group"
+	type	toggle
+	nolabel
+	joinnext
+	default	{ "0" }
+	range	{ 0 1 }
+	export	none
+    }
+    parm {
+	name	"partgroup"
+	label	"Group"
+	type	string
+	default	{ "" }
+	disablewhen	"{ usegroup == 0 }"
+	menutoggle	{
+	    [ "import doppoptoolutils" ]
+	    [ "" ]
+	    [ "return doppoptoolutils.buildGroupMenu(hou.pwd())" ]
+	    language	python
+	}
+	range	{ 0 1 }
+	export	none
+    }
+    parm {
+	name	"output"
+	label	"Output Attribute"
+	type	ordinal
+	default	{ "1" }
+	menu	{
+	    "0"	"Crowds steerforce"
+	    "1"	"POP force"
+	}
+	range	{ 0 1 }
+	export	none
+    }
+    parm {
+	name	"state"
+	label	"State"
+	type	string
+	invisible
+	default	{ "`ifs(ch(\"statemethod\")==0,substr(opstreamname('.'),7,strlen(opstreamname('.'))-8),\"\")`" }
+	hidewhen	"{ output == 1 }"
+	range	{ 0 1 }
+	export	none
+    }
+    parm {
+	name	"weight"
+	label	"Weight"
+	type	float
+	default	{ "0.5" }
+	hidewhen	"{ output == 1 }"
+	range	{ 0 10 }
+	export	none
+    }
+    parm {
+	name	"force"
+	label	"Force"
+	type	direction
+	size	3
+	default	{ "0" "0" "0" }
+	range	{ 0 10 }
+	export	all
+	parmtag	{ "autoscope" "0000000000000000" }
+	parmtag	{ "parmvop" "1" }
+	parmtag	{ "shaderparmcontexts" "cvex" }
+	parmtag	{ "units" "kg1m1s-2" }
+    }
+    parm {
+	name	"ignoremass"
+	label	"Ignore Mass"
+	type	toggle
+	default	{ "on" }
+	range	{ 0 1 }
+	export	none
+	parmtag	{ "autoscope" "0000000000000000" }
+	parmtag	{ "parmvop" "1" }
+	parmtag	{ "shaderparmcontexts" "cvex" }
+    }
+    parm {
+	name	"uselocalforce"
+	label	"Use VEXpressions"
+	type	toggle
+	default	{ "0" }
+	range	{ 0 1 }
+	export	none
+    }
+    parm {
+	name	"localforceexpression"
+	label	" "
+	type	string
+	default	{ "" }
+	hidewhen	"{ uselocalforce == 0 }"
+	menu	{
+	    [ "import vexpressionmenu" ]
+	    [ "" ]
+	    [ "return vexpressionmenu.buildSnippetMenu('popsteerwander/localforceexpression')" ]
+	    language	python
+	}
+	range	{ 0 1 }
+	export	none
+	parmtag	{ "autoscope" "0000000000000000" }
+	parmtag	{ "editor" "1" }
+	parmtag	{ "editorlang" "vex" }
+	parmtag	{ "editorlines" "8-40" }
+	parmtag	{ "script_action" "import vexpressionmenu\n\nnode = kwargs['node']\nparmname = 'localforceexpression'\n\nvexpressionmenu.createSpareParmsFromChCalls(node, parmname)" }
+	parmtag	{ "script_action_help" "Creates spare parameters for each unique call of ch() " }
+	parmtag	{ "script_action_icon" "BUTTONS_create_parm_from_ch" }
+    }
+    group {
+	name	"folder0"
+	label	"Noise"
+
+	parm {
+	    name	"type"
+	    label	"Type"
+	    type	ordinal
+	    default	{ "0" }
+	    menu	{
+		"0"	"3D"
+		"1"	"2D"
+	    }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"noiseorientation"
+	    label	"Orientation"
+	    type	ordinal
+	    default	{ "1" }
+	    hidewhen	"{ type == 0 }"
+	    menu	{
+		"0"	"XY"
+		"1"	"XZ"
+		"2"	"YZ"
+	    }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"amp"
+	    label	"Amplitude"
+	    type	float
+	    default	{ "10" }
+	    range	{ 0 10 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "parmvop" "1" }
+	    parmtag	{ "shaderparmcontexts" "cvex" }
+	    parmtag	{ "units" "kg1m1s-2" }
+	}
+	parm {
+	    name	"swirlsize"
+	    label	"Swirl Size"
+	    type	float
+	    default	{ "1" }
+	    range	{ 0 10 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "parmvop" "1" }
+	    parmtag	{ "shaderparmcontexts" "cvex" }
+	    parmtag	{ "units" "m1" }
+	}
+	parm {
+	    name	"swirlscale"
+	    label	"Swirl Scale"
+	    type	float
+	    size	3
+	    default	{ "1" "1" "1" }
+	    range	{ 0 10 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "parmvop" "1" }
+	    parmtag	{ "shaderparmcontexts" "cvex" }
+	}
+	parm {
+	    name	"pulselength"
+	    label	"Pulse Length"
+	    type	float
+	    default	{ "1" }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "parmvop" "1" }
+	    parmtag	{ "shaderparmcontexts" "cvex" }
+	    parmtag	{ "units" "s1" }
+	}
+	parm {
+	    name	"rough"
+	    label	"Roughness"
+	    type	float
+	    default	{ "0.5" }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "parmvop" "1" }
+	    parmtag	{ "shaderparmcontexts" "cvex" }
+	}
+	parm {
+	    name	"atten"
+	    label	"Attenuation"
+	    type	float
+	    default	{ "1" }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "parmvop" "1" }
+	    parmtag	{ "shaderparmcontexts" "cvex" }
+	}
+	parm {
+	    name	"turb"
+	    label	"Turbulence"
+	    type	integer
+	    default	{ "3" }
+	    range	{ 0 10 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "parmvop" "1" }
+	    parmtag	{ "shaderparmcontexts" "cvex" }
+	}
+	parm {
+	    name	"offset"
+	    label	"Offset"
+	    type	float
+	    size	4
+	    default	{ "0" "0" "0" "0" }
+	    range	{ 0 10 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "parmvop" "1" }
+	    parmtag	{ "shaderparmcontexts" "cvex" }
+	}
+	parm {
+	    name	"uselocalnoise"
+	    label	"Use VEXpressions"
+	    type	toggle
+	    default	{ "on" }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "parmvop" "1" }
+	    parmtag	{ "shaderparmcontexts" "cvex" }
+	}
+	parm {
+	    name	"localnoiseexpression"
+	    label	" "
+	    type	string
+	    default	{ "swirlsize *= rand(@id*10.1)*15;\npulselength *= 10;\noffset += set(0,@id*10,0,0);\n\n" }
+	    hidewhen	"{ uselocalnoise == 0 }"
+	    menu	{
+		[ "import vexpressionmenu" ]
+		[ "" ]
+		[ "return vexpressionmenu.buildSnippetMenu('popsteerwander/localnoiseexpression')" ]
+		language	python
+	    }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "editor" "1" }
+	    parmtag	{ "editorlang" "vex" }
+	    parmtag	{ "editorlines" "8-40" }
+	    parmtag	{ "script_action" "import vexpressionmenu\n\nnode = kwargs['node']\nparmname = 'localnoiseexpression'\n\nvexpressionmenu.createSpareParmsFromChCalls(node, parmname)" }
+	    parmtag	{ "script_action_help" "Creates spare parameters for each unique call of ch() " }
+	    parmtag	{ "script_action_icon" "BUTTONS_create_parm_from_ch" }
+	}
+    }
+
+    group {
+	name	"folder0_1"
+	label	"Bindings"
+
+	parm {
+	    name	"bindgeo"
+	    label	"Geometry"
+	    type	string
+	    default	{ "Geometry" }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"vex_cwdpath"
+	    label	"Evaluation Node Path"
+	    type	oppath
+	    default	{ "." }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "oprelative" "." }
+	}
+    }
+
+}

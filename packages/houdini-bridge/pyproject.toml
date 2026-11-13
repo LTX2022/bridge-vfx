@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "houdini-bridge"
+version = "2.0.0rc1"
+description = "Local structured Houdini bridge with editable VFX domain adapters"
+requires-python = ">=3.9"
+dependencies = ["dcc-task-runtime==2.0.0rc1"]
+
+[project.scripts]
+houdini-bridge = "houdini_bridge.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,930 @@
+# Dialog script for particlefluidsurface::2.0 automatically generated
+
+{
+    name	particlefluidsurface::2.0
+    script	particlefluidsurface::2.0
+    label	"Particle Fluid Surface"
+
+    help {
+	""
+    }
+    bindhandle tx boundingbox "Bounding_Box" centerx ""
+    bindhandle ty boundingbox "Bounding_Box" centery ""
+    bindhandle tz boundingbox "Bounding_Box" centerz ""
+    bindhandle dobbox boundingbox "Bounding_Box" onoff ""
+    bindhandle sizex boundingbox "Bounding_Box" sizex ""
+    bindhandle sizey boundingbox "Bounding_Box" sizey ""
+    bindhandle sizez boundingbox "Bounding_Box" sizez ""
+
+    inputlabel	1	"Particles and Volumes"
+    inputlabel	2	"Collision Objects and Volumes"
+    inputlabel	3	"Mask Volumes"
+    inputlabel	4	"Sub-Network Input #4"
+
+    group {
+        name    "folder1"
+        label   "Surfacing"
+
+        parm {
+            name    "surfmethod"
+            label   "Method"
+            type    ordinal
+            default { "0" }
+            menu {
+                "particlefluid" "Average Position"
+                "particles"     "Spherical"
+            }
+            range   { 0 1 }
+        }
+        parm {
+            name    "particlesep"
+            label   "Particle Separation"
+            type    float
+            default { "0.1" }
+            range   { 0.001 2 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "voxelsize"
+            label   "Voxel Scale"
+            type    float
+            default { "0.75" }
+            range   { 0.01 10 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "influenceradius"
+            label   "Influence Scale"
+            type    float
+            default { "3" }
+            hidewhen "{ surfmethod != particlefluid }"
+            range   { 0.01 5 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "surfacedistance"
+            label   "Droplet Scale"
+            type    float
+            default { "1" }
+            hidewhen "{ surfmethod != particlefluid }"
+            range   { 0.01 5 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "limititerations"
+            label   "Label"
+            type    toggle
+            nolabel
+            joinnext
+            default { "off" }
+            hidewhen "{ surfmethod != particlefluid }"
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "resamplingiterations"
+            label   "Limit Refinement Iterations"
+            type    integer
+            default { "0" }
+            disablewhen "{ limititerations == 0 }"
+            hidewhen "{ surfmethod != particlefluid }"
+            range   { 0! 6 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "minvoxelradius"
+            label   "Min Radius in Voxels"
+            type    float
+            default { "1.5" }
+            hidewhen "{ surfmethod != particles }"
+            range   { 0! 2 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "preservebubbles"
+            label   "Preserve Bubbles"
+            type    toggle
+            default { "0" }
+            hidewhen "{ surfmethod == particlefluid }"
+        }
+        parm {
+            name    "dosurfunion"
+            label   "Union Compressed Fluid Surface"
+            type    toggle
+            default { "1" }
+            range   { 0 1 }
+        }
+        parm {
+            name    "surferosion"
+            label   "Erosion Scale"
+            type    float
+            default { "0.8" }
+            disablewhen "{ dosurfunion == 0 }"
+            range   { 0 1 }
+        }
+        groupsimple {
+            name    "folder0"
+            label   "Output"
+
+            parm {
+                name    "conversion"
+                label   "Convert To"
+                type    ordinal
+                default { "polysoup" }
+                menu {
+                    "particles"     "Particles"
+                    "particlesurf"  "Particles and Compressed Fluid Surface"
+                    "surf"          "Compressed Fluid Surface"
+                    "vdb"           "Surface VDB"
+                    "poly"          "Surface Polygons"
+                    "polysoup"      "Surface Polygon Soup"
+                }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "isovalue"
+                label   "Isovalue"
+                type    float
+                default { "0" }
+                disablewhen "{ conversion != surf conversion != particlesurf conversion != poly conversion != polysoup }"
+                range   { -1 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "adaptivity"
+                label   "Adaptivity"
+                type    float
+                default { "0.005" }
+                disablewhen "{ conversion != surf conversion != particlesurf conversion != poly conversion != polysoup }"
+                range   { 0! 2! }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "dotransferattribs"
+                label   "dotransferattribs"
+                type    toggle
+                nolabel
+                joinnext
+                default { "1" }
+                disablewhen "{ conversion == particles } { conversion == vdb }"
+                range   { 0 1 }
+            }
+            parm {
+                name    "transferattribs"
+                label   "Transfer Attributes"
+                type    string
+                default { "v vorticity rest rest2" }
+                disablewhen "{ conversion == particles } { conversion == vdb } { dotransferattribs == 0 }"
+                range   { 0 1 }
+            }
+            parm {
+                name    "attribradius"
+                label   "Attribute Radius"
+                type    integer
+                default { "2" }
+                disablewhen "{ conversion == particles } { dotransferattribs == 0 } { conversion == particles }"
+                range   { 1! 10 }
+            }
+            parm {
+                name    "attribsamples"
+                label   "Attribute Samples"
+                type    integer
+                default { "10" }
+                disablewhen "{ conversion == particles } { dotransferattribs == 0 } { conversion == particles }"
+                range   { 1! 40 }
+            }
+            parm {
+                name    "visualize"
+                label   "Visualize"
+                type    ordinal
+                default { "none" }
+                disablewhen "{ velvis == 0 }"
+                menu {
+                    "none"      "None"
+                    "velocity"  "Velocity"
+                    "vorticity" "Vorticity"
+                }
+                range   { 0 1 }
+            }
+            parm {
+                name    "velvisrange"
+                label   "Velocity Range"
+                type    float
+                size    2
+                default { "0" "10" }
+                hidewhen "{ visualize != velocity }"
+                range   { 0 10 }
+            }
+            parm {
+                name    "velvisramp"
+                label   "Velocity Ramp"
+                type    ramp_rgb
+                default { "3" }
+                hidewhen "{ visualize != velocity }"
+                range   { 1! 10 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "parmvop" "1" }
+                parmtag { "rampbasis_var" "ramp_the_basis_strings" }
+                parmtag { "rampbasisdefault" "linear" }
+                parmtag { "rampcolordefault" "1pos ( 0 ) 1c ( 0 0 0.89999997615814209 ) 1interp ( linear ) 2pos ( 0.50579148530960083 ) 2c ( 0 0.90000000000000002 0.90000000000000002 ) 2interp ( linear ) 3pos ( 1 ) 3c ( 1 1 1 ) 3interp ( linear )" }
+                parmtag { "rampcolortype" "rgb" }
+                parmtag { "rampkeys_var" "ramp_the_key_positions" }
+                parmtag { "rampshowcontrolsdefault" "0" }
+                parmtag { "rampvalues_var" "ramp_the_key_values" }
+                parmtag { "shaderparmcontexts" "cvex" }
+            }
+            parm {
+                name    "vorticityvisrange"
+                label   "Vorticity Range"
+                type    float
+                size    2
+                default { "0" "50" }
+                hidewhen "{ visualize != vorticity }"
+                range   { 0 100 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "vorticityvisramp"
+                label   "Vorticity Ramp"
+                type    ramp_rgb
+                default { "3" }
+                hidewhen "{ visualize != vorticity }"
+                range   { 1! 10 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "parmvop" "1" }
+                parmtag { "rampbasis_var" "vecramp_the_basis_strings" }
+                parmtag { "rampbasisdefault" "linear" }
+                parmtag { "rampcolordefault" "1pos ( 0 ) 1c ( 0 0 0.89999997615814209 ) 1interp ( linear ) 2pos ( 0.5 ) 2c ( 0 0.89999997615814209 0.89999997615814209 ) 2interp ( linear ) 3pos ( 1 ) 3c ( 1 1 1 ) 3interp ( linear )" }
+                parmtag { "rampcolortype" "rgb" }
+                parmtag { "rampkeys_var" "vecramp_the_key_positions" }
+                parmtag { "rampshowcontrolsdefault" "0" }
+                parmtag { "rampvalues_var" "vecramp_the_key_values" }
+            }
+        }
+
+    }
+
+    group {
+        name    "folder1_1"
+        label   "Filtering"
+
+        parm {
+            name    "dodilate"
+            label   "Label"
+            type    toggle
+            nolabel
+            joinnext
+            default { "0" }
+            disablewhen "{ conversion != vdb conversion != poly conversion != polysoup }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "dilateoffset"
+            label   "Dilate"
+            type    float
+            joinnext
+            default { "2" }
+            disablewhen "{ dodilate == 0 } { conversion != vdb conversion != poly conversion != polysoup }"
+            range   { 0 10 }
+        }
+        parm {
+            name    "dilatemask"
+            label   "Mask"
+            type    toggle
+            default { "0" }
+            disablewhen "{ dodilate == 0 } { conversion != vdb conversion != poly conversion != polysoup }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "dosmooth"
+            label   "Label"
+            type    toggle
+            nolabel
+            joinnext
+            default { "0" }
+            disablewhen "{ conversion != vdb conversion != poly conversion != polysoup }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "smoothoperation"
+            label   "Smooth"
+            type    string
+            joinnext
+            default { "meancurvature" }
+            disablewhen "{ dosmooth == 0 } { conversion != vdb conversion != poly conversion != polysoup }"
+            menu {
+                "meanvalue"     "Mean Value"
+                "gaussian"      "Gaussian"
+                "medianvalue"   "Median Value"
+                "meancurvature" "Mean Curvature Flow"
+                "laplacianflow" "Laplacian Flow"
+            }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "smoothiterations"
+            label   "Iterations"
+            type    integer
+            nolabel
+            joinnext
+            default { "2" }
+            disablewhen "{ dosmooth == 0 } { conversion != vdb conversion != poly conversion != polysoup }"
+            range   { 0! 10 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "smoothmask"
+            label   "Mask"
+            type    toggle
+            default { "0" }
+            disablewhen "{ dosmooth == 0 } { conversion != vdb conversion != poly conversion != polysoup }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "doerode"
+            label   "Label"
+            type    toggle
+            nolabel
+            joinnext
+            default { "ch(\"dodilate\")" }
+            disablewhen "{ conversion != vdb conversion != poly conversion != polysoup }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "erodeoffset"
+            label   "Erode"
+            type    float
+            joinnext
+            default { "ch(\"dilateoffset\")" }
+            disablewhen "{ doerode == 0 } { conversion != vdb conversion != poly conversion != polysoup }"
+            range   { 0 10 }
+        }
+        parm {
+            name    "erodemask"
+            label   "Mask"
+            type    toggle
+            default { "ch(\"dilatemask\")" }
+            disablewhen "{ doerode == 0 } { conversion != vdb conversion != poly conversion != polysoup }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "dofinalsmooth"
+            label   "Label"
+            type    toggle
+            nolabel
+            joinnext
+            default { "0" }
+            disablewhen "{ conversion != vdb conversion != poly conversion != polysoup }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "finalsmoothoperation"
+            label   "Final Smooth"
+            type    string
+            joinnext
+            default { "meanvalue" }
+            disablewhen "{ dofinalsmooth == 0 } { conversion != vdb conversion != poly conversion != polysoup }"
+            menu {
+                "meanvalue"     "Mean Value"
+                "gaussian"      "Gaussian"
+                "medianvalue"   "Median Value"
+                "meancurvature" "Mean Curvature Flow"
+                "laplacianflow" "Laplacian Flow"
+            }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "finalsmoothiterations"
+            label   "Iterations"
+            type    integer
+            nolabel
+            joinnext
+            default { "2" }
+            disablewhen "{ dofinalsmooth == 0 } { conversion != vdb conversion != poly conversion != polysoup }"
+            range   { 0! 10 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "finalsmoothmask"
+            label   "Mask"
+            type    toggle
+            default { "0" }
+            disablewhen "{ dofinalsmooth == 0 } { conversion != vdb conversion != poly conversion != polysoup }"
+            range   { 0 1 }
+        }
+        groupsimple {
+            name    "folder3"
+            label   "Mask"
+
+            parm {
+                name    "velmask"
+                label   "velmask"
+                type    toggle
+                nolabel
+                joinnext
+                default { "0" }
+                disablewhen "{ conversion != vdb conversion != poly conversion != polysoup } { finalsmoothmask == 0 erodemask == 0 smoothmask == 0 dilatemask == 0 maskvis == 0 }"
+                range   { 0 1 }
+            }
+            parm {
+                name    "velmaskrange"
+                label   "Velocity Range"
+                type    float
+                size    2
+                default { "0.5" "1" }
+                disablewhen "{ velmask == 0 } { conversion != vdb conversion != poly conversion != polysoup } { finalsmoothmask == 0 erodemask == 0 smoothmask == 0 dilatemask == 0 maskvis == 0 }"
+                range   { 0 10 }
+            }
+            parm {
+                name    "vorticitymask"
+                label   "vorticitymask"
+                type    toggle
+                nolabel
+                joinnext
+                default { "0" }
+                disablewhen "{ conversion != vdb conversion != poly conversion != polysoup } { finalsmoothmask == 0 erodemask == 0 smoothmask == 0 dilatemask == 0 maskvis == 0 }"
+                range   { 0 1 }
+            }
+            parm {
+                name    "vorticitymaskrange"
+                label   "Vorticity Range"
+                type    float
+                size    2
+                default { "1" "4" }
+                disablewhen "{ vorticitymask == 0 } { conversion != vdb conversion != poly conversion != polysoup } { finalsmoothmask == 0 erodemask == 0 smoothmask == 0 dilatemask == 0 maskvis == 0 }"
+                range   { 0 10 }
+            }
+            parm {
+                name    "colmask"
+                label   "colmask"
+                type    toggle
+                nolabel
+                joinnext
+                default { "0" }
+                disablewhen "{ conversion != vdb conversion != poly conversion != polysoup } { finalsmoothmask == 0 erodemask == 0 smoothmask == 0 dilatemask == 0 maskvis == 0 }"
+                range   { 0 1 }
+            }
+            parm {
+                name    "colmaskoffset"
+                label   "Collision Offset"
+                type    float
+                default { "0.02" }
+                disablewhen "{ colmask == 0 } { conversion != vdb conversion != poly conversion != polysoup } { finalsmoothmask == 0 erodemask == 0 smoothmask == 0 dilatemask == 0 maskvis == 0 }"
+                range   { 0 10 }
+            }
+            parm {
+                name    "mask"
+                label   "mask"
+                type    toggle
+                nolabel
+                joinnext
+                default { "0" }
+                disablewhen "{ conversion != vdb conversion != poly conversion != polysoup } { finalsmoothmask == 0 erodemask == 0 smoothmask == 0 dilatemask == 0 maskvis == 0 }"
+                range   { 0 1 }
+            }
+            parm {
+                name    "maskname"
+                label   "Mask Input"
+                type    string
+                default { "" }
+                disablewhen "{ mask == 0 } { conversion != vdb conversion != poly conversion != polysoup } { finalsmoothmask == 0 erodemask == 0 smoothmask == 0 dilatemask == 0 maskvis == 0 }"
+                menutoggle {
+                    [ "opmenu -l -a FILTER/blast1 group" ]
+                }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_action" "import soputils\nkwargs['geometrytype'] = kwargs['node'].parmTuple('grouptype')\nkwargs['inputindex'] = 0\nsoputils.selectGroupParm(kwargs)" }
+                parmtag { "script_action_help" "Select geometry from an available viewport.\nShift-click to turn on Select Groups." }
+                parmtag { "script_action_icon" "BUTTONS_reselect" }
+            }
+            parm {
+                name    "maskcombineop"
+                label   "Combine Operation"
+                type    ordinal
+                default { "over" }
+                disablewhen "{ conversion != vdb conversion != poly conversion != polysoup } { velmask == 0 vorticitymask == 0 colmask == 0 mask == 0 } { finalsmoothmask == 0 erodemask == 0 smoothmask == 0 dilatemask == 0 maskvis == 0 }"
+                menu {
+                    "min"   "Minimum"
+                    "max"   "Maximum"
+                    "avg"   "Average"
+                    "mult"  "Multiply"
+                    "over"  "Over"
+                }
+                range   { 0 1 }
+            }
+            parm {
+                name    "domasksmooth"
+                label   "domasksmooth"
+                type    toggle
+                nolabel
+                joinnext
+                default { "1" }
+                disablewhen "{ conversion != vdb conversion != poly conversion != polysoup } { velmask == 0 vorticitymask == 0 colmask == 0 mask == 0 } { finalsmoothmask == 0 erodemask == 0 smoothmask == 0 dilatemask == 0 maskvis == 0 }"
+                range   { 0 1 }
+            }
+            parm {
+                name    "masksmoothop"
+                label   "Mask Smooth"
+                type    string
+                joinnext
+                default { "mean" }
+                disablewhen "{ domasksmooth == 0 } { conversion != vdb conversion != poly conversion != polysoup } { velmask == 0 vorticitymask == 0 colmask == 0 mask == 0 } { finalsmoothmask == 0 erodemask == 0 smoothmask == 0 dilatemask == 0 maskvis == 0 }"
+                menu {
+                    "mean"      "Mean Value"
+                    "gauss"     "Gaussian"
+                    "median"    "Median Value"
+                }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "masksmoothiterations"
+                label   "Iterations"
+                type    integer
+                nolabel
+                default { "1" }
+                disablewhen "{ domasksmooth == 0 } { conversion != vdb conversion != poly conversion != polysoup } { finalsmoothmask == 0 erodemask == 0 smoothmask == 0 dilatemask == 0 maskvis == 0 }"
+                range   { 0! 10 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "restrictmask"
+                label   "restrictmask"
+                type    toggle
+                nolabel
+                joinnext
+                default { "0" }
+                disablewhen "{ conversion != vdb conversion != poly conversion != polysoup } { finalsmoothmask == 0 erodemask == 0 smoothmask == 0 dilatemask == 0 maskvis == 0 }"
+                range   { 0 1 }
+            }
+            parm {
+                name    "restrictmaskwidth"
+                label   "Limit Bandwidth"
+                type    float
+                default { "2" }
+                disablewhen "{ restrictmask == 0 } { conversion != vdb conversion != poly conversion != polysoup } { finalsmoothmask == 0 erodemask == 0 smoothmask == 0 dilatemask == 0 maskvis == 0 }"
+                range   { 0 10 }
+            }
+            parm {
+                name    "maskvis"
+                label   "Visualize Mask"
+                type    toggle
+                default { "0" }
+                disablewhen "{ conversion != vdb conversion != poly conversion != polysoup }"
+                range   { 0 1 }
+            }
+            parm {
+                name    "maskvisramp"
+                label   "Mask Ramp"
+                type    ramp_rgb
+                default { "5" }
+                disablewhen "{ conversion != vdb conversion != poly conversion != polysoup }"
+                hidewhen "{ maskvis == 0 }"
+                range   { 1! 10 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "parmvop" "1" }
+                parmtag { "rampbasis_var" "ramp_the_basis_strings" }
+                parmtag { "rampbasisdefault" "linear" }
+                parmtag { "rampcolordefault" "1pos ( 0 ) 1c ( 0.20000000000000001 0 1 ) 1interp ( linear ) 2pos ( 0.25 ) 2c ( 0 0.84999999999999998 1 ) 2interp ( linear ) 3pos ( 0.5 ) 3c ( 0 1 0.10000000149011612 ) 3interp ( linear ) 4pos ( 0.75 ) 4c ( 0.94999999999999996 1 0 ) 4interp ( linear ) 5pos ( 1 ) 5c ( 1 0 0 ) 5interp ( linear )" }
+                parmtag { "rampcolortype" "rgb" }
+                parmtag { "rampkeys_var" "ramp_the_key_positions" }
+                parmtag { "rampshowcontrolsdefault" "0" }
+                parmtag { "rampvalues_var" "ramp_the_key_values" }
+                parmtag { "shaderparmcontexts" "cvex" }
+            }
+        }
+
+    }
+
+    group {
+        name    "folder1_2"
+        label   "Regions"
+
+        parm {
+            name    "regionvoxelsize"
+            label   "Region Voxel Scale"
+            type    float
+            default { "4" }
+            disablewhen "{ dobbox == 0 docamera == 0 docollisions == 0 }"
+            range   { 0 10 }
+        }
+        groupsimple {
+            name    "folder6"
+            label   "Collisions"
+
+            parm {
+                name    "docollisions"
+                label   "Subtract Collision Volumes"
+                type    toggle
+                default { "0" }
+                disablewhen "{ conversion == particles }"
+                range   { 0 1 }
+            }
+            parm {
+                name    "collisionoffset"
+                label   "Collision Offset"
+                type    float
+                default { "0.001" }
+                disablewhen "{ docollisions == 0 } { conversion == particles }"
+                range   { 0 1 }
+            }
+        }
+
+        groupsimple {
+            name    "folder4"
+            label   "Bounding Box"
+
+            parm {
+                name    "dobbox"
+                label   "Use Bounding Box"
+                type    toggle
+                default { "0" }
+                range   { 0 1 }
+            }
+            parm {
+                name    "size"
+                label   "Size"
+                type    vector
+                size    3
+                default { "50" "50" "50" }
+                disablewhen "{ dobbox == 0 }"
+                range   { -1 1 }
+            }
+            parm {
+                name    "t"
+                label   "Center"
+                type    vector
+                size    3
+                default { "0" "0" "0" }
+                disablewhen "{ dobbox == 0 }"
+                range   { -1 1 }
+            }
+            parm {
+                name    "closedends"
+                label   "Closed Boundaries"
+                type    toggle
+                default { "0" }
+                disablewhen "{ conversion == particles } { dobbox == 0 }"
+                range   { 0 1 }
+            }
+            groupsimple {
+                name    "folder2"
+                label   "Flattening"
+
+                parm {
+                    name    "flattengeo"
+                    label   "Flatten Geometry"
+                    type    toggle
+                    default { "0" }
+                    disablewhen "{ conversion == particles } { dobbox == 0 }"
+                    range   { 0 1 }
+                }
+                parm {
+                    name    "flattenrebuild"
+                    label   "Rebuild SDF"
+                    type    ordinal
+                    default { "1" }
+                    disablewhen "{ conversion == particles } { dobbox == 0 } { flattengeo == 0 }"
+                    menu {
+                        "off"       "None"
+                        "on"        "Full Resolution"
+                        "adaptive"  "Adaptive"
+                    }
+                    range   { 0 10 }
+                }
+                parm {
+                    name    "flattenattrib"
+                    label   "Output Flattened Attribute"
+                    type    toggle
+                    default { "0" }
+                    disablewhen "{ conversion == particles } { dobbox == 0 } { flattengeo == 0 }"
+                    range   { 0 10 }
+                }
+                parm {
+                    name    "flattendocolsuppress"
+                    label   "Suppress Near Collisions"
+                    type    toggle
+                    default { "0" }
+                    disablewhen "{ conversion == particles } { dobbox == 0 } { flattengeo == 0 }"
+                    range   { 0 1 }
+                }
+                parm {
+                    name    "flattencolsuppress"
+                    label   "Collision Bandwidth"
+                    type    float
+                    default { "2" }
+                    disablewhen "{ conversion == particles } { dobbox == 0 } { flattengeo == 0 }"
+                    hidewhen "{ flattendocolsuppress == 0 }"
+                    range   { 0! 4 }
+                }
+                parm {
+                    name    "flattenplane"
+                    label   "Plane"
+                    type    ordinal
+                    default { "zx" }
+                    disablewhen "{ conversion == particles } { dobbox == 0 } { flattengeo == 0 }"
+                    menu {
+                        "xy"    "XY Plane"
+                        "yz"    "YZ Plane"
+                        "zx"    "ZX Plane"
+                    }
+                    range   { 0 1 }
+                }
+                parm {
+                    name    "flattenshape"
+                    label   "Shape"
+                    type    ordinal
+                    default { "zx" }
+                    disablewhen "{ conversion == particles } { dobbox == 0 } { flattengeo == 0 }"
+                    menu {
+                        "rectangle" "Rectangle"
+                        "circle"    "Circle"
+                    }
+                    range   { 0 1 }
+                }
+                parm {
+                    name    "waterlevel"
+                    label   "Water Level"
+                    type    float
+                    default { "0" }
+                    disablewhen "{ conversion == particles } { dobbox == 0 } { flattengeo == 0 }"
+                    range   { 0 10 }
+                }
+                parm {
+                    name    "flattenheight"
+                    label   "Max Height"
+                    type    float
+                    default { "0.5" }
+                    disablewhen "{ conversion == particles } { dobbox == 0 } { flattengeo == 0 }"
+                    range   { 0 10 }
+                }
+                parm {
+                    name    "flattendist"
+                    label   "Flatten Distance"
+                    type    float
+                    default { "1" }
+                    disablewhen "{ conversion == particles } { dobbox == 0 } { flattengeo == 0 }"
+                    range   { 0 10 }
+                }
+                parm {
+                    name    "flattendopad"
+                    label   "Label"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "0" }
+                    disablewhen "{ conversion == particles } { dobbox == 0 } { flattengeo == 0 }"
+                    range   { 0 1 }
+                }
+                parm {
+                    name    "flattenpad"
+                    label   "Pad Bounds"
+                    type    vector2
+                    size    2
+                    default { "1" "1" }
+                    disablewhen "{ conversion == particles } { dobbox == 0 } { flattengeo == 0 } { flattendopad == 0 }"
+                    range   { 0! 10 }
+                }
+                parm {
+                    name    "flattendoextrude"
+                    label   "Extrude Polygons"
+                    type    ordinal
+                    default { "0" }
+                    disablewhen "{ flattendopad == 0 } { closedends == 1 } { conversion != surf conversion != poly conversion != polysoup } { dobbox == 0 } { flattengeo == 0 }"
+                    menu {
+                        "none"      "None"
+                        "planar"    "Planar"
+                        "peraxis"   "Along Each Axis"
+                    }
+                    range   { 0 1 }
+                }
+                parm {
+                    name    "flattenextrudedist"
+                    label   "Extrude Distance"
+                    type    float
+                    default { "10" }
+                    disablewhen "{ flattendopad == 0 } { closedends == 1 } { conversion != surf conversion != poly conversion != polysoup } { dobbox == 0 } { flattengeo == 0 }"
+                    hidewhen "{ flattendoextrude == none }"
+                    range   { 0! 100 }
+                }
+                parm {
+                    name    "flattenextrudediv"
+                    label   "Extrude Divisions"
+                    type    integer
+                    default { "4" }
+                    disablewhen "{ flattendopad == 0 } { closedends == 1 } { conversion != surf conversion != poly conversion != polysoup } { dobbox == 0 } { flattengeo == 0 }"
+                    hidewhen "{ flattendoextrude == none }"
+                    range   { 0! 100 }
+                }
+                parm {
+                    name    "flattendoedgegrp"
+                    label   "Label"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "off" }
+                    disablewhen "{ flattendopad == 0 } { closedends == 1 } { conversion != surf conversion != poly conversion != polysoup } { dobbox == 0 } { flattengeo == 0 }"
+                    hidewhen "{ flattendoextrude == none }"
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "flattenedgegrp"
+                    label   "Output Edge Group"
+                    type    string
+                    default { "boundary" }
+                    disablewhen "{ flattendoedgegrp == 0 } { flattendopad == 0 } { closedends == 1 } { conversion != surf conversion != poly conversion != polysoup } { dobbox == 0 } { flattengeo == 0 }"
+                    hidewhen "{ flattendoextrude == none }"
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+            }
+
+        }
+
+        groupsimple {
+            name    "folder5"
+            label   "Camera"
+
+            parm {
+                name    "docamera"
+                label   "docamera"
+                type    toggle
+                nolabel
+                joinnext
+                default { "0" }
+                range   { 0 1 }
+            }
+            parm {
+                name    "camera"
+                label   "Camera"
+                type    oppath
+                default { "" }
+                disablewhen "{ docamera == 0 }"
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "opfilter" "!!OBJ/CAMERA!!" }
+                parmtag { "oprelative" "." }
+            }
+            parm {
+                name    "zmin"
+                label   "Z Near"
+                type    float
+                default { "1" }
+                disablewhen "{ docamera == 0 }"
+                range   { 0 10 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "zmax"
+                label   "Z Far"
+                type    float
+                default { "2" }
+                disablewhen "{ docamera == 0 }"
+                range   { 0 10 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "usecamwindow"
+                label   "Use Camera's Window"
+                type    toggle
+                default { "on" }
+                disablewhen "{ docamera == 0 }"
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "winx"
+                label   "Window X"
+                type    float
+                size    2
+                default { "-0.1" "1.1" }
+                disablewhen "{ docamera == 0 }"
+                range   { 0 10 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "winy"
+                label   "Window Y"
+                type    float
+                size    2
+                default { "-0.1" "1.1" }
+                disablewhen "{ docamera == 0 }"
+                range   { 0 10 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "closedfrustum"
+                label   "Closed Frustum"
+                type    toggle
+                default { "0" }
+                disablewhen "{ docamera == 0 }"
+                range   { 0 1 }
+            }
+        }
+
+    }
+
+}

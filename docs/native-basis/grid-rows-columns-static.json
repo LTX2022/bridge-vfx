@@ -1,0 +1,61 @@
+{
+  "source_kind": "installed_same_build_SDK_and_node_help_static",
+  "native_execution": "NOT_RUN",
+  "limits": "Machine names and declared int64 eval are native static facts; constructor cache values are not factory defaults or runtime template/visibility. H22 eval gates exclude type ordinal6; do not assume menu-token encoding.",
+  "versions": [
+    {
+      "version": "21.0.631",
+      "sdk": {
+        "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/toolkit/include/SOP/SOP_Grid.proto.h",
+        "sha256": "e7617051d987ea6ad0655d378f85a2677a2362b730c2883b08bc9cfcbfdb47f6",
+        "excerpts": [
+          {
+            "line_start": 172,
+            "line_end": 190,
+            "text": "        myT = UT_Vector3D(0,0,0);\n        if (true)\n            graph->evalOpParm(myT, nodeidx, \"t\", time, graph->isDirect()?nullptr:depnode);\n        myR = UT_Vector3D(0,0,0);\n        if (true)\n            graph->evalOpParm(myR, nodeidx, \"r\", time, graph->isDirect()?nullptr:depnode);\n        myRows = 10;\n        if (true)\n            graph->evalOpParm(myRows, nodeidx, \"rows\", time, graph->isDirect()?nullptr:depnode);\n        myCols = 10;\n        if (true)\n            graph->evalOpParm(myCols, nodeidx, \"cols\", time, graph->isDirect()?nullptr:depnode);\n        myOrderu = 4;\n        if (true && ( (true&&!(((int64(getType())!=2)&&(int64(getType())!=3)))) ) )\n            graph->evalOpParm(myOrderu, nodeidx, \"orderu\", time, graph->isDirect()?nullptr:depnode);\n        myOrderv = 4;\n        if (true && ( (true&&!(((int64(getType())!=2)&&(int64(getType())!=3)))) ) )\n            graph->evalOpParm(myOrderv, nodeidx, \"orderv\", time, graph->isDirect()?nullptr:depnode);\n        myInterpu = true;"
+          },
+          {
+            "line_start": 660,
+            "line_end": 684,
+            "text": "    void setRows(int64 val) { myRows = val; }\n    int64 opRows(const SOP_NodeVerb::CookParms &cookparms) const\n    { \n        SOP_Node *thissop = cookparms.getNode();\n        if (!thissop) return getRows();\n        int64 result;\n        OP_Utils::evalOpParm(result, thissop, \"rows\", cookparms.getCookTime(), 0);\n        return result;\n    }\n    int64 getCols() const { return myCols; }\n    void setCols(int64 val) { myCols = val; }\n    int64 opCols(const SOP_NodeVerb::CookParms &cookparms) const\n    { \n        SOP_Node *thissop = cookparms.getNode();\n        if (!thissop) return getCols();\n        int64 result;\n        OP_Utils::evalOpParm(result, thissop, \"cols\", cookparms.getCookTime(), 0);\n        return result;\n    }\n    int64 getOrderu() const { return myOrderu; }\n    void setOrderu(int64 val) { myOrderu = val; }\n    int64 opOrderu(const SOP_NodeVerb::CookParms &cookparms) const\n    { \n        SOP_Node *thissop = cookparms.getNode();\n        if (!thissop) return getOrderu();"
+          }
+        ]
+      },
+      "help": {
+        "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/help/nodes.zip::sop/grid.txt",
+        "member_sha256": "c5b04247054b3ccb8e490b521728ebfe29391000f992e7d343a5cceedb688cd5",
+        "archive_sha256": "7c83e14d77ddaebf0f918244c1747509633b2721a39468eb4ae3efc694886916",
+        "line_start": 63,
+        "line_end": 73,
+        "text": "Rows:\n    #id: rows\n\n    Number of rows in the grid or hull.\n\nColumns:\n    #id: cols\n\n    Number of columns in the grid or hull.\n\nU Order:"
+      }
+    },
+    {
+      "version": "22.0.429",
+      "sdk": {
+        "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/toolkit/include/SOP/SOP_Grid.proto.h",
+        "sha256": "8d530560206d6acf95f4451358c0b10c27b1d99b2951da94fcdb2cd2e446a894",
+        "excerpts": [
+          {
+            "line_start": 172,
+            "line_end": 190,
+            "text": "        if (true)\n            graph->evalOpParm(mySize, nodeidx, \"size\", time, graph->isDirect()?nullptr:depnode);\n        myT = UT_Vector3D(0,0,0);\n        if (true)\n            graph->evalOpParm(myT, nodeidx, \"t\", time, graph->isDirect()?nullptr:depnode);\n        myR = UT_Vector3D(0,0,0);\n        if (true)\n            graph->evalOpParm(myR, nodeidx, \"r\", time, graph->isDirect()?nullptr:depnode);\n        myRows = 10;\n        if (true && ( (true&&!(((int64(getType())==6)))) ) )\n            graph->evalOpParm(myRows, nodeidx, \"rows\", time, graph->isDirect()?nullptr:depnode);\n        myCols = 10;\n        if (true && ( (true&&!(((int64(getType())==6)))) ) )\n            graph->evalOpParm(myCols, nodeidx, \"cols\", time, graph->isDirect()?nullptr:depnode);\n        myOrderu = 4;\n        if (true && ( (true&&!(((int64(getType())!=2)&&(int64(getType())!=3)))) ) )\n            graph->evalOpParm(myOrderu, nodeidx, \"orderu\", time, graph->isDirect()?nullptr:depnode);\n        myOrderv = 4;\n        if (true && ( (true&&!(((int64(getType())!=2)&&(int64(getType())!=3)))) ) )"
+          },
+          {
+            "line_start": 660,
+            "line_end": 684,
+            "text": "    }\n    int64 getRows() const { return myRows; }\n    void setRows(int64 val) { myRows = val; }\n    int64 opRows(const SOP_NodeVerb::CookParms &cookparms) const\n    { \n        SOP_Node *thissop = cookparms.getNode();\n        if (!thissop) return getRows();\n        int64 result;\n        OP_Utils::evalOpParm(result, thissop, \"rows\", cookparms.getCookTime(), 0);\n        return result;\n    }\n    int64 getCols() const { return myCols; }\n    void setCols(int64 val) { myCols = val; }\n    int64 opCols(const SOP_NodeVerb::CookParms &cookparms) const\n    { \n        SOP_Node *thissop = cookparms.getNode();\n        if (!thissop) return getCols();\n        int64 result;\n        OP_Utils::evalOpParm(result, thissop, \"cols\", cookparms.getCookTime(), 0);\n        return result;\n    }\n    int64 getOrderu() const { return myOrderu; }\n    void setOrderu(int64 val) { myOrderu = val; }\n    int64 opOrderu(const SOP_NodeVerb::CookParms &cookparms) const\n    { "
+          }
+        ]
+      },
+      "help": {
+        "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/help/nodes.zip::sop/grid.txt",
+        "member_sha256": "c5b04247054b3ccb8e490b521728ebfe29391000f992e7d343a5cceedb688cd5",
+        "archive_sha256": "6ca2ef18ce0d1f142d3415e27885b36f69b3537344a04621c89f9fab6937ad53",
+        "line_start": 63,
+        "line_end": 73,
+        "text": "Rows:\n    #id: rows\n\n    Number of rows in the grid or hull.\n\nColumns:\n    #id: cols\n\n    Number of columns in the grid or hull.\n\nU Order:"
+      }
+    }
+  ]
+}

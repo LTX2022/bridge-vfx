@@ -1,0 +1,58 @@
+{
+  "builds": [
+    {
+      "version": "21.0.631",
+      "source_path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/python3.11libs/hrecipes/api/utils.py",
+      "source_sha256": "269cfdfa8642b40d487d3dbedd4e03b03a1b5038c47496ff1c45b8ab244cc46f",
+      "function": "createRecipeContainer",
+      "first_line": 651,
+      "checks": {
+        "task_container_object_subnet": true,
+        "Sop": true,
+        "Dop": true,
+        "Lop": true,
+        "Driver": true,
+        "Vop_material": true
+      },
+      "layout_basis": {
+        "task_container": "/obj/<Object subnet>",
+        "children": {
+          "Sop": "geo",
+          "Dop": "dopnet",
+          "Lop": "lopnet",
+          "Driver": "ropnet",
+          "Vop_material": "matnet"
+        }
+      },
+      "evidence_type": "static_vendor_source_not_native_execution"
+    },
+    {
+      "version": "22.0.429",
+      "source_path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/python3.13libs/hrecipes/api/utils.py",
+      "source_sha256": "2a0e3b71f451f58bcbc4a1240e1d72e4b83fbdff12184c6e96dbe8f213b89d07",
+      "function": "createRecipeContainer",
+      "first_line": 681,
+      "checks": {
+        "task_container_object_subnet": true,
+        "Sop": true,
+        "Dop": true,
+        "Lop": true,
+        "Driver": true,
+        "Vop_material": true
+      },
+      "layout_basis": {
+        "task_container": "/obj/<Object subnet>",
+        "children": {
+          "Sop": "geo",
+          "Dop": "dopnet",
+          "Lop": "lopnet",
+          "Driver": "ropnet",
+          "Vop_material": "matnet"
+        }
+      },
+      "evidence_type": "static_vendor_source_not_native_execution"
+    }
+  ],
+  "native_execution": "NOT_RUN",
+  "limits": "Only these explicit vendor creation routes proven; arbitrary mixed-context parenting not inferred"
+}

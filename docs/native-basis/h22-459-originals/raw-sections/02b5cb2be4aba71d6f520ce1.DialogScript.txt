@@ -1,0 +1,278 @@
+# Dialog script for volumerasterizeattributes automatically generated
+
+{
+    name	volumerasterizeattributes
+    script	volumerasterizeattributes
+    label	"Volume Rasterize Attributes"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Points to Rasterize"
+    inputlabel	2	"Sub-Network Input #2"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+    outputlabel	1	VDBs
+
+    groupsimple {
+        name    "folder0"
+        label   "General"
+
+        parm {
+            name    "points"
+            label   "Group"
+            type    string
+            default { "" }
+            menutoggle {
+                [ "opmenu -l -a rasterize points" ]
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_action" "import soputils\nkwargs['geometrytype'] = (hou.geometryType.Points,)\nkwargs['inputindex'] = 0\nsoputils.selectGroupParm(kwargs)" }
+            parmtag { "script_action_help" "Select geometry from an available viewport.\nShift-click to turn on Select Groups." }
+            parmtag { "script_action_icon" "BUTTONS_reselect" }
+            parmtag { "sop_input" "1" }
+        }
+        parm {
+            name    "attributes"
+            label   "Attributes"
+            type    string
+            default { "" }
+            menutoggle {
+                [ "r = []" ]
+                [ "node = hou.pwd()" ]
+                [ "inputs = node.inputs()" ]
+                [ "if inputs and inputs[0]:" ]
+                [ "    geo = inputs[0].geometry()" ]
+                [ "    if geo:" ]
+                [ "        attrs = geo.pointAttribs()" ]
+                [ "        for a in attrs:            " ]
+                [ "            if a.dataType() == hou.attribData.Float and not a.isArrayType() and a.size() in [1, 3]:" ]
+                [ "                r.extend([a.name(), a.name()])" ]
+                [ "r.sort()" ]
+                [ "return r" ]
+                language python
+            }
+        }
+        parm {
+            name    "filterbysrcattrib"
+            label   "Source Attribute"
+            type    toggle
+            nolabel
+            joinnext
+            default { "0" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "srcattrib"
+            label   "Source Attribute"
+            type    string
+            default { "source_name" }
+            disablewhen "{ filterbysrcattrib == 0 }"
+            menureplace {
+                [ "r = []" ]
+                [ "node = hou.pwd()" ]
+                [ "inputs = node.inputs()" ]
+                [ "if inputs and inputs[0]:" ]
+                [ "    geo = inputs[0].geometry()" ]
+                [ "    if geo:" ]
+                [ "        attrs = geo.pointAttribs()" ]
+                [ "        for a in attrs:            " ]
+                [ "            if a.dataType() == hou.attribData.String and not a.isArrayType() and a.size() == 1:" ]
+                [ "                r.extend([a.name(), a.name()])" ]
+                [ "r.sort()" ]
+                [ "return r" ]
+                language python
+            }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "fogvolumes"
+            label   "Visible Volumes"
+            type    string
+            default { "*" }
+            menureplace {
+                [ "r = []" ]
+                [ "node = hou.pwd()" ]
+                [ "" ]
+                [ "attribs = node.evalParm('attributes')" ]
+                [ "" ]
+                [ "for attrib in attribs.split():" ]
+                [ "    r.extend([attrib, attrib])" ]
+                [ "" ]
+                [ "return r" ]
+                language python
+            }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    groupcollapsible {
+        name    "folder1"
+        label   "Filter"
+        parmtag { "group_default" "1" }
+
+        parm {
+            name    "filter"
+            label   "Filter"
+            type    string
+            default { "gauss" }
+            menu {
+                [ "opmenu -l -a rasterize0 filter" ]
+            }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "voxelsize"
+            label   "Voxel Size"
+            type    float
+            default { "0.1" }
+            range   { 0! 10 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "particlescale"
+            label   "Particle Scale"
+            type    float
+            default { "1" }
+            range   { 0! 10 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "minfilter"
+            label   "Minimum Filter Size"
+            type    float
+            default { "0.75" }
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+    }
+
+    groupcollapsible {
+        name    "folder2"
+        label   "Velocity Blur"
+        parmtag { "group_default" "0" }
+        parmtag { "sidefx::header_toggle" "velocityblur" }
+
+        parm {
+            name    "velocityblur"
+            label   "Velocity Blur"
+            type    toggle
+            default { "off" }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "shutter"
+            label   "Shutter"
+            type    float
+            default { "0.5" }
+            disablewhen "{ velocityblur == 0 }"
+            range   { 0! 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "shutteroffset"
+            label   "Shutter Offset"
+            type    float
+            default { "1" }
+            disablewhen "{ velocityblur == 0 }"
+            range   { -1 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "blursamples"
+            label   "Blur Samples"
+            type    integer
+            default { "4" }
+            disablewhen "{ velocityblur == 0 }"
+            range   { 1! 10 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+    }
+
+    groupcollapsible {
+        name    "folder3"
+        label   "Coverage"
+        parmtag { "group_default" "1" }
+
+        parm {
+            name    "densityattrib"
+            label   "Coverage Attribute"
+            type    string
+            default { "density" }
+            menureplace {
+                [ "r = []" ]
+                [ "node = hou.pwd()" ]
+                [ "inputs = node.inputs()" ]
+                [ "if inputs and inputs[0]:" ]
+                [ "    geo = inputs[0].geometry()" ]
+                [ "    if geo:" ]
+                [ "        attrs = geo.pointAttribs()" ]
+                [ "        for a in attrs:            " ]
+                [ "            if a.dataType() == hou.attribData.Float and not a.isArrayType() and a.size() == 1:" ]
+                [ "                r.extend([a.name(), a.name()])" ]
+                [ "r.sort()" ]
+                [ "return r" ]
+                language python
+            }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "densityscale"
+            label   "Coverage Scale"
+            type    float
+            default { "1" }
+            range   { 0! 10 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "normalize"
+            label   "Normalize by Clamped Coverage"
+            type    toggle
+            default { "off" }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        multiparm {
+            name    "attribrules"
+            label    "Attribute Rules"
+            default 0
+            parmtag { "autoscope" "0000000000000000" }
+
+            parm {
+                name    "attribute#"
+                label   "Attributes"
+                type    string
+                default { "" }
+                menutoggle {
+                    [ "r = []" ]
+                    [ "node = hou.pwd()" ]
+                    [ "inputs = node.inputs()" ]
+                    [ "if inputs and inputs[0]:" ]
+                    [ "    geo = inputs[0].geometry()" ]
+                    [ "    if geo:" ]
+                    [ "        attrs = geo.pointAttribs()" ]
+                    [ "        for a in attrs:            " ]
+                    [ "            if a.dataType() == hou.attribData.Float and not a.isArrayType() and a.size() in [1, 3]:" ]
+                    [ "                r.extend([a.name(), a.name()])" ]
+                    [ "r.sort()" ]
+                    [ "return r" ]
+                    language python
+                }
+            }
+            parm {
+                name    "rule#"
+                label   "Method"
+                type    ordinal
+                default { "wavg" }
+                menu {
+                    "wavg"          "Weighted Average"
+                    "threshold"     "Covered Average"
+                    "accumulated"   "Accumulated"
+                    "stochastic"    "Stochastic"
+                }
+            }
+        }
+
+    }
+
+}

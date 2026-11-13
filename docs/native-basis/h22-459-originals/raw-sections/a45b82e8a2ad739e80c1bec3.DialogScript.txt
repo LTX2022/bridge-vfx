@@ -1,0 +1,500 @@
+# Dialog script for vellumconstraints_grain automatically generated
+
+{
+    name	vellumconstraints_grain
+    script	vellumconstraints_grain
+    label	"Vellum Configure Grain"
+
+    help {
+	""
+    }
+
+    inputlabel	1	Geometry
+    inputlabel	2	Constraints
+    inputlabel	3	Collisions
+    parmtag { inputisref3 1 }
+    inputlabel	4	"Sub-Network Input #4"
+    outputlabel	1	Geometry
+    outputlabel	2	Constraints
+    outputlabel	3	Collisions
+
+    parm {
+        name    "createpoints"
+        label   "Create Points from Volume"
+        type    toggle
+        default { "0" }
+    }
+    parm {
+        name    "doconvex"
+        label   "Use Convex Hull"
+        type    toggle
+        default { "0" }
+        hidewhen "{ createpoints == 0 }"
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "method"
+        label   "Method"
+        type    ordinal
+        default { "0" }
+        hidewhen "{ createpoints == 0 }"
+        menu {
+            "grid"  "Regular Grid"
+            "pack"  "Sphere Packing"
+        }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "type"
+        label   "Type"
+        type    ordinal
+        default { "0" }
+        hidewhen "{ createpoints == 0 }"
+        menu {
+            "grain" "Grain"
+            "fluid" "Fluid"
+        }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "group"
+        label   "Group"
+        type    string
+        default { "" }
+        hidewhen "{ createpoints == 1 }"
+        menutoggle {
+            [ "opmenu -l -a attribwrangle2 group" ]
+        }
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_action" "import soputils\nkwargs['geometrytype'] = kwargs['node'].parmTuple('grouptype')\nkwargs['inputindex'] = 0\nsoputils.selectGroupParm(kwargs)" }
+        parmtag { "script_action_help" "Select geometry from an available viewport." }
+        parmtag { "script_action_icon" "BUTTONS_reselect" }
+    }
+    parm {
+        name    "grouptype"
+        label   "Group Type"
+        type    ordinal
+        default { "guess" }
+        hidewhen "{ createpoints == 1 }"
+        menu {
+            "guess"     "Guess from Group"
+            "vertices"  "Vertices"
+            "edges"     "Edges"
+            "points"    "Points"
+            "prims"     "Primitives"
+        }
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "dograinsize"
+        label   "Do Particle Size"
+        type    toggle
+        nolabel
+        joinnext
+        default { "on" }
+        disablewhen "{ createpoints == 1 }"
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "grainsize"
+        label   "Particle Size"
+        type    float
+        default { "0.1" }
+        disablewhen "{ createpoints == 0 dograinsize == 0 }"
+        range   { 0! 10 }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "packingdensity"
+        label   "Packing Density"
+        type    float
+        default { "1" }
+        hidewhen "{ createpoints == 0 } { method != grid }"
+        range   { 1! 2! }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "jitter"
+        label   "Do Jitter"
+        type    toggle
+        nolabel
+        joinnext
+        default { "off" }
+        hidewhen "{ createpoints == 0 } { method != grid }"
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "jitterscale"
+        label   "Jitter Scale"
+        type    float
+        default { "1" }
+        disablewhen "{ jitter == 0 }"
+        hidewhen "{ createpoints == 0 } { method != grid }"
+        range   { 0! 1! }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "dodither"
+        label   "Dither Surface"
+        type    toggle
+        default { "off" }
+        hidewhen "{ createpoints == 0 } { method != grid }"
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "dithernormal"
+        label   "Dither Normal"
+        type    vector
+        size    3
+        default { "0" "1" "0" }
+        hidewhen "{ dodither == 0 } { createpoints == 0 } { method != grid }"
+        range   { -1 1 }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "ditherangle"
+        label   "Dither Angle"
+        type    angle
+        default { "45" }
+        hidewhen "{ dodither == 0 } { createpoints == 0 } { method != grid }"
+        range   { 0 180 }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "seed"
+        label   "Seed"
+        type    float
+        default { "0" }
+        hidewhen "{ createpoints == 0 } { method != grid }"
+        range   { 0 10 }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "correctradius"
+        label   "Adjust Radius to Avoid Overlap"
+        type    toggle
+        default { "off" }
+        disablewhen "{ type == fluid }"
+        hidewhen "{ createpoints == 0 } { method != grid }"
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "isovalue"
+        label   "Isovalue"
+        type    float
+        default { "0" }
+        hidewhen "{ createpoints == 0 } { method != pack }"
+        range   { -1 1 }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "useradiusmaxscale"
+        label   "Label"
+        type    toggle
+        nolabel
+        joinnext
+        default { "off" }
+        hidewhen "{ createpoints == 0 } { method != pack }"
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "radiusmaxscale"
+        label   "Max Radius Scale"
+        type    float
+        default { "2" }
+        disablewhen "{ useradiusmaxscale == 0 }"
+        hidewhen "{ createpoints == 0 } { method != pack }"
+        range   { 1! 10 }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "usespheresmin"
+        label   "Label"
+        type    toggle
+        nolabel
+        joinnext
+        default { "on" }
+        hidewhen "{ createpoints == 0 } { method != pack }"
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "spheresmin"
+        label   "Min Spheres"
+        type    integer
+        default { "1" }
+        disablewhen "{ usespheresmin == 0 }"
+        hidewhen "{ createpoints == 0 } { method != pack }"
+        range   { 0! 100 }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "houdini_utils::doc" "The minimum number of spheres to be generated\n\nIf disabled, allow very small VDBs to not generate any spheres.\n\nNOTE:\n    __Min Spheres__ takes precedence over __Min Radius__.\n    Spheres smaller than __Min Radius__ might be generated\n    in order to ensure that the minimum sphere count is satisfied." }
+    }
+    parm {
+        name    "usespheresmax"
+        label   "Label"
+        type    toggle
+        nolabel
+        joinnext
+        default { "off" }
+        hidewhen "{ createpoints == 0 } { method != pack }"
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "spheresmax"
+        label   "Max Spheres"
+        type    integer
+        default { "100" }
+        disablewhen "{ usespheresmax == 0 }"
+        hidewhen "{ createpoints == 0 } { method != pack }"
+        range   { 1! 200 }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "houdini_utils::doc" "The maximum number of spheres to be generated\n\nIf disabled, allow for up to __Point Count__ spheres to be generated." }
+    }
+    parm {
+        name    "scatter"
+        label   "Point Count"
+        type    integer
+        default { "10000" }
+        hidewhen "{ createpoints == 0 } { method != pack }"
+        range   { 1000! 50000 }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "overlapping"
+        label   "Overlapping"
+        type    toggle
+        default { "off" }
+        hidewhen "{ createpoints == 0 } { method != pack }"
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_callback_language" "python" }
+    }
+    groupcollapsible {
+        name    "folder0"
+        label   "Physical Attributes"
+
+        parm {
+            name    "domass"
+            label   "Mass"
+            type    ordinal
+            joinnext
+            default { "0" }
+            menu {
+                "on"            "Set Uniform"
+                "calcuniform"   "Calculate Uniform"
+            }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "mass"
+            label   "Mass"
+            type    float
+            nolabel
+            default { "0.1" }
+            disablewhen "{ domass == calcuniform }"
+            range   { 0 10 }
+        }
+        parm {
+            name    "density"
+            label   "Density"
+            type    float
+            default { "1000" }
+            hidewhen "{ domass == on }"
+            range   { 0 10 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "phase"
+            label   "Phase"
+            type    integer
+            default { "1" }
+            disablewhen "{ type != fluid }"
+            range   { 1! 10 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "doviscosity"
+            label   "doviscosity"
+            type    toggle
+            nolabel
+            joinnext
+            default { "0" }
+            disablewhen "{ type != fluid }"
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "viscosity"
+            label   "Viscosity"
+            type    float
+            default { "1" }
+            disablewhen "{ type != fluid } { doviscosity == 0 }"
+            range   { 0 10 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dosurfacetension"
+            label   "dosurfacetension"
+            type    toggle
+            nolabel
+            joinnext
+            default { "0" }
+            disablewhen "{ type != fluid }"
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "surfacetension"
+            label   "Surface Tension"
+            type    float
+            default { "1" }
+            disablewhen "{ type != fluid } { dosurfacetension == 0 }"
+            range   { 0 10 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dofriction"
+            label   "dofriction"
+            type    toggle
+            nolabel
+            joinnext
+            default { "0" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "friction"
+            label   "Friction"
+            type    float
+            default { "1" }
+            disablewhen "{ dofriction == 0 }"
+            range   { 0 10 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dodynamicfriction"
+            label   "dodynamicfriction"
+            type    toggle
+            nolabel
+            joinnext
+            default { "0" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dynamicfriction"
+            label   "Dynamic Friction"
+            type    float
+            default { "1" }
+            disablewhen "{ dodynamicfriction == 0 }"
+            range   { 0 10 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "doattractionweight"
+            label   "doattractionweight"
+            type    toggle
+            nolabel
+            joinnext
+            default { "0" }
+            disablewhen "{ type == fluid }"
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "attractionweight"
+            label   "Attraction Weight"
+            type    float
+            default { "1" }
+            disablewhen "{ type == fluid } { doattractionweight == 0 }"
+            range   { 0 10 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dorepulsionweight"
+            label   "dorepulsionweight"
+            type    toggle
+            nolabel
+            joinnext
+            default { "0" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "repulsionweight"
+            label   "Repulsion Weight"
+            type    float
+            default { "1" }
+            disablewhen "{ dorepulsionweight == 0 }"
+            range   { 0 10 }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    parm {
+        name    "dopiecemode"
+        label   "Use Piece Mode"
+        type    toggle
+        nolabel
+        joinnext
+        default { "0" }
+        hidewhen "{ createpoints == 0 }"
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "piecemode"
+        label   "Define Pieces"
+        type    ordinal
+        default { "connectivity" }
+        disablewhen "{ dopiecemode == 0 }"
+        hidewhen "{ createpoints == 0 }"
+        menu {
+            "attribute"     "From Attribute"
+            "connectivity"  "From Connectivity"
+        }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "pieceattrib"
+        label   "Piece Attribute"
+        type    string
+        default { "piece" }
+        disablewhen "{ dopiecemode == 0 }"
+        hidewhen "{ piecemode != attribute } { createpoints == 0 }"
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "addpieceattrib"
+        label   "Transfer Piece Attribute"
+        type    toggle
+        default { "0" }
+        disablewhen "{ dopiecemode == 0 }"
+        hidewhen "{ createpoints == 0 }"
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "showspheres"
+        label   "Display as Spheres"
+        type    toggle
+        default { "1" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "showsprite"
+        label   "Add Sprite Material"
+        type    toggle
+        default { "1" }
+        disablewhen "{ showspheres == 1 }"
+    }
+    parm {
+        name    "showallpoints"
+        label   "Show All Points"
+        type    toggle
+        default { "0" }
+    }
+}

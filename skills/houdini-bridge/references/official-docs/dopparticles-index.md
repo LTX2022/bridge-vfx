@@ -1,0 +1,21 @@
+# dopparticles.zip 官方文档索引（Houdini 22.0.368）
+
+共 15 页。用 `--page dopparticles.zip:<内部路径>` 读取全文。
+
+| 页面 | 标题 |
+|---|---|
+| `attributes.txt` | Attributes |
+| `collisions.txt` | Collisions |
+| `emitting.txt` | Emitting |
+| `filaments.txt` | Swirling particles around vortex filaments |
+| `follow.txt` | Following a leader or leaders |
+| `forces.txt` | Applying forces |
+| `index.txt` | Particles |
+| `instancing.txt` | Instancing and Rendering |
+| `network_flow.txt` | Network Flow |
+| `react.txt` | Reacting to surfaces |
+| `speedlimit.txt` | Limiting particle speed |
+| `streams.txt` | Streams |
+| `tips.txt` | Tips |
+| `vexpressions.txt` | Writing particle VEX expressions |
+| `visualize.txt` | Visualizing Forces |

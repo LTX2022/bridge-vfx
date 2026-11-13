@@ -1,0 +1,374 @@
+# Dialog script for flipcontainer automatically generated
+
+{
+    name	flipcontainer
+    script	jlait_flipdomain
+    label	"FLIP Container"
+
+    help {
+	""
+    }
+    bindhandle tx boundingbox "Bounding_Box" centerx ""
+    bindhandle ty boundingbox "Bounding_Box" centery ""
+    bindhandle tz boundingbox "Bounding_Box" centerz ""
+    bindhandle sizex boundingbox "Bounding_Box" sizex ""
+    bindhandle sizey boundingbox "Bounding_Box" sizey ""
+    bindhandle sizez boundingbox "Bounding_Box" sizez ""
+
+    inputlabel	1	"Geometry for Container"
+    inputlabel	2	"Geometry for Container"
+    inputlabel	3	"Geometry for Collisions"
+    inputlabel	4	"Sub-Network Input #4"
+    outputlabel	1	Sources
+    outputlabel	2	Container
+    outputlabel	3	Collisions
+
+    parm {
+        name    "particlesep"
+        label   "Particle Separation"
+        type    float
+        default { "0.1" }
+        range   { 0! 10 }
+        parmtag { "script_callback_language" "python" }
+        parmtag { "units" "m1" }
+    }
+    parm {
+        name    "gridscale"
+        label   "Grid Scale"
+        type    float
+        default { "2" }
+        range   { 1 2 }
+        parmtag { "script_callback_language" "python" }
+    }
+    groupsimple {
+        name    "folder0"
+        label   "Domain"
+
+        parm {
+            name    "implicit"
+            label   "Implicit Bounds"
+            type    toggle
+            default { "1" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "size"
+            label   "Size"
+            type    vector
+            size    3
+            default { "10" "10" "10" }
+            disablewhen "{ hasinput(0) == 1 }"
+            range   { -1 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "t"
+            label   "Center"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            disablewhen "{ hasinput(0) == 1 }"
+            range   { -1 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    groupsimple {
+        name    "forces"
+        label   "Forces"
+
+        parm {
+            name    "gravity"
+            label   "Gravity"
+            type    float
+            default { "9.80665" }
+            range   { -1 1 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "gravitydir"
+            label   "Gravity Direction"
+            type    vector
+            size    3
+            default { "0" "-1" "0" }
+            range   { -1 1 }
+            parmtag { "script_callback_language" "python" }
+            parmtag { "units" "" }
+        }
+    }
+
+    groupcollapsible {
+        name    "densitytab"
+        label   "Density"
+
+        parm {
+            name    "density"
+            label   "Density"
+            type    float
+            default { "1000" }
+            range   { 0 2000 }
+            parmtag { "autoscope" "" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dovaryingdensity"
+            label   "Varying Density"
+            type    toggle
+            default { "0" }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    parm {
+        name    "dosurfacetension"
+        label   "Enable Surface Tension"
+        type    toggle
+        default { "off" }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_callback_language" "python" }
+    }
+    groupcollapsible {
+        name    "folder5"
+        label   "Surface Tension"
+        disablewhentab "{ dosurfacetension == 0 }"
+        parmtag { "group_default" "0" }
+        parmtag { "sidefx::header_toggle" "dosurfacetension" }
+
+        parm {
+            name    "surfacetension"
+            label   "Surface Tension"
+            type    float
+            default { "10" }
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "units" "kg1m-3s-2" }
+        }
+        parm {
+            name    "docurvatureblur"
+            label   "Enable Surface Tension Blur"
+            type    toggle
+            default { "on" }
+            disablewhen "{ surfacetension == 0 }"
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "export_disable" "1" }
+        }
+        parm {
+            name    "stblurradius"
+            label   "Blur Radius"
+            type    float
+            default { "1" }
+            disablewhen "{ docurvatureblur == 0 } { dosurfacetension == 0 } { surfacetension == 0 }"
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    parm {
+        name    "viscosity"
+        label   "Enable Viscosity"
+        type    toggle
+        default { "off" }
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_callback_language" "python" }
+    }
+    groupcollapsible {
+        name    "folder3"
+        label   "Viscosity"
+        disablewhentab "{ viscosity == 0 }"
+        parmtag { "sidefx::header_toggle" "viscosity" }
+
+        parm {
+            name    "dovaryingviscosity"
+            label   "Varying Viscosity"
+            type    toggle
+            default { "0" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "default_viscosity"
+            label   "Viscosity"
+            type    float
+            default { "0" }
+            range   { 0 10000 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "units" "kg1m-1" }
+        }
+        parm {
+            name    "enableslip"
+            label   "Slip on Collision"
+            type    toggle
+            default { "off" }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "slipscale"
+            label   "Slip Scale"
+            type    float
+            default { "0.1" }
+            disablewhen "{ enableslip == 0 }"
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "export_disable" "1" }
+        }
+    }
+
+    groupcollapsible {
+        name    "attribute"
+        label   "Attributes"
+
+        parm {
+            name    "dovorticity"
+            label   "Add Vorticity Attribute"
+            type    toggle
+            default { "off" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "vorticitypreserve"
+            label   "Preservation Rate"
+            type    float
+            default { "0.1" }
+            hidewhen "{ dovorticity == 0 }"
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "doid"
+            label   "Add ID Attribute"
+            type    toggle
+            default { "off" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "doage"
+            label   "Add Age Attribute"
+            type    toggle
+            default { "off" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dorelativedensity"
+            label   "Add Relative Density Attribute"
+            type    toggle
+            default { "0" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dorest"
+            label   "Add Rest Attribute"
+            type    toggle
+            default { "off" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "rest_dual"
+            label   "Dual Rest Attributes"
+            type    toggle
+            default { "on" }
+            hidewhen "{ dorest == 0 }"
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "rest_framedelay"
+            label   "Frames Between Reset"
+            type    integer
+            default { "50" }
+            hidewhen "{ dorest == 0 }"
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "rest_frameoffset"
+            label   "Frame Offset"
+            type    integer
+            default { "1" }
+            hidewhen "{ dorest == 0 }"
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        multiparm {
+            name    "customattributes"
+            label    "Custom Attributes"
+
+            parm {
+                name    "attribname#"
+                label   "Point Attribute Name"
+                type    string
+                default { "attribname#" }
+            }
+            parm {
+                name    "attribrank#"
+                label   "Rank"
+                type    ordinal
+                joinnext
+                default { "0" }
+                menu {
+                    "scalar"    "Scalar"
+                    "vector"    "Vector"
+                }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "attributevectorvalue#"
+                label   "Value"
+                type    vector
+                joinnext
+                size    3
+                default { "0" "0" "0" }
+                hidewhen "{ attribrank# != vector }"
+                range   { -1 1 }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "attributescalarvalue#"
+                label   "Value"
+                type    float
+                default { "0" }
+                hidewhen "{ attribrank# != scalar }"
+                range   { 0 10 }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "customvolumename#"
+                label   "Custom Volume Name"
+                type    toggle
+                default { "0" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "volumename#"
+                label   "Volume Name"
+                type    string
+                default { "attribname#" }
+                hidewhen "{ customvolumename# == 0 }"
+            }
+            parm {
+                name    "sepparm#"
+                label   "Spacer"
+                type    separator
+                default { "" }
+                parmtag { "sidefx::layout_height" "small" }
+                parmtag { "sidefx::look" "blank" }
+            }
+        }
+
+    }
+
+}

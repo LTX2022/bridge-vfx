@@ -1,0 +1,3524 @@
+{
+  "domain_pack": "pyro_fire_v1",
+  "case_id": "pyro_fire_v1__build_inspect",
+  "case_ids": [
+    "pyro_fire_v1__build_inspect",
+    "pyro_fire_v1__causal_candidate",
+    "pyro_fire_v1__approval_recovery"
+  ],
+  "domain_pack_version": "1.0.0",
+  "kind": "current_software_contract_checklist_not_execution_evidence",
+  "status": "PREPARATION_NOT_ACCEPTED",
+  "applications": [
+    "houdini",
+    "nuke"
+  ],
+  "required_versions": {
+    "houdini": [
+      "21.0.631",
+      "22.0.459"
+    ],
+    "nuke": [
+      "17.0v1"
+    ]
+  },
+  "native_basis_status": "UNRESOLVED",
+  "native_basis": {
+    "static_definitions": [
+      "docs/native-basis/hda-interface-capture.json",
+      "docs/native-basis/native-boundary-metadata-supplement.json",
+      "docs/native-basis/hda-interface-22.0.459.json",
+      "docs/native-basis/supporting-sources-22.0.459.json"
+    ],
+    "meaning": "Current software mappings and static references are not whole-domain native validation; resolve exact operator/parameter/port and output-consumption gaps before marking VERIFIED_SOURCE.",
+    "versioned_preparation": {
+      "22.0.459": {
+        "status": "UNRESOLVED",
+        "scope": "Independent459HDA static fields and prospective software topology only; no compiled template, host process, writer execution or whole-domain validation.",
+        "sources": [
+          {
+            "path": "docs/native-basis/hda-interface-22.0.459.json",
+            "sha256": "e8d9ee7a16f14baa2327ae45412b2acee60ef4849d4e3aa099aea229586379c7",
+            "version": "22.0.459",
+            "native_execution": false
+          },
+          {
+            "path": "docs/native-basis/supporting-sources-22.0.459.json",
+            "sha256": "7b1bd4e1b187de823db9555bca10f40e9278dd88fb790cce8c874576405e1c3a",
+            "version": "22.0.459",
+            "native_execution": false
+          }
+        ],
+        "originals": "docs/native-basis/h22-459-originals/",
+        "captured_hda_operators": 55,
+        "node_templates": {
+          "default": [
+            {
+              "role": "geometry_network",
+              "candidates": [
+                {
+                  "operator": "Obj/geo",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "source",
+              "candidates": [
+                {
+                  "operator": "Sop/sphere",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "source_points",
+              "candidates": [
+                {
+                  "operator": "Sop/pyrosource",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "0074074f1fc8b184cbfdfed5bd8bd67ddd80e8f714aa22ebb89c8e704d35acaa",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "source_control",
+              "candidates": [
+                {
+                  "operator": "Sop/attribwrangle",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "b47a35a99cfd15f0c85143a3fed309c1a2f30704183ef7565bd52af1f7306c77",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "source_volume",
+              "candidates": [
+                {
+                  "operator": "Sop/volumerasterizeattributes",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "47700808b461aa73b395d941a13b6d478d0bd24552a2507b7dfc3da97ca426c5",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "solver",
+              "candidates": [
+                {
+                  "operator": "Sop/pyrosolver",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "flame_height",
+              "candidates": [
+                {
+                  "operator": "Sop/volumewrangle",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "aa477e2d5cd8364e369b5c608ce85e0f77b1f21ee5d894eef420cdefa44c18bb",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "output",
+              "candidates": [
+                {
+                  "operator": "Sop/null",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "usd_network",
+              "candidates": [
+                {
+                  "operator": "Obj/lopnet",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "render_network",
+              "candidates": [
+                {
+                  "operator": "Obj/ropnet",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "geometry_import",
+              "candidates": [
+                {
+                  "operator": "Lop/sopimport",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "camera",
+              "candidates": [
+                {
+                  "operator": "Lop/camera",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "e7961a7d50953ca0a1d9cbd8f5349db34a4ec33fb98118f6d852e91765564612",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "light",
+              "candidates": [
+                {
+                  "operator": "Lop/light",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "34498e2f239d0566a47fc65928f9d42db17b8d7e487a99d3e0acc66b407abf38",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render_settings",
+              "candidates": [
+                {
+                  "operator": "Lop/karmarendersettings",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "cc263cb8a2e6e1f964363999322d8395f7c52d7160ea723173a24b23568783fe",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render_var",
+              "candidates": [
+                {
+                  "operator": "Lop/rendervar",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "c296736e72c9e2881b3867ff634cfe6253e5e5848e4f63bc9ff01420cbc39aea",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render_product",
+              "candidates": [
+                {
+                  "operator": "Lop/renderproduct",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "db75399202e08a57d1c5a1b29b42a2f871b690b9f23fe5db955a185bcb015cab",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "settings_binding",
+              "candidates": [
+                {
+                  "operator": "Lop/rendersettings",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "325937f14987a4b23ec74be88ac1bb0a424e351a469776e41b15952dbef9ac3d",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render",
+              "candidates": [
+                {
+                  "operator": "Driver/usdrender",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            }
+          ]
+        },
+        "blocked_controls": {
+          "default": []
+        },
+        "native_execution": false
+      }
+    }
+  },
+  "expected_nodes": {
+    "21.0.631": {
+      "default": [
+        {
+          "role": "geometry_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "geo"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "source",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "sphere"
+          ],
+          "required_parameter_aliases": [
+            [
+              "rad"
+            ]
+          ]
+        },
+        {
+          "role": "source_points",
+          "category": "sop",
+          "input_role": "source",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "pyrosource"
+          ],
+          "required_parameter_aliases": [
+            [
+              "mode"
+            ],
+            [
+              "particlesep"
+            ],
+            [
+              "attributes"
+            ],
+            [
+              "attribute#"
+            ],
+            [
+              "fval#"
+            ]
+          ]
+        },
+        {
+          "role": "source_control",
+          "category": "sop",
+          "input_role": "source_points",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "attribwrangle"
+          ],
+          "required_parameter_aliases": [
+            [
+              "class"
+            ],
+            [
+              "group"
+            ],
+            [
+              "snippet"
+            ]
+          ]
+        },
+        {
+          "role": "source_volume",
+          "category": "sop",
+          "input_role": "source_control",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "volumerasterizeattributes"
+          ],
+          "required_parameter_aliases": [
+            [
+              "attributes"
+            ],
+            [
+              "voxelsize"
+            ]
+          ]
+        },
+        {
+          "role": "solver",
+          "category": "sop",
+          "input_role": "source_volume",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "pyrosolver"
+          ],
+          "required_parameter_aliases": [
+            [
+              "addflamefield"
+            ],
+            [
+              "buoyancylift"
+            ],
+            [
+              "conv_vdb"
+            ],
+            [
+              "disturbance"
+            ],
+            [
+              "divsize"
+            ],
+            [
+              "enable_buoyancy"
+            ],
+            [
+              "enable_disturbance"
+            ],
+            [
+              "enable_turbulence"
+            ],
+            [
+              "export_enable#"
+            ],
+            [
+              "export_fieldname#"
+            ],
+            [
+              "export_visible#"
+            ],
+            [
+              "fi_enable"
+            ],
+            [
+              "fi_int"
+            ],
+            [
+              "flames_lifespan"
+            ],
+            [
+              "minimalsolve"
+            ],
+            [
+              "numfields"
+            ],
+            [
+              "numsources"
+            ],
+            [
+              "source_activate#"
+            ],
+            [
+              "source_activate2"
+            ],
+            [
+              "source_activate3"
+            ],
+            [
+              "source_rank#"
+            ],
+            [
+              "source_vfield#"
+            ],
+            [
+              "source_vfield2"
+            ],
+            [
+              "source_vfield3"
+            ],
+            [
+              "source_vnormalize#"
+            ],
+            [
+              "source_vnormalize2"
+            ],
+            [
+              "source_vnormalize3"
+            ],
+            [
+              "source_volume#"
+            ],
+            [
+              "source_volume2"
+            ],
+            [
+              "source_volume3"
+            ],
+            [
+              "source_voperator#"
+            ],
+            [
+              "source_voperator2"
+            ],
+            [
+              "source_voperator3"
+            ],
+            [
+              "source_vscale#"
+            ],
+            [
+              "source_vscale2"
+            ],
+            [
+              "source_vscale3"
+            ],
+            [
+              "srclimitframerange"
+            ],
+            [
+              "tempcooling"
+            ],
+            [
+              "turbulence"
+            ],
+            [
+              "turbulence_influencefield"
+            ]
+          ]
+        },
+        {
+          "role": "flame_height",
+          "category": "sop",
+          "input_role": "solver",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "volumewrangle"
+          ],
+          "required_parameter_aliases": [
+            [
+              "group"
+            ],
+            [
+              "bindeach"
+            ],
+            [
+              "snippet"
+            ],
+            [
+              "exportlist"
+            ],
+            [
+              "autobind"
+            ],
+            [
+              "vex_outputmask"
+            ],
+            [
+              "vex_geometrygenerator"
+            ],
+            [
+              "vex_precision"
+            ]
+          ]
+        },
+        {
+          "role": "output",
+          "category": "sop",
+          "input_role": "flame_height",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "null"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "usd_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "lopnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "render_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "ropnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "geometry_import",
+          "category": "lop",
+          "input_role": null,
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "sopimport"
+          ],
+          "required_parameter_aliases": [
+            [
+              "soppath"
+            ],
+            [
+              "enable_pathprefix"
+            ],
+            [
+              "pathprefix"
+            ]
+          ]
+        },
+        {
+          "role": "camera",
+          "category": "lop",
+          "input_role": "geometry_import",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "camera"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "focalLength"
+            ],
+            [
+              "fStop"
+            ],
+            [
+              "xn__shutteropen_0ta"
+            ],
+            [
+              "xn__shutterclose_nva"
+            ]
+          ]
+        },
+        {
+          "role": "light",
+          "category": "lop",
+          "input_role": "camera",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "light"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "lighttype"
+            ],
+            [
+              "radius"
+            ],
+            [
+              "exposure"
+            ]
+          ]
+        },
+        {
+          "role": "render_settings",
+          "category": "lop",
+          "input_role": "light",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "karmarendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "camera"
+            ],
+            [
+              "samplesperpixel"
+            ],
+            [
+              "volumesteprate"
+            ],
+            [
+              "enablemblur"
+            ],
+            [
+              "pixelfiltersize"
+            ],
+            [
+              "denoiser"
+            ]
+          ]
+        },
+        {
+          "role": "render_var",
+          "category": "lop",
+          "input_role": "render_settings",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendervar"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "sourceName"
+            ],
+            [
+              "sourceType"
+            ],
+            [
+              "dataType"
+            ]
+          ]
+        },
+        {
+          "role": "render_product",
+          "category": "lop",
+          "input_role": "render_var",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "renderproduct"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "orderedVars"
+            ],
+            [
+              "productType"
+            ],
+            [
+              "productName"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "settings_binding",
+          "category": "lop",
+          "input_role": "render_product",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "createprims"
+            ],
+            [
+              "products"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "render",
+          "category": "rop",
+          "input_role": null,
+          "parent_role": "render_network",
+          "type_candidates": [
+            "usdrender"
+          ],
+          "required_parameter_aliases": [
+            [
+              "loppath"
+            ],
+            [
+              "rendersettings"
+            ],
+            [
+              "override_camera"
+            ],
+            [
+              "outputimage"
+            ],
+            [
+              "execute"
+            ]
+          ]
+        }
+      ]
+    },
+    "22.0.429": {
+      "default": [
+        {
+          "role": "geometry_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "geo"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "source",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "sphere"
+          ],
+          "required_parameter_aliases": [
+            [
+              "rad"
+            ]
+          ]
+        },
+        {
+          "role": "source_points",
+          "category": "sop",
+          "input_role": "source",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "pyrosource"
+          ],
+          "required_parameter_aliases": [
+            [
+              "mode"
+            ],
+            [
+              "particlesep"
+            ],
+            [
+              "attributes"
+            ],
+            [
+              "attribute#"
+            ],
+            [
+              "fval#"
+            ]
+          ]
+        },
+        {
+          "role": "source_control",
+          "category": "sop",
+          "input_role": "source_points",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "attribwrangle"
+          ],
+          "required_parameter_aliases": [
+            [
+              "class"
+            ],
+            [
+              "group"
+            ],
+            [
+              "snippet"
+            ]
+          ]
+        },
+        {
+          "role": "source_volume",
+          "category": "sop",
+          "input_role": "source_control",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "volumerasterizeattributes"
+          ],
+          "required_parameter_aliases": [
+            [
+              "attributes"
+            ],
+            [
+              "voxelsize"
+            ]
+          ]
+        },
+        {
+          "role": "solver",
+          "category": "sop",
+          "input_role": "source_volume",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "pyrosolver"
+          ],
+          "required_parameter_aliases": [
+            [
+              "addflamefield"
+            ],
+            [
+              "buoyancylift"
+            ],
+            [
+              "conv_vdb"
+            ],
+            [
+              "disturbance"
+            ],
+            [
+              "divsize"
+            ],
+            [
+              "enable_buoyancy"
+            ],
+            [
+              "enable_disturbance"
+            ],
+            [
+              "enable_turbulence"
+            ],
+            [
+              "export_enable#"
+            ],
+            [
+              "export_fieldname#"
+            ],
+            [
+              "export_visible#"
+            ],
+            [
+              "fi_enable"
+            ],
+            [
+              "fi_int"
+            ],
+            [
+              "flames_lifespan"
+            ],
+            [
+              "minimalsolve"
+            ],
+            [
+              "numfields"
+            ],
+            [
+              "numsources"
+            ],
+            [
+              "source_activate#"
+            ],
+            [
+              "source_activate2"
+            ],
+            [
+              "source_activate3"
+            ],
+            [
+              "source_rank#"
+            ],
+            [
+              "source_vfield#"
+            ],
+            [
+              "source_vfield2"
+            ],
+            [
+              "source_vfield3"
+            ],
+            [
+              "source_vnormalize#"
+            ],
+            [
+              "source_vnormalize2"
+            ],
+            [
+              "source_vnormalize3"
+            ],
+            [
+              "source_volume#"
+            ],
+            [
+              "source_volume2"
+            ],
+            [
+              "source_volume3"
+            ],
+            [
+              "source_voperator#"
+            ],
+            [
+              "source_voperator2"
+            ],
+            [
+              "source_voperator3"
+            ],
+            [
+              "source_vscale#"
+            ],
+            [
+              "source_vscale2"
+            ],
+            [
+              "source_vscale3"
+            ],
+            [
+              "srclimitframerange"
+            ],
+            [
+              "tempcooling"
+            ],
+            [
+              "turbulence"
+            ],
+            [
+              "turbulence_influencefield"
+            ]
+          ]
+        },
+        {
+          "role": "flame_height",
+          "category": "sop",
+          "input_role": "solver",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "volumewrangle"
+          ],
+          "required_parameter_aliases": [
+            [
+              "group"
+            ],
+            [
+              "bindeach"
+            ],
+            [
+              "snippet"
+            ],
+            [
+              "exportlist"
+            ],
+            [
+              "autobind"
+            ],
+            [
+              "vex_outputmask"
+            ],
+            [
+              "vex_geometrygenerator"
+            ],
+            [
+              "vex_precision"
+            ]
+          ]
+        },
+        {
+          "role": "output",
+          "category": "sop",
+          "input_role": "flame_height",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "null"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "usd_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "lopnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "render_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "ropnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "geometry_import",
+          "category": "lop",
+          "input_role": null,
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "sopimport"
+          ],
+          "required_parameter_aliases": [
+            [
+              "soppath"
+            ],
+            [
+              "enable_pathprefix"
+            ],
+            [
+              "pathprefix"
+            ]
+          ]
+        },
+        {
+          "role": "camera",
+          "category": "lop",
+          "input_role": "geometry_import",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "camera"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "focalLength"
+            ],
+            [
+              "fStop"
+            ],
+            [
+              "xn__shutteropen_0ta"
+            ],
+            [
+              "xn__shutterclose_nva"
+            ]
+          ]
+        },
+        {
+          "role": "light",
+          "category": "lop",
+          "input_role": "camera",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "light"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "lighttype"
+            ],
+            [
+              "radius"
+            ],
+            [
+              "exposure"
+            ]
+          ]
+        },
+        {
+          "role": "render_settings",
+          "category": "lop",
+          "input_role": "light",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "karmarendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "camera"
+            ],
+            [
+              "samplesperpixel"
+            ],
+            [
+              "volumesteprate"
+            ],
+            [
+              "enablemblur"
+            ],
+            [
+              "pixelfiltersize"
+            ],
+            [
+              "denoiser"
+            ]
+          ]
+        },
+        {
+          "role": "render_var",
+          "category": "lop",
+          "input_role": "render_settings",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendervar"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "sourceName"
+            ],
+            [
+              "sourceType"
+            ],
+            [
+              "dataType"
+            ]
+          ]
+        },
+        {
+          "role": "render_product",
+          "category": "lop",
+          "input_role": "render_var",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "renderproduct"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "orderedVars"
+            ],
+            [
+              "productType"
+            ],
+            [
+              "productName"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "settings_binding",
+          "category": "lop",
+          "input_role": "render_product",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "createprims"
+            ],
+            [
+              "products"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "render",
+          "category": "rop",
+          "input_role": null,
+          "parent_role": "render_network",
+          "type_candidates": [
+            "usdrender"
+          ],
+          "required_parameter_aliases": [
+            [
+              "loppath"
+            ],
+            [
+              "rendersettings"
+            ],
+            [
+              "override_camera"
+            ],
+            [
+              "outputimage"
+            ],
+            [
+              "execute"
+            ]
+          ]
+        }
+      ]
+    },
+    "22.0.459": {
+      "default": [
+        {
+          "role": "geometry_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "geo"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "source",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "sphere"
+          ],
+          "required_parameter_aliases": [
+            [
+              "rad"
+            ]
+          ]
+        },
+        {
+          "role": "source_points",
+          "category": "sop",
+          "input_role": "source",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "pyrosource"
+          ],
+          "required_parameter_aliases": [
+            [
+              "mode"
+            ],
+            [
+              "particlesep"
+            ],
+            [
+              "attributes"
+            ],
+            [
+              "attribute#"
+            ],
+            [
+              "fval#"
+            ]
+          ]
+        },
+        {
+          "role": "source_control",
+          "category": "sop",
+          "input_role": "source_points",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "attribwrangle"
+          ],
+          "required_parameter_aliases": [
+            [
+              "class"
+            ],
+            [
+              "group"
+            ],
+            [
+              "snippet"
+            ]
+          ]
+        },
+        {
+          "role": "source_volume",
+          "category": "sop",
+          "input_role": "source_control",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "volumerasterizeattributes"
+          ],
+          "required_parameter_aliases": [
+            [
+              "attributes"
+            ],
+            [
+              "voxelsize"
+            ]
+          ]
+        },
+        {
+          "role": "solver",
+          "category": "sop",
+          "input_role": "source_volume",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "pyrosolver"
+          ],
+          "required_parameter_aliases": [
+            [
+              "addflamefield"
+            ],
+            [
+              "buoyancylift"
+            ],
+            [
+              "conv_vdb"
+            ],
+            [
+              "disturbance"
+            ],
+            [
+              "divsize"
+            ],
+            [
+              "enable_buoyancy"
+            ],
+            [
+              "enable_disturbance"
+            ],
+            [
+              "enable_turbulence"
+            ],
+            [
+              "export_enable#"
+            ],
+            [
+              "export_fieldname#"
+            ],
+            [
+              "export_visible#"
+            ],
+            [
+              "fi_enable"
+            ],
+            [
+              "fi_int"
+            ],
+            [
+              "flames_lifespan"
+            ],
+            [
+              "minimalsolve"
+            ],
+            [
+              "numfields"
+            ],
+            [
+              "numsources"
+            ],
+            [
+              "source_activate#"
+            ],
+            [
+              "source_activate2"
+            ],
+            [
+              "source_activate3"
+            ],
+            [
+              "source_rank#"
+            ],
+            [
+              "source_vfield#"
+            ],
+            [
+              "source_vfield2"
+            ],
+            [
+              "source_vfield3"
+            ],
+            [
+              "source_vnormalize#"
+            ],
+            [
+              "source_vnormalize2"
+            ],
+            [
+              "source_vnormalize3"
+            ],
+            [
+              "source_volume#"
+            ],
+            [
+              "source_volume2"
+            ],
+            [
+              "source_volume3"
+            ],
+            [
+              "source_voperator#"
+            ],
+            [
+              "source_voperator2"
+            ],
+            [
+              "source_voperator3"
+            ],
+            [
+              "source_vscale#"
+            ],
+            [
+              "source_vscale2"
+            ],
+            [
+              "source_vscale3"
+            ],
+            [
+              "srclimitframerange"
+            ],
+            [
+              "tempcooling"
+            ],
+            [
+              "turbulence"
+            ],
+            [
+              "turbulence_influencefield"
+            ]
+          ]
+        },
+        {
+          "role": "flame_height",
+          "category": "sop",
+          "input_role": "solver",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "volumewrangle"
+          ],
+          "required_parameter_aliases": [
+            [
+              "group"
+            ],
+            [
+              "bindeach"
+            ],
+            [
+              "snippet"
+            ],
+            [
+              "exportlist"
+            ],
+            [
+              "autobind"
+            ],
+            [
+              "vex_outputmask"
+            ],
+            [
+              "vex_geometrygenerator"
+            ],
+            [
+              "vex_precision"
+            ]
+          ]
+        },
+        {
+          "role": "output",
+          "category": "sop",
+          "input_role": "flame_height",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "null"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "usd_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "lopnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "render_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "ropnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "geometry_import",
+          "category": "lop",
+          "input_role": null,
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "sopimport"
+          ],
+          "required_parameter_aliases": [
+            [
+              "soppath"
+            ],
+            [
+              "enable_pathprefix"
+            ],
+            [
+              "pathprefix"
+            ]
+          ]
+        },
+        {
+          "role": "camera",
+          "category": "lop",
+          "input_role": "geometry_import",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "camera"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "focalLength"
+            ],
+            [
+              "fStop"
+            ],
+            [
+              "xn__shutteropen_0ta"
+            ],
+            [
+              "xn__shutterclose_nva"
+            ]
+          ]
+        },
+        {
+          "role": "light",
+          "category": "lop",
+          "input_role": "camera",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "light"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "lighttype"
+            ],
+            [
+              "radius"
+            ],
+            [
+              "exposure"
+            ]
+          ]
+        },
+        {
+          "role": "render_settings",
+          "category": "lop",
+          "input_role": "light",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "karmarendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "camera"
+            ],
+            [
+              "samplesperpixel"
+            ],
+            [
+              "volumesteprate"
+            ],
+            [
+              "enablemblur"
+            ],
+            [
+              "pixelfiltersize"
+            ],
+            [
+              "denoiser"
+            ]
+          ]
+        },
+        {
+          "role": "render_var",
+          "category": "lop",
+          "input_role": "render_settings",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendervar"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "sourceName"
+            ],
+            [
+              "sourceType"
+            ],
+            [
+              "dataType"
+            ]
+          ]
+        },
+        {
+          "role": "render_product",
+          "category": "lop",
+          "input_role": "render_var",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "renderproduct"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "orderedVars"
+            ],
+            [
+              "productType"
+            ],
+            [
+              "productName"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "settings_binding",
+          "category": "lop",
+          "input_role": "render_product",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "createprims"
+            ],
+            [
+              "products"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "render",
+          "category": "rop",
+          "input_role": null,
+          "parent_role": "render_network",
+          "type_candidates": [
+            "usdrender"
+          ],
+          "required_parameter_aliases": [
+            [
+              "loppath"
+            ],
+            [
+              "rendersettings"
+            ],
+            [
+              "override_camera"
+            ],
+            [
+              "outputimage"
+            ],
+            [
+              "execute"
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "expected_connections": {
+    "21.0.631": {
+      "default": [
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "source_points",
+          "destination_input": 0
+        },
+        {
+          "source_role": "source_points",
+          "source_output": 0,
+          "destination_role": "source_control",
+          "destination_input": 0
+        },
+        {
+          "source_role": "source_control",
+          "source_output": 0,
+          "destination_role": "source_volume",
+          "destination_input": 0
+        },
+        {
+          "source_role": "source_volume",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 0
+        },
+        {
+          "source_role": "solver",
+          "source_output": 0,
+          "destination_role": "flame_height",
+          "destination_input": 0
+        },
+        {
+          "source_role": "flame_height",
+          "source_output": 0,
+          "destination_role": "output",
+          "destination_input": 0
+        },
+        {
+          "source_role": "geometry_import",
+          "source_output": 0,
+          "destination_role": "camera",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "camera",
+          "source_output": 0,
+          "destination_role": "light",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "light",
+          "source_output": 0,
+          "destination_role": "render_settings",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_settings",
+          "source_output": 0,
+          "destination_role": "render_var",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_var",
+          "source_output": 0,
+          "destination_role": "render_product",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_product",
+          "source_output": 0,
+          "destination_role": "settings_binding",
+          "destination_input": 0,
+          "require_same_parent": true
+        }
+      ]
+    },
+    "22.0.429": {
+      "default": [
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "source_points",
+          "destination_input": 0
+        },
+        {
+          "source_role": "source_points",
+          "source_output": 0,
+          "destination_role": "source_control",
+          "destination_input": 0
+        },
+        {
+          "source_role": "source_control",
+          "source_output": 0,
+          "destination_role": "source_volume",
+          "destination_input": 0
+        },
+        {
+          "source_role": "source_volume",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 0
+        },
+        {
+          "source_role": "solver",
+          "source_output": 0,
+          "destination_role": "flame_height",
+          "destination_input": 0
+        },
+        {
+          "source_role": "flame_height",
+          "source_output": 0,
+          "destination_role": "output",
+          "destination_input": 0
+        },
+        {
+          "source_role": "geometry_import",
+          "source_output": 0,
+          "destination_role": "camera",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "camera",
+          "source_output": 0,
+          "destination_role": "light",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "light",
+          "source_output": 0,
+          "destination_role": "render_settings",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_settings",
+          "source_output": 0,
+          "destination_role": "render_var",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_var",
+          "source_output": 0,
+          "destination_role": "render_product",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_product",
+          "source_output": 0,
+          "destination_role": "settings_binding",
+          "destination_input": 0,
+          "require_same_parent": true
+        }
+      ]
+    },
+    "22.0.459": {
+      "default": [
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "source_points",
+          "destination_input": 0
+        },
+        {
+          "source_role": "source_points",
+          "source_output": 0,
+          "destination_role": "source_control",
+          "destination_input": 0
+        },
+        {
+          "source_role": "source_control",
+          "source_output": 0,
+          "destination_role": "source_volume",
+          "destination_input": 0
+        },
+        {
+          "source_role": "source_volume",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 0
+        },
+        {
+          "source_role": "solver",
+          "source_output": 0,
+          "destination_role": "flame_height",
+          "destination_input": 0
+        },
+        {
+          "source_role": "flame_height",
+          "source_output": 0,
+          "destination_role": "output",
+          "destination_input": 0
+        },
+        {
+          "source_role": "geometry_import",
+          "source_output": 0,
+          "destination_role": "camera",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "camera",
+          "source_output": 0,
+          "destination_role": "light",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "light",
+          "source_output": 0,
+          "destination_role": "render_settings",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_settings",
+          "source_output": 0,
+          "destination_role": "render_var",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_var",
+          "source_output": 0,
+          "destination_role": "render_product",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_product",
+          "source_output": 0,
+          "destination_role": "settings_binding",
+          "destination_input": 0,
+          "require_same_parent": true
+        }
+      ]
+    }
+  },
+  "key_parameters": {
+    "semantic": [
+      {
+        "name": "voxel_size",
+        "value_type": "float",
+        "minimum": 0.005,
+        "maximum": 1.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "burn_rate",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 10.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "cooling_rate",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 10.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "flame_disturbance",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 10.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "flame_lift",
+        "value_type": "float",
+        "minimum": -10.0,
+        "maximum": 10.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "fuel_rate",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 1000.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "velocity_detail",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 100.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "emission_contrast",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 10.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "composite"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "nuke"
+      },
+      {
+        "name": "temperature_scale",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 1000.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "flame_height",
+        "value_type": "float",
+        "minimum": -100.0,
+        "maximum": 1000.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "emission_intensity",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 10000.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "material"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "glow_amount",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 100.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "composite"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "nuke"
+      }
+    ],
+    "versioned_native_mapping": {
+      "21.0.631": {
+        "default": [
+          {
+            "id": "voxel_size",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "divsize"
+            ],
+            "minimum": 0.005,
+            "maximum": 1.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "mapped",
+            "targets": [
+              [
+                "solver",
+                "divsize"
+              ],
+              [
+                "source_volume",
+                "voxelsize"
+              ]
+            ]
+          },
+          {
+            "id": "burn_rate",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "flames_lifespan"
+            ],
+            "minimum": 0.0,
+            "maximum": 10.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "solver",
+                "addflamefield",
+                1
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "cooling_rate",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "tempcooling"
+            ],
+            "minimum": 0.0,
+            "maximum": 10.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "mapped"
+          },
+          {
+            "id": "flame_disturbance",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "disturbance"
+            ],
+            "minimum": 0.0,
+            "maximum": 10.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "solver",
+                "enable_disturbance",
+                1
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "flame_lift",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "buoyancylift"
+            ],
+            "minimum": -10.0,
+            "maximum": 10.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "solver",
+                "enable_buoyancy",
+                1
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "fuel_rate",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "source_vscale3"
+            ],
+            "minimum": 0.0,
+            "maximum": 1000.0,
+            "invalidates_from": "source_layout_control",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "solver",
+                "source_activate3",
+                1
+              ],
+              [
+                "solver",
+                "source_voperator3",
+                "add"
+              ],
+              [
+                "solver",
+                "source_volume3",
+                "flame"
+              ],
+              [
+                "solver",
+                "source_vfield3",
+                "flame"
+              ],
+              [
+                "solver",
+                "source_vnormalize3",
+                1
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "velocity_detail",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "turbulence"
+            ],
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "solver",
+                "enable_turbulence",
+                1
+              ],
+              [
+                "solver",
+                "turbulence_influencefield",
+                "temperature"
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "emission_contrast",
+            "node_role": "external_nuke",
+            "parameter_aliases": [],
+            "minimum": 0.0,
+            "maximum": 10.0,
+            "invalidates_from": "composite",
+            "value_type": "float",
+            "application": "nuke",
+            "required_gates": [],
+            "native_status": "external"
+          },
+          {
+            "id": "temperature_scale",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "source_vscale2"
+            ],
+            "minimum": 0.0,
+            "maximum": 1000.0,
+            "invalidates_from": "source_layout_control",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "solver",
+                "source_activate2",
+                1
+              ],
+              [
+                "solver",
+                "source_voperator2",
+                "add"
+              ],
+              [
+                "solver",
+                "source_volume2",
+                "temperature"
+              ],
+              [
+                "solver",
+                "source_vfield2",
+                "temperature"
+              ],
+              [
+                "solver",
+                "source_vnormalize2",
+                1
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "flame_height",
+            "node_role": "flame_height",
+            "parameter_aliases": [
+              "snippet"
+            ],
+            "minimum": -100.0,
+            "maximum": 1000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "flame_height",
+                "group",
+                "@name=flame"
+              ],
+              [
+                "flame_height",
+                "bindeach",
+                0
+              ],
+              [
+                "flame_height",
+                "exportlist",
+                "flame"
+              ],
+              [
+                "flame_height",
+                "autobind",
+                1
+              ],
+              [
+                "flame_height",
+                "vex_outputmask",
+                "flame"
+              ],
+              [
+                "flame_height",
+                "vex_geometrygenerator",
+                0
+              ],
+              [
+                "flame_height",
+                "vex_precision",
+                "64"
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "emission_intensity",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "fi_int"
+            ],
+            "minimum": 0.0,
+            "maximum": 10000.0,
+            "invalidates_from": "material",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "solver",
+                "fi_enable",
+                1
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "glow_amount",
+            "node_role": "external_nuke",
+            "parameter_aliases": [],
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "invalidates_from": "composite",
+            "value_type": "float",
+            "application": "nuke",
+            "required_gates": [],
+            "native_status": "external"
+          }
+        ]
+      },
+      "22.0.429": {
+        "default": [
+          {
+            "id": "voxel_size",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "divsize"
+            ],
+            "minimum": 0.005,
+            "maximum": 1.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "mapped",
+            "targets": [
+              [
+                "solver",
+                "divsize"
+              ],
+              [
+                "source_volume",
+                "voxelsize"
+              ]
+            ]
+          },
+          {
+            "id": "burn_rate",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "flames_lifespan"
+            ],
+            "minimum": 0.0,
+            "maximum": 10.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "solver",
+                "addflamefield",
+                1
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "cooling_rate",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "tempcooling"
+            ],
+            "minimum": 0.0,
+            "maximum": 10.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "mapped"
+          },
+          {
+            "id": "flame_disturbance",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "disturbance"
+            ],
+            "minimum": 0.0,
+            "maximum": 10.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "solver",
+                "enable_disturbance",
+                1
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "flame_lift",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "buoyancylift"
+            ],
+            "minimum": -10.0,
+            "maximum": 10.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "solver",
+                "enable_buoyancy",
+                1
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "fuel_rate",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "source_vscale3"
+            ],
+            "minimum": 0.0,
+            "maximum": 1000.0,
+            "invalidates_from": "source_layout_control",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "solver",
+                "source_activate3",
+                1
+              ],
+              [
+                "solver",
+                "source_voperator3",
+                "add"
+              ],
+              [
+                "solver",
+                "source_volume3",
+                "flame"
+              ],
+              [
+                "solver",
+                "source_vfield3",
+                "flame"
+              ],
+              [
+                "solver",
+                "source_vnormalize3",
+                1
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "velocity_detail",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "turbulence"
+            ],
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "solver",
+                "enable_turbulence",
+                1
+              ],
+              [
+                "solver",
+                "turbulence_influencefield",
+                "temperature"
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "emission_contrast",
+            "node_role": "external_nuke",
+            "parameter_aliases": [],
+            "minimum": 0.0,
+            "maximum": 10.0,
+            "invalidates_from": "composite",
+            "value_type": "float",
+            "application": "nuke",
+            "required_gates": [],
+            "native_status": "external"
+          },
+          {
+            "id": "temperature_scale",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "source_vscale2"
+            ],
+            "minimum": 0.0,
+            "maximum": 1000.0,
+            "invalidates_from": "source_layout_control",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "solver",
+                "source_activate2",
+                1
+              ],
+              [
+                "solver",
+                "source_voperator2",
+                "add"
+              ],
+              [
+                "solver",
+                "source_volume2",
+                "temperature"
+              ],
+              [
+                "solver",
+                "source_vfield2",
+                "temperature"
+              ],
+              [
+                "solver",
+                "source_vnormalize2",
+                1
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "flame_height",
+            "node_role": "flame_height",
+            "parameter_aliases": [
+              "snippet"
+            ],
+            "minimum": -100.0,
+            "maximum": 1000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "flame_height",
+                "group",
+                "@name=flame"
+              ],
+              [
+                "flame_height",
+                "bindeach",
+                0
+              ],
+              [
+                "flame_height",
+                "exportlist",
+                "flame"
+              ],
+              [
+                "flame_height",
+                "autobind",
+                1
+              ],
+              [
+                "flame_height",
+                "vex_outputmask",
+                "flame"
+              ],
+              [
+                "flame_height",
+                "vex_geometrygenerator",
+                0
+              ],
+              [
+                "flame_height",
+                "vex_precision",
+                "64"
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "emission_intensity",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "fi_int"
+            ],
+            "minimum": 0.0,
+            "maximum": 10000.0,
+            "invalidates_from": "material",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "solver",
+                "fi_enable",
+                1
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "glow_amount",
+            "node_role": "external_nuke",
+            "parameter_aliases": [],
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "invalidates_from": "composite",
+            "value_type": "float",
+            "application": "nuke",
+            "required_gates": [],
+            "native_status": "external"
+          }
+        ]
+      },
+      "22.0.459": {
+        "default": [
+          {
+            "minimum": 0.005,
+            "maximum": 1.0,
+            "value_type": "float",
+            "invalidates_from": "generation_simulation",
+            "application": "houdini",
+            "native_conversion": "voxel_size",
+            "required_gates": [],
+            "native_status": "mapped",
+            "targets": [
+              [
+                "solver",
+                "divsize"
+              ],
+              [
+                "source_volume",
+                "voxelsize"
+              ]
+            ],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "divsize",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "divsize",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/volumerasterizeattributes",
+                  "parameter": "voxelsize",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "47700808b461aa73b395d941a13b6d478d0bd24552a2507b7dfc3da97ca426c5",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "voxel_size",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "divsize"
+            ]
+          },
+          {
+            "minimum": 0.0,
+            "maximum": 10.0,
+            "value_type": "float",
+            "invalidates_from": "generation_simulation",
+            "application": "houdini",
+            "native_conversion": "burn_rate",
+            "required_gates": [
+              [
+                "solver",
+                "addflamefield",
+                1
+              ]
+            ],
+            "native_status": "mapped",
+            "semantic_contract": "normalized_flame_depletion_per_second/1",
+            "unit": "normalized flame units per second",
+            "forward": "lifespan=1/rate",
+            "inverse": "rate=1/lifespan",
+            "zero_blocker": "ZERO_FLAME_DEPLETION_NATIVE_TARGET_NOT_CAPTURED",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "flames_lifespan",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "addflamefield",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "burn_rate",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "flames_lifespan"
+            ]
+          },
+          {
+            "minimum": 0.0,
+            "maximum": 10.0,
+            "value_type": "float",
+            "invalidates_from": "generation_simulation",
+            "application": "houdini",
+            "native_conversion": "cooling_rate",
+            "required_gates": [],
+            "native_status": "mapped",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "tempcooling",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "cooling_rate",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "tempcooling"
+            ]
+          },
+          {
+            "minimum": 0.0,
+            "maximum": 10.0,
+            "value_type": "float",
+            "invalidates_from": "generation_simulation",
+            "application": "houdini",
+            "native_conversion": "flame_disturbance",
+            "required_gates": [
+              [
+                "solver",
+                "enable_disturbance",
+                1
+              ]
+            ],
+            "native_status": "mapped",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "disturbance",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "enable_disturbance",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "flame_disturbance",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "disturbance"
+            ]
+          },
+          {
+            "minimum": -10.0,
+            "maximum": 10.0,
+            "value_type": "float",
+            "invalidates_from": "generation_simulation",
+            "application": "houdini",
+            "native_conversion": "flame_lift",
+            "required_gates": [
+              [
+                "solver",
+                "enable_buoyancy",
+                1
+              ]
+            ],
+            "native_status": "mapped",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "buoyancylift",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "enable_buoyancy",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "flame_lift",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "buoyancylift"
+            ]
+          },
+          {
+            "minimum": 0.0,
+            "maximum": 1000.0,
+            "value_type": "float",
+            "invalidates_from": "source_layout_control",
+            "application": "houdini",
+            "native_conversion": "fuel_rate",
+            "required_gates": [
+              [
+                "solver",
+                "source_activate3",
+                1
+              ],
+              [
+                "solver",
+                "source_voperator3",
+                "add"
+              ],
+              [
+                "solver",
+                "source_volume3",
+                "flame"
+              ],
+              [
+                "solver",
+                "source_vfield3",
+                "flame"
+              ],
+              [
+                "solver",
+                "source_vnormalize3",
+                1
+              ]
+            ],
+            "native_status": "mapped",
+            "unit": "normalized reactant flame units per solver second",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "source_vscale#",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "source_activate#",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "source_voperator#",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "source_volume#",
+                  "type": "string",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "source_vfield#",
+                  "type": "string",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "source_vnormalize#",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "fuel_rate",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "source_vscale3"
+            ]
+          },
+          {
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "value_type": "float",
+            "invalidates_from": "generation_simulation",
+            "application": "houdini",
+            "native_conversion": "velocity_detail",
+            "required_gates": [
+              [
+                "solver",
+                "enable_turbulence",
+                1
+              ],
+              [
+                "solver",
+                "turbulence_influencefield",
+                "temperature"
+              ]
+            ],
+            "native_status": "mapped",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "turbulence",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "enable_turbulence",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "turbulence_influencefield",
+                  "type": "string",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "velocity_detail",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "turbulence"
+            ]
+          },
+          {
+            "minimum": 0.0,
+            "maximum": 10.0,
+            "value_type": "float",
+            "invalidates_from": "composite",
+            "application": "nuke",
+            "native_conversion": "emission_contrast",
+            "required_gates": [],
+            "native_status": "external",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [],
+              "missing": []
+            },
+            "id": "emission_contrast",
+            "node_role": "external_nuke",
+            "parameter_aliases": []
+          },
+          {
+            "minimum": 0.0,
+            "maximum": 1000.0,
+            "value_type": "float",
+            "invalidates_from": "source_layout_control",
+            "application": "houdini",
+            "native_conversion": "temperature_scale",
+            "required_gates": [
+              [
+                "solver",
+                "source_activate2",
+                1
+              ],
+              [
+                "solver",
+                "source_voperator2",
+                "add"
+              ],
+              [
+                "solver",
+                "source_volume2",
+                "temperature"
+              ],
+              [
+                "solver",
+                "source_vfield2",
+                "temperature"
+              ],
+              [
+                "solver",
+                "source_vnormalize2",
+                1
+              ]
+            ],
+            "native_status": "mapped",
+            "unit": "temperature field units per solver second",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "source_vscale#",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "source_activate#",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "source_voperator#",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "source_volume#",
+                  "type": "string",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "source_vfield#",
+                  "type": "string",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "source_vnormalize#",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "temperature_scale",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "source_vscale2"
+            ]
+          },
+          {
+            "minimum": -100.0,
+            "maximum": 1000.0,
+            "value_type": "float",
+            "invalidates_from": "generation_simulation",
+            "application": "houdini",
+            "native_conversion": "trusted_height_program",
+            "required_gates": [
+              [
+                "flame_height",
+                "group",
+                "@name=flame"
+              ],
+              [
+                "flame_height",
+                "bindeach",
+                0
+              ],
+              [
+                "flame_height",
+                "exportlist",
+                "flame"
+              ],
+              [
+                "flame_height",
+                "autobind",
+                1
+              ],
+              [
+                "flame_height",
+                "vex_outputmask",
+                "flame"
+              ],
+              [
+                "flame_height",
+                "vex_geometrygenerator",
+                0
+              ],
+              [
+                "flame_height",
+                "vex_precision",
+                "64"
+              ]
+            ],
+            "native_status": "mapped",
+            "semantic_contract": "signed_source_top_flame_envelope/1",
+            "unit": "SU",
+            "requires_context": "frozen_basis_and_runtime_graph",
+            "evidence_scope": "parameters_only",
+            "product_status": "approved",
+            "product_definition": {
+              "decision_id": "A01",
+              "unit": "SU",
+              "definition": "Signed flame-height offset along the trusted emission up axis: envelope upper bound H_base + value, with explicitly frozen positive H_base. Shape the owned flame field; increased allowance does not promise taller flame generation.",
+              "zero": "Preserve H_base; if the resulting upper bound is nonpositive, the controlled flame envelope is empty.",
+              "negative": "Allowed within the existing signed range; lower the upper bound.",
+              "scope": "Owned flame-field height envelope from the source-top projection; preserve density, temperature, vel and fire-light material. Subsequent simulation effects still require verification.",
+              "required_basis": [
+                "positive frozen H_base",
+                "trusted emission up axis",
+                "source-top projection",
+                "volume coordinate space"
+              ],
+              "capture_blockers": [
+                "versioned flame production/consumption boundaries",
+                "editable field-mask operators, parameters and ports",
+                "basis provenance and legal nonpositive-envelope output"
+              ],
+              "proposal_sha256": "7a5d8f699ee879c9d613832d9520ceb71580080f6ebadfd187fbd3b0389f4f9e",
+              "decision_record": "handover/CONTROL_DECISIONS_20261004.md",
+              "approved_sections": [
+                2,
+                3
+              ],
+              "common_rules": {
+                "units": "Lengths use current scene units (SU), velocities SU/s; read actual FPS and time scale. No SI conversion without explicit scale and mass bases.",
+                "validation": "Require finite values and each control's zero policy; reject unsigned negatives, missing bases, incompatible combinations and budget excess. No clamping, rounding, implicit conversion or renaming.",
+                "randomness": "Use fixed task seed, stable entity IDs and independent control sub-seeds; reopening reproduces samples and changing one control does not resample another. New percentages are bounded amplitudes, not statistical variance.",
+                "basis": "Freeze bases, coordinate spaces, distributions, time scales and controlled stages. Missing axes, targets, events, source geometry or stable IDs remain explicit missing inputs; preserve unrelated artist fields.",
+                "ranges": "Preserve existing names and validation ranges. Mathematical conditions, version-specific native hard limits, product limits and scene budgets remain distinct; unsupported endpoints stay blocked. Range, alias or endpoint changes require a specific decision.",
+                "readback": "Observe actual parameters, attributes, channels, topology or semantic programs and their input SHA, not requested values. Cache/render authorization, 12-frame/120-second limits and total disk budget remain required; product approval does not authorize real jobs.",
+                "existing_definitions": "Preserve particle life/velocity variance, Crowd path_variance and Geometry scale_variance; preserve the existing RBD activation_frame constant active step."
+              },
+              "common_capture_requirements": {
+                "versions": [
+                  "21.0.631",
+                  "22.0.429"
+                ],
+                "interface": "For each version, capture raw definition/help/SDK sources and hashes, exact operators/machine parameters, types/tuples, menu tokens, defaults/expressions, hard/soft ranges, disable/hide state, indexed input/output roles, editable boundaries and downstream consumption.",
+                "attributes": "Attribute routes additionally need class/storage/tuple, coordinate space, stable IDs and actual downstream consumption rules; labels, help anchors, sliders and other-version tokens are not machine interface proof.",
+                "runtime": "Static evidence bounds pure contracts/native API substitutes. Instance state, geometry/fields, save/reopen and dynamic effects require separately authorized real-host evidence. Recovered JSON excerpts do not replace missing original HDA bytes."
+              },
+              "preparation_capture_requirements": {
+                "versions": [
+                  "22.0.459"
+                ],
+                "interface": "For each version, capture raw definition/help/SDK sources and hashes, exact operators/machine parameters, types/tuples, menu tokens, defaults/expressions, hard/soft ranges, disable/hide state, indexed input/output roles, editable boundaries and downstream consumption.",
+                "attributes": "Attribute routes additionally need class/storage/tuple, coordinate space, stable IDs and actual downstream consumption rules; labels, help anchors, sliders and other-version tokens are not machine interface proof.",
+                "runtime": "Static evidence bounds pure contracts/native API substitutes. Instance state, geometry/fields, save/reopen and dynamic effects require separately authorized real-host evidence. Recovered JSON excerpts do not replace missing original HDA bytes.",
+                "status": "PARTIAL_STATIC_BASIS_RUNTIME_FACTS_REQUIRED"
+              }
+            },
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/volumewrangle",
+                  "parameter": "snippet",
+                  "type": "string",
+                  "size": 1,
+                  "section_sha256": "aa477e2d5cd8364e369b5c608ce85e0f77b1f21ee5d894eef420cdefa44c18bb",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/volumewrangle",
+                  "parameter": "group",
+                  "type": "string",
+                  "size": 1,
+                  "section_sha256": "aa477e2d5cd8364e369b5c608ce85e0f77b1f21ee5d894eef420cdefa44c18bb",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/volumewrangle",
+                  "parameter": "bindeach",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "aa477e2d5cd8364e369b5c608ce85e0f77b1f21ee5d894eef420cdefa44c18bb",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/volumewrangle",
+                  "parameter": "exportlist",
+                  "type": "string",
+                  "size": 1,
+                  "section_sha256": "aa477e2d5cd8364e369b5c608ce85e0f77b1f21ee5d894eef420cdefa44c18bb",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/volumewrangle",
+                  "parameter": "autobind",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "aa477e2d5cd8364e369b5c608ce85e0f77b1f21ee5d894eef420cdefa44c18bb",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/volumewrangle",
+                  "parameter": "vex_outputmask",
+                  "type": "string",
+                  "size": 1,
+                  "section_sha256": "aa477e2d5cd8364e369b5c608ce85e0f77b1f21ee5d894eef420cdefa44c18bb",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/volumewrangle",
+                  "parameter": "vex_geometrygenerator",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "aa477e2d5cd8364e369b5c608ce85e0f77b1f21ee5d894eef420cdefa44c18bb",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/volumewrangle",
+                  "parameter": "vex_precision",
+                  "type": "string",
+                  "size": 1,
+                  "section_sha256": "aa477e2d5cd8364e369b5c608ce85e0f77b1f21ee5d894eef420cdefa44c18bb",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "flame_height",
+            "node_role": "flame_height",
+            "parameter_aliases": [
+              "snippet"
+            ]
+          },
+          {
+            "minimum": 0.0,
+            "maximum": 10000.0,
+            "value_type": "float",
+            "invalidates_from": "material",
+            "application": "houdini",
+            "native_conversion": "emission_intensity",
+            "required_gates": [
+              [
+                "solver",
+                "fi_enable",
+                1
+              ]
+            ],
+            "native_status": "mapped",
+            "unit": "native fire emission multiplier",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "fi_int",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/pyrosolver",
+                  "parameter": "fi_enable",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "950bb643b3b71d69d83d334bfa1ad3621ab6590fbd03105abbea2e6e8d4c702d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "emission_intensity",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "fi_int"
+            ]
+          },
+          {
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "value_type": "float",
+            "invalidates_from": "composite",
+            "application": "nuke",
+            "native_conversion": "glow_amount",
+            "required_gates": [],
+            "native_status": "external",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [],
+              "missing": []
+            },
+            "id": "glow_amount",
+            "node_role": "external_nuke",
+            "parameter_aliases": []
+          }
+        ]
+      }
+    }
+  },
+  "save_reopen": [
+    "Use the production generator and task-owned host; persist project content/version/owner and the original operation receipt.",
+    "Stop the actual owned worker and verify trusted stop, then reopen the saved HIP/NK in a new host identity.",
+    "Read back every role, native type, port, connection and semantic control; preserve unrelated artist changes."
+  ],
+  "stop_recovery": [
+    "Interrupt the actual case worker, not an auxiliary process.",
+    "Retain the heavy slot while stop is unknown; verify task/session/nonce/process/generation/build/scene epoch.",
+    "Restart the controller, restore the same operation from persistent facts, and verify no duplicate execution/registration."
+  ],
+  "artifact_checks": [
+    "Consume only task-owned registered input IDs/versions/hash and exact frames.",
+    "Validate applicable outputs: diagnostic_preview, editable_scene, simulation_cache",
+    "Require producer operation, scene/version, format/dimensions/channels, color/premultiplication and dependency facts; reject missing typed metadata.",
+    "Check missing/repeated/frozen/abrupt frames against a frozen activity interval; pixel change alone does not establish correct motion."
+  ],
+  "raw_evidence_path": "outputs/live-validation/pyro_fire_v1/<new-run-id>",
+  "human_checks": [
+    "Editable topology and save/reopen match the approved controls.",
+    "Compare the registered reference and feedback result; judge actual motion, silhouette, timing, material, lighting and composition.",
+    "Accept visual quality separately from software, format and process-stop checks."
+  ],
+  "resource_requirements": {
+    "explicit_frames_max": 12,
+    "seconds_max": 120,
+    "disk_bytes": "explicit positive task budget; include output/cache/temp/logs",
+    "cache": "separate exact path/frame/content-version/estimated-bytes/invalidation confirmation before execution",
+    "concurrency": "one heavy DCC job; unknown stop keeps slot"
+  },
+  "blockers": [
+    "Full 54-row current-build evidence and independent M1 reception remain incomplete.",
+    "Whole-domain native basis and applicable output/actual worker recovery are not verified by this card."
+  ],
+  "composite": true
+}

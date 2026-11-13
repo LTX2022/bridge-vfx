@@ -1,0 +1,178 @@
+# Dialog script for popobject automatically generated 01/16/14 18:28:44
+
+{
+    name	popobject
+    script	popobject
+    label	"POP Object"
+
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Input 1"
+    inputlabel	2	"Input 2"
+    inputlabel	3	"Input 3"
+    inputlabel	4	"Input 4"
+
+    parm {
+	name	"usesimframe"
+	label	"Creation Frame Specifies Simulation Frame"
+	type	toggle
+	default	{ "0" }
+	range	{ 0 1 }
+	export	none
+	parmtag	{ "autoscope" "0000" }
+    }
+    parm {
+	name	"createframe"
+	label	"Creation Frame"
+	type	float
+	default	{ "ch(opcreator(\".\")+\"/startframe\")" }
+	range	{ 1 100 }
+	export	none
+	parmtag	{ "autoscope" "0000" }
+    }
+    parm {
+	name	"object_name"
+	label	"Object Name"
+	type	string
+	default	{ "$OS" }
+	range	{ 0 1 }
+	export	none
+	parmtag	{ "autoscope" "0000" }
+    }
+    parm {
+	name	"solvefirstframe"
+	label	"Solve on Creation Frame"
+	type	toggle
+	default	{ "on" }
+	range	{ 0 1 }
+	export	none
+	parmtag	{ "autoscope" "0000000000000000" }
+    }
+    parm {
+	name	"initial_geo"
+	label	"Initial Geometry"
+	type	oppath
+	default	{ "" }
+	range	{ 0 1 }
+	export	none
+	parmtag	{ "autoscope" "0000" }
+	parmtag	{ "opfilter" "!!SOP!!" }
+	parmtag	{ "oprelative" "." }
+    }
+    parm {
+	name	"usetransform"
+	label	"Use Object Transform"
+	type	toggle
+	default	{ "0" }
+	range	{ 0 1 }
+	export	none
+	parmtag	{ "autoscope" "0000" }
+    }
+    group {
+	name	"folder0"
+	label	"Guides"
+
+	parm {
+	    name	"showinstance"
+	    label	"Show Guide Geometry"
+	    type	toggle
+	    nolabel
+	    joinnext
+	    default	{ "on" }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"instancecolor"
+	    label	"Instance Guides"
+	    type	color
+	    size	3
+	    default	{ "0" "0" "1" }
+	    disablewhen	"{ showinstance == 0 }"
+	    range	{ 0! 1! }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+    }
+
+    group {
+	name	"folder0_1"
+	label	"Collisions"
+
+	parm {
+	    name	"tol"
+	    label	"Tolerance"
+	    type	float
+	    default	{ "0.01" }
+	    range	{ 1e-05! 0.1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000" }
+	}
+	parm {
+	    name	"volumeoffset"
+	    label	"Volume Offset"
+	    type	float
+	    default	{ "0" }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000" }
+	}
+    }
+
+    group {
+	name	"folder0_2"
+	label	"Physical"
+
+	parm {
+	    name	"bounce"
+	    label	"Bounce"
+	    type	float
+	    default	{ "1" }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000" }
+	}
+	parm {
+	    name	"bounceforward"
+	    label	"Bounce Forward"
+	    type	float
+	    default	{ "1" }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "units" "" }
+	}
+	parm {
+	    name	"friction"
+	    label	"Friction"
+	    type	float
+	    default	{ "1" }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000" }
+	}
+	parm {
+	    name	"dynamicfriction"
+	    label	"Dynamic Friction Scale"
+	    type	float
+	    default	{ "1" }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000" }
+	}
+	parm {
+	    name	"temperature"
+	    label	"Temperature"
+	    type	float
+	    default	{ "0" }
+	    range	{ 0 100 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+    }
+
+}

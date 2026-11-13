@@ -1,0 +1,71 @@
+{
+  "schema": "bridge.static-ocean-volume-hom/1",
+  "origin": "installed_docs_sdk_binary_read_only",
+  "runtime": "NOT_RUN",
+  "versions": {
+    "21.0.631": {
+      "hom_zip": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/help/hom.zip",
+      "hom_zip_sha256": "e4c8f5503d1f96ab10ca17f865e468c05243d2a3fa7a96ccd0b7904b0929817c",
+      "Volume_sections": [
+        "`resolution(self)` -> `tuple` of `int`:\n    #cppname: HOM_Volume::resolution\n    Return the x, y, and z dimensions of the volume.  For example, a resolution\n    of (10, 20, 30) means the volume is 10 voxels in x by 20 voxels in y by\n    30 voxels in z.\n",
+        "`channelCount(self)` -> `int`:\n    #cppname: HOM_Volume::channelCount\n    Returns the number of components, or channels, in the volume.\n    ",
+        "`storageType(self)` -> [Hom:hou.volumeStorageType] enum value:\n    #cppname: HOM_Volume::storageType\n    Returns the volume's storage type, which consists of its precision\n    and float vs integer type.\n",
+        "`allVoxels(self)` -> tuple of float:\n    #cppname: HOM_Volume::allVoxels\n    Return a tuple of floats containing the values of all voxels.  It is faster\n    to call this method to retrieve all the voxels than it is to loop through\n    the voxel array in Python.\n\n    You can, for example, use Python's Numpy library to perform operations on\n    the voxel data and then store the result back into the volume from a Python\n    SOP using [Hom:hou.Volume#setAllVoxels].  Note that Numpy allows you to\n    reshape the flat tuple of floats to behave like a 3D matrix of floats.\n\n    This method can be approximately implemented as follows (though this Python\n    implementation is much slower):\n    {{{\n    #!python\n    def allVoxels(self):\n\tresult = []\n\txres, yres, zres = self.resolution()\n\tfor z in range(zres):\n\t    for y in range(yres):\n\t\tfor x in range(xres):\n\t\t    result.append(self.voxel((x, y, z)))\n\treturn tuple(result)\n    }}}\n\n    See also [Hom:hou.Volume#allVoxelsAsString],\n    [Hom:hou.Geometry#pointFloatAttribValues], and\n    [Hom:hou.Geometry#primFloatAttribValues].\n",
+        "`transform(self)` -> [Hom:hou.Matrix3]:\n    #cppname: HOM_Volume::transform\n    Return a 3x3 matrix containing the scale and rotation transformations\n    for this volume.\n\n    Note that the position information for the volume can be obtained by\n    calling `volume.vertex(0).point().position()`.\n\n    The following function returns a 4x4 transformation matrix for the volume\n    that includes the translation:\n    {{{\n    #!python\n    def fullTransform(volume):\n\treturn (hou.Matrix4(volume.transform()) *\n\t    hou.hmath.buildTranslate(volume.vertex(0).point().position()))\n    }}}\n\n    NOTE:\n        You need to get the node transform to get to worldspace.\n"
+      ],
+      "volumeStorageType": "= hou.volumeStorageType =\n#type: hommodule\n#cppname: HOM_volumeStorageType\n#group: layer\n\n\"\"\"Enumeration of Volume StorageTypes\"\"\"\n\nThese store how the voxel values are stored in memory.\n\n@values\n\n::hou.volumeStorageType.Float: \n    Values are stored as floats.\n    \n::hou.volumeStorageType.Int: \n    Values are stored as integers.\n",
+      "sdk": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/toolkit/include/GEO/GEO_PrimVolume.h",
+      "sdk_sha256": "4b95f15e13f78105eb9df75fec45af300118f938558b9bf92247ac072d90beb6",
+      "sdk_scalar_volume_fields": [
+        "bool                isScalarVolume() const",
+        "void\t\t setVoxels(const UT_VoxelArrayF *vox);",
+        "void\t\t stealVoxels(UT_VoxelArrayF *vox);",
+        "return myVoxelHandleF;",
+        "bool\t\t computeHeightFieldProperties(int &a1, int &a2, int &axis, fpreal &scale, const UT_VoxelArrayF &vox, const GEO_PrimVolumeXform &indexxform) const;",
+        "mutable UT_VoxelArrayHandleF\t myVoxelHandleF;"
+      ],
+      "voxel_sdk": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/toolkit/include/UT/UT_VoxelArray.h",
+      "voxel_sdk_sha256": "179734cd7dcefaeae76d5751b6d47d06e126535eeea892ab1a3be492fd53b640",
+      "scalar_precision_typedef": [
+        "typedef UT_VoxelArray<fpreal32>\t\t\tUT_VoxelArrayF;"
+      ],
+      "binary": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Libraries/libHoudiniGEO.dylib",
+      "binary_sha256": "9068878afde3d983343ebbd2795b78bea75d56e8b1043f3f08f4ddffb47cf481",
+      "observed_intrinsic_strings": [
+        "volumebordertype"
+      ]
+    },
+    "22.0.429": {
+      "hom_zip": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/help/hom.zip",
+      "hom_zip_sha256": "143162e01defa725c5e35f9a53bfb3ba339a91fa1edd0e99d73da8499be23d0c",
+      "Volume_sections": [
+        "`resolution(self)` -> `tuple` of `int`:\n    #cppname: HOM_Volume::resolution\n    Return the x, y, and z dimensions of the volume.  For example, a resolution\n    of (10, 20, 30) means the volume is 10 voxels in x by 20 voxels in y by\n    30 voxels in z.\n",
+        "`channelCount(self)` -> `int`:\n    #cppname: HOM_Volume::channelCount\n    Returns the number of components, or channels, in the volume.\n    ",
+        "`storageType(self)` -> [Hom:hou.volumeStorageType] enum value:\n    #cppname: HOM_Volume::storageType\n    Returns the volume's storage type, which consists of its precision\n    and float vs integer type.\n",
+        "`allVoxels(self)` -> tuple of float:\n    #cppname: HOM_Volume::allVoxels\n    Return a tuple of floats containing the values of all voxels.  It is faster\n    to call this method to retrieve all the voxels than it is to loop through\n    the voxel array in Python.\n\n    You can, for example, use Python's Numpy library to perform operations on\n    the voxel data and then store the result back into the volume from a Python\n    SOP using [Hom:hou.Volume#setAllVoxels].  Note that Numpy allows you to\n    reshape the flat tuple of floats to behave like a 3D matrix of floats.\n\n    This method can be approximately implemented as follows (though this Python\n    implementation is much slower):\n    {{{\n    #!python\n    def allVoxels(self):\n\tresult = []\n\txres, yres, zres = self.resolution()\n\tfor z in range(zres):\n\t    for y in range(yres):\n\t\tfor x in range(xres):\n\t\t    result.append(self.voxel((x, y, z)))\n\treturn tuple(result)\n    }}}\n\n    See also [Hom:hou.Volume#allVoxelsAsString],\n    [Hom:hou.Geometry#pointFloatAttribValues], and\n    [Hom:hou.Geometry#primFloatAttribValues].\n",
+        "`transform(self)` -> [Hom:hou.Matrix3]:\n    #cppname: HOM_Volume::transform\n    Return a 3x3 matrix containing the scale and rotation transformations\n    for this volume.\n\n    Note that the position information for the volume can be obtained by\n    calling `volume.vertex(0).point().position()`.\n\n    The following function returns a 4x4 transformation matrix for the volume\n    that includes the translation:\n    {{{\n    #!python\n    def fullTransform(volume):\n\treturn (hou.Matrix4(volume.transform()) *\n\t    hou.hmath.buildTranslate(volume.vertex(0).point().position()))\n    }}}\n\n    NOTE:\n        You need to get the node transform to get to worldspace.\n"
+      ],
+      "volumeStorageType": "= hou.volumeStorageType =\n#type: hommodule\n#cppname: HOM_volumeStorageType\n#group: layer\n\n\"\"\"Enumeration of Volume StorageTypes\"\"\"\n\nThese store how the voxel values are stored in memory.\n\n@values\n\n::hou.volumeStorageType.Float: \n    Values are stored as floats.\n    \n::hou.volumeStorageType.Int: \n    Values are stored as integers.\n",
+      "sdk": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/toolkit/include/GEO/GEO_PrimVolume.h",
+      "sdk_sha256": "2771ff3f7c62bbb78d021463d5c557f5c4bba297200f38d074c84400edbd59de",
+      "sdk_scalar_volume_fields": [
+        "bool                isScalarVolume() const",
+        "void\t\t setVoxels(const UT_VoxelArrayF *vox);",
+        "void\t\t stealVoxels(UT_VoxelArrayF *vox);",
+        "return myVoxelHandleF;",
+        "bool\t\t computeHeightFieldProperties(int &a1, int &a2, int &axis, fpreal &scale, const UT_VoxelArrayF &vox, const GEO_PrimVolumeXform &indexxform) const;",
+        "mutable UT_VoxelArrayHandleF\t myVoxelHandleF;"
+      ],
+      "voxel_sdk": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/toolkit/include/UT/UT_VoxelArray.h",
+      "voxel_sdk_sha256": "86332d061e8ac38bcaa351b9c8b6d225044fc4a2fdb9e99e8354870dd8332e97",
+      "scalar_precision_typedef": [
+        "typedef UT_VoxelArray<fpreal32>\t\t\tUT_VoxelArrayF;"
+      ],
+      "binary": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Libraries/libHoudiniGEO.dylib",
+      "binary_sha256": "8d678ae2f25f42232ed423fbb90c7ab9ec0d1da8ddaf40a862f1b478acc9f83e",
+      "observed_intrinsic_strings": [
+        "volumebordertype"
+      ]
+    }
+  }
+}

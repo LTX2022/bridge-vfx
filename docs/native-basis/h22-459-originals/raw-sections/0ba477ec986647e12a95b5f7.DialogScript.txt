@@ -1,0 +1,216 @@
+# Dialog script for flipsource automatically generated
+
+{
+    name	flipsource
+    script	flipsource
+    label	"FLIP DOP Source"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Geometry to Source From"
+    inputlabel	2	"Sub-Network Input #2"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+    outputlabel	1	Output
+
+    parm {
+        name    "initialize"
+        label   "Initialize"
+        type    ordinal
+        default { "0" }
+        menu {
+            "sourceflip"    "Source FLIP"
+            "sink"          "Sink"
+            "sinkfluid"     "Sink FLIP"
+            "collision"     "Collision"
+            "pump"          "Pump"
+            "expand"        "Expand"
+        }
+        parmtag { "script_callback" "hou.node(\".\").hdaModule().set()" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "volumename"
+        label   "Volume Name"
+        type    string
+        default { "surface" }
+    }
+    parm {
+        name    "voxelsize"
+        label   "Voxel Size"
+        type    float
+        default { "0.1" }
+        range   { 0! 1! }
+    }
+    parm {
+        name    "shell"
+        label   "Shell Thickness"
+        type    toggle
+        nolabel
+        joinnext
+        default { "0" }
+    }
+    parm {
+        name    "shellthickness"
+        label   "Shell Thickness"
+        type    float
+        default { "0.1" }
+        disablewhen "{ shell == 0 }"
+        range   { 0 10 }
+    }
+    parm {
+        name    "outputfog"
+        label   "Output Fog"
+        type    toggle
+        default { "0" }
+    }
+    parm {
+        name    "remapfog"
+        label   "Remap Fog"
+        type    toggle
+        nolabel
+        joinnext
+        default { "0" }
+        disablewhen "{ outputfog == 0 }"
+    }
+    parm {
+        name    "fogboost"
+        label   "Fog Boost"
+        type    float
+        default { "0.75" }
+        disablewhen "{ outputfog == 0 } { remapfog == 0 }"
+        range   { 0! 1! }
+    }
+    groupsimple {
+        name    "folder0"
+        label   "Particles"
+
+        parm {
+            name    "createparticles"
+            label   "Create Particles"
+            type    toggle
+            default { "1" }
+        }
+        parm {
+            name    "particlegroup"
+            label   "Particle Group"
+            type    string
+            default { "particles" }
+            disablewhen "{ createparticles == 0 }"
+        }
+        parm {
+            name    "particlesep"
+            label   "Particle Separation"
+            type    float
+            default { "0.1" }
+            disablewhen "{ createparticles == 0 }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "jitterseed"
+            label   "Jitter Seed"
+            type    float
+            default { "0" }
+            disablewhen "{ createparticles == 0 }"
+            range   { 0 10 }
+        }
+        parm {
+            name    "jitterscale"
+            label   "Jitter Scale"
+            type    float
+            default { "1" }
+            disablewhen "{ createparticles == 0 }"
+            range   { 0 10 }
+        }
+        parm {
+            name    "dooversampling"
+            label   "Oversampling"
+            type    toggle
+            nolabel
+            joinnext
+            default { "off" }
+            disablewhen "{ createparticles == 0 }"
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "oversampling"
+            label   "Oversampling"
+            type    float
+            default { "2" }
+            disablewhen "{ createparticles == 0 } { dooversampling == 0 }"
+            range   { 1 10 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "oversamplingbandwidth"
+            label   "Oversampling Bandwidth"
+            type    float
+            default { "1" }
+            disablewhen "{ createparticles == 0 } { dooversampling == 0 }"
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "addpscale"
+            label   "Add Radius Attribute"
+            type    toggle
+            nolabel
+            joinnext
+            default { "0" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "pscale"
+            label   "Radius Attribute"
+            type    string
+            default { "pscale" }
+            disablewhen "{ addpscale == 0 }"
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "addvelocity"
+            label   "Add Velocity"
+            type    toggle
+            nolabel
+            joinnext
+            default { "0" }
+            disablewhen "{ createparticles == 0 }"
+        }
+        parm {
+            name    "velocity"
+            label   "Velocity"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            disablewhen "{ createparticles == 0 } { addvelocity == 0 }"
+            range   { -1 1 }
+        }
+        parm {
+            name    "enablerest"
+            label   "Add Rest Attribute"
+            type    toggle
+            default { "0" }
+            disablewhen "{ createparticles == 0 }"
+        }
+        parm {
+            name    "dualrestattributes"
+            label   "Dual Rest Attributes"
+            type    toggle
+            default { "1" }
+            disablewhen "{ createparticles == 0 } { enablerest == 0 }"
+        }
+        parm {
+            name    "restoffset"
+            label   "Rest Offset"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            disablewhen "{ createparticles == 0 } { enablerest == 0 }"
+            range   { -1 1 }
+        }
+    }
+
+}

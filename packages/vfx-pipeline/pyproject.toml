@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vfx-pipeline"
+version = "2.0.0rc1"
+description = "Cross-DCC Reference Visual Twin orchestration for Bridge Skills"
+requires-python = ">=3.9"
+dependencies = [
+  "dcc-task-runtime==2.0.0rc1",
+  "houdini-bridge==2.0.0rc1",
+  "nuke-bridge==2.0.0rc1",
+]
+
+[project.scripts]
+vfx-pipeline = "vfx_pipeline.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

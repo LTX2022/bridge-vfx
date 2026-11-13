@@ -1,0 +1,4924 @@
+{
+  "schema": "bridge.domain_operation_card_document/1.0",
+  "kind": "prospective_case_contract_not_execution_evidence",
+  "domain_pack": "vellum_softbody_grains_v1",
+  "domain_pack_version": "1.0.0",
+  "work_package": "W3",
+  "owner": "Z",
+  "formal_runtime_owner": "R",
+  "status": "BLOCKED",
+  "baseline_id": "7046477d4daba24610f601c257909b52b95834326b7c1d29801c50662231f499",
+  "source_snapshot_id": "f90b44bf88cadb30cce4cffe0d68449c057d29b97096aa4665066756cfb657fb",
+  "versions": [
+    {
+      "houdini_version": "21.0.631",
+      "status": "BLOCKED",
+      "input_versions": {
+        "domain_pack": "vellum_softbody_grains_v1",
+        "domain_pack_version": "1.0.0",
+        "catalog_source_snapshot_id": "f90b44bf88cadb30cce4cffe0d68449c057d29b97096aa4665066756cfb657fb",
+        "runtime_interface": "ABSENT_NOT_FROZEN",
+        "houdini_version_must_be_explicit": true
+      },
+      "expected_topology": {
+        "roles": [
+          "softbody:actual shape/volume preservation constraints",
+          "grains:Sop/vellumconstraints_grain actual particle creation",
+          "solver:Sop/vellumsolver",
+          "collision:actual collision input",
+          "output:Sop/null"
+        ],
+        "edges_and_bindings": [
+          "branch source -> branch constraints",
+          "each branch constraints geometry[0] -> solver[0]",
+          "each branch constraints[1] -> solver[1]",
+          "collision -> solver[2]",
+          "solver[0] -> output[0]"
+        ],
+        "assertions": [
+          "execute softbody and grains subvariants inside every existing scenario; do not add/delete case IDs",
+          "softbody shape/volume constraints cannot reuse ordinary distance-only graph",
+          "grains createpoints=1, grainsize and packingdensity; dofriction initialized before coefficient friction; solver.friction Enable External toggle rejected for coefficient",
+          "niter/collisionsiter/veldamping at solver, stiffness at branch constraints; packing only applicable to grains, explicit pre-side-effect rejection for inapplicable branch"
+        ],
+        "port_gaps": "every BLOCKED port must receive exact installed definition/HOM fact before execution",
+        "role_path_map": {
+          "status": "BLOCKED",
+          "reason": "R has not frozen legal owned_roots/context layout; cannot assign /stage, /out or /mat ownership from self-reported manifest"
+        }
+      },
+      "current_host_nodes": [
+        {
+          "role": "source",
+          "category": "sop",
+          "type_candidates": [
+            "sphere"
+          ],
+          "required_parameter_aliases": [
+            [
+              "radx",
+              "radius"
+            ]
+          ],
+          "input_role": null
+        },
+        {
+          "role": "constraints",
+          "category": "sop",
+          "type_candidates": [
+            "vellumconstraints"
+          ],
+          "required_parameter_aliases": [
+            [
+              "constrainttype",
+              "type"
+            ]
+          ],
+          "input_role": "source"
+        },
+        {
+          "role": "solver",
+          "category": "sop",
+          "type_candidates": [
+            "vellumsolver"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": "constraints"
+        },
+        {
+          "role": "output",
+          "category": "sop",
+          "type_candidates": [
+            "null"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": "solver"
+        }
+      ],
+      "current_host_connections": [
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "constraints",
+          "destination_input": 0
+        },
+        {
+          "source_role": "constraints",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 0
+        },
+        {
+          "source_role": "constraints",
+          "source_output": 1,
+          "destination_role": "solver",
+          "destination_input": 1
+        },
+        {
+          "source_role": "solver",
+          "source_output": 0,
+          "destination_role": "output",
+          "destination_input": 0
+        }
+      ],
+      "control_coverage": [
+        {
+          "control": "cluster_stiffness",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "cluster_stiffness",
+            "node_role": "constraints",
+            "parameter_aliases": [
+              "clusterstiffness",
+              "shapestiffness"
+            ],
+            "minimum": 0.0,
+            "maximum": 1000000000000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            1000000000000.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": null,
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "BLOCKED_EXPECTED_ROLE_OR_MACHINE_FIELD_UNRESOLVED",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        },
+        {
+          "control": "collision_passes",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "collision_passes",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "collisionpasses",
+              "maxcollisionpasses"
+            ],
+            "minimum": 1.0,
+            "maximum": 1000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "int",
+            "application": "houdini"
+          },
+          "current_runtime_type": "int",
+          "public_range": [
+            1.0,
+            1000.0
+          ],
+          "proposed_case_value": 1,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": "solver",
+          "expected_operator": "Sop/vellumsolver",
+          "expected_machine_fields": [
+            "collisionsiter"
+          ],
+          "binding_basis": "contract_revision_2_expected_mapping",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "21.0.631",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/otls/OPlibSop.hda",
+                "size_bytes": 15722206,
+                "sha256": "5018624a3f850b498df5696e7294dae8d442a847b6c61b9717025495d76bf5e2"
+              },
+              "operator": "Sop/vellumsolver",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "0c3b889b0b3285ec1336b7b29c1b8a525765eef0e9e0707312ea1e4ae5abd5fc",
+              "machine_field": "collisionsiter",
+              "native_parameter": {
+                "name": "collisionsiter",
+                "type": "integer",
+                "size": 1,
+                "label": "Collision Passes",
+                "default_tokens": [
+                  "10"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0",
+                  "10"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "integer"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "constraint_iterations",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "constraint_iterations",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "constraintiterations",
+              "iterations"
+            ],
+            "minimum": 1.0,
+            "maximum": 10000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "int",
+            "application": "houdini"
+          },
+          "current_runtime_type": "int",
+          "public_range": [
+            1.0,
+            10000.0
+          ],
+          "proposed_case_value": 1,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": "solver",
+          "expected_operator": "Sop/vellumsolver",
+          "expected_machine_fields": [
+            "niter"
+          ],
+          "binding_basis": "contract_revision_2_expected_mapping",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "21.0.631",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/otls/OPlibSop.hda",
+                "size_bytes": 15722206,
+                "sha256": "5018624a3f850b498df5696e7294dae8d442a847b6c61b9717025495d76bf5e2"
+              },
+              "operator": "Sop/vellumsolver",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "0c3b889b0b3285ec1336b7b29c1b8a525765eef0e9e0707312ea1e4ae5abd5fc",
+              "machine_field": "niter",
+              "native_parameter": {
+                "name": "niter",
+                "type": "integer",
+                "size": 1,
+                "label": "Constraint Iterations",
+                "default_tokens": [
+                  "100"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0",
+                  "200"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "integer"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "constraint_stiffness",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "constraint_stiffness",
+            "node_role": "constraints",
+            "parameter_aliases": [
+              "stiffness",
+              "stretchstiffness"
+            ],
+            "minimum": 0.0,
+            "maximum": 1000000000000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            1000000000000.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": null,
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "BLOCKED_EXPECTED_ROLE_OR_MACHINE_FIELD_UNRESOLVED",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        },
+        {
+          "control": "damping",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "damping",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "dampingratio",
+              "damping"
+            ],
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            100.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": "solver",
+          "expected_operator": "Sop/vellumsolver",
+          "expected_machine_fields": [
+            "veldamping"
+          ],
+          "binding_basis": "contract_revision_2_expected_mapping",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "21.0.631",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/otls/OPlibSop.hda",
+                "size_bytes": 15722206,
+                "sha256": "5018624a3f850b498df5696e7294dae8d442a847b6c61b9717025495d76bf5e2"
+              },
+              "operator": "Sop/vellumsolver",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "0c3b889b0b3285ec1336b7b29c1b8a525765eef0e9e0707312ea1e4ae5abd5fc",
+              "machine_field": "veldamping",
+              "native_parameter": {
+                "name": "veldamping",
+                "type": "float",
+                "size": 1,
+                "label": "Velocity Damping",
+                "default_tokens": [
+                  "0"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0!",
+                  "1!"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "friction",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "friction",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "friction",
+              "dynamicfriction"
+            ],
+            "minimum": 0.0,
+            "maximum": 10.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            10.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": "grains_constraints",
+          "expected_operator": "Sop/vellumconstraints_grain",
+          "expected_machine_fields": [
+            "friction"
+          ],
+          "binding_basis": "contract_revision_2_expected_mapping",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "21.0.631",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/otls/OPlibSop.hda",
+                "size_bytes": 15722206,
+                "sha256": "5018624a3f850b498df5696e7294dae8d442a847b6c61b9717025495d76bf5e2"
+              },
+              "operator": "Sop/vellumconstraints_grain",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "17c3f57ff091a6e9ef586db4b1c268a5cee96c3b82ab8b87414552d2810e97eb",
+              "machine_field": "friction",
+              "native_parameter": {
+                "name": "friction",
+                "type": "float",
+                "size": 1,
+                "label": "Friction",
+                "default_tokens": [
+                  "1"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0",
+                  "10"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "grains branch createpoints=1; friction additionally dofriction=1; softbody applicability explicitly rejected before changes",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "grain_size",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "grain_size",
+            "node_role": "constraints",
+            "parameter_aliases": [
+              "particlesize",
+              "grainsize",
+              "pscale"
+            ],
+            "minimum": 0.0001,
+            "maximum": 1000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0001,
+            1000.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": "grains_constraints",
+          "expected_operator": "Sop/vellumconstraints_grain",
+          "expected_machine_fields": [
+            "grainsize"
+          ],
+          "binding_basis": "contract_revision_2_expected_mapping",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "21.0.631",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/otls/OPlibSop.hda",
+                "size_bytes": 15722206,
+                "sha256": "5018624a3f850b498df5696e7294dae8d442a847b6c61b9717025495d76bf5e2"
+              },
+              "operator": "Sop/vellumconstraints_grain",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "17c3f57ff091a6e9ef586db4b1c268a5cee96c3b82ab8b87414552d2810e97eb",
+              "machine_field": "grainsize",
+              "native_parameter": {
+                "name": "grainsize",
+                "type": "float",
+                "size": 1,
+                "label": "Particle Size",
+                "default_tokens": [
+                  "0.1"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0!",
+                  "10"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "grains branch createpoints=1; friction additionally dofriction=1; softbody applicability explicitly rejected before changes",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "packing",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "packing",
+            "node_role": "constraints",
+            "parameter_aliases": [
+              "packing",
+              "packingdensity"
+            ],
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            100.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": "grains_constraints",
+          "expected_operator": "Sop/vellumconstraints_grain",
+          "expected_machine_fields": [
+            "packingdensity"
+          ],
+          "binding_basis": "contract_revision_2_expected_mapping",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "21.0.631",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/otls/OPlibSop.hda",
+                "size_bytes": 15722206,
+                "sha256": "5018624a3f850b498df5696e7294dae8d442a847b6c61b9717025495d76bf5e2"
+              },
+              "operator": "Sop/vellumconstraints_grain",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "17c3f57ff091a6e9ef586db4b1c268a5cee96c3b82ab8b87414552d2810e97eb",
+              "machine_field": "packingdensity",
+              "native_parameter": {
+                "name": "packingdensity",
+                "type": "float",
+                "size": 1,
+                "label": "Packing Density",
+                "default_tokens": [
+                  "1"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "1!",
+                  "2!"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "grains branch createpoints=1; friction additionally dofriction=1; softbody applicability explicitly rejected before changes",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "stiffness",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "stiffness",
+            "node_role": "constraints",
+            "parameter_aliases": [
+              "stiffness",
+              "stretchstiffness"
+            ],
+            "minimum": 0.0,
+            "maximum": 1000000000000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            1000000000000.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": null,
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "BLOCKED_EXPECTED_ROLE_OR_MACHINE_FIELD_UNRESOLVED",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        },
+        {
+          "control": "substeps",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "substeps",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "substeps",
+              "minsubsteps"
+            ],
+            "minimum": 1.0,
+            "maximum": 100.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "int",
+            "application": "houdini"
+          },
+          "current_runtime_type": "int",
+          "public_range": [
+            1.0,
+            100.0
+          ],
+          "proposed_case_value": 1,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": "solver",
+          "expected_operator": "Sop/vellumsolver",
+          "expected_machine_fields": [
+            "substeps",
+            "minsubsteps"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "21.0.631",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/otls/OPlibSop.hda",
+                "size_bytes": 15722206,
+                "sha256": "5018624a3f850b498df5696e7294dae8d442a847b6c61b9717025495d76bf5e2"
+              },
+              "operator": "Sop/vellumsolver",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "0c3b889b0b3285ec1336b7b29c1b8a525765eef0e9e0707312ea1e4ae5abd5fc",
+              "machine_field": "substeps",
+              "native_parameter": {
+                "name": "substeps",
+                "type": "integer",
+                "size": 1,
+                "label": "Substeps",
+                "default_tokens": [
+                  "1"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "1",
+                  "10"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "integer"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        }
+      ],
+      "native_node_documentation_snapshot": {
+        "status": "DOCUMENTED_NODE_FACTS_WITH_GAPS",
+        "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/domain-native-documentation.json",
+        "source_sha256": "43ba32c0d518d94b0dbf57e6f8bc395c2c8f38718a51b26bb969669ce5d45d8c",
+        "archive": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/help/nodes.zip",
+        "archive_sha256": "7c83e14d77ddaebf0f918244c1747509633b2721a39468eb4ae3efc694886916",
+        "note": "node documentation existence does not establish parameter ABI or runtime geometry"
+      },
+      "stages": {
+        "formal_build": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "inspect_all_nodes_controls_connections": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "feedback_all_controls": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "save_reopen_structure_and_data": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "formal_output": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "real_host_live": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "visual_acceptance": {
+          "status": "NOT_RUN",
+          "evidence": null
+        }
+      },
+      "recovery": {
+        "status": "NOT_RUN",
+        "tested": false,
+        "owner": "R",
+        "evidence_owner": "E",
+        "domain_assertion_owner": "Z",
+        "requirements": [
+          "interrupt the process actually executing this case while operation active",
+          "supervisor observes identity and STOP_CONFIRMED before restart",
+          "restart controller and original task from real serialized scene, same request_id",
+          "completed side effects not repeated; incomplete work reconciled through formal control authorization",
+          "recovered topology/ALL controls/domain data/producer artifact content match saved actual state",
+          "case_id/build_id/provider/host identity/operation_id/scene hash and phase facts bound by E"
+        ],
+        "forbidden_substitutes": [
+          "immediately exiting helper process",
+          "manual RECONCILE edit",
+          "reopen original in-memory substitute scene",
+          "load-time expected-data rebuilding"
+        ]
+      }
+    },
+    {
+      "houdini_version": "22.0.429",
+      "status": "BLOCKED",
+      "input_versions": {
+        "domain_pack": "vellum_softbody_grains_v1",
+        "domain_pack_version": "1.0.0",
+        "catalog_source_snapshot_id": "f90b44bf88cadb30cce4cffe0d68449c057d29b97096aa4665066756cfb657fb",
+        "runtime_interface": "ABSENT_NOT_FROZEN",
+        "houdini_version_must_be_explicit": true
+      },
+      "expected_topology": {
+        "roles": [
+          "softbody:actual shape/volume preservation constraints",
+          "grains:Sop/vellumconstraints_grain actual particle creation",
+          "solver:Sop/vellumsolver",
+          "collision:actual collision input",
+          "output:Sop/null"
+        ],
+        "edges_and_bindings": [
+          "branch source -> branch constraints",
+          "each branch constraints geometry[0] -> solver[0]",
+          "each branch constraints[1] -> solver[1]",
+          "collision -> solver[2]",
+          "solver[0] -> output[0]"
+        ],
+        "assertions": [
+          "execute softbody and grains subvariants inside every existing scenario; do not add/delete case IDs",
+          "softbody shape/volume constraints cannot reuse ordinary distance-only graph",
+          "grains createpoints=1, grainsize and packingdensity; dofriction initialized before coefficient friction; solver.friction Enable External toggle rejected for coefficient",
+          "niter/collisionsiter/veldamping at solver, stiffness at branch constraints; packing only applicable to grains, explicit pre-side-effect rejection for inapplicable branch"
+        ],
+        "port_gaps": "every BLOCKED port must receive exact installed definition/HOM fact before execution",
+        "role_path_map": {
+          "status": "BLOCKED",
+          "reason": "R has not frozen legal owned_roots/context layout; cannot assign /stage, /out or /mat ownership from self-reported manifest"
+        }
+      },
+      "current_host_nodes": [
+        {
+          "role": "source",
+          "category": "sop",
+          "type_candidates": [
+            "sphere"
+          ],
+          "required_parameter_aliases": [
+            [
+              "radx",
+              "radius"
+            ]
+          ],
+          "input_role": null
+        },
+        {
+          "role": "constraints",
+          "category": "sop",
+          "type_candidates": [
+            "vellumconstraints"
+          ],
+          "required_parameter_aliases": [
+            [
+              "constrainttype",
+              "type"
+            ]
+          ],
+          "input_role": "source"
+        },
+        {
+          "role": "solver",
+          "category": "sop",
+          "type_candidates": [
+            "vellumsolver"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": "constraints"
+        },
+        {
+          "role": "output",
+          "category": "sop",
+          "type_candidates": [
+            "null"
+          ],
+          "required_parameter_aliases": [],
+          "input_role": "solver"
+        }
+      ],
+      "current_host_connections": [
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "constraints",
+          "destination_input": 0
+        },
+        {
+          "source_role": "constraints",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 0
+        },
+        {
+          "source_role": "constraints",
+          "source_output": 1,
+          "destination_role": "solver",
+          "destination_input": 1
+        },
+        {
+          "source_role": "solver",
+          "source_output": 0,
+          "destination_role": "output",
+          "destination_input": 0
+        }
+      ],
+      "control_coverage": [
+        {
+          "control": "cluster_stiffness",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "cluster_stiffness",
+            "node_role": "constraints",
+            "parameter_aliases": [
+              "clusterstiffness",
+              "shapestiffness"
+            ],
+            "minimum": 0.0,
+            "maximum": 1000000000000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            1000000000000.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": null,
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "BLOCKED_EXPECTED_ROLE_OR_MACHINE_FIELD_UNRESOLVED",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        },
+        {
+          "control": "collision_passes",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "collision_passes",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "collisionpasses",
+              "maxcollisionpasses"
+            ],
+            "minimum": 1.0,
+            "maximum": 1000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "int",
+            "application": "houdini"
+          },
+          "current_runtime_type": "int",
+          "public_range": [
+            1.0,
+            1000.0
+          ],
+          "proposed_case_value": 1,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": "solver",
+          "expected_operator": "Sop/vellumsolver",
+          "expected_machine_fields": [
+            "collisionsiter"
+          ],
+          "binding_basis": "contract_revision_2_expected_mapping",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "22.0.429",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/otls/OPlibSop.hda",
+                "size_bytes": 17292461,
+                "sha256": "c24559e89d9f2895e32d2fc26a96b922c00a47a75de212f60a56928042df1a7f"
+              },
+              "operator": "Sop/vellumsolver",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "91e6811b8ad06b252aefcbba3a22ef51affc233ddc2cb8005f0f24830f57a1b2",
+              "machine_field": "collisionsiter",
+              "native_parameter": {
+                "name": "collisionsiter",
+                "type": "integer",
+                "size": 1,
+                "label": "Collision Passes",
+                "default_tokens": [
+                  "10"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0",
+                  "10"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "integer"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "constraint_iterations",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "constraint_iterations",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "constraintiterations",
+              "iterations"
+            ],
+            "minimum": 1.0,
+            "maximum": 10000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "int",
+            "application": "houdini"
+          },
+          "current_runtime_type": "int",
+          "public_range": [
+            1.0,
+            10000.0
+          ],
+          "proposed_case_value": 1,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": "solver",
+          "expected_operator": "Sop/vellumsolver",
+          "expected_machine_fields": [
+            "niter"
+          ],
+          "binding_basis": "contract_revision_2_expected_mapping",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "22.0.429",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/otls/OPlibSop.hda",
+                "size_bytes": 17292461,
+                "sha256": "c24559e89d9f2895e32d2fc26a96b922c00a47a75de212f60a56928042df1a7f"
+              },
+              "operator": "Sop/vellumsolver",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "91e6811b8ad06b252aefcbba3a22ef51affc233ddc2cb8005f0f24830f57a1b2",
+              "machine_field": "niter",
+              "native_parameter": {
+                "name": "niter",
+                "type": "integer",
+                "size": 1,
+                "label": "Constraint Iterations",
+                "default_tokens": [
+                  "100"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0",
+                  "200"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "integer"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "constraint_stiffness",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "constraint_stiffness",
+            "node_role": "constraints",
+            "parameter_aliases": [
+              "stiffness",
+              "stretchstiffness"
+            ],
+            "minimum": 0.0,
+            "maximum": 1000000000000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            1000000000000.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": null,
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "BLOCKED_EXPECTED_ROLE_OR_MACHINE_FIELD_UNRESOLVED",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        },
+        {
+          "control": "damping",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "damping",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "dampingratio",
+              "damping"
+            ],
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            100.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": "solver",
+          "expected_operator": "Sop/vellumsolver",
+          "expected_machine_fields": [
+            "veldamping"
+          ],
+          "binding_basis": "contract_revision_2_expected_mapping",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "22.0.429",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/otls/OPlibSop.hda",
+                "size_bytes": 17292461,
+                "sha256": "c24559e89d9f2895e32d2fc26a96b922c00a47a75de212f60a56928042df1a7f"
+              },
+              "operator": "Sop/vellumsolver",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "91e6811b8ad06b252aefcbba3a22ef51affc233ddc2cb8005f0f24830f57a1b2",
+              "machine_field": "veldamping",
+              "native_parameter": {
+                "name": "veldamping",
+                "type": "float",
+                "size": 1,
+                "label": "Velocity Damping",
+                "default_tokens": [
+                  "0"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0!",
+                  "1!"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "friction",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "friction",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "friction",
+              "dynamicfriction"
+            ],
+            "minimum": 0.0,
+            "maximum": 10.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            10.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": "grains_constraints",
+          "expected_operator": "Sop/vellumconstraints_grain",
+          "expected_machine_fields": [
+            "friction"
+          ],
+          "binding_basis": "contract_revision_2_expected_mapping",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "22.0.429",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/otls/OPlibSop.hda",
+                "size_bytes": 17292461,
+                "sha256": "c24559e89d9f2895e32d2fc26a96b922c00a47a75de212f60a56928042df1a7f"
+              },
+              "operator": "Sop/vellumconstraints_grain",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "17c3f57ff091a6e9ef586db4b1c268a5cee96c3b82ab8b87414552d2810e97eb",
+              "machine_field": "friction",
+              "native_parameter": {
+                "name": "friction",
+                "type": "float",
+                "size": 1,
+                "label": "Friction",
+                "default_tokens": [
+                  "1"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0",
+                  "10"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "grains branch createpoints=1; friction additionally dofriction=1; softbody applicability explicitly rejected before changes",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "grain_size",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "grain_size",
+            "node_role": "constraints",
+            "parameter_aliases": [
+              "particlesize",
+              "grainsize",
+              "pscale"
+            ],
+            "minimum": 0.0001,
+            "maximum": 1000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0001,
+            1000.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": "grains_constraints",
+          "expected_operator": "Sop/vellumconstraints_grain",
+          "expected_machine_fields": [
+            "grainsize"
+          ],
+          "binding_basis": "contract_revision_2_expected_mapping",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "22.0.429",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/otls/OPlibSop.hda",
+                "size_bytes": 17292461,
+                "sha256": "c24559e89d9f2895e32d2fc26a96b922c00a47a75de212f60a56928042df1a7f"
+              },
+              "operator": "Sop/vellumconstraints_grain",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "17c3f57ff091a6e9ef586db4b1c268a5cee96c3b82ab8b87414552d2810e97eb",
+              "machine_field": "grainsize",
+              "native_parameter": {
+                "name": "grainsize",
+                "type": "float",
+                "size": 1,
+                "label": "Particle Size",
+                "default_tokens": [
+                  "0.1"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0!",
+                  "10"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "grains branch createpoints=1; friction additionally dofriction=1; softbody applicability explicitly rejected before changes",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "packing",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "packing",
+            "node_role": "constraints",
+            "parameter_aliases": [
+              "packing",
+              "packingdensity"
+            ],
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            100.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": "grains_constraints",
+          "expected_operator": "Sop/vellumconstraints_grain",
+          "expected_machine_fields": [
+            "packingdensity"
+          ],
+          "binding_basis": "contract_revision_2_expected_mapping",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "22.0.429",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/otls/OPlibSop.hda",
+                "size_bytes": 17292461,
+                "sha256": "c24559e89d9f2895e32d2fc26a96b922c00a47a75de212f60a56928042df1a7f"
+              },
+              "operator": "Sop/vellumconstraints_grain",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "17c3f57ff091a6e9ef586db4b1c268a5cee96c3b82ab8b87414552d2810e97eb",
+              "machine_field": "packingdensity",
+              "native_parameter": {
+                "name": "packingdensity",
+                "type": "float",
+                "size": 1,
+                "label": "Packing Density",
+                "default_tokens": [
+                  "1"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "1!",
+                  "2!"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "grains branch createpoints=1; friction additionally dofriction=1; softbody applicability explicitly rejected before changes",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "stiffness",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "stiffness",
+            "node_role": "constraints",
+            "parameter_aliases": [
+              "stiffness",
+              "stretchstiffness"
+            ],
+            "minimum": 0.0,
+            "maximum": 1000000000000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            1000000000000.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": null,
+          "expected_operator": null,
+          "expected_machine_fields": [],
+          "binding_basis": "BLOCKED_EXPECTED_ROLE_OR_MACHINE_FIELD_UNRESOLVED",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        },
+        {
+          "control": "substeps",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "substeps",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "substeps",
+              "minsubsteps"
+            ],
+            "minimum": 1.0,
+            "maximum": 100.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "int",
+            "application": "houdini"
+          },
+          "current_runtime_type": "int",
+          "public_range": [
+            1.0,
+            100.0
+          ],
+          "proposed_case_value": 1,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "simulation"
+            ],
+            "components": []
+          },
+          "expected_role": "solver",
+          "expected_operator": "Sop/vellumsolver",
+          "expected_machine_fields": [
+            "substeps",
+            "minsubsteps"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "22.0.429",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/otls/OPlibSop.hda",
+                "size_bytes": 17292461,
+                "sha256": "c24559e89d9f2895e32d2fc26a96b922c00a47a75de212f60a56928042df1a7f"
+              },
+              "operator": "Sop/vellumsolver",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "91e6811b8ad06b252aefcbba3a22ef51affc233ddc2cb8005f0f24830f57a1b2",
+              "machine_field": "substeps",
+              "native_parameter": {
+                "name": "substeps",
+                "type": "integer",
+                "size": 1,
+                "label": "Substeps",
+                "default_tokens": [
+                  "1"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "1",
+                  "10"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "integer"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        }
+      ],
+      "native_node_documentation_snapshot": {
+        "status": "DOCUMENTED_NODE_FACTS_WITH_GAPS",
+        "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/domain-native-documentation.json",
+        "source_sha256": "43ba32c0d518d94b0dbf57e6f8bc395c2c8f38718a51b26bb969669ce5d45d8c",
+        "archive": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/help/nodes.zip",
+        "archive_sha256": "6ca2ef18ce0d1f142d3415e27885b36f69b3537344a04621c89f9fab6937ad53",
+        "note": "node documentation existence does not establish parameter ABI or runtime geometry"
+      },
+      "stages": {
+        "formal_build": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "inspect_all_nodes_controls_connections": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "feedback_all_controls": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "save_reopen_structure_and_data": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "formal_output": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "real_host_live": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "visual_acceptance": {
+          "status": "NOT_RUN",
+          "evidence": null
+        }
+      },
+      "recovery": {
+        "status": "NOT_RUN",
+        "tested": false,
+        "owner": "R",
+        "evidence_owner": "E",
+        "domain_assertion_owner": "Z",
+        "requirements": [
+          "interrupt the process actually executing this case while operation active",
+          "supervisor observes identity and STOP_CONFIRMED before restart",
+          "restart controller and original task from real serialized scene, same request_id",
+          "completed side effects not repeated; incomplete work reconciled through formal control authorization",
+          "recovered topology/ALL controls/domain data/producer artifact content match saved actual state",
+          "case_id/build_id/provider/host identity/operation_id/scene hash and phase facts bound by E"
+        ],
+        "forbidden_substitutes": [
+          "immediately exiting helper process",
+          "manual RECONCILE edit",
+          "reopen original in-memory substitute scene",
+          "load-time expected-data rebuilding"
+        ]
+      }
+    },
+    {
+      "houdini_version": "22.0.459",
+      "kind": "current_preparation_expectation_not_execution_evidence",
+      "status": "BLOCKED",
+      "input_versions": {
+        "domain_pack": "vellum_softbody_grains_v1",
+        "domain_pack_version": "1.0.0",
+        "houdini_version_must_be_explicit": true
+      },
+      "expected_nodes": {
+        "softbody": [
+          {
+            "role": "geometry_network",
+            "category": "obj",
+            "input_role": null,
+            "type_candidates": [
+              "geo"
+            ],
+            "required_parameter_aliases": []
+          },
+          {
+            "role": "source",
+            "category": "sop",
+            "input_role": null,
+            "parent_role": "geometry_network",
+            "type_candidates": [
+              "sphere"
+            ],
+            "required_parameter_aliases": []
+          },
+          {
+            "role": "collision_source",
+            "category": "sop",
+            "input_role": null,
+            "parent_role": "geometry_network",
+            "type_candidates": [
+              "box"
+            ],
+            "required_parameter_aliases": [
+              [
+                "size"
+              ]
+            ]
+          },
+          {
+            "role": "collision_transform",
+            "category": "sop",
+            "input_role": "collision_source",
+            "parent_role": "geometry_network",
+            "type_candidates": [
+              "xform"
+            ],
+            "required_parameter_aliases": [
+              [
+                "t"
+              ],
+              [
+                "s"
+              ]
+            ]
+          },
+          {
+            "role": "tet_mesh",
+            "category": "sop",
+            "input_role": "source",
+            "parent_role": "geometry_network",
+            "type_candidates": [
+              "tetconform"
+            ],
+            "required_parameter_aliases": [
+              [
+                "usemaxtetscale"
+              ],
+              [
+                "maxtetscale"
+              ]
+            ]
+          },
+          {
+            "role": "constraints",
+            "category": "sop",
+            "input_role": "tet_mesh",
+            "parent_role": "geometry_network",
+            "type_candidates": [
+              "vellumconstraints"
+            ],
+            "required_parameter_aliases": [
+              [
+                "constrainttype"
+              ],
+              [
+                "stretchstiffness"
+              ],
+              [
+                "stretchstiffnessexp"
+              ],
+              [
+                "stretchstiffnessscalemode"
+              ],
+              [
+                "preservevol"
+              ],
+              [
+                "linear"
+              ]
+            ]
+          },
+          {
+            "role": "cluster_points",
+            "category": "sop",
+            "input_role": "constraints",
+            "parent_role": "geometry_network",
+            "type_candidates": [
+              "clusterpoints"
+            ],
+            "required_parameter_aliases": [
+              [
+                "buildclusters"
+              ],
+              [
+                "num_clusters"
+              ],
+              [
+                "random_seed"
+              ],
+              [
+                "attrib_name"
+              ],
+              [
+                "cluster_output"
+              ],
+              [
+                "num_controls"
+              ],
+              [
+                "control_attrib#"
+              ],
+              [
+                "control_weight#"
+              ]
+            ]
+          },
+          {
+            "role": "cluster_constraints",
+            "category": "sop",
+            "input_role": "cluster_points",
+            "parent_role": "geometry_network",
+            "type_candidates": [
+              "vellumconstraints"
+            ],
+            "required_parameter_aliases": [
+              [
+                "constrainttype"
+              ],
+              [
+                "piecemode"
+              ],
+              [
+                "pieceattrib"
+              ],
+              [
+                "stretchstiffness"
+              ],
+              [
+                "stretchstiffnessexp"
+              ],
+              [
+                "stretchstiffnessscalemode"
+              ]
+            ]
+          },
+          {
+            "role": "solver",
+            "category": "sop",
+            "input_role": "cluster_constraints",
+            "parent_role": "geometry_network",
+            "type_candidates": [
+              "vellumsolver"
+            ],
+            "required_parameter_aliases": [
+              [
+                "substeps"
+              ],
+              [
+                "niter"
+              ],
+              [
+                "collisionsiter"
+              ],
+              [
+                "veldamping"
+              ],
+              [
+                "enablecollisions"
+              ],
+              [
+                "friction"
+              ],
+              [
+                "static_threshold"
+              ],
+              [
+                "dynamic_scale"
+              ]
+            ]
+          },
+          {
+            "role": "output",
+            "category": "sop",
+            "input_role": "solver",
+            "parent_role": "geometry_network",
+            "type_candidates": [
+              "null"
+            ],
+            "required_parameter_aliases": []
+          },
+          {
+            "role": "usd_network",
+            "category": "obj",
+            "input_role": null,
+            "type_candidates": [
+              "lopnet"
+            ],
+            "required_parameter_aliases": []
+          },
+          {
+            "role": "render_network",
+            "category": "obj",
+            "input_role": null,
+            "type_candidates": [
+              "ropnet"
+            ],
+            "required_parameter_aliases": []
+          },
+          {
+            "role": "geometry_import",
+            "category": "lop",
+            "input_role": null,
+            "parent_role": "usd_network",
+            "type_candidates": [
+              "sopimport"
+            ],
+            "required_parameter_aliases": [
+              [
+                "soppath"
+              ],
+              [
+                "enable_pathprefix"
+              ],
+              [
+                "pathprefix"
+              ]
+            ]
+          },
+          {
+            "role": "camera",
+            "category": "lop",
+            "input_role": "geometry_import",
+            "parent_role": "usd_network",
+            "type_candidates": [
+              "camera"
+            ],
+            "required_parameter_aliases": [
+              [
+                "primpath"
+              ],
+              [
+                "focalLength"
+              ],
+              [
+                "fStop"
+              ],
+              [
+                "xn__shutteropen_0ta"
+              ],
+              [
+                "xn__shutterclose_nva"
+              ]
+            ]
+          },
+          {
+            "role": "light",
+            "category": "lop",
+            "input_role": "camera",
+            "parent_role": "usd_network",
+            "type_candidates": [
+              "light"
+            ],
+            "required_parameter_aliases": [
+              [
+                "primpath"
+              ],
+              [
+                "lighttype"
+              ],
+              [
+                "radius"
+              ],
+              [
+                "exposure"
+              ]
+            ]
+          },
+          {
+            "role": "render_settings",
+            "category": "lop",
+            "input_role": "light",
+            "parent_role": "usd_network",
+            "type_candidates": [
+              "karmarendersettings"
+            ],
+            "required_parameter_aliases": [
+              [
+                "primpath"
+              ],
+              [
+                "camera"
+              ],
+              [
+                "samplesperpixel"
+              ],
+              [
+                "volumesteprate"
+              ],
+              [
+                "enablemblur"
+              ],
+              [
+                "pixelfiltersize"
+              ],
+              [
+                "denoiser"
+              ]
+            ]
+          },
+          {
+            "role": "render_var",
+            "category": "lop",
+            "input_role": "render_settings",
+            "parent_role": "usd_network",
+            "type_candidates": [
+              "rendervar"
+            ],
+            "required_parameter_aliases": [
+              [
+                "primpath"
+              ],
+              [
+                "sourceName"
+              ],
+              [
+                "sourceType"
+              ],
+              [
+                "dataType"
+              ]
+            ]
+          },
+          {
+            "role": "render_product",
+            "category": "lop",
+            "input_role": "render_var",
+            "parent_role": "usd_network",
+            "type_candidates": [
+              "renderproduct"
+            ],
+            "required_parameter_aliases": [
+              [
+                "primpattern"
+              ],
+              [
+                "orderedVars"
+              ],
+              [
+                "productType"
+              ],
+              [
+                "productName"
+              ],
+              [
+                "camera"
+              ]
+            ]
+          },
+          {
+            "role": "settings_binding",
+            "category": "lop",
+            "input_role": "render_product",
+            "parent_role": "usd_network",
+            "type_candidates": [
+              "rendersettings"
+            ],
+            "required_parameter_aliases": [
+              [
+                "primpattern"
+              ],
+              [
+                "createprims"
+              ],
+              [
+                "products"
+              ],
+              [
+                "camera"
+              ]
+            ]
+          },
+          {
+            "role": "render",
+            "category": "rop",
+            "input_role": null,
+            "parent_role": "render_network",
+            "type_candidates": [
+              "usdrender"
+            ],
+            "required_parameter_aliases": [
+              [
+                "loppath"
+              ],
+              [
+                "rendersettings"
+              ],
+              [
+                "override_camera"
+              ],
+              [
+                "outputimage"
+              ],
+              [
+                "execute"
+              ]
+            ]
+          }
+        ],
+        "grains": [
+          {
+            "role": "geometry_network",
+            "category": "obj",
+            "input_role": null,
+            "type_candidates": [
+              "geo"
+            ],
+            "required_parameter_aliases": []
+          },
+          {
+            "role": "source",
+            "category": "sop",
+            "input_role": null,
+            "parent_role": "geometry_network",
+            "type_candidates": [
+              "sphere"
+            ],
+            "required_parameter_aliases": []
+          },
+          {
+            "role": "collision_source",
+            "category": "sop",
+            "input_role": null,
+            "parent_role": "geometry_network",
+            "type_candidates": [
+              "box"
+            ],
+            "required_parameter_aliases": [
+              [
+                "size"
+              ]
+            ]
+          },
+          {
+            "role": "collision_transform",
+            "category": "sop",
+            "input_role": "collision_source",
+            "parent_role": "geometry_network",
+            "type_candidates": [
+              "xform"
+            ],
+            "required_parameter_aliases": [
+              [
+                "t"
+              ],
+              [
+                "s"
+              ]
+            ]
+          },
+          {
+            "role": "grain_source",
+            "category": "sop",
+            "input_role": "source",
+            "parent_role": "geometry_network",
+            "type_candidates": [
+              "vellumconstraints_grain"
+            ],
+            "required_parameter_aliases": [
+              [
+                "createpoints"
+              ],
+              [
+                "method"
+              ],
+              [
+                "type"
+              ],
+              [
+                "grainsize"
+              ],
+              [
+                "packingdensity"
+              ],
+              [
+                "dofriction"
+              ],
+              [
+                "friction"
+              ]
+            ]
+          },
+          {
+            "role": "constraints",
+            "category": "sop",
+            "input_role": "grain_source",
+            "parent_role": "geometry_network",
+            "type_candidates": [
+              "vellumconstraints"
+            ],
+            "required_parameter_aliases": [
+              [
+                "constrainttype"
+              ],
+              [
+                "stretchstiffness"
+              ],
+              [
+                "stretchstiffnessexp"
+              ],
+              [
+                "stretchstiffnessscalemode"
+              ],
+              [
+                "glue_radius"
+              ],
+              [
+                "glue_minradius"
+              ],
+              [
+                "glue_numpt"
+              ],
+              [
+                "glue_searchpref"
+              ],
+              [
+                "glue_constraintsperpt"
+              ],
+              [
+                "glue_detach_chance"
+              ],
+              [
+                "glue_point_chance"
+              ],
+              [
+                "glue_usecluster"
+              ],
+              [
+                "piecemode"
+              ]
+            ]
+          },
+          {
+            "role": "cluster_points",
+            "category": "sop",
+            "input_role": "constraints",
+            "parent_role": "geometry_network",
+            "type_candidates": [
+              "clusterpoints"
+            ],
+            "required_parameter_aliases": [
+              [
+                "buildclusters"
+              ],
+              [
+                "num_clusters"
+              ],
+              [
+                "random_seed"
+              ],
+              [
+                "attrib_name"
+              ],
+              [
+                "cluster_output"
+              ],
+              [
+                "num_controls"
+              ],
+              [
+                "control_attrib#"
+              ],
+              [
+                "control_weight#"
+              ]
+            ]
+          },
+          {
+            "role": "cluster_constraints",
+            "category": "sop",
+            "input_role": "cluster_points",
+            "parent_role": "geometry_network",
+            "type_candidates": [
+              "vellumconstraints"
+            ],
+            "required_parameter_aliases": [
+              [
+                "constrainttype"
+              ],
+              [
+                "piecemode"
+              ],
+              [
+                "pieceattrib"
+              ],
+              [
+                "stretchstiffness"
+              ],
+              [
+                "stretchstiffnessexp"
+              ],
+              [
+                "stretchstiffnessscalemode"
+              ]
+            ]
+          },
+          {
+            "role": "solver",
+            "category": "sop",
+            "input_role": "cluster_constraints",
+            "parent_role": "geometry_network",
+            "type_candidates": [
+              "vellumsolver"
+            ],
+            "required_parameter_aliases": [
+              [
+                "substeps"
+              ],
+              [
+                "niter"
+              ],
+              [
+                "collisionsiter"
+              ],
+              [
+                "veldamping"
+              ],
+              [
+                "enablecollisions"
+              ],
+              [
+                "friction"
+              ],
+              [
+                "static_threshold"
+              ],
+              [
+                "dynamic_scale"
+              ]
+            ]
+          },
+          {
+            "role": "output",
+            "category": "sop",
+            "input_role": "solver",
+            "parent_role": "geometry_network",
+            "type_candidates": [
+              "null"
+            ],
+            "required_parameter_aliases": []
+          },
+          {
+            "role": "usd_network",
+            "category": "obj",
+            "input_role": null,
+            "type_candidates": [
+              "lopnet"
+            ],
+            "required_parameter_aliases": []
+          },
+          {
+            "role": "render_network",
+            "category": "obj",
+            "input_role": null,
+            "type_candidates": [
+              "ropnet"
+            ],
+            "required_parameter_aliases": []
+          },
+          {
+            "role": "geometry_import",
+            "category": "lop",
+            "input_role": null,
+            "parent_role": "usd_network",
+            "type_candidates": [
+              "sopimport"
+            ],
+            "required_parameter_aliases": [
+              [
+                "soppath"
+              ],
+              [
+                "enable_pathprefix"
+              ],
+              [
+                "pathprefix"
+              ]
+            ]
+          },
+          {
+            "role": "camera",
+            "category": "lop",
+            "input_role": "geometry_import",
+            "parent_role": "usd_network",
+            "type_candidates": [
+              "camera"
+            ],
+            "required_parameter_aliases": [
+              [
+                "primpath"
+              ],
+              [
+                "focalLength"
+              ],
+              [
+                "fStop"
+              ],
+              [
+                "xn__shutteropen_0ta"
+              ],
+              [
+                "xn__shutterclose_nva"
+              ]
+            ]
+          },
+          {
+            "role": "light",
+            "category": "lop",
+            "input_role": "camera",
+            "parent_role": "usd_network",
+            "type_candidates": [
+              "light"
+            ],
+            "required_parameter_aliases": [
+              [
+                "primpath"
+              ],
+              [
+                "lighttype"
+              ],
+              [
+                "radius"
+              ],
+              [
+                "exposure"
+              ]
+            ]
+          },
+          {
+            "role": "render_settings",
+            "category": "lop",
+            "input_role": "light",
+            "parent_role": "usd_network",
+            "type_candidates": [
+              "karmarendersettings"
+            ],
+            "required_parameter_aliases": [
+              [
+                "primpath"
+              ],
+              [
+                "camera"
+              ],
+              [
+                "samplesperpixel"
+              ],
+              [
+                "volumesteprate"
+              ],
+              [
+                "enablemblur"
+              ],
+              [
+                "pixelfiltersize"
+              ],
+              [
+                "denoiser"
+              ]
+            ]
+          },
+          {
+            "role": "render_var",
+            "category": "lop",
+            "input_role": "render_settings",
+            "parent_role": "usd_network",
+            "type_candidates": [
+              "rendervar"
+            ],
+            "required_parameter_aliases": [
+              [
+                "primpath"
+              ],
+              [
+                "sourceName"
+              ],
+              [
+                "sourceType"
+              ],
+              [
+                "dataType"
+              ]
+            ]
+          },
+          {
+            "role": "render_product",
+            "category": "lop",
+            "input_role": "render_var",
+            "parent_role": "usd_network",
+            "type_candidates": [
+              "renderproduct"
+            ],
+            "required_parameter_aliases": [
+              [
+                "primpattern"
+              ],
+              [
+                "orderedVars"
+              ],
+              [
+                "productType"
+              ],
+              [
+                "productName"
+              ],
+              [
+                "camera"
+              ]
+            ]
+          },
+          {
+            "role": "settings_binding",
+            "category": "lop",
+            "input_role": "render_product",
+            "parent_role": "usd_network",
+            "type_candidates": [
+              "rendersettings"
+            ],
+            "required_parameter_aliases": [
+              [
+                "primpattern"
+              ],
+              [
+                "createprims"
+              ],
+              [
+                "products"
+              ],
+              [
+                "camera"
+              ]
+            ]
+          },
+          {
+            "role": "render",
+            "category": "rop",
+            "input_role": null,
+            "parent_role": "render_network",
+            "type_candidates": [
+              "usdrender"
+            ],
+            "required_parameter_aliases": [
+              [
+                "loppath"
+              ],
+              [
+                "rendersettings"
+              ],
+              [
+                "override_camera"
+              ],
+              [
+                "outputimage"
+              ],
+              [
+                "execute"
+              ]
+            ]
+          }
+        ]
+      },
+      "expected_connections": {
+        "softbody": [
+          {
+            "source_role": "collision_source",
+            "source_output": 0,
+            "destination_role": "collision_transform",
+            "destination_input": 0
+          },
+          {
+            "source_role": "source",
+            "source_output": 0,
+            "destination_role": "tet_mesh",
+            "destination_input": 0
+          },
+          {
+            "source_role": "tet_mesh",
+            "source_output": 0,
+            "destination_role": "constraints",
+            "destination_input": 0
+          },
+          {
+            "source_role": "constraints",
+            "source_output": 0,
+            "destination_role": "cluster_points",
+            "destination_input": 0
+          },
+          {
+            "source_role": "cluster_points",
+            "source_output": 0,
+            "destination_role": "cluster_constraints",
+            "destination_input": 0
+          },
+          {
+            "source_role": "cluster_constraints",
+            "source_output": 0,
+            "destination_role": "solver",
+            "destination_input": 0
+          },
+          {
+            "source_role": "solver",
+            "source_output": 0,
+            "destination_role": "output",
+            "destination_input": 0
+          },
+          {
+            "source_role": "cluster_constraints",
+            "source_output": 1,
+            "destination_role": "solver",
+            "destination_input": 1
+          },
+          {
+            "source_role": "collision_transform",
+            "source_output": 0,
+            "destination_role": "solver",
+            "destination_input": 2
+          },
+          {
+            "source_role": "constraints",
+            "source_output": 1,
+            "destination_role": "cluster_constraints",
+            "destination_input": 1
+          },
+          {
+            "source_role": "geometry_import",
+            "source_output": 0,
+            "destination_role": "camera",
+            "destination_input": 0,
+            "require_same_parent": true
+          },
+          {
+            "source_role": "camera",
+            "source_output": 0,
+            "destination_role": "light",
+            "destination_input": 0,
+            "require_same_parent": true
+          },
+          {
+            "source_role": "light",
+            "source_output": 0,
+            "destination_role": "render_settings",
+            "destination_input": 0,
+            "require_same_parent": true
+          },
+          {
+            "source_role": "render_settings",
+            "source_output": 0,
+            "destination_role": "render_var",
+            "destination_input": 0,
+            "require_same_parent": true
+          },
+          {
+            "source_role": "render_var",
+            "source_output": 0,
+            "destination_role": "render_product",
+            "destination_input": 0,
+            "require_same_parent": true
+          },
+          {
+            "source_role": "render_product",
+            "source_output": 0,
+            "destination_role": "settings_binding",
+            "destination_input": 0,
+            "require_same_parent": true
+          }
+        ],
+        "grains": [
+          {
+            "source_role": "collision_source",
+            "source_output": 0,
+            "destination_role": "collision_transform",
+            "destination_input": 0
+          },
+          {
+            "source_role": "source",
+            "source_output": 0,
+            "destination_role": "grain_source",
+            "destination_input": 0
+          },
+          {
+            "source_role": "grain_source",
+            "source_output": 0,
+            "destination_role": "constraints",
+            "destination_input": 0
+          },
+          {
+            "source_role": "constraints",
+            "source_output": 0,
+            "destination_role": "cluster_points",
+            "destination_input": 0
+          },
+          {
+            "source_role": "cluster_points",
+            "source_output": 0,
+            "destination_role": "cluster_constraints",
+            "destination_input": 0
+          },
+          {
+            "source_role": "cluster_constraints",
+            "source_output": 0,
+            "destination_role": "solver",
+            "destination_input": 0
+          },
+          {
+            "source_role": "solver",
+            "source_output": 0,
+            "destination_role": "output",
+            "destination_input": 0
+          },
+          {
+            "source_role": "cluster_constraints",
+            "source_output": 1,
+            "destination_role": "solver",
+            "destination_input": 1
+          },
+          {
+            "source_role": "collision_transform",
+            "source_output": 0,
+            "destination_role": "solver",
+            "destination_input": 2
+          },
+          {
+            "source_role": "constraints",
+            "source_output": 1,
+            "destination_role": "cluster_constraints",
+            "destination_input": 1
+          },
+          {
+            "source_role": "grain_source",
+            "source_output": 1,
+            "destination_role": "constraints",
+            "destination_input": 1
+          },
+          {
+            "source_role": "geometry_import",
+            "source_output": 0,
+            "destination_role": "camera",
+            "destination_input": 0,
+            "require_same_parent": true
+          },
+          {
+            "source_role": "camera",
+            "source_output": 0,
+            "destination_role": "light",
+            "destination_input": 0,
+            "require_same_parent": true
+          },
+          {
+            "source_role": "light",
+            "source_output": 0,
+            "destination_role": "render_settings",
+            "destination_input": 0,
+            "require_same_parent": true
+          },
+          {
+            "source_role": "render_settings",
+            "source_output": 0,
+            "destination_role": "render_var",
+            "destination_input": 0,
+            "require_same_parent": true
+          },
+          {
+            "source_role": "render_var",
+            "source_output": 0,
+            "destination_role": "render_product",
+            "destination_input": 0,
+            "require_same_parent": true
+          },
+          {
+            "source_role": "render_product",
+            "source_output": 0,
+            "destination_role": "settings_binding",
+            "destination_input": 0,
+            "require_same_parent": true
+          }
+        ]
+      },
+      "control_coverage": {
+        "softbody": [
+          {
+            "minimum": 0,
+            "maximum": 1000000000000.0,
+            "value_type": "float",
+            "application": "houdini",
+            "invalidates_from": "generation_simulation",
+            "required_gates": [
+              [
+                "constraints",
+                "constrainttype",
+                "tetstretch"
+              ],
+              [
+                "constraints",
+                "stretchstiffnessscalemode",
+                "none"
+              ],
+              [
+                "constraints",
+                "preservevol",
+                1
+              ],
+              [
+                "constraints",
+                "linear",
+                "normarap"
+              ]
+            ],
+            "unit": "effective native constraint stiffness; not a material Young modulus",
+            "native_status": "mapped",
+            "semantic_contract": "native_constraint_stiffness_times_ten_to_exponent/1",
+            "native_multiplier_parm": "stretchstiffnessexp",
+            "forward": "native=effective/(10**actual_exponent)",
+            "inverse": "effective=native*(10**actual_exponent)",
+            "existing_exponent_policy": "read and freeze actual token-value exponent; never normalize existing nodes",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "stretchstiffness",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "constrainttype",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "stretchstiffnessscalemode",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "preservevol",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "linear",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "stiffness",
+            "node_role": "constraints",
+            "parameter_aliases": [
+              "stretchstiffness"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 1000000000000.0,
+            "value_type": "float",
+            "application": "houdini",
+            "invalidates_from": "generation_simulation",
+            "required_gates": [
+              [
+                "constraints",
+                "constrainttype",
+                "tetstretch"
+              ],
+              [
+                "constraints",
+                "stretchstiffnessscalemode",
+                "none"
+              ],
+              [
+                "constraints",
+                "preservevol",
+                1
+              ],
+              [
+                "constraints",
+                "linear",
+                "normarap"
+              ]
+            ],
+            "unit": "effective native constraint stiffness; not a material Young modulus",
+            "native_status": "mapped",
+            "semantic_contract": "native_constraint_stiffness_times_ten_to_exponent/1",
+            "native_multiplier_parm": "stretchstiffnessexp",
+            "forward": "native=effective/(10**actual_exponent)",
+            "inverse": "effective=native*(10**actual_exponent)",
+            "existing_exponent_policy": "read and freeze actual token-value exponent; never normalize existing nodes",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "stretchstiffness",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "constrainttype",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "stretchstiffnessscalemode",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "preservevol",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "linear",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "constraint_stiffness",
+            "node_role": "constraints",
+            "parameter_aliases": [
+              "stretchstiffness"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 1000000000000.0,
+            "value_type": "float",
+            "application": "houdini",
+            "invalidates_from": "generation_simulation",
+            "required_gates": [
+              [
+                "cluster_constraints",
+                "constrainttype",
+                "shapematch"
+              ],
+              [
+                "cluster_constraints",
+                "piecemode",
+                "attribute"
+              ],
+              [
+                "cluster_constraints",
+                "pieceattrib",
+                "cluster"
+              ],
+              [
+                "cluster_constraints",
+                "stretchstiffnessscalemode",
+                "none"
+              ],
+              [
+                "cluster_points",
+                "buildclusters",
+                1
+              ],
+              [
+                "cluster_points",
+                "attrib_name",
+                "cluster"
+              ],
+              [
+                "cluster_points",
+                "cluster_output",
+                "clusterpoints"
+              ]
+            ],
+            "unit": "effective native constraint stiffness; not a material Young modulus",
+            "native_status": "mapped",
+            "semantic_contract": "native_constraint_stiffness_times_ten_to_exponent/1",
+            "native_multiplier_parm": "stretchstiffnessexp",
+            "forward": "native=effective/(10**actual_exponent)",
+            "inverse": "effective=native*(10**actual_exponent)",
+            "existing_exponent_policy": "read and freeze actual token-value exponent; never normalize existing nodes",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "stretchstiffness",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "constrainttype",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "piecemode",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "pieceattrib",
+                  "type": "string",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "stretchstiffnessscalemode",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/clusterpoints",
+                  "parameter": "buildclusters",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "ac1d3c67cb0bca6d3e4b1800e5b5ee4f52ef611465e3d1a29d075ce566717e17",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/clusterpoints",
+                  "parameter": "attrib_name",
+                  "type": "string",
+                  "size": 1,
+                  "section_sha256": "ac1d3c67cb0bca6d3e4b1800e5b5ee4f52ef611465e3d1a29d075ce566717e17",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/clusterpoints",
+                  "parameter": "cluster_output",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "ac1d3c67cb0bca6d3e4b1800e5b5ee4f52ef611465e3d1a29d075ce566717e17",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "cluster_stiffness",
+            "node_role": "cluster_constraints",
+            "parameter_aliases": [
+              "stretchstiffness"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 10,
+            "value_type": "float",
+            "application": "houdini",
+            "invalidates_from": "generation_simulation",
+            "required_gates": [
+              [
+                "solver",
+                "enablecollisions",
+                1
+              ],
+              [
+                "solver",
+                "friction",
+                1
+              ]
+            ],
+            "unit": "native static friction threshold, approximately tangent of sliding slope angle",
+            "native_status": "mapped",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/vellumsolver",
+                  "parameter": "static_threshold",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "91e6811b8ad06b252aefcbba3a22ef51affc233ddc2cb8005f0f24830f57a1b2",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumsolver",
+                  "parameter": "enablecollisions",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "91e6811b8ad06b252aefcbba3a22ef51affc233ddc2cb8005f0f24830f57a1b2",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumsolver",
+                  "parameter": "friction",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "91e6811b8ad06b252aefcbba3a22ef51affc233ddc2cb8005f0f24830f57a1b2",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "friction",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "static_threshold"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 100,
+            "value_type": "float",
+            "application": "houdini",
+            "invalidates_from": "generation_simulation",
+            "required_gates": [],
+            "unit": "native direct velocity damping",
+            "native_status": "mapped",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/vellumsolver",
+                  "parameter": "veldamping",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "91e6811b8ad06b252aefcbba3a22ef51affc233ddc2cb8005f0f24830f57a1b2",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "damping",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "veldamping"
+            ]
+          },
+          {
+            "minimum": 1,
+            "maximum": 100,
+            "value_type": "int",
+            "application": "houdini",
+            "invalidates_from": "generation_simulation",
+            "required_gates": [],
+            "unit": "substeps per frame",
+            "native_status": "mapped",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/vellumsolver",
+                  "parameter": "substeps",
+                  "type": "integer",
+                  "size": 1,
+                  "section_sha256": "91e6811b8ad06b252aefcbba3a22ef51affc233ddc2cb8005f0f24830f57a1b2",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "substeps",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "substeps"
+            ]
+          },
+          {
+            "minimum": 1,
+            "maximum": 10000,
+            "value_type": "int",
+            "application": "houdini",
+            "invalidates_from": "generation_simulation",
+            "required_gates": [],
+            "unit": "constraint iterations per substep",
+            "native_status": "mapped",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/vellumsolver",
+                  "parameter": "niter",
+                  "type": "integer",
+                  "size": 1,
+                  "section_sha256": "91e6811b8ad06b252aefcbba3a22ef51affc233ddc2cb8005f0f24830f57a1b2",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "constraint_iterations",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "niter"
+            ]
+          },
+          {
+            "minimum": 1,
+            "maximum": 1000,
+            "value_type": "int",
+            "application": "houdini",
+            "invalidates_from": "generation_simulation",
+            "required_gates": [
+              [
+                "solver",
+                "enablecollisions",
+                1
+              ]
+            ],
+            "unit": "collision passes per solver substep",
+            "native_status": "mapped",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/vellumsolver",
+                  "parameter": "collisionsiter",
+                  "type": "integer",
+                  "size": 1,
+                  "section_sha256": "91e6811b8ad06b252aefcbba3a22ef51affc233ddc2cb8005f0f24830f57a1b2",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumsolver",
+                  "parameter": "enablecollisions",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "91e6811b8ad06b252aefcbba3a22ef51affc233ddc2cb8005f0f24830f57a1b2",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "collision_passes",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "collisionsiter"
+            ]
+          },
+          {
+            "minimum": 0.0001,
+            "maximum": 1000,
+            "value_type": "float",
+            "application": "houdini",
+            "invalidates_from": "source_layout_control",
+            "required_gates": [
+              [
+                "grain_source",
+                "createpoints",
+                1
+              ],
+              [
+                "grain_source",
+                "type",
+                "grain"
+              ],
+              [
+                "grain_source",
+                "method",
+                "grid"
+              ],
+              [
+                "constraints",
+                "constrainttype",
+                "glue"
+              ]
+            ],
+            "unit": "particle diameter in scene units; native point pscale=diameter/2",
+            "native_status": "blocked",
+            "semantic_contract": "grain_neighbour_glue_radius_twice_diameter/1",
+            "targets": [
+              [
+                "grain_source",
+                "grainsize"
+              ],
+              [
+                "constraints",
+                "glue_radius"
+              ]
+            ],
+            "forward": "grainsize=diameter; glue search radius=2*diameter",
+            "inverse": "diameter=grainsize; require radius=2*diameter",
+            "blocker": "H22_459_NATIVE_TEMPLATE_REQUIRED",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "constrainttype",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "glue_radius",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": [
+                {
+                  "role": "grain_source",
+                  "parameter": "grainsize",
+                  "operators": []
+                },
+                {
+                  "role": "grain_source",
+                  "parameter": "createpoints",
+                  "operators": []
+                },
+                {
+                  "role": "grain_source",
+                  "parameter": "type",
+                  "operators": []
+                },
+                {
+                  "role": "grain_source",
+                  "parameter": "method",
+                  "operators": []
+                },
+                {
+                  "role": "grain_source",
+                  "parameter": "grainsize",
+                  "operators": []
+                }
+              ]
+            },
+            "id": "grain_size",
+            "node_role": "grain_source",
+            "parameter_aliases": [
+              "grainsize"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 100,
+            "value_type": "float",
+            "application": "houdini",
+            "invalidates_from": "source_layout_control",
+            "required_gates": [
+              [
+                "grain_source",
+                "createpoints",
+                1
+              ],
+              [
+                "grain_source",
+                "method",
+                "grid"
+              ],
+              [
+                "grain_source",
+                "type",
+                "grain"
+              ]
+            ],
+            "unit": "native Regular Grid packing density multiplier; not measured final packing fraction",
+            "native_status": "blocked",
+            "blocker": "H22_459_NATIVE_TEMPLATE_REQUIRED",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [],
+              "missing": [
+                {
+                  "role": "grain_source",
+                  "parameter": "packingdensity",
+                  "operators": []
+                },
+                {
+                  "role": "grain_source",
+                  "parameter": "createpoints",
+                  "operators": []
+                },
+                {
+                  "role": "grain_source",
+                  "parameter": "method",
+                  "operators": []
+                },
+                {
+                  "role": "grain_source",
+                  "parameter": "type",
+                  "operators": []
+                }
+              ]
+            },
+            "id": "packing",
+            "node_role": "grain_source",
+            "parameter_aliases": [
+              "packingdensity"
+            ]
+          }
+        ],
+        "grains": [
+          {
+            "minimum": 0,
+            "maximum": 1000000000000.0,
+            "value_type": "float",
+            "application": "houdini",
+            "invalidates_from": "generation_simulation",
+            "required_gates": [
+              [
+                "constraints",
+                "constrainttype",
+                "glue"
+              ],
+              [
+                "constraints",
+                "stretchstiffnessscalemode",
+                "none"
+              ]
+            ],
+            "unit": "effective native constraint stiffness; not a material Young modulus",
+            "native_status": "mapped",
+            "semantic_contract": "native_constraint_stiffness_times_ten_to_exponent/1",
+            "native_multiplier_parm": "stretchstiffnessexp",
+            "forward": "native=effective/(10**actual_exponent)",
+            "inverse": "effective=native*(10**actual_exponent)",
+            "existing_exponent_policy": "read and freeze actual token-value exponent; never normalize existing nodes",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "stretchstiffness",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "constrainttype",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "stretchstiffnessscalemode",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "stiffness",
+            "node_role": "constraints",
+            "parameter_aliases": [
+              "stretchstiffness"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 1000000000000.0,
+            "value_type": "float",
+            "application": "houdini",
+            "invalidates_from": "generation_simulation",
+            "required_gates": [
+              [
+                "constraints",
+                "constrainttype",
+                "glue"
+              ],
+              [
+                "constraints",
+                "stretchstiffnessscalemode",
+                "none"
+              ]
+            ],
+            "unit": "effective native constraint stiffness; not a material Young modulus",
+            "native_status": "mapped",
+            "semantic_contract": "native_constraint_stiffness_times_ten_to_exponent/1",
+            "native_multiplier_parm": "stretchstiffnessexp",
+            "forward": "native=effective/(10**actual_exponent)",
+            "inverse": "effective=native*(10**actual_exponent)",
+            "existing_exponent_policy": "read and freeze actual token-value exponent; never normalize existing nodes",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "stretchstiffness",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "constrainttype",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "stretchstiffnessscalemode",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "constraint_stiffness",
+            "node_role": "constraints",
+            "parameter_aliases": [
+              "stretchstiffness"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 1000000000000.0,
+            "value_type": "float",
+            "application": "houdini",
+            "invalidates_from": "generation_simulation",
+            "required_gates": [
+              [
+                "cluster_constraints",
+                "constrainttype",
+                "shapematch"
+              ],
+              [
+                "cluster_constraints",
+                "piecemode",
+                "attribute"
+              ],
+              [
+                "cluster_constraints",
+                "pieceattrib",
+                "cluster"
+              ],
+              [
+                "cluster_constraints",
+                "stretchstiffnessscalemode",
+                "none"
+              ],
+              [
+                "cluster_points",
+                "buildclusters",
+                1
+              ],
+              [
+                "cluster_points",
+                "attrib_name",
+                "cluster"
+              ],
+              [
+                "cluster_points",
+                "cluster_output",
+                "clusterpoints"
+              ]
+            ],
+            "unit": "effective native constraint stiffness; not a material Young modulus",
+            "native_status": "mapped",
+            "semantic_contract": "native_constraint_stiffness_times_ten_to_exponent/1",
+            "native_multiplier_parm": "stretchstiffnessexp",
+            "forward": "native=effective/(10**actual_exponent)",
+            "inverse": "effective=native*(10**actual_exponent)",
+            "existing_exponent_policy": "read and freeze actual token-value exponent; never normalize existing nodes",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "stretchstiffness",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "constrainttype",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "piecemode",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "pieceattrib",
+                  "type": "string",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "stretchstiffnessscalemode",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/clusterpoints",
+                  "parameter": "buildclusters",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "ac1d3c67cb0bca6d3e4b1800e5b5ee4f52ef611465e3d1a29d075ce566717e17",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/clusterpoints",
+                  "parameter": "attrib_name",
+                  "type": "string",
+                  "size": 1,
+                  "section_sha256": "ac1d3c67cb0bca6d3e4b1800e5b5ee4f52ef611465e3d1a29d075ce566717e17",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/clusterpoints",
+                  "parameter": "cluster_output",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "ac1d3c67cb0bca6d3e4b1800e5b5ee4f52ef611465e3d1a29d075ce566717e17",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "cluster_stiffness",
+            "node_role": "cluster_constraints",
+            "parameter_aliases": [
+              "stretchstiffness"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 10,
+            "value_type": "float",
+            "application": "houdini",
+            "invalidates_from": "generation_simulation",
+            "required_gates": [
+              [
+                "solver",
+                "enablecollisions",
+                1
+              ],
+              [
+                "solver",
+                "friction",
+                1
+              ],
+              [
+                "grain_source",
+                "dofriction",
+                1
+              ]
+            ],
+            "unit": "native per-point friction multiplier; solver static threshold is readback context",
+            "native_status": "mapped",
+            "context_parms": [
+              [
+                "solver",
+                "static_threshold"
+              ],
+              [
+                "solver",
+                "dynamic_scale"
+              ]
+            ],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/vellumconstraints_grain",
+                  "parameter": "friction",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "17c3f57ff091a6e9ef586db4b1c268a5cee96c3b82ab8b87414552d2810e97eb",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumsolver",
+                  "parameter": "enablecollisions",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "91e6811b8ad06b252aefcbba3a22ef51affc233ddc2cb8005f0f24830f57a1b2",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumsolver",
+                  "parameter": "friction",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "91e6811b8ad06b252aefcbba3a22ef51affc233ddc2cb8005f0f24830f57a1b2",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints_grain",
+                  "parameter": "dofriction",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "17c3f57ff091a6e9ef586db4b1c268a5cee96c3b82ab8b87414552d2810e97eb",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "friction",
+            "node_role": "grain_source",
+            "parameter_aliases": [
+              "friction"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 100,
+            "value_type": "float",
+            "application": "houdini",
+            "invalidates_from": "generation_simulation",
+            "required_gates": [],
+            "unit": "native direct velocity damping",
+            "native_status": "mapped",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/vellumsolver",
+                  "parameter": "veldamping",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "91e6811b8ad06b252aefcbba3a22ef51affc233ddc2cb8005f0f24830f57a1b2",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "damping",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "veldamping"
+            ]
+          },
+          {
+            "minimum": 1,
+            "maximum": 100,
+            "value_type": "int",
+            "application": "houdini",
+            "invalidates_from": "generation_simulation",
+            "required_gates": [],
+            "unit": "substeps per frame",
+            "native_status": "mapped",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/vellumsolver",
+                  "parameter": "substeps",
+                  "type": "integer",
+                  "size": 1,
+                  "section_sha256": "91e6811b8ad06b252aefcbba3a22ef51affc233ddc2cb8005f0f24830f57a1b2",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "substeps",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "substeps"
+            ]
+          },
+          {
+            "minimum": 1,
+            "maximum": 10000,
+            "value_type": "int",
+            "application": "houdini",
+            "invalidates_from": "generation_simulation",
+            "required_gates": [],
+            "unit": "constraint iterations per substep",
+            "native_status": "mapped",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/vellumsolver",
+                  "parameter": "niter",
+                  "type": "integer",
+                  "size": 1,
+                  "section_sha256": "91e6811b8ad06b252aefcbba3a22ef51affc233ddc2cb8005f0f24830f57a1b2",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "constraint_iterations",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "niter"
+            ]
+          },
+          {
+            "minimum": 1,
+            "maximum": 1000,
+            "value_type": "int",
+            "application": "houdini",
+            "invalidates_from": "generation_simulation",
+            "required_gates": [
+              [
+                "solver",
+                "enablecollisions",
+                1
+              ]
+            ],
+            "unit": "collision passes per solver substep",
+            "native_status": "mapped",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/vellumsolver",
+                  "parameter": "collisionsiter",
+                  "type": "integer",
+                  "size": 1,
+                  "section_sha256": "91e6811b8ad06b252aefcbba3a22ef51affc233ddc2cb8005f0f24830f57a1b2",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumsolver",
+                  "parameter": "enablecollisions",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "91e6811b8ad06b252aefcbba3a22ef51affc233ddc2cb8005f0f24830f57a1b2",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "collision_passes",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "collisionsiter"
+            ]
+          },
+          {
+            "minimum": 0.0001,
+            "maximum": 1000,
+            "value_type": "float",
+            "application": "houdini",
+            "invalidates_from": "source_layout_control",
+            "required_gates": [
+              [
+                "grain_source",
+                "createpoints",
+                1
+              ],
+              [
+                "grain_source",
+                "type",
+                "grain"
+              ],
+              [
+                "grain_source",
+                "method",
+                "grid"
+              ],
+              [
+                "constraints",
+                "constrainttype",
+                "glue"
+              ]
+            ],
+            "unit": "particle diameter in scene units; native point pscale=diameter/2",
+            "native_status": "mapped",
+            "semantic_contract": "grain_neighbour_glue_radius_twice_diameter/1",
+            "targets": [
+              [
+                "grain_source",
+                "grainsize"
+              ],
+              [
+                "constraints",
+                "glue_radius"
+              ]
+            ],
+            "forward": "grainsize=diameter; glue search radius=2*diameter",
+            "inverse": "diameter=grainsize; require radius=2*diameter",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/vellumconstraints_grain",
+                  "parameter": "grainsize",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "17c3f57ff091a6e9ef586db4b1c268a5cee96c3b82ab8b87414552d2810e97eb",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints_grain",
+                  "parameter": "createpoints",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "17c3f57ff091a6e9ef586db4b1c268a5cee96c3b82ab8b87414552d2810e97eb",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints_grain",
+                  "parameter": "type",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "17c3f57ff091a6e9ef586db4b1c268a5cee96c3b82ab8b87414552d2810e97eb",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints_grain",
+                  "parameter": "method",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "17c3f57ff091a6e9ef586db4b1c268a5cee96c3b82ab8b87414552d2810e97eb",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "constrainttype",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints_grain",
+                  "parameter": "grainsize",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "17c3f57ff091a6e9ef586db4b1c268a5cee96c3b82ab8b87414552d2810e97eb",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "glue_radius",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "grain_size",
+            "node_role": "grain_source",
+            "parameter_aliases": [
+              "grainsize"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 100,
+            "value_type": "float",
+            "application": "houdini",
+            "invalidates_from": "source_layout_control",
+            "required_gates": [
+              [
+                "grain_source",
+                "createpoints",
+                1
+              ],
+              [
+                "grain_source",
+                "method",
+                "grid"
+              ],
+              [
+                "grain_source",
+                "type",
+                "grain"
+              ]
+            ],
+            "unit": "native Regular Grid packing density multiplier; not measured final packing fraction",
+            "native_status": "mapped",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/vellumconstraints_grain",
+                  "parameter": "packingdensity",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "17c3f57ff091a6e9ef586db4b1c268a5cee96c3b82ab8b87414552d2810e97eb",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints_grain",
+                  "parameter": "createpoints",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "17c3f57ff091a6e9ef586db4b1c268a5cee96c3b82ab8b87414552d2810e97eb",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints_grain",
+                  "parameter": "method",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "17c3f57ff091a6e9ef586db4b1c268a5cee96c3b82ab8b87414552d2810e97eb",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints_grain",
+                  "parameter": "type",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "17c3f57ff091a6e9ef586db4b1c268a5cee96c3b82ab8b87414552d2810e97eb",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "packing",
+            "node_role": "grain_source",
+            "parameter_aliases": [
+              "packingdensity"
+            ]
+          }
+        ]
+      },
+      "native_basis": {
+        "status": "UNRESOLVED",
+        "scope": "Independent459HDA static fields and prospective software topology only; no compiled template, host process, writer execution or whole-domain validation.",
+        "sources": [
+          {
+            "path": "docs/native-basis/hda-interface-22.0.459.json",
+            "sha256": "e8d9ee7a16f14baa2327ae45412b2acee60ef4849d4e3aa099aea229586379c7",
+            "version": "22.0.459",
+            "native_execution": false
+          },
+          {
+            "path": "docs/native-basis/supporting-sources-22.0.459.json",
+            "sha256": "7b1bd4e1b187de823db9555bca10f40e9278dd88fb790cce8c874576405e1c3a",
+            "version": "22.0.459",
+            "native_execution": false
+          }
+        ],
+        "originals": "docs/native-basis/h22-459-originals/",
+        "captured_hda_operators": 55,
+        "node_templates": {
+          "softbody": [
+            {
+              "role": "geometry_network",
+              "candidates": [
+                {
+                  "operator": "Obj/geo",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "source",
+              "candidates": [
+                {
+                  "operator": "Sop/sphere",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "collision_source",
+              "candidates": [
+                {
+                  "operator": "Sop/box",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "collision_transform",
+              "candidates": [
+                {
+                  "operator": "Sop/xform",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "tet_mesh",
+              "candidates": [
+                {
+                  "operator": "Sop/tetconform",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "0f15b257a65208662c36db76b5206f20cdf7af1ef115fc4df9ddb31b7e2c7f39",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "constraints",
+              "candidates": [
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "cluster_points",
+              "candidates": [
+                {
+                  "operator": "Sop/clusterpoints",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "ac1d3c67cb0bca6d3e4b1800e5b5ee4f52ef611465e3d1a29d075ce566717e17",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "cluster_constraints",
+              "candidates": [
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "solver",
+              "candidates": [
+                {
+                  "operator": "Sop/vellumsolver",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "91e6811b8ad06b252aefcbba3a22ef51affc233ddc2cb8005f0f24830f57a1b2",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "output",
+              "candidates": [
+                {
+                  "operator": "Sop/null",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "usd_network",
+              "candidates": [
+                {
+                  "operator": "Obj/lopnet",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "render_network",
+              "candidates": [
+                {
+                  "operator": "Obj/ropnet",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "geometry_import",
+              "candidates": [
+                {
+                  "operator": "Lop/sopimport",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "camera",
+              "candidates": [
+                {
+                  "operator": "Lop/camera",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "e7961a7d50953ca0a1d9cbd8f5349db34a4ec33fb98118f6d852e91765564612",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "light",
+              "candidates": [
+                {
+                  "operator": "Lop/light",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "34498e2f239d0566a47fc65928f9d42db17b8d7e487a99d3e0acc66b407abf38",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render_settings",
+              "candidates": [
+                {
+                  "operator": "Lop/karmarendersettings",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "cc263cb8a2e6e1f964363999322d8395f7c52d7160ea723173a24b23568783fe",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render_var",
+              "candidates": [
+                {
+                  "operator": "Lop/rendervar",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "c296736e72c9e2881b3867ff634cfe6253e5e5848e4f63bc9ff01420cbc39aea",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render_product",
+              "candidates": [
+                {
+                  "operator": "Lop/renderproduct",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "db75399202e08a57d1c5a1b29b42a2f871b690b9f23fe5db955a185bcb015cab",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "settings_binding",
+              "candidates": [
+                {
+                  "operator": "Lop/rendersettings",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "325937f14987a4b23ec74be88ac1bb0a424e351a469776e41b15952dbef9ac3d",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render",
+              "candidates": [
+                {
+                  "operator": "Driver/usdrender",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            }
+          ],
+          "grains": [
+            {
+              "role": "geometry_network",
+              "candidates": [
+                {
+                  "operator": "Obj/geo",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "source",
+              "candidates": [
+                {
+                  "operator": "Sop/sphere",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "collision_source",
+              "candidates": [
+                {
+                  "operator": "Sop/box",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "collision_transform",
+              "candidates": [
+                {
+                  "operator": "Sop/xform",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "grain_source",
+              "candidates": [
+                {
+                  "operator": "Sop/vellumconstraints_grain",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "17c3f57ff091a6e9ef586db4b1c268a5cee96c3b82ab8b87414552d2810e97eb",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "constraints",
+              "candidates": [
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "cluster_points",
+              "candidates": [
+                {
+                  "operator": "Sop/clusterpoints",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "ac1d3c67cb0bca6d3e4b1800e5b5ee4f52ef611465e3d1a29d075ce566717e17",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "cluster_constraints",
+              "candidates": [
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "solver",
+              "candidates": [
+                {
+                  "operator": "Sop/vellumsolver",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "91e6811b8ad06b252aefcbba3a22ef51affc233ddc2cb8005f0f24830f57a1b2",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "output",
+              "candidates": [
+                {
+                  "operator": "Sop/null",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "usd_network",
+              "candidates": [
+                {
+                  "operator": "Obj/lopnet",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "render_network",
+              "candidates": [
+                {
+                  "operator": "Obj/ropnet",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "geometry_import",
+              "candidates": [
+                {
+                  "operator": "Lop/sopimport",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "camera",
+              "candidates": [
+                {
+                  "operator": "Lop/camera",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "e7961a7d50953ca0a1d9cbd8f5349db34a4ec33fb98118f6d852e91765564612",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "light",
+              "candidates": [
+                {
+                  "operator": "Lop/light",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "34498e2f239d0566a47fc65928f9d42db17b8d7e487a99d3e0acc66b407abf38",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render_settings",
+              "candidates": [
+                {
+                  "operator": "Lop/karmarendersettings",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "cc263cb8a2e6e1f964363999322d8395f7c52d7160ea723173a24b23568783fe",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render_var",
+              "candidates": [
+                {
+                  "operator": "Lop/rendervar",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "c296736e72c9e2881b3867ff634cfe6253e5e5848e4f63bc9ff01420cbc39aea",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render_product",
+              "candidates": [
+                {
+                  "operator": "Lop/renderproduct",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "db75399202e08a57d1c5a1b29b42a2f871b690b9f23fe5db955a185bcb015cab",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "settings_binding",
+              "candidates": [
+                {
+                  "operator": "Lop/rendersettings",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "325937f14987a4b23ec74be88ac1bb0a424e351a469776e41b15952dbef9ac3d",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render",
+              "candidates": [
+                {
+                  "operator": "Driver/usdrender",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            }
+          ]
+        },
+        "blocked_controls": {
+          "softbody": [
+            {
+              "id": "grain_size",
+              "blocker": "H22_459_NATIVE_TEMPLATE_REQUIRED",
+              "native_basis": {
+                "version": "22.0.459",
+                "source": "docs/native-basis/hda-interface-22.0.459.json",
+                "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+                "native_execution": false,
+                "observed": [
+                  {
+                    "operator": "Sop/vellumconstraints",
+                    "parameter": "constrainttype",
+                    "type": "ordinal",
+                    "size": 1,
+                    "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                    "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                  },
+                  {
+                    "operator": "Sop/vellumconstraints",
+                    "parameter": "glue_radius",
+                    "type": "float",
+                    "size": 1,
+                    "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                    "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                  }
+                ],
+                "missing": [
+                  {
+                    "role": "grain_source",
+                    "parameter": "grainsize",
+                    "operators": []
+                  },
+                  {
+                    "role": "grain_source",
+                    "parameter": "createpoints",
+                    "operators": []
+                  },
+                  {
+                    "role": "grain_source",
+                    "parameter": "type",
+                    "operators": []
+                  },
+                  {
+                    "role": "grain_source",
+                    "parameter": "method",
+                    "operators": []
+                  },
+                  {
+                    "role": "grain_source",
+                    "parameter": "grainsize",
+                    "operators": []
+                  }
+                ]
+              }
+            },
+            {
+              "id": "packing",
+              "blocker": "H22_459_NATIVE_TEMPLATE_REQUIRED",
+              "native_basis": {
+                "version": "22.0.459",
+                "source": "docs/native-basis/hda-interface-22.0.459.json",
+                "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+                "native_execution": false,
+                "observed": [],
+                "missing": [
+                  {
+                    "role": "grain_source",
+                    "parameter": "packingdensity",
+                    "operators": []
+                  },
+                  {
+                    "role": "grain_source",
+                    "parameter": "createpoints",
+                    "operators": []
+                  },
+                  {
+                    "role": "grain_source",
+                    "parameter": "method",
+                    "operators": []
+                  },
+                  {
+                    "role": "grain_source",
+                    "parameter": "type",
+                    "operators": []
+                  }
+                ]
+              }
+            }
+          ],
+          "grains": []
+        },
+        "native_execution": false
+      },
+      "software_validation": "NOT_RUN",
+      "live_validation": "NOT_RUN",
+      "blockers": [
+        "WHOLE_DOMAIN_NATIVE_BASIS_UNRESOLVED",
+        "CURRENT_FORMAL_LIFECYCLE_AND_OUTPUT_NOT_ACCEPTED"
+      ]
+    }
+  ],
+  "common_assertions": [
+    "Before any write verify task authorization, actual node ownership/context/type and exact native field writable/not disabled/not locked/not driven/referenced. Initialize documented modes/gates before dependent probe.",
+    "Every required and runtime control is covered; feedback changes at most five controls per formal patch, in bounded batches; inspect ALL changed targets and inverse semantic readback.",
+    "All declared ports/edges equal actual node.info inputs; include output ports and context parents, not only connection verified flags.",
+    "Save/reopen uses GraphRun.task_save/task_reopen or formal scene.save_hip/scene.reopen_task_hip; compare node type, every key parameter, ALL connections and actual domain data; no expected-data reconstruction on load.",
+    "Rejected wrong type/range/context/role/field/domain/version, locked/driven/disabled and partial-write failure leave all prior parameters/connections plus unrelated user edits intact.",
+    "Feedback readback includes semantic_control/node/parameter before-after/readback_verified/invalidates_from; invalidate transitive actual data consumers and affected caches/artifacts; unchanged branches remain unchanged."
+  ],
+  "output_contract": {
+    "type_and_data": "geometry:softbody and grains constraints/contacts/stress",
+    "rendered_image_only_after_formal_render": true,
+    "producer_operation_id": null,
+    "artifact_id": null,
+    "artifact_version": null,
+    "content_sha256": null,
+    "frames": [
+      1,
+      2
+    ],
+    "colorspace": "scene_linear for final render, not forced onto intermediate geometry/volume/material",
+    "status": "BLOCKED",
+    "interface": "I2/I3"
+  },
+  "resource_confirmation": {
+    "status": "BLOCKED",
+    "required": [
+      "task-owned roots and save/budget roots accepted by R and supervisor",
+      "explicit version and authorized isolated task input, no private media upload",
+      "frames exactly [1,2], maximum 12 explicit frames and render budget <=120 seconds",
+      "operator to confirm geometry complexity/memory/render settings budget without exceeding public allowance",
+      "licenses/resource availability checked only by future authorized operator; none invoked here"
+    ]
+  },
+  "live_human_judgment": {
+    "status": "NOT_RUN",
+    "items": [
+      "shape_error",
+      "packing_density",
+      "penetration_count",
+      "energy_decay",
+      "visual plausibility and correct native geometry/data",
+      "collision/artifact/render noise and temporal continuity as applicable",
+      "reference privacy and protected dimensions retained"
+    ]
+  },
+  "next_action": {
+    "Z": "resolve each BLOCKED role/field/units/gates/conversion and implement domain assertions in separately owned code work",
+    "R": "freeze runtime-interface with hashes; legal context roots, domain-data save/reopen, actual producer route and supervised recovery",
+    "E": "validate case/build/provider binding after R freeze",
+    "M": "dispatch/review/integrate without promoting historical receipts",
+    "P": "publish only after I5 build freeze"
+  },
+  "required_versions": {
+    "houdini": [
+      "21.0.631",
+      "22.0.459"
+    ],
+    "nuke": [
+      "17.0v1"
+    ]
+  }
+}

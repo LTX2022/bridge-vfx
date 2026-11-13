@@ -1,0 +1,635 @@
+{
+  "kind": "static_official_example_inspection_not_runtime_receipt",
+  "native_execution": false,
+  "runtime_version_verified": false,
+  "installed_directory_build_label": "22.0.459",
+  "resources_path": "/Applications/Houdini/Houdini22.0.459/Frameworks/Houdini.framework/Versions/22.0/Resources",
+  "example_relative_to_resources": "houdini/help/files/karma_user_guide",
+  "source_sha256": "2e38501cfe5b59f3d085d48be3fee29d35761f754c5e950a1a4562531745ea88",
+  "source_size_bytes": 49600907,
+  "archive_members": 26153,
+  "archive_end_verified": true,
+  "stage_userdata_version": "22.0.372",
+  "stage_userdata_reference": {
+    "offset": 3661155,
+    "size_bytes": 33,
+    "member": "stage.userdata",
+    "sha256": "7593f396ff3a03f4fafc9c6073f086e71c933048f9cf5bcbb7f75ee7fa8fc6f4"
+  },
+  "resource_inventory": [
+    {
+      "path": "custom_nodegraphs/custom_nodegraphs.hip",
+      "size_bytes": 397140,
+      "sha256": "a89d68e334d742a97a0cdaa975ae8586c6dd15d947b0c72341c653be308f5147"
+    },
+    {
+      "path": "custom_nodegraphs/karmaNodeGraphs.json",
+      "size_bytes": 519,
+      "sha256": "dffbcd634b6256022903a69fd5be91c03ddb5c241577bea8daca18369aae2070"
+    },
+    {
+      "path": "custom_nodegraphs/mtlx/my_front_facing.mtlx",
+      "size_bytes": 1728,
+      "sha256": "e16510ca791565985ddda187917716ceb478bdc7d69d08b587fec293bcf855c8"
+    },
+    {
+      "path": "custom_nodegraphs/myfrontfacingshaderdev.hda",
+      "size_bytes": 6994,
+      "sha256": "dc01a44f8690ba158ee9d9b8b495062e7a3c1ca578e75a4d367451a099c342d5"
+    },
+    {
+      "path": "custom_nodegraphs/otls/my_front_facing.hda",
+      "size_bytes": 2168,
+      "sha256": "86ad8ea6168b2590ff0119b73344ea17187cf4e3e9bec7864a5b2a865c0f296f"
+    },
+    {
+      "path": "custom_nodegraphs/result.hip",
+      "size_bytes": 262247,
+      "sha256": "de7bb750ee9439df9fb052acc77d27a41ccc791af4b59f9c0eec209b8e646357"
+    },
+    {
+      "path": "hda/helper_tools.hda",
+      "size_bytes": 23273,
+      "sha256": "39b92d8dd567d9e2b5dcfcbd6239aad07f59383928dbdadd7b8586e1631086eb"
+    },
+    {
+      "path": "karma_user_guide.hip",
+      "size_bytes": 49600907,
+      "sha256": "2e38501cfe5b59f3d085d48be3fee29d35761f754c5e950a1a4562531745ea88"
+    },
+    {
+      "path": "maps/bloem_hill_1k_float.exr",
+      "size_bytes": 2967230,
+      "sha256": "a224a7403d857a064f6b8d0642af3c66e785dcac986556a9a275853e49984d15"
+    },
+    {
+      "path": "maps/hopscotch_mask_float.exr",
+      "size_bytes": 539848,
+      "sha256": "c9f6ff1857d91d91b29de8418bac1a7dfa64f25252ed12375a50b763f22b8986"
+    },
+    {
+      "path": "maps/hopscotch_radialramp_float.exr",
+      "size_bytes": 5567764,
+      "sha256": "de24eea97ced84073704bce31b6b032ad78f150095381b26f9f63df4a408fa9d"
+    },
+    {
+      "path": "maps/hopscotch_random_color.exr",
+      "size_bytes": 1165375,
+      "sha256": "61e8447bff7a9671a9f5c38850a379b06da80c94e62ca0632d64c1ec84575a30"
+    },
+    {
+      "path": "maps/hopscotch_random_float.exr",
+      "size_bytes": 480272,
+      "sha256": "2c756542690dd5cf94ddc9a02b16418126c9482ab1afce79841b78c08150d857"
+    }
+  ],
+  "declared_library_files": [
+    {
+      "saved_reference": "$HIP/hda/helper_tools.hda",
+      "static_file_present": true,
+      "relative_to_resources": "houdini/help/files/karma_user_guide/hda/helper_tools.hda",
+      "size_bytes": 23273,
+      "sha256": "39b92d8dd567d9e2b5dcfcbd6239aad07f59383928dbdadd7b8586e1631086eb"
+    },
+    {
+      "saved_reference": "$HFS/houdini/help/examples/nodes/sop/laplacian/LaplacianSmoothing.hda",
+      "static_file_present": true,
+      "relative_to_resources": "houdini/help/examples/nodes/sop/laplacian/LaplacianSmoothing.hda",
+      "size_bytes": 43526,
+      "sha256": "2cbaaceacb3d7b70ee46319cc846fd04a3e2108be392e3678047623b346bc13d"
+    }
+  ],
+  "chapter_networks": [
+    "/stage/cameras_and_rendering",
+    "/stage/geometry",
+    "/stage/lights",
+    "/stage/materials_and_textures",
+    "/stage/motionblur",
+    "/stage/noise",
+    "/stage/properties",
+    "/stage/sampling",
+    "/stage/shaders"
+  ],
+  "usdrender_rop_saved_nodes": 113,
+  "selected_nodes": {
+    "/stage/sphere": {
+      "native_type_saved": "sopcreate",
+      "members": [
+        {
+          "offset": 4568134,
+          "size_bytes": 32,
+          "member": "stage/sphere.init",
+          "sha256": "fbb97598179a16b282c28461b2e64c3349d2b835333367b3ec45ba0e8fd096e1"
+        },
+        {
+          "offset": 4568259,
+          "size_bytes": 464,
+          "member": "stage/sphere.def",
+          "sha256": "1cdb2d27d611aa67bb63f4e3655d54c30105f168300d9c55578f3b874abd3866"
+        },
+        {
+          "offset": 4569113,
+          "size_bytes": 4432,
+          "member": "stage/sphere.parm",
+          "sha256": "b23f68c279395bcf390bc86cc2a5efc631fe4de3f1ac2a519efce860492fc86d"
+        }
+      ],
+      "saved_input_tokens_not_resolved": [],
+      "saved_parameter_tokens_not_evaluated": {
+        "primpath": "/$OS",
+        "t": "0\t0\t0",
+        "r": "0\t0\t0",
+        "s": "1\t1\t1",
+        "scale": "1"
+      },
+      "descendant_native_types": {
+        "add": 1,
+        "attribwrangle": 1,
+        "output": 1
+      }
+    },
+    "/stage/backdrop": {
+      "native_type_saved": "sopcreate",
+      "members": [
+        {
+          "offset": 4573765,
+          "size_bytes": 32,
+          "member": "stage/backdrop.init",
+          "sha256": "fbb97598179a16b282c28461b2e64c3349d2b835333367b3ec45ba0e8fd096e1"
+        },
+        {
+          "offset": 4573892,
+          "size_bytes": 451,
+          "member": "stage/backdrop.def",
+          "sha256": "73ef571f98fa8ba775188bee1b96e9a295b562ea6198ec5dff7cf88a770c4e61"
+        },
+        {
+          "offset": 4574737,
+          "size_bytes": 4433,
+          "member": "stage/backdrop.parm",
+          "sha256": "19fe6c9e77c7f7869d1ddc26b21f6acd8273f500a66a954366681709d63f8400"
+        }
+      ],
+      "saved_input_tokens_not_resolved": [],
+      "saved_parameter_tokens_not_evaluated": {
+        "primpath": "/$OS",
+        "t": "0\t0\t0",
+        "r": "0\t90\t0",
+        "s": "1\t1\t1",
+        "scale": "1"
+      },
+      "descendant_native_types": {
+        "color": 4,
+        "fuse::2.0": 1,
+        "grid": 3,
+        "groupcreate": 9,
+        "grouprange": 4,
+        "matchsize": 1,
+        "merge": 2,
+        "null": 2,
+        "output": 1,
+        "polyextrude::2.0": 5,
+        "reverse": 3,
+        "sort": 2,
+        "xform": 1
+      }
+    },
+    "/stage/materiallibrary3": {
+      "native_type_saved": "materiallibrary",
+      "members": [
+        {
+          "offset": 4579400,
+          "size_bytes": 38,
+          "member": "stage/materiallibrary3.init",
+          "sha256": "c299efb83ea04ab196fde8f60f261bffa603b732a077af6fa7f5ba21bc3b29b1"
+        },
+        {
+          "offset": 4579541,
+          "size_bytes": 515,
+          "member": "stage/materiallibrary3.def",
+          "sha256": "b61916107a3b290968abc1c908672bef7282faab4abda07bd74aee3cd2933ac0"
+        },
+        {
+          "offset": 4580160,
+          "size_bytes": 615,
+          "member": "stage/materiallibrary3.parm",
+          "sha256": "2be92798a8e4bc1878ab39b8a502d0b3bd09f6fd337ce4003501ff763a71f001"
+        }
+      ],
+      "saved_input_tokens_not_resolved": [
+        [
+          "0",
+          "graftstages2",
+          "0",
+          "1"
+        ]
+      ],
+      "saved_parameter_tokens_not_evaluated": {
+        "matpathprefix": "/World/Materials/",
+        "matnode1": "*",
+        "matpath1": "\"\""
+      },
+      "descendant_native_types": {
+        "mtlxdisplacement": 1,
+        "mtlxgeomcolor": 1,
+        "mtlxgeompropvalue": 1,
+        "mtlxrange": 1,
+        "mtlxseparate3c": 1,
+        "mtlxstandard_surface": 4,
+        "mtlxsurface": 1,
+        "mtlxsurface_unlit": 2,
+        "subinput": 4,
+        "subnet": 4,
+        "subnetconnector": 8
+      }
+    },
+    "/stage/sphere1": {
+      "native_type_saved": "sphere",
+      "members": [
+        {
+          "offset": 18998338,
+          "size_bytes": 29,
+          "member": "stage/sphere1.init",
+          "sha256": "0924fb9e678f19854dd5209e9cf4b67046cd318411539894d925b6be9d719b90"
+        },
+        {
+          "offset": 18998461,
+          "size_bytes": 527,
+          "member": "stage/sphere1.def",
+          "sha256": "1bc5e69c0994393fa8d7c34b677bd8a4e85b93c1b004232f2587ea8f8ee8a9fa"
+        },
+        {
+          "offset": 18999889,
+          "size_bytes": 1702,
+          "member": "stage/sphere1.parm",
+          "sha256": "8329ae26619c35b17e04990196d2d6375d24111ef77c93b2e39a1692d9c9566e"
+        }
+      ],
+      "saved_input_tokens_not_resolved": [
+        [
+          "0",
+          "configureprimitive2",
+          "0",
+          "1"
+        ]
+      ],
+      "saved_parameter_tokens_not_evaluated": {
+        "primpattern": "\"`lopinputprims('.', 0)`\"",
+        "primpath": "/sphere/proxy",
+        "radius": "0.5",
+        "t": "0\t0\t0",
+        "r": "0\t0\t0",
+        "s": "1\t1\t1",
+        "scale": "1"
+      },
+      "descendant_native_types": {}
+    },
+    "/stage/camera3": {
+      "native_type_saved": "camera",
+      "members": [
+        {
+          "offset": 45009493,
+          "size_bytes": 29,
+          "member": "stage/camera3.init",
+          "sha256": "6cd1186419cf55c014a5ef6544ec35aed9d9f4a72f1bdb58fd03a20bfed26e27"
+        },
+        {
+          "offset": 45009616,
+          "size_bytes": 508,
+          "member": "stage/camera3.def",
+          "sha256": "da0e3e1b12d6d55a4bb83a4e7f8fd98722d8bccc472c372400a9669b649e97be"
+        },
+        {
+          "offset": 45038633,
+          "size_bytes": 5656,
+          "member": "stage/camera3.parm",
+          "sha256": "e81d84e28369344805666423ab9f2f74678761063cdca0b8339868c89ee463f5"
+        }
+      ],
+      "saved_input_tokens_not_resolved": [
+        [
+          "0",
+          "ground_material",
+          "0",
+          "1"
+        ]
+      ],
+      "saved_parameter_tokens_not_evaluated": {
+        "primpattern": "\"`lopinputprims('.', 0)`\"",
+        "primpath": "/World/Camera",
+        "t": "0\t1.5\t10",
+        "r": "-5\t-0\t0",
+        "s": "1\t1\t1",
+        "scale": "1",
+        "focalLength": "50",
+        "exposure": "0"
+      },
+      "descendant_native_types": {}
+    },
+    "/stage/light2": {
+      "native_type_saved": "light::2.0",
+      "members": [
+        {
+          "offset": 30306204,
+          "size_bytes": 33,
+          "member": "stage/light2.init",
+          "sha256": "d3308afda38e4d4d6dc44c390e63933c906649c124c91959cfc7107ee45b4c41"
+        },
+        {
+          "offset": 30306330,
+          "size_bytes": 510,
+          "member": "stage/light2.def",
+          "sha256": "45620c90b961f44ba17a2f9ba8e6e337203242d547d937ad2aad7b4f50b2caae"
+        },
+        {
+          "offset": 30351432,
+          "size_bytes": 9069,
+          "member": "stage/light2.parm",
+          "sha256": "9cec9fc67ecc00ba2290ba8e40c68ac0b959cb3fd9984be3c85da1e49b4b8ef0"
+        }
+      ],
+      "saved_input_tokens_not_resolved": [
+        [
+          "0",
+          "plastic_black_color_pips",
+          "0",
+          "1"
+        ]
+      ],
+      "saved_parameter_tokens_not_evaluated": {
+        "primpattern": "/light",
+        "primpath": "/lights/$OS",
+        "lighttype": "\"UsdLuxRectLight\"",
+        "t": "-0.004124831408262253\t0.007368588112294676\t0.0003297552466392517",
+        "r": "-109.76035111551198\t-2.8122846678530357e-15\t21.72223475237682",
+        "s": "1\t1\t1",
+        "scale": "1",
+        "xn__inputsintensity_i0a": "1",
+        "xn__inputsexposure_vya": "0",
+        "xn__inputscolor_zta": "1\t1\t1",
+        "xn__inputsradius_mva": "0.5"
+      },
+      "descendant_native_types": {}
+    },
+    "/stage/lights/backdrop_shallow": {
+      "native_type_saved": "sopcreate",
+      "members": [
+        {
+          "offset": 3760904,
+          "size_bytes": 32,
+          "member": "stage/lights/backdrop_shallow.init",
+          "sha256": "fbb97598179a16b282c28461b2e64c3349d2b835333367b3ec45ba0e8fd096e1"
+        },
+        {
+          "offset": 3761046,
+          "size_bytes": 452,
+          "member": "stage/lights/backdrop_shallow.def",
+          "sha256": "906ea8abb3049d0f55bd84f8d70c3d6ff0e2a1d42f7786440de0b5580c2f780a"
+        },
+        {
+          "offset": 3761922,
+          "size_bytes": 4439,
+          "member": "stage/lights/backdrop_shallow.parm",
+          "sha256": "8527e9f19f1767466c286212fb3837f51a827479138472ab5cce8a19eeb75f53"
+        }
+      ],
+      "saved_input_tokens_not_resolved": [],
+      "saved_parameter_tokens_not_evaluated": {
+        "primpath": "/$OS",
+        "t": "0\t0\t0",
+        "r": "0\t90\t0",
+        "s": "1\t1\t1",
+        "scale": "1"
+      },
+      "descendant_native_types": {
+        "color": 2,
+        "grid": 2,
+        "groupcreate": 6,
+        "grouprange": 1,
+        "merge": 1,
+        "null": 1,
+        "output": 1,
+        "polyextrude::2.0": 4,
+        "reverse": 2,
+        "sort": 2
+      }
+    },
+    "/stage/lights/camera1": {
+      "native_type_saved": "camera",
+      "members": [
+        {
+          "offset": 8745710,
+          "size_bytes": 29,
+          "member": "stage/lights/camera1.init",
+          "sha256": "6cd1186419cf55c014a5ef6544ec35aed9d9f4a72f1bdb58fd03a20bfed26e27"
+        },
+        {
+          "offset": 8745840,
+          "size_bytes": 511,
+          "member": "stage/lights/camera1.def",
+          "sha256": "bdcb886f4e7ce6762e43659ebf948429a21c81dc9dd2a1724cf3384576a33374"
+        },
+        {
+          "offset": 8773390,
+          "size_bytes": 5509,
+          "member": "stage/lights/camera1.parm",
+          "sha256": "359a6d6a45a9efca5ab1eca7f2a60397c6cdff7df831708a26812cf4523d53d8"
+        }
+      ],
+      "saved_input_tokens_not_resolved": [
+        [
+          "0",
+          "backdrop_shallow",
+          "0",
+          "1"
+        ]
+      ],
+      "saved_parameter_tokens_not_evaluated": {
+        "primpattern": "\"`lopinputprims('.', 0)`\"",
+        "primpath": "/World/Camera",
+        "t": "0\t0\t40",
+        "r": "0\t0\t0",
+        "s": "1\t1\t1",
+        "scale": "1",
+        "focalLength": "390",
+        "exposure": "0"
+      },
+      "descendant_native_types": {}
+    },
+    "/stage/lights/rectlight": {
+      "native_type_saved": "light::2.0",
+      "members": [
+        {
+          "offset": 8781861,
+          "size_bytes": 33,
+          "member": "stage/lights/rectlight.init",
+          "sha256": "d3308afda38e4d4d6dc44c390e63933c906649c124c91959cfc7107ee45b4c41"
+        },
+        {
+          "offset": 8781997,
+          "size_bytes": 496,
+          "member": "stage/lights/rectlight.def",
+          "sha256": "74ffa73c79433ffd54475bcfa476bb6776b0f4f52a8fd758be62438c418df6cd"
+        },
+        {
+          "offset": 8826504,
+          "size_bytes": 8750,
+          "member": "stage/lights/rectlight.parm",
+          "sha256": "a25c5cd9c1501c5dbf5cbd130f314c4903982fc1ec07c216b54b9806f06941bc"
+        }
+      ],
+      "saved_input_tokens_not_resolved": [
+        [
+          "0",
+          "transform3",
+          "0",
+          "1"
+        ]
+      ],
+      "saved_parameter_tokens_not_evaluated": {
+        "primpattern": "/light",
+        "primpath": "/World/`chs(\\\"lighttype\\\")`",
+        "lighttype": "\"UsdLuxRectLight\"",
+        "t": "0\t0.5\t0",
+        "r": "0\t0\t0",
+        "s": "1\t1\t1",
+        "scale": "1",
+        "xn__inputsintensity_i0a": "1",
+        "xn__inputsexposure_vya": "0",
+        "xn__inputscolor_zta": "1\t1\t1",
+        "xn__inputsradius_mva": "0.5"
+      },
+      "descendant_native_types": {}
+    },
+    "/stage/lights/light1": {
+      "native_type_saved": "light::2.0",
+      "members": [
+        {
+          "offset": 9486003,
+          "size_bytes": 33,
+          "member": "stage/lights/light1.init",
+          "sha256": "d3308afda38e4d4d6dc44c390e63933c906649c124c91959cfc7107ee45b4c41"
+        },
+        {
+          "offset": 9486136,
+          "size_bytes": 499,
+          "member": "stage/lights/light1.def",
+          "sha256": "c7c923da0fd26f03d10f413617f66beb426efa90c3abc3fcb4b793e3b281412e"
+        },
+        {
+          "offset": 9530685,
+          "size_bytes": 8762,
+          "member": "stage/lights/light1.parm",
+          "sha256": "2841a52e88ba2b195c05231aa3b49d996ef05de4af9a8233c078a8917851674b"
+        }
+      ],
+      "saved_input_tokens_not_resolved": [
+        [
+          "0",
+          "walls",
+          "0",
+          "1"
+        ]
+      ],
+      "saved_parameter_tokens_not_evaluated": {
+        "primpattern": "/light",
+        "primpath": "/world/lights/light",
+        "lighttype": "\"UsdLuxDiskLight\"",
+        "t": "8.4\t4.95\t-1.25",
+        "r": "-90.97142185467293\t-0\t0",
+        "s": "1\t1\t1",
+        "scale": "1",
+        "xn__inputsintensity_i0a": "1",
+        "xn__inputsexposure_vya": "5",
+        "xn__inputscolor_zta": "1\t1\t1",
+        "xn__inputsradius_mva": "0.35"
+      },
+      "descendant_native_types": {}
+    },
+    "/stage/lights/karmarendersettings": {
+      "native_type_saved": "karmarenderproperties",
+      "members": [
+        {
+          "offset": 9348335,
+          "size_bytes": 44,
+          "member": "stage/lights/karmarendersettings.init",
+          "sha256": "c757717d69c18ceb5f36dcdc73363b2be43c8d1ecb7175c2a88b0ac26c9fbc86"
+        },
+        {
+          "offset": 9348492,
+          "size_bytes": 504,
+          "member": "stage/lights/karmarendersettings.def",
+          "sha256": "2b6285a4ac0afc4c77714fdbb0eb36d8983001a96fb151f06642baca8fed1116"
+        },
+        {
+          "offset": 9349408,
+          "size_bytes": 17196,
+          "member": "stage/lights/karmarendersettings.parm",
+          "sha256": "36d630facc2d8e817b64cab37f34028d64c7019a5ae1d08fb5cb1b852a45be8d"
+        }
+      ],
+      "saved_input_tokens_not_resolved": [
+        [
+          "0",
+          "camera1",
+          "0",
+          "1"
+        ]
+      ],
+      "saved_parameter_tokens_not_evaluated": {
+        "primpath": "/Render/rendersettings",
+        "picture": "$HIP/render/$HIPNAME.$OS.$F4.exr",
+        "camera": "`chs(\\\"../camera1/primpath\\\")`",
+        "resolution": "420\t300",
+        "resolutionMenu": "0",
+        "enablemblur": "\"off\"",
+        "pixelfiltersize": "2",
+        "denoiser": "off"
+      },
+      "descendant_native_types": {}
+    },
+    "/stage/lights/OUT_karma_lights": {
+      "native_type_saved": "usdrender_rop",
+      "members": [
+        {
+          "offset": 9412417,
+          "size_bytes": 36,
+          "member": "stage/lights/OUT_karma_lights.init",
+          "sha256": "810154389e1c3ca717908991fb8f18f5fbff3b5b1fac6a54a9fb85ba9ab6c0f3"
+        },
+        {
+          "offset": 9412563,
+          "size_bytes": 518,
+          "member": "stage/lights/OUT_karma_lights.def",
+          "sha256": "75e84437127539d63204c2cad5228c34d069f985b248064e3279fd9bef4babd9"
+        },
+        {
+          "offset": 9413743,
+          "size_bytes": 6864,
+          "member": "stage/lights/OUT_karma_lights.parm",
+          "sha256": "57947b941114361e9ca242bcda242c7d02da03c6ae6b8ef986f112c2d67bde43"
+        }
+      ],
+      "saved_input_tokens_not_resolved": [
+        [
+          "0",
+          "update_output_image_path",
+          "0",
+          "1"
+        ]
+      ],
+      "saved_parameter_tokens_not_evaluated": {
+        "renderer": "BRAY_HdKarmaXPU",
+        "loppath": "\"../`opinput(\\\".\\\", 0)`\"",
+        "outputimage": "\"\"",
+        "lopoutput": "__render__.usd"
+      },
+      "descendant_native_types": {}
+    }
+  },
+  "dependency_closure": "NOT_VERIFIED: declarations and selected wire tokens only; expressions, assets, op references, callbacks and native consumers are not evaluated",
+  "host_reopen": "NOT_RUN",
+  "render": "NOT_RUN",
+  "visual_acceptance": "NOT_RUN",
+  "inspector_sha256": "41c8155ebbd22ed5ab9c74acd98143f13d1a09c2757c236e34b9890009527214"
+}

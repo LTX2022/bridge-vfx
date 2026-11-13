@@ -1,0 +1,68 @@
+# Houdini 官方文档总索引（版本 22.0.368，同步于 2026-08-25）
+
+来源：`C:\Program Files\Side Effects Software\Houdini 22.0.368\houdini\help`（共 47 个域 / 10450 页）
+
+**年度更新入口**：升级 Houdini 后重跑 `scripts/official_docs_sync.py` 即可刷新全部索引。
+
+## 查询方法
+
+```bash
+# 全文检索某域
+python official_docs_sync.py --query 关键词 --domain vellum
+# 读取某页全文
+python official_docs_sync.py --page vellum.zip:vellumsolver.txt
+```
+
+bridge 运行时也可用 `help.search` / `help.query`（等效，走 MCP 工具）。
+
+## 域目录
+
+| 域 | 页数 | 索引文件 |
+|---|---|---|
+| anim | 14 | `anim-index.md` |
+| assets | 11 | `assets-index.md` |
+| audio3d | 3 | `audio3d-index.md` |
+| basics | 30 | `basics-index.md` |
+| character | 143 | `character-index.md` |
+| commands | 442 | `commands-index.md` |
+| composite | 28 | `composite-index.md` |
+| copy | 9 | `copy-index.md` |
+| crowds | 22 | `crowds-index.md` |
+| destruction | 20 | `destruction-index.md` |
+| dopparticles | 15 | `dopparticles-index.md` |
+| dyno | 23 | `dyno-index.md` |
+| expressions | 478 | `expressions-index.md` |
+| feathers | 25 | `feathers-index.md` |
+| finiteelements | 9 | `finiteelements-index.md` |
+| fluid | 34 | `fluid-index.md` |
+| fur | 10 | `fur-index.md` |
+| gallery | 39 | `gallery-index.md` |
+| grains | 5 | `grains-index.md` |
+| hapi | 454 | `hapi-index.md` |
+| help | 6 | `help-index.md` |
+| hom | 966 | `hom-index.md` |
+| hqueue | 18 | `hqueue-index.md` |
+| images | 0 | `images-index.md` |
+| io | 16 | `io-index.md` |
+| maya | 27 | `maya-index.md` |
+| model | 34 | `model-index.md` |
+| mplay | 19 | `mplay-index.md` |
+| muscles | 20 | `muscles-index.md` |
+| network | 32 | `network-index.md` |
+| news | 87 | `news-index.md` |
+| nodes | 5033 | `nodes-index.md` |
+| ocean | 4 | `ocean-index.md` |
+| props | 10 | `props-index.md` |
+| pyro | 29 | `pyro-index.md` |
+| ref | 202 | `ref-index.md` |
+| render | 41 | `render-index.md` |
+| shade | 20 | `shade-index.md` |
+| shelf | 448 | `shelf-index.md` |
+| solaris | 73 | `solaris-index.md` |
+| start | 6 | `start-index.md` |
+| tops | 223 | `tops-index.md` |
+| unity | 31 | `unity-index.md` |
+| unreal | 69 | `unreal-index.md` |
+| vellum | 38 | `vellum-index.md` |
+| vex | 1178 | `vex-index.md` |
+| visualizers | 6 | `visualizers-index.md` |

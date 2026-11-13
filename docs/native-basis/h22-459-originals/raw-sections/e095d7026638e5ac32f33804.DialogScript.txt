@@ -1,0 +1,621 @@
+# Dialog script for domelight automatically generated
+
+{
+    name	domelight
+    script	domelight
+    label	"Dome Light"
+
+    help {
+	""
+    }
+    bindhandle px lopxform "Dome Light" px ""
+    bindhandle py lopxform "Dome Light" py ""
+    bindhandle pz lopxform "Dome Light" pz ""
+    bindhandle prx lopxform "Dome Light" rpivotx ""
+    bindhandle pry lopxform "Dome Light" rpivoty ""
+    bindhandle prz lopxform "Dome Light" rpivotz ""
+    bindhandle rx lopxform "Dome Light" rx ""
+    bindhandle ry lopxform "Dome Light" ry ""
+    bindhandle rz lopxform "Dome Light" rz ""
+    bindhandle shear1 lopxform "Dome Light" shear_xy ""
+    bindhandle shear2 lopxform "Dome Light" shear_xz ""
+    bindhandle shear3 lopxform "Dome Light" shear_yz ""
+    bindhandle sx lopxform "Dome Light" sx ""
+    bindhandle sy lopxform "Dome Light" sy ""
+    bindhandle sz lopxform "Dome Light" sz ""
+    bindhandle xOrd lopxform "Dome Light" trs_order ""
+    bindhandle tx lopxform "Dome Light" tx ""
+    bindhandle ty lopxform "Dome Light" ty ""
+    bindhandle tz lopxform "Dome Light" tz ""
+    bindhandle scale lopxform "Dome Light" uniform_scale ""
+    bindhandle rOrd lopxform "Dome Light" xyz_order ""
+    bindhandle xn__xformOptransform_51a lopxform "Transformer" xform_style ""
+
+    inputlabel	1	"Input Stage"
+
+    parm {
+        name    "primpattern"
+        label   "Primitives"
+        type    string
+        default { "`lopinputprims('.', 0)`" }
+        hidewhen "{ createprims == on }"
+        menutoggle {
+            [ "import loputils" ]
+            [ "return loputils.createPrimPatternMenu(kwargs['node'], 0)" ]
+            language python
+        }
+        parmtag { "script_action" "import loputils\nloputils.selectPrimsInParm(kwargs, True)" }
+        parmtag { "script_action_help" "Select primitives in the Scene Viewer or Scene Graph Tree pane.\nCtrl-click to select using the primitive picker dialog.\nShift-click to select using the primitive pattern editor.\nAlt-click to toggle movement of the display flag." }
+        parmtag { "script_action_icon" "BUTTONS_reselect" }
+        parmtag { "sidefx::usdpathtype" "primlist" }
+    }
+    parm {
+        name    "primpath"
+        label   "Primitive Path"
+        type    string
+        default { "/lights/$OS" }
+        hidewhen "{ createprims != on }"
+        menureplace {
+            [ "import loputils" ]
+            [ "return loputils.createPrimPathMenu()" ]
+            language python
+        }
+        parmtag { "script_action" "import loputils\nloputils.selectPrimsInParm(kwargs, False)" }
+        parmtag { "script_action_help" "Select a primitive in the Scene Viewer or Scene Graph Tree pane.\nCtrl-click to select using the primitive picker dialog.\nAlt-click to toggle movement of the display flag." }
+        parmtag { "script_action_icon" "BUTTONS_reselect" }
+        parmtag { "sidefx::usdpathtype" "prim" }
+    }
+    parm {
+        name    "createprims"
+        label   "Action"
+        type    ordinal
+        default { "on" }
+        menu {
+            "off"   "Edit"
+            "on"    "Create"
+            "forceedit"    "Force Edit (Ignore Editable Flag)"
+        }
+    }
+    parm {
+        name    "initforedit"
+        label   "Initialize Parameters"
+        type    button
+        default { "donothing" }
+        menu {
+            [ "import loputils" ]
+            [ "return loputils.createInitializeParametersMenu(kwargs['node'].parm('createprims').eval(), 'Light')" ]
+            language python
+        }
+        parmtag { "script_callback" "__import__('loputils').initializeParameters(kwargs['node'], kwargs['script_value'])" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "primtype"
+        label   "Primitive Type"
+        type    string
+        invisible
+        default { "UsdLuxDomeLight" }
+        menu {
+            "UsdLuxDomeLight"   "Dome Light"
+        }
+    }
+    parm {
+        name    "parentprimtype"
+        label   "Parent Primitive Type"
+        type    string
+        invisible
+        default { "UsdGeomXform" }
+        menu {
+            [ "import loputils" ]
+            [ "return loputils.createParentTypesMenu()" ]
+            language python
+        }
+    }
+    group {
+        name    "folder0"
+        label   "Transform"
+
+        parm {
+            name    "xn__xformOptransform_control_6fb"
+            label   "Transform"
+            type    string
+            default { "set" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'xform')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__xformOptransform_51a"
+            label   "Operator Order"
+            type    string
+            default { "xformcommonapi" }
+            disablewhen "{ xn__xformOptransform_control_6fb == block } { xn__xformOptransform_control_6fb == animationblock } { xn__xformOptransform_control_6fb == none }"
+            menu {
+                "append"                "Append"
+                "prepend"               "Prepend"
+                "overwriteorappend"     "Overwrite or Append"
+                "overwriteorprepend"    "Overwrite or Prepend"
+                "world"                 "Apply Transform in World Space"
+                "replace"               "Replace All Local Transforms"
+                "xformcommonapi"        "Apply XformCommonAPI"
+                "extendedxformcommonapi"    "Apply Extended XformCommonAPI (with Shear + Pivot Rotate)"
+            }
+            parmtag { "usdvaluetype" "xform" }
+        }
+        parm {
+            name    "xOrd"
+            label   "Transform Order"
+            type    ordinal
+            joinnext
+            default { "0" }
+            disablewhen "{ xn__xformOptransform_control_6fb == block } { xn__xformOptransform_control_6fb == animationblock } { xn__xformOptransform_control_6fb == none } { xn__xformOptransform_51a == extendedxformcommonapi } { xn__xformOptransform_51a == xformcommonapi }"
+            menu {
+                "srt"   "Scale Rot Trans"
+                "str"   "Scale Trans Rot"
+                "rst"   "Rot Scale Trans"
+                "rts"   "Rot Trans Scale"
+                "tsr"   "Trans Scale Rot"
+                "trs"   "Trans Rot Scale"
+            }
+        }
+        parm {
+            name    "rOrd"
+            label   "Rotate Order"
+            type    ordinal
+            nolabel
+            default { "0" }
+            disablewhen "{ xn__xformOptransform_control_6fb == block } { xn__xformOptransform_control_6fb == animationblock } { xn__xformOptransform_control_6fb == none }"
+            menu {
+                "xyz"   "Rx Ry Rz"
+                "xzy"   "Rx Rz Ry"
+                "yxz"   "Ry Rx Rz"
+                "yzx"   "Ry Rz Rx"
+                "zxy"   "Rz Rx Ry"
+                "zyx"   "Rz Ry Rx"
+            }
+        }
+        parm {
+            name    "t"
+            label   "Translate"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            disablewhen "{ xn__xformOptransform_control_6fb == block } { xn__xformOptransform_control_6fb == animationblock } { xn__xformOptransform_control_6fb == none }"
+            range   { -1 1 }
+        }
+        parm {
+            name    "r"
+            label   "Rotate"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            disablewhen "{ xn__xformOptransform_control_6fb == block } { xn__xformOptransform_control_6fb == animationblock } { xn__xformOptransform_control_6fb == none }"
+            range   { 0 360 }
+        }
+        parm {
+            name    "s"
+            label   "Scale"
+            type    vector
+            size    3
+            default { "1" "1" "1" }
+            disablewhen "{ xn__xformOptransform_control_6fb == block } { xn__xformOptransform_control_6fb == animationblock } { xn__xformOptransform_control_6fb == none }"
+            range   { -1 1 }
+        }
+        parm {
+            name    "shear"
+            label   "Shear"
+            type    float
+            size    3
+            default { "0" "0" "0" }
+            disablewhen "{ xn__xformOptransform_control_6fb == block } { xn__xformOptransform_control_6fb == animationblock } { xn__xformOptransform_control_6fb == none } { xn__xformOptransform_51a == xformcommonapi }"
+            range   { 0 10 }
+        }
+        parm {
+            name    "scale"
+            label   "Uniform Scale"
+            type    float
+            default { "1" }
+            disablewhen "{ xn__xformOptransform_control_6fb == block } { xn__xformOptransform_control_6fb == animationblock } { xn__xformOptransform_control_6fb == none }"
+            range   { 0 10 }
+        }
+        groupcollapsible {
+            name    "pivotxform"
+            label   "Pivot Transform"
+            disablewhen "{ xn__xformOptransform_control_6fb == block } { xn__xformOptransform_control_6fb == animationblock } { xn__xformOptransform_control_6fb == none }"
+
+            parm {
+                name    "p"
+                label   "Pivot Translate"
+                type    vector
+                size    3
+                default { "0" "0" "0" }
+                disablewhen "{ xn__xformOptransform_control_6fb == block } { xn__xformOptransform_control_6fb == animationblock } { xn__xformOptransform_control_6fb == none }"
+                range   { -1 1 }
+            }
+            parm {
+                name    "pr"
+                label   "Pivot Rotate"
+                type    vector
+                size    3
+                default { "0" "0" "0" }
+                disablewhen "{ xn__xformOptransform_control_6fb == block } { xn__xformOptransform_control_6fb == animationblock } { xn__xformOptransform_control_6fb == none } { xn__xformOptransform_51a == xformcommonapi }"
+                range   { -1 1 }
+            }
+        }
+
+    }
+
+    group {
+        name    "folder0_1"
+        label   "Base Properties"
+
+        parm {
+            name    "intensity_control"
+            label   "Intensity"
+            type    string
+            default { "set" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'float')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "intensity"
+            label   "Intensity"
+            type    float
+            default { "1" }
+            disablewhen "{ intensity_control == block } { intensity_control == animationblock } { intensity_control == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+            parmtag { "usdvaluename" "inputs:intensity" }
+        }
+        parm {
+            name    "exposure_control"
+            label   "Exposure"
+            type    string
+            default { "set" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'float')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "exposure"
+            label   "Exposure"
+            type    float
+            default { "0" }
+            disablewhen "{ exposure_control == block } { exposure_control == animationblock } { exposure_control == none }"
+            range   { -10 10 }
+            parmtag { "usdvaluetype" "float" }
+            parmtag { "usdvaluename" "inputs:exposure" }
+        }
+        parm {
+            name    "color_control"
+            label   "Color"
+            type    string
+            default { "set" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'color3f')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "color"
+            label   "Color"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            disablewhen "{ color_control == block } { color_control == animationblock } { color_control == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "color3f" }
+            parmtag { "usdvaluename" "inputs:color" }
+        }
+        parm {
+            name    "enableColorTemperature_control"
+            label   "Enable Color Temperature"
+            type    string
+            default { "set" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'bool')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "enableColorTemperature"
+            label   "Enable Color Temperature"
+            type    toggle
+            default { "0" }
+            disablewhen "{ enableColorTemperature_control == block } { enableColorTemperature_control == animationblock } { enableColorTemperature_control == none }"
+            parmtag { "usdvaluetype" "bool" }
+            parmtag { "usdvaluename" "inputs:enableColorTemperature" }
+        }
+        parm {
+            name    "colorTemperature_control"
+            label   "Color Temperature"
+            type    string
+            default { "set" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'float')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "colorTemperature"
+            label   "Color Temperature"
+            type    log
+            default { "6500" }
+            disablewhen "{ enableColorTemperature == 0 createprims == on } { colorTemperature_control == block } { colorTemperature_control == animationblock } { colorTemperature_control == none }"
+            range   { 500 100000 }
+            parmtag { "usdvaluetype" "float" }
+            parmtag { "usdvaluename" "inputs:colorTemperature" }
+        }
+        parm {
+            name    "xn__texturefile_control_16a"
+            label   "Texture"
+            type    string
+            default { "set" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'asset')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__texturefile_0ta"
+            label   "Texture"
+            type    image
+            default { "" }
+            disablewhen "{ xn__texturefile_control_16a == block } { xn__texturefile_control_16a == animationblock } { xn__texturefile_control_16a == none }"
+            parmtag { "usdvaluetype" "asset" }
+            parmtag { "usdvaluename" "inputs:texture:file" }
+        }
+        parm {
+            name    "xn__textureformat_control_bbb"
+            label   "Format"
+            type    string
+            default { "set" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'token')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__textureformat_9wa"
+            label   "Format"
+            type    string
+            default { "automatic" }
+            disablewhen "{ xn__textureformat_control_bbb == block } { xn__textureformat_control_bbb == animationblock } { xn__textureformat_control_bbb == none }"
+            menu {
+                "automatic"             "Automatic"
+                "latlong"               "Lat-Long"
+                "mirroredBall"          "Mirrored Ball"
+                "angular"               "Angular"
+                "cubeMapVerticalCross"  "Cube Map (Vertical Cross)"
+            }
+            parmtag { "usdvaluetype" "token" }
+            parmtag { "usdvaluename" "inputs:texture:format" }
+        }
+        parm {
+            name    "normalize_control"
+            label   "Normalize"
+            type    string
+            default { "set" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'bool')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "normalize"
+            label   "Normalize Power"
+            type    toggle
+            default { "0" }
+            disablewhen "{ normalize_control == block } { normalize_control == animationblock } { normalize_control == none }"
+            parmtag { "usdvaluetype" "bool" }
+            parmtag { "usdvaluename" "inputs:normalize" }
+        }
+        parm {
+            name    "filters_control"
+            label   "Filters"
+            type    string
+            default { "set" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'relationship')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "filters"
+            label   "Filters"
+            type    string
+            default { "" }
+            disablewhen "{ filters_control == block } { filters_control == none }"
+            parmtag { "script_action" "import loputils\nloputils.selectPrimsInParm(kwargs, True,\n                           inputidx = -1)" }
+            parmtag { "script_action_help" "Select primitives in the Scene Viewer or Scene Graph Tree pane.\nCtrl-click to select using the primitive picker dialog.\nShift-click to select using the primitive pattern editor.\nAlt-click to toggle movement of the display flag." }
+            parmtag { "script_action_icon" "BUTTONS_reselect" }
+            parmtag { "usdvaluetype" "relationship" }
+        }
+        parm {
+            name    "portals_control"
+            label   "Portals"
+            type    string
+            default { "set" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'relationship')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "portals"
+            label   "Portals"
+            type    string
+            default { "" }
+            disablewhen "{ portals_control == block } { portals_control == none }"
+            parmtag { "script_action" "import loputils\nloputils.selectPrimsInParm(kwargs, True,\n                           inputidx = -1)\n" }
+            parmtag { "script_action_help" "Select primitives in the Scene Viewer or Scene Graph Tree pane.\nCtrl-click to select using the primitive picker dialog.\nShift-click to select using the primitive pattern editor.\nAlt-click to toggle movement of the display flag." }
+            parmtag { "script_action_icon" "BUTTONS_reselect" }
+            parmtag { "usdvaluetype" "relationship" }
+        }
+        parm {
+            name    "diffuse_control"
+            label   "Diffuse"
+            type    string
+            default { "set" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'float')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "diffuse"
+            label   "Diffuse Multiplier"
+            type    float
+            default { "1" }
+            disablewhen "{ diffuse_control == block } { diffuse_control == animationblock } { diffuse_control == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+            parmtag { "usdvaluename" "inputs:diffuse" }
+        }
+        parm {
+            name    "specular_control"
+            label   "Specular"
+            type    string
+            default { "set" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'float')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "specular"
+            label   "Specular Multiplier"
+            type    float
+            default { "1" }
+            disablewhen "{ specular_control == block } { specular_control == animationblock } { specular_control == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+            parmtag { "usdvaluename" "inputs:specular" }
+        }
+        parm {
+            name    "xn__houdiniguidescale_control_thb"
+            label   "houdini:guidescale"
+            type    string
+            default { "set" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'float')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__houdiniguidescale_s3a"
+            label   "Scale Guide Geometry"
+            type    float
+            default { [ "1 / __import__('loputils').getMetersPerUnit(pwd())" python ] }
+            disablewhen "{ xn__houdiniguidescale_control_thb == block } { xn__houdiniguidescale_control_thb == animationblock } { xn__houdiniguidescale_control_thb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder0_2"
+        label   "Shadow"
+
+        parm {
+            name    "xn__shadowenable_control_n8a"
+            label   "Enable"
+            type    string
+            default { "none" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'bool')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__shadowenable_mva"
+            label   "Enable"
+            type    toggle
+            default { "1" }
+            disablewhen "{ xn__shadowenable_control_n8a == block } { xn__shadowenable_control_n8a == animationblock } { xn__shadowenable_control_n8a == none }"
+            parmtag { "usdapischema" "ShadowAPI" }
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__shadowcolor_control_06a"
+            label   "Color"
+            type    string
+            default { "none" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'color3f')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__shadowcolor_zta"
+            label   "Color"
+            type    color
+            size    3
+            default { "0" "0" "0" }
+            disablewhen "{ xn__shadowcolor_control_06a == block } { xn__shadowcolor_control_06a == animationblock } { xn__shadowcolor_control_06a == none }"
+            range   { 0 1 }
+            parmtag { "colortype" "hsv" }
+            parmtag { "usdapischema" "ShadowAPI" }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__shadowdistance_control_wcb"
+            label   "Distance"
+            type    string
+            default { "none" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'float')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__shadowdistance_vya"
+            label   "Distance"
+            type    float
+            default { "1" }
+            disablewhen "{ xn__shadowdistance_control_wcb == block } { xn__shadowdistance_control_wcb == animationblock } { xn__shadowdistance_control_wcb == none }"
+            range   { 0 10 }
+            parmtag { "usdapischema" "ShadowAPI" }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+}

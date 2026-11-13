@@ -1,0 +1,2447 @@
+{
+  "source_revision": "a3e7734e0f69b663be5bbd7d1f97bbdcb2d90b7d",
+  "source_sha256": "dfff58e9be7f6985674a5e1bfe4556efcc0dfdf1e66ae0e09ec72f402bf5e001",
+  "scope": "exact implemented emission/deformation native deltas; approved product definitions and all unrelated fields remain frozen",
+  "versions": {
+    "21.0.631": {
+      "particles_v1": {
+        "emission_variance": {
+          "native_status": {
+            "before_present": true,
+            "before": "blocked",
+            "after_present": true,
+            "after": "mapped"
+          },
+          "unit": {
+            "before_present": true,
+            "before": "NOT_CAPTURED",
+            "after_present": true,
+            "after": "percent bounded scene-second emission-rate modulation"
+          },
+          "required_gates": {
+            "before_present": true,
+            "before": [],
+            "after_present": true,
+            "after": [
+              [
+                "emission",
+                "emittype",
+                "surface"
+              ],
+              [
+                "emission",
+                "usecontextgeo",
+                "first"
+              ],
+              [
+                "emission",
+                "constantactivate",
+                1.0
+              ],
+              [
+                "emission",
+                "impulseactiveate",
+                0.0
+              ],
+              [
+                "emission",
+                "scalebyarea",
+                0
+              ],
+              [
+                "emission",
+                "emitattrib",
+                ""
+              ],
+              [
+                "emission",
+                "usesimpointlimit",
+                0
+              ],
+              [
+                "emission",
+                "useframepointlimit",
+                0
+              ],
+              [
+                "emission",
+                "removeoverlap",
+                "none"
+              ]
+            ]
+          },
+          "semantic_contract": {
+            "before_present": false,
+            "before": null,
+            "after_present": true,
+            "after": "owned_particle_emission_expression/1"
+          },
+          "blocker": {
+            "before_present": true,
+            "before": "PARTICLE_EMISSION_VARIANCE_NATIVE_FIELD_NOT_CAPTURED",
+            "after_present": false,
+            "after": null
+          },
+          "evidence_scope": {
+            "before_present": false,
+            "before": null,
+            "after_present": true,
+            "after": "parameter_expression_requires_native_substep_integration"
+          },
+          "context_parms": {
+            "before_present": false,
+            "before": null,
+            "after_present": true,
+            "after": [
+              [
+                "emission",
+                "@emission_context"
+              ],
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "simulation",
+                "@node"
+              ],
+              [
+                "particle_object",
+                "@node"
+              ],
+              [
+                "emission",
+                "@node"
+              ],
+              [
+                "drag",
+                "@node"
+              ],
+              [
+                "force",
+                "@node"
+              ],
+              [
+                "cluster",
+                "@node"
+              ],
+              [
+                "solver",
+                "@node"
+              ],
+              [
+                "simulation_output",
+                "@node"
+              ],
+              [
+                "particle_size",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "instances",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "simulation",
+                "@input/0"
+              ],
+              [
+                "solver",
+                "@input/0"
+              ],
+              [
+                "drag",
+                "@input/0"
+              ],
+              [
+                "force",
+                "@input/0"
+              ],
+              [
+                "cluster",
+                "@input/0"
+              ],
+              [
+                "solver",
+                "@input/2"
+              ],
+              [
+                "simulation_output",
+                "@input/0"
+              ],
+              [
+                "particle_size",
+                "@input/0"
+              ],
+              [
+                "instances",
+                "@input/0"
+              ],
+              [
+                "instances",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ]
+          },
+          "aliases": {
+            "before_present": true,
+            "before": [],
+            "after_present": true,
+            "after": [
+              "constantrate"
+            ]
+          }
+        }
+      },
+      "procedural_geometry_v1": {
+        "scatter_density": {
+          "context_parms": {
+            "before_present": true,
+            "before": [
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "instance_transform",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@node"
+              ],
+              [
+                "point_variation",
+                "@node"
+              ],
+              [
+                "instance",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@input/0"
+              ],
+              [
+                "instance_transform",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/0"
+              ],
+              [
+                "point_variation",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ],
+            "after_present": true,
+            "after": [
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "geometry_deform",
+                "@node"
+              ],
+              [
+                "instance_transform",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@node"
+              ],
+              [
+                "point_variation",
+                "@node"
+              ],
+              [
+                "instance",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@input/0"
+              ],
+              [
+                "geometry_deform",
+                "@input/0"
+              ],
+              [
+                "instance_transform",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/0"
+              ],
+              [
+                "point_variation",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ]
+          }
+        },
+        "seed": {
+          "context_parms": {
+            "before_present": true,
+            "before": [
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "instance_transform",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@node"
+              ],
+              [
+                "point_variation",
+                "@node"
+              ],
+              [
+                "instance",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@input/0"
+              ],
+              [
+                "instance_transform",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/0"
+              ],
+              [
+                "point_variation",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ],
+            "after_present": true,
+            "after": [
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "geometry_deform",
+                "@node"
+              ],
+              [
+                "instance_transform",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@node"
+              ],
+              [
+                "point_variation",
+                "@node"
+              ],
+              [
+                "instance",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@input/0"
+              ],
+              [
+                "geometry_deform",
+                "@input/0"
+              ],
+              [
+                "instance_transform",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/0"
+              ],
+              [
+                "point_variation",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ]
+          }
+        },
+        "scale": {
+          "context_parms": {
+            "before_present": true,
+            "before": [
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "instance_transform",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@node"
+              ],
+              [
+                "point_variation",
+                "@node"
+              ],
+              [
+                "instance",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@input/0"
+              ],
+              [
+                "instance_transform",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/0"
+              ],
+              [
+                "point_variation",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ],
+            "after_present": true,
+            "after": [
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "geometry_deform",
+                "@node"
+              ],
+              [
+                "instance_transform",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@node"
+              ],
+              [
+                "point_variation",
+                "@node"
+              ],
+              [
+                "instance",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@input/0"
+              ],
+              [
+                "geometry_deform",
+                "@input/0"
+              ],
+              [
+                "instance_transform",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/0"
+              ],
+              [
+                "point_variation",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ]
+          }
+        },
+        "variation": {
+          "context_parms": {
+            "before_present": true,
+            "before": [
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "instance_transform",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@node"
+              ],
+              [
+                "point_variation",
+                "@node"
+              ],
+              [
+                "instance",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@input/0"
+              ],
+              [
+                "instance_transform",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/0"
+              ],
+              [
+                "point_variation",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ],
+            "after_present": true,
+            "after": [
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "geometry_deform",
+                "@node"
+              ],
+              [
+                "instance_transform",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@node"
+              ],
+              [
+                "point_variation",
+                "@node"
+              ],
+              [
+                "instance",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@input/0"
+              ],
+              [
+                "geometry_deform",
+                "@input/0"
+              ],
+              [
+                "instance_transform",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/0"
+              ],
+              [
+                "point_variation",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ]
+          }
+        },
+        "scale_variance": {
+          "context_parms": {
+            "before_present": true,
+            "before": [
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "instance_transform",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@node"
+              ],
+              [
+                "point_variation",
+                "@node"
+              ],
+              [
+                "instance",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@input/0"
+              ],
+              [
+                "instance_transform",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/0"
+              ],
+              [
+                "point_variation",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ],
+            "after_present": true,
+            "after": [
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "geometry_deform",
+                "@node"
+              ],
+              [
+                "instance_transform",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@node"
+              ],
+              [
+                "point_variation",
+                "@node"
+              ],
+              [
+                "instance",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@input/0"
+              ],
+              [
+                "geometry_deform",
+                "@input/0"
+              ],
+              [
+                "instance_transform",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/0"
+              ],
+              [
+                "point_variation",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ]
+          }
+        },
+        "deformation": {
+          "role": {
+            "before_present": true,
+            "before": "instance",
+            "after_present": true,
+            "after": "geometry_deform"
+          },
+          "native_status": {
+            "before_present": true,
+            "before": "blocked",
+            "after_present": true,
+            "after": "mapped"
+          },
+          "unit": {
+            "before_present": true,
+            "before": "NOT_CAPTURED",
+            "after_present": true,
+            "after": "SU; frozen rest-space instance-source sinusoidal normal displacement before scale/rotation"
+          },
+          "semantic_contract": {
+            "before_present": false,
+            "before": null,
+            "after_present": true,
+            "after": "trusted_geometry_deform_program/1"
+          },
+          "native_type": {
+            "before_present": true,
+            "before": "float",
+            "after_present": true,
+            "after": "string"
+          },
+          "blocker": {
+            "before_present": true,
+            "before": "INSTANCE_DEFORMATION_NATIVE_GRAPH_REQUIRED",
+            "after_present": false,
+            "after": null
+          },
+          "evidence_scope": {
+            "before_present": false,
+            "before": null,
+            "after_present": true,
+            "after": "parameters_only_requires_actual_deformation_and_downstream_consumption"
+          },
+          "context_parms": {
+            "before_present": false,
+            "before": null,
+            "after_present": true,
+            "after": [
+              [
+                "geometry_deform",
+                "@geometry_context"
+              ],
+              [
+                "geometry_deform",
+                "@geometry_parameters"
+              ],
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "geometry_deform",
+                "@node"
+              ],
+              [
+                "instance_transform",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@node"
+              ],
+              [
+                "point_variation",
+                "@node"
+              ],
+              [
+                "instance",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@input/0"
+              ],
+              [
+                "geometry_deform",
+                "@input/0"
+              ],
+              [
+                "instance_transform",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/0"
+              ],
+              [
+                "point_variation",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ]
+          },
+          "aliases": {
+            "before_present": true,
+            "before": [],
+            "after_present": true,
+            "after": [
+              "snippet"
+            ]
+          }
+        },
+        "density": {
+          "context_parms": {
+            "before_present": true,
+            "before": [
+              [
+                "scatter",
+                "@input_geometry/0"
+              ],
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "instance_transform",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@node"
+              ],
+              [
+                "point_variation",
+                "@node"
+              ],
+              [
+                "instance",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@input/0"
+              ],
+              [
+                "instance_transform",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/0"
+              ],
+              [
+                "point_variation",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ],
+            "after_present": true,
+            "after": [
+              [
+                "scatter",
+                "@input_geometry/0"
+              ],
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "geometry_deform",
+                "@node"
+              ],
+              [
+                "instance_transform",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@node"
+              ],
+              [
+                "point_variation",
+                "@node"
+              ],
+              [
+                "instance",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@input/0"
+              ],
+              [
+                "geometry_deform",
+                "@input/0"
+              ],
+              [
+                "instance_transform",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/0"
+              ],
+              [
+                "point_variation",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ]
+          }
+        },
+        "rotation": {
+          "context_parms": {
+            "before_present": true,
+            "before": [
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "instance_transform",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@node"
+              ],
+              [
+                "point_variation",
+                "@node"
+              ],
+              [
+                "instance",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@input/0"
+              ],
+              [
+                "instance_transform",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/0"
+              ],
+              [
+                "point_variation",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ],
+            "after_present": true,
+            "after": [
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "geometry_deform",
+                "@node"
+              ],
+              [
+                "instance_transform",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@node"
+              ],
+              [
+                "point_variation",
+                "@node"
+              ],
+              [
+                "instance",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@input/0"
+              ],
+              [
+                "geometry_deform",
+                "@input/0"
+              ],
+              [
+                "instance_transform",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/0"
+              ],
+              [
+                "point_variation",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ]
+          }
+        }
+      },
+      "water_ocean_v1": {
+        "directional_spread": {
+          "invalidates_from": {
+            "before_present": true,
+            "before": "generation_simulation",
+            "after_present": true,
+            "after": "source_layout_control"
+          }
+        }
+      },
+      "rbd_destruction_v1": {
+        "velocity_variance": {
+          "conditional_native_route": {
+            "before_present": false,
+            "before": null,
+            "after_present": true,
+            "after": "bridge.rbd-velocity-program/1"
+          },
+          "runtime_scope": {
+            "before_present": false,
+            "before": null,
+            "after_present": true,
+            "after": "initial_active_packed_pieces_only"
+          }
+        }
+      }
+    },
+    "22.0.429": {
+      "particles_v1": {
+        "emission_variance": {
+          "native_status": {
+            "before_present": true,
+            "before": "blocked",
+            "after_present": true,
+            "after": "mapped"
+          },
+          "unit": {
+            "before_present": true,
+            "before": "NOT_CAPTURED",
+            "after_present": true,
+            "after": "percent bounded scene-second emission-rate modulation"
+          },
+          "required_gates": {
+            "before_present": true,
+            "before": [],
+            "after_present": true,
+            "after": [
+              [
+                "emission",
+                "emittype",
+                "surface"
+              ],
+              [
+                "emission",
+                "usecontextgeo",
+                "first"
+              ],
+              [
+                "emission",
+                "constantactivate",
+                1.0
+              ],
+              [
+                "emission",
+                "impulseactiveate",
+                0.0
+              ],
+              [
+                "emission",
+                "scalebyarea",
+                0
+              ],
+              [
+                "emission",
+                "emitattrib",
+                ""
+              ],
+              [
+                "emission",
+                "usesimpointlimit",
+                0
+              ],
+              [
+                "emission",
+                "useframepointlimit",
+                0
+              ],
+              [
+                "emission",
+                "removeoverlap",
+                "none"
+              ]
+            ]
+          },
+          "semantic_contract": {
+            "before_present": false,
+            "before": null,
+            "after_present": true,
+            "after": "owned_particle_emission_expression/1"
+          },
+          "blocker": {
+            "before_present": true,
+            "before": "PARTICLE_EMISSION_VARIANCE_NATIVE_FIELD_NOT_CAPTURED",
+            "after_present": false,
+            "after": null
+          },
+          "evidence_scope": {
+            "before_present": false,
+            "before": null,
+            "after_present": true,
+            "after": "parameter_expression_requires_native_substep_integration"
+          },
+          "context_parms": {
+            "before_present": false,
+            "before": null,
+            "after_present": true,
+            "after": [
+              [
+                "emission",
+                "@emission_context"
+              ],
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "simulation",
+                "@node"
+              ],
+              [
+                "particle_object",
+                "@node"
+              ],
+              [
+                "emission",
+                "@node"
+              ],
+              [
+                "drag",
+                "@node"
+              ],
+              [
+                "force",
+                "@node"
+              ],
+              [
+                "cluster",
+                "@node"
+              ],
+              [
+                "solver",
+                "@node"
+              ],
+              [
+                "simulation_output",
+                "@node"
+              ],
+              [
+                "particle_size",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "instances",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "simulation",
+                "@input/0"
+              ],
+              [
+                "solver",
+                "@input/0"
+              ],
+              [
+                "drag",
+                "@input/0"
+              ],
+              [
+                "force",
+                "@input/0"
+              ],
+              [
+                "cluster",
+                "@input/0"
+              ],
+              [
+                "solver",
+                "@input/2"
+              ],
+              [
+                "simulation_output",
+                "@input/0"
+              ],
+              [
+                "particle_size",
+                "@input/0"
+              ],
+              [
+                "instances",
+                "@input/0"
+              ],
+              [
+                "instances",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ]
+          },
+          "aliases": {
+            "before_present": true,
+            "before": [],
+            "after_present": true,
+            "after": [
+              "constantrate"
+            ]
+          }
+        }
+      },
+      "procedural_geometry_v1": {
+        "scatter_density": {
+          "context_parms": {
+            "before_present": true,
+            "before": [
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "instance_transform",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@node"
+              ],
+              [
+                "point_variation",
+                "@node"
+              ],
+              [
+                "instance",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@input/0"
+              ],
+              [
+                "instance_transform",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/0"
+              ],
+              [
+                "point_variation",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ],
+            "after_present": true,
+            "after": [
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "geometry_deform",
+                "@node"
+              ],
+              [
+                "instance_transform",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@node"
+              ],
+              [
+                "point_variation",
+                "@node"
+              ],
+              [
+                "instance",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@input/0"
+              ],
+              [
+                "geometry_deform",
+                "@input/0"
+              ],
+              [
+                "instance_transform",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/0"
+              ],
+              [
+                "point_variation",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ]
+          }
+        },
+        "seed": {
+          "context_parms": {
+            "before_present": true,
+            "before": [
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "instance_transform",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@node"
+              ],
+              [
+                "point_variation",
+                "@node"
+              ],
+              [
+                "instance",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@input/0"
+              ],
+              [
+                "instance_transform",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/0"
+              ],
+              [
+                "point_variation",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ],
+            "after_present": true,
+            "after": [
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "geometry_deform",
+                "@node"
+              ],
+              [
+                "instance_transform",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@node"
+              ],
+              [
+                "point_variation",
+                "@node"
+              ],
+              [
+                "instance",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@input/0"
+              ],
+              [
+                "geometry_deform",
+                "@input/0"
+              ],
+              [
+                "instance_transform",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/0"
+              ],
+              [
+                "point_variation",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ]
+          }
+        },
+        "scale": {
+          "context_parms": {
+            "before_present": true,
+            "before": [
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "instance_transform",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@node"
+              ],
+              [
+                "point_variation",
+                "@node"
+              ],
+              [
+                "instance",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@input/0"
+              ],
+              [
+                "instance_transform",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/0"
+              ],
+              [
+                "point_variation",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ],
+            "after_present": true,
+            "after": [
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "geometry_deform",
+                "@node"
+              ],
+              [
+                "instance_transform",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@node"
+              ],
+              [
+                "point_variation",
+                "@node"
+              ],
+              [
+                "instance",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@input/0"
+              ],
+              [
+                "geometry_deform",
+                "@input/0"
+              ],
+              [
+                "instance_transform",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/0"
+              ],
+              [
+                "point_variation",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ]
+          }
+        },
+        "variation": {
+          "context_parms": {
+            "before_present": true,
+            "before": [
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "instance_transform",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@node"
+              ],
+              [
+                "point_variation",
+                "@node"
+              ],
+              [
+                "instance",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@input/0"
+              ],
+              [
+                "instance_transform",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/0"
+              ],
+              [
+                "point_variation",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ],
+            "after_present": true,
+            "after": [
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "geometry_deform",
+                "@node"
+              ],
+              [
+                "instance_transform",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@node"
+              ],
+              [
+                "point_variation",
+                "@node"
+              ],
+              [
+                "instance",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@input/0"
+              ],
+              [
+                "geometry_deform",
+                "@input/0"
+              ],
+              [
+                "instance_transform",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/0"
+              ],
+              [
+                "point_variation",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ]
+          }
+        },
+        "scale_variance": {
+          "context_parms": {
+            "before_present": true,
+            "before": [
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "instance_transform",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@node"
+              ],
+              [
+                "point_variation",
+                "@node"
+              ],
+              [
+                "instance",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@input/0"
+              ],
+              [
+                "instance_transform",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/0"
+              ],
+              [
+                "point_variation",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ],
+            "after_present": true,
+            "after": [
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "geometry_deform",
+                "@node"
+              ],
+              [
+                "instance_transform",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@node"
+              ],
+              [
+                "point_variation",
+                "@node"
+              ],
+              [
+                "instance",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@input/0"
+              ],
+              [
+                "geometry_deform",
+                "@input/0"
+              ],
+              [
+                "instance_transform",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/0"
+              ],
+              [
+                "point_variation",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ]
+          }
+        },
+        "deformation": {
+          "role": {
+            "before_present": true,
+            "before": "instance",
+            "after_present": true,
+            "after": "geometry_deform"
+          },
+          "native_status": {
+            "before_present": true,
+            "before": "blocked",
+            "after_present": true,
+            "after": "mapped"
+          },
+          "unit": {
+            "before_present": true,
+            "before": "NOT_CAPTURED",
+            "after_present": true,
+            "after": "SU; frozen rest-space instance-source sinusoidal normal displacement before scale/rotation"
+          },
+          "semantic_contract": {
+            "before_present": false,
+            "before": null,
+            "after_present": true,
+            "after": "trusted_geometry_deform_program/1"
+          },
+          "native_type": {
+            "before_present": true,
+            "before": "float",
+            "after_present": true,
+            "after": "string"
+          },
+          "blocker": {
+            "before_present": true,
+            "before": "INSTANCE_DEFORMATION_NATIVE_GRAPH_REQUIRED",
+            "after_present": false,
+            "after": null
+          },
+          "evidence_scope": {
+            "before_present": false,
+            "before": null,
+            "after_present": true,
+            "after": "parameters_only_requires_actual_deformation_and_downstream_consumption"
+          },
+          "context_parms": {
+            "before_present": false,
+            "before": null,
+            "after_present": true,
+            "after": [
+              [
+                "geometry_deform",
+                "@geometry_context"
+              ],
+              [
+                "geometry_deform",
+                "@geometry_parameters"
+              ],
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "geometry_deform",
+                "@node"
+              ],
+              [
+                "instance_transform",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@node"
+              ],
+              [
+                "point_variation",
+                "@node"
+              ],
+              [
+                "instance",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@input/0"
+              ],
+              [
+                "geometry_deform",
+                "@input/0"
+              ],
+              [
+                "instance_transform",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/0"
+              ],
+              [
+                "point_variation",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ]
+          },
+          "aliases": {
+            "before_present": true,
+            "before": [],
+            "after_present": true,
+            "after": [
+              "snippet"
+            ]
+          }
+        },
+        "density": {
+          "context_parms": {
+            "before_present": true,
+            "before": [
+              [
+                "scatter",
+                "@input_geometry/0"
+              ],
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "instance_transform",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@node"
+              ],
+              [
+                "point_variation",
+                "@node"
+              ],
+              [
+                "instance",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@input/0"
+              ],
+              [
+                "instance_transform",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/0"
+              ],
+              [
+                "point_variation",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ],
+            "after_present": true,
+            "after": [
+              [
+                "scatter",
+                "@input_geometry/0"
+              ],
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "geometry_deform",
+                "@node"
+              ],
+              [
+                "instance_transform",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@node"
+              ],
+              [
+                "point_variation",
+                "@node"
+              ],
+              [
+                "instance",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@input/0"
+              ],
+              [
+                "geometry_deform",
+                "@input/0"
+              ],
+              [
+                "instance_transform",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/0"
+              ],
+              [
+                "point_variation",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ]
+          }
+        },
+        "rotation": {
+          "context_parms": {
+            "before_present": true,
+            "before": [
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "instance_transform",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@node"
+              ],
+              [
+                "point_variation",
+                "@node"
+              ],
+              [
+                "instance",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@input/0"
+              ],
+              [
+                "instance_transform",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/0"
+              ],
+              [
+                "point_variation",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ],
+            "after_present": true,
+            "after": [
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "geometry_deform",
+                "@node"
+              ],
+              [
+                "instance_transform",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@node"
+              ],
+              [
+                "point_variation",
+                "@node"
+              ],
+              [
+                "instance",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@input/0"
+              ],
+              [
+                "geometry_deform",
+                "@input/0"
+              ],
+              [
+                "instance_transform",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/0"
+              ],
+              [
+                "point_variation",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ]
+          }
+        }
+      },
+      "water_ocean_v1": {
+        "directional_spread": {
+          "invalidates_from": {
+            "before_present": true,
+            "before": "generation_simulation",
+            "after_present": true,
+            "after": "source_layout_control"
+          }
+        }
+      },
+      "rbd_destruction_v1": {
+        "velocity_variance": {
+          "conditional_native_route": {
+            "before_present": false,
+            "before": null,
+            "after_present": true,
+            "after": "bridge.rbd-velocity-program/1"
+          },
+          "runtime_scope": {
+            "before_present": false,
+            "before": null,
+            "after_present": true,
+            "after": "initial_active_packed_pieces_only"
+          }
+        }
+      }
+    }
+  }
+}

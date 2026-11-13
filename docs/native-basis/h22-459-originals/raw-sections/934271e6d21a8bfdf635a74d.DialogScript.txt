@@ -1,0 +1,1464 @@
+# Dialog script for crowdsource automatically generated 02/03/15 13:09:37
+
+{
+    name	crowdsource
+    script	crowdsource
+    label	"Crowd Source"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Custom Surface/Points"
+    inputlabel	2	"Sub-Network Input #2"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+
+    parm {
+	name	"labelparm"
+	label	"Source"
+	type	label
+	default	{ "" }
+	range	{ 0 1 }
+	export	none
+    }
+    parm {
+	name	"input"
+	label	"Input"
+	type	ordinal
+	default	{ "subnet" }
+	menu	{
+	    "subnet"	"Subnet"
+	    "disk"	"Disk"
+	}
+	range	{ 0 1 }
+	export	none
+	parmtag	{ "autoscope" "0000000000000000" }
+	parmtag	{ "script_callback" "" }
+    }
+    parm {
+	name	"objsubnet"
+	label	"Object Subnet"
+	type	oppath
+	default	{ "" }
+	disablewhen	"{ input == disk }"
+	range	{ 0 1 }
+	export	none
+	parmtag	{ "autoscope" "0000000000000000" }
+	parmtag	{ "opfilter" "!!OBJ!!" }
+	parmtag	{ "oprelative" "." }
+	parmtag	{ "script_callback" "" }
+    }
+    parm {
+	name	"cachedir"
+	label	"Cache Directory"
+	type	file
+	default	{ "${HIP}/agents/" }
+	disablewhen	"{ input == subnet }"
+	range	{ 0 1 }
+	export	none
+    }
+    parm {
+	name	"keepexternalref"
+	label	"Keep External References"
+	type	toggle
+	default	{ "on" }
+	disablewhen	"{ input == subnet }"
+	range	{ 0 1 }
+	export	none
+	parmtag	{ "autoscope" "0000000000000000" }
+    }
+    parm {
+	name	"reload"
+	label	"Reload"
+	type	button
+	default	{ "0" }
+	range	{ 0 1 }
+	export	none
+	parmtag	{ "autoscope" "0000000000000000" }
+	parmtag	{ "script_callback" "" }
+    }
+    parm {
+	name	"sepparm10"
+	label	"Separator"
+	type	separator
+	default	{ "" }
+	range	{ 0 1 }
+	export	none
+    }
+    group {
+	name	"setup"
+	label	"Setup"
+
+	parm {
+	    name	"layout"
+	    label	"Layout"
+	    type	ordinal
+	    default	{ "0" }
+	    menu	{
+		"0"	"Random"
+		"1"	"Formation"
+	    }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"size"
+	    label	"Area Size"
+	    type	vector2
+	    size	2
+	    default	{ "10" "10" }
+	    hidewhen	"{ layout == 1 }"
+	    range	{ -1 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"formationrows"
+	    label	"Rows"
+	    type	integer
+	    default	{ "4" }
+	    hidewhen	"{ layout == 0 }"
+	    range	{ 1! 10 }
+	    export	none
+	}
+	parm {
+	    name	"formationcols"
+	    label	"Columns"
+	    type	integer
+	    default	{ "5" }
+	    hidewhen	"{ layout == 0 }"
+	    range	{ 1! 10 }
+	    export	none
+	}
+	parm {
+	    name	"formationspacing"
+	    label	"Spacing"
+	    type	float
+	    default	{ "1" }
+	    hidewhen	"{ layout == 0 }"
+	    range	{ 0.1! 10 }
+	    export	none
+	}
+	parm {
+	    name	"densityperarea"
+	    label	"Use Area Size For Scatter Density"
+	    type	toggle
+	    default	{ "0" }
+	    hidewhen	"{ layout == 1 }"
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"scatteragent"
+	    label	"Number"
+	    type	integer
+	    default	{ "20" }
+	    hidewhen	"{ layout == 1 } { densityperarea == 1 }"
+	    range	{ 0! 10000 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"scatteragentperarea"
+	    label	"Number / Unit Area "
+	    type	float
+	    default	{ "1" }
+	    hidewhen	"{ densityperarea == 0 } { layout == 1 }"
+	    range	{ 0 10 }
+	    export	none
+	}
+	parm {
+	    name	"scatterseed"
+	    label	"Random Seed"
+	    type	float
+	    default	{ "0" }
+	    hidewhen	"{ layout == 1 }"
+	    range	{ 0 10 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"maxiterations"
+	    label	"Relax"
+	    type	integer
+	    default	{ "10" }
+	    hidewhen	"{ layout == 1 }"
+	    range	{ 0! 100 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"sepparm"
+	    label	"Separator"
+	    type	separator
+	    default	{ "" }
+	    hidewhen	"{ layout == 1 }"
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"densityattrib"
+	    label	"Density Attribute"
+	    type	string
+	    default	{ "density" }
+	    hidewhen	"{ layout == 1 }"
+	    menutoggle	{
+		[ "opmenu -l scatter_densityAttrib densityattrib" ]
+	    }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"densityscale"
+	    label	"Density Scale"
+	    type	float
+	    default	{ "10" }
+	    hidewhen	"{ layout == 1 }"
+	    range	{ 0.1 10 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "units" "m-2" }
+	}
+	parm {
+	    name	"forcetotal"
+	    label	"Force Total Count"
+	    type	toggle
+	    default	{ "off" }
+	    hidewhen	"{ layout == 1 }"
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"sepparm18"
+	    label	"Separator"
+	    type	separator
+	    default	{ "" }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"agentname"
+	    label	"Agent Name"
+	    type	string
+	    default	{ "mocapbiped1" }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"agentgroup"
+	    label	"Group Name"
+	    type	string
+	    default	{ "blueagents" }
+	    range	{ 0 10 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"state"
+	    label	"Default State"
+	    type	string
+	    default	{ "walk" }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"agenetcolor"
+	    label	"Color"
+	    type	color
+	    size	3
+	    default	{ "0" "0.5" "1" }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"scale"
+	    label	"Scale"
+	    type	float
+	    default	{ "1" }
+	    range	{ 0.01! 2 }
+	    export	none
+	}
+	parm {
+	    name	"minspeed"
+	    label	"Min Speed"
+	    type	float
+	    default	{ "0" }
+	    range	{ 0 10 }
+	    export	none
+	}
+	parm {
+	    name	"maxspeed"
+	    label	"Max Speed"
+	    type	float
+	    default	{ "2" }
+	    range	{ 0 10 }
+	    export	none
+	}
+	parm {
+	    name	"maxturnrate"
+	    label	"Max Turn Rate"
+	    type	float
+	    default	{ "180" }
+	    range	{ 0 720 }
+	    export	none
+	}
+	parm {
+	    name	"maxforce"
+	    label	"Max Force"
+	    type	float
+	    default	{ "200" }
+	    range	{ 0 100 }
+	    export	none
+	}
+	parm {
+	    name	"initialvel"
+	    label	"Initial Velocity"
+	    type	float
+	    size	3
+	    default	{ "0" "0" "1" }
+	    range	{ 0 10 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"heading"
+	    label	"Heading"
+	    type	float
+	    size	3
+	    default	{ "0" "0" "1" }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"up"
+	    label	"Up"
+	    type	float
+	    size	3
+	    default	{ "0" "1" "0" }
+	    range	{ 0 10 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+    }
+
+    group {
+	name	"setup_1"
+	label	"Randomize"
+
+	parm {
+	    name	"sepparm3"
+	    label	"Separator"
+	    type	separator
+	    default	{ "" }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"randomizeagentname"
+	    label	"Randomize Agent Name"
+	    type	toggle
+	    default	{ "0" }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"agentnameprefix"
+	    label	"Agent Name Prefix"
+	    type	string
+	    default	{ "agent" }
+	    hidewhen	"{ randomizeagentname != 1 }"
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"agentnameseed"
+	    label	"Seed"
+	    type	float
+	    default	{ "0.46" }
+	    hidewhen	"{ randomizeagentname != 1 }"
+	    range	{ 0 10 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "script_callback" "" }
+	}
+	parm {
+	    name	"agentnamemindiscrete"
+	    label	"Min Value"
+	    type	integer
+	    default	{ "1" }
+	    hidewhen	"{ randomizeagentname != 1 }"
+	    range	{ 0 100 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"agentnamemaxdiscrete"
+	    label	"Max Value"
+	    type	integer
+	    default	{ "10" }
+	    hidewhen	"{ randomizeagentname != 1 }"
+	    range	{ 0 100 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"agentnamestepsize"
+	    label	"Step Size"
+	    type	integer
+	    default	{ "1" }
+	    hidewhen	"{ randomizeagentname != 1 }"
+	    range	{ 1 10 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"sepparm14"
+	    label	"Separator"
+	    type	separator
+	    default	{ "" }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"randomizedefaultstate"
+	    label	"Randomize Default State"
+	    type	toggle
+	    default	{ "0" }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"defaultstateprefix"
+	    label	"Default State Prefix"
+	    type	string
+	    default	{ "idle" }
+	    hidewhen	"{ randomizedefaultstate != 1 }"
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"defaultstateseed"
+	    label	"Seed"
+	    type	float
+	    default	{ "0.23" }
+	    hidewhen	"{ randomizedefaultstate != 1 }"
+	    range	{ 0 10 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "script_callback" "" }
+	}
+	parm {
+	    name	"defaultstatemindiscrete"
+	    label	"Min Value"
+	    type	integer
+	    default	{ "1" }
+	    hidewhen	"{ randomizedefaultstate != 1 }"
+	    range	{ 0 100 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"defaultstatemaxdiscrete"
+	    label	"Max Value"
+	    type	integer
+	    default	{ "10" }
+	    hidewhen	"{ randomizedefaultstate != 1 }"
+	    range	{ 0 100 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"defaultstatestepsize"
+	    label	"Step Size"
+	    type	integer
+	    default	{ "1" }
+	    hidewhen	"{ randomizedefaultstate != 1 }"
+	    range	{ 1 10 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"sepparm4"
+	    label	"Separator"
+	    type	separator
+	    default	{ "" }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"randomizescale"
+	    label	"Randomize Scale"
+	    type	toggle
+	    default	{ "0" }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"randomscale"
+	    label	"Scale"
+	    type	float
+	    default	{ "1" }
+	    hidewhen	"{ randomizescale != 1 }"
+	    range	{ 0 10 }
+	    export	none
+	}
+	parm {
+	    name	"randomscaleoffset"
+	    label	"Randomness"
+	    type	float
+	    default	{ "0.1" }
+	    hidewhen	"{ randomizescale != 1 }"
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"randomescaleseed"
+	    label	"Seed"
+	    type	float
+	    default	{ "0.43" }
+	    hidewhen	"{ randomizescale != 1 }"
+	    range	{ 0 10 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "script_callback" "" }
+	}
+	parm {
+	    name	"distribution3"
+	    label	"Distribution"
+	    type	string
+	    default	{ "normal" }
+	    hidewhen	"{ randomizescale != 1 }"
+	    menu	{
+		"constant"	"Constant Value (not random)"
+		"bernoulli"	"Two Values"
+		"uniform"	"Uniform"
+		"uniformorient"	"Uniform Orientation"
+		"normal"	"Normal (Gaussian)"
+		"exponential"	"Exponential"
+		"lognormal"	"Log-Normal"
+		"cauchy"	"Cauchy-Lorentz"
+		"ramp"	"Custom Ramp"
+	    }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "script_callback" "" }
+	}
+	parm {
+	    name	"sepparm5"
+	    label	"Separator"
+	    type	separator
+	    default	{ "" }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"randomizeminspeed"
+	    label	"Randomize Min Speed"
+	    type	toggle
+	    default	{ "0" }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"randomminspeed"
+	    label	"Min Speed"
+	    type	float
+	    default	{ "0" }
+	    hidewhen	"{ randomizeminspeed != 1 }"
+	    range	{ 0 10 }
+	    export	none
+	}
+	parm {
+	    name	"randomminspeedoffset"
+	    label	"Randomness"
+	    type	float
+	    default	{ "0.1" }
+	    hidewhen	"{ randomizeminspeed != 1 }"
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"randomeminspeedseed"
+	    label	"Seed"
+	    type	float
+	    default	{ "0.63" }
+	    hidewhen	"{ randomizeminspeed != 1 }"
+	    range	{ 0 10 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "script_callback" "" }
+	}
+	parm {
+	    name	"distribution4"
+	    label	"Distribution"
+	    type	string
+	    default	{ "normal" }
+	    hidewhen	"{ randomizeminspeed != 1 }"
+	    menu	{
+		"constant"	"Constant Value (not random)"
+		"bernoulli"	"Two Values"
+		"uniform"	"Uniform"
+		"uniformorient"	"Uniform Orientation"
+		"normal"	"Normal (Gaussian)"
+		"exponential"	"Exponential"
+		"lognormal"	"Log-Normal"
+		"cauchy"	"Cauchy-Lorentz"
+		"ramp"	"Custom Ramp"
+	    }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "script_callback" "" }
+	}
+	parm {
+	    name	"sepparm6"
+	    label	"Separator"
+	    type	separator
+	    default	{ "" }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"randomizemaxspeed"
+	    label	"Randomize Max Speed"
+	    type	toggle
+	    default	{ "0" }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"randommaxspeed"
+	    label	"Max Speed"
+	    type	float
+	    default	{ "2" }
+	    hidewhen	"{ randomizemaxspeed != 1 }"
+	    range	{ 0 10 }
+	    export	none
+	}
+	parm {
+	    name	"randommaxspeedoffset"
+	    label	"Randomness"
+	    type	float
+	    default	{ "0.1" }
+	    hidewhen	"{ randomizemaxspeed != 1 }"
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"randomemmaxspeedseed"
+	    label	"Seed"
+	    type	float
+	    default	{ "0.63" }
+	    hidewhen	"{ randomizemaxspeed != 1 }"
+	    range	{ 0 10 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "script_callback" "" }
+	}
+	parm {
+	    name	"distribution5"
+	    label	"Distribution"
+	    type	string
+	    default	{ "normal" }
+	    hidewhen	"{ randomizemaxspeed != 1 }"
+	    menu	{
+		"constant"	"Constant Value (not random)"
+		"bernoulli"	"Two Values"
+		"uniform"	"Uniform"
+		"uniformorient"	"Uniform Orientation"
+		"normal"	"Normal (Gaussian)"
+		"exponential"	"Exponential"
+		"lognormal"	"Log-Normal"
+		"cauchy"	"Cauchy-Lorentz"
+		"ramp"	"Custom Ramp"
+	    }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "script_callback" "" }
+	}
+	parm {
+	    name	"sepparm7"
+	    label	"Separator"
+	    type	separator
+	    default	{ "" }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"randomizemaxturnrate"
+	    label	"Randomize Max Turn Rate"
+	    type	toggle
+	    default	{ "0" }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"randommaxturnrate"
+	    label	"Max Turn Rate"
+	    type	float
+	    default	{ "90" }
+	    hidewhen	"{ randomizemaxturnrate != 1 }"
+	    range	{ 0 180 }
+	    export	none
+	}
+	parm {
+	    name	"randommaxturnrateoffset"
+	    label	"Randomness"
+	    type	float
+	    default	{ "0.1" }
+	    hidewhen	"{ randomizemaxturnrate != 1 }"
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"randommmaxturnrateseed"
+	    label	"Seed"
+	    type	float
+	    default	{ "0.63" }
+	    hidewhen	"{ randomizemaxturnrate != 1 }"
+	    range	{ 0 10 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "script_callback" "" }
+	}
+	parm {
+	    name	"distribution6"
+	    label	"Distribution"
+	    type	string
+	    default	{ "normal" }
+	    hidewhen	"{ randomizemaxturnrate != 1 }"
+	    menu	{
+		"constant"	"Constant Value (not random)"
+		"bernoulli"	"Two Values"
+		"uniform"	"Uniform"
+		"uniformorient"	"Uniform Orientation"
+		"normal"	"Normal (Gaussian)"
+		"exponential"	"Exponential"
+		"lognormal"	"Log-Normal"
+		"cauchy"	"Cauchy-Lorentz"
+		"ramp"	"Custom Ramp"
+	    }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "script_callback" "" }
+	}
+	parm {
+	    name	"sepparm8"
+	    label	"Separator"
+	    type	separator
+	    default	{ "" }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"randomizemaxforce"
+	    label	"Randomize Max Force"
+	    type	toggle
+	    default	{ "0" }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"randommaxforce"
+	    label	"Max Force"
+	    type	float
+	    default	{ "200" }
+	    hidewhen	"{ randomizemaxforce != 1 }"
+	    range	{ 0 180 }
+	    export	none
+	}
+	parm {
+	    name	"randommaxforceoffset"
+	    label	"Randomness"
+	    type	float
+	    default	{ "0.1" }
+	    hidewhen	"{ randomizemaxforce != 1 }"
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"randommaxforceseed"
+	    label	"Seed"
+	    type	float
+	    default	{ "0.63" }
+	    hidewhen	"{ randomizemaxforce != 1 }"
+	    range	{ 0 10 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "script_callback" "" }
+	}
+	parm {
+	    name	"distribution7"
+	    label	"Distribution"
+	    type	string
+	    default	{ "normal" }
+	    hidewhen	"{ randomizemaxforce != 1 }"
+	    menu	{
+		"constant"	"Constant Value (not random)"
+		"bernoulli"	"Two Values"
+		"uniform"	"Uniform"
+		"uniformorient"	"Uniform Orientation"
+		"normal"	"Normal (Gaussian)"
+		"exponential"	"Exponential"
+		"lognormal"	"Log-Normal"
+		"cauchy"	"Cauchy-Lorentz"
+		"ramp"	"Custom Ramp"
+	    }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "script_callback" "" }
+	}
+	parm {
+	    name	"sepparm9"
+	    label	"Separator"
+	    type	separator
+	    default	{ "" }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"randomizeinitvel"
+	    label	"Randomize Initial Velocity"
+	    type	toggle
+	    default	{ "0" }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"randominitvel"
+	    label	"Initial Velocity"
+	    type	float
+	    size	3
+	    default	{ "0" "0" "1" }
+	    hidewhen	"{ randomizeinitvel != 1 }"
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"randominitveloffset"
+	    label	"Randomness"
+	    type	float
+	    size	3
+	    default	{ "0" "0" "0" }
+	    hidewhen	"{ randomizeinitvel != 1 }"
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"randominitvelseed"
+	    label	"Seed"
+	    type	float
+	    default	{ "0.65" }
+	    hidewhen	"{ randomizeinitvel != 1 }"
+	    range	{ 0 10 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "script_callback" "" }
+	}
+	parm {
+	    name	"distribution9"
+	    label	"Distribution"
+	    type	string
+	    default	{ "normal" }
+	    hidewhen	"{ randomizeinitvel != 1 }"
+	    menu	{
+		"constant"	"Constant Value (not random)"
+		"bernoulli"	"Two Values"
+		"uniform"	"Uniform"
+		"uniformorient"	"Uniform Orientation"
+		"normal"	"Normal (Gaussian)"
+		"exponential"	"Exponential"
+		"lognormal"	"Log-Normal"
+		"cauchy"	"Cauchy-Lorentz"
+		"ramp"	"Custom Ramp"
+	    }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "script_callback" "" }
+	}
+	parm {
+	    name	"sepparm11"
+	    label	"Separator"
+	    type	separator
+	    default	{ "" }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"randomizeheading"
+	    label	"Randomize Heading"
+	    type	toggle
+	    default	{ "0" }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"randomheading"
+	    label	"Heading"
+	    type	float
+	    size	3
+	    default	{ "0" "0" "1" }
+	    hidewhen	"{ randomizeheading != 1 }"
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"randomheadingoffset"
+	    label	"Randomness"
+	    type	float
+	    size	3
+	    default	{ "0" "0" "0" }
+	    hidewhen	"{ randomizeheading != 1 }"
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"randomheadingseed"
+	    label	"Seed"
+	    type	float
+	    default	{ "0.65" }
+	    hidewhen	"{ randomizeheading != 1 }"
+	    range	{ 0 10 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "script_callback" "" }
+	}
+	parm {
+	    name	"distribution10"
+	    label	"Distribution"
+	    type	string
+	    default	{ "normal" }
+	    hidewhen	"{ randomizeheading != 1 }"
+	    menu	{
+		"constant"	"Constant Value (not random)"
+		"bernoulli"	"Two Values"
+		"uniform"	"Uniform"
+		"uniformorient"	"Uniform Orientation"
+		"normal"	"Normal (Gaussian)"
+		"exponential"	"Exponential"
+		"lognormal"	"Log-Normal"
+		"cauchy"	"Cauchy-Lorentz"
+		"ramp"	"Custom Ramp"
+	    }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "script_callback" "" }
+	}
+	parm {
+	    name	"sepparm12"
+	    label	"Separator"
+	    type	separator
+	    default	{ "" }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"randomizeup"
+	    label	"Randomize Up"
+	    type	toggle
+	    default	{ "0" }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"randomup"
+	    label	"Up"
+	    type	float
+	    size	3
+	    default	{ "0" "1" "0" }
+	    hidewhen	"{ randomizeup != 1 }"
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"randomupoffset"
+	    label	"Randomness"
+	    type	float
+	    size	3
+	    default	{ "0" "0" "0" }
+	    hidewhen	"{ randomizeup != 1 }"
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"randomupseed"
+	    label	"Seed"
+	    type	float
+	    default	{ "0.65" }
+	    hidewhen	"{ randomizeup != 1 }"
+	    range	{ 0 10 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "script_callback" "" }
+	}
+	parm {
+	    name	"distribution11"
+	    label	"Distribution"
+	    type	string
+	    default	{ "normal" }
+	    hidewhen	"{ randomizeup != 1 }"
+	    menu	{
+		"constant"	"Constant Value (not random)"
+		"bernoulli"	"Two Values"
+		"uniform"	"Uniform"
+		"uniformorient"	"Uniform Orientation"
+		"normal"	"Normal (Gaussian)"
+		"exponential"	"Exponential"
+		"lognormal"	"Log-Normal"
+		"cauchy"	"Cauchy-Lorentz"
+		"ramp"	"Custom Ramp"
+	    }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "script_callback" "" }
+	}
+	parm {
+	    name	"sepparm13"
+	    label	"Separator"
+	    type	separator
+	    default	{ "" }
+	    range	{ 0 1 }
+	    export	none
+	}
+    }
+
+    group {
+	name	"setup_2"
+	label	"Visualize"
+
+	parm {
+	    name	"layer"
+	    label	"Display Layer"
+	    type	ordinal
+	    default	{ "0" }
+	    menu	{
+		"default"	"Default"
+		"collision"	"Collision"
+	    }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"sepparm2"
+	    label	"Separator"
+	    type	separator
+	    invisible
+	    default	{ "" }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"vis"
+	    label	"Visualize As Proxy"
+	    type	toggle
+	    invisible
+	    default	{ "1" }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"viewportlod"
+	    label	"Display As"
+	    type	ordinal
+	    invisible
+	    default	{ "full" }
+	    menu	{
+		"full"	"Full Geometry"
+		"points"	"Point Cloud"
+		"box"	"Bounding Box"
+		"centroid"	"Centroid"
+		"hidden"	"Hidden"
+	    }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "script_callback" "" }
+	}
+	parm {
+	    name	"showid"
+	    label	"Show ID"
+	    type	toggle
+	    invisible
+	    default	{ "off" }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "script_callback" "" }
+	}
+	parm {
+	    name	"usecustomcolor"
+	    label	"Custom Color"
+	    type	toggle
+	    invisible
+	    default	{ "off" }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "script_callback" "" }
+	}
+	parm {
+	    name	"customcolor"
+	    label	"Color"
+	    type	color
+	    invisible
+	    size	3
+	    default	{ "1" "1" "1" }
+	    disablewhen	"{ usecustomcolor == 0 }"
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "script_callback" "" }
+	}
+	parm {
+	    name	"randomcolor"
+	    label	"Random"
+	    type	toggle
+	    invisible
+	    default	{ "on" }
+	    disablewhen	"{ usecustomcolor == 0 }"
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "script_callback" "" }
+	}
+	parm {
+	    name	"color4_seed"
+	    label	"Random Seed"
+	    type	float
+	    invisible
+	    default	{ "5.07" }
+	    disablewhen	"{ randomcolor == 0 } { usecustomcolor == 0 }"
+	    range	{ 0 10 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "script_callback" "" }
+	}
+    }
+
+    group {
+	name	"setup_3"
+	label	"Source"
+
+	parm {
+	    name	"sepparm15"
+	    label	"Separator"
+	    type	separator
+	    default	{ "" }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"labelparm2"
+	    label	"Rig"
+	    type	label
+	    default	{ "" }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"root"
+	    label	"Root"
+	    type	string
+	    default	{ "MASTER" }
+	    menureplace	{
+		[ "opmenu -l agentprep root" ]
+	    }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "script_callback" "" }
+	}
+	parm {
+	    name	"hips"
+	    label	"Hips"
+	    type	string
+	    default	{ "Hips" }
+	    menureplace	{
+		[ "opmenu -l agentprep hips" ]
+	    }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "script_callback" "" }
+	}
+	parm {
+	    name	"lowerback"
+	    label	"Lower Back"
+	    type	string
+	    default	{ "Hips_To_LowerBack" }
+	    menureplace	{
+		[ "opmenu -l agentprep lowerback" ]
+	    }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "script_callback" "" }
+	}
+	parm {
+	    name	"leftupperarm"
+	    label	"Left Upper Arm"
+	    type	string
+	    default	{ "LeftArm_To_LeftForeArm" }
+	    menureplace	{
+		[ "opmenu -l agentprep leftupperarm" ]
+	    }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"leftlowerarm"
+	    label	"Left Lower Arm"
+	    type	string
+	    default	{ "LeftForeArm_To_LeftHand" }
+	    menureplace	{
+		[ "opmenu -l agentprep leftlowerarm" ]
+	    }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"lefthand"
+	    label	"Left Hand"
+	    type	string
+	    default	{ "LeftFingerBase_To_LeftHandIndex1" }
+	    menureplace	{
+		[ "opmenu -l agentprep lefthand" ]
+	    }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"rightupperarm"
+	    label	"Right Upper Arm"
+	    type	string
+	    default	{ "RightArm_To_RightForeArm" }
+	    menureplace	{
+		[ "opmenu -l agentprep rightupperarm" ]
+	    }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"rightlowerarm"
+	    label	"Right Lower Arm"
+	    type	string
+	    default	{ "RightForeArm_To_RightHand" }
+	    menureplace	{
+		[ "opmenu -l agentprep rightlowerarm" ]
+	    }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"righthand"
+	    label	"Right Hand"
+	    type	string
+	    default	{ "RightFingerBase_To_RightHandIndex1" }
+	    menureplace	{
+		[ "opmenu -l agentprep righthand" ]
+	    }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	}
+	parm {
+	    name	"leftupperleg"
+	    label	"Left Upper Leg"
+	    type	string
+	    default	{ "LeftUpLeg_To_LeftLeg" }
+	    menureplace	{
+		[ "opmenu -l agentprep leftupperleg" ]
+	    }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "script_callback" "" }
+	}
+	parm {
+	    name	"leftknee"
+	    label	"Left Knee"
+	    type	string
+	    default	{ "LeftLeg_To_LeftFoot" }
+	    menureplace	{
+		[ "opmenu -l agentprep leftknee" ]
+	    }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "script_callback" "" }
+	}
+	parm {
+	    name	"leftankle"
+	    label	"Left Ankle"
+	    type	string
+	    default	{ "LeftFoot_To_LeftToeBase" }
+	    menureplace	{
+		[ "opmenu -l agentprep leftankle" ]
+	    }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "script_callback" "" }
+	}
+	parm {
+	    name	"lefttoe"
+	    label	"Left Toe"
+	    type	string
+	    default	{ "LeftToeBase_To_LeftToeBaseEnd" }
+	    menureplace	{
+		[ "opmenu -l agentprep lefttoe" ]
+	    }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "script_callback" "" }
+	}
+	parm {
+	    name	"rightupperleg"
+	    label	"Right Upper Leg"
+	    type	string
+	    default	{ "RightUpLeg_To_RightLeg" }
+	    menureplace	{
+		[ "opmenu -l agentprep rightupperleg" ]
+	    }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "script_callback" "" }
+	}
+	parm {
+	    name	"rightknee"
+	    label	"Right Knee"
+	    type	string
+	    default	{ "RightLeg_To_RightFoot" }
+	    menureplace	{
+		[ "opmenu -l agentprep rightknee" ]
+	    }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "script_callback" "" }
+	}
+	parm {
+	    name	"rightankle"
+	    label	"Right Ankle"
+	    type	string
+	    default	{ "RightFoot_To_RightToeBase" }
+	    menureplace	{
+		[ "opmenu -l agentprep rightankle" ]
+	    }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "script_callback" "" }
+	}
+	parm {
+	    name	"righttoe"
+	    label	"Right Toe"
+	    type	string
+	    default	{ "RightToeBase_To_RightToeBaseEnd" }
+	    menureplace	{
+		[ "opmenu -l agentprep righttoe" ]
+	    }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "script_callback" "" }
+	}
+	parm {
+	    name	"head"
+	    label	"Head"
+	    type	string
+	    default	{ "Head_To_HeadEnd" }
+	    menureplace	{
+		[ "opmenu -l agentprep rightankle" ]
+	    }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "script_callback" "" }
+	}
+	parm {
+	    name	"sepparm16"
+	    label	"Separator"
+	    type	separator
+	    default	{ "" }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"labelparm3"
+	    label	"Clips"
+	    type	label
+	    default	{ "" }
+	    range	{ 0 1 }
+	    export	none
+	}
+	parm {
+	    name	"restclip"
+	    label	"Rest Clip"
+	    type	string
+	    default	{ "rest" }
+	    menureplace	{
+		[ "opmenu -l agentprep restclip" ]
+	    }
+	    range	{ 0 1 }
+	    export	none
+	    parmtag	{ "autoscope" "0000000000000000" }
+	    parmtag	{ "script_callback" "" }
+	}
+	parm {
+	    name	"sepparm17"
+	    label	"Separator"
+	    type	separator
+	    default	{ "" }
+	    range	{ 0 1 }
+	    export	none
+	}
+    }
+
+    parm {
+	name	"clipname"
+	label	"Clipname"
+	type	string
+	invisible
+	default	{ "" }
+	range	{ 0 1 }
+	export	none
+    }
+    parm {
+	name	"cliptime"
+	label	"Clip Time"
+	type	float
+	invisible
+	default	{ "0" }
+	range	{ 0 10 }
+	export	none
+    }
+    parm {
+	name	"clipweight"
+	label	"Clip Weight"
+	type	float
+	invisible
+	default	{ "0" }
+	range	{ 0 10 }
+	export	none
+    }
+}

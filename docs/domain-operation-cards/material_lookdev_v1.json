@@ -1,0 +1,3099 @@
+{
+  "schema": "bridge.domain_operation_card_document/1.0",
+  "kind": "prospective_case_contract_not_execution_evidence",
+  "domain_pack": "material_lookdev_v1",
+  "domain_pack_version": "1.0.0",
+  "work_package": "W1",
+  "owner": "Z",
+  "formal_runtime_owner": "R",
+  "status": "BLOCKED",
+  "baseline_id": "7046477d4daba24610f601c257909b52b95834326b7c1d29801c50662231f499",
+  "source_snapshot_id": "f90b44bf88cadb30cce4cffe0d68449c057d29b97096aa4665066756cfb657fb",
+  "versions": [
+    {
+      "houdini_version": "21.0.631",
+      "status": "BLOCKED",
+      "input_versions": {
+        "domain_pack": "material_lookdev_v1",
+        "domain_pack_version": "1.0.0",
+        "catalog_source_snapshot_id": "f90b44bf88cadb30cce4cffe0d68449c057d29b97096aa4665066756cfb657fb",
+        "runtime_interface": "ABSENT_NOT_FROZEN",
+        "houdini_version_must_be_explicit": true
+      },
+      "expected_topology": {
+        "roles": [
+          "surface:Vop/mtlxstandard_surface",
+          "normal:Vop/mtlxnormalmap",
+          "displacement:Vop/mtlxdisplacement",
+          "material:Vop/mtlxsurfacematerial",
+          "binding:actual object/USD material binding",
+          "geometry_import:actual typed geometry/volume consumer"
+        ],
+        "edges_and_bindings": [
+          "normal output -> surface normal input (named port index requires native fact)",
+          "surface -> material surfaceshader",
+          "displacement -> material displacementshader",
+          "material -> actual geometry/USD material binding"
+        ],
+        "assertions": [
+          "IOR exact specular_IOR; normal strength on normal.scale; displacement on displacement.displacement/scale",
+          "read actual binding/material output and data import after reopen; single standard_surface is insufficient"
+        ],
+        "port_gaps": "every BLOCKED port must receive exact installed definition/HOM fact before execution",
+        "role_path_map": {
+          "status": "BLOCKED",
+          "reason": "R has not frozen legal owned_roots/context layout; cannot assign /stage, /out or /mat ownership from self-reported manifest"
+        }
+      },
+      "current_host_nodes": [
+        {
+          "role": "material",
+          "category": "vop",
+          "type_candidates": [
+            "mtlxstandard_surface"
+          ],
+          "required_parameter_aliases": [
+            [
+              "base_color",
+              "basecolor"
+            ],
+            [
+              "specular_roughness",
+              "rough"
+            ]
+          ],
+          "input_role": null
+        }
+      ],
+      "current_host_connections": [],
+      "control_coverage": [
+        {
+          "control": "anisotropy",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "anisotropy",
+            "node_role": "material",
+            "parameter_aliases": [
+              "specular_anisotropy",
+              "anisotropy"
+            ],
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "invalidates_from": "material",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            1.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "material"
+            ],
+            "components": []
+          },
+          "expected_role": "material",
+          "expected_operator": "Vop/mtlxstandard_surface",
+          "expected_machine_fields": [
+            "specular_anisotropy",
+            "anisotropy"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "21.0.631",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/otls/MaterialX.hda",
+                "size_bytes": 847379,
+                "sha256": "36bfba3d77512c2fa0509cb4da90c1c3f61976bc3e6045240625b3bc507aba3c"
+              },
+              "operator": "Vop/mtlxstandard_surface",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "bf269382a2fa56dc0c7de6127e55b80d203638f5d97972f681b7885a8291f2c2",
+              "machine_field": "specular_anisotropy",
+              "native_parameter": {
+                "name": "specular_anisotropy",
+                "type": "float",
+                "size": 1,
+                "label": "Anisotropy",
+                "default_tokens": [
+                  "0"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0!",
+                  "1!"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "base_color",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "base_color",
+            "node_role": "material",
+            "parameter_aliases": [
+              "base_color",
+              "basecolor"
+            ],
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "invalidates_from": "material",
+            "value_type": "color3",
+            "application": "houdini"
+          },
+          "current_runtime_type": "color3",
+          "public_range": [
+            0.0,
+            1.0
+          ],
+          "proposed_case_value": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "material"
+            ],
+            "components": []
+          },
+          "expected_role": "material",
+          "expected_operator": "Vop/mtlxstandard_surface",
+          "expected_machine_fields": [
+            "base_color",
+            "basecolor"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "21.0.631",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/otls/MaterialX.hda",
+                "size_bytes": 847379,
+                "sha256": "36bfba3d77512c2fa0509cb4da90c1c3f61976bc3e6045240625b3bc507aba3c"
+              },
+              "operator": "Vop/mtlxstandard_surface",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "bf269382a2fa56dc0c7de6127e55b80d203638f5d97972f681b7885a8291f2c2",
+              "machine_field": "base_color",
+              "native_parameter": {
+                "name": "base_color",
+                "type": "color",
+                "size": 3,
+                "label": "Color",
+                "default_tokens": [
+                  "0.8",
+                  "0.8",
+                  "0.8"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0",
+                  "10"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "color"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "coat_weight",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "coat_weight",
+            "node_role": "material",
+            "parameter_aliases": [
+              "coat",
+              "coat_weight"
+            ],
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "invalidates_from": "material",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            1.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "material"
+            ],
+            "components": []
+          },
+          "expected_role": "material",
+          "expected_operator": "Vop/mtlxstandard_surface",
+          "expected_machine_fields": [
+            "coat",
+            "coat_weight"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "21.0.631",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/otls/MaterialX.hda",
+                "size_bytes": 847379,
+                "sha256": "36bfba3d77512c2fa0509cb4da90c1c3f61976bc3e6045240625b3bc507aba3c"
+              },
+              "operator": "Vop/mtlxstandard_surface",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "bf269382a2fa56dc0c7de6127e55b80d203638f5d97972f681b7885a8291f2c2",
+              "machine_field": "coat",
+              "native_parameter": {
+                "name": "coat",
+                "type": "float",
+                "size": 1,
+                "label": "Coat",
+                "default_tokens": [
+                  "0"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0!",
+                  "1!"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "displacement_scale",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "displacement_scale",
+            "node_role": "material",
+            "parameter_aliases": [
+              "displacement",
+              "displacement_scale"
+            ],
+            "minimum": -1000.0,
+            "maximum": 1000.0,
+            "invalidates_from": "material",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            -1000.0,
+            1000.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "material"
+            ],
+            "components": []
+          },
+          "expected_role": "displacement",
+          "expected_operator": "Vop/mtlxdisplacement",
+          "expected_machine_fields": [
+            "scale"
+          ],
+          "binding_basis": "contract_revision_2_expected_mapping",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        },
+        {
+          "control": "emission_weight",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "emission_weight",
+            "node_role": "material",
+            "parameter_aliases": [
+              "emission",
+              "emission_weight"
+            ],
+            "minimum": 0.0,
+            "maximum": 10000.0,
+            "invalidates_from": "material",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            10000.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "material"
+            ],
+            "components": []
+          },
+          "expected_role": "material",
+          "expected_operator": "Vop/mtlxstandard_surface",
+          "expected_machine_fields": [
+            "emission",
+            "emission_weight"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "21.0.631",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/otls/MaterialX.hda",
+                "size_bytes": 847379,
+                "sha256": "36bfba3d77512c2fa0509cb4da90c1c3f61976bc3e6045240625b3bc507aba3c"
+              },
+              "operator": "Vop/mtlxstandard_surface",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "bf269382a2fa56dc0c7de6127e55b80d203638f5d97972f681b7885a8291f2c2",
+              "machine_field": "emission",
+              "native_parameter": {
+                "name": "emission",
+                "type": "float",
+                "size": 1,
+                "label": "Emission",
+                "default_tokens": [
+                  "0"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0!",
+                  "1"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "ior",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "ior",
+            "node_role": "material",
+            "parameter_aliases": [
+              "specular_ior",
+              "ior"
+            ],
+            "minimum": 1.0,
+            "maximum": 5.0,
+            "invalidates_from": "material",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            1.0,
+            5.0
+          ],
+          "proposed_case_value": 1.0,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "material"
+            ],
+            "components": []
+          },
+          "expected_role": "material",
+          "expected_operator": "Vop/mtlxstandard_surface",
+          "expected_machine_fields": [
+            "specular_IOR"
+          ],
+          "binding_basis": "contract_revision_2_expected_mapping",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "21.0.631",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/otls/MaterialX.hda",
+                "size_bytes": 847379,
+                "sha256": "36bfba3d77512c2fa0509cb4da90c1c3f61976bc3e6045240625b3bc507aba3c"
+              },
+              "operator": "Vop/mtlxstandard_surface",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "bf269382a2fa56dc0c7de6127e55b80d203638f5d97972f681b7885a8291f2c2",
+              "machine_field": "specular_IOR",
+              "native_parameter": {
+                "name": "specular_IOR",
+                "type": "float",
+                "size": 1,
+                "label": "Index of Refraction",
+                "default_tokens": [
+                  "1.5"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0!",
+                  "3"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "normal_strength",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "normal_strength",
+            "node_role": "material",
+            "parameter_aliases": [
+              "normal_strength",
+              "normalstrength",
+              "bump_scale"
+            ],
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "invalidates_from": "material",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            100.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "material"
+            ],
+            "components": []
+          },
+          "expected_role": "normal",
+          "expected_operator": "Vop/mtlxnormalmap",
+          "expected_machine_fields": [
+            "scale"
+          ],
+          "binding_basis": "contract_revision_2_expected_mapping",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        },
+        {
+          "control": "roughness",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "roughness",
+            "node_role": "material",
+            "parameter_aliases": [
+              "specular_roughness",
+              "rough"
+            ],
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "invalidates_from": "material",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            1.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "material"
+            ],
+            "components": []
+          },
+          "expected_role": "material",
+          "expected_operator": "Vop/mtlxstandard_surface",
+          "expected_machine_fields": [
+            "specular_roughness",
+            "rough"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "21.0.631",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/otls/MaterialX.hda",
+                "size_bytes": 847379,
+                "sha256": "36bfba3d77512c2fa0509cb4da90c1c3f61976bc3e6045240625b3bc507aba3c"
+              },
+              "operator": "Vop/mtlxstandard_surface",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "bf269382a2fa56dc0c7de6127e55b80d203638f5d97972f681b7885a8291f2c2",
+              "machine_field": "specular_roughness",
+              "native_parameter": {
+                "name": "specular_roughness",
+                "type": "float",
+                "size": 1,
+                "label": "Roughness",
+                "default_tokens": [
+                  "0.2"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0!",
+                  "1!"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "specular_weight",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "specular_weight",
+            "node_role": "material",
+            "parameter_aliases": [
+              "specular",
+              "specular_weight"
+            ],
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "invalidates_from": "material",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            1.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "material"
+            ],
+            "components": []
+          },
+          "expected_role": "material",
+          "expected_operator": "Vop/mtlxstandard_surface",
+          "expected_machine_fields": [
+            "specular",
+            "specular_weight"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "21.0.631",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/otls/MaterialX.hda",
+                "size_bytes": 847379,
+                "sha256": "36bfba3d77512c2fa0509cb4da90c1c3f61976bc3e6045240625b3bc507aba3c"
+              },
+              "operator": "Vop/mtlxstandard_surface",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "bf269382a2fa56dc0c7de6127e55b80d203638f5d97972f681b7885a8291f2c2",
+              "machine_field": "specular",
+              "native_parameter": {
+                "name": "specular",
+                "type": "float",
+                "size": 1,
+                "label": "Specular",
+                "default_tokens": [
+                  "1"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0!",
+                  "1!"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "subsurface",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "subsurface",
+            "node_role": "material",
+            "parameter_aliases": [
+              "subsurface",
+              "subsurface_weight"
+            ],
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "invalidates_from": "material",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            1.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "material"
+            ],
+            "components": []
+          },
+          "expected_role": "material",
+          "expected_operator": "Vop/mtlxstandard_surface",
+          "expected_machine_fields": [
+            "subsurface",
+            "subsurface_weight"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "21.0.631",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/otls/MaterialX.hda",
+                "size_bytes": 847379,
+                "sha256": "36bfba3d77512c2fa0509cb4da90c1c3f61976bc3e6045240625b3bc507aba3c"
+              },
+              "operator": "Vop/mtlxstandard_surface",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "bf269382a2fa56dc0c7de6127e55b80d203638f5d97972f681b7885a8291f2c2",
+              "machine_field": "subsurface",
+              "native_parameter": {
+                "name": "subsurface",
+                "type": "float",
+                "size": 1,
+                "label": "Subsurface",
+                "default_tokens": [
+                  "0"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0!",
+                  "1!"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "transmission",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "transmission",
+            "node_role": "material",
+            "parameter_aliases": [
+              "transmission",
+              "transmission_weight"
+            ],
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "invalidates_from": "material",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            1.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "material"
+            ],
+            "components": []
+          },
+          "expected_role": "material",
+          "expected_operator": "Vop/mtlxstandard_surface",
+          "expected_machine_fields": [
+            "transmission",
+            "transmission_weight"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "21.0.631",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/otls/MaterialX.hda",
+                "size_bytes": 847379,
+                "sha256": "36bfba3d77512c2fa0509cb4da90c1c3f61976bc3e6045240625b3bc507aba3c"
+              },
+              "operator": "Vop/mtlxstandard_surface",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "bf269382a2fa56dc0c7de6127e55b80d203638f5d97972f681b7885a8291f2c2",
+              "machine_field": "transmission",
+              "native_parameter": {
+                "name": "transmission",
+                "type": "float",
+                "size": 1,
+                "label": "Transmission",
+                "default_tokens": [
+                  "0"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0!",
+                  "1!"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        }
+      ],
+      "native_node_documentation_snapshot": {
+        "status": "DOCUMENTED_NODE_FACTS_WITH_GAPS",
+        "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/domain-native-documentation.json",
+        "source_sha256": "43ba32c0d518d94b0dbf57e6f8bc395c2c8f38718a51b26bb969669ce5d45d8c",
+        "archive": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/help/nodes.zip",
+        "archive_sha256": "7c83e14d77ddaebf0f918244c1747509633b2721a39468eb4ae3efc694886916",
+        "note": "node documentation existence does not establish parameter ABI or runtime geometry"
+      },
+      "stages": {
+        "formal_build": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "inspect_all_nodes_controls_connections": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "feedback_all_controls": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "save_reopen_structure_and_data": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "formal_output": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "real_host_live": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "visual_acceptance": {
+          "status": "NOT_RUN",
+          "evidence": null
+        }
+      },
+      "recovery": {
+        "status": "NOT_RUN",
+        "tested": false,
+        "owner": "R",
+        "evidence_owner": "E",
+        "domain_assertion_owner": "Z",
+        "requirements": [
+          "interrupt the process actually executing this case while operation active",
+          "supervisor observes identity and STOP_CONFIRMED before restart",
+          "restart controller and original task from real serialized scene, same request_id",
+          "completed side effects not repeated; incomplete work reconciled through formal control authorization",
+          "recovered topology/ALL controls/domain data/producer artifact content match saved actual state",
+          "case_id/build_id/provider/host identity/operation_id/scene hash and phase facts bound by E"
+        ],
+        "forbidden_substitutes": [
+          "immediately exiting helper process",
+          "manual RECONCILE edit",
+          "reopen original in-memory substitute scene",
+          "load-time expected-data rebuilding"
+        ]
+      }
+    },
+    {
+      "houdini_version": "22.0.429",
+      "status": "BLOCKED",
+      "input_versions": {
+        "domain_pack": "material_lookdev_v1",
+        "domain_pack_version": "1.0.0",
+        "catalog_source_snapshot_id": "f90b44bf88cadb30cce4cffe0d68449c057d29b97096aa4665066756cfb657fb",
+        "runtime_interface": "ABSENT_NOT_FROZEN",
+        "houdini_version_must_be_explicit": true
+      },
+      "expected_topology": {
+        "roles": [
+          "surface:Vop/mtlxstandard_surface",
+          "normal:Vop/mtlxnormalmap",
+          "displacement:Vop/mtlxdisplacement",
+          "material:Vop/mtlxsurfacematerial",
+          "binding:actual object/USD material binding",
+          "geometry_import:actual typed geometry/volume consumer"
+        ],
+        "edges_and_bindings": [
+          "normal output -> surface normal input (named port index requires native fact)",
+          "surface -> material surfaceshader",
+          "displacement -> material displacementshader",
+          "material -> actual geometry/USD material binding"
+        ],
+        "assertions": [
+          "IOR exact specular_IOR; normal strength on normal.scale; displacement on displacement.displacement/scale",
+          "read actual binding/material output and data import after reopen; single standard_surface is insufficient"
+        ],
+        "port_gaps": "every BLOCKED port must receive exact installed definition/HOM fact before execution",
+        "role_path_map": {
+          "status": "BLOCKED",
+          "reason": "R has not frozen legal owned_roots/context layout; cannot assign /stage, /out or /mat ownership from self-reported manifest"
+        }
+      },
+      "current_host_nodes": [
+        {
+          "role": "material",
+          "category": "vop",
+          "type_candidates": [
+            "mtlxstandard_surface"
+          ],
+          "required_parameter_aliases": [
+            [
+              "base_color",
+              "basecolor"
+            ],
+            [
+              "specular_roughness",
+              "rough"
+            ]
+          ],
+          "input_role": null
+        }
+      ],
+      "current_host_connections": [],
+      "control_coverage": [
+        {
+          "control": "anisotropy",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "anisotropy",
+            "node_role": "material",
+            "parameter_aliases": [
+              "specular_anisotropy",
+              "anisotropy"
+            ],
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "invalidates_from": "material",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            1.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "material"
+            ],
+            "components": []
+          },
+          "expected_role": "material",
+          "expected_operator": "Vop/mtlxstandard_surface",
+          "expected_machine_fields": [
+            "specular_anisotropy",
+            "anisotropy"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "22.0.429",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/otls/MaterialX.hda",
+                "size_bytes": 905593,
+                "sha256": "de123c25e8501aef0159bc37e88d28fb59d6e9dc38fbd599fddd7645a8ca3167"
+              },
+              "operator": "Vop/mtlxstandard_surface",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "bf269382a2fa56dc0c7de6127e55b80d203638f5d97972f681b7885a8291f2c2",
+              "machine_field": "specular_anisotropy",
+              "native_parameter": {
+                "name": "specular_anisotropy",
+                "type": "float",
+                "size": 1,
+                "label": "Anisotropy",
+                "default_tokens": [
+                  "0"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0!",
+                  "1!"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "base_color",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "base_color",
+            "node_role": "material",
+            "parameter_aliases": [
+              "base_color",
+              "basecolor"
+            ],
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "invalidates_from": "material",
+            "value_type": "color3",
+            "application": "houdini"
+          },
+          "current_runtime_type": "color3",
+          "public_range": [
+            0.0,
+            1.0
+          ],
+          "proposed_case_value": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "material"
+            ],
+            "components": []
+          },
+          "expected_role": "material",
+          "expected_operator": "Vop/mtlxstandard_surface",
+          "expected_machine_fields": [
+            "base_color",
+            "basecolor"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "22.0.429",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/otls/MaterialX.hda",
+                "size_bytes": 905593,
+                "sha256": "de123c25e8501aef0159bc37e88d28fb59d6e9dc38fbd599fddd7645a8ca3167"
+              },
+              "operator": "Vop/mtlxstandard_surface",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "bf269382a2fa56dc0c7de6127e55b80d203638f5d97972f681b7885a8291f2c2",
+              "machine_field": "base_color",
+              "native_parameter": {
+                "name": "base_color",
+                "type": "color",
+                "size": 3,
+                "label": "Color",
+                "default_tokens": [
+                  "0.8",
+                  "0.8",
+                  "0.8"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0",
+                  "10"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "color"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "coat_weight",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "coat_weight",
+            "node_role": "material",
+            "parameter_aliases": [
+              "coat",
+              "coat_weight"
+            ],
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "invalidates_from": "material",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            1.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "material"
+            ],
+            "components": []
+          },
+          "expected_role": "material",
+          "expected_operator": "Vop/mtlxstandard_surface",
+          "expected_machine_fields": [
+            "coat",
+            "coat_weight"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "22.0.429",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/otls/MaterialX.hda",
+                "size_bytes": 905593,
+                "sha256": "de123c25e8501aef0159bc37e88d28fb59d6e9dc38fbd599fddd7645a8ca3167"
+              },
+              "operator": "Vop/mtlxstandard_surface",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "bf269382a2fa56dc0c7de6127e55b80d203638f5d97972f681b7885a8291f2c2",
+              "machine_field": "coat",
+              "native_parameter": {
+                "name": "coat",
+                "type": "float",
+                "size": 1,
+                "label": "Coat",
+                "default_tokens": [
+                  "0"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0!",
+                  "1!"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "displacement_scale",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "displacement_scale",
+            "node_role": "material",
+            "parameter_aliases": [
+              "displacement",
+              "displacement_scale"
+            ],
+            "minimum": -1000.0,
+            "maximum": 1000.0,
+            "invalidates_from": "material",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            -1000.0,
+            1000.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "material"
+            ],
+            "components": []
+          },
+          "expected_role": "displacement",
+          "expected_operator": "Vop/mtlxdisplacement",
+          "expected_machine_fields": [
+            "scale"
+          ],
+          "binding_basis": "contract_revision_2_expected_mapping",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        },
+        {
+          "control": "emission_weight",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "emission_weight",
+            "node_role": "material",
+            "parameter_aliases": [
+              "emission",
+              "emission_weight"
+            ],
+            "minimum": 0.0,
+            "maximum": 10000.0,
+            "invalidates_from": "material",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            10000.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "material"
+            ],
+            "components": []
+          },
+          "expected_role": "material",
+          "expected_operator": "Vop/mtlxstandard_surface",
+          "expected_machine_fields": [
+            "emission",
+            "emission_weight"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "22.0.429",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/otls/MaterialX.hda",
+                "size_bytes": 905593,
+                "sha256": "de123c25e8501aef0159bc37e88d28fb59d6e9dc38fbd599fddd7645a8ca3167"
+              },
+              "operator": "Vop/mtlxstandard_surface",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "bf269382a2fa56dc0c7de6127e55b80d203638f5d97972f681b7885a8291f2c2",
+              "machine_field": "emission",
+              "native_parameter": {
+                "name": "emission",
+                "type": "float",
+                "size": 1,
+                "label": "Emission",
+                "default_tokens": [
+                  "0"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0!",
+                  "1"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "ior",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "ior",
+            "node_role": "material",
+            "parameter_aliases": [
+              "specular_ior",
+              "ior"
+            ],
+            "minimum": 1.0,
+            "maximum": 5.0,
+            "invalidates_from": "material",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            1.0,
+            5.0
+          ],
+          "proposed_case_value": 1.0,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "material"
+            ],
+            "components": []
+          },
+          "expected_role": "material",
+          "expected_operator": "Vop/mtlxstandard_surface",
+          "expected_machine_fields": [
+            "specular_IOR"
+          ],
+          "binding_basis": "contract_revision_2_expected_mapping",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "22.0.429",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/otls/MaterialX.hda",
+                "size_bytes": 905593,
+                "sha256": "de123c25e8501aef0159bc37e88d28fb59d6e9dc38fbd599fddd7645a8ca3167"
+              },
+              "operator": "Vop/mtlxstandard_surface",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "bf269382a2fa56dc0c7de6127e55b80d203638f5d97972f681b7885a8291f2c2",
+              "machine_field": "specular_IOR",
+              "native_parameter": {
+                "name": "specular_IOR",
+                "type": "float",
+                "size": 1,
+                "label": "Index of Refraction",
+                "default_tokens": [
+                  "1.5"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0!",
+                  "3"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "normal_strength",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "normal_strength",
+            "node_role": "material",
+            "parameter_aliases": [
+              "normal_strength",
+              "normalstrength",
+              "bump_scale"
+            ],
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "invalidates_from": "material",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            100.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "material"
+            ],
+            "components": []
+          },
+          "expected_role": "normal",
+          "expected_operator": "Vop/mtlxnormalmap",
+          "expected_machine_fields": [
+            "scale"
+          ],
+          "binding_basis": "contract_revision_2_expected_mapping",
+          "static_native_facts": [],
+          "native_type": null,
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED",
+            "EXACT_VERSION_NATIVE_FIELD_OR_ROLE_MISSING"
+          ]
+        },
+        {
+          "control": "roughness",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "roughness",
+            "node_role": "material",
+            "parameter_aliases": [
+              "specular_roughness",
+              "rough"
+            ],
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "invalidates_from": "material",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            1.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "material"
+            ],
+            "components": []
+          },
+          "expected_role": "material",
+          "expected_operator": "Vop/mtlxstandard_surface",
+          "expected_machine_fields": [
+            "specular_roughness",
+            "rough"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "22.0.429",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/otls/MaterialX.hda",
+                "size_bytes": 905593,
+                "sha256": "de123c25e8501aef0159bc37e88d28fb59d6e9dc38fbd599fddd7645a8ca3167"
+              },
+              "operator": "Vop/mtlxstandard_surface",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "bf269382a2fa56dc0c7de6127e55b80d203638f5d97972f681b7885a8291f2c2",
+              "machine_field": "specular_roughness",
+              "native_parameter": {
+                "name": "specular_roughness",
+                "type": "float",
+                "size": 1,
+                "label": "Roughness",
+                "default_tokens": [
+                  "0.2"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0!",
+                  "1!"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "specular_weight",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "specular_weight",
+            "node_role": "material",
+            "parameter_aliases": [
+              "specular",
+              "specular_weight"
+            ],
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "invalidates_from": "material",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            1.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "material"
+            ],
+            "components": []
+          },
+          "expected_role": "material",
+          "expected_operator": "Vop/mtlxstandard_surface",
+          "expected_machine_fields": [
+            "specular",
+            "specular_weight"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "22.0.429",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/otls/MaterialX.hda",
+                "size_bytes": 905593,
+                "sha256": "de123c25e8501aef0159bc37e88d28fb59d6e9dc38fbd599fddd7645a8ca3167"
+              },
+              "operator": "Vop/mtlxstandard_surface",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "bf269382a2fa56dc0c7de6127e55b80d203638f5d97972f681b7885a8291f2c2",
+              "machine_field": "specular",
+              "native_parameter": {
+                "name": "specular",
+                "type": "float",
+                "size": 1,
+                "label": "Specular",
+                "default_tokens": [
+                  "1"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0!",
+                  "1!"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "subsurface",
+          "required": false,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "subsurface",
+            "node_role": "material",
+            "parameter_aliases": [
+              "subsurface",
+              "subsurface_weight"
+            ],
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "invalidates_from": "material",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            1.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "material"
+            ],
+            "components": []
+          },
+          "expected_role": "material",
+          "expected_operator": "Vop/mtlxstandard_surface",
+          "expected_machine_fields": [
+            "subsurface",
+            "subsurface_weight"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "22.0.429",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/otls/MaterialX.hda",
+                "size_bytes": 905593,
+                "sha256": "de123c25e8501aef0159bc37e88d28fb59d6e9dc38fbd599fddd7645a8ca3167"
+              },
+              "operator": "Vop/mtlxstandard_surface",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "bf269382a2fa56dc0c7de6127e55b80d203638f5d97972f681b7885a8291f2c2",
+              "machine_field": "subsurface",
+              "native_parameter": {
+                "name": "subsurface",
+                "type": "float",
+                "size": 1,
+                "label": "Subsurface",
+                "default_tokens": [
+                  "0"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0!",
+                  "1!"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        },
+        {
+          "control": "transmission",
+          "required": true,
+          "runtime_declared": true,
+          "host_declared": true,
+          "application": "houdini",
+          "current_host_declaration": {
+            "id": "transmission",
+            "node_role": "material",
+            "parameter_aliases": [
+              "transmission",
+              "transmission_weight"
+            ],
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "invalidates_from": "material",
+            "value_type": "float",
+            "application": "houdini"
+          },
+          "current_runtime_type": "float",
+          "public_range": [
+            0.0,
+            1.0
+          ],
+          "proposed_case_value": 0.5,
+          "value_provenance": "synthetic_document_input_not_observation",
+          "current_runtime_invalidation": {
+            "stage_nodes": [
+              "material"
+            ],
+            "components": []
+          },
+          "expected_role": "material",
+          "expected_operator": "Vop/mtlxstandard_surface",
+          "expected_machine_fields": [
+            "transmission",
+            "transmission_weight"
+          ],
+          "binding_basis": "current_declared_mapping_requires_semantic_validation",
+          "static_native_facts": [
+            {
+              "evidence_kind": "static_vendor_definition",
+              "native_execution": false,
+              "version": "22.0.429",
+              "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/hda-interface-capture.json",
+              "source_sha256": "61602a94738d2ee39affe687a641539bf61ef0bcd66f00774f2199e8f5e8bbdd",
+              "archive": {
+                "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/otls/MaterialX.hda",
+                "size_bytes": 905593,
+                "sha256": "de123c25e8501aef0159bc37e88d28fb59d6e9dc38fbd599fddd7645a8ca3167"
+              },
+              "operator": "Vop/mtlxstandard_surface",
+              "member": "operator definition section (name absent from capture)",
+              "section_sha256": "bf269382a2fa56dc0c7de6127e55b80d203638f5d97972f681b7885a8291f2c2",
+              "machine_field": "transmission",
+              "native_parameter": {
+                "name": "transmission",
+                "type": "float",
+                "size": 1,
+                "label": "Transmission",
+                "default_tokens": [
+                  "0"
+                ],
+                "menu_tokens": [],
+                "range_tokens": [
+                  "0!",
+                  "1!"
+                ]
+              }
+            }
+          ],
+          "native_type": [
+            "float"
+          ],
+          "units": "BLOCKED: native units/semantic unit contract unverified",
+          "gates": "BLOCKED: exact mode/gate/default/disabled/locked/driven and references to be confirmed for this field",
+          "conversion": "BLOCKED: public-to-native and inverse semantic conversion/units not independently verified",
+          "readback_assertion": "inspect ALL target fields/data, compare converted value and inverse public value before/after feedback and saved reopen; observed scope equals actual dependency closure",
+          "status": "BLOCKED",
+          "software_validation": "NOT_RUN",
+          "live_validation": "NOT_RUN",
+          "blockers": [
+            "CURRENT_BUILD_CONTROL_MAPPING_NOT_ACCEPTED"
+          ]
+        }
+      ],
+      "native_node_documentation_snapshot": {
+        "status": "DOCUMENTED_NODE_FACTS_WITH_GAPS",
+        "source_file": "/Users/user/Documents/Codex/2026-09-20/bridge-1-workbuddy-hy3-bridge-houdini/work/zcode-all-domain-20260930/candidate/docs/native-basis/domain-native-documentation.json",
+        "source_sha256": "43ba32c0d518d94b0dbf57e6f8bc395c2c8f38718a51b26bb969669ce5d45d8c",
+        "archive": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/help/nodes.zip",
+        "archive_sha256": "6ca2ef18ce0d1f142d3415e27885b36f69b3537344a04621c89f9fab6937ad53",
+        "note": "node documentation existence does not establish parameter ABI or runtime geometry"
+      },
+      "stages": {
+        "formal_build": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "inspect_all_nodes_controls_connections": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "feedback_all_controls": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "save_reopen_structure_and_data": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "formal_output": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "real_host_live": {
+          "status": "NOT_RUN",
+          "evidence": null
+        },
+        "visual_acceptance": {
+          "status": "NOT_RUN",
+          "evidence": null
+        }
+      },
+      "recovery": {
+        "status": "NOT_RUN",
+        "tested": false,
+        "owner": "R",
+        "evidence_owner": "E",
+        "domain_assertion_owner": "Z",
+        "requirements": [
+          "interrupt the process actually executing this case while operation active",
+          "supervisor observes identity and STOP_CONFIRMED before restart",
+          "restart controller and original task from real serialized scene, same request_id",
+          "completed side effects not repeated; incomplete work reconciled through formal control authorization",
+          "recovered topology/ALL controls/domain data/producer artifact content match saved actual state",
+          "case_id/build_id/provider/host identity/operation_id/scene hash and phase facts bound by E"
+        ],
+        "forbidden_substitutes": [
+          "immediately exiting helper process",
+          "manual RECONCILE edit",
+          "reopen original in-memory substitute scene",
+          "load-time expected-data rebuilding"
+        ]
+      }
+    },
+    {
+      "houdini_version": "22.0.459",
+      "kind": "current_preparation_expectation_not_execution_evidence",
+      "status": "BLOCKED",
+      "input_versions": {
+        "domain_pack": "material_lookdev_v1",
+        "domain_pack_version": "1.0.0",
+        "houdini_version_must_be_explicit": true
+      },
+      "expected_nodes": {
+        "default": [
+          {
+            "role": "geometry_network",
+            "category": "obj",
+            "input_role": null,
+            "type_candidates": [
+              "geo"
+            ],
+            "required_parameter_aliases": []
+          },
+          {
+            "role": "source",
+            "category": "sop",
+            "input_role": null,
+            "parent_role": "geometry_network",
+            "type_candidates": [
+              "sphere"
+            ],
+            "required_parameter_aliases": []
+          },
+          {
+            "role": "usd_network",
+            "category": "obj",
+            "input_role": null,
+            "type_candidates": [
+              "lopnet"
+            ],
+            "required_parameter_aliases": []
+          },
+          {
+            "role": "material_network",
+            "category": "obj",
+            "input_role": null,
+            "type_candidates": [
+              "matnet"
+            ],
+            "required_parameter_aliases": []
+          },
+          {
+            "role": "normal_map",
+            "category": "vop",
+            "input_role": null,
+            "parent_role": "material_network",
+            "type_candidates": [
+              "mtlxnormalmap"
+            ],
+            "required_parameter_aliases": [
+              [
+                "scale"
+              ],
+              [
+                "in"
+              ]
+            ]
+          },
+          {
+            "role": "displacement",
+            "category": "vop",
+            "input_role": null,
+            "parent_role": "material_network",
+            "type_candidates": [
+              "mtlxdisplacement"
+            ],
+            "required_parameter_aliases": [
+              [
+                "scale"
+              ],
+              [
+                "displacement"
+              ]
+            ]
+          },
+          {
+            "role": "material",
+            "category": "vop",
+            "input_role": null,
+            "parent_role": "material_network",
+            "type_candidates": [
+              "mtlxstandard_surface"
+            ],
+            "required_parameter_aliases": [
+              [
+                "base_color"
+              ],
+              [
+                "specular_roughness"
+              ],
+              [
+                "specular_IOR"
+              ],
+              [
+                "transmission"
+              ],
+              [
+                "subsurface"
+              ],
+              [
+                "specular"
+              ],
+              [
+                "coat"
+              ],
+              [
+                "specular_anisotropy"
+              ],
+              [
+                "emission"
+              ]
+            ]
+          },
+          {
+            "role": "material_output",
+            "category": "vop",
+            "input_role": null,
+            "parent_role": "material_network",
+            "type_candidates": [
+              "mtlxsurfacematerial"
+            ],
+            "required_parameter_aliases": []
+          },
+          {
+            "role": "geometry_import",
+            "category": "lop",
+            "input_role": null,
+            "parent_role": "usd_network",
+            "type_candidates": [
+              "sopimport"
+            ],
+            "required_parameter_aliases": [
+              [
+                "soppath"
+              ],
+              [
+                "enable_pathprefix"
+              ],
+              [
+                "pathprefix"
+              ]
+            ]
+          },
+          {
+            "role": "material_library",
+            "category": "lop",
+            "input_role": "geometry_import",
+            "parent_role": "usd_network",
+            "type_candidates": [
+              "materiallibrary"
+            ],
+            "required_parameter_aliases": [
+              [
+                "materials"
+              ]
+            ]
+          },
+          {
+            "role": "material_binding",
+            "category": "lop",
+            "input_role": "material_library",
+            "parent_role": "usd_network",
+            "type_candidates": [
+              "assignmaterial"
+            ],
+            "required_parameter_aliases": [
+              [
+                "nummaterials"
+              ]
+            ]
+          },
+          {
+            "role": "render_network",
+            "category": "obj",
+            "input_role": null,
+            "type_candidates": [
+              "ropnet"
+            ],
+            "required_parameter_aliases": []
+          },
+          {
+            "role": "camera",
+            "category": "lop",
+            "input_role": "material_binding",
+            "parent_role": "usd_network",
+            "type_candidates": [
+              "camera"
+            ],
+            "required_parameter_aliases": [
+              [
+                "primpath"
+              ],
+              [
+                "focalLength"
+              ],
+              [
+                "fStop"
+              ],
+              [
+                "xn__shutteropen_0ta"
+              ],
+              [
+                "xn__shutterclose_nva"
+              ]
+            ]
+          },
+          {
+            "role": "light",
+            "category": "lop",
+            "input_role": "camera",
+            "parent_role": "usd_network",
+            "type_candidates": [
+              "light"
+            ],
+            "required_parameter_aliases": [
+              [
+                "primpath"
+              ],
+              [
+                "lighttype"
+              ],
+              [
+                "radius"
+              ],
+              [
+                "exposure"
+              ]
+            ]
+          },
+          {
+            "role": "settings",
+            "category": "lop",
+            "input_role": "light",
+            "parent_role": "usd_network",
+            "type_candidates": [
+              "karmarendersettings"
+            ],
+            "required_parameter_aliases": [
+              [
+                "primpath"
+              ],
+              [
+                "camera"
+              ],
+              [
+                "samplesperpixel"
+              ],
+              [
+                "volumesteprate"
+              ],
+              [
+                "enablemblur"
+              ],
+              [
+                "pixelfiltersize"
+              ],
+              [
+                "denoiser"
+              ]
+            ]
+          },
+          {
+            "role": "render_var",
+            "category": "lop",
+            "input_role": "settings",
+            "parent_role": "usd_network",
+            "type_candidates": [
+              "rendervar"
+            ],
+            "required_parameter_aliases": [
+              [
+                "primpath"
+              ],
+              [
+                "sourceName"
+              ],
+              [
+                "sourceType"
+              ],
+              [
+                "dataType"
+              ]
+            ]
+          },
+          {
+            "role": "render_product",
+            "category": "lop",
+            "input_role": "render_var",
+            "parent_role": "usd_network",
+            "type_candidates": [
+              "renderproduct"
+            ],
+            "required_parameter_aliases": [
+              [
+                "primpattern"
+              ],
+              [
+                "orderedVars"
+              ],
+              [
+                "productType"
+              ],
+              [
+                "productName"
+              ],
+              [
+                "camera"
+              ]
+            ]
+          },
+          {
+            "role": "settings_binding",
+            "category": "lop",
+            "input_role": "render_product",
+            "parent_role": "usd_network",
+            "type_candidates": [
+              "rendersettings"
+            ],
+            "required_parameter_aliases": [
+              [
+                "primpattern"
+              ],
+              [
+                "createprims"
+              ],
+              [
+                "products"
+              ],
+              [
+                "camera"
+              ]
+            ]
+          },
+          {
+            "role": "render",
+            "category": "rop",
+            "input_role": null,
+            "parent_role": "render_network",
+            "type_candidates": [
+              "usdrender"
+            ],
+            "required_parameter_aliases": [
+              [
+                "loppath"
+              ],
+              [
+                "rendersettings"
+              ],
+              [
+                "override_camera"
+              ],
+              [
+                "outputimage"
+              ],
+              [
+                "execute"
+              ]
+            ]
+          }
+        ]
+      },
+      "expected_connections": {
+        "default": [
+          {
+            "source_role": "geometry_import",
+            "source_output": 0,
+            "destination_role": "material_library",
+            "destination_input": 0,
+            "require_same_parent": true
+          },
+          {
+            "source_role": "material_library",
+            "source_output": 0,
+            "destination_role": "material_binding",
+            "destination_input": 0,
+            "require_same_parent": true
+          },
+          {
+            "source_role": "material_binding",
+            "source_output": 0,
+            "destination_role": "camera",
+            "destination_input": 0,
+            "require_same_parent": true
+          },
+          {
+            "source_role": "camera",
+            "source_output": 0,
+            "destination_role": "light",
+            "destination_input": 0,
+            "require_same_parent": true
+          },
+          {
+            "source_role": "light",
+            "source_output": 0,
+            "destination_role": "settings",
+            "destination_input": 0,
+            "require_same_parent": true
+          },
+          {
+            "source_role": "settings",
+            "source_output": 0,
+            "destination_role": "render_var",
+            "destination_input": 0,
+            "require_same_parent": true
+          },
+          {
+            "source_role": "render_var",
+            "source_output": 0,
+            "destination_role": "render_product",
+            "destination_input": 0,
+            "require_same_parent": true
+          },
+          {
+            "source_role": "render_product",
+            "source_output": 0,
+            "destination_role": "settings_binding",
+            "destination_input": 0,
+            "require_same_parent": true
+          },
+          {
+            "source_role": "normal_map",
+            "source_output_name": "out",
+            "destination_role": "material",
+            "destination_input_name": "normal",
+            "require_same_parent": true
+          },
+          {
+            "source_role": "material",
+            "source_output_name": "out",
+            "destination_role": "material_output",
+            "destination_input_name": "surfaceshader",
+            "require_same_parent": true
+          },
+          {
+            "source_role": "displacement",
+            "source_output_name": "out",
+            "destination_role": "material_output",
+            "destination_input_name": "displacementshader",
+            "require_same_parent": true
+          }
+        ]
+      },
+      "control_coverage": {
+        "default": [
+          {
+            "minimum": 0,
+            "maximum": 1,
+            "value_type": "color3",
+            "application": "houdini",
+            "native_conversion": "base_color",
+            "required_gates": [],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Vop/mtlxstandard_surface",
+                  "parameter": "base_color",
+                  "type": "color",
+                  "size": 3,
+                  "section_sha256": "bf269382a2fa56dc0c7de6127e55b80d203638f5d97972f681b7885a8291f2c2",
+                  "archive_sha256": "ab7c806b7be38d4957dc662ff73bbe4f095d26a0635fc9f95d9b02476401cb4a"
+                }
+              ],
+              "missing": []
+            },
+            "native_status": "mapped",
+            "id": "base_color",
+            "node_role": "material",
+            "parameter_aliases": [
+              "base_color"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 1,
+            "value_type": "float",
+            "application": "houdini",
+            "native_conversion": "roughness",
+            "required_gates": [],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Vop/mtlxstandard_surface",
+                  "parameter": "specular_roughness",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "bf269382a2fa56dc0c7de6127e55b80d203638f5d97972f681b7885a8291f2c2",
+                  "archive_sha256": "ab7c806b7be38d4957dc662ff73bbe4f095d26a0635fc9f95d9b02476401cb4a"
+                }
+              ],
+              "missing": []
+            },
+            "native_status": "mapped",
+            "id": "roughness",
+            "node_role": "material",
+            "parameter_aliases": [
+              "specular_roughness"
+            ]
+          },
+          {
+            "minimum": 1,
+            "maximum": 5,
+            "value_type": "float",
+            "application": "houdini",
+            "native_conversion": "ior",
+            "required_gates": [],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Vop/mtlxstandard_surface",
+                  "parameter": "specular_IOR",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "bf269382a2fa56dc0c7de6127e55b80d203638f5d97972f681b7885a8291f2c2",
+                  "archive_sha256": "ab7c806b7be38d4957dc662ff73bbe4f095d26a0635fc9f95d9b02476401cb4a"
+                }
+              ],
+              "missing": []
+            },
+            "native_status": "mapped",
+            "id": "ior",
+            "node_role": "material",
+            "parameter_aliases": [
+              "specular_IOR"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 1,
+            "value_type": "float",
+            "application": "houdini",
+            "native_conversion": "transmission",
+            "required_gates": [],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Vop/mtlxstandard_surface",
+                  "parameter": "transmission",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "bf269382a2fa56dc0c7de6127e55b80d203638f5d97972f681b7885a8291f2c2",
+                  "archive_sha256": "ab7c806b7be38d4957dc662ff73bbe4f095d26a0635fc9f95d9b02476401cb4a"
+                }
+              ],
+              "missing": []
+            },
+            "native_status": "mapped",
+            "id": "transmission",
+            "node_role": "material",
+            "parameter_aliases": [
+              "transmission"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 1,
+            "value_type": "float",
+            "application": "houdini",
+            "native_conversion": "subsurface",
+            "required_gates": [],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Vop/mtlxstandard_surface",
+                  "parameter": "subsurface",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "bf269382a2fa56dc0c7de6127e55b80d203638f5d97972f681b7885a8291f2c2",
+                  "archive_sha256": "ab7c806b7be38d4957dc662ff73bbe4f095d26a0635fc9f95d9b02476401cb4a"
+                }
+              ],
+              "missing": []
+            },
+            "native_status": "mapped",
+            "id": "subsurface",
+            "node_role": "material",
+            "parameter_aliases": [
+              "subsurface"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 100,
+            "value_type": "float",
+            "application": "houdini",
+            "native_conversion": "normal_strength",
+            "required_gates": [],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Vop/mtlxnormalmap",
+                  "parameter": "scale",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "2345f1d8e2b5fff05dba81e6dc824e25d4d1ae157db6f87fa0ec2b10add4e735",
+                  "archive_sha256": "ab7c806b7be38d4957dc662ff73bbe4f095d26a0635fc9f95d9b02476401cb4a"
+                }
+              ],
+              "missing": []
+            },
+            "native_status": "mapped",
+            "id": "normal_strength",
+            "node_role": "normal_map",
+            "parameter_aliases": [
+              "scale"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 1,
+            "value_type": "float",
+            "application": "houdini",
+            "native_conversion": "specular_weight",
+            "required_gates": [],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Vop/mtlxstandard_surface",
+                  "parameter": "specular",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "bf269382a2fa56dc0c7de6127e55b80d203638f5d97972f681b7885a8291f2c2",
+                  "archive_sha256": "ab7c806b7be38d4957dc662ff73bbe4f095d26a0635fc9f95d9b02476401cb4a"
+                }
+              ],
+              "missing": []
+            },
+            "native_status": "mapped",
+            "id": "specular_weight",
+            "node_role": "material",
+            "parameter_aliases": [
+              "specular"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 1,
+            "value_type": "float",
+            "application": "houdini",
+            "native_conversion": "coat_weight",
+            "required_gates": [],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Vop/mtlxstandard_surface",
+                  "parameter": "coat",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "bf269382a2fa56dc0c7de6127e55b80d203638f5d97972f681b7885a8291f2c2",
+                  "archive_sha256": "ab7c806b7be38d4957dc662ff73bbe4f095d26a0635fc9f95d9b02476401cb4a"
+                }
+              ],
+              "missing": []
+            },
+            "native_status": "mapped",
+            "id": "coat_weight",
+            "node_role": "material",
+            "parameter_aliases": [
+              "coat"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 1,
+            "value_type": "float",
+            "application": "houdini",
+            "native_conversion": "anisotropy",
+            "required_gates": [],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Vop/mtlxstandard_surface",
+                  "parameter": "specular_anisotropy",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "bf269382a2fa56dc0c7de6127e55b80d203638f5d97972f681b7885a8291f2c2",
+                  "archive_sha256": "ab7c806b7be38d4957dc662ff73bbe4f095d26a0635fc9f95d9b02476401cb4a"
+                }
+              ],
+              "missing": []
+            },
+            "native_status": "mapped",
+            "id": "anisotropy",
+            "node_role": "material",
+            "parameter_aliases": [
+              "specular_anisotropy"
+            ]
+          },
+          {
+            "minimum": -1000,
+            "maximum": 1000,
+            "value_type": "float",
+            "application": "houdini",
+            "native_conversion": "displacement_scale",
+            "required_gates": [],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Vop/mtlxdisplacement",
+                  "parameter": "scale",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "1527b1923d54bec3f099b36617a8db4dc7056ec98a42e6d670dc7c52a92df37a",
+                  "archive_sha256": "ab7c806b7be38d4957dc662ff73bbe4f095d26a0635fc9f95d9b02476401cb4a"
+                }
+              ],
+              "missing": []
+            },
+            "native_status": "mapped",
+            "id": "displacement_scale",
+            "node_role": "displacement",
+            "parameter_aliases": [
+              "scale"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 10000,
+            "value_type": "float",
+            "application": "houdini",
+            "native_conversion": "emission_weight",
+            "required_gates": [],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Vop/mtlxstandard_surface",
+                  "parameter": "emission",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "bf269382a2fa56dc0c7de6127e55b80d203638f5d97972f681b7885a8291f2c2",
+                  "archive_sha256": "ab7c806b7be38d4957dc662ff73bbe4f095d26a0635fc9f95d9b02476401cb4a"
+                }
+              ],
+              "missing": []
+            },
+            "native_status": "mapped",
+            "id": "emission_weight",
+            "node_role": "material",
+            "parameter_aliases": [
+              "emission"
+            ]
+          }
+        ]
+      },
+      "native_basis": {
+        "status": "UNRESOLVED",
+        "scope": "Independent459HDA static fields and prospective software topology only; no compiled template, host process, writer execution or whole-domain validation.",
+        "sources": [
+          {
+            "path": "docs/native-basis/hda-interface-22.0.459.json",
+            "sha256": "e8d9ee7a16f14baa2327ae45412b2acee60ef4849d4e3aa099aea229586379c7",
+            "version": "22.0.459",
+            "native_execution": false
+          },
+          {
+            "path": "docs/native-basis/supporting-sources-22.0.459.json",
+            "sha256": "7b1bd4e1b187de823db9555bca10f40e9278dd88fb790cce8c874576405e1c3a",
+            "version": "22.0.459",
+            "native_execution": false
+          }
+        ],
+        "originals": "docs/native-basis/h22-459-originals/",
+        "captured_hda_operators": 55,
+        "node_templates": {
+          "default": [
+            {
+              "role": "geometry_network",
+              "candidates": [
+                {
+                  "operator": "Obj/geo",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "source",
+              "candidates": [
+                {
+                  "operator": "Sop/sphere",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "usd_network",
+              "candidates": [
+                {
+                  "operator": "Obj/lopnet",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "material_network",
+              "candidates": [
+                {
+                  "operator": "Obj/matnet",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "normal_map",
+              "candidates": [
+                {
+                  "operator": "Vop/mtlxnormalmap",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "2345f1d8e2b5fff05dba81e6dc824e25d4d1ae157db6f87fa0ec2b10add4e735",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "displacement",
+              "candidates": [
+                {
+                  "operator": "Vop/mtlxdisplacement",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "1527b1923d54bec3f099b36617a8db4dc7056ec98a42e6d670dc7c52a92df37a",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "material",
+              "candidates": [
+                {
+                  "operator": "Vop/mtlxstandard_surface",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "bf269382a2fa56dc0c7de6127e55b80d203638f5d97972f681b7885a8291f2c2",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "material_output",
+              "candidates": [
+                {
+                  "operator": "Vop/mtlxsurfacematerial",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "5a0934ff520aa834b217a280d02dccec597b375334155b5e3ee11b5266dd095d",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "geometry_import",
+              "candidates": [
+                {
+                  "operator": "Lop/sopimport",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "material_library",
+              "candidates": [
+                {
+                  "operator": "Lop/materiallibrary",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "material_binding",
+              "candidates": [
+                {
+                  "operator": "Lop/assignmaterial",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "render_network",
+              "candidates": [
+                {
+                  "operator": "Obj/ropnet",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "camera",
+              "candidates": [
+                {
+                  "operator": "Lop/camera",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "e7961a7d50953ca0a1d9cbd8f5349db34a4ec33fb98118f6d852e91765564612",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "light",
+              "candidates": [
+                {
+                  "operator": "Lop/light",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "34498e2f239d0566a47fc65928f9d42db17b8d7e487a99d3e0acc66b407abf38",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "settings",
+              "candidates": [
+                {
+                  "operator": "Lop/karmarendersettings",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "cc263cb8a2e6e1f964363999322d8395f7c52d7160ea723173a24b23568783fe",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render_var",
+              "candidates": [
+                {
+                  "operator": "Lop/rendervar",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "c296736e72c9e2881b3867ff634cfe6253e5e5848e4f63bc9ff01420cbc39aea",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render_product",
+              "candidates": [
+                {
+                  "operator": "Lop/renderproduct",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "db75399202e08a57d1c5a1b29b42a2f871b690b9f23fe5db955a185bcb015cab",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "settings_binding",
+              "candidates": [
+                {
+                  "operator": "Lop/rendersettings",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "325937f14987a4b23ec74be88ac1bb0a424e351a469776e41b15952dbef9ac3d",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render",
+              "candidates": [
+                {
+                  "operator": "Driver/usdrender",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            }
+          ]
+        },
+        "blocked_controls": {
+          "default": []
+        },
+        "native_execution": false
+      },
+      "software_validation": "NOT_RUN",
+      "live_validation": "NOT_RUN",
+      "blockers": [
+        "WHOLE_DOMAIN_NATIVE_BASIS_UNRESOLVED",
+        "CURRENT_FORMAL_LIFECYCLE_AND_OUTPUT_NOT_ACCEPTED"
+      ]
+    }
+  ],
+  "common_assertions": [
+    "Before any write verify task authorization, actual node ownership/context/type and exact native field writable/not disabled/not locked/not driven/referenced. Initialize documented modes/gates before dependent probe.",
+    "Every required and runtime control is covered; feedback changes at most five controls per formal patch, in bounded batches; inspect ALL changed targets and inverse semantic readback.",
+    "All declared ports/edges equal actual node.info inputs; include output ports and context parents, not only connection verified flags.",
+    "Save/reopen uses GraphRun.task_save/task_reopen or formal scene.save_hip/scene.reopen_task_hip; compare node type, every key parameter, ALL connections and actual domain data; no expected-data reconstruction on load.",
+    "Rejected wrong type/range/context/role/field/domain/version, locked/driven/disabled and partial-write failure leave all prior parameters/connections plus unrelated user edits intact.",
+    "Feedback readback includes semantic_control/node/parameter before-after/readback_verified/invalidates_from; invalidate transitive actual data consumers and affected caches/artifacts; unchanged branches remain unchanged."
+  ],
+  "output_contract": {
+    "type_and_data": "material:MaterialX output plus actual object/USD binding",
+    "rendered_image_only_after_formal_render": true,
+    "producer_operation_id": null,
+    "artifact_id": null,
+    "artifact_version": null,
+    "content_sha256": null,
+    "frames": [
+      1,
+      2
+    ],
+    "colorspace": "scene_linear for final render, not forced onto intermediate geometry/volume/material",
+    "status": "BLOCKED",
+    "interface": "I2/I3"
+  },
+  "resource_confirmation": {
+    "status": "BLOCKED",
+    "required": [
+      "task-owned roots and save/budget roots accepted by R and supervisor",
+      "explicit version and authorized isolated task input, no private media upload",
+      "frames exactly [1,2], maximum 12 explicit frames and render budget <=120 seconds",
+      "operator to confirm geometry complexity/memory/render settings budget without exceeding public allowance",
+      "licenses/resource availability checked only by future authorized operator; none invoked here"
+    ]
+  },
+  "live_human_judgment": {
+    "status": "NOT_RUN",
+    "items": [
+      "highlight_width",
+      "specular_energy",
+      "color_error",
+      "normal_frequency",
+      "visual plausibility and correct native geometry/data",
+      "collision/artifact/render noise and temporal continuity as applicable",
+      "reference privacy and protected dimensions retained"
+    ]
+  },
+  "next_action": {
+    "Z": "resolve each BLOCKED role/field/units/gates/conversion and implement domain assertions in separately owned code work",
+    "R": "freeze runtime-interface with hashes; legal context roots, domain-data save/reopen, actual producer route and supervised recovery",
+    "E": "validate case/build/provider binding after R freeze",
+    "M": "dispatch/review/integrate without promoting historical receipts",
+    "P": "publish only after I5 build freeze"
+  },
+  "required_versions": {
+    "houdini": [
+      "21.0.631",
+      "22.0.459"
+    ],
+    "nuke": [
+      "17.0v1"
+    ]
+  }
+}

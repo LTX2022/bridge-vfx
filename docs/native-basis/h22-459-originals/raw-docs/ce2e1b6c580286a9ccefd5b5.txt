@@ -1,0 +1,74 @@
+= Stash =
+
+#type: node
+#context: sop
+#internal: stash
+#icon: SOP/stash
+#tags: network, util
+#since: 16.0
+#verb_since: 16.5
+
+"""Caches the input geometry in the node on command, then uses it as the node's output."""
+
+
+== Overview ==
+
+When you click __Stash Input__, the node cooks the input and caches the geometry in a data parameter. The node otherwise doesn't cook its input and simply outputs the cached geometry. (You can even disconnect the input and the node will continue to output its stored geometry.) You can click __Stash Input__ again to re-cache if the input changes.
+
+This node is conceptually very similar to [locking|/network/flags#sop] a Null SOP, with several additional features:
+
+* The interaction is slightly more convenient.
+
+* You can modify or overwrite the cached geometry with [Hom:hou.Geometry] objects through scripting.
+
+* You can link the geometry parameter to a parameter on a parent [asset|/assets/].  This allows assets to inject geometry into a network without making the contents editable.
+
+* The node never passes the input directly to the output, so Houdini doesn't see downstream nodes as depending on upstream nodes. This is useful if a live connection would create a dependency cycle.
+
+
+== Tips and notes ==
+
+* The stashed geometry is saved as part of the node instance when you save the scene, so stashing large geometry can bloat the size of the .hip file.
+
+* You can discard the cached geometry by disconnecting the node's input and clicking __Stash Input__.
+
+* Because the caching process is manual, it is independent of time. For example, you can run a simulation process (for example, a terrain erosion), cache the final geometry, disconnect the simulation, and then go back to frame 1 and use the geometry in an animation.
+
+@parameters
+
+Geometry Stash:
+    #id: stash
+
+    The data parameter (internal name `stash`) where the node stores the geometry.
+    
+Stash Input:
+    Click to cook the input and cache its geometry in the data parameter above. Once the geometry is cached, the node will output the cached geometry.
+
+Use Input When Stash Is Empty:
+    #id: useinputwhenempty
+
+    When there is no geometry in the __Geometry Stash__ data parameter,
+    turning on this parameter causes the input geometry to be used. When
+    turned off, the node tries to load the __Geometry File__ if available.
+
+Geometry File:
+    #id: stashfile
+
+    This file is loaded and used when __Use Input When Stash Is Empty__ is
+    turned off and there is no geometry in the __Geometry Stash__ data parameter.
+
+    Storing geometry in the data parameter will cause the .hip file to
+    become larger and require every version of the .hip file to
+    resave the data.  When the stashed geometry no longer changes
+    frequently, it can be moved to an external file.  This file will
+    then need to be available for the .hip file to load properly.
+
+:include standard_stash:
+
+@related
+
+- [Node:sop/file]
+- [Node:sop/cache]
+- [Node:sop/filecache]
+
+

@@ -1,0 +1,36 @@
+# basics.zip 官方文档索引（Houdini 22.0.368）
+
+共 30 页。用 `--page basics.zip:<内部路径>` 读取全文。
+
+| 页面 | 标题 |
+|---|---|
+| `3dmouse.txt` | 3D Mouse Input |
+| `brush.txt` | Brush tools |
+| `config.txt` | Configuring Houdini |
+| `config_env.txt` | Environment variables |
+| `config_menus.txt` | Customize menus |
+| `cooking.txt` | Cooking |
+| `dashbox.txt` | Dashbox: an interface for finding things |
+| `handles.txt` | Using handles |
+| `hotkeys.txt` | Configuring hotkeys |
+| `houdinipath.txt` | Houdini Path |
+| `hud_handles.txt` | HUD handles |
+| `index.txt` | Basics |
+| `inspection.txt` | Inspection mode |
+| `intro.txt` | Introduction to Houdini |
+| `ladder.txt` | Using the ladder to change values |
+| `macosx.txt` | MacOS notes |
+| `memorytoolbar.txt` | Memory toolbar |
+| `motionpath.txt` | Motion Path handles |
+| `objects.txt` | Working with objects |
+| `optimize.txt` | Speed up your scene |
+| `panes.txt` | Desktops and panes |
+| `project.txt` | Project management |
+| `radialmenus.txt` | Radial menus |
+| `select.txt` | Selecting objects and components |
+| `tabmenu.txt` | Tab menu |
+| `takes.txt` | Create variations with takes |
+| `ui.txt` | Houdini user interface |
+| `view.txt` | Viewing the scene |
+| `viewporteffects.txt` | Advanced Viewport Shading |
+| `visualizers.txt` | Visualizers |

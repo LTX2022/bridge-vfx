@@ -1,0 +1,12 @@
+# start.zip 官方文档索引（Houdini 22.0.368）
+
+共 6 页。用 `--page start.zip:<内部路径>` 读取全文。
+
+| 页面 | 标题 |
+|---|---|
+| `animation.txt` | ﻿= Animation intro |
+| `hotkeys.txt` | ﻿= Hotkey quick reference |
+| `index.txt` | Quick starts |
+| `intro.txt` | ﻿= Interface intro |
+| `maya_transition.txt` | ﻿= Maya(tm) transition guide |
+| `more.txt` | ﻿= More help |

@@ -1,0 +1,711 @@
+# Dialog script for crowdstate::3.0 automatically generated
+
+{
+    name	crowdstate::3.0
+    script	crowdstate::3.0
+    label	"Crowd State"
+
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Stream to Apply Forces to"
+    inputlabel	2	"Input 2"
+    inputlabel	3	"Input 3"
+    inputlabel	4	"Input 4"
+
+    parm {
+        name    "streamname"
+        label   "Stream Name"
+        type    string
+        invisible
+        default { [ "hou.phm().buildStreamName()" python ] }
+        range   { 0 1 }
+    }
+    parm {
+        name    "statename"
+        label   "State Name"
+        type    string
+        default { "$OS" }
+        range   { 0 1 }
+    }
+    parm {
+        name    "rbdragdoll"
+        label   "RBD Ragdoll"
+        type    ordinal
+        default { "ignore" }
+        menu {
+            "active"    "Active"
+            "static"    "Animated Static"
+            "ignore"    "Ignore"
+        }
+        range   { 0 1 }
+    }
+    parm {
+        name    "sepparm5"
+        label   "Separator"
+        type    separator
+        default { "" }
+    }
+    groupcollapsible {
+        name    "stiffness"
+        label   "Stiffness"
+        disablewhentab "{ rbdragdoll != active }"
+        hidewhentab "{ rbdragdoll != active }"
+        parmtag { "group_default" "1" }
+        parmtag { "sidefx::header_toggle" "ragdoll_enablestiffness" }
+
+        parm {
+            name    "ragdoll_enablestiffness"
+            label   "Enable Stiffness"
+            type    toggle
+            default { "1" }
+            disablewhen "{ rbdragdoll != active }"
+            hidewhen "{ rbdragdoll != active }"
+        }
+        parm {
+            name    "ragdoll_stiffnessgroup"
+            label   "Group"
+            type    string
+            default { "" }
+            disablewhen "{ rbdragdoll != active } { ragdoll_enablestiffness == 0 }"
+            hidewhen "{ rbdragdoll != active }"
+            menureplace {
+                [ "import crowdstoolutils" ]
+                [ "return crowdstoolutils.buildDopTransformGroupMenu(hou.pwd())" ]
+                language python
+            }
+        }
+        parm {
+            name    "ragdoll_stiffnessvalue"
+            label   "Stiffness Value"
+            type    ordinal
+            default { "0" }
+            disablewhen "{ rbdragdoll != active } { ragdoll_enablestiffness == 0 }"
+            hidewhen "{ rbdragdoll != active }"
+            menu {
+                "constant"  "Constant"
+                "ramp"      "Ramp"
+            }
+        }
+        parm {
+            name    "ragdoll_stiffness"
+            label   "Stiffness"
+            type    float
+            default { "0.2" }
+            disablewhen "{ rbdragdoll != active } { ragdoll_enablestiffness == 0 }"
+            hidewhen "{ rbdragdoll != active } { ragdoll_stiffnessvalue != constant }"
+            range   { 0! 5 }
+        }
+        parm {
+            name    "ragdoll_stiffnessramprange"
+            label   "Time Range"
+            type    float_minmax
+            size    2
+            default { "0" "1.5" }
+            disablewhen "{ rbdragdoll != active } { ragdoll_enablestiffness == 0 } { ragdoll_stiffnessvalue != ramp } { ragdoll_stiffnessscale == 0 }"
+            hidewhen "{ rbdragdoll != active } { ragdoll_stiffnessvalue != ramp }"
+            range   { 0! 5 }
+        }
+        parm {
+            name    "ragdoll_stiffnessscale"
+            label   "Stiffness Scale"
+            type    float
+            default { "1" }
+            disablewhen "{ rbdragdoll != active } { ragdoll_enablestiffness == 0 }"
+            hidewhen "{ rbdragdoll != active } { ragdoll_stiffnessvalue != ramp }"
+            range   { 0! 5 }
+        }
+        parm {
+            name    "ragdoll_stiffnessramp"
+            label   "Stiffness Ramp"
+            type    ramp_flt
+            default { "2" }
+            disablewhen "{ rbdragdoll != active } { ragdoll_enablestiffness == 0 } { ragdoll_stiffnessvalue != ramp } { ragdoll_stiffnessscale == 0 }"
+            hidewhen "{ rbdragdoll != active } { ragdoll_stiffnessvalue != ramp }"
+            range   { 1! 10 }
+            parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 0.40000000000000002 ) 1interp ( linear ) 2pos ( 1 ) 2value ( 0.10000000000000001 ) 2interp ( linear )" }
+            parmtag { "rampshowcontrolsdefault" "0" }
+        }
+        parm {
+            name    "ragdoll_stiffnesscfm"
+            label   "Constraint Force Mixing"
+            type    float
+            default { "0.01" }
+            disablewhen "{ rbdragdoll != active } { ragdoll_enablestiffness == 0 }"
+            hidewhen "{ rbdragdoll != active }"
+            range   { 0! 1 }
+        }
+    }
+
+    groupcollapsible {
+        name    "partialragdoll"
+        label   "Partial Ragdoll"
+        disablewhentab "{ rbdragdoll != active }"
+        hidewhentab "{ rbdragdoll != active }"
+        parmtag { "group_default" "1" }
+        parmtag { "sidefx::header_toggle" "ragdoll_enablepartial" }
+
+        parm {
+            name    "ragdoll_enablepartial"
+            label   "Enable Partial Ragdoll"
+            type    toggle
+            default { "0" }
+            disablewhen "{ rbdragdoll != active }"
+            hidewhen "{ rbdragdoll != active }"
+        }
+        parm {
+            name    "ragdoll_activegroup"
+            label   "Active Group"
+            type    string
+            default { "" }
+            disablewhen "{ rbdragdoll != active } { ragdoll_enablepartial == 0 }"
+            hidewhen "{ rbdragdoll != active }"
+            menureplace {
+                [ "import crowdstoolutils" ]
+                [ "return crowdstoolutils.buildDopTransformGroupMenu(hou.pwd())" ]
+                language python
+            }
+        }
+    }
+
+    groupcollapsible {
+        name    "motor"
+        label   "Motors"
+        disablewhentab "{ rbdragdoll != active }"
+        hidewhentab "{ rbdragdoll != active }"
+        parmtag { "group_default" "1" }
+        parmtag { "sidefx::header_toggle" "ragdoll_enablemotor" }
+
+        parm {
+            name    "ragdoll_enablemotor"
+            label   "Enable Motor"
+            type    toggle
+            default { "0" }
+            disablewhen "{ rbdragdoll != active }"
+            hidewhen "{ rbdragdoll != active }"
+        }
+        parm {
+            name    "ragdoll_motorgroup"
+            label   "Group"
+            type    string
+            default { "" }
+            disablewhen "{ rbdragdoll != active } { ragdoll_enablemotor == 0 }"
+            hidewhen "{ rbdragdoll != active }"
+            menureplace {
+                [ "import crowdstoolutils" ]
+                [ "return crowdstoolutils.buildDopTransformGroupMenu(hou.pwd())" ]
+                language python
+            }
+        }
+        parm {
+            name    "ragdoll_motorstrengthvalue"
+            label   "Strength Value"
+            type    ordinal
+            default { "0" }
+            disablewhen "{ rbdragdoll != active } { ragdoll_enablemotor == 0 }"
+            hidewhen "{ rbdragdoll != active }"
+            menu {
+                "constant"  "Constant"
+                "ramp"      "Ramp"
+            }
+        }
+        parm {
+            name    "ragdoll_motorstrength"
+            label   "Motor Strength"
+            type    float
+            default { "10" }
+            disablewhen "{ rbdragdoll != active } { ragdoll_enablemotor == 0 } { ragdoll_motorstrengthvalue != constant }"
+            hidewhen "{ rbdragdoll != active } { ragdoll_motorstrengthvalue != constant }"
+            range   { 0! 5 }
+        }
+        parm {
+            name    "ragdoll_motorstrengthramprange"
+            label   "Time Range"
+            type    float_minmax
+            size    2
+            default { "0" "1.5" }
+            disablewhen "{ rbdragdoll != active } { ragdoll_enablemotor == 0 } { ragdoll_motorstrengthvalue != ramp }"
+            hidewhen "{ rbdragdoll != active } { ragdoll_motorstrengthvalue != ramp }"
+            range   { 0! 5 }
+        }
+        parm {
+            name    "ragdoll_motorstrengthscale"
+            label   "Strength Scale"
+            type    float
+            default { "10" }
+            disablewhen "{ rbdragdoll != active } { ragdoll_enablemotor == 0 } { ragdoll_motorstrengthvalue != ramp }"
+            hidewhen "{ rbdragdoll != active } { ragdoll_motorstrengthvalue != ramp }"
+            range   { 0! 5 }
+        }
+        parm {
+            name    "ragdoll_motorstrengthramp"
+            label   "Strength Ramp"
+            type    ramp_flt
+            default { "2" }
+            disablewhen "{ rbdragdoll != active } { ragdoll_enablemotor == 0 } { ragdoll_motorstrengthvalue != ramp }"
+            hidewhen "{ rbdragdoll != active } { ragdoll_motorstrengthvalue != ramp }"
+            range   { 1! 10 }
+            parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 1 ) 1interp ( linear ) 2pos ( 1 ) 2value ( 0 ) 2interp ( linear )" }
+            parmtag { "rampshowcontrolsdefault" "0" }
+        }
+        parm {
+            name    "ragdoll_motorcorrectiontime"
+            label   "Correction Time"
+            type    float
+            default { "0.2" }
+            disablewhen "{ rbdragdoll != active } { ragdoll_enablemotor == 0 }"
+            hidewhen "{ rbdragdoll != active }"
+            range   { 0! 2 }
+        }
+        parm {
+            name    "ragdoll_motorcfm"
+            label   "Constraint Force Mixing"
+            type    float
+            default { "0.01" }
+            disablewhen "{ rbdragdoll != active } { ragdoll_enablemotor == 0 }"
+            hidewhen "{ rbdragdoll != active }"
+            range   { 0! 1 }
+        }
+    }
+
+    groupcollapsible {
+        name    "folder_stickycollisions"
+        label   "Sticky Collisions"
+        disablewhen "{ rbdragdoll == ignore }"
+        hidewhen "{ rbdragdoll == ignore }"
+
+        parm {
+            name    "ragdoll_enablestickycollisiongroup"
+            label   "Enable Sticky Collision Group"
+            type    toggle
+            nolabel
+            joinnext
+            default { "0" }
+        }
+        parm {
+            name    "ragdoll_stickycollisiongroup"
+            label   "Group"
+            type    string
+            default { "" }
+            disablewhen "{ ragdoll_enablestickycollisiongroup == 0 }"
+            menureplace {
+                [ "import crowdstoolutils" ]
+                [ "return crowdstoolutils.buildDopTransformGroupMenu(hou.pwd())" ]
+                language python
+            }
+        }
+        parm {
+            name    "ragdoll_setminstickycollisionimpulse"
+            label   "Set Min Sticky Collision Impulse"
+            type    toggle
+            nolabel
+            joinnext
+            default { "0" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "ragdoll_minstickycollisionimpulse"
+            label   "Min Collision Impulse"
+            type    float
+            default { "-1" }
+            disablewhen "{ ragdoll_setminstickycollisionimpulse == 0 }"
+            range   { -1 10000 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "ragdoll_setmaxstickycollisionobjects"
+            label   "Set Max Sticky Collision Objects"
+            type    toggle
+            nolabel
+            joinnext
+            default { "0" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "ragdoll_maxstickycollisionobjects"
+            label   "Max Collision Objects per Shape"
+            type    integer
+            default { "-1" }
+            disablewhen "{ ragdoll_setmaxstickycollisionobjects == 0 }"
+            range   { -1 10 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "ragdoll_setmaxstickycollisionpoints"
+            label   "Set Max Sticky Collision Points"
+            type    toggle
+            nolabel
+            joinnext
+            default { "0" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "ragdoll_maxstickycollisionpoints"
+            label   "Max Collision Points"
+            type    integer
+            default { "-1" }
+            disablewhen "{ ragdoll_setmaxstickycollisionpoints == 0 }"
+            range   { -1 10 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "ragdoll_setstickycollisionignore"
+            label   "Set Sticky Collision Ignore"
+            type    toggle
+            nolabel
+            joinnext
+            default { "0" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "ragdoll_stickycollisionignore"
+            label   "Collision Ignore"
+            type    string
+            default { "" }
+            disablewhen "{ ragdoll_setstickycollisionignore == 0 }"
+            menutoggle {
+                [ "import doppoptoolutils" ]
+                [ "return doppoptoolutils.buildDopObjectMenu(hou.pwd())" ]
+                language python
+            }
+            range   { -1! 10 }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    parm {
+        name    "sepparm3"
+        label   "Separator"
+        type    separator
+        invisible
+        default { "" }
+        range   { 0 1 }
+    }
+    parm {
+        name    "randomclipname"
+        label   "Randomize Clips"
+        type    toggle
+        invisible
+        default { "0" }
+        disablewhen "{ rbdragdoll == active ragdoll_enablemotor == 0 ragdoll_enablepartial == 0 }"
+        hidewhen "{ rbdragdoll == active ragdoll_enablemotor == 0 ragdoll_enablepartial == 0 }"
+        range   { 0 1 }
+    }
+    groupsimple {
+        name    "folder1"
+        label   "Clips"
+        disablewhentab "{ rbdragdoll == active ragdoll_enablemotor == 0 ragdoll_enablepartial == 0 }"
+        hidewhentab "{ rbdragdoll == active ragdoll_enablemotor == 0 ragdoll_enablepartial == 0 }"
+
+        parm {
+            name    "clipassignment"
+            label   "Clip Assignment"
+            type    ordinal
+            default { "single" }
+            hidewhen "{ rbdragdoll == active ragdoll_enablemotor == 0 ragdoll_enablepartial == 0 }"
+            menu {
+                "none"      "None"
+                "single"    "Single Clip"
+                "random"    "Random Distribution"
+            }
+        }
+        parm {
+            name    "clipname"
+            label   "Clip Name"
+            type    string
+            default { "$OS" }
+            disablewhen "{ rbdragdoll == active ragdoll_enablemotor == 0 ragdoll_enablepartial == 0 }"
+            hidewhen "{ clipassignment != single } { rbdragdoll == active ragdoll_enablemotor == 0 ragdoll_enablepartial == 0 }"
+            menureplace {
+                [ "import crowdstoolutils" ]
+                [ "return crowdstoolutils.buildDopClipMenu(hou.pwd())" ]
+                language python
+            }
+            range   { 0 1 }
+        }
+        parm {
+            name    "randomclipnameseed"
+            label   "Random Seed"
+            type    float
+            joinnext
+            default { "1" }
+            disablewhen "{ rbdragdoll == active ragdoll_enablemotor == 0 ragdoll_enablepartial == 0 }"
+            hidewhen "{ clipassignment != random } { rbdragdoll == active ragdoll_enablemotor == 0 ragdoll_enablepartial == 0 }"
+            range   { 0 10 }
+        }
+        parm {
+            name    "randomclipnametimedep"
+            label   "Time Dependent"
+            type    toggle
+            default { "1" }
+            disablewhen "{ rbdragdoll == active ragdoll_enablemotor == 0 ragdoll_enablepartial == 0 }"
+            hidewhen "{ clipassignment != random } { rbdragdoll == active ragdoll_enablemotor == 0 ragdoll_enablepartial == 0 }"
+            parmtag { "script_callback_language" "python" }
+        }
+        multiparm {
+            name    "numclippatterns"
+            label    "Clip Groups"
+            default 1
+            disablewhen "{ rbdragdoll == active ragdoll_enablemotor == 0 ragdoll_enablepartial == 0 }"
+            hidewhen "{ clipassignment != random } { rbdragdoll == active ragdoll_enablemotor == 0 ragdoll_enablepartial == 0 }"
+
+            parm {
+                name    "clippattern_#"
+                label   "Clip Names"
+                type    string
+                joinnext
+                default { "" }
+                menutoggle {
+                    [ "import crowdstoolutils" ]
+                    [ "return crowdstoolutils.buildDopClipMenu(hou.pwd())" ]
+                    language python
+                }
+            }
+            parm {
+                name    "clipweight_#"
+                label   "Weight"
+                type    float
+                default { "1" }
+                range   { 0 10 }
+            }
+        }
+
+        groupsimple {
+            name    "clipselection"
+            label   "Clip Selection"
+            invisibletab
+            disablewhentab "{ rbdragdoll == active ragdoll_enablemotor == 0 ragdoll_enablepartial == 0 }"
+            hidewhentab "{ clipassignment != random } { rbdragdoll == active ragdoll_enablemotor == 0 ragdoll_enablepartial == 0 }"
+
+        }
+
+        parm {
+            name    "sepparm"
+            label   "Separator"
+            type    separator
+            default { "" }
+            range   { 0 1 }
+        }
+        parm {
+            name    "setinitialclipname"
+            label   "Set Initial Clip Name"
+            type    toggle
+            default { "1" }
+            disablewhen "{ rbdragdoll == active ragdoll_enablemotor == 0 ragdoll_enablepartial == 0 } { clipassignment == none }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "setinitialcliptime"
+            label   "Set Initial Clip Time"
+            type    toggle
+            nolabel
+            joinnext
+            default { "0" }
+            disablewhen "{ rbdragdoll == active ragdoll_enablemotor == 0 ragdoll_enablepartial == 0 }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "globalclipoffset"
+            label   "Initial Clip Time"
+            type    float
+            default { "0" }
+            disablewhen "{ rbdragdoll == active ragdoll_enablemotor == 0 ragdoll_enablepartial == 0 } { setinitialcliptime == 0 }"
+            range   { 0 10 }
+        }
+        parm {
+            name    "randomizecliptime"
+            label   "Randomize Clip Time"
+            type    toggle
+            nolabel
+            joinnext
+            default { "0" }
+            disablewhen "{ rbdragdoll == active ragdoll_enablemotor == 0 ragdoll_enablepartial == 0 } { setinitialcliptime == 0 }"
+        }
+        parm {
+            name    "randomclipoffset"
+            label   "Random Clip Offset"
+            type    float
+            default { "1" }
+            disablewhen "{ rbdragdoll == active ragdoll_enablemotor == 0 ragdoll_enablepartial == 0 } { setinitialcliptime == 0 } { randomizecliptime == 0 }"
+            range   { 0 10 }
+        }
+        parm {
+            name    "randomclipoffsetseed"
+            label   "Random Seed"
+            type    float
+            default { "1" }
+            disablewhen "{ rbdragdoll == active ragdoll_enablemotor == 0 ragdoll_enablepartial == 0 } { setinitialcliptime == 0 } { randomizecliptime == 0 }"
+            hidewhen "{ randomizecliptime == 0 }"
+            range   { 0 10 }
+        }
+        parm {
+            name    "applylocomotionorient"
+            label   "Apply Locomotion Orientation"
+            type    toggle
+            default { "1" }
+            disablewhen "{ rbdragdoll == active } { setinitialcliptime == 0 }"
+            hidewhen "{ cliptype != 1 }"
+        }
+    }
+
+    groupsimple {
+        name    "folder0"
+        label   "Clip Playback"
+        disablewhentab "{ rbdragdoll == active ragdoll_enablemotor == 0 ragdoll_enablepartial == 0 }"
+        hidewhentab "{ rbdragdoll == active ragdoll_enablemotor == 0 ragdoll_enablepartial == 0 }"
+
+        parm {
+            name    "cliptype"
+            label   "Type"
+            type    ordinal
+            default { "0" }
+            disablewhen "{ rbdragdoll == active ragdoll_enablemotor == 0 ragdoll_enablepartial == 0 }"
+            menu {
+                "0" "In-Place"
+                "1" "Locomotive"
+            }
+            range   { 0 1 }
+        }
+        parm {
+            name    "clipspeedmultiplier"
+            label   "Clip Speed Multiplier"
+            type    float
+            default { "1" }
+            disablewhen "{ rbdragdoll == active ragdoll_enablemotor == 0 ragdoll_enablepartial == 0 }"
+            range   { 0! 10 }
+        }
+        parm {
+            name    "locomotionspeedmultiplier"
+            label   "Locomotion Speed Multiplier"
+            type    float
+            default { "ch(\"clipspeedmultiplier\")" }
+            disablewhen "{ rbdragdoll == active ragdoll_enablemotor == 0 ragdoll_enablepartial == 0 }"
+            hidewhen "{ cliptype != 1 }"
+            range   { 0! 10 }
+        }
+        parm {
+            name    "randomizeclipspeed"
+            label   "Randomize Clip Speed"
+            type    toggle
+            nolabel
+            joinnext
+            default { "0" }
+            disablewhen "{ rbdragdoll == active ragdoll_enablemotor == 0 ragdoll_enablepartial == 0 }"
+        }
+        parm {
+            name    "clipspeedvariance"
+            label   "Variance (%)"
+            type    float
+            default { "10" }
+            disablewhen "{ randomizeclipspeed == 0 } { rbdragdoll == active ragdoll_enablemotor == 0 ragdoll_enablepartial == 0 }"
+            range   { 0! 100 }
+        }
+        parm {
+            name    "clipspeedseed"
+            label   "Random Seed"
+            type    float
+            default { "1" }
+            disablewhen "{ randomizeclipspeed == 0 } { rbdragdoll == active ragdoll_enablemotor == 0 ragdoll_enablepartial == 0 }"
+            hidewhen "{ randomizeclipspeed == 0 }"
+            range   { 0 10 }
+        }
+        parm {
+            name    "lastframematchesfirst"
+            label   "Last Frame Matches First Frame"
+            type    toggle
+            default { "1" }
+            disablewhen "{ rbdragdoll == active ragdoll_enablemotor == 0 ragdoll_enablepartial == 0 }"
+            hidewhen "{ cliptype != 1 }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "enablelooping"
+            label   "Enable Looping"
+            type    toggle
+            default { "1" }
+            disablewhen "{ rbdragdoll == active ragdoll_enablemotor == 0 ragdoll_enablepartial == 0 }"
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "sepparm4"
+            label   "Separator"
+            type    separator
+            default { "" }
+            hidewhen "{ cliptype != 0 } { rbdragdoll == active }"
+        }
+        parm {
+            name    "retimetoparticle"
+            label   "Retime Clip to Match Particle Speed"
+            type    toggle
+            default { "1" }
+            disablewhen "{ rbdragdoll == active }"
+            hidewhen "{ cliptype != 0 } { rbdragdoll == active }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "gaitspeed"
+            label   "Gait Speed"
+            type    float
+            default { "1.25" }
+            disablewhen "{ rbdragdoll == active } { retimetoparticle == 0 }"
+            hidewhen "{ cliptype != 0 } { rbdragdoll == active }"
+            range   { 0! 10 }
+        }
+        parm {
+            name    "speedvariance"
+            label   "Allowed Variance (%)"
+            type    float
+            default { "10" }
+            disablewhen "{ rbdragdoll == active } { retimetoparticle == 0 }"
+            hidewhen "{ cliptype != 0 } { rbdragdoll == active }"
+            range   { 0! 100 }
+        }
+        parm {
+            name    "limitparticlespeed"
+            label   "Limit Particle Speed to Gait Speed Range"
+            type    toggle
+            default { "1" }
+            disablewhen "{ rbdragdoll == active } { retimetoparticle == 0 }"
+            hidewhen "{ cliptype != 0 } { rbdragdoll == active }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "sepparm2"
+            label   "Separator"
+            type    separator
+            default { "" }
+            range   { 0 1 }
+        }
+        parm {
+            name    "uselocal"
+            label   "Use VEXpressions"
+            type    toggle
+            default { "0" }
+            disablewhen "{ rbdragdoll == active ragdoll_enablemotor == 0 ragdoll_enablepartial == 0 }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "localexpression"
+            label   " "
+            type    string
+            default { "" }
+            disablewhen "{ rbdragdoll == active ragdoll_enablemotor == 0 ragdoll_enablepartial == 0 }"
+            hidewhen "{ uselocal == 0 }"
+            menu {
+                [ "import vexpressionmenu" ]
+                [ "" ]
+                [ "return vexpressionmenu.buildSnippetMenu('crowdstate::3.0/localexpression', kwargs=kwargs)" ]
+                language python
+            }
+            range   { 0 1 }
+            parmtag { "editor" "1" }
+            parmtag { "editorlang" "vex" }
+            parmtag { "script_action" "import vexpressionmenu\n\nnode = kwargs['node']\nparmname = kwargs['parmtuple'].name()\n\nvexpressionmenu.createSpareParmsFromChCalls(node, parmname)" }
+            parmtag { "script_action_help" "Creates spare parameters for each unique call of ch() " }
+            parmtag { "script_action_icon" "BUTTONS_create_parm_from_ch" }
+        }
+    }
+
+}

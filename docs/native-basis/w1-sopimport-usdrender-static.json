@@ -1,0 +1,255 @@
+{
+  "schema": "bridge.w1.sopimport.usdrender.static/1",
+  "native_execution": "NOT_RUN",
+  "versions": [
+    {
+      "version": "21.0.631",
+      "sources": [
+        {
+          "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/python3.11libs/dopsparsepyrotools.py",
+          "sha256": "0e086f9a7caf012cf9824f743bda8c0d48af26b9e20e451840a1cbe311b525ec",
+          "excerpts": [
+            {
+              "line_start": 6295,
+              "line_end": 6312,
+              "text": "\n        :param stage: The stage to contain the SOP Import node\n\n        :param sourcenode: The node used to invoke this script. This is usually a SOP Pyro Solver or a Pyro Bake Volume node.\n\n    \"\"\"   \n\n    sopimport = stage.createNode('sopimport', 'import_{}'.format(name))\n    name = getPyroNodeName(sopnode)\n    primpath = '/pyro/{}'.format(name)\n    sopimport.parm('pathprefix').set(primpath)\n    sopimport.parm('soppath').set(sopimport.relativePathTo(sopnode))\n    sopimport.parm('enable_staticattribs').set(1)\n    sopimport.parm('staticattribs').set('dopobject name shop_materialpath')\n\n    return sopimport, primpath\n\ndef createStageRenderGeometrySettings(stage, blurscale = 1, emission=False, emitscale=1):"
+            },
+            {
+              "line_start": 6642,
+              "line_end": 6648,
+              "text": "    items = output_dict['items']\n\n    # Find the created items based on the name they were recorded with.\n    # This will ensure to get the right object even if on creation the node was renamed to some other name.\n    sopimport = items.get('sopimport1')\n    sopimport.parm('soppath').set(sopimport.relativePathTo(output))\n"
+            }
+          ]
+        },
+        {
+          "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/python3.11libs/hqrop.py",
+          "sha256": "a56a25a7e63b89e680eb7455b81ce6061daaa2078e3beb3f51865d67370acf89",
+          "excerpts": [
+            {
+              "line_start": 114,
+              "line_end": 123,
+              "text": "    elif rop_type == \"karma\":\n        output_parm = rop_node.parm(\"picture\")\n    elif rop_type in (\"usdrender_rop\", \"usdrender\"):\n        usdrender_output_override = rop_node.parm(\"outputimage\")\n        # If an override is not specified, then it is already\n        # specified in the USD Render Settings.\n        if usdrender_output_override.evalAsString():\n            output_parm = usdrender_output_override\n        else:\n            rs_node = getRenderSettingsNode(rop_node)"
+            },
+            {
+              "line_start": 174,
+              "line_end": 196,
+              "text": "def getRenderSettingsNode(usdrender_rop_node):\n    \"\"\"Returns the node with the matching RenderSettings primitive as\n    the given USD Render ROP.\n    \n    Returns None if 'usdrender_rop_node' is None or if the RenderSettings\n    node does not exist.\"\"\"\n\n    if not usdrender_rop_node:\n        return None\n    \n    match_rs_prim = usdrender_rop_node.parm(\"rendersettings\").eval()\n    node_stack = [usdrender_rop_node, ]\n    visited_nodes = []\n\n    while len(node_stack) > 0:\n        cur_node = node_stack.pop()\n\n        # Check whether the render settings primitve paths match.\n        cur_node_rs_prim = cur_node.parm(\"primpath\")\n        if cur_node_rs_prim:\n            if cur_node_rs_prim.eval() == match_rs_prim:\n                return cur_node\n"
+            }
+          ]
+        },
+        {
+          "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/help/nodes.zip",
+          "archive_sha256": "7c83e14d77ddaebf0f918244c1747509633b2721a39468eb4ae3efc694886916",
+          "member": "lop/sopimport.txt",
+          "sha256": "9bd013b54cb65640807cfd9a5088737f53651cf44ae63a4eb6bf4ff84a228eaf",
+          "excerpts": [
+            {
+              "line_start": 88,
+              "line_end": 90,
+              "text": "SOP Path:\n    Node path to the SOP node you want to import from.\n"
+            },
+            {
+              "line_start": 198,
+              "line_end": 202,
+              "text": "Enable Import Path Prefix:\n    #id: enable_pathprefix\n    When turned on, the __Import Path Prefix__ setting is used when translating the SOP geometry to USD.\n    Otherwise, the parameter's default value is used unless a `usdconfigpathprefix` detail attribute exists on the SOP geometry (for example, from the [USD Configure SOP|Node:sop/usdconfigure]).\n"
+            },
+            {
+              "line_start": 203,
+              "line_end": 209,
+              "text": "Import Path Prefix:\n    #id: pathprefix\n\n    If a prim being imported has an automatically generated name (like `mesh_0`) because it had no path primitive, or if it has a path primitive but the path is relative (does not start with `/`), the node automatically prefixes the name/path fragment with this path. This is a way of keeping \"un-pathed\" prims organized under a single branch. (See [how to create geometry hierarchy|/solaris/sop_import].)\n\n    (The default is `/$OS` which puts \"un-pathed\" prims under a root prim with the name of this node.)\n"
+            }
+          ]
+        },
+        {
+          "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/help/nodes.zip",
+          "archive_sha256": "7c83e14d77ddaebf0f918244c1747509633b2721a39468eb4ae3efc694886916",
+          "member": "out/usdrender.txt",
+          "sha256": "b051a6a7534d9a03dd7c6766f9f35b7b3af6b8a9bd40d96ddef2e3fa9811528b",
+          "excerpts": [
+            {
+              "line_start": 93,
+              "line_end": 97,
+              "text": "LOP Path:\n    #id: loppath\n\n    Render the USD stage output by this node. If this is blank, the node uses the node with the display flag.\n"
+            },
+            {
+              "line_start": 98,
+              "line_end": 102,
+              "text": "Render Settings:\n    #id: rendersettings\n\n    Scene graph pattern specifying the `RenderSettings` prims to render with. Husk supports running multiple renders with different render settings prims from one process. When evaluating this pattern with __Render existing file__ enabled, the specified file is opened as a USD stage with a population mask limiting the stage to the `/Render` branch, and the pattern is evaluated on that stage. If this is blank, the node looks for default render settings on the root prim. If the root prim has no render settings, the node will use default settings.\n"
+            },
+            {
+              "line_start": 108,
+              "line_end": 112,
+              "text": "Override Camera:\n    #id: override_camera\n\n    Scene graph path to the `Camera` prim to render from. If this is blank, the node uses the camera specified on the render settings primitive.\n"
+            },
+            {
+              "line_start": 113,
+              "line_end": 117,
+              "text": "Override Output Image:\n    #id: outputimage\n\n    If this is not blank, render to this file path instead of the output specified in the `RenderSettings` prim. When starting a new render process for each frame, this parameter can use standard Houdini variables such as `$F4` to specify unique per-frame image files. When `Render All Frames with a Single Process` is enabled, this parameter must pass an un-expanded frame specifier (such as `$F4` or `<FF>`) to `husk`. This may require the use of a backslash to prevent variable expansion when evaluating the parameter.\n"
+            }
+          ]
+        }
+      ],
+      "field_facts": {
+        "Lop/sopimport": {
+          "soppath": {
+            "source": "actual vendor parm.set in createStageSOPImport",
+            "semantics": "source SOP node path"
+          },
+          "pathprefix": {
+            "source": "actual vendor parm.set in createStageSOPImport plus matching help",
+            "semantics": "USD prefix for unnamed or relative paths"
+          },
+          "enable_pathprefix": {
+            "source": "help parameter description",
+            "semantics": "use specified import path prefix"
+          }
+        },
+        "Driver/usdrender": {
+          "loppath": {
+            "source": "matching help parameter ID",
+            "semantics": "stage output from selected LOP node"
+          },
+          "rendersettings": {
+            "source": "hqrop.getRenderSettingsNode actual parm.eval plus help",
+            "semantics": "RenderSettings prim scene graph pattern"
+          },
+          "override_camera": {
+            "source": "matching help parameter ID",
+            "semantics": "Camera prim path; blank uses RenderSettings camera"
+          },
+          "outputimage": {
+            "source": "hqrop actual parm/evalAsString plus help",
+            "semantics": "nonempty overrides USD product output; frame variable expansion depends on process/frame mode"
+          }
+        }
+      }
+    },
+    {
+      "version": "22.0.429",
+      "sources": [
+        {
+          "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/python3.13libs/dopsparsepyrotools.py",
+          "sha256": "0e086f9a7caf012cf9824f743bda8c0d48af26b9e20e451840a1cbe311b525ec",
+          "excerpts": [
+            {
+              "line_start": 6295,
+              "line_end": 6312,
+              "text": "\n        :param stage: The stage to contain the SOP Import node\n\n        :param sourcenode: The node used to invoke this script. This is usually a SOP Pyro Solver or a Pyro Bake Volume node.\n\n    \"\"\"   \n\n    sopimport = stage.createNode('sopimport', 'import_{}'.format(name))\n    name = getPyroNodeName(sopnode)\n    primpath = '/pyro/{}'.format(name)\n    sopimport.parm('pathprefix').set(primpath)\n    sopimport.parm('soppath').set(sopimport.relativePathTo(sopnode))\n    sopimport.parm('enable_staticattribs').set(1)\n    sopimport.parm('staticattribs').set('dopobject name shop_materialpath')\n\n    return sopimport, primpath\n\ndef createStageRenderGeometrySettings(stage, blurscale = 1, emission=False, emitscale=1):"
+            },
+            {
+              "line_start": 6642,
+              "line_end": 6648,
+              "text": "    items = output_dict['items']\n\n    # Find the created items based on the name they were recorded with.\n    # This will ensure to get the right object even if on creation the node was renamed to some other name.\n    sopimport = items.get('sopimport1')\n    sopimport.parm('soppath').set(sopimport.relativePathTo(output))\n"
+            }
+          ]
+        },
+        {
+          "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/python3.13libs/hqrop.py",
+          "sha256": "e9282f5b172f2a5a5ac829eff46c250673b59d97740e3f3cb2a0603ab5fc67e0",
+          "excerpts": [
+            {
+              "line_start": 114,
+              "line_end": 123,
+              "text": "    elif rop_type == \"karma\":\n        output_parm = rop_node.parm(\"picture\")\n    elif rop_type in (\"usdrender_rop\", \"usdrender\"):\n        usdrender_output_override = rop_node.parm(\"outputimage\")\n        # If an override is not specified, then it is already\n        # specified in the USD Render Settings.\n        if usdrender_output_override.evalAsString():\n            output_parm = usdrender_output_override\n        else:\n            rs_node = getRenderSettingsNode(rop_node)"
+            },
+            {
+              "line_start": 174,
+              "line_end": 196,
+              "text": "def getRenderSettingsNode(usdrender_rop_node):\n    \"\"\"Returns the node with the matching RenderSettings primitive as\n    the given USD Render ROP.\n    \n    Returns None if 'usdrender_rop_node' is None or if the RenderSettings\n    node does not exist.\"\"\"\n\n    if not usdrender_rop_node:\n        return None\n    \n    match_rs_prim = usdrender_rop_node.parm(\"rendersettings\").eval()\n    node_stack = [usdrender_rop_node, ]\n    visited_nodes = []\n\n    while len(node_stack) > 0:\n        cur_node = node_stack.pop()\n\n        # Check whether the render settings primitve paths match.\n        cur_node_rs_prim = cur_node.parm(\"primpath\")\n        if cur_node_rs_prim:\n            if cur_node_rs_prim.eval() == match_rs_prim:\n                return cur_node\n"
+            }
+          ]
+        },
+        {
+          "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/help/nodes.zip",
+          "archive_sha256": "6ca2ef18ce0d1f142d3415e27885b36f69b3537344a04621c89f9fab6937ad53",
+          "member": "lop/sopimport.txt",
+          "sha256": "342dd843276eed0c013425c25d96eff45dbf0e1a16b3bf6fbfe06497e538c773",
+          "excerpts": [
+            {
+              "line_start": 88,
+              "line_end": 90,
+              "text": "SOP Path:\n    Node path to the SOP node you want to import from.\n"
+            },
+            {
+              "line_start": 198,
+              "line_end": 202,
+              "text": "Enable Import Path Prefix:\n    #id: enable_pathprefix\n    When turned on, the __Import Path Prefix__ setting is used when translating the SOP geometry to USD.\n    Otherwise, the parameter's default value is used unless a `usdconfigpathprefix` detail attribute exists on the SOP geometry (for example, from the [USD Configure SOP|Node:sop/usdconfigure]).\n"
+            },
+            {
+              "line_start": 203,
+              "line_end": 209,
+              "text": "Import Path Prefix:\n    #id: pathprefix\n\n    If a prim being imported has an automatically generated name (like `mesh_0`) because it had no path primitive, or if it has a path primitive but the path is relative (does not start with `/`), the node automatically prefixes the name/path fragment with this path. This is a way of keeping \"un-pathed\" prims organized under a single branch. (See [how to create geometry hierarchy|/solaris/sop_import].)\n\n    (The default is `/$OS` which puts \"un-pathed\" prims under a root prim with the name of this node.)\n"
+            }
+          ]
+        },
+        {
+          "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/help/nodes.zip",
+          "archive_sha256": "6ca2ef18ce0d1f142d3415e27885b36f69b3537344a04621c89f9fab6937ad53",
+          "member": "out/usdrender.txt",
+          "sha256": "d5b42ffa8f2e94c697526bf1ab03d0a7e1484e31a3e259ed28081f714218163d",
+          "excerpts": [
+            {
+              "line_start": 97,
+              "line_end": 101,
+              "text": "LOP Path:\n    #id: loppath\n\n    Render the USD stage output by this node. If this is blank, the node uses the node with the display flag.\n"
+            },
+            {
+              "line_start": 102,
+              "line_end": 106,
+              "text": "Render Settings:\n    #id: rendersettings\n\n    Scene graph pattern specifying the `RenderSettings` prims to render with. Husk supports running multiple renders with different render settings prims from one process. When evaluating this pattern with __Render existing file__ enabled, the specified file is opened as a USD stage with a population mask limiting the stage to the `/Render` branch, and the pattern is evaluated on that stage. If this is blank, the node looks for default render settings on the root prim. If the root prim has no render settings, the node will use default settings.\n"
+            },
+            {
+              "line_start": 112,
+              "line_end": 116,
+              "text": "Override Camera:\n    #id: override_camera\n\n    Scene graph path to the `Camera` prim to render from. If this is blank, the node uses the camera specified on the render settings primitive.\n"
+            },
+            {
+              "line_start": 117,
+              "line_end": 121,
+              "text": "Override Output Image:\n    #id: outputimage\n\n    If this is not blank, render to this file path instead of the output specified in the `RenderSettings` prim. When starting a new render process for each frame, this parameter can use standard Houdini variables such as `$F4` to specify unique per-frame image files. When `Render All Frames with a Single Process` is enabled, this parameter must pass an un-expanded frame specifier (such as `$F4` or `<FF>`) to `husk`. This may require the use of a backslash to prevent variable expansion when evaluating the parameter.\n"
+            }
+          ]
+        }
+      ],
+      "field_facts": {
+        "Lop/sopimport": {
+          "soppath": {
+            "source": "actual vendor parm.set in createStageSOPImport",
+            "semantics": "source SOP node path"
+          },
+          "pathprefix": {
+            "source": "actual vendor parm.set in createStageSOPImport plus matching help",
+            "semantics": "USD prefix for unnamed or relative paths"
+          },
+          "enable_pathprefix": {
+            "source": "help parameter description",
+            "semantics": "use specified import path prefix"
+          }
+        },
+        "Driver/usdrender": {
+          "loppath": {
+            "source": "matching help parameter ID",
+            "semantics": "stage output from selected LOP node"
+          },
+          "rendersettings": {
+            "source": "hqrop.getRenderSettingsNode actual parm.eval plus help",
+            "semantics": "RenderSettings prim scene graph pattern"
+          },
+          "override_camera": {
+            "source": "matching help parameter ID",
+            "semantics": "Camera prim path; blank uses RenderSettings camera"
+          },
+          "outputimage": {
+            "source": "hqrop actual parm/evalAsString plus help",
+            "semantics": "nonempty overrides USD product output; frame variable expansion depends on process/frame mode"
+          }
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "Compiled operator type/default/menu/gate instance values are NOT_CAPTURED; test_injected_native_api states are software evidence only.",
+    "SOP import pathprefix only prefixes unnamed or relative USD paths, not absolute authored paths.",
+    "No evidence found for Lop/sopimport.primpath in the inspected source scope; do not substitute camera or renderproduct field facts."
+  ]
+}

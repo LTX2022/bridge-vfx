@@ -1,0 +1,166 @@
+# Dialog script for tetconform automatically generated
+
+{
+    name	tetconform
+    script	tetconform
+    label	"Tet Conform"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Input Polygon Mesh"
+    inputlabel	2	"Additional Points/Curves"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+
+    groupsimple {
+        name    "sizing0"
+        label   "Sizing"
+
+        parm {
+            name    "usebasesize"
+            label   "usebasesize"
+            type    toggle
+            nolabel
+            joinnext
+            default { "0" }
+            disablewhen "{ hiquality == 0 }"
+        }
+        parm {
+            name    "basesize"
+            label   "Base Size"
+            type    float
+            default { "1" }
+            disablewhen "{ usebasesize != on } { hiquality == 0 }"
+            range   { 0 10 }
+        }
+        parm {
+            name    "usemaxtetscale"
+            label   "Use Max Tet Scale"
+            type    toggle
+            nolabel
+            joinnext
+            default { "on" }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "maxtetscale"
+            label   "Max Tet Scale"
+            type    float
+            default { "0.1" }
+            disablewhen "{ usemaxtetscale == 0 }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "localscaling"
+            label   "Local Scaling"
+            type    ordinal
+            default { "0" }
+            disablewhen "{ hiquality == 0 }"
+            menu {
+                "none"          "None"
+                "constant"      "Use Constant"
+                "featuresize"   "Use Local Feature Size"
+                "attribute"     "Use Point Attribute"
+            }
+        }
+        parm {
+            name    "scaleconst"
+            label   "Local Scale Constant"
+            type    float
+            default { "1" }
+            disablewhen "{ hiquality == 0 }"
+            hidewhen "{ localscaling != constant }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "scalelocalfeature"
+            label   "Local Feature Scale"
+            type    float
+            default { "1" }
+            disablewhen "{ hiquality == 0 }"
+            hidewhen "{ localscaling != featuresize }"
+            range   { 0 1 }
+        }
+        parm {
+            name    "scaleattrib"
+            label   "Local Scale Attribute"
+            type    string
+            default { "sizemetric" }
+            disablewhen "{ hiquality == 0 }"
+            hidewhen "{ localscaling != attribute }"
+            parmtag { "script_callback" "" }
+            parmtag { "script_callback_language" "hscript" }
+        }
+    }
+
+    groupsimple {
+        name    "folder0"
+        label   "Output Geometry"
+
+        parm {
+            name    "preserveinputgeometry"
+            label   "Preserve Input Geometry"
+            type    toggle
+            default { "0" }
+        }
+        parm {
+            name    "onefacepertet"
+            label   "At Most One Surface Face per Tet"
+            type    toggle
+            default { "off" }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "outputsurftri"
+            label   "Add Surface Triangles"
+            type    toggle
+            default { "0" }
+            disablewhen "{ preserveinputgeometry == 1 }"
+        }
+        parm {
+            name    "allowsurfacemods"
+            label   "Allow Surface Modifications"
+            type    toggle
+            default { "0" }
+        }
+        parm {
+            name    "hiquality"
+            label   "Enforce High Quality"
+            type    toggle
+            default { "1" }
+        }
+        parm {
+            name    "usesdf"
+            label   "Use SDF for Cavity Filling"
+            type    toggle
+            default { "0" }
+        }
+        parm {
+            name    "voxelsize"
+            label   "Voxel Size"
+            type    float
+            default { "0" }
+            hidewhen "{ usesdf == 0 }"
+            range   { 0 10 }
+        }
+    }
+
+    parm {
+        name    "generateinsertedpointgroup"
+        label   "Label"
+        type    toggle
+        nolabel
+        joinnext
+        default { "0" }
+    }
+    parm {
+        name    "insertedpointgroup"
+        label   "Inserted Point Group"
+        type    string
+        default { "inserted_points" }
+        disablewhen "{ generateinsertedpointgroup == 0 }"
+    }
+}

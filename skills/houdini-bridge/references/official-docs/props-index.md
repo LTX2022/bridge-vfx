@@ -1,0 +1,16 @@
+# props.zip 官方文档索引（Houdini 22.0.368）
+
+共 10 页。用 `--page props.zip:<内部路径>` 读取全文。
+
+| 页面 | 标题 |
+|---|---|
+| `_minmax_styles.txt` | #type: include |
+| `alembic.txt` | Alembic Rendering Properties |
+| `index.txt` | Properties |
+| `mantra.txt` | Mantra rendering properties |
+| `material.txt` | ﻿= Shader properties |
+| `obj.txt` | ﻿= Object Properties |
+| `op.txt` | Node Properties |
+| `viewport.txt` | ﻿= Viewport properties |
+| `vop.txt` | VOP Node Properties |
+| `vopnet.txt` | ﻿= VOPNET properties |

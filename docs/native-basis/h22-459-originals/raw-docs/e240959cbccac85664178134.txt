@@ -1,0 +1,607 @@
+= husk =
+
+"""Command line utility for rendering a USD file using Karma or some other Hydra client."""
+
+:usage: `husk [<<options>>] <<usd_file>> [-o <<image_file>>]`
+
+
+== Tips ==
+
+* On Linux and macOS, you can send the `husk` process a `SIGUSR1` signal on the command line (`kill -USR1 <<pid>>`) to force it to write out a _snapshot_ image of the current render.
+
+* If a render product name is set to `husk:null_raster`, `husk` will render the image, but no image will be saved to disk.
+
+== Options ==
+
+=== Information ===
+#display: pull left
+
+`-h/--help`:
+    Show this help.
+
+`-v/--version`:
+    Print the version string of the renderer.
+
+
+=== Karma ===
+#display: pull left
+
+`--properties`:
+    Print the names of all the rendering properties Karma understands, and their defaults.
+
+`--property-definition`:
+    Print full information about all the rendering properties Karma understands.
+
+`--property-definition-file <<filename>>`:
+    Save the full information about all the rendering properties Karma understands to a file. If the filename is `-`, writes the information to standard output.
+
+`--procedurals`:
+    Print all procedural definitions.
+
+`--filters`:
+    Print information about the [filters and oracles|/solaris/filters] Karma understands.
+
+`--engine`:
+    Override the Karma rendering engine.  Options are `xpu` or `cpu`.
+
+`-p/--pixel-samples <<samples>>`:
+    Samples per pixel. Default is `128`. Specifying this on the command line overrides any render settings in the USD file.
+
+`--karma-percent-of-samples <<samples>>`:
+    Tells Karma to terminate rendering after completing this percentage of samples.  The default is `100` (all samples).  You can use this option in conjunction with check-pointing to achieve a desired perceptual quality.   For example, you can set a very large number of pixel samples, but terminate after sending `25%` of the samples.  If the quality isn't sufficient, resume from the checkpoint and render until `40%` or `50%`.
+
+`--bucket-size <<pixels>>`:
+    Size of render buckets, in pixels. Default is `128`. Specifying this on the command line overrides any render settings in the USD file.
+
+`--bucket-order <<order>>`:
+    Determines which buckets get rendered first in the image.  Options are:
+
+    * `middle` - Render starting from the middle of the image
+    * `top` - Render buckets starting at the top of the image
+    * `bottom` - Render buckets starting at the bottom of the image
+    * `left` - Render buckets starting at the left side of the image
+    * `right` - Render buckets starting at the right side of the image
+
+`--image-mode <<mode>>`:
+    Determines how the image will be rendered.  Options are:
+
+    * `progressive` - The entire image will be progressively rendered, so the whole image resolves at the same time.  This mode gives you a sense of what the whole image will look like without waiting for the render to complete.
+    * `bucket` - Each bucket renders to completion before advancing to the next bucket.  This mode lets you see what the final quality will be like without waiting for the whole image to render.
+
+    Note that when this argument is specified on the command line, the number of progressive passes is always specified by the command line option (overriding values in the USD file).
+
+`--progressive-passes <<count>>`:
+    When the `image-mode` is set to `bucket`, this argument specifies the number of progressive passes to complete before switching to bucket mode.
+
+`--disable-lighting`:
+    Do not render any lighting (deprecated in favor of `--disable-scene-lights`).
+
+`--ao-samples <<samples>>`:
+    Ambient occlusion samples (headlight shading). Default is `0`.
+
+`--ao-distance <<n>>`:
+    Ambient occlusion distance cutoff. Default is `1`.
+
+`--lock-random <<seed>>`:
+    Use <<seed>> as the random number seed instead of the frame number.
+
+`--dicingcamera <<prim_path>>`:
+    Dice using the camera at the given prim path. If this is not specified, Karma uses the render camera for dicing.
+
+`--optimize-offline <<level>>`:
+    This option is currently disabled and has no effect.
+
+`--convergence-mode <<mode>>`:
+    Specify the default convergence mode for Karma CPU if not provided by a render settings primitive.  Values are:
+    * `pathtraced` - Maximum of 1 indirect ray per bounce
+    * `distributed` (deprecated) - per-component sampling
+    * `variance` - Number of indirect rays is calculated based on noise estimates
+
+`--autoheadlight`:
+    If this option is given, and no lights exist in the scene, Karma will add a headlight for rendering.
+
+`--baking-info`:
+    Instead of rendering an image, print information about baking (list of UDIM tiles or the number of images required for ptex texture generation).
+
+
+=== USD ===
+#display: pull left
+
+`--usd-input <<filepath>>`:
+    The USD scene file to render.
+
+`--resolver-context <<arg>>`:
+    The file used to initialize the asset resolver context for processing the stage.
+
+`--resolver-context-string <<arg>>`:
+    A string used to initialize the asset resolver context for processing the stage.  The option argument should be of the form `'url=string'` to configure the resolver responsible for a specific URL prefix, or `'string'` to configure the default resolver.
+
+`--variant-fallback <<arg>>`:
+    A default variant selection to use for primitives with a variant set but no explicit variant selection for that set. The option argument should be of the form `'set=value1,value2'`.
+
+`--list-settings`:
+    Prints information about the render settings primitives in the scene.
+
+`--list-passes`:
+    Prints information about the render pass primitives in the scene.
+
+`--list-cameras`:
+    Prints information about the cameras in the scene.
+
+`--list-renderers`:
+    Prints list of all Hydra render delegates available.
+
+`--gpu`:
+    Enable GPU (OpenGL/Vulkan/Metal) support for render delegates.
+
+`--headlight <<style>>`:
+    When there are no lights found on the stage, this controls the headlight mode.  Possible values are
+    * `none`: No headlight will be created
+    * `distant`: Create a distant headlight at the camera's location
+    * `dome`: Create a dome headlight
+
+    The default value for this option is specified by the `HOUDINI_HUSK_DEFAULT_HEADLIGHT` environment variable.
+
+`--purpose <<tokens>>`:
+    Which purpose(s) to render. This can be a comma separated list of purpose tokens. The default is `geometry,render`.
+
+`--complexity <<token>>`:
+    The geometry complexity to render at. Options are `low`, `medium`, `high`, and `veryhigh`, or a number between 0 and 8.
+
+`--mask <<arg>>`:
+    Limit stage population to these prims, their descendants and ancestors. To specify multiple paths, use either commas or spaces.
+
+`--mute-layer <<identifier>>`:
+    Mute the named USD layer when loading the stage. This argument may be specified more than once to mute multiple layers. Layer muting prevents the named layer from contributing to the composed stage; this is equivalent to the [Mute Layers|Node:lop/configurestage] parameter on the Configure Stage LOP.
+
+`--disable-scene-materials`:
+    Disable all materials in the scene.  This option applies to all render delegates.
+
+`--disable-scene-lights`:
+    Disable all lights in the scene.  This option applies to all render delegates.
+
+`--disable-motionblur`:
+    Overrides the `disableMotionBlur` render setting, forcing the shutter close time to be equal to the shutter open time. This effectively disables motion blur.
+
+`--disable-delegate-products`:
+    Most render products have raster files as output.  Render delegate products are used to represent non-raster products (deep images, checkpoint files, photon maps etc.).  This option will disable delegate render products and only generate raster output.
+
+`--disable-dummy-raster-product`:
+    When there are no raster products detected, husk will normally create a "dummy" raster product.  This may happen when all products are something other than "raster" products.  This dummy raster is largely ignored by husk (setting the product name to `husk:null_raster`), though some delegates may throw errors without any raster products.  This option prevents the creation of the dummy raster product if needed for this special case.
+
+`--disable-hydra-generative-procedurals`:
+    By default, husk instantiates and uses a Scene Index to resolve Hydra Generative Procedurals. This can be, optionally, disabled. Note that this flag will only affect the husk-instantiated Scene Index. Any other resolving Scene Indexes, created by different means, will not be affected.  
+
+`-s/--settings <<prim_path>>`:
+    Render using the `RenderSettings` at the given primitive path.  `husk` will also search for the `RenderSettings` primitive under `/Render`.
+
+    Multiple render settings primitives can be specified (using a comma or space separated list) using pattern matching.
+
+    Examples:
+    * `--settings /Render/settings1`, `--settings settings1`
+        Render using the `RenderSettings` primitive at `/Render/settings1`
+    * `--settings *`
+        Render all render settings in the USD file
+    * `--settings preview1,final*`
+        Render the `preview1` render settings along with all render settings that match `final*`
+
+    Note:  Each render settings primitive is rendered independently.  If multiple frames or render passes are specified, these will be completed before rendering the next render setting.
+
+`--pass <<prim_path>>`:
+    Render using the `RenderPass` at the given primitive path. `husk` will also search for the `RenderPass` primitive under `/Render`.
+    
+    If the `RenderPass` provides `renderSource` information about a `RenderSettings` prim, this will be used. The exception is if `--settings` is also provided, in which case that will still take precedence.
+
+    Multiple render pass primitives can be specified (using a comma or space separated list) using pattern matching.
+
+    Examples:
+    * `--pass /Render/pass1`, `--pass pass1`
+        Render using the `RenderPass` primitive at `/Render/pass1`
+    * `--pass *`
+        Render all render passes in the USD file
+    * `--pass envOnly,char*Matte`
+        Render the `envOnly` render pass along with all render passes that match `char*Matte`
+
+    Note:  Each render pass primitive is rendered independently.  If multiple frames or render settings are specified, these will be completed before rendering the next render pass.
+
+`--postload-script <<python_file>>`:
+    Run the given Python script immediately after the USD file has been loaded. You can use the `stage` variable in the script to reference the USD stage being rendered. This script allows you to create render settings primitives that can be used for rendering.
+
+`--prerender-script <<python_file>>`:
+    Run the given Python script prior to rendering. You can use the `stage` variable in the script to reference the USD stage being rendered. This script runs after the render settings primitive is selected, but before reading the values from the render settings primitive. The `<<python_file>>` argument is parsed into multiple arguments.  Care should be taken to properly quote arguments that contain spaces.  The `hou.frame()` function will return the first frame to be rendered.  If you need access to the command line, it's available in the `husk_command` variable.
+
+    Before the render process starts, (i.e. the `prerender` stage), `husk` analyzes the render settings primitive and partitions the render products. For example, it's possible that a single render settings primitive renders two render products that use different cameras. Since the delegate can only render a single camera at a time, `husk` splits this single render into two separate render tasks (one for each render product). This partitioning is done _after_ the `prerender-script`. 
+
+    In contrast to `prerender-script`, the `preframe-script` is called before each frame is rendered. However, if the `preframe-script` tries to change the render camera on a render product, this is impossible since `husk` has already split the render tasks by the time frames start rendering. Imagine the `preframe-script` only changed the camera on the second frame in a sequence.
+
+`--preframe-script <<python_file>>`:
+    Run the given Python script prior to each frame being rendered. You can use the `stage` variable in the script to reference the USD stage being rendered.  The `settings` variable contains a dictionary of render settings. This script runs after the USD file is loaded, but before reading the settings primitive or rendering.  The `<<python_file>>` argument is parsed into multiple arguments.  Care should be taken to properly quote arguments that contain spaces.  The `hou.frame()` function will return the frame being rendered.  The husk command line is accessible using the `husk_command` variable.
+
+    If the pre-frame script raises a `SkipFrame` exception, the current frame not be rendered.  For example:
+
+{{{
+#!python
+    import hou
+    class SkipFrame(Exception):
+        pass
+    if hou.frame() == 3:
+        raise SkipFrame     # Skip rendering frame 3
+}}}
+
+`--presnapshot-script <<python_file>>`:
+    Run the given Python script before husk saves a snapshot image.  The script should not modify the `stage`.
+
+`--postsnapshot-script <<python_file>>`:
+    Run the given Python script after husk saves a snapshot image.  The script should not modify the `stage`.
+
+`--postframe-script <<python_file>>`:
+    Run the given Python script after each frame is rendered.  The `stage`, `husk_command` and `settings` variables are available and `hou.frame()` returns the frame that was just rendered.
+
+`--postrender-script <<python_file>>`:
+    Run the given Python script after all frames are rendered.  The `stage` variable is available and `hou.frame()` returns the last frame rendered.
+
+`--allowed-procedurals <<arg>>`:
+    Control which procedurals should be allowed to contribute to the final USD
+    stage. Valid options are:
+    * `none`:  no procedurals
+    * `basic`: graph procedurals that only generate curves and points
+    * `all`: all procedurals (may require Houdini Engine license)
+
+    Default is `basic`.
+
+`--capture-procedurals`:
+    Save the result of any expanded procedurals
+
+`--procedurals-capture-directory <<path>>`:
+    Directory to store expanded procedurals.  Default is `$HOUDINI_TEMP_DIR`.
+
+`--usd-trace <<method>>`:
+    Enable USD function [tracing|https://graphics.pixar.com/usd/docs/api/trace_page_front.html].   The `<<method>>` determines the reporting method:
+    * `report` -- Print the time and sample counts for each function.
+    * `timing` -- Print the time spent in each function.
+    * `chrome` -- Generate JSON output suitable for viewing in the Chrome tracing format.  This option requires the `--usd-chrome-file` option to specify the log file output.
+
+    Note that enabling this option may have a significant impact on performance.
+
+`--usd-chrome-file <<filename>>`:
+    This option both enables USD function tracing (it implies `--usd-trace chrome`) and also specifies the filename where the JSON tracing information will be saved.
+
+=== RenderSettings overrides ===
+#display: pull left
+
+Specifying these on the command line overrides any render settings in the USD file.
+
+`-c/--camera <<prim_path>>`:
+    The primitive path of the camera to render from.
+
+`-o/--output <<file_path>>`:
+    Output image file path. This can contain certain local variables:
+
+    `$F`:
+        Current frame number.
+    `$F<<N>>`:
+        Current frame number with fixed number of digits, specified by a digit after the `F`. For example, `$F4` expands to the current frame number as four digits (for example, `0001`).
+    `$FF`:
+        Floating point frame. This may be different from `$F` for expressions that are evaluated between frames (motion blur, simulations).
+    `$N`:
+        The "ordinal" number of the frame currently being rendered (for example, for the first frame rendered, `$N` will always be `1`, for the second frame rendered, `$N` will always be `2`, and so on, even if, given the frame range, the first frame is frame `40`).
+    `<F>`, `<FF>`, `<F4>`:
+        Same as `$F`, `$FF`, `$F4`.
+    `%d`, `%g`, `%04d`:
+        Same as `$F`, `$FF`, `$F4`.
+
+    A comma separated list of filenames can be used to override images when there are multiple render products.
+
+`-r/--res <<width>> <<height>>`:
+    Rendered image width and height, in pixels (e.g. `--res 1280 720`)
+
+`-S/--res-scale <<percent>>`:
+    Scale the output image by the given percentage. For example, `--res-scale 25` renders the image at 1/4 size, and `--res-scale 250` scales the image 2.5x larger.
+
+`--pixel-aspect <<float>>`:
+    Pixel aspect ratio (pixel width as fraction of pixel height). Default is `1` (square pixels).
+
+`--make-output-path`:
+    Create any parent directories of the output image if they doesn't already exist.
+
+`--disable-disk-check`:
+    Normally, before rendering, `husk` will verify that render products can be written to disk (optionally creating output directories if the --make-output-path option is specified).  With some render products, this may interfere with the rendering process.  This option disables any checks or processing that `husk` does on render products.
+
+`--extra-metadata <<key>> <<value>>`:
+    Add custom metadata when saving `raster` products.  This is a quick way to add some specific metadata to the output image without having to modify the USD file.
+    If the `key` is `"json"`, the second argument will be parsed as a JSON dictionary, where each key/value pair will be added as custom metadata.
+    With a single key/value pair, it's possible to specify more type information for the metadata (using the same rules as described in the HDK documentation for metadata).
+
+    Examples:
+    * `--extra-metadata "custom-key" "hello world"`
+        Stores a string value "`hello world`" for metadata key "`custom-key`"
+    * `--extra-metadata "int32 custom-key" "344"`
+        Stores a 32-bit integer "`344`" for metadata key "`custom-key`"
+    * `--extra-metadata "clr3f custom-key" "[1,0.5,0.1]"`
+        Stores a 32-bit floating point color "`[1,0.5,0.1]`" for metadata key "`custom-key`"
+    * `--extrametadata "json" '{"key1":3.14, "key2":"Hello world", "key3":[1.2, 2.3, 4.5]}'`
+        Stores three pieces of metadata, a number "`3.14`" for "`key1`", a string "`Hello world`" for "`key2`" and a vector "`[1.2, 2.3, 4.5]`" for "`key3`".
+
+`-f/--frame <<n>>`:
+    Start frame number. If not specified on the command line, the default comes from the `startTimeCode` metadata on the stage.  If the metadata isn't defined on the stage, the default is `1`.
+
+`-n/--frame-count <<n>>`:
+    Number of frames to render, including the start frame. If not specified on the command line, the default is computed by the `startTimeCode` and `endTimeCode` metadata on the stage.  If this metadata isn't defined on the stage, the default is `1`.
+
+`-i/--frame-inc <<n>>`:
+    Frame increment. Default is `1`.
+
+`--fps <<n>>`:
+    Override the frames-per-second defined on the stage.  This value is passed to render delegates as the `houdini:fps` render setting and can optionally be used when computing velocity motion blur.
+
+`--frame-list <<frames>>`:
+    Specify a space-separated list of frames to render.  This option overrides the other frame options (`-n/--frame`, `-n/--frame-count` and `-i/--frame-inc`).  Parsing of this option relies on some heuristics and assumptions. It's, for example, not possible to define negative frames, because they start with a hyphen (`-`). This character can be misinterpreted as a command.
+
+`--skip-existing-frames`:
+    Skip rendering frames that have files on disk for all their render products.
+
+=== Rendering ===
+#display: pull left
+
+`-R/--renderer <<token>>`:
+    Render using an alternate Hydra client. When `husk` starts, it has to decide which delegate to use. The order of precedence is:
+
+    # `--renderer` option
+    # `husk:delegate` render settings primitive
+    # `$HOUDINI_HUSK_DEFATULT_DELEGATE` environment variable
+
+`--delegate-options <<string>>`:
+    A list of options that are specific to the render delegate chosen.
+
+`-j/--threads <<n>>`:
+    Number of threads. `0` means use all processors. `-1` uses all processors except one.
+
+`--fast-exit <<0|1>>`:
+    Setting this to `0` does a full tear-down of the USD scene and Hydra interface.
+
+`--restart-delegate` <<n>>:
+    Normally, husk uses USD delta operations to make multiple frame rendering more efficient.  The delegate is only told about scene data that changes frame-to-frame so it can share work between frames.  Using this option will cause the render delegate to be restarted every `n` frames.  For example specifying `1` will cause the render delegate to be restarted every frame.  Specifying `3` will use USD deltas for 3 frames, then restart the delegate before rendering the 4th frame.  A value of `0` (the default) will never restart the delegate.  Since restarting the delegate will cause the scene to be rebuilt, using this option can have significant performance impact and should only be used if truly required.
+
+`--snapshot <<sec>>`:
+    Save a snapshot of the current state of the rendered image every <<sec>> seconds. `-1` means no snapshots. Default is `-1`.
+
+`--snapshot-path <<path>>`:
+    Overrides the path where the snapshot image should be saved.
+
+`--snapshot-suffix <<suffix>>`:
+    Specifies the suffix that's added to the image filename when saving snapshot images.  This defaults to `_part`.  Setting it to an empty string will cause `husk` to use the final output image name as the snapshot image.
+
+`--snapshot-save-mode <<mode>>`:
+    Normally, snapshots are used to show rendering progress and are deleted when the render completes.  This option allows you to control this behavior.  The possible values are:
+    * `off`: Delete snapshot partial images when image is finished rendering.
+    * `number`: Save each snapshot as a numbered sequence of files.  This allows you to see the progression of snapshots over the render.
+
+`--disable-slapcomp`:
+    Disable execution primitives referenced by the husk:orderedImageFilters property on the Render Settings primitive.
+
+`--slap-comp <<slapcomp>>`:
+    Apex COP network to run on the image.  This option can occur multiple times and each operation is run in sequence. The `slapcomp` string specifies a path to the Apex graph, but can also have encoded options. Options are encoded using: `path_to_graph?option=value&option2=value2`.
+
+    Possible options are:
+    * `name`: Provide an identifier for this slap-comp operation
+    * `mapinput`: Maps an AOV (RenderVar) name to the corresponding Apex graph input name.  This option may be specified multiple times.
+    * `mapoutput`: Maps an AOV (RenderVar) name to the corresponding Apex graph output name.  This option may be specified multiple times.
+    * `filterlist`: Indicates that an image [Filter List|/copernicus/filter_list] should be applied instead of the default block-based slap comp. In this case, the file should be a CPIO packet that contains the filter list.
+
+    For example, if there's an AOV "C" being rendered, but the Apex Graph has an input "Cin" and an output "Cout", the argument might look like:  `--slap-comp path_to_cop.geo?mapinput=Cin:C&mapoutput=Cout=C`.
+
+`--exrmode <<mode>>`:
+    * `-1`: Use `HOUDINI_OIIO_EXR` variable.
+    * `0`: Use classic driver.
+    * `1`: Use improved driver.
+
+`--ocio <<arg>>`:
+    Use OCIO to transform color when saving images.  The values are `1` or `0`.  When using OCIO, the file rules and RenderVar properties will be used to determine the color space.  When OCIO is disabled, this will fallback to Houdini's intrinsic assumptions about image format color spaces.
+
+`--autocrop <<pattern>>`:
+    Some image formats (OpenEXR) support a _data window_ which only stores pixel data for a part of the overall size of the image. This option lets you automatically trim the data window to only the rectangle in which an AOV (or any of a list of AOVs) has non-zero values.
+
+    For example, `husk --autocrop C,A` will trim to the smallest rectangle containing any non-zero pixels in either the `C` (color) or `A` (alpha) AOVs. The default is an empty string, meaning do not auto-crop.
+
+    You can specify `*` to mean all AOVs. On the Mac and Linux command line you will probably need to quote the asterisk to prevent the shell from expanding it: `husk --autocrop "*"`.
+
+    Note that *any pixel data outside the data window* is *not saved* to the image (The data window is an actual cropping of the data, not a display setting).
+
+    Because this option only works with "zero" vs "non-zero", it isn't useful for values where "clear" is not represented by `0`. For example, trimming by color only works with a black background. As another example, it might be useful to crop out "farthest" Z-depth values, but those values are set to the far clipping plane depth, not `0`.
+
+    This is similar to running `iautocrop` on the image as a post process.
+
+`--autocrop-border <<pixels>>`:
+    Add a border of the specified number of pixels around the detected auto-crop region.
+
+`--mplay-monitor <<aovs>>`:
+    Automatically start up an MPlay monitor of this render.  The monitor can be used to observe progress as the image is rendered.  The <<aovs>> specifies a comma separated list of AOVs to be displayed in MPlay.  For example `--mplay-monitor C` will only display the color plane (even if the image being written to disk has multiple AOVs).  The option `--mplay-monitor C,N,diffuse` will send the `C`, `N` and `diffuse` planes to MPlay for inspection.  The selected AOVs must be present in the image being saved to disk to be displayed in the monitor.
+
+    If a single hyphen is given for the <<aovs>> (e.g. `--mplay-monitor -`), then all AOVs will be send to the monitor.
+
+    Warning:  Closing the monitor will terminate the render.
+
+`--mplay-scale <<scale>>`:
+    Specify an scale for any renders to MPlay.  This includes the monitor or any MPlay render products.  The value for the <<scale>> argument is currently limited to 10 to 100 percent of the image being rendered to disk.  The MPlay image will be point-filtered, meaning there will be no blurring of the source pixels.  The default is `100`.
+
+`--no-mplay`:
+    Disable any rendering to MPlay.  This option is useful when rendering on headless machines (on a farm).
+
+`--mplay-update <<seconds>>`:
+    The number of seconds between updates of the MPlay image.
+
+`--mplay-session <<label>>`:
+    Send MPlay renderings to the session specified by the <<label>>.
+
+`--mplay-bgimage <<image>>`:
+    Specify an image to display in the background of MPlay.
+
+`--mplay-remotehost <<hostname:port>>`:
+    Specify a remote host and socket port to connect to for the MPlay monitor.
+
+`--mplay-gamma <<gamma>>`:
+    If the <<gamma>> value is greater than 0, set the display gamma in MPlay.
+
+`--mplay-lut <<lut>>`:
+    Specify a display LUT for MPlay.
+
+`--autotile`:
+    When turned on, `husk` will render a single image by rendering multiple tiles in a single process.  Once all tiles are rendered, `husk` stitches them to make the final image.  The option uses the Hydra delta operations to efficiently render different tiles without having to reload the scene for each render. This process will not be as fast as untiled rendering, but can have significant memory savings, especially with large numbers of AOVs.  You must also specify the `--tile-count` command line option. Please note that this feature only works on USD files. For example
+
+    `husk --autotile --tile-count 16 9 myscene.usd`
+
+`--autotile-res <<xres>> <<yres>>`:
+    When using `-autotile`, this specifies the maximum resolution of each tile.  Limiting the resolution can make memory usage more consistent even if resolution changes.
+
+`--autotile-tempdir <<directory>>`:
+    This is the location where the temporary images will be saved when using autotiling.  This defaults to `$HOUDINI_TEMP_DIR`.
+
+`--autotile-keep-intermediate`:
+    When using `-autotile`, the intermediate tile renders are normally removed after the stitching process.  This option keeps the source tile images around (which can be useful for debugging).
+
+`--tile-count <<xcount>> <<ycount>>`:
+    Husk can render a large image in multiple tiles.  This option specifies the number of tiles in the x and y directions.  It should be used in conjunction with the `--tile-index` option.
+
+    When using `--autotile` and the `--autotile-res` options, it's possible the number of tiles may be increased if the computed tile resolution is larger than the value for `--autotile-res`.
+
+`--tile-index <<index>>`:
+    When rendering a single image in tiles, this option specifies the index of the tile to be rendered.  The index starts at `0`.  The number of tiles is determined by the `--tile-count` option.
+
+`--tile-suffix <<suffix>>`:
+    When rendering a single image in tiles, this option specifies a suffix added to the image filename, expanded using the `--tile-index`.  This option uses the same rules as the `-o` option (for example `_tile%02d`).  In expansion of the tile index, the `F` variable represents the tile index, while the `N` variable is the one-based tile index (starting at 1 instead of 0).
+
+`--timelimit <<sec>>`:
+    Cancel the render if it takes more than <<sec>> seconds. The default `-1` is no time limit.
+
+`--timelimit-image`:
+    The time limit applies to each image rather than the full sequence.
+
+`--timelimit-nosave-partial`:
+    If the render hits the time limit, don't save a partial image.
+
+`--stdout <<filename>>`:
+    Send standard output to the given file.
+
+    On Windows, you can use `consolewait` or `consolenowait` instead of a file name. `consolewait` opens a console window for the output, and you must close the window before the next frame will render. It lets you read fast-moving output but requires you to babysit the window. `consolenowait` opens a console window and closes it as soon as the frame is done. For slow renders you might still be able to read the output, and it doesn't require you to click to close the window at every frame.
+
+`--stderr <<filename>>`:
+    Send standard error to the given file.  This file may be the same as the file specified by `--stdout`.
+
+`--append-stdout <<filename>>`:
+    Send standard output to the given file, appending to the file rather than replacing.
+
+`--append-stderr <<filename>>`:
+    Send standard error to the given file, appending to the file rather than replacing.
+
+`--error-summary <<mode>>`:
+    `husk` has the option of printing a summary of warnings and errors after rendering a frame.  This option let's you decide when the summary should be printed.
+
+    `off`:
+        Never print a summary of warnings/errors.
+    `log`:
+        Print a summary when `husk` detects that errors are being logged to a file.
+    `force`:
+        Always print a summary of warnings/errors.
+
+`--windows-console <<mode>>`:
+    On windows, this option will override the redirection options and open a console to display output.  The mode should either be `wait` or `nowait`.
+
+`-V/--verbose <<level>>`:
+    Print more or less information while rendering. Default is `2`.
+
+    `0-9`:
+        Verbosity of rendering statistics.  Note that verbose levels of 8 and greater may affect rendering performance and should only be used for debugging problem scenes.
+    `p`:
+        Enable VEX profiling (impacts performance).
+    `P`:
+        Enable VEX profiling and NAN checks (severe impact on performance).
+    `a/A`:
+        Turn on/off Alfred style progress.
+    `e/E`:
+        Turn on/off message elapsed time.
+    `t/T`:
+        Turn on/off message time stamps.
+
+`--verbose-callback <<script>>`:
+    Each render delegate can specify a Python script used for verbose feedback in the UsdRenderers.json file.  This option allows you to override that script on the command line.
+
+`--verbose-callback-interval <<seconds>>`:
+    Each render delegate specifies the frequency the verbose callback Python script is invoked.  This option allows you to override that interval on the command line.
+
+`--oiio-max-texture-res <<res>`:
+    Specify the resolution for texture maps.  This will set the option uinsg the `OPENIMAGEIO_IMAGECACHE_OPTIONS` and `HOUDINI_RAT_MAX_MIP_RES` variables.
+
+=== Texture Maps ===
+
+These options will set or modify the `OPENIMAGEIO_IMAGECACHE_OPTIONS` environment variable, and thus will only have an effect if the render delegate uses OpenImageIO for texture evaluation.
+
+If any of these options are specified, and the `OPENIMAGEIO_IMAGECACHE_OPTIONS` is not set, `husk` will initialize the variable to reserve 1/2 the available memory and 1/2 the available file descriptors for the texture cache.
+
+`--oiio-max-texture-res <<res>`:
+    Specify the resolution for texture maps setting the `max_mip_res` setting.  This option will also set `HOUDINI_RAT_MAX_MIP_RES` for `.rat` files.
+
+`--oiio-max-max-memory <<memory_in_MB>>`:
+    Sets the `max_memory_MB` setting for OpenImageIO.  The memory is specified in MB.
+
+`--oiio-max-max-memory-percent <<percent>>`:
+    Sets the `max_memory_MB` setting for OpenImageIO.  The memory is specified as a fraction of system memory.  For example, `25` will reserve 1/4 of the system RAM for texture cache.
+
+`--oiio-max-max-files <<count>>`:
+    Sets the number of `max_open_files` for OpenImageIO.
+
+    If the `count` specified is less than 0, the option will reserve *all* available descriptors except for the number specified.  For example, if there are `128` file descriptors available to the process, specifying `-8` will set `max_open_files=120`.
+
+    Note that OpenImageIO may adjust this option internally.
+
+`--oiio-max-max-files-percent <<percent>>`:
+    Sets the number of `max_open_files` for OpenImageIO.  This option will query the operating system to find out the number of available file descriptors for the process and set the value to a fraction of this number.
+
+    Note that OpenImageIO may adjust this option internally.
+
+=== Licensing ===
+#display: pull left
+
+These options are only available when using the new licensing system. For more details on the new system see this [page|hserver#licensingsystem].
+
+`--check-licenses <<license(s)>>`:
+    The licenses that should be enabled when checking for a license for husk. The internal name for the license should be used. Add a `,` between each license listed.
+
+`--skip-licenses <<licene(s)>>`:
+    The licenses that should be disabled when checking for a license for husk. The internal name for the license should be used. Add a `,` between each license listed.
+
+`--list-license-checks`:
+    List the licenses that are available to be checked by husk and the licenses that will be checked by husk.
+
+`--skip-license-modes <<mode(s)>>`:
+    The license modes that should be skipped when checking for a license for husk. Add `,` between each mode listed.
+
+    * `commercial`: Skip checking for all commercial licenses.
+    * `education`: Skip checking for all education licenses.
+    * `indie`: Skip checking for all indie licenses.
+    * `apprentice`: Skip checking for all apprentice licenses.
+
+`--check-license-modes <<mode(s)>>`:
+    The license modes that should be included when checking for a license for husk. Add `,` between each mode listed.
+
+    * `commercial`: Include all possible commercial licenses.
+    * `education`: Include all possible education licenses.
+    * `indie`: Include all possible indie licenses.
+    * `apprentice`: Include all possible apprentice licenses.
+
+`--license-release-delay`:
+    Use this option to add a delay to when `hserver` will release the license once the application is no longer using the license.
+
+`--license-max-seat-hold`:
+    Use this option to specify the maximum time this application should hold a license seat for. A new license seat is retrieved when the max seat hold occurs. This is a handy option when you want to ensure artists don't use a given license for longer then they should.
+
+`--apprentice`:
+    Force an apprentice session.
+
+`--indie`:
+    Force an indie session.
+
+`--core`:
+    Force an core session.
+
+`--allow-license-retries`:
+    Allow the app to continue retrying for a license using an exponential backoff.  The app will wait indefinitely for a license and therefore can significantly increase the load on the license server. Use very carefully.

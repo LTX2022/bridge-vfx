@@ -1,0 +1,324 @@
+{
+  "schema": "bridge.static-native-followup/1",
+  "scope": "Same-build documented Vellum thickness/pscale collision-radius convention; no native geometry/guide/solver observation.",
+  "versions": {
+    "21.0.631": {
+      "source_refs": [
+        {
+          "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/help/vellum.zip",
+          "archive_sha256": "64d39d2009c05d7f5679c21e1ca9715cd3cceb8856667d0eb7280106d2302b25",
+          "member": "vellumattributes.txt",
+          "sha256": "f5a3b752dc0c43d08a9a1953205c06ee3cadcc4a6497972b6dc1b851fb935e0d",
+          "lines": [
+            {
+              "line": 91,
+              "text": "=== Collision ==="
+            },
+            {
+              "line": 92,
+              "text": ""
+            },
+            {
+              "line": 93,
+              "text": "Type ||"
+            },
+            {
+              "line": 94,
+              "text": "    Name ||"
+            },
+            {
+              "line": 95,
+              "text": "        Description ||"
+            },
+            {
+              "line": 96,
+              "text": ""
+            },
+            {
+              "line": 97,
+              "text": "`float` |"
+            },
+            {
+              "line": 98,
+              "text": "    `pscale` |"
+            },
+            {
+              "line": 99,
+              "text": "        (Point) Radius at each point. Triangles are fattened at their corners by spheres of the corner `pscales`, tapered tubes on edges, and sloped planes in center."
+            },
+            {
+              "line": 100,
+              "text": ""
+            }
+          ]
+        },
+        {
+          "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/help/nodes.zip",
+          "archive_sha256": "7c83e14d77ddaebf0f918244c1747509633b2721a39468eb4ae3efc694886916",
+          "member": "sop/vellumconstraints.txt",
+          "sha256": "e349ba725c46698a2ac0e9cd20b3f1bf5844ee5af092bc9dc8bcd58cb9a91d40",
+          "lines": [
+            {
+              "line": 230,
+              "text": ""
+            },
+            {
+              "line": 231,
+              "text": "Thickness:"
+            },
+            {
+              "line": 232,
+              "text": "    #id: thickness"
+            },
+            {
+              "line": 233,
+              "text": ""
+            },
+            {
+              "line": 234,
+              "text": "    Thickness of the points, stored in `pscale`.  Used also for the"
+            },
+            {
+              "line": 235,
+              "text": "    triangle thickness and curve thickness."
+            },
+            {
+              "line": 236,
+              "text": ""
+            },
+            {
+              "line": 237,
+              "text": "    Unchanged:"
+            },
+            {
+              "line": 238,
+              "text": "\tDo not set the `pscale` attribute."
+            },
+            {
+              "line": 239,
+              "text": ""
+            },
+            {
+              "line": 240,
+              "text": "    Set Uniform:"
+            },
+            {
+              "line": 241,
+              "text": "\tSet the `pscale` attribute to the specified value."
+            },
+            {
+              "line": 242,
+              "text": ""
+            },
+            {
+              "line": 243,
+              "text": "    Calculate Uniform:"
+            },
+            {
+              "line": 244,
+              "text": "\tCalculate a uniform value for the `pscale` attribute for the points on a per-piece basis,"
+            },
+            {
+              "line": 245,
+              "text": "\tas determined by the __Define Pieces__ setting.  The thickness value is based on the average"
+            },
+            {
+              "line": 246,
+              "text": "\tlength of the edges in each piece, scaled by the __Edge Length Scale__ parameter.  This setting"
+            },
+            {
+              "line": 247,
+              "text": "\tgenerally avoids excess self-collisions while maintaining uniform thickness."
+            },
+            {
+              "line": 248,
+              "text": ""
+            },
+            {
+              "line": 249,
+              "text": "    Calculate Varying:"
+            },
+            {
+              "line": 250,
+              "text": "\tCalculate a varying value for the `pscale` attribute for the points.  The thickness value is based on the average"
+            },
+            {
+              "line": 251,
+              "text": "\tlength of the edges connected to each point, scaled by the __Edge Length Scale__ parameter.  This setting"
+            },
+            {
+              "line": 252,
+              "text": "\tis better for geometry of varying resolution, but generally gives non-uniform thickness values."
+            }
+          ]
+        }
+      ],
+      "documented_convention": "pscale point float is collision radius. Triangles fatten corner spheres/edge tapered tubes/center planes. Constraints Set Uniform sets pscale to specified thickness directly.",
+      "required_actual_software_readback": "Task-owned actual constraints output point pscale descriptor/count/finite values and actual dothickness uniform mode/thickness observed, topology/ownership/version preserved; software native-API substitute provenance labelled.",
+      "not_proved": [
+        "physical solver response",
+        "live guide geometry or actual collision spheres visual observation",
+        "overlap/effective-radius relaxation during simulation"
+      ]
+    },
+    "22.0.429": {
+      "source_refs": [
+        {
+          "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/help/vellum.zip",
+          "archive_sha256": "7a767af9dde10fb6c28fe7d2c4be7f2bb32b0dab5233c5faa69254fbeb6ca488",
+          "member": "vellumattributes.txt",
+          "sha256": "f5a3b752dc0c43d08a9a1953205c06ee3cadcc4a6497972b6dc1b851fb935e0d",
+          "lines": [
+            {
+              "line": 91,
+              "text": "=== Collision ==="
+            },
+            {
+              "line": 92,
+              "text": ""
+            },
+            {
+              "line": 93,
+              "text": "Type ||"
+            },
+            {
+              "line": 94,
+              "text": "    Name ||"
+            },
+            {
+              "line": 95,
+              "text": "        Description ||"
+            },
+            {
+              "line": 96,
+              "text": ""
+            },
+            {
+              "line": 97,
+              "text": "`float` |"
+            },
+            {
+              "line": 98,
+              "text": "    `pscale` |"
+            },
+            {
+              "line": 99,
+              "text": "        (Point) Radius at each point. Triangles are fattened at their corners by spheres of the corner `pscales`, tapered tubes on edges, and sloped planes in center."
+            },
+            {
+              "line": 100,
+              "text": ""
+            }
+          ]
+        },
+        {
+          "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/help/nodes.zip",
+          "archive_sha256": "6ca2ef18ce0d1f142d3415e27885b36f69b3537344a04621c89f9fab6937ad53",
+          "member": "sop/vellumconstraints.txt",
+          "sha256": "e349ba725c46698a2ac0e9cd20b3f1bf5844ee5af092bc9dc8bcd58cb9a91d40",
+          "lines": [
+            {
+              "line": 230,
+              "text": ""
+            },
+            {
+              "line": 231,
+              "text": "Thickness:"
+            },
+            {
+              "line": 232,
+              "text": "    #id: thickness"
+            },
+            {
+              "line": 233,
+              "text": ""
+            },
+            {
+              "line": 234,
+              "text": "    Thickness of the points, stored in `pscale`.  Used also for the"
+            },
+            {
+              "line": 235,
+              "text": "    triangle thickness and curve thickness."
+            },
+            {
+              "line": 236,
+              "text": ""
+            },
+            {
+              "line": 237,
+              "text": "    Unchanged:"
+            },
+            {
+              "line": 238,
+              "text": "\tDo not set the `pscale` attribute."
+            },
+            {
+              "line": 239,
+              "text": ""
+            },
+            {
+              "line": 240,
+              "text": "    Set Uniform:"
+            },
+            {
+              "line": 241,
+              "text": "\tSet the `pscale` attribute to the specified value."
+            },
+            {
+              "line": 242,
+              "text": ""
+            },
+            {
+              "line": 243,
+              "text": "    Calculate Uniform:"
+            },
+            {
+              "line": 244,
+              "text": "\tCalculate a uniform value for the `pscale` attribute for the points on a per-piece basis,"
+            },
+            {
+              "line": 245,
+              "text": "\tas determined by the __Define Pieces__ setting.  The thickness value is based on the average"
+            },
+            {
+              "line": 246,
+              "text": "\tlength of the edges in each piece, scaled by the __Edge Length Scale__ parameter.  This setting"
+            },
+            {
+              "line": 247,
+              "text": "\tgenerally avoids excess self-collisions while maintaining uniform thickness."
+            },
+            {
+              "line": 248,
+              "text": ""
+            },
+            {
+              "line": 249,
+              "text": "    Calculate Varying:"
+            },
+            {
+              "line": 250,
+              "text": "\tCalculate a varying value for the `pscale` attribute for the points.  The thickness value is based on the average"
+            },
+            {
+              "line": 251,
+              "text": "\tlength of the edges connected to each point, scaled by the __Edge Length Scale__ parameter.  This setting"
+            },
+            {
+              "line": 252,
+              "text": "\tis better for geometry of varying resolution, but generally gives non-uniform thickness values."
+            }
+          ]
+        }
+      ],
+      "documented_convention": "pscale point float is collision radius. Triangles fatten corner spheres/edge tapered tubes/center planes. Constraints Set Uniform sets pscale to specified thickness directly.",
+      "required_actual_software_readback": "Task-owned actual constraints output point pscale descriptor/count/finite values and actual dothickness uniform mode/thickness observed, topology/ownership/version preserved; software native-API substitute provenance labelled.",
+      "not_proved": [
+        "physical solver response",
+        "live guide geometry or actual collision spheres visual observation",
+        "overlap/effective-radius relaxation during simulation"
+      ]
+    }
+  }
+}

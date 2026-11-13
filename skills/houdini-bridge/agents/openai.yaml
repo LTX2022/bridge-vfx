@@ -1,0 +1,7 @@
+interface:
+  display_name: "Houdini Bridge"
+  short_description: "Inspect and execute scoped Houdini workflows"
+  default_prompt: "Use $houdini-bridge to check available controls, execute this authorized Houdini task, and verify its actual outputs."
+policy:
+  allow_implicit_invocation: true
+

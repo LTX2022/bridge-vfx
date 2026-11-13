@@ -1,0 +1,17 @@
+# assets.zip 官方文档索引（Houdini 22.0.368）
+
+共 11 页。用 `--page assets.zip:<内部路径>` 读取全文。
+
+| 页面 | 标题 |
+|---|---|
+| `advanced_otl.txt` | Manipulating asset internals |
+| `asset_ui.txt` | Edit an asset's user interface |
+| `create.txt` | Creating and versioning digital assets |
+| `edit.txt` | Editing digital assets |
+| `index.txt` | Digital assets |
+| `install.txt` | Install and manage digital assets |
+| `intro.txt` | Introduction to digital assets |
+| `namespaces.txt` | Digital assets \|> versions and namespaces |
+| `opdef.txt` | Referring to embedded asset files using opdef: |
+| `textfiles.txt` | Working with files and assets as text |
+| `versioning_systems.txt` | Two types of asset versioning |

@@ -1,0 +1,369 @@
+{
+  "version": "22.0.459",
+  "native_execution": false,
+  "files": [
+    {
+      "source": "/Applications/Houdini/Houdini22.0.459/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/python3.13libs/husd/karmautils.py",
+      "bytes": 81374,
+      "sha256": "82c06a7e159ed0ad688759a36dd3b04167e86703b76426c1cee2668e640dac46",
+      "raw_copy": "raw-extra/7ce09c0897a1d5fa144056a0.txt",
+      "lines": [
+        {
+          "line": 1198,
+          "text": "    float_parms = ("
+        },
+        {
+          "line": 1199,
+          "text": "        (\"pixelAspectRatio\",            \"pixelAspectRatio\"),"
+        },
+        {
+          "line": 1200,
+          "text": "        (\"cacheratio\",                  \"karma:global:cacheratio\"),"
+        },
+        {
+          "line": 1201,
+          "text": "        (\"colorlimit\",                  \"karma:global:colorlimit\"),"
+        },
+        {
+          "line": 1202,
+          "text": "        (\"colorlimitindirect\",          \"karma:global:colorlimitindirect\"),"
+        },
+        {
+          "line": 1203,
+          "text": "        (\"dicingqualityscale\",          \"karma:global:dicingqualityscale\"),"
+        },
+        {
+          "line": 1204,
+          "text": "        (\"light_sampling_quality\",      \"karma:global:light_sampling_quality\"),"
+        },
+        {
+          "line": 1205,
+          "text": "        (\"offscreenquality\",            \"karma:global:offscreenquality\"),"
+        },
+        {
+          "line": 1206,
+          "text": "        (\"pixelfilterscale\",            \"karma:global:pixelfilterscale\"),"
+        },
+        {
+          "line": 1207,
+          "text": "        (\"raybias\",                     \"karma:global:raybias\"),"
+        },
+        {
+          "line": 1208,
+          "text": ""
+        },
+        {
+          "line": 1209,
+          "text": "        (\"outline_radius\",              \"karma:global:outline_radius\"),"
+        },
+        {
+          "line": 1210,
+          "text": "        (\"outline_intensity\",           \"karma:global:outline_intensity\"),"
+        },
+        {
+          "line": 1211,
+          "text": "        (\"outline_fitmin\",              \"karma:global:outline_fitmin\"),"
+        },
+        {
+          "line": 1233,
+          "text": "        (\"exportcomponents\",            \"karma:global:exportcomponents\"),"
+        },
+        {
+          "line": 1234,
+          "text": "        (\"globalaovmaterial\",           \"karma:global:globalaovmaterial\"),"
+        },
+        {
+          "line": 1235,
+          "text": "        #(\"imagefilter\",                 \"karma:global:imagefilter\"),"
+        },
+        {
+          "line": 1236,
+          "text": "        (\"pixelfilter\",                 \"karma:global:pixelfilter\"),"
+        },
+        {
+          "line": 1237,
+          "text": "        #(\"pixeloracle\",                 \"karma:global:pixeloracle\"),"
+        },
+        {
+          "line": 1238,
+          "text": "        (\"refractcomponents\",           \"karma:global:refractcomponents\"),"
+        },
+        {
+          "line": 1239,
+          "text": "        (\"ssscomponents\",               \"karma:global:ssscomponents\"),"
+        },
+        {
+          "line": 1240,
+          "text": "        (\"volumecomponents\",            \"karma:global:volumecomponents\"),"
+        },
+        {
+          "line": 1241,
+          "text": "        (\"truedisplace\",                \"karma:object:truedisplace\"),"
+        },
+        {
+          "line": 1242,
+          "text": "    )"
+        },
+        {
+          "line": 1309,
+          "text": "    # Backward compatbility for the pixelfiltersize (deprecated after H21)"
+        },
+        {
+          "line": 1310,
+          "text": "    _pixelfiltersize_name = \"pixelfiltersize\""
+        },
+        {
+          "line": 1311,
+          "text": "    _pixelfiltersize = lop.parm(_pixelfiltersize_name)"
+        },
+        {
+          "line": 1312,
+          "text": "    if _pixelfiltersize:"
+        },
+        {
+          "line": 1313,
+          "text": "        _need_filtersize = _pixelfiltersize.evalAtFrame(frange.fstart) != 2"
+        },
+        {
+          "line": 1314,
+          "text": "        if not _need_filtersize and _pixelfiltersize.isTimeDependent():"
+        },
+        {
+          "line": 1315,
+          "text": "            for _f in frange.animated:"
+        },
+        {
+          "line": 1316,
+          "text": "                _need_filtersize = _pixelfiltersize.evalAtFrame(_f) != 2"
+        },
+        {
+          "line": 1317,
+          "text": "        if _need_filtersize:"
+        },
+        {
+          "line": 1318,
+          "text": "            _create_float(prim, \"karma:global:\" + _pixelfiltersize_name,"
+        },
+        {
+          "line": 1319,
+          "text": "                                lop, _pixelfiltersize_name, frange)"
+        },
+        {
+          "line": 1320,
+          "text": ""
+        }
+      ],
+      "scope": "static native source only; no function/menu/expression execution"
+    },
+    {
+      "source": "/Applications/Houdini/Houdini22.0.459/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/soho/parameters/SohoIntrinsics.ds",
+      "bytes": 6094,
+      "sha256": "8fa4a52ca0cafdc038b9127969f780fb0d2416e7dcfc0d4b9741cc79632181f6",
+      "raw_copy": "raw-extra/e7d15f00a3fb4b6a3ea44372.txt",
+      "lines": [
+        {
+          "line": 138,
+          "text": "\thelp\t\"Force compression, even when not writing to a disk file.  This may break rendering.\""
+        },
+        {
+          "line": 139,
+          "text": "    }"
+        },
+        {
+          "line": 140,
+          "text": "    parm {"
+        },
+        {
+          "line": 141,
+          "text": "\tname\tsoho_foreground"
+        },
+        {
+          "line": 142,
+          "text": "\tlabel\t\"Wait for Render to Complete\""
+        },
+        {
+          "line": 143,
+          "text": "\ttype\ttoggle"
+        },
+        {
+          "line": 144,
+          "text": "\tparmtag\t{ spare_category\t\"SOHO Intrinsics\" }"
+        },
+        {
+          "line": 145,
+          "text": "\tdefault\t{ 0 }"
+        },
+        {
+          "line": 146,
+          "text": "\tdisablewhen\t\"{ soho_outputmode != 0 }\""
+        },
+        {
+          "line": 147,
+          "text": "\thelp\t\"When rendering to the soho_pipecmd, turning this on will block Houdini until the pipe command completes.\""
+        },
+        {
+          "line": 148,
+          "text": "    }"
+        },
+        {
+          "line": 149,
+          "text": "    parm {"
+        },
+        {
+          "line": 150,
+          "text": "\tname\tsoho_mkpath"
+        },
+        {
+          "line": 151,
+          "text": "\tlabel\t\"Create Intermediate Directories\""
+        },
+        {
+          "line": 152,
+          "text": "\ttype\ttoggle"
+        },
+        {
+          "line": 153,
+          "text": "\tparmtag\t{ spare_category\t\"SOHO Intrinsics\" }"
+        },
+        {
+          "line": 154,
+          "text": "\tdefault\t{ 1 }"
+        },
+        {
+          "line": 155,
+          "text": "\thelp\t\"If enabled, this will cause intermediate directories of output files to be created.\""
+        },
+        {
+          "line": 156,
+          "text": "    }"
+        }
+      ],
+      "scope": "static native source only; no function/menu/expression execution"
+    },
+    {
+      "source": "/Applications/Houdini/Houdini22.0.459/Frameworks/Houdini.framework/Versions/22.0/Resources/toolkit/include/UT/UT_Version.h",
+      "bytes": 1795,
+      "sha256": "bc0b3ea34b1ff1ce98ed2d70db850923a33742b82d7c8d2c3a48f210af0ba2ca",
+      "raw_copy": "raw-extra/abe2a344cb37897ddf8ed0b6.txt",
+      "lines": [
+        {
+          "line": 26,
+          "text": "#define UT_RELEASE_VERSION SYS_VERSION_RELEASE"
+        },
+        {
+          "line": 27,
+          "text": ""
+        },
+        {
+          "line": 28,
+          "text": "// The major version.  .9 counts as next higher."
+        },
+        {
+          "line": 29,
+          "text": "#define UT_MAJOR_VERSION SYS_VERSION_MAJOR"
+        },
+        {
+          "line": 30,
+          "text": "#define UT_MINOR_VERSION SYS_VERSION_MINOR"
+        },
+        {
+          "line": 31,
+          "text": ""
+        },
+        {
+          "line": 32,
+          "text": "// Version numbers as integer values"
+        },
+        {
+          "line": 33,
+          "text": "#define UT_MAJOR_VERSION_INT SYS_VERSION_MAJOR_INT"
+        },
+        {
+          "line": 34,
+          "text": "#define UT_MINOR_VERSION_INT SYS_VERSION_MINOR_INT"
+        },
+        {
+          "line": 35,
+          "text": "#define UT_BUILD_VERSION_INT SYS_VERSION_BUILD_INT"
+        },
+        {
+          "line": 36,
+          "text": "#define UT_PATCH_VERSION_INT SYS_VERSION_PATCH_INT"
+        },
+        {
+          "line": 37,
+          "text": ""
+        },
+        {
+          "line": 38,
+          "text": "// Version as a packed integer: (\"%02x%02x%04x\", major, minor, build)"
+        },
+        {
+          "line": 39,
+          "text": "#define UT_VERSION_INT SYS_VERSION_FULL_INT"
+        },
+        {
+          "line": 40,
+          "text": ""
+        },
+        {
+          "line": 41,
+          "text": ""
+        },
+        {
+          "line": 42,
+          "text": "/// The version string to insert in paths for save directories."
+        },
+        {
+          "line": 43,
+          "text": "#define UT_SAVE_VERSION SYS_VERSION_RELEASE"
+        },
+        {
+          "line": 44,
+          "text": ""
+        },
+        {
+          "line": 45,
+          "text": ""
+        },
+        {
+          "line": 46,
+          "text": "/// Return the full major.minor.build version."
+        },
+        {
+          "line": 47,
+          "text": "inline const char *UTgetFullVersion() { return SYS_Version::full(); }"
+        },
+        {
+          "line": 48,
+          "text": "/// Return the \"major.minor\" release version"
+        },
+        {
+          "line": 49,
+          "text": "inline const char *UTgetReleaseVersion() { return SYS_Version::release(); }"
+        },
+        {
+          "line": 50,
+          "text": "/// Return the \"major\" version"
+        },
+        {
+          "line": 51,
+          "text": "inline const char *UTgetMajorVersion()\t{ return SYS_Version::major(); }"
+        },
+        {
+          "line": 52,
+          "text": "/// Return the version used for save directories"
+        },
+        {
+          "line": 53,
+          "text": "inline const char *UTgetSaveVersion()\t{ return SYS_Version::release(); }"
+        },
+        {
+          "line": 54,
+          "text": ""
+        }
+      ],
+      "scope": "static native source only; no function/menu/expression execution"
+    }
+  ]
+}

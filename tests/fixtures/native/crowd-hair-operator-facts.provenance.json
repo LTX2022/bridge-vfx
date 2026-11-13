@@ -1,0 +1,11 @@
+{
+  "schema": "bridge.native-fixture-source/1",
+  "file": "crowd-hair-operator-facts.json",
+  "sha256": "16d1c1c14527e66ad2e4c6aee23c15e8e89d978e5a0639f686dc8911e1252ee6",
+  "origin": "preserved takeover candidate outputs/m1-takeover/crowd-hair-domains/operator-facts.json",
+  "content": "unchanged historical version-specific interface capture; not a current native execution receipt",
+  "versions": [
+    "21.0.631",
+    "22.0.429"
+  ]
+}

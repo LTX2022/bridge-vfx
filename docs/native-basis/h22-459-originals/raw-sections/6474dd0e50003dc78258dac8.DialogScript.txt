@@ -1,0 +1,4124 @@
+# Dialog script for karmarendersettings automatically generated
+
+{
+    name	karmarendersettings
+    script	karmaproperties
+    label	"Karma Render Settings"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Input Stage"
+    inputlabel	2	"Additional Render Vars"
+    inputlabel	3	"Input 3"
+    inputlabel	4	"Input 4"
+    outputlabel	1	"Output Stage"
+
+    parm {
+        name    "sample_f"
+        label   "Start/End/Inc"
+        type    float
+        invisible
+        size    3
+        default { "@fstart" "@fend" "@finc" }
+        range   { 0 10 }
+    }
+    groupcollapsible {
+        name    "folder18"
+        label   "Render Settings Prim"
+        parmtag { "group_default" "0" }
+        parmtag { "sidefx::header_parm" "primpath" }
+
+        parm {
+            name    "labelparm29"
+            label   "Message"
+            type    label
+            default { "The primitives MUST be located under the /Render/ primitive to match the USD spec." }
+            parmtag { "sidefx::look" "block" }
+        }
+        parm {
+            name    "primpath"
+            label   "RenderSettings Primitive Path"
+            type    string
+            default { "/Render/$OS" }
+            menureplace {
+                [ "import loputils" ]
+                [ "return loputils.createPrimPathMenu()" ]
+                language python
+            }
+            parmtag { "script_action" "import loputils\nloputils.selectPrimsInParm(kwargs, False)" }
+            parmtag { "script_action_help" "Select a primitive in the Scene Viewer or Scene Graph Tree pane. Ctrl-click to select using the primitive picker dialog." }
+            parmtag { "script_action_icon" "BUTTONS_reselect" }
+            parmtag { "sidefx::usdpathtype" "prim" }
+        }
+        parm {
+            name    "renderproductsparentprimpath"
+            label   "RenderProducts Parent Primitive Path"
+            type    string
+            default { "/Render/$OS/Products" }
+            menureplace {
+                [ "import loputils" ]
+                [ "return loputils.createPrimPathMenu()" ]
+                language python
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_action" "import loputils\nloputils.selectPrimsInParm(kwargs, True)" }
+            parmtag { "script_action_icon" "BUTTONS_reselect" }
+            parmtag { "sidefx::usdpathtype" "prim" }
+        }
+        parm {
+            name    "rendervarsparentprimpath"
+            label   "RenderVars Parent Primitive Path"
+            type    string
+            default { "/Render/$OS/Vars" }
+            menureplace {
+                [ "import loputils" ]
+                [ "return loputils.createPrimPathMenu()" ]
+                language python
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_action" "import loputils\nloputils.selectPrimsInParm(kwargs, True)" }
+            parmtag { "script_action_icon" "BUTTONS_reselect" }
+            parmtag { "sidefx::usdpathtype" "prim" }
+        }
+    }
+
+    parm {
+        name    "picture"
+        label   "Output Picture"
+        type    file
+        default { "$HIP/render/$HIPNAME.$OS.$F4.exr" }
+        menureplace {
+            [ "echo `pythonexprs(\"__import__('toolutils').parseDialogScriptMenu('FBrender')\")`" ]
+        }
+        range   { 0 1 }
+        parmtag { "filechooser_mode" "write" }
+    }
+    parm {
+        name    "camera"
+        label   "Camera"
+        type    string
+        default { "/cameras/camera1" }
+        menureplace {
+            [ "kwargs['node'].hm().getCameras(kwargs)" ]
+            language python
+        }
+        parmtag { "script_action" "import loputils\nloputils.selectPrimsInParm(kwargs, False)\n" }
+        parmtag { "script_action_icon" "BUTTONS_reselect" }
+        parmtag { "sidefx::usdpathinput" "0" }
+        parmtag { "sidefx::usdpathtype" "prim" }
+    }
+    parm {
+        name    "res_mode"
+        label   "Resolution Mode"
+        type    string
+        default { "autoheight" }
+        disablewhen "{ resolution_control == block } { resolution_control == animationblock } { resolution_control == none }"
+        menu {
+            [ "menu = __import__('loputils').resolutionModeMenuItems()" ]
+            [ "return menu" ]
+            language python
+        }
+        parmtag { "export_disable" "1" }
+        parmtag { "script_callback" "__import__('loputils').updateResolutionParameters(hou.pwd(),True)" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "resolution"
+        label   "Resolution"
+        type    intvector2
+        joinnext
+        size    2
+        default { "1280" "720" }
+        range   { -1 1 }
+    }
+    parm {
+        name    "resolutionMenu"
+        label   "Choose Resolution"
+        type    button
+        nolabel
+        default { "0" }
+        menumini {
+            [ "echo `pythonexprs(\"__import__('toolutils').parseDialogScriptMenu('FBres')\")`" ]
+        }
+        parmtag { "script_callback" "opparm . resolution ( `arg(\"$script_value\", 0)` `arg(\"$script_value\", 1)` pixelAspectRatio ( `arg(\"$script_value\", 2)` )" }
+    }
+    parm {
+        name    "sepparm2"
+        label   "Spacer"
+        type    separator
+        default { "" }
+        parmtag { "sidefx::layout_height" "small" }
+        parmtag { "sidefx::look" "blank" }
+    }
+    parm {
+        name    "engine"
+        label   "Engine Settings"
+        type    string
+        joinnext
+        default { "cpu" }
+        menu {
+            "cpu"   "CPU Parameters"
+            "xpu"   "XPU Parameters"
+        }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "editor" "0" }
+        parmtag { "spare_category" "Render" }
+        parmtag { "uiscope" "viewport" }
+        parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+        parmtag { "usdvaluetype" "string" }
+    }
+    parm {
+        name    "force_headlight"
+        label   "Simplified Shading"
+        type    toggle
+        default { "off" }
+        hidewhen "{ engine != cpu }"
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "spare_category" "Shading" }
+        parmtag { "uiscope" "None" }
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "samplesperpixel"
+        label   "Primary Samples"
+        type    integer
+        default { "9" }
+        hidewhen "{ engine != cpu } { convergence_mode != Variance }"
+        range   { 1! 256 }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "spare_category" "Sampling" }
+        parmtag { "uiscope" "viewport" }
+        parmtag { "usdvaluetype" "int" }
+    }
+    parm {
+        name    "pathtracedsamples"
+        label   "Path Traced Samples"
+        type    integer
+        default { "128" }
+        hidewhen "{ engine != xpu convergence_mode != \"Path Traced\" }"
+        range   { 1! 256 }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "spare_category" "Sampling" }
+        parmtag { "uiscope" "viewport" }
+        parmtag { "usdvaluetype" "int" }
+    }
+    parm {
+        name    "sepparm9"
+        label   "Spacer"
+        type    separator
+        default { "" }
+        parmtag { "sidefx::layout_height" "small" }
+        parmtag { "sidefx::look" "blank" }
+    }
+    group {
+        name    "folder2_1_1"
+        label   "Ambient Occlusion"
+        hidewhentab "{ force_headlight == 0 } { engine != cpu }"
+
+        parm {
+            name    "head_ao_samples"
+            label   "Samples"
+            type    integer
+            default { "1" }
+            range   { 0! 4 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "spare_category" "Shading" }
+            parmtag { "uiscope" "viewport" }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "head_ao_distance"
+            label   "Ray Distance"
+            type    float
+            default { "1" }
+            range   { 0! 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "spare_category" "Shading" }
+            parmtag { "uiscope" "viewport" }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "head_addfog"
+            label   "Add Distance Fog"
+            type    toggle
+            default { "0" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "head_depthcue_z"
+            label   "Fog Distance"
+            type    float
+            size    2
+            default { "0" "0" }
+            disablewhen "{ head_addfog == 0 }"
+            range   { 0! 1000 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "spare_category" "Shading" }
+            parmtag { "uiscope" "viewport" }
+            parmtag { "usdvaluetype" "float2" }
+        }
+        parm {
+            name    "head_depthcue_color"
+            label   "Fog Color"
+            type    color
+            size    3
+            default { "0" "0" "0" }
+            disablewhen "{ head_addfog == 0 }"
+            range   { 0! 1! }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "spare_category" "Shading" }
+            parmtag { "uiscope" "viewport" }
+            parmtag { "usdvaluetype" "float3" }
+        }
+        parm {
+            name    "head_depthcue_alpha"
+            label   "Fog Alpha"
+            type    float
+            default { "1" }
+            disablewhen "{ head_addfog == 0 }"
+            range   { 0! 1! }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "spare_category" "Shading" }
+            parmtag { "uiscope" "viewport" }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder2_1_1_1"
+        label   "Rendering"
+
+        group {
+            name    "folder9"
+            label   "Sampling"
+            hidewhentab "{ force_headlight == 1 }"
+            parmtag { "group_default" "0" }
+
+            groupcollapsible {
+                name    "__indirectsampling"
+                label   "Secondary"
+                parmtag { "group_default" "1" }
+
+                parm {
+                    name    "varianceaa_minsamples"
+                    label   "Min Secondary Samples"
+                    type    integer
+                    default { "1" }
+                    disablewhen "{ convergence_mode != Variance }"
+                    hidewhen "{ engine == xpu } { convergence_mode != Variance }"
+                    range   { 1! 9 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "spare_category" "Shading" }
+                    parmtag { "uiscope" "None" }
+                    parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                    parmtag { "usdvaluetype" "int" }
+                }
+                parm {
+                    name    "varianceaa_maxsamples"
+                    label   "Max Secondary Samples"
+                    type    integer
+                    default { "9" }
+                    disablewhen "{ convergence_mode != Variance }"
+                    hidewhen "{ engine == xpu } { convergence_mode != Variance }"
+                    range   { 1! 9 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "spare_category" "Shading" }
+                    parmtag { "uiscope" "None" }
+                    parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                    parmtag { "usdvaluetype" "int" }
+                }
+                groupcollapsible {
+                    name    "folder12"
+                    label   "Indirect Samples Quality"
+                    hidewhen "{ engine == xpu } { convergence_mode != Variance }"
+
+                    parm {
+                        name    "diffusequality"
+                        label   "Diffuse Quality"
+                        type    float
+                        default { "1" }
+                        range   { 0! 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "spare_category" "Sampling" }
+                        parmtag { "uiscope" "None" }
+                        parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                        parmtag { "usdvaluetype" "float" }
+                    }
+                    parm {
+                        name    "reflectquality"
+                        label   "Reflection Quality"
+                        type    float
+                        default { "1" }
+                        range   { 0! 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "spare_category" "Sampling" }
+                        parmtag { "uiscope" "None" }
+                        parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                        parmtag { "usdvaluetype" "float" }
+                    }
+                    parm {
+                        name    "refractquality"
+                        label   "Refraction Quality"
+                        type    float
+                        default { "1" }
+                        range   { 0! 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "spare_category" "Sampling" }
+                        parmtag { "uiscope" "None" }
+                        parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                        parmtag { "usdvaluetype" "float" }
+                    }
+                    parm {
+                        name    "volumequality"
+                        label   "Volume Quality"
+                        type    float
+                        default { "1" }
+                        range   { 0! 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "spare_category" "Sampling" }
+                        parmtag { "uiscope" "None" }
+                        parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                        parmtag { "usdvaluetype" "float" }
+                    }
+                    parm {
+                        name    "sssquality"
+                        label   "SSS Quality"
+                        type    float
+                        default { "1" }
+                        range   { 0! 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "spare_category" "Sampling" }
+                        parmtag { "uiscope" "None" }
+                        parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                        parmtag { "usdvaluetype" "float" }
+                    }
+                }
+
+                groupcollapsible {
+                    name    "folder13"
+                    label   "Lights Quality"
+
+                    parm {
+                        name    "light_sampling_mode"
+                        label   "Light Sampling Mode"
+                        type    ordinal
+                        default { "1" }
+                        menu {
+                            [ "opmenu -a -l rendersettings xn__karmagloballight_sampling_mode_wpbg" ]
+                        }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "spare_category" "Sampling" }
+                        parmtag { "uiscope" "viewport" }
+                        parmtag { "usdvaluetype" "int" }
+                    }
+                    parm {
+                        name    "light_sampling_quality"
+                        label   "Light Sampling Quality"
+                        type    float
+                        default { "1" }
+                        range   { 0! 4 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "spare_category" "Sampling" }
+                        parmtag { "uiscope" "viewport" }
+                        parmtag { "usdvaluetype" "float" }
+                    }
+                }
+
+            }
+
+            groupcollapsible {
+                name    "folder15"
+                label   "Volumes and Opacity"
+                parmtag { "group_default" "1" }
+
+                parm {
+                    name    "screendoorlimit"
+                    label   "Screendoor Samples"
+                    type    integer
+                    default { "4" }
+                    hidewhen "{ engine == xpu }"
+                    range   { 0! 16 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "spare_category" "Shading" }
+                    parmtag { "uiscope" "None" }
+                    parmtag { "usdvaluetype" "int" }
+                }
+                parm {
+                    name    "volumesteprate"
+                    label   "Volume Step Rate"
+                    type    float
+                    default { "0.25" }
+                    range   { 0! 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "spare_category" "Shading" }
+                    parmtag { "uiscope" "viewport" }
+                    parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                    parmtag { "usdvaluetype" "float" }
+                }
+            }
+
+        }
+
+        group {
+            name    "folder9_1"
+            label   "Limits"
+            hidewhentab "{ force_headlight == 1 }"
+
+            parm {
+                name    "diffuselimit"
+                label   "Diffuse Limit"
+                type    float
+                default { "1" }
+                range   { 0! 32 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "sidefx::slider" "snap_to_int" }
+                parmtag { "spare_category" "Limits" }
+                parmtag { "uiscope" "viewport" }
+                parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                parmtag { "usdvaluetype" "float" }
+            }
+            parm {
+                name    "reflectionlimit"
+                label   "Reflection Limit"
+                type    float
+                default { "4" }
+                range   { 0! 32 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "sidefx::slider" "snap_to_int" }
+                parmtag { "spare_category" "Limits" }
+                parmtag { "uiscope" "viewport" }
+                parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                parmtag { "usdvaluetype" "float" }
+            }
+            parm {
+                name    "refractionlimit"
+                label   "Refraction Limit"
+                type    float
+                default { "4" }
+                range   { 0! 32 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "sidefx::slider" "snap_to_int" }
+                parmtag { "spare_category" "Limits" }
+                parmtag { "uiscope" "viewport" }
+                parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                parmtag { "usdvaluetype" "float" }
+            }
+            parm {
+                name    "volumelimit"
+                label   "Volume Limit"
+                type    float
+                default { "0" }
+                range   { 0! 32 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "sidefx::slider" "snap_to_int" }
+                parmtag { "spare_category" "Limits" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                parmtag { "usdvaluetype" "float" }
+            }
+            parm {
+                name    "ssslimit"
+                label   "SSS Limit"
+                type    float
+                default { "1" }
+                range   { 0! 32 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "sidefx::slider" "snap_to_int" }
+                parmtag { "spare_category" "Limits" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                parmtag { "usdvaluetype" "float" }
+            }
+            parm {
+                name    "colorlimit"
+                label   "Color Limit"
+                type    float
+                default { "20" }
+                range   { 1 20 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "sidefx::slider" "snap_to_int" }
+                parmtag { "spare_category" "Rendering" }
+                parmtag { "uiscope" "viewport" }
+                parmtag { "usdvaluetype" "float" }
+            }
+            parm {
+                name    "colorlimitindlinked"
+                label   "Shared Color Limit"
+                type    toggle
+                default { "on" }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "spare_category" "Rendering" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                parmtag { "usdvaluetype" "bool" }
+            }
+            parm {
+                name    "colorlimitindirect"
+                label   "Indirect Color Limit"
+                type    float
+                default { "20" }
+                disablewhen "{ colorlimitindlinked == 1 }"
+                range   { 1 20 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "sidefx::slider" "snap_to_int" }
+                parmtag { "spare_category" "Rendering" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                parmtag { "usdvaluetype" "float" }
+            }
+            parm {
+                name    "russianroulette_cutoff"
+                label   "Russian Roulette Cutoff Depth"
+                type    integer
+                default { "2" }
+                range   { 0! 4 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "spare_category" "Shading" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                parmtag { "usdvaluetype" "int" }
+            }
+        }
+
+        group {
+            name    "folder9_2"
+            label   "Camera Effects"
+
+            parm {
+                name    "enabledof"
+                label   "Enable Depth of Field"
+                type    toggle
+                default { "on" }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "spare_category" "Sampling" }
+                parmtag { "uiscope" "viewport" }
+                parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                parmtag { "usdvaluetype" "bool" }
+            }
+            parm {
+                name    "enablemblur"
+                label   "Enable Motion Blur"
+                type    toggle
+                default { "on" }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "spare_category" "Sampling" }
+                parmtag { "uiscope" "viewport" }
+                parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                parmtag { "usdvaluetype" "bool" }
+            }
+            groupsimple {
+                name    "folder16"
+                label   "Motion Blur"
+                disablewhentab "{ enablemblur == 0 }"
+                disablewhen "{ enablemblur == 0 }"
+                parmtag { "sidefx::header_toggle" "enablemblur" }
+
+                parm {
+                    name    "mblur"
+                    label   "Per-Object Motion Blur"
+                    type    ordinal
+                    default { "1" }
+                    menu usetokenvalue {
+                        "1" "On by Default"
+                        "2" "Off by Default"
+                    }
+                    range   { 0 10 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "spare_category" "Motion Blur" }
+                    parmtag { "uiscope" "viewport" }
+                    parmtag { "usdvaluetype" "bool[]" }
+                }
+                parm {
+                    name    "vblur"
+                    label   "Velocity Blur"
+                    type    string
+                    default { "No Velocity Blur" }
+                    hidewhen "{ mblur != 1 }"
+                    menu {
+                        [ "opmenu -a -l rendersettings xn__karmaobjectvblur_31ag" ]
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "spare_category" "Motion Blur" }
+                    parmtag { "uiscope" "None" }
+                    parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                    parmtag { "usdvaluetype" "token" }
+                }
+                parm {
+                    name    "samplesfromstage"
+                    label   "Motion Samples From Stage"
+                    type    toggle
+                    default { "on" }
+                    hidewhen "{ mblur != 1 }"
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "spare_category" "Motion Blur" }
+                    parmtag { "uiscope" "None" }
+                    parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                    parmtag { "usdvaluetype" "bool" }
+                }
+                parm {
+                    name    "geosamples"
+                    label   "Geometry Time Samples"
+                    type    integer
+                    default { "2" }
+                    disablewhen "{ samplesfromstage == 1 }"
+                    hidewhen "{ mblur != 1 }"
+                    range   { 1! 8 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "spare_category" "Motion Blur" }
+                    parmtag { "uiscope" "None" }
+                    parmtag { "usdvaluetype" "int[]" }
+                }
+                parm {
+                    name    "xformsamples"
+                    label   "Transform Time Samples"
+                    type    integer
+                    default { "2" }
+                    disablewhen "{ samplesfromstage == 1 }"
+                    hidewhen "{ mblur != 1 }"
+                    range   { 1! 8 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "spare_category" "Motion Blur" }
+                    parmtag { "uiscope" "None" }
+                    parmtag { "usdvaluetype" "int[]" }
+                }
+                parm {
+                    name    "blurstyle"
+                    label   "Motion Blur Style"
+                    type    string
+                    default { "Rotation Blur" }
+                    hidewhen "{ mblur != 1 }"
+                    menu {
+                        "Linear Blur"   "Linear Blur"
+                        "Rotation Blur" "Rotation Blur"
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "spare_category" "Motion Blur" }
+                    parmtag { "uiscope" "None" }
+                    parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                    parmtag { "usdvaluetype" "token" }
+                }
+                parm {
+                    name    "instance_vblur"
+                    label   "Instance Velocity Blur"
+                    type    string
+                    default { "No Velocity Blur" }
+                    hidewhen "{ mblur != 1 }"
+                    menu {
+                        [ "opmenu -a -l rendersettings xn__karmaobjectinstance_vblur_rhbg" ]
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "spare_category" "Motion Blur" }
+                    parmtag { "uiscope" "None" }
+                    parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                    parmtag { "usdvaluetype" "token" }
+                }
+                parm {
+                    name    "instance_samples"
+                    label   "Instance Motion Samples"
+                    type    integer
+                    default { "2" }
+                    disablewhen "{ samplesfromstage == 1 }"
+                    hidewhen "{ mblur != 1 }"
+                    range   { 1! 8 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "spare_category" "Motion Blur" }
+                    parmtag { "uiscope" "None" }
+                    parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                    parmtag { "usdvaluetype" "int" }
+                }
+                parm {
+                    name    "volumevblurscale"
+                    label   "Volume Velocity Blur Scale"
+                    type    float
+                    default { "1" }
+                    hidewhen "{ mblur != 1 }"
+                    range   { 0! 2 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "spare_category" "Motion Blur" }
+                    parmtag { "uiscope" "None" }
+                    parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                    parmtag { "usdvaluetype" "float" }
+                }
+                parm {
+                    name    "enableimageblur"
+                    label   "Enable Image Blur"
+                    type    toggle
+                    default { "1" }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+        }
+
+        group {
+            name    "folder9_3"
+            label   "Lighting Effects"
+
+            parm {
+                name    "husk_disable_materials"
+                label   "Disable Scene Materials (husk)"
+                type    toggle
+                default { "off" }
+            }
+            parm {
+                name    "husk_disable_lights"
+                label   "Disable Scene Lights (husk)"
+                type    toggle
+                default { "off" }
+            }
+            parm {
+                name    "truedisplace"
+                label   "Displacement Style"
+                type    ordinal
+                default { "True Displacement" }
+                menu {
+                    "Displacemnt as Bump"           "Displacemnt as Bump"
+                    "True Displacement"             "True Displacement"
+                    "Disable Displacement Shader"   "Disable Displacement Shader"
+                }
+            }
+        }
+
+        group {
+            name    "folder9_4"
+            label   "Geometry and Shading"
+
+            parm {
+                name    "point_style"
+                label   "Render Points as"
+                type    string
+                default { "Spheres" }
+                hidewhen "{ engine == xpu }"
+                menu {
+                    [ "opmenu -a -l rendersettings xn__karmaobjectpoint_style_vcbg" ]
+                }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "spare_category" "Geometry" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                parmtag { "usdvaluetype" "token" }
+            }
+            parm {
+                name    "curve_style"
+                label   "Render Curves as"
+                type    string
+                default { "Rounded Curves" }
+                hidewhen "{ engine == xpu }"
+                menu {
+                    [ "opmenu -a -l rendersettings xn__karmaobjectcurve_style_vcbg" ]
+                }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "spare_category" "Geometry" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                parmtag { "usdvaluetype" "token" }
+            }
+            parm {
+                name    "curve_basis"
+                label   "Override Curves Basis"
+                type    ordinal
+                default { "0" }
+                menu {
+                    [ "opmenu -a -l rendersettings xn__karmaobjectcurve_basis_vcbg" ]
+                }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "spare_category" "Geometry" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                parmtag { "usdvaluetype" "int" }
+            }
+            parm {
+                name    "cull_backface"
+                label   "Cull Backface"
+                type    string
+                default { "Off" }
+                menu {
+                    [ "opmenu -a -l rendersettings xn__karmaobjectcull_backface_4fbg" ]
+                }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "spare_category" "Geometry" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                parmtag { "usdvaluetype" "token" }
+            }
+            parm {
+                name    "causticsenable"
+                label   "Enable Caustics"
+                type    toggle
+                default { "off" }
+                hidewhen "{ force_headlight == 1 }"
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "spare_category" "Shading" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                parmtag { "usdvaluetype" "bool" }
+            }
+            groupcollapsible {
+                name    "folder11"
+                label   "Enable Caustics"
+                disablewhentab "{ causticsenable == 0 }"
+                hidewhentab "{ force_headlight == 1 }"
+                parmtag { "sidefx::header_toggle" "causticsenable" }
+
+                parm {
+                    name    "causticsroughnessclamp"
+                    label   "Caustics Roughness Clamp"
+                    type    float
+                    default { "0.2" }
+                    range   { 0! 1! }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "spare_category" "Shading" }
+                    parmtag { "uiscope" "None" }
+                    parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                    parmtag { "usdvaluetype" "float" }
+                }
+            }
+
+            groupcollapsible {
+                name    "__shading"
+                label   "Shading"
+                parmtag { "group_default" "0" }
+
+                parm {
+                    name    "raybias"
+                    label   "Ray Bias"
+                    type    float
+                    default { "0.001" }
+                    range   { 0! 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "spare_category" "Shading" }
+                    parmtag { "uiscope" "None" }
+                    parmtag { "usdvaluetype" "float" }
+                }
+                parm {
+                    name    "autoraybias"
+                    label   "Automatic Ray Bias"
+                    type    toggle
+                    default { "on" }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "spare_category" "Shading" }
+                    parmtag { "uiscope" "None" }
+                    parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                    parmtag { "usdvaluetype" "bool" }
+                }
+                parm {
+                    name    "constrainmaxrough"
+                    label   "Constrain by Maximum Roughness"
+                    type    toggle
+                    default { "on" }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "spare_category" "Shading" }
+                    parmtag { "uiscope" "None" }
+                    parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                    parmtag { "usdvaluetype" "bool" }
+                }
+            }
+
+            groupcollapsible {
+                name    "__dicing"
+                label   "Dicing"
+                parmtag { "group_default" "0" }
+
+                parm {
+                    name    "usedicingcamera"
+                    label   "usedicingcamera"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "0" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "dicingcamera"
+                    label   "Dicing Camera"
+                    type    string
+                    default { "" }
+                    disablewhen "{ usedicingcamera == 0 }"
+                    menureplace {
+                        [ "kwargs['node'].hm().getCameras(kwargs)" ]
+                        language python
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_action" "import loputils\nloputils.selectPrimsInParm(kwargs, False)\n" }
+                    parmtag { "script_action_icon" "BUTTONS_reselect" }
+                    parmtag { "sidefx::usdpathtype" "prim" }
+                    parmtag { "spare_category" "Dicing" }
+                    parmtag { "uiscope" "None" }
+                    parmtag { "usdvaluetype" "string" }
+                }
+                parm {
+                    name    "offscreenquality"
+                    label   "Offscreen Quality"
+                    type    float
+                    default { "0.1" }
+                    hidewhen "{ engine == xpu }"
+                    range   { 0! 1! }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "spare_category" "Rendering" }
+                    parmtag { "uiscope" "None" }
+                    parmtag { "usdvaluetype" "float" }
+                }
+                parm {
+                    name    "dicingqualityscale"
+                    label   "Dicing Quality Scale"
+                    type    float
+                    default { "1" }
+                    range   { 0! 16 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "spare_category" "Dicing" }
+                    parmtag { "uiscope" "viewport" }
+                    parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                    parmtag { "usdvaluetype" "float" }
+                }
+            }
+
+        }
+
+        group {
+            name    "folder9_5"
+            label   "Outlines"
+            tabbreak
+            hidewhentab "{ engine == xpu }"
+
+            parm {
+                name    "outline_enable"
+                label   "Enable"
+                type    toggle
+                default { "0" }
+                parmtag { "spare_category" "Outlines" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                parmtag { "usdvaluetype" "bool" }
+            }
+            parm {
+                name    "outline_apply"
+                label   "Apply to Beauty"
+                type    toggle
+                default { "1" }
+                disablewhen "{ outline_enable == 0 }"
+                parmtag { "spare_category" "Outlines" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                parmtag { "usdvaluetype" "bool" }
+            }
+            parm {
+                name    "outline_linesaovs"
+                label   "Lines Types to AOVs"
+                type    toggle
+                default { "0" }
+                disablewhen "{ outline_enable == 0 }"
+                parmtag { "spare_category" "Outlines" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                parmtag { "usdvaluetype" "bool" }
+            }
+            parm {
+                name    "outline_radius"
+                label   "Radius"
+                type    float
+                default { "1" }
+                disablewhen "{ outline_enable == 0 }"
+                range   { 0! 1 }
+                parmtag { "spare_category" "Outlines" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                parmtag { "usdvaluetype" "float" }
+            }
+            parm {
+                name    "outline_primary"
+                label   "Primary"
+                type    toggle
+                default { "1" }
+                disablewhen "{ outline_enable == 0 }"
+                parmtag { "spare_category" "Outlines" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                parmtag { "usdvaluetype" "bool" }
+            }
+            parm {
+                name    "outline_primary_samples"
+                label   "Primary Samples"
+                type    integer
+                default { "4" }
+                disablewhen "{ outline_enable == 0 }"
+                range   { 1! 16 }
+                parmtag { "spare_category" "Outlines" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                parmtag { "usdvaluetype" "int" }
+            }
+            parm {
+                name    "outline_secondary"
+                label   "Secondary"
+                type    toggle
+                default { "1" }
+                disablewhen "{ outline_enable == 0 }"
+                parmtag { "spare_category" "Outlines" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                parmtag { "usdvaluetype" "bool" }
+            }
+            parm {
+                name    "outline_secondary_samples"
+                label   "Indirect Samples"
+                type    integer
+                default { "4" }
+                disablewhen "{ outline_enable == 0 }"
+                range   { 1! 16 }
+                parmtag { "spare_category" "Outlines" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                parmtag { "usdvaluetype" "int" }
+            }
+            parm {
+                name    "outline_depththreshold"
+                label   "Depth Threshold Scale"
+                type    float
+                default { "1" }
+                disablewhen "{ outline_enable == 0 }"
+                range   { 0! 10! }
+                parmtag { "spare_category" "Outlines" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                parmtag { "usdvaluetype" "float" }
+            }
+            parm {
+                name    "sepparm16"
+                label   "Separator"
+                type    separator
+                default { "" }
+                disablewhen "{ outline_enable == 0 }"
+            }
+            parm {
+                name    "outline_intensity"
+                label   "Intensity"
+                type    float
+                default { "1" }
+                disablewhen "{ outline_enable == 0 }"
+                range   { 0! 10 }
+                parmtag { "spare_category" "Outlines" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                parmtag { "usdvaluetype" "float" }
+            }
+            parm {
+                name    "outline_fitmin"
+                label   "Fit Min"
+                type    float
+                default { "0" }
+                disablewhen "{ outline_enable == 0 }"
+                range   { 0! 1! }
+                parmtag { "spare_category" "Outlines" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                parmtag { "usdvaluetype" "float" }
+            }
+            parm {
+                name    "outline_fitmax"
+                label   "Fit Max"
+                type    float
+                default { "1" }
+                disablewhen "{ outline_enable == 0 }"
+                range   { 0! 1! }
+                parmtag { "spare_category" "Outlines" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                parmtag { "usdvaluetype" "float" }
+            }
+            parm {
+                name    "outline_color"
+                label   "Default Color"
+                type    color
+                size    3
+                default { "1" "0" "1" }
+                disablewhen "{ outline_enable == 0 }"
+                range   { 0 1 }
+                parmtag { "script_callback_language" "python" }
+            }
+            groupcollapsible {
+                name    "outline_advanced"
+                label   "Advanced"
+
+                parm {
+                    name    "outline_depthblend"
+                    label   "Depth Blend"
+                    type    float
+                    default { "0" }
+                    disablewhen "{ outline_enable == 0 }"
+                    range   { 0! 1! }
+                    parmtag { "spare_category" "Outlines" }
+                    parmtag { "uiscope" "None" }
+                    parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                    parmtag { "usdvaluetype" "bool" }
+                }
+                parm {
+                    name    "outline_mode"
+                    label   "Mode"
+                    type    integer
+                    default { "0" }
+                    disablewhen "{ outline_enable == 0 }"
+                    menu {
+                        ""  "Determined"
+                        "1" "Random"
+                    }
+                    range   { 0 10 }
+                    parmtag { "spare_category" "Outlines" }
+                    parmtag { "uiscope" "None" }
+                    parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                    parmtag { "usdvaluetype" "bool" }
+                }
+                parm {
+                    name    "outline_primary_stencils"
+                    label   "Primary_Stencils"
+                    type    integer
+                    default { "1" }
+                    disablewhen "{ outline_mode == 1 } { outline_enable == 0 }"
+                    range   { 1! 5 }
+                    parmtag { "spare_category" "Outlines" }
+                    parmtag { "uiscope" "None" }
+                    parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                    parmtag { "usdvaluetype" "int" }
+                }
+                parm {
+                    name    "outline_secondary_stencils"
+                    label   "Secondary Stencils"
+                    type    integer
+                    default { "1" }
+                    disablewhen "{ outline_mode == 1 } { outline_enable == 0 }"
+                    range   { 1! 5 }
+                    parmtag { "spare_category" "Outlines" }
+                    parmtag { "uiscope" "None" }
+                    parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                    parmtag { "usdvaluetype" "int" }
+                }
+                parm {
+                    name    "outline_debug"
+                    label   "Output Debug AOVs"
+                    type    toggle
+                    default { "0" }
+                    disablewhen "{ outline_enable == 0 }"
+                    parmtag { "spare_category" "Outlines" }
+                    parmtag { "uiscope" "None" }
+                    parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                    parmtag { "usdvaluetype" "bool" }
+                }
+            }
+
+        }
+
+    }
+
+    group {
+        name    "folder2_1_1_2"
+        label   "Image Output"
+
+        group {
+            name    "__imageoutput"
+            label   "AOVs (Render Vars)"
+
+            parm {
+                name    "existingvars"
+                label   "Existing Render Vars"
+                type    string
+                default { "/Render/Products/Vars/*" }
+                parmtag { "script_action" "import loputils\nloputils.selectPrimsInParm(kwargs, True)" }
+                parmtag { "script_action_help" "Select primitives in the Scene Viewer or Scene Graph Tree pane. Ctrl-click to select using the primitive picker dialog." }
+                parmtag { "script_action_icon" "BUTTONS_reselect" }
+                parmtag { "sidefx::usdpathtype" "primlist" }
+            }
+            parm {
+                name    "importsecondaryinputvars"
+                label   "Import Render Vars From Second Input"
+                type    toggle
+                default { "0" }
+                disablewhen "{ engine == cpu force_headlight == 1 }"
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "importsecondaryproducts"
+                label   "Import Render Products From Second Input"
+                type    toggle
+                default { "0" }
+                disablewhen "{ importsecondaryinputvars == 0 }"
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "pixelfilter"
+                label   "Pixel Filter"
+                type    string
+                default { "gauss" }
+                menureplace {
+                    "box"               "Box Filter"
+                    "gauss"             "Gaussian Filter"
+                    "blackman"          "Blackman Filter"
+                    "blackmanharris"    "Blackman-Harris Filter"
+                }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "spare_category" "Image" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                parmtag { "usdvaluetype" "string" }
+            }
+            parm {
+                name    "pixelfilterscale"
+                label   "Pixel Filter Scale"
+                type    float
+                default { "1" }
+                range   { 0! 5 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "spare_category" "Image" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                parmtag { "usdvaluetype" "float" }
+            }
+            parm {
+                name    "globalaovmaterial"
+                label   "Global AOV Material"
+                type    string
+                size    1
+                default { "" }
+                parmtag { "spare_category" "Image" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                parmtag { "usdvaluetype" "relationship" }
+                parmtag { "sidefx::usdpathinput" "0" }
+                parmtag { "sidefx::usdpathtype" "prim" }
+                parmtag { "script_action_icon" "BUTTONS_material" }
+                parmtag { "script_action_help" "Create a global AOV material." }
+                parmtag { "script_action" "\nimport loptoolutils\nloptoolutils.setupKarmaGlobalAOVMaterial(kwargs)\n" }
+                parmtag { "script_action_language" "python" }
+            }
+            parm {
+                name    "splitrendervars"
+                label   "Split Render Product by Render Var"
+                type    toggle
+                size    1
+                default { 0 }
+                parmtag { "spare_category" "Image" }
+            }
+            parm {
+                name    "pixelfiltersize"
+                label   "Pixel Filter Size"
+                type    float
+                invisible
+                default { "2" }
+                range   { 1 5 }
+            }
+            groupcollapsible {
+                name    "__lpe"
+                label   "Component Level Output"
+                parmtag { "group_default" "1" }
+
+                parm {
+                    name    "lpeaovlimit"
+                    label   "LPE Tag AOV Limit"
+                    type    integer
+                    default { "100" }
+                    hidewhen "{ engine == cpu force_headlight == 1 }"
+                    range   { 0 1000 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "doomitlpes"
+                    label   "Omit LPE Tags"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "off" }
+                    hidewhen "{ engine == cpu force_headlight == 1 }"
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "omitlpes"
+                    label   "Omit LPE Tags"
+                    type    string
+                    default { "Untagged_Lights" }
+                    disablewhen "{ doomitlpes == 0 }"
+                    hidewhen "{ engine == cpu force_headlight == 1 }"
+                    menutoggle {
+                        [ "import loputils" ]
+                        [ "node = kwargs[\"node\"]" ]
+                        [ "lopnode = node.node(\"pythonscript1\")" ]
+                        [ "lights = loputils.globPrims(lopnode, \"%type:Light\")" ]
+                        [ "tags = set()" ]
+                        [ "for light in lights:" ]
+                        [ "    tagprop = light.GetProperty(\"inputs:karma:light:lpetag\")" ]
+                        [ "    if tagprop.IsValid():" ]
+                        [ "        tags.add(tagprop.Get(hou.frame()))" ]
+                        [ "" ]
+                        [ "return [x for x in sorted(tags) for y in range(2)]" ]
+                        language python
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "dooutputcs"
+                    label   "Output Colorspace"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "0" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "outputcs"
+                    label   "Output Colorspace"
+                    type    string
+                    default { "" }
+                    disablewhen "{ dooutputcs == 0 }"
+                    menureplace {
+                        [ "echo `pythonexprs(\"__import__('toolutils').ocioColorSpaceMenu()\")`" ]
+                    }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "channel_lower_rgb"
+                    label   "Lower Case OpenEXR Channel Names"
+                    type    toggle
+                    default { "off" }
+                }
+                groupcollapsible {
+                    name    "folder0"
+                    label   "Beauty"
+                    parmtag { "group_default" "1" }
+
+                    parm {
+                        name    "beauty"
+                        label   "Beauty"
+                        type    toggle
+                        joinnext
+                        default { "on" }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "labelparm2"
+                        label   "Label"
+                        type    label
+                        nolabel
+                        joinnext
+                        default { "" }
+                        hidewhen "{ engine == cpu force_headlight == 1 }"
+                    }
+                    parm {
+                        name    "beautyperlpe"
+                        label   "Split per LPE Tag"
+                        type    toggle
+                        default { "off" }
+                        disablewhen "{ beauty == 0 }"
+                        hidewhen "{ engine == cpu force_headlight == 1 }"
+                        range   { 0! 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "sepparm"
+                        label   "Separator"
+                        type    separator
+                        default { "" }
+                        hidewhen "{ engine == cpu force_headlight == 1 }"
+                    }
+                    parm {
+                        name    "beautyunshadowed"
+                        label   "Beauty Unshadowed"
+                        type    toggle
+                        joinnext
+                        default { "off" }
+                        hidewhen "{ engine == cpu force_headlight == 1 }"
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "labelparm3"
+                        label   "Label"
+                        type    label
+                        nolabel
+                        joinnext
+                        default { "" }
+                        hidewhen "{ engine == cpu force_headlight == 1 }"
+                    }
+                    parm {
+                        name    "beautyunshadowedperlpe"
+                        label   "Split per LPE Tag"
+                        type    toggle
+                        default { "off" }
+                        disablewhen "{ beautyunshadowed == 0 }"
+                        hidewhen "{ engine == cpu force_headlight == 1 }"
+                        range   { 0! 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "sepparm15"
+                        label   "Separator"
+                        type    separator
+                        default { "" }
+                        hidewhen "{ engine == cpu force_headlight == 1 }"
+                    }
+                    parm {
+                        name    "shadow"
+                        label   "Shadow"
+                        type    toggle
+                        joinnext
+                        default { "off" }
+                        hidewhen "{ engine == cpu force_headlight == 1 }"
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "labelparm23"
+                        label   "Label"
+                        type    label
+                        nolabel
+                        joinnext
+                        default { "" }
+                        hidewhen "{ engine == cpu force_headlight == 1 }"
+                    }
+                    parm {
+                        name    "shadowperlpe"
+                        label   "Split per LPE Tag"
+                        type    toggle
+                        default { "off" }
+                        disablewhen "{ shadow == 0 }"
+                        hidewhen "{ engine == cpu force_headlight == 1 }"
+                        range   { 0! 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                }
+
+                groupcollapsible {
+                    name    "folder1"
+                    label   "Diffuse"
+                    hidewhentab "{ engine == cpu force_headlight == 1 }"
+
+                    parm {
+                        name    "combineddiffuse"
+                        label   "Combined Diffuse"
+                        type    toggle
+                        joinnext
+                        default { "off" }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "labelparm"
+                        label   "Label"
+                        type    label
+                        nolabel
+                        joinnext
+                        default { "" }
+                    }
+                    parm {
+                        name    "combineddiffuseperlpe"
+                        label   "Split per LPE Tag"
+                        type    toggle
+                        default { "off" }
+                        disablewhen "{ combineddiffuse == 0 }"
+                        range   { 0! 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "sepparm32"
+                        label   "Separator"
+                        type    separator
+                        default { "" }
+                    }
+                    parm {
+                        name    "directdiffuse"
+                        label   "Direct Diffuse"
+                        type    toggle
+                        joinnext
+                        default { "off" }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "labelparm4"
+                        label   "Label"
+                        type    label
+                        nolabel
+                        joinnext
+                        default { "" }
+                    }
+                    parm {
+                        name    "directdiffuseperlpe"
+                        label   "Split per LPE Tag"
+                        type    toggle
+                        default { "off" }
+                        disablewhen "{ directdiffuse == 0 }"
+                        range   { 0! 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "sepparm4"
+                        label   "Separator"
+                        type    separator
+                        default { "" }
+                    }
+                    parm {
+                        name    "indirectdiffuse"
+                        label   "Indirect Diffuse"
+                        type    toggle
+                        joinnext
+                        default { "off" }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "labelparm5"
+                        label   "Label"
+                        type    label
+                        nolabel
+                        joinnext
+                        default { "" }
+                    }
+                    parm {
+                        name    "indirectdiffuseperlpe"
+                        label   "Split per LPE Tag"
+                        type    toggle
+                        default { "off" }
+                        disablewhen "{ indirectdiffuse == 0 }"
+                        range   { 0! 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "sepparm3"
+                        label   "Separator"
+                        type    separator
+                        default { "" }
+                    }
+                    parm {
+                        name    "combineddiffuseunshadowed"
+                        label   "Combined Diffuse Unshadowed"
+                        type    toggle
+                        joinnext
+                        default { "off" }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "labelparm6"
+                        label   "Label"
+                        type    label
+                        nolabel
+                        joinnext
+                        default { "" }
+                    }
+                    parm {
+                        name    "combineddiffuseunshadowedperlpe"
+                        label   "Split per LPE Tag"
+                        type    toggle
+                        default { "off" }
+                        disablewhen "{ combineddiffuseunshadowed == 0 }"
+                        range   { 0! 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "sepparm5"
+                        label   "Separator"
+                        type    separator
+                        default { "" }
+                    }
+                    parm {
+                        name    "directdiffuseunshadowed"
+                        label   "Direct Diffuse Unshadowed"
+                        type    toggle
+                        joinnext
+                        default { "off" }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "labelparm7"
+                        label   "Label"
+                        type    label
+                        nolabel
+                        joinnext
+                        default { "" }
+                    }
+                    parm {
+                        name    "directdiffuseunshadowedperlpe"
+                        label   "Split per LPE Tag"
+                        type    toggle
+                        default { "off" }
+                        disablewhen "{ directdiffuseunshadowed == 0 }"
+                        range   { 0! 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "sepparm34"
+                        label   "Separator"
+                        type    separator
+                        default { "" }
+                    }
+                    parm {
+                        name    "indirectdiffuseunshadowed"
+                        label   "Indirect Diffuse Unshadowed"
+                        type    toggle
+                        joinnext
+                        default { "off" }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "labelparm8"
+                        label   "Label"
+                        type    label
+                        nolabel
+                        joinnext
+                        default { "" }
+                    }
+                    parm {
+                        name    "indirectdiffuseunshadowedperlpe"
+                        label   "Split per LPE Tag"
+                        type    toggle
+                        default { "off" }
+                        disablewhen "{ indirectdiffuseunshadowed == 0 }"
+                        range   { 0! 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "sepparm39"
+                        label   "Separator"
+                        type    separator
+                        default { "" }
+                    }
+                    parm {
+                        name    "combineddiffuseshadow"
+                        label   "Combined Diffuse Shadow"
+                        type    toggle
+                        joinnext
+                        default { "off" }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "labelparm24"
+                        label   "Label"
+                        type    label
+                        nolabel
+                        joinnext
+                        default { "" }
+                    }
+                    parm {
+                        name    "combineddiffuseshadowperlpe"
+                        label   "Split per LPE Tag"
+                        type    toggle
+                        default { "off" }
+                        disablewhen "{ combineddiffuseshadow == 0 }"
+                        range   { 0! 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "sepparm40"
+                        label   "Separator"
+                        type    separator
+                        default { "" }
+                    }
+                    parm {
+                        name    "directdiffuseshadow"
+                        label   "Direct Diffuse Shadow"
+                        type    toggle
+                        joinnext
+                        default { "off" }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "labelparm25"
+                        label   "Label"
+                        type    label
+                        nolabel
+                        joinnext
+                        default { "" }
+                    }
+                    parm {
+                        name    "directdiffuseshadowperlpe"
+                        label   "Split per LPE Tag"
+                        type    toggle
+                        default { "off" }
+                        disablewhen "{ directdiffuseshadow == 0 }"
+                        range   { 0! 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "sepparm41"
+                        label   "Separator"
+                        type    separator
+                        default { "" }
+                    }
+                    parm {
+                        name    "indirectdiffuseshadow"
+                        label   "Indirect Diffuse Shadow"
+                        type    toggle
+                        joinnext
+                        default { "off" }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "labelparm26"
+                        label   "Label"
+                        type    label
+                        nolabel
+                        joinnext
+                        default { "" }
+                    }
+                    parm {
+                        name    "indirectdiffuseshadowperlpe"
+                        label   "Split per LPE Tag"
+                        type    toggle
+                        default { "off" }
+                        disablewhen "{ indirectdiffuseshadow == 0 }"
+                        range   { 0! 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                }
+
+                groupcollapsible {
+                    name    "folder2"
+                    label   "Reflections and Refractions"
+                    hidewhentab "{ engine == cpu force_headlight == 1 }"
+
+                    parm {
+                        name    "combinedglossyreflection"
+                        label   "Combined Glossy Reflection"
+                        type    toggle
+                        joinnext
+                        default { "off" }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "labelparm9"
+                        label   "Label"
+                        type    label
+                        nolabel
+                        joinnext
+                        default { "" }
+                    }
+                    parm {
+                        name    "combinedglossyreflectionperlpe"
+                        label   "Split per LPE Tag"
+                        type    toggle
+                        default { "off" }
+                        disablewhen "{ combinedglossyreflection == 0 }"
+                        range   { 0! 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "sepparm35"
+                        label   "Separator"
+                        type    separator
+                        default { "" }
+                    }
+                    parm {
+                        name    "directglossyreflection"
+                        label   "Direct Glossy Reflection"
+                        type    toggle
+                        joinnext
+                        default { "off" }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "labelparm10"
+                        label   "Label"
+                        type    label
+                        nolabel
+                        joinnext
+                        default { "" }
+                    }
+                    parm {
+                        name    "directglossyreflectionperlpe"
+                        label   "Split per LPE Tag"
+                        type    toggle
+                        default { "off" }
+                        disablewhen "{ directglossyreflection == 0 }"
+                        range   { 0! 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "sepparm6"
+                        label   "Separator"
+                        type    separator
+                        default { "" }
+                    }
+                    parm {
+                        name    "indirectglossyreflection"
+                        label   "Indirect Glossy Reflection"
+                        type    toggle
+                        joinnext
+                        default { "off" }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "labelparm11"
+                        label   "Label"
+                        type    label
+                        nolabel
+                        joinnext
+                        default { "" }
+                    }
+                    parm {
+                        name    "indirectglossyreflectionperlpe"
+                        label   "Split per LPE Tag"
+                        type    toggle
+                        default { "off" }
+                        disablewhen "{ indirectglossyreflection == 0 }"
+                        range   { 0! 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "sepparm7"
+                        label   "Separator"
+                        type    separator
+                        default { "" }
+                    }
+                    parm {
+                        name    "glossytransmission"
+                        label   "Glossy Transmission"
+                        type    toggle
+                        joinnext
+                        default { "off" }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "labelparm12"
+                        label   "Label"
+                        type    label
+                        nolabel
+                        joinnext
+                        default { "" }
+                    }
+                    parm {
+                        name    "glossytransmissionperlpe"
+                        label   "Split per LPE Tag"
+                        type    toggle
+                        default { "off" }
+                        disablewhen "{ glossytransmission == 0 }"
+                        range   { 0! 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "sepparm8"
+                        label   "Separator"
+                        type    separator
+                        default { "" }
+                    }
+                    parm {
+                        name    "coat"
+                        label   "BSDF Labelled 'coat'"
+                        type    toggle
+                        joinnext
+                        default { "off" }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "labelparm13"
+                        label   "Label"
+                        type    label
+                        nolabel
+                        joinnext
+                        default { "" }
+                    }
+                    parm {
+                        name    "coatperlpe"
+                        label   "Split per LPE Tag"
+                        type    toggle
+                        default { "off" }
+                        disablewhen "{ coat == 0 }"
+                        range   { 0! 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                }
+
+                groupcollapsible {
+                    name    "folder5"
+                    label   "Lights and Emission"
+                    hidewhentab "{ engine == cpu force_headlight == 1 }"
+
+                    parm {
+                        name    "combinedemission"
+                        label   "Combined Emission"
+                        type    toggle
+                        default { "off" }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "sepparm10"
+                        label   "Separator"
+                        type    separator
+                        default { "" }
+                    }
+                    parm {
+                        name    "directemission"
+                        label   "Direct Emission"
+                        type    toggle
+                        default { "off" }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "sepparm36"
+                        label   "Separator"
+                        type    separator
+                        default { "" }
+                    }
+                    parm {
+                        name    "indirectemission"
+                        label   "Indirect Emission"
+                        type    toggle
+                        default { "off" }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "sepparm14"
+                        label   "Separator"
+                        type    separator
+                        default { "" }
+                    }
+                    parm {
+                        name    "visiblelights"
+                        label   "Visible Lights"
+                        type    toggle
+                        joinnext
+                        default { "off" }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "labelparm17"
+                        label   "Label"
+                        type    label
+                        nolabel
+                        joinnext
+                        default { "" }
+                    }
+                    parm {
+                        name    "visiblelightsperlpe"
+                        label   "Split per LPE Tag"
+                        type    toggle
+                        default { "off" }
+                        disablewhen "{ visiblelights == 0 }"
+                        range   { 0! 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                }
+
+                groupcollapsible {
+                    name    "folder6"
+                    label   "Volume"
+                    hidewhentab "{ engine == cpu force_headlight == 1 }"
+
+                    parm {
+                        name    "combinedvolume"
+                        label   "Combined Volume"
+                        type    toggle
+                        joinnext
+                        default { "off" }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "labelparm18"
+                        label   "Label"
+                        type    label
+                        nolabel
+                        joinnext
+                        default { "" }
+                    }
+                    parm {
+                        name    "combinedvolumeperlpe"
+                        label   "Split per LPE Tag"
+                        type    toggle
+                        default { "off" }
+                        disablewhen "{ combinedvolume == 0 }"
+                        range   { 0! 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "sepparm12"
+                        label   "Separator"
+                        type    separator
+                        default { "" }
+                    }
+                    parm {
+                        name    "directvolume"
+                        label   "Direct Volume"
+                        type    toggle
+                        joinnext
+                        default { "off" }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "labelparm19"
+                        label   "Label"
+                        type    label
+                        nolabel
+                        joinnext
+                        default { "" }
+                    }
+                    parm {
+                        name    "directvolumeperlpe"
+                        label   "Split per LPE Tag"
+                        type    toggle
+                        default { "off" }
+                        disablewhen "{ directvolume == 0 }"
+                        range   { 0! 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "sepparm37"
+                        label   "Separator"
+                        type    separator
+                        default { "" }
+                    }
+                    parm {
+                        name    "indirectvolume"
+                        label   "Indirect Volume"
+                        type    toggle
+                        joinnext
+                        default { "off" }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "labelparm20"
+                        label   "Label"
+                        type    label
+                        nolabel
+                        joinnext
+                        default { "" }
+                    }
+                    parm {
+                        name    "indirectvolumeperlpe"
+                        label   "Split per LPE Tag"
+                        type    toggle
+                        default { "off" }
+                        disablewhen "{ indirectvolume == 0 }"
+                        range   { 0! 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                }
+
+                groupcollapsible {
+                    name    "folder7"
+                    label   "SSS"
+                    hidewhentab "{ engine == cpu force_headlight == 1 }"
+
+                    parm {
+                        name    "sss"
+                        label   "BSDF Labelled 'sss'"
+                        type    toggle
+                        joinnext
+                        default { "off" }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "labelparm21"
+                        label   "Label"
+                        type    label
+                        nolabel
+                        joinnext
+                        default { "" }
+                    }
+                    parm {
+                        name    "sssperlpe"
+                        label   "Split per LPE Tag"
+                        type    toggle
+                        default { "off" }
+                        disablewhen "{ sss == 0 }"
+                        range   { 0! 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                }
+
+                groupcollapsible {
+                    name    "folder10"
+                    label   "Albedo"
+                    hidewhentab "{ engine == cpu force_headlight == 1 }"
+
+                    parm {
+                        name    "albedo"
+                        label   "Albedo"
+                        type    toggle
+                        default { "off" }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                }
+
+                groupcollapsible {
+                    name    "folder17"
+                    label   "Ambient Occlusion"
+                    hidewhentab "{ engine == cpu force_headlight == 1 }"
+
+                    parm {
+                        name    "ambientocclusion"
+                        label   "Ambient Occlusion"
+                        type    toggle
+                        default { "off" }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                }
+
+            }
+
+            groupcollapsible {
+                name    "__ray"
+                label   "Utility"
+
+                parm {
+                    name    "hitP"
+                    label   "P (World Space)"
+                    type    toggle
+                    joinnext
+                    default { "off" }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "labelparm30"
+                    label   "Label"
+                    type    label
+                    nolabel
+                    default { "" }
+                }
+                parm {
+                    name    "hitPfilter"
+                    label   "Sample Blending"
+                    type    string
+                    joinnext
+                    default { "[\"ubox\",{}]" }
+                    disablewhen "{ hitP == 0 }"
+                    hidewhen "{ hitP == 0 }"
+                    menureplace {
+                        [ "import loputils" ]
+                        [ "return loputils.createPixelFilterMenu()" ]
+                        language python
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "spare_category" "Image" }
+                    parmtag { "uiscope" "None" }
+                    parmtag { "usdvaluetype" "string" }
+                }
+                parm {
+                    name    "hitPprecision"
+                    label   "Precision"
+                    type    string
+                    default { "float3" }
+                    disablewhen "{ hitP == 0 }"
+                    hidewhen "{ hitP == 0 }"
+                    menu {
+                        "half3"     "16 Bit"
+                        "float3"    "32 Bit"
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "sepparm22"
+                    label   "Separator"
+                    type    separator
+                    default { "" }
+                }
+                parm {
+                    name    "hitP_camera"
+                    label   "P (Camera Space)"
+                    type    toggle
+                    joinnext
+                    default { "off" }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "labelparm32"
+                    label   "Label"
+                    type    label
+                    nolabel
+                    default { "" }
+                }
+                parm {
+                    name    "hitP_camerafilter"
+                    label   "Sample Blending"
+                    type    string
+                    joinnext
+                    default { "[\"ubox\",{}]" }
+                    disablewhen "{ hitP_camera == 0 }"
+                    hidewhen "{ hitP_camera == 0 }"
+                    menureplace {
+                        [ "import loputils" ]
+                        [ "return loputils.createPixelFilterMenu()" ]
+                        language python
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "spare_category" "Image" }
+                    parmtag { "uiscope" "None" }
+                    parmtag { "usdvaluetype" "string" }
+                }
+                parm {
+                    name    "hitP_cameraprecision"
+                    label   "Precision"
+                    type    string
+                    default { "float3" }
+                    disablewhen "{ hitP_camera == 0 }"
+                    hidewhen "{ hitP_camera == 0 }"
+                    menu {
+                        "half3"     "16 Bit"
+                        "float3"    "32 Bit"
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "sepparm23"
+                    label   "Separator"
+                    type    separator
+                    default { "" }
+                }
+                parm {
+                    name    "hitPz"
+                    label   "Depth (Camera Space)"
+                    type    toggle
+                    joinnext
+                    default { "off" }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "labelparm31"
+                    label   "Label"
+                    type    label
+                    nolabel
+                    default { "" }
+                }
+                parm {
+                    name    "hitPzfilter"
+                    label   "Sample Blending"
+                    type    string
+                    joinnext
+                    default { "[\"minmax\",{\"mode\":\"zmin\"}]" }
+                    disablewhen "{ hitPz == 0 }"
+                    hidewhen "{ hitPz == 0 }"
+                    menureplace {
+                        [ "import loputils" ]
+                        [ "return loputils.createPixelFilterMenu()" ]
+                        language python
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "spare_category" "Image" }
+                    parmtag { "uiscope" "None" }
+                    parmtag { "usdvaluetype" "string" }
+                }
+                parm {
+                    name    "hitPzprecision"
+                    label   "Precision"
+                    type    string
+                    default { "float" }
+                    disablewhen "{ hitPz == 0 }"
+                    hidewhen "{ hitPz == 0 }"
+                    menu {
+                        "half"  "16 Bit"
+                        "float" "32 Bit"
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "hitPzfarclip"
+                    label   "Camera's Far Clip as Background Value"
+                    type    toggle
+                    size    1
+                    default { 0 }
+                    disablewhen "{ hitPz == 0 }"
+                    hidewhen "{ hitPz == 0 }"
+                    parmtag { "spare_category" "Image" }
+                }
+                parm {
+                    name    "sepparm24"
+                    label   "Separator"
+                    type    separator
+                    invisible
+                    default { "" }
+                }
+                parm {
+                    name    "element"
+                    label   "Element (Raw Id)"
+                    type    toggle
+                    invisible
+                    joinnext
+                    default { "off" }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "labelparm33"
+                    label   "Label"
+                    type    label
+                    invisible
+                    nolabel
+                    default { "" }
+                }
+                parm {
+                    name    "elementfilter"
+                    label   "Sample Blending"
+                    type    string
+                    invisible
+                    joinnext
+                    default { "[\"minmax\",{\"mode\":\"idcover\"}]" }
+                    disablewhen "{ element == 0 }"
+                    hidewhen "{ element == 0 }"
+                    menureplace {
+                        [ "import loputils" ]
+                        [ "return loputils.createPixelFilterMenu()" ]
+                        language python
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "spare_category" "Image" }
+                    parmtag { "uiscope" "None" }
+                    parmtag { "usdvaluetype" "string" }
+                }
+                parm {
+                    name    "elementprecision"
+                    label   "Precision"
+                    type    string
+                    invisible
+                    default { "float" }
+                    disablewhen "{ element == 0 }"
+                    hidewhen "{ element == 0 }"
+                    menu {
+                        "half"  "16 Bit"
+                        "float" "32 Bit"
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "sepparm25"
+                    label   "Separator"
+                    type    separator
+                    invisible
+                    default { "" }
+                }
+                parm {
+                    name    "primid"
+                    label   "Prim Id"
+                    type    toggle
+                    invisible
+                    joinnext
+                    default { "off" }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "labelparm34"
+                    label   "Label"
+                    type    label
+                    invisible
+                    nolabel
+                    default { "" }
+                }
+                parm {
+                    name    "primidfilter"
+                    label   "Sample Blending"
+                    type    string
+                    invisible
+                    joinnext
+                    default { "[\"minmax\",{\"mode\":\"idcover\"}]" }
+                    disablewhen "{ primid == 0 }"
+                    hidewhen "{ primid == 0 }"
+                    menureplace {
+                        [ "import loputils" ]
+                        [ "return loputils.createPixelFilterMenu()" ]
+                        language python
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "spare_category" "Image" }
+                    parmtag { "uiscope" "None" }
+                    parmtag { "usdvaluetype" "string" }
+                }
+                parm {
+                    name    "primidprecision"
+                    label   "Precision"
+                    type    string
+                    invisible
+                    default { "float" }
+                    disablewhen "{ primid == 0 }"
+                    hidewhen "{ primid == 0 }"
+                    menu {
+                        "half"  "16 Bit"
+                        "float" "32 Bit"
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "sepparm26"
+                    label   "Separator"
+                    type    separator
+                    default { "" }
+                }
+                parm {
+                    name    "hituv"
+                    label   "Texture Coordinates (st)"
+                    type    toggle
+                    joinnext
+                    default { "off" }
+                    hidewhen "{ engine == cpu force_headlight == 1 }"
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "labelparm35"
+                    label   "Label"
+                    type    label
+                    nolabel
+                    default { "" }
+                    hidewhen "{ engine == cpu force_headlight == 1 }"
+                }
+                parm {
+                    name    "hituvfilter"
+                    label   "Sample Blending"
+                    type    string
+                    joinnext
+                    default { "[\"ubox\",{}]" }
+                    disablewhen "{ hituv == 0 }"
+                    hidewhen "{ hituv == 0 } { engine == cpu force_headlight == 1 }"
+                    menureplace {
+                        [ "import loputils" ]
+                        [ "return loputils.createPixelFilterMenu()" ]
+                        language python
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "spare_category" "Image" }
+                    parmtag { "uiscope" "None" }
+                    parmtag { "usdvaluetype" "string" }
+                }
+                parm {
+                    name    "hituvprecision"
+                    label   "Precision"
+                    type    string
+                    default { "float3" }
+                    disablewhen "{ hituv == 0 }"
+                    hidewhen "{ hituv == 0 } { engine == cpu force_headlight == 1 }"
+                    menu {
+                        "half3"     "16 Bit"
+                        "float3"    "32 Bit"
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "sepparm29"
+                    label   "Separator"
+                    type    separator
+                    default { "" }
+                    hidewhen "{ engine == cpu force_headlight == 1 }"
+                }
+                parm {
+                    name    "hitN"
+                    label   "N (Smooth Normal)"
+                    type    toggle
+                    joinnext
+                    default { "off" }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "labelparm61"
+                    label   "Label"
+                    type    label
+                    nolabel
+                    default { "" }
+                }
+                parm {
+                    name    "hitNfilter"
+                    label   "Sample Blending"
+                    type    string
+                    joinnext
+                    default { "[\"ubox\",{}]" }
+                    disablewhen "{ hitN == 0 }"
+                    hidewhen "{ hitN == 0 }"
+                    menureplace {
+                        [ "import loputils" ]
+                        [ "return loputils.createPixelFilterMenu()" ]
+                        language python
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "spare_category" "Image" }
+                    parmtag { "uiscope" "None" }
+                    parmtag { "usdvaluetype" "string" }
+                }
+                parm {
+                    name    "hitNprecision"
+                    label   "Precision"
+                    type    string
+                    default { "half3" }
+                    disablewhen "{ hitN == 0 }"
+                    hidewhen "{ hitN == 0 }"
+                    menu {
+                        "half3"     "16 Bit"
+                        "float3"    "32 Bit"
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "sepparm46"
+                    label   "Separator"
+                    type    separator
+                    default { "" }
+                }
+                parm {
+                    name    "hitNg"
+                    label   "Ng (Geometric Normal)"
+                    type    toggle
+                    joinnext
+                    default { "off" }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "labelparm63"
+                    label   "Label"
+                    type    label
+                    nolabel
+                    default { "" }
+                }
+                parm {
+                    name    "hitNgfilter"
+                    label   "Sample Blending"
+                    type    string
+                    joinnext
+                    default { "[\"ubox\",{}]" }
+                    disablewhen "{ hitNg == 0 }"
+                    hidewhen "{ hitNg == 0 }"
+                    menureplace {
+                        [ "import loputils" ]
+                        [ "return loputils.createPixelFilterMenu()" ]
+                        language python
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "spare_category" "Image" }
+                    parmtag { "uiscope" "None" }
+                    parmtag { "usdvaluetype" "string" }
+                }
+                parm {
+                    name    "hitNgprecision"
+                    label   "Precision"
+                    type    string
+                    default { "half3" }
+                    disablewhen "{ hitNg == 0 }"
+                    hidewhen "{ hitNg == 0 }"
+                    menu {
+                        "half3"     "16 Bit"
+                        "float3"    "32 Bit"
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "sepparm30"
+                    label   "Separator"
+                    type    separator
+                    default { "" }
+                }
+                parm {
+                    name    "hitN_facingratio"
+                    label   "Facing Ratio (N.I)"
+                    type    toggle
+                    joinnext
+                    default { "off" }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "labelparm70"
+                    label   "Label"
+                    type    label
+                    nolabel
+                    default { "" }
+                }
+                parm {
+                    name    "hitN_facingratiofilter"
+                    label   "Sample Blending"
+                    type    string
+                    joinnext
+                    default { "[\"ubox\",{}]" }
+                    disablewhen "{ hitN_facingratio == 0 }"
+                    hidewhen "{ hitN_facingratio == 0 }"
+                    menureplace {
+                        [ "import loputils" ]
+                        [ "return loputils.createPixelFilterMenu()" ]
+                        language python
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "spare_category" "Image" }
+                    parmtag { "uiscope" "None" }
+                    parmtag { "usdvaluetype" "string" }
+                }
+                parm {
+                    name    "hitN_facingratioprecision"
+                    label   "Precision"
+                    type    string
+                    default { "half" }
+                    disablewhen "{ hitN_facingratio == 0 }"
+                    hidewhen "{ hitN_facingratio == 0 }"
+                    menu {
+                        "half"  "16 Bit"
+                        "float" "32 Bit"
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "sepparm38"
+                    label   "Separator"
+                    type    separator
+                    default { "" }
+                }
+                parm {
+                    name    "hitNg_facingratio"
+                    label   "Geometric Facing Ratio (Ng.I)"
+                    type    toggle
+                    joinnext
+                    default { "off" }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "labelparm69"
+                    label   "Label"
+                    type    label
+                    nolabel
+                    default { "" }
+                }
+                parm {
+                    name    "hitNg_facingratiofilter"
+                    label   "Sample Blending"
+                    type    string
+                    joinnext
+                    default { "[\"ubox\",{}]" }
+                    disablewhen "{ hitNg_facingratio == 0 }"
+                    hidewhen "{ hitNg_facingratio == 0 }"
+                    menureplace {
+                        [ "import loputils" ]
+                        [ "return loputils.createPixelFilterMenu()" ]
+                        language python
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "spare_category" "Image" }
+                    parmtag { "uiscope" "None" }
+                    parmtag { "usdvaluetype" "string" }
+                }
+                parm {
+                    name    "hitNg_facingratioprecision"
+                    label   "Precision"
+                    type    string
+                    default { "half" }
+                    disablewhen "{ hitNg_facingratio == 0 }"
+                    hidewhen "{ hitNg_facingratio == 0 }"
+                    menu {
+                        "half"  "16 Bit"
+                        "float" "32 Bit"
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "sepparm45"
+                    label   "Separator"
+                    type    separator
+                    default { "" }
+                }
+                parm {
+                    name    "motionvectors"
+                    label   "Motion Vectors"
+                    type    toggle
+                    joinnext
+                    default { "off" }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "labelparm67"
+                    label   "Label"
+                    type    label
+                    nolabel
+                    default { "" }
+                }
+                parm {
+                    name    "motionvectorsfilter"
+                    label   "Sample Blending"
+                    type    string
+                    joinnext
+                    default { "[\"ubox\",{}]" }
+                    disablewhen "{ motionvectors == 0 }"
+                    hidewhen "{ motionvectors == 0 }"
+                    menureplace {
+                        [ "import loputils" ]
+                        [ "return loputils.createPixelFilterMenu()" ]
+                        language python
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "spare_category" "Image" }
+                    parmtag { "uiscope" "None" }
+                    parmtag { "usdvaluetype" "string" }
+                }
+                parm {
+                    name    "motionvectorsprecision"
+                    label   "Precision"
+                    type    string
+                    default { "half3" }
+                    disablewhen "{ motionvectors == 0 }"
+                    hidewhen "{ motionvectors == 0 }"
+                    menu {
+                        "half3"     "16 Bit"
+                        "float3"    "32 Bit"
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "sepparm33"
+                    label   "Separator"
+                    type    separator
+                    default { "" }
+                }
+                parm {
+                    name    "velocity"
+                    label   "Velocity"
+                    type    toggle
+                    joinnext
+                    default { "off" }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "labelparm66"
+                    label   "Label"
+                    type    label
+                    nolabel
+                    default { "" }
+                }
+                parm {
+                    name    "velocityfilter"
+                    label   "Sample Blending"
+                    type    string
+                    joinnext
+                    default { "[\"ubox\",{}]" }
+                    disablewhen "{ velocity == 0 }"
+                    hidewhen "{ velocity == 0 }"
+                    menureplace {
+                        [ "import loputils" ]
+                        [ "return loputils.createPixelFilterMenu()" ]
+                        language python
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "spare_category" "Image" }
+                    parmtag { "uiscope" "None" }
+                    parmtag { "usdvaluetype" "string" }
+                }
+                parm {
+                    name    "velocityprecision"
+                    label   "Precision"
+                    type    string
+                    default { "half3" }
+                    disablewhen "{ velocity == 0 }"
+                    hidewhen "{ velocity == 0 }"
+                    menu {
+                        "half3"     "16 Bit"
+                        "float3"    "32 Bit"
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+            groupcollapsible {
+                name    "__extrarendervars"
+                label   "Extra Render Vars"
+                hidewhentab "{ engine == cpu force_headlight == 1 }"
+
+                multiparm {
+                    name    "extrarendervars"
+                    label    "Render Vars"
+                    parmtag { "autoscope" "0000000000000000" }
+
+                    parm {
+                        name    "enable#"
+                        label   "Enable"
+                        type    toggle
+                        default { "1" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    groupsimple {
+                        name    "folder0_#"
+                        label   "Render Var"
+                        disablewhen "{ enable# == 0 }"
+
+                        parm {
+                            name    "name#"
+                            label   "Name"
+                            type    string
+                            joinnext
+                            default { "" }
+                            menureplace {
+                                [ "import loptoolutils" ]
+                                [ "return loptoolutils.getAdditionalRenderVarsMenu()" ]
+                                language python
+                            }
+                            parmtag { "autoscope" "0000000000000000" }
+                            parmtag { "script_callback" "kwargs[\"node\"].hm().setAOV(kwargs)" }
+                            parmtag { "script_callback_language" "python" }
+                            parmtag { "usdvaluetype" "string" }
+                        }
+                        parm {
+                            name    "split#"
+                            label   "Split per LPE Tag"
+                            type    toggle
+                            default { "0" }
+                            disablewhen "{ name# == \"\" } { sourceType# != lpe }"
+                            parmtag { "script_callback_language" "python" }
+                        }
+                        parm {
+                            name    "format#"
+                            label   "Format"
+                            type    string
+                            default { "float" }
+                            disablewhen "{ name# == \"\" }"
+                            menu {
+                                [ "values = [\"float\",\"color2f\",\"color3f\",\"color4f\",\"point3f\",\"normal3f\",\"vector3f\",\"float2\",\"float3\",\"float4\"]" ]
+                                [ "values += [\"half\",\"float16\",\"color2h\",\"color3h\",\"color4h\",\"point3h\",\"normal3h\",\"vector3h\",\"half2\",\"half3\",\"half4\"]" ]
+                                [ "values += [\"u8\",\"uint8\",\"color2u8\",\"color3u8\",\"color4u8\"]" ]
+                                [ "values += [\"i8\",\"int8\",\"color2i8\",\"color3i8\",\"color4i8\"]" ]
+                                [ "values += [\"u16\",\"uint16\",\"color2u16\",\"color3u16\",\"color4u16\"]" ]
+                                [ "values += [\"i16\",\"int16\",\"color2i16\",\"color3i16\",\"color4i16\"]" ]
+                                [ "values += [\"int\",\"int2\",\"int3\",\"int4\",\"uint\",\"uint2\",\"uint3\",\"uint4\"]" ]
+                                [ "" ]
+                                [ "return [x for x in values for y in range(2)]" ]
+                                language python
+                            }
+                            parmtag { "autoscope" "0000000000000000" }
+                            parmtag { "usdvaluetype" "string" }
+                        }
+                        parm {
+                            name    "dataType#"
+                            label   "Data Type"
+                            type    string
+                            default { "color3f" }
+                            disablewhen "{ name# == \"\" }"
+                            menu {
+                                [ "import loputils" ]
+                                [ "return loputils.createAttribTypeMenu()" ]
+                                language python
+                            }
+                            parmtag { "autoscope" "0000000000000000" }
+                            parmtag { "usdvaluetype" "token" }
+                        }
+                        parm {
+                            name    "sourceName#"
+                            label   "Source Name"
+                            type    string
+                            default { "" }
+                            disablewhen "{ name# == \"\" }"
+                            parmtag { "autoscope" "0000000000000000" }
+                            parmtag { "usdvaluetype" "string" }
+                        }
+                        parm {
+                            name    "sourceType#"
+                            label   "Source Type"
+                            type    string
+                            default { "raw" }
+                            disablewhen "{ name# == \"\" }"
+                            menu {
+                                "raw"       "Raw"
+                                "primvar"   "Primvar"
+                                "lpe"       "LPE"
+                                "intrinsic" "Intrinsic"
+                            }
+                            parmtag { "autoscope" "0000000000000000" }
+                            parmtag { "usdvaluetype" "token" }
+                        }
+                        groupsimple {
+                            name    "folder0_#_2"
+                            label   "Karma"
+
+                            parm {
+                                name    "filter#"
+                                label   "Sample Blending"
+                                type    string
+                                default { "[\"ubox\",{}]" }
+                                disablewhen "{ name# == \"\" }"
+                                menureplace {
+                                    [ "import loputils" ]
+                                    [ "return loputils.createPixelFilterMenu()" ]
+                                    language python
+                                }
+                                parmtag { "autoscope" "0000000000000000" }
+                                parmtag { "spare_category" "Image" }
+                                parmtag { "uiscope" "None" }
+                                parmtag { "usdvaluetype" "string" }
+                            }
+                            parm {
+                                name    "cryptomatte#"
+                                label   "Cryptomatte"
+                                type    toggle
+                                default { "0" }
+                                disablewhen "{ name# == \"\" }"
+                                parmtag { "script_callback_language" "python" }
+                            }
+                            parm {
+                                name    "cryptomatterank#"
+                                label   "Overlap Limit"
+                                type    integer
+                                default { "6" }
+                                disablewhen "{ cryptomatte# == 0 }"
+                                range   { 0 10 }
+                                parmtag { "script_callback_language" "python" }
+                            }
+                            parm {
+                                name    "cryptomattesidecar#"
+                                label   "Manifest File"
+                                type    string
+                                default { "" }
+                                disablewhen "{ cryptomatte# == 0 }"
+                                parmtag { "script_callback_language" "python" }
+                            }
+                            parm {
+                                name    "dooutputcs#"
+                                label   "Output Colorspace"
+                                type    toggle
+                                nolabel
+                                joinnext
+                                default { "off" }
+                                disablewhen "{ name# == \"\" }"
+                                parmtag { "autoscope" "0000000000000000" }
+                                parmtag { "script_callback_language" "python" }
+                            }
+                            parm {
+                                name    "outputcs#"
+                                label   "Output Colorspace"
+                                type    string
+                                default { "" }
+                                disablewhen "{ dooutputcs# == 0 }"
+                                menureplace {
+                                    [ "echo `pythonexprs(\"__import__('toolutils').ocioColorSpaceMenu()\")`" ]
+                                }
+                                parmtag { "autoscope" "0000000000000000" }
+                                parmtag { "script_callback_language" "python" }
+                            }
+                            parm {
+                                name    "utilitypathexpression#"
+                                label   "Utility Path Expression"
+                                type    string
+                                default { "CO" }
+                                disablewhen "{ name# == \"\" } { sourceType# == lpe }"
+                                parmtag { "script_callback_language" "python" }
+                            }
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+        group {
+            name    "__imageoutput_1"
+            label   "Shadow Catcher"
+
+            parm {
+                name    "holdout_shadows"
+                label   "Add Holdout Shadows To Beauty"
+                type    toggle
+                default { "0" }
+            }
+            parm {
+                name    "holdout_shadow_alpha"
+                label   "Holdout Shadow Alpha"
+                type    float
+                default { "1" }
+                disablewhen "{ holdout_shadows == off }"
+                range   { 0! 1! }
+            }
+        }
+
+        group {
+            name    "__imageoutput_2"
+            label   "Filters"
+
+            parm {
+                name        "cop_createaovs"
+                label       "Automatically Create Required COP Image Filter AOVs"
+                type        toggle
+                default     { 1 }
+            }
+
+            multiparm {
+                name    "cop_imagefilters"
+                label   "COP Image Filter Lists"
+                default { "1" }
+                parm {
+                    name    "cop_filter_enable_#"
+                    label   "Enable"
+                    type    toggle
+                    joinnext
+                    nolabel
+                    default { "1" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name        "cop_filter_#"
+                    label       "Filter Prim"
+                    type        string
+                    size        1
+                    joinnext
+                    default     { "" }
+                    menureplace {
+                        [ "import loputils" ]
+                        [ "lop = kwargs['node']" ]
+                        [ "if len(lop.inputs()) > 0:" ]
+                        [ "     lop = lop.inputs()[0]" ]
+                        [ "stage = lop.stage() if lop else None" ]
+                        [ "return loputils.createHoudiniImageFilterListPrimMenu(stage)" ]
+                        language python
+                    }
+                    parmtag { "usdvaluetype" "relationship" }
+                    parmtag { "usdvalueordered" "1" }
+                    parmtag { "sidefx::usdpathtype" "primlist" }
+                }
+                parm {
+                    name        "cop_filter_create_#"
+                    label       "New Filter"
+                    type        button
+                    nolabel
+                    default     { "0" }
+                    parmtag     { "button_icon" "BUTTONS_plus" }
+                    parmtag     { "script_action_language" "python" }
+                    parmtag     { "script_callback" "import loputils\nloputils.createImageFilterPrim(kwargs)" }
+                    parmtag     { "script_callback_language" "python" }
+                }
+            }
+
+            parm {
+                name    "filter_sepparm1"
+                label   "Spacer"
+                type    separator
+                default { "" }
+                parmtag { "sidefx::layout_height" "small" }
+                //parmtag { "sidefx::look" "blank" }
+            }
+
+            groupcollapsible {
+                name    "folder3"
+                label   "Karma Built-in Image Filters"
+                parmtag { "group_default" "0" }
+
+                parm {
+                    name    "denoiser"
+                    label   "Denoiser"
+                    type    string
+                    default { "off" }
+                    menu {
+                        "off"   "No Denoiser"
+                        "optix" "NVIDIA OptiX Denoiser"
+                        "oidn"  "Intel OIDN"
+                    }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "denoise_aovs"
+                    label   "AOV List"
+                    type    string
+                    default { "C" }
+                    disablewhen "{ denoiser == off }"
+                    menutoggle {
+                        [ "kwargs['node'].hm().getPlanes(kwargs)" ]
+                        language python
+                    }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "denoise_usealbedo"
+                    label   "Use Albedo"
+                    type    toggle
+                    default { "1" }
+                    disablewhen "{ denoiser == off }"
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "denoise_useN"
+                    label   "Use N Input"
+                    type    toggle
+                    default { "1" }
+                    disablewhen "{ denoiser == off }"
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "denoise_separate_aovs"
+                    label   "Create Separate Denoised AOVs"
+                    type    toggle
+                    default { "0" }
+                    disablewhen "{ denoiser == off }"
+                }
+                parm {
+                    name    "denoise_cpu_only"
+                    label   "Use CPU Only"
+                    type    toggle
+                    default { "off" }
+                    hidewhen "{ denoiser != oidn }"
+                }
+                parm {
+                    name    "sepparm11"
+                    label   "Spacer"
+                    type    separator
+                    default { "" }
+                    parmtag { "sidefx::layout_height" "small" }
+                    parmtag { "sidefx::look" "blank" }
+                }
+                parm {
+                    name    "tonemap"
+                    label   "Tone Map"
+                    type    string
+                    default { "off" }
+                    menu {
+                        "off"       "No Tonemapping"
+                        "reinhard"  "Reinhard"
+                        "ward"      "Ward"
+                        "unreal"    "Unreal"
+                        "aces"      "Aces"
+                        "hable"     "Hable"
+                        "hable2"    "Hable2"
+                    }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "tonemap_aovs"
+                    label   "AOV List"
+                    type    string
+                    default { "C" }
+                    disablewhen "{ tonemap == off }"
+                    menutoggle {
+                        [ "kwargs['node'].hm().getPlanes(kwargs)" ]
+                        language python
+                    }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "tonemapcurve"
+                    label   "Tonemap Curve"
+                    type    ramp_flt
+                    default { "31" }
+                    hidewhen "{ tonemap == off } { tonemap == ward } { tonemap == hable2 }"
+                    range   { 1! 10 }
+                    parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 0 ) 1interp ( linear ) 2pos ( 0.03333333507180214 ) 2value ( 0.0476190522313118 ) 2interp ( linear ) 3pos ( 0.06666667014360428 ) 3value ( 0.09090909361839294 ) 3interp ( linear ) 4pos ( 0.10000000149011612 ) 4value ( 0.1304347962141037 ) 4interp ( linear ) 5pos ( 0.13333334028720856 ) 5value ( 0.1666666567325592 ) 5interp ( linear ) 6pos ( 0.1666666716337204 ) 6value ( 0.20000000298023224 ) 6interp ( linear ) 7pos ( 0.20000000298023224 ) 7value ( 0.23076924681663513 ) 7interp ( linear ) 8pos ( 0.23333333432674408 ) 8value ( 0.25925925374031067 ) 8interp ( linear ) 9pos ( 0.2666666805744171 ) 9value ( 0.2857142984867096 ) 9interp ( linear ) 10pos ( 0.29999998211860657 ) 10value ( 0.3103448152542114 ) 10interp ( linear ) 11pos ( 0.3333333432674408 ) 11value ( 0.3333333432674408 ) 11interp ( linear ) 12pos ( 0.36666667461395264 ) 12value ( 0.3548387289047241 ) 12interp ( linear ) 13pos ( 0.4000000059604645 ) 13value ( 0.375 ) 13interp ( linear ) 14pos ( 0.43333330750465393 ) 14value ( 0.39393937587738037 ) 14interp ( linear ) 15pos ( 0.46666666865348816 ) 15value ( 0.4117646813392639 ) 15interp ( linear ) 16pos ( 0.5 ) 16value ( 0.4285714328289032 ) 16interp ( linear ) 17pos ( 0.5333333611488342 ) 17value ( 0.444444477558136 ) 17interp ( linear ) 18pos ( 0.5666666626930237 ) 18value ( 0.45945945382118225 ) 18interp ( linear ) 19pos ( 0.5999999642372131 ) 19value ( 0.4736841917037964 ) 19interp ( linear ) 20pos ( 0.6333333253860474 ) 20value ( 0.4871794581413269 ) 20interp ( linear ) 21pos ( 0.6666666865348816 ) 21value ( 0.5 ) 21interp ( linear ) 22pos ( 0.699999988079071 ) 22value ( 0.5121951103210449 ) 22interp ( linear ) 23pos ( 0.7333333492279053 ) 23value ( 0.523809552192688 ) 23interp ( linear ) 24pos ( 0.7666666507720947 ) 24value ( 0.5348836779594421 ) 24interp ( linear ) 25pos ( 0.800000011920929 ) 25value ( 0.5454545617103577 ) 25interp ( linear ) 26pos ( 0.8333333134651184 ) 26value ( 0.5555555820465088 ) 26interp ( linear ) 27pos ( 0.8666666150093079 ) 27value ( 0.5652173757553101 ) 27interp ( linear ) 28pos ( 0.9000000357627869 ) 28value ( 0.5744681358337402 ) 28interp ( linear ) 29pos ( 0.9333333373069763 ) 29value ( 0.5833333134651184 ) 29interp ( linear ) 30pos ( 0.9666666984558105 ) 30value ( 0.5918367505073547 ) 30interp ( linear ) 31pos ( 1 ) 31value ( 0.6000000238418579 ) 31interp ( linear )" }
+                    parmtag { "rampshowcontrolsdefault" "0" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "tonemap_toe"
+                    label   "Toe"
+                    type    float
+                    default { "0.5" }
+                    hidewhen "{ tonemap != hable2 tonemap != hable }"
+                    range   { 0! 1! }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "tonemap_shoulder"
+                    label   "Shoulder"
+                    type    float
+                    default { "0.5" }
+                    hidewhen "{ tonemap != hable2 tonemap != hable }"
+                    range   { 0! 1! }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "tonemap_utoe"
+                    label   "Toe"
+                    type    float
+                    default { "0.55" }
+                    hidewhen "{ tonemap != unreal }"
+                    range   { 0! 1! }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "tonemap_ushoulder"
+                    label   "Shoulder"
+                    type    float
+                    default { "0.26" }
+                    hidewhen "{ tonemap != unreal }"
+                    range   { 0! 1! }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "tonemap_slope"
+                    label   "Slope"
+                    type    float
+                    default { "0.88" }
+                    hidewhen "{ tonemap != unreal }"
+                    range   { 0! 2! }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "tonemap_linear"
+                    label   "Linear"
+                    type    float
+                    default { "0.3" }
+                    hidewhen "{ tonemap != hable }"
+                    range   { 0! 2! }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "tonemap_linearangle"
+                    label   "Linear Angle"
+                    type    float
+                    default { "0.1" }
+                    hidewhen "{ tonemap != hable }"
+                    range   { 0! 1! }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "tonemap_toelength"
+                    label   "Toe Length"
+                    type    float
+                    default { "0.5" }
+                    hidewhen "{ tonemap != hable2 }"
+                    range   { 0! 1! }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "tonemap_shoulderlength"
+                    label   "Shoulder Length"
+                    type    float
+                    default { "0.5" }
+                    hidewhen "{ tonemap != hable2 }"
+                    range   { 0! 1! }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "tonemap_shoulderangle"
+                    label   "Shoulder Angle"
+                    type    float
+                    default { "1" }
+                    hidewhen "{ tonemap != hable2 }"
+                    range   { 0! 1! }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "sepparm13"
+                    label   "Spacer"
+                    type    separator
+                    default { "" }
+                    parmtag { "sidefx::layout_height" "small" }
+                    parmtag { "sidefx::look" "blank" }
+                }
+                multiswitcher {
+                    name    "ocio"
+                    label    "OCIO"
+
+                    parm {
+                        name    "ocio_enable#"
+                        label   "Enable"
+                        type    toggle
+                        default { "1" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "ocio_planes#"
+                        label   "Planes"
+                        type    string
+                        default { "" }
+                        disablewhen "{ ocio_enable# == 0 }"
+                        menutoggle {
+                            [ "kwargs['node'].hm().getPlanes(kwargs)" ]
+                            language python
+                        }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "ocio_outputspace#"
+                        label   "Output Space"
+                        type    string
+                        default { "" }
+                        disablewhen "{ ocio_enable# == 0 }"
+                        menureplace {
+                            [ "echo `pythonexprs(\"__import__('toolutils').ocioColorSpaceMenu()\")`" ]
+                        }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "ocio_inputspace#"
+                        label   "Input Space"
+                        type    string
+                        default { "data" }
+                        disablewhen "{ ocio_enable# == 0 }"
+                        menureplace {
+                            [ "echo `pythonexprs(\"__import__('toolutils').ocioColorSpaceMenu()\")`" ]
+                        }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "ocio_looks#"
+                        label   "Looks"
+                        type    string
+                        default { "" }
+                        disablewhen "{ ocio_enable# == 0 }"
+                        parmtag { "script_callback_language" "python" }
+                    }
+                }
+            }
+        }
+
+        group {
+            name    "__imageoutput_3"
+            label   "Deep Output"
+            invisibletab
+
+        }
+
+        group {
+            name    "__imageoutput_4"
+            label   "Aspect Ratio"
+
+            parm {
+                name    "aspectRatioConformPolicy"
+                label   "Aspect Ratio Conform Policy"
+                type    string
+                default { "expandAperture" }
+                menu {
+                    [ "opmenu -a -l rendersettings aspectRatioConformPolicy" ]
+                }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "usdvaluetype" "token" }
+            }
+            parm {
+                name    "dataWindowNDC"
+                label   "Data Window NDC"
+                type    float
+                joinnext
+                size    4
+                default { "0" "0" "1" "1" }
+                range   { 0 10 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "usdvaluetype" "float4" }
+            }
+            parm {
+                name    "dataWindowNDCmenu"
+                label   "Choose Overscan"
+                type    button
+                nolabel
+                default { "0" }
+                menumini {
+                    "0 0 1 1"               "No overscan"
+                    "-0.05 -0.05 1.05 1.05" "5% overscan"
+                    "-0.1 -0.1 1.1 1.1"     "10% overscan"
+                    "-0.15 -0.15 1.15 1.15" "15% overscan"
+                    "-0.2 -0.2 1.2 1.2"     "20% overscan"
+                    "-0.25 -0.25 1.25 1.25" "25% overscan"
+                }
+                parmtag { "script_callback" "opparm . dataWindowNDC ( `arg(\"$script_value\", 0)` `arg(\"$script_value\", 1)` `arg(\"$script_value\", 2)` `arg(\"$script_value\", 3)`" }
+            }
+            parm {
+                name    "pixelAspectRatio"
+                label   "Pixel Aspect Ratio"
+                type    float
+                default { "1" }
+                range   { 0.05 2 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "usdvaluetype" "float" }
+            }
+        }
+
+        group {
+            name    "__imageoutput_5"
+            label   "Metadata"
+            tabbreak
+
+            parm {
+                name    "image_artist"
+                label   "Artist"
+                type    string
+                default { "" }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "usdvaluetype" "string" }
+            }
+            parm {
+                name    "image_comment"
+                label   "Comment"
+                type    string
+                default { "" }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "usdvaluetype" "string" }
+            }
+            parm {
+                name    "image_hostname"
+                label   "Hostname"
+                type    string
+                default { "" }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "usdvaluetype" "string" }
+            }
+            parm {
+                name    "image_exr_compression"
+                label   "EXR Compression"
+                type    string
+                default { "zips" }
+                menu {
+                    "none"  "No Compression"
+                    "dwab"  "DWA-B, Lossy and Fast (256-scanline block)"
+                    "dwaa"  "DWA-A, Lossy and Fast (32-scanline block)"
+                    "piz"   "PIZ Wavelet"
+                    "rle"   "Runlength Encoding"
+                    "zips"  "ZIP (Single scanline)"
+                    "zip"   "ZIP (Multi-scanline blocks)"
+                    "pix"   "PXR24 (32 bit float compression, lossy)"
+                    "b44"   "B44 (4x4 block compression, lossy)"
+                    "b44a"  "B44A (4x4 block extra compression, lossy)"
+                }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "usdvaluetype" "string" }
+            }
+            parm {
+                name    "image_dwa_compression"
+                label   "DWA Compression Level"
+                type    float
+                default { "85" }
+                hidewhen "{ image_exr_compression != dwab image_exr_compression != dwaa }"
+                range   { 1 200 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "usdvaluetype" "float" }
+            }
+            multiparm {
+                name    "custom_metadata"
+                label    "Custom Metadata"
+
+                parm {
+                    name    "metadata_type_#"
+                    label   "Type"
+                    type    string
+                    default { "string" }
+                    menu {
+                        "string"    "String"
+                        "int"       "Integer"
+                        "float"     "Float"
+                        "color"     "Color"
+                    }
+                }
+                parm {
+                    name    "metadata_key_#"
+                    label   "Key"
+                    type    string
+                    default { "" }
+                }
+                parm {
+                    name    "metadata_string_#"
+                    label   "Value"
+                    type    string
+                    default { "" }
+                    hidewhen "{ metadata_type_# != string }"
+                }
+                parm {
+                    name    "metadata_int_#"
+                    label   "Value"
+                    type    integer
+                    default { "0" }
+                    hidewhen "{ metadata_type_# != int }"
+                    range   { 0 10 }
+                }
+                parm {
+                    name    "metadata_float_#"
+                    label   "Value"
+                    type    float
+                    default { "0" }
+                    hidewhen "{ metadata_type_# != float }"
+                    range   { 0 10 }
+                }
+                parm {
+                    name    "metadata_color_#"
+                    label   "Value"
+                    type    color
+                    size    3
+                    default { "1" "1" "1" }
+                    hidewhen "{ metadata_type_# != color }"
+                    range   { 0 1 }
+                }
+            }
+
+        }
+
+    }
+
+    group {
+        name    "folder2_1_1_3"
+        label   "Deep Output"
+        hidewhentab "{ engine == cpu force_headlight == 1 }"
+
+        group {
+            name    "__imageoutput_6"
+            label   "Deep Output"
+            invisibletab
+            grouptag { "sidefx::switcher" "__imageoutput_5" }
+
+        }
+
+        parm {
+            name    "dcm"
+            label   "DCM"
+            type    toggle
+            default { "0" }
+            parmtag { "script_callback_language" "python" }
+        }
+        groupsimple {
+            name    "folder8"
+            label   "Deep Camera Map"
+            disablewhen "{ dcm == 0 }"
+            parmtag { "sidefx::header_toggle" "dcm" }
+
+            parm {
+                name    "dcmfilename"
+                label   "DCM Filename"
+                type    file
+                default { "$HIP/render/$HIPNAME.$OS.dcm.$F4.exr" }
+                disablewhen "{ dcm == 0 }"
+                menureplace {
+                    [ "import loputils" ]
+                    [ "return loputils.createPrimPathMenu()" ]
+                }
+                range   { 0 1 }
+                parmtag { "filechooser_mode" "write" }
+            }
+            parm {
+                name    "dcmvars"
+                label   "DCM Render Vars"
+                type    string
+                default { "`chs(\"rendervarsparentprimpath\")`/*" }
+                menutoggle {
+                    [ "import loputils" ]
+                    [ "node = kwargs[\"node\"]" ]
+                    [ "varnode = node.node(\"pythonscript1\")" ]
+                    [ "varprims = loputils.globPrims(varnode, \"/Render/** & %type:RenderVar\")" ]
+                    [ "retval = []" ]
+                    [ "for prim in varprims:" ]
+                    [ "    retval += [prim.GetPath().pathString] * 2" ]
+                    [ "" ]
+                    [ "return sorted(retval)" ]
+                    language python
+                }
+                parmtag { "script_action" "import loputils\nloputils.selectPrimsInParm(kwargs, False)" }
+                parmtag { "script_action_help" "Select a primitive in the Scene Viewer or Scene Graph Tree pane. Ctrl-click to select using the primitive picker dialog." }
+                parmtag { "script_action_icon" "BUTTONS_reselect" }
+                parmtag { "sidefx::usdpathtype" "prim" }
+            }
+            parm {
+                name    "dcmcompression"
+                label   "DCM Compression"
+                type    integer
+                default { "5" }
+                range   { 0! 10! }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "spare_category" "Rendering" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdapischema" "KarmaRenderProductAPI" }
+                parmtag { "usdvaluetype" "int" }
+            }
+            parm {
+                name    "dcmofsize"
+                label   "DCM Of Size"
+                type    ordinal
+                default { "3" }
+                menu usetokenvalue {
+                    "1" "Monochrome"
+                    "3" "Full Color"
+                }
+                range   { 0 10 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "spare_category" "Rendering" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdapischema" "KarmaRenderProductAPI" }
+                parmtag { "usdvaluetype" "int" }
+            }
+            parm {
+                name    "dcmzbias"
+                label   "DCM Z-Bias"
+                type    float
+                default { "0.001" }
+                range   { 0! 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "spare_category" "Rendering" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdapischema" "KarmaRenderProductAPI" }
+                parmtag { "usdvaluetype" "float" }
+            }
+            parm {
+                name    "dcmusehitdist"
+                label   "DCM Use Hit Distance"
+                type    toggle
+                default { "0" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "dcmexcludeholdouts"
+                label   "DCM Exclude Holdouts"
+                type    toggle
+                default { "0" }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+    }
+
+    group {
+        name    "folder2_1_1_4"
+        label   "Advanced"
+
+        group {
+            name    "rendering8"
+            label   "Limits"
+            invisibletab
+
+        }
+
+        parm {
+            name    "setlayerrendersettings"
+            label   "Set as Default Render Settings Prim"
+            type    toggle
+            default { "on" }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        group {
+            name    "rendering8_1"
+            label   "Sampling"
+
+            parm {
+                name    "convergence_mode"
+                label   "Convergence Mode"
+                type    string
+                default { "Variance" }
+                hidewhen "{ engine == xpu }"
+                menu {
+                    [ "opmenu -a -l rendersettings xn__karmaglobalconvergence_mode_0kbg" ]
+                }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "spare_category" "Shading" }
+                parmtag { "uiscope" "viewport" }
+                parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                parmtag { "usdvaluetype" "token" }
+            }
+            groupcollapsible {
+                name    "__variance"
+                label   "Primary Samples"
+                parmtag { "group_default" "1" }
+
+                parm {
+                    name    "oracle"
+                    label   "Pixel Oracle"
+                    type    string
+                    default { "variance" }
+                    menu {
+                        "variance"  "Variance"
+                        "uniform"   "Uniform"
+                    }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "oracle_minsamples"
+                    label   "Minimum Samples"
+                    type    integer
+                    default { "-1" }
+                    hidewhen "{ oracle == uniform }"
+                    range   { -1! 64 }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "oracle_plane"
+                    label   "Planes"
+                    type    string
+                    default { "C" }
+                    hidewhen "{ oracle == uniform }"
+                    menutoggle {
+                        [ "kwargs['node'].hm().getPlanes(kwargs)" ]
+                        language python
+                    }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "oracle_variance"
+                    label   "Variance Threshold"
+                    type    float
+                    default { "0.01" }
+                    hidewhen "{ oracle == uniform }"
+                    range   { 0 10 }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "oracle_ociomode"
+                    label   "OCIO Transform"
+                    type    ordinal
+                    default { "0" }
+                    hidewhen "{ oracle == uniform }"
+                    menu {
+                        "0" "Disabled"
+                        "1" "Display View"
+                        "2" "Explicit"
+                    }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "oracle_ociodisplay"
+                    label   "Display"
+                    type    string
+                    joinnext
+                    default { "" }
+                    hidewhen "{ oracle == uniform } { oracle_ociomode != 1 }"
+                    menureplace {
+                        [ "[ele for ele in hou.Color.ocio_activeDisplays() for i in range(2)] " ]
+                        language python
+                    }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "oracle_ocioview"
+                    label   "View"
+                    type    string
+                    default { "" }
+                    hidewhen "{ oracle == uniform } { oracle_ociomode != 1 }"
+                    menureplace {
+                        [ "[ele for ele in hou.Color.ocio_activeViews() for i in range(2)] " ]
+                        language python
+                    }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "oracle_ociocolorspace"
+                    label   "Color Space"
+                    type    string
+                    default { "default" }
+                    hidewhen "{ oracle == uniform } { oracle_ociomode != 2 }"
+                    menureplace {
+                        [ "[ele for ele in hou.Color.ocio_spaces() for i in range(2)] " ]
+                        language python
+                    }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+            groupcollapsible {
+                name    "folder14"
+                label   "Secondary Samples"
+                hidewhen "{ engine == xpu }"
+                parmtag { "group_default" "1" }
+
+                parm {
+                    name    "varianceaa_thresh"
+                    label   "Noise Level"
+                    type    float
+                    default { "0.01" }
+                    disablewhen "{ convergence_mode != Variance }"
+                    range   { 0! 0.1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "spare_category" "Shading" }
+                    parmtag { "uiscope" "None" }
+                    parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                    parmtag { "usdvaluetype" "float" }
+                }
+                parm {
+                    name    "guiding_enable"
+                    label   "Enable Indirect Guiding"
+                    type    toggle
+                    default { "off" }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "spare_category" "Rendering" }
+                    parmtag { "uiscope" "None" }
+                    parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                    parmtag { "usdvaluetype" "bool" }
+                }
+                parm {
+                    name    "guiding_samples"
+                    label   "Indirect Training Samples"
+                    type    integer
+                    invisible
+                    default { "0" }
+                    disablewhen "{ guiding_enable == 0 }"
+                    range   { 0 256 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "spare_category" "Rendering" }
+                    parmtag { "uiscope" "None" }
+                    parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                    parmtag { "usdvaluetype" "int" }
+                }
+            }
+
+        }
+
+        group {
+            name    "rendering8_1_1"
+            label   "Checkpointing"
+            hidewhentab "{ engine == xpu } { force_headlight == 1 }"
+
+            parm {
+                name    "outputcheckpoint"
+                label   "Output Checkpoint Files"
+                type    toggle
+                default { "0" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "productName"
+                label   "Checkpoint File"
+                type    string
+                default { "$HIP/render/$HIPNAME.$OS.$F4.checkpoint" }
+                disablewhen "{ outputcheckpoint == 0 }"
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "usdvaluetype" "token" }
+            }
+            parm {
+                name    "savefrequency"
+                label   "Save Frequency"
+                type    float
+                default { "60" }
+                disablewhen "{ outputcheckpoint == 0 }"
+                range   { -1! 300 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "usdvaluetype" "float" }
+            }
+            parm {
+                name    "resume"
+                label   "Resume From Checkpoint"
+                type    toggle
+                default { "on" }
+                disablewhen "{ outputcheckpoint == 0 }"
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "usdvaluetype" "bool" }
+            }
+        }
+
+        group {
+            name    "rendering8_1_2"
+            label   "Buckets and Caching"
+            hidewhentab "{ engine == xpu }"
+
+            parm {
+                name    "imagemode"
+                label   "Image Mode"
+                type    string
+                default { "Progressive" }
+                menu {
+                    [ "opmenu -a -l rendersettings xn__karmaglobalimagemode_m8ag" ]
+                }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "spare_category" "Rendering" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                parmtag { "usdvaluetype" "token" }
+            }
+            parm {
+                name    "progressivepasses"
+                label   "Progressive Passes"
+                type    integer
+                default { "0" }
+                disablewhen "{ imagemode != Bucket }"
+                range   { 0 10 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "spare_category" "Rendering" }
+                parmtag { "uiscope" "viewport" }
+                parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                parmtag { "usdvaluetype" "int" }
+            }
+            parm {
+                name    "bucketsize"
+                label   "Bucket Size"
+                type    integer
+                default { "32" }
+                range   { 4! 128 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "spare_category" "Rendering" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdvaluetype" "int" }
+            }
+            parm {
+                name    "bucketorder"
+                label   "Bucket Order"
+                type    string
+                default { "Middle" }
+                menu {
+                    [ "opmenu -a -l rendersettings xn__karmaglobalbucketorder_vcbg" ]
+                }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "spare_category" "Rendering" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                parmtag { "usdvaluetype" "token" }
+            }
+            parm {
+                name    "usecacheratio"
+                label   "Cache Limit"
+                type    integer
+                default { "1" }
+                menu {
+                    "0" "Fixed Size"
+                    "1" "Proportion of Physical Memory"
+                }
+                range   { 0! 1! }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "spare_category" "Rendering" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdvaluetype" "bool" }
+            }
+            parm {
+                name    "cacheratio"
+                label   "Cache Memory Ratio"
+                type    float
+                default { "0.25" }
+                hidewhen "{ usecacheratio == 0 }"
+                range   { 0.0001! 1! }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "spare_category" "Rendering" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdvaluetype" "float" }
+            }
+            parm {
+                name    "cachesize"
+                label   "Cache Size (MB)"
+                type    integer
+                default { "1000" }
+                hidewhen "{ usecacheratio == 1 }"
+                range   { 1! 32000 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "spare_category" "Rendering" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdvaluetype" "int" }
+            }
+        }
+
+        group {
+            name    "rendering8_1_3"
+            label   "Driver"
+
+            parm {
+                name    "abortmissingtexture"
+                label   "Cancel Render if Missing Texture is Discovered"
+                type    toggle
+                default { "off" }
+                hidewhen "{ engine == cpu force_headlight == 1 }"
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "spare_category" "Control" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdvaluetype" "bool" }
+            }
+            parm {
+                name    "abortnogpudevice"
+                label   "Cancel Render on No Working GPU Devices"
+                type    toggle
+                default { "off" }
+                hidewhen "{ engine != xpu }"
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "spare_category" "Rendering" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdapischema" "KarmaRenderSettingsAPI" }
+                parmtag { "usdvaluetype" "bool" }
+            }
+        }
+
+        group {
+            name    "rendering8_1_4"
+            label   "Component Labels"
+            hidewhentab "{ force_headlight == 1 } { engine == xpu }"
+
+            parm {
+                name    "exportcomponents"
+                label   "Export Components"
+                type    string
+                default { "diffuse reflect coat refract volume sss" }
+                menureplace {
+                    "diffuse reflect sss"                       "Basic Components"
+                    "diffuse reflect coat refract volume sss"   "Common Components"
+                }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "spare_category" "Image" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdvaluetype" "string" }
+            }
+            parm {
+                name    "diffusecomponents"
+                label   "Diffuse Components"
+                type    string
+                default { "diffuse" }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "spare_category" "Image" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdvaluetype" "string" }
+            }
+            parm {
+                name    "refractcomponents"
+                label   "Refract Components"
+                type    string
+                default { "refract" }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "spare_category" "Image" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdvaluetype" "string" }
+            }
+            parm {
+                name    "volumecomponents"
+                label   "Volume Components"
+                type    string
+                default { "volume" }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "spare_category" "Image" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdvaluetype" "string" }
+            }
+            parm {
+                name    "ssscomponents"
+                label   "SSS Components"
+                type    string
+                default { "sss" }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "spare_category" "Image" }
+                parmtag { "uiscope" "None" }
+                parmtag { "usdvaluetype" "string" }
+            }
+        }
+
+    }
+
+}

@@ -1,0 +1,37 @@
+Analysis of sampling vmmap (pid 88393) every 1 millisecond
+Call graph:
+    1 Thread_7003375   DispatchQueue_1: com.apple.main-thread  (serial)
+    + 1 start  (in dyld) + 6076  [0x180f26b98]
+    +   1 ???  (in vmmap)  load address 0x102f38000 + 0x1dd4  [0x102f39dd4]
+    +     1 ???  (in vmmap)  load address 0x102f38000 + 0x57e8  [0x102f3d7e8]
+    +       1 ???  (in vmmap)  load address 0x102f38000 + 0x3494  [0x102f3b494]
+    +         1 -[VMUProcessDescription description]  (in Symbolication) + 64  [0x1c9943374]
+    +           1 -[VMUProcessDescription processDescriptionHeader]  (in Symbolication) + 452  [0x1c9942928]
+    +             1 -[VMUProcessDescription processVersion]  (in Symbolication) + 40  [0x1c994066c]
+    +               1 -[VMUProcessDescription processVersionDictionary]  (in Symbolication) + 156  [0x1c99402bc]
+    +                 1 -[VMUProcessDescription binaryImages]  (in Symbolication) + 468  [0x1c9940b04]
+    +                   1 _CFBundleCreateWithExecutableURLIfLooksLikeBundle  (in CoreFoundation) + 100  [0x181412b44]
+    +                     1 _CFBundleCreate  (in CoreFoundation) + 616  [0x181441f88]
+    +                       1 CFBundleGetInfoDictionary  (in CoreFoundation) + 56  [0x18134f7ac]
+    +                         1 _CFBundleRefreshInfoDictionaryAlreadyLocked  (in CoreFoundation) + 152  [0x18134f868]
+    +                           1 _CFBundleCopyInfoDictionaryInDirectoryWithVersion  (in CoreFoundation) + 744  [0x18134feb4]
+    +                             1 _CFIterateDirectory  (in CoreFoundation) + 144  [0x18134d564]
+    +                               1 readdir  (in libsystem_c.dylib) + 40  [0x1811a8c60]
+    +                                 1 _readdir_unlocked  (in libsystem_c.dylib) + 220  [0x1811a8b78]
+    +                                   1 __getdirentries64  (in libsystem_kernel.dylib) + 8  [0x181287884]
+    1 Thread_7003388
+    + 1 start_wqthread  (in libsystem_pthread.dylib) + 8  [0x1812c2b74]
+    +   1 _pthread_wqthread  (in libsystem_pthread.dylib) + 368  [0x1812c3e6c]
+    +     1 __workq_kernreturn  (in libsystem_kernel.dylib) + 8  [0x1812878b0]
+    1 Thread_7003390
+    + 1 start_wqthread  (in libsystem_pthread.dylib) + 8  [0x1812c2b74]
+    +   1 _pthread_wqthread  (in libsystem_pthread.dylib) + 368  [0x1812c3e6c]
+    +     1 __workq_kernreturn  (in libsystem_kernel.dylib) + 8  [0x1812878b0]
+    1 Thread_7003392
+      1 start_wqthread  (in libsystem_pthread.dylib) + 8  [0x1812c2b74]
+        1 _pthread_wqthread  (in libsystem_pthread.dylib) + 368  [0x1812c3e6c]
+          1 __workq_kernreturn  (in libsystem_kernel.dylib) + 8  [0x1812878b0]
+
+Total number in stack (recursive counted multiple, when >=5):
+
+Sort by top of stack, same collapsed (when >= 5):

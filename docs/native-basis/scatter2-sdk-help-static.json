@@ -1,0 +1,556 @@
+{
+  "schema": "bridge.static-native-followup/1",
+  "scope": "Same-build Scatter2 SDK machine keys/enum and help semantic gates, not runtime instantiated ParmTemplate/default/visibility evidence.",
+  "versions": {
+    "21.0.631": {
+      "source_refs": [
+        {
+          "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/toolkit/include/SOP/SOP_Scatter-2.0.proto.h",
+          "sha256": "200a4e0361e2cb0b6632b8a33d24cd82a9ab94a51b593862324990322ee4ef5f",
+          "lines": [
+            {
+              "line": 25,
+              "text": "enum class GenerateBy"
+            },
+            {
+              "line": 27,
+              "text": "BYDENSITY = 0,"
+            },
+            {
+              "line": 28,
+              "text": "COUNTPERPRIMITIVE,"
+            },
+            {
+              "line": 29,
+              "text": "TEXTURESPACE"
+            },
+            {
+              "line": 33,
+              "text": "getToken(GenerateBy enum_value)"
+            },
+            {
+              "line": 37,
+              "text": "case GenerateBy::BYDENSITY: return \"bydensity\"_sh;"
+            },
+            {
+              "line": 38,
+              "text": "case GenerateBy::COUNTPERPRIMITIVE: return \"countperprimitive\"_sh;"
+            },
+            {
+              "line": 39,
+              "text": "case GenerateBy::TEXTURESPACE: return \"texturespace\"_sh;"
+            },
+            {
+              "line": 55,
+              "text": "myGenerateBy = 0;"
+            },
+            {
+              "line": 56,
+              "text": "myIndepVoxel = false;"
+            },
+            {
+              "line": 57,
+              "text": "myForceTotal = true;"
+            },
+            {
+              "line": 58,
+              "text": "myNpts = 1000;"
+            },
+            {
+              "line": 59,
+              "text": "myDensityScale = 10;"
+            },
+            {
+              "line": 173,
+              "text": "graph->evalOpParm(myGenerateBy, nodeidx, \"generateby\", time, graph->isDirect()?nullptr:depnode);"
+            },
+            {
+              "line": 176,
+              "text": "graph->evalOpParm(myIndepVoxel, nodeidx, \"indepvoxel\", time, graph->isDirect()?nullptr:depnode);"
+            },
+            {
+              "line": 179,
+              "text": "graph->evalOpParm(myForceTotal, nodeidx, \"forcetotal\", time, graph->isDirect()?nullptr:depnode);"
+            },
+            {
+              "line": 182,
+              "text": "graph->evalOpParm(myNpts, nodeidx, \"npts\", time, graph->isDirect()?nullptr:depnode);"
+            },
+            {
+              "line": 185,
+              "text": "graph->evalOpParm(myDensityScale, nodeidx, \"densityscale\", time, graph->isDirect()?nullptr:depnode);"
+            }
+          ]
+        },
+        {
+          "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/help/nodes.zip",
+          "archive_sha256": "7c83e14d77ddaebf0f918244c1747509633b2721a39468eb4ae3efc694886916",
+          "member": "sop/scatter.txt",
+          "sha256": "d61ad5528c943bd4dac9efa6e7a928b4413b4f31033de65e3f38e428b275a4eb",
+          "lines": [
+            {
+              "line": 73,
+              "text": "Generate:"
+            },
+            {
+              "line": 74,
+              "text": "    #id: generateby"
+            },
+            {
+              "line": 75,
+              "text": ""
+            },
+            {
+              "line": 76,
+              "text": "    The overall approach to use when generating points."
+            },
+            {
+              "line": 77,
+              "text": ""
+            },
+            {
+              "line": 78,
+              "text": "    By Density:"
+            },
+            {
+              "line": 79,
+              "text": "        Points will be distributed independently based on having a density over each primitive.  Density is the expected number of points per length unit for"
+            },
+            {
+              "line": 80,
+              "text": "        curves, per area unit for surfaces, and per volume unit for volumes and tetrahedra."
+            },
+            {
+              "line": 81,
+              "text": "    Count per Primitive:"
+            },
+            {
+              "line": 82,
+              "text": "        Exactly the number of points specified in the __Count per Prim Attribute__ parameter will be generated on each primitive.  Any relaxation will be done per"
+            },
+            {
+              "line": 83,
+              "text": "        primitive, to ensure that they don't leave to another primitive."
+            },
+            {
+              "line": 84,
+              "text": "    In Texture Space:"
+            },
+            {
+              "line": 85,
+              "text": "        Points will first be scattered into the unit square of texture space, and then, based on the `uv` attribute, surface geometry will pick up any points"
+            },
+            {
+              "line": 86,
+              "text": "        that occupy the same region as them in texture space.  If __Relax Iterations__ is enabled, points will be relaxed in texture space, so they may appear less"
+            },
+            {
+              "line": 87,
+              "text": "        relaxed along seams.  __Max Relax Radius__ will be in texture space units, so should probably be set quite small."
+            },
+            {
+              "line": 88,
+              "text": ""
+            },
+            {
+              "line": 89,
+              "text": "Scatter on Voxels Independently:"
+            },
+            {
+              "line": 90,
+              "text": "    #id: indepvoxel"
+            },
+            {
+              "line": 91,
+              "text": ""
+            },
+            {
+              "line": 92,
+              "text": "    When enabled, each voxel in any volume primitives will be scattered on independently, so that changing density in one region of a volume will not affect"
+            },
+            {
+              "line": 93,
+              "text": "    points generated in another region of the volume, except that point numbers will change and __Relax Iterations__ will still relax nearby points away from each other."
+            },
+            {
+              "line": 94,
+              "text": "    This cannot guarantee a specific number of points, so __Force Total Count__ is not supported when this is on."
+            },
+            {
+              "line": 95,
+              "text": ""
+            },
+            {
+              "line": 96,
+              "text": "Force Total Count:"
+            },
+            {
+              "line": 97,
+              "text": "    #id: npts"
+            },
+            {
+              "line": 98,
+              "text": ""
+            },
+            {
+              "line": 99,
+              "text": "    When enabled, exactly this many points will be generated.  Unlike when this is disabled, the generated points may flicker as primitive areas or densities"
+            },
+            {
+              "line": 100,
+              "text": "    change.  This is only an option when __Generate__ is __By Density__."
+            },
+            {
+              "line": 101,
+              "text": ""
+            },
+            {
+              "line": 102,
+              "text": "Density Scale:"
+            },
+            {
+              "line": 103,
+              "text": "    #id: densityscale"
+            },
+            {
+              "line": 104,
+              "text": ""
+            },
+            {
+              "line": 105,
+              "text": "    Value or multiplier indicating the density of points to generate."
+            },
+            {
+              "line": 106,
+              "text": ""
+            },
+            {
+              "line": 107,
+              "text": "    When scattering __By Density__ without a __Density Attribute__, this is the expected number of points per length unit for curves, per area unit for"
+            },
+            {
+              "line": 108,
+              "text": "    surfaces, and per volume unit for volumes and tetrahedra.  When scattering __In Texture Space__ without a __Density Texture__, this is the expected number"
+            },
+            {
+              "line": 109,
+              "text": "    of points in the full unit square.  When using a __Density Attribute__ or __Density Texture__, this is multiplied by those to determine the actual"
+            },
+            {
+              "line": 110,
+              "text": "    density in physical or texture space, respectively."
+            },
+            {
+              "line": 111,
+              "text": ""
+            },
+            {
+              "line": 112,
+              "text": "    This is disabled if __Force Total Count__ is enabled or if __Generate__ is __Count per Primitive__."
+            },
+            {
+              "line": 113,
+              "text": ""
+            }
+          ]
+        }
+      ],
+      "machine_keys": [
+        "generateby",
+        "forcetotal",
+        "densityscale",
+        "npts",
+        "indepvoxel"
+      ],
+      "menu_enum_tokens": {
+        "BYDENSITY": "bydensity",
+        "COUNTPERPRIMITIVE": "countperprimitive",
+        "TEXTURESPACE": "texturespace"
+      },
+      "help_invariants": {
+        "forcetotal": "only Generate By Density, incompatible independent voxel; enabled means exact npts",
+        "densityscale": "disabled when force total or Count per Primitive"
+      },
+      "scope_limits": [
+        "SDK enum ordinal is compiled enum, actual UI menu representation must be observed; do not assume menu_uses_token_value",
+        "SDK constructor initial values not live instantiated factory ParmTemplate default/visibility state",
+        "Controller can explicitly initialize fresh owned actual fields then validate actual readback/gates, rather than requiring guessed current defaults"
+      ]
+    },
+    "22.0.429": {
+      "source_refs": [
+        {
+          "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/toolkit/include/SOP/SOP_Scatter-2.0.proto.h",
+          "sha256": "67526ac60918cc261cbd6a38b4844d7ec7f035f66393eb767d9ec18dd5814e43",
+          "lines": [
+            {
+              "line": 25,
+              "text": "enum class GenerateBy"
+            },
+            {
+              "line": 27,
+              "text": "BYDENSITY = 0,"
+            },
+            {
+              "line": 28,
+              "text": "COUNTPERPRIMITIVE,"
+            },
+            {
+              "line": 29,
+              "text": "TEXTURESPACE"
+            },
+            {
+              "line": 33,
+              "text": "getToken(GenerateBy enum_value)"
+            },
+            {
+              "line": 37,
+              "text": "case GenerateBy::BYDENSITY: return \"bydensity\"_sh;"
+            },
+            {
+              "line": 38,
+              "text": "case GenerateBy::COUNTPERPRIMITIVE: return \"countperprimitive\"_sh;"
+            },
+            {
+              "line": 39,
+              "text": "case GenerateBy::TEXTURESPACE: return \"texturespace\"_sh;"
+            },
+            {
+              "line": 55,
+              "text": "myGenerateBy = 0;"
+            },
+            {
+              "line": 56,
+              "text": "myIndepVoxel = false;"
+            },
+            {
+              "line": 57,
+              "text": "myForceTotal = true;"
+            },
+            {
+              "line": 58,
+              "text": "myNpts = 1000;"
+            },
+            {
+              "line": 59,
+              "text": "myDensityScale = 10;"
+            },
+            {
+              "line": 173,
+              "text": "graph->evalOpParm(myGenerateBy, nodeidx, \"generateby\", time, graph->isDirect()?nullptr:depnode);"
+            },
+            {
+              "line": 176,
+              "text": "graph->evalOpParm(myIndepVoxel, nodeidx, \"indepvoxel\", time, graph->isDirect()?nullptr:depnode);"
+            },
+            {
+              "line": 179,
+              "text": "graph->evalOpParm(myForceTotal, nodeidx, \"forcetotal\", time, graph->isDirect()?nullptr:depnode);"
+            },
+            {
+              "line": 182,
+              "text": "graph->evalOpParm(myNpts, nodeidx, \"npts\", time, graph->isDirect()?nullptr:depnode);"
+            },
+            {
+              "line": 185,
+              "text": "graph->evalOpParm(myDensityScale, nodeidx, \"densityscale\", time, graph->isDirect()?nullptr:depnode);"
+            }
+          ]
+        },
+        {
+          "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/help/nodes.zip",
+          "archive_sha256": "6ca2ef18ce0d1f142d3415e27885b36f69b3537344a04621c89f9fab6937ad53",
+          "member": "sop/scatter.txt",
+          "sha256": "c077db49da9cdf040017b44544fa39aeb5f90b5952a3ab38ba14d09552f5b269",
+          "lines": [
+            {
+              "line": 73,
+              "text": "    #id: generateby"
+            },
+            {
+              "line": 74,
+              "text": ""
+            },
+            {
+              "line": 75,
+              "text": "    The overall approach to use when generating points."
+            },
+            {
+              "line": 76,
+              "text": ""
+            },
+            {
+              "line": 77,
+              "text": "    By Density:"
+            },
+            {
+              "line": 78,
+              "text": "        Points will be distributed independently based on having a density over each primitive.  Density is the expected number of points per length unit for"
+            },
+            {
+              "line": 79,
+              "text": "        curves, per area unit for surfaces, and per volume unit for volumes and tetrahedra."
+            },
+            {
+              "line": 80,
+              "text": "    Count per Primitive:"
+            },
+            {
+              "line": 81,
+              "text": "        Exactly the number of points specified in the __Count per Prim Attribute__ parameter will be generated on each primitive.  Any relaxation will be done per"
+            },
+            {
+              "line": 82,
+              "text": "        primitive, to ensure that they don't leave to another primitive."
+            },
+            {
+              "line": 83,
+              "text": "    In Texture Space:"
+            },
+            {
+              "line": 84,
+              "text": "        Points will first be scattered into the unit square of texture space, and then, based on the `uv` attribute, surface geometry will pick up any points"
+            },
+            {
+              "line": 85,
+              "text": "        that occupy the same region as them in texture space.  If __Relax Iterations__ is on, points will be relaxed in texture space, so they may appear less"
+            },
+            {
+              "line": 86,
+              "text": "        relaxed along seams.  __Max Relax Radius__ will be in texture space units, should set quite small."
+            },
+            {
+              "line": 87,
+              "text": ""
+            },
+            {
+              "line": 88,
+              "text": "Scatter on Voxels Independently:"
+            },
+            {
+              "line": 89,
+              "text": "    #id: indepvoxel"
+            },
+            {
+              "line": 90,
+              "text": ""
+            },
+            {
+              "line": 91,
+              "text": "    When on, each voxel in any volume primitives will be scattered on independently. Changing density in one region of a volume will not affect"
+            },
+            {
+              "line": 92,
+              "text": "    points generated in another region of the volume, except that point numbers will change and __Relax Iterations__ will still relax nearby points away from each other."
+            },
+            {
+              "line": 93,
+              "text": "    This cannot guarantee a specific number of points, so __Force Total Count__ is not supported when this is on."
+            },
+            {
+              "line": 94,
+              "text": ""
+            },
+            {
+              "line": 95,
+              "text": "Force Total Count:"
+            },
+            {
+              "line": 96,
+              "text": "    #id: npts"
+            },
+            {
+              "line": 97,
+              "text": ""
+            },
+            {
+              "line": 98,
+              "text": "    When on, exactly this many points will be generated.  Whenoff, the generated points may flicker as primitive areas or densities"
+            },
+            {
+              "line": 99,
+              "text": "    change.  This is only an option when __Generate__ is __By Density__."
+            },
+            {
+              "line": 100,
+              "text": ""
+            },
+            {
+              "line": 101,
+              "text": "Density Scale:"
+            },
+            {
+              "line": 102,
+              "text": "    #id: densityscale"
+            },
+            {
+              "line": 103,
+              "text": ""
+            },
+            {
+              "line": 104,
+              "text": "    Value or multiplier indicating the density of points to generate."
+            },
+            {
+              "line": 105,
+              "text": ""
+            },
+            {
+              "line": 106,
+              "text": "    When scattering __By Density__ without a __Density Attribute__, this is the expected number of points per length unit for curves, per area unit for"
+            },
+            {
+              "line": 107,
+              "text": "    surfaces, and per volume unit for volumes and tetrahedra.  When scattering __In Texture Space__ without a __Density Texture__, this is the expected number"
+            },
+            {
+              "line": 108,
+              "text": "    of points in the full unit square.  When using a __Density Attribute__ and/or __Density Texture__, this is multiplied by those to determine the actual"
+            },
+            {
+              "line": 109,
+              "text": "    density in physical or texture space, respectively."
+            },
+            {
+              "line": 110,
+              "text": ""
+            },
+            {
+              "line": 111,
+              "text": "    This is off if __Force Total Count__ is on or if __Generate__ is __Count per Primitive__."
+            },
+            {
+              "line": 112,
+              "text": ""
+            },
+            {
+              "line": 113,
+              "text": "Density Attribute:"
+            }
+          ]
+        }
+      ],
+      "machine_keys": [
+        "generateby",
+        "forcetotal",
+        "densityscale",
+        "npts",
+        "indepvoxel"
+      ],
+      "menu_enum_tokens": {
+        "BYDENSITY": "bydensity",
+        "COUNTPERPRIMITIVE": "countperprimitive",
+        "TEXTURESPACE": "texturespace"
+      },
+      "help_invariants": {
+        "forcetotal": "only Generate By Density, incompatible independent voxel; enabled means exact npts",
+        "densityscale": "disabled when force total or Count per Primitive"
+      },
+      "scope_limits": [
+        "SDK enum ordinal is compiled enum, actual UI menu representation must be observed; do not assume menu_uses_token_value",
+        "SDK constructor initial values not live instantiated factory ParmTemplate default/visibility state",
+        "Controller can explicitly initialize fresh owned actual fields then validate actual readback/gates, rather than requiring guessed current defaults"
+      ]
+    }
+  }
+}

@@ -1,0 +1,419 @@
+# Dialog script for popforce automatically generated
+
+{
+    name	popforce
+    script	popforce
+    label	"POP Force"
+
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Stream to Apply Forces to"
+
+    parm {
+        name    "activate"
+        label   "Activation"
+        type    float
+        default { "1" }
+        range   { 0 1 }
+    }
+    parm {
+        name    "usegroup"
+        label   "Use group"
+        type    toggle
+        nolabel
+        joinnext
+        default { "0" }
+        range   { 0 1 }
+    }
+    parm {
+        name    "partgroup"
+        label   "Group"
+        type    string
+        default { "" }
+        disablewhen "{ usegroup == 0 }"
+        menutoggle {
+            [ "import doppoptoolutils" ]
+            [ "" ]
+            [ "return doppoptoolutils.buildGroupMenu(hou.pwd())" ]
+            language python
+        }
+        range   { 0 1 }
+    }
+    parm {
+        name    "showguide"
+        label   "Show Guide Geometry"
+        type    toggle
+        nolabel
+        joinnext
+        default { "off" }
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "guidecolor"
+        label   "Guide"
+        type    color
+        size    3
+        default { "1" "0" "0" }
+        disablewhen "{ showguide == 0 }"
+        range   { 0! 1! }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "force"
+        label   "Force"
+        type    direction
+        size    3
+        default { "0" "0" "0" }
+        range   { 0 10 }
+        export  all
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "parmvop" "1" }
+        parmtag { "shaderparmcontexts" "cvex" }
+        parmtag { "units" "kg1m1s-2" }
+    }
+    parm {
+        name    "ignoremass"
+        label   "Ignore Mass"
+        type    toggle
+        default { "on" }
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "parmvop" "1" }
+        parmtag { "shaderparmcontexts" "cvex" }
+    }
+    parm {
+        name    "uselocalforce"
+        label   "Use VEXpressions"
+        type    toggle
+        default { "0" }
+        range   { 0 1 }
+    }
+    parm {
+        name    "localforceexpression"
+        label   " "
+        type    string
+        default { "" }
+        hidewhen "{ uselocalforce == 0 }"
+        menu {
+            [ "import vexpressionmenu" ]
+            [ "" ]
+            [ "return vexpressionmenu.buildSnippetMenu('popforce/localforceexpression')" ]
+            language python
+        }
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "editor" "1" }
+        parmtag { "editorlang" "vex" }
+        parmtag { "editorlines" "8-40" }
+        parmtag { "script_action" "import vexpressionmenu\n\nnode = kwargs['node']\nparmname = 'localforceexpression'\n\nvexpressionmenu.createSpareParmsFromChCalls(node, parmname)" }
+        parmtag { "script_action_help" "Creates spare parameters for each unique call of ch() " }
+        parmtag { "script_action_icon" "BUTTONS_create_parm_from_ch" }
+    }
+    group {
+        name    "folder0"
+        label   "Noise"
+
+        parm {
+            name    "amp"
+            label   "Amplitude"
+            type    float
+            default { "0" }
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "parmvop" "1" }
+            parmtag { "shaderparmcontexts" "cvex" }
+            parmtag { "units" "kg1m1s-2" }
+        }
+        parm {
+            name    "swirlsize"
+            label   "Swirl Size"
+            type    float
+            default { "1" }
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "parmvop" "1" }
+            parmtag { "shaderparmcontexts" "cvex" }
+            parmtag { "units" "m1" }
+        }
+        parm {
+            name    "swirlscale"
+            label   "Swirl Scale"
+            type    float
+            size    3
+            default { "1" "1" "1" }
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "parmvop" "1" }
+            parmtag { "shaderparmcontexts" "cvex" }
+        }
+        parm {
+            name    "pulselength"
+            label   "Pulse Length"
+            type    float
+            default { "1" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "parmvop" "1" }
+            parmtag { "shaderparmcontexts" "cvex" }
+            parmtag { "units" "s1" }
+        }
+        parm {
+            name    "rough"
+            label   "Roughness"
+            type    float
+            default { "0.5" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "parmvop" "1" }
+            parmtag { "shaderparmcontexts" "cvex" }
+        }
+        parm {
+            name    "atten"
+            label   "Attenuation"
+            type    float
+            default { "1" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "parmvop" "1" }
+            parmtag { "shaderparmcontexts" "cvex" }
+        }
+        parm {
+            name    "turb"
+            label   "Turbulence"
+            type    integer
+            default { "3" }
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "parmvop" "1" }
+            parmtag { "shaderparmcontexts" "cvex" }
+        }
+        parm {
+            name    "offset"
+            label   "Offset"
+            type    float
+            size    4
+            default { "0" "0" "0" "0" }
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "parmvop" "1" }
+            parmtag { "shaderparmcontexts" "cvex" }
+        }
+        parm {
+            name    "uselocalnoise"
+            label   "Use VEXpressions"
+            type    toggle
+            default { "off" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "parmvop" "1" }
+            parmtag { "shaderparmcontexts" "cvex" }
+        }
+        parm {
+            name    "localnoiseexpression"
+            label   " "
+            type    string
+            default { "" }
+            hidewhen "{ uselocalnoise == 0 }"
+            menu {
+                [ "import vexpressionmenu" ]
+                [ "" ]
+                [ "return vexpressionmenu.buildSnippetMenu('popforce/localnoiseexpression')" ]
+                language python
+            }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "editor" "1" }
+            parmtag { "editorlang" "vex" }
+            parmtag { "editorlines" "8-40" }
+            parmtag { "script_action" "import vexpressionmenu\n\nnode = kwargs['node']\nparmname = 'localnoiseexpression'\n\nvexpressionmenu.createSpareParmsFromChCalls(node, parmname)" }
+            parmtag { "script_action_help" "Creates spare parameters for each unique call of ch() " }
+            parmtag { "script_action_icon" "BUTTONS_create_parm_from_ch" }
+        }
+    }
+
+    group {
+        name    "folder0_1"
+        label   "Bindings"
+
+        parm {
+            name    "bindgeo"
+            label   "Geometry"
+            type    string
+            default { "Geometry" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "vex_cwdpath"
+            label   "Evaluation Node Path"
+            type    oppath
+            default { "." }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "oprelative" "." }
+        }
+    }
+
+    group {
+        name    "stdswitcher5"
+        label   "Inputs"
+
+        parm {
+            name    "bindinputmenu1"
+            label   "Input 1"
+            type    ordinal
+            default { "none" }
+            menu {
+                "none"      "None"
+                "sop"       "SOP"
+                "dopdata"   "DOP Data"
+                "self"      "Myself"
+                "first"     "First Context Geometry"
+                "second"    "Second Context Geometry"
+                "third"     "Third Context Geometry"
+                "fourth"    "Fourth Context Geometry"
+                "selfraw"   "Myself (No Reads of Outputs)"
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "bindgeoinput1"
+            label   "SOP Path"
+            type    oppath
+            default { "" }
+            hidewhen "{ bindinputmenu1 != sop }"
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "opfilter" "!!SOP!!" }
+            parmtag { "oprelative" "." }
+        }
+        parm {
+            name    "binddopinput1"
+            label   "DOP Data"
+            type    string
+            default { "" }
+            hidewhen "{ bindinputmenu1 != dopdata }"
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "bindinputmenu2"
+            label   "Input 2"
+            type    ordinal
+            default { "none" }
+            menu {
+                "none"      "None"
+                "sop"       "SOP"
+                "dopdata"   "DOP Data"
+                "self"      "Myself"
+                "first"     "First Context Geometry"
+                "second"    "Second Context Geometry"
+                "third"     "Third Context Geometry"
+                "fourth"    "Fourth Context Geometry"
+                "selfraw"   "Myself (No Reads of Outputs)"
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "bindgeoinput2"
+            label   "SOP Path"
+            type    oppath
+            default { "" }
+            hidewhen "{ bindinputmenu2 != sop }"
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "opfilter" "!!SOP!!" }
+            parmtag { "oprelative" "." }
+        }
+        parm {
+            name    "binddopinput2"
+            label   "DOP Data"
+            type    string
+            default { "" }
+            hidewhen "{ bindinputmenu2 != dopdata }"
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "bindinputmenu3"
+            label   "Input 3"
+            type    ordinal
+            default { "none" }
+            menu {
+                "none"      "None"
+                "sop"       "SOP"
+                "dopdata"   "DOP Data"
+                "self"      "Myself"
+                "first"     "First Context Geometry"
+                "second"    "Second Context Geometry"
+                "third"     "Third Context Geometry"
+                "fourth"    "Fourth Context Geometry"
+                "selfraw"   "Myself (No Reads of Outputs)"
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "bindgeoinput3"
+            label   "SOP Path"
+            type    oppath
+            default { "" }
+            hidewhen "{ bindinputmenu3 != sop }"
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "opfilter" "!!SOP!!" }
+            parmtag { "oprelative" "." }
+        }
+        parm {
+            name    "binddopinput3"
+            label   "DOP Data"
+            type    string
+            default { "" }
+            hidewhen "{ bindinputmenu3 != dopdata }"
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "bindinputmenu4"
+            label   "Input 4"
+            type    ordinal
+            default { "none" }
+            menu {
+                "none"      "None"
+                "sop"       "SOP"
+                "dopdata"   "DOP Data"
+                "self"      "Myself"
+                "first"     "First Context Geometry"
+                "second"    "Second Context Geometry"
+                "third"     "Third Context Geometry"
+                "fourth"    "Fourth Context Geometry"
+                "selfraw"   "Myself (No Reads of Outputs)"
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "bindgeoinput4"
+            label   "SOP Path"
+            type    oppath
+            default { "" }
+            hidewhen "{ bindinputmenu4 != sop }"
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "opfilter" "!!SOP!!" }
+            parmtag { "oprelative" "." }
+        }
+        parm {
+            name    "binddopinput4"
+            label   "DOP Data"
+            type    string
+            default { "" }
+            hidewhen "{ bindinputmenu4 != dopdata }"
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+}

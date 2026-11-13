@@ -1,0 +1,3939 @@
+{
+  "domain_pack": "hair_fur_v1",
+  "case_id": "hair_fur_v1__build_inspect",
+  "case_ids": [
+    "hair_fur_v1__build_inspect",
+    "hair_fur_v1__causal_candidate",
+    "hair_fur_v1__approval_recovery"
+  ],
+  "domain_pack_version": "1.0.0",
+  "kind": "current_software_contract_checklist_not_execution_evidence",
+  "status": "PREPARATION_NOT_ACCEPTED",
+  "applications": [
+    "houdini",
+    "nuke"
+  ],
+  "required_versions": {
+    "houdini": [
+      "21.0.631",
+      "22.0.459"
+    ],
+    "nuke": [
+      "17.0v1"
+    ]
+  },
+  "native_basis_status": "UNRESOLVED",
+  "native_basis": {
+    "static_definitions": [
+      "docs/native-basis/hda-interface-capture.json",
+      "docs/native-basis/native-boundary-metadata-supplement.json",
+      "docs/native-basis/hda-interface-22.0.459.json",
+      "docs/native-basis/supporting-sources-22.0.459.json"
+    ],
+    "meaning": "Current software mappings and static references are not whole-domain native validation; resolve exact operator/parameter/port and output-consumption gaps before marking VERIFIED_SOURCE.",
+    "versioned_preparation": {
+      "22.0.459": {
+        "status": "UNRESOLVED",
+        "scope": "Independent459HDA static fields and prospective software topology only; no compiled template, host process, writer execution or whole-domain validation.",
+        "sources": [
+          {
+            "path": "docs/native-basis/hda-interface-22.0.459.json",
+            "sha256": "e8d9ee7a16f14baa2327ae45412b2acee60ef4849d4e3aa099aea229586379c7",
+            "version": "22.0.459",
+            "native_execution": false
+          },
+          {
+            "path": "docs/native-basis/supporting-sources-22.0.459.json",
+            "sha256": "7b1bd4e1b187de823db9555bca10f40e9278dd88fb790cce8c874576405e1c3a",
+            "version": "22.0.459",
+            "native_execution": false
+          }
+        ],
+        "originals": "docs/native-basis/h22-459-originals/",
+        "captured_hda_operators": 55,
+        "node_templates": {
+          "default": [
+            {
+              "role": "geometry_network",
+              "candidates": [
+                {
+                  "operator": "Obj/geo",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "source",
+              "candidates": [
+                {
+                  "operator": "Sop/sphere",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "guide_seed",
+              "candidates": [
+                {
+                  "operator": "Sop/hairgen::2.0",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "guides",
+              "candidates": [
+                {
+                  "operator": "Sop/guidegroom::2.0",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "guide_length",
+              "candidates": [
+                {
+                  "operator": "Sop/guideprocess",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "hair_clump",
+              "candidates": [
+                {
+                  "operator": "Sop/hairclump::2.0",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "constraints",
+              "candidates": [
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "collision_source",
+              "candidates": [
+                {
+                  "operator": "Sop/box",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "collision_transform",
+              "candidates": [
+                {
+                  "operator": "Sop/xform",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "solver",
+              "candidates": [
+                {
+                  "operator": "Sop/vellumsolver",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "91e6811b8ad06b252aefcbba3a22ef51affc233ddc2cb8005f0f24830f57a1b2",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "hair",
+              "candidates": [
+                {
+                  "operator": "Sop/hairgen::2.0",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "output",
+              "candidates": [
+                {
+                  "operator": "Sop/null",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "usd_network",
+              "candidates": [
+                {
+                  "operator": "Obj/lopnet",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "render_network",
+              "candidates": [
+                {
+                  "operator": "Obj/ropnet",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "geometry_import",
+              "candidates": [
+                {
+                  "operator": "Lop/sopimport",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "camera",
+              "candidates": [
+                {
+                  "operator": "Lop/camera",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "e7961a7d50953ca0a1d9cbd8f5349db34a4ec33fb98118f6d852e91765564612",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "light",
+              "candidates": [
+                {
+                  "operator": "Lop/light",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "34498e2f239d0566a47fc65928f9d42db17b8d7e487a99d3e0acc66b407abf38",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render_settings",
+              "candidates": [
+                {
+                  "operator": "Lop/karmarendersettings",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "cc263cb8a2e6e1f964363999322d8395f7c52d7160ea723173a24b23568783fe",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render_var",
+              "candidates": [
+                {
+                  "operator": "Lop/rendervar",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "c296736e72c9e2881b3867ff634cfe6253e5e5848e4f63bc9ff01420cbc39aea",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render_product",
+              "candidates": [
+                {
+                  "operator": "Lop/renderproduct",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "db75399202e08a57d1c5a1b29b42a2f871b690b9f23fe5db955a185bcb015cab",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "settings_binding",
+              "candidates": [
+                {
+                  "operator": "Lop/rendersettings",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "325937f14987a4b23ec74be88ac1bb0a424e351a469776e41b15952dbef9ac3d",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render",
+              "candidates": [
+                {
+                  "operator": "Driver/usdrender",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            }
+          ]
+        },
+        "blocked_controls": {
+          "default": [
+            {
+              "id": "guide_length",
+              "blocker": "H22_459_NATIVE_TEMPLATE_REQUIRED",
+              "native_basis": {
+                "version": "22.0.459",
+                "source": "docs/native-basis/hda-interface-22.0.459.json",
+                "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+                "native_execution": false,
+                "observed": [],
+                "missing": [
+                  {
+                    "role": "guide_length",
+                    "parameter": "setlength_length#",
+                    "operators": [
+                      "Sop/guideprocess"
+                    ]
+                  },
+                  {
+                    "role": "guide_seed",
+                    "parameter": "useguides",
+                    "operators": [
+                      "Sop/hairgen::2.0"
+                    ]
+                  },
+                  {
+                    "role": "guide_seed",
+                    "parameter": "unguidedlengthoverride",
+                    "operators": [
+                      "Sop/hairgen::2.0"
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": "guide_density",
+              "blocker": "H22_459_NATIVE_TEMPLATE_REQUIRED",
+              "native_basis": {
+                "version": "22.0.459",
+                "source": "docs/native-basis/hda-interface-22.0.459.json",
+                "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+                "native_execution": false,
+                "observed": [],
+                "missing": [
+                  {
+                    "role": "guide_seed",
+                    "parameter": "density",
+                    "operators": [
+                      "Sop/hairgen::2.0"
+                    ]
+                  },
+                  {
+                    "role": "guide_seed",
+                    "parameter": "mode",
+                    "operators": [
+                      "Sop/hairgen::2.0"
+                    ]
+                  },
+                  {
+                    "role": "guide_seed",
+                    "parameter": "forcecount",
+                    "operators": [
+                      "Sop/hairgen::2.0"
+                    ]
+                  },
+                  {
+                    "role": "guide_seed",
+                    "parameter": "densityoverride",
+                    "operators": [
+                      "Sop/hairgen::2.0"
+                    ]
+                  },
+                  {
+                    "role": "guides",
+                    "parameter": "tool",
+                    "operators": [
+                      "Sop/guidegroom::2.0"
+                    ]
+                  },
+                  {
+                    "role": "guides",
+                    "parameter": "plantmode",
+                    "operators": [
+                      "Sop/guidegroom::2.0"
+                    ]
+                  },
+                  {
+                    "role": "hair",
+                    "parameter": "mode",
+                    "operators": [
+                      "Sop/hairgen::2.0"
+                    ]
+                  },
+                  {
+                    "role": "hair",
+                    "parameter": "forcecount",
+                    "operators": [
+                      "Sop/hairgen::2.0"
+                    ]
+                  },
+                  {
+                    "role": "hair",
+                    "parameter": "densityoverride",
+                    "operators": [
+                      "Sop/hairgen::2.0"
+                    ]
+                  },
+                  {
+                    "role": "guide_seed",
+                    "parameter": "density",
+                    "operators": [
+                      "Sop/hairgen::2.0"
+                    ]
+                  },
+                  {
+                    "role": "guides",
+                    "parameter": "density",
+                    "operators": [
+                      "Sop/guidegroom::2.0"
+                    ]
+                  },
+                  {
+                    "role": "hair",
+                    "parameter": "density",
+                    "operators": [
+                      "Sop/hairgen::2.0"
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": "clump",
+              "blocker": "H22_459_NATIVE_TEMPLATE_REQUIRED",
+              "native_basis": {
+                "version": "22.0.459",
+                "source": "docs/native-basis/hda-interface-22.0.459.json",
+                "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+                "native_execution": false,
+                "observed": [],
+                "missing": [
+                  {
+                    "role": "hair_clump",
+                    "parameter": "clumpsize",
+                    "operators": [
+                      "Sop/hairclump::2.0"
+                    ]
+                  },
+                  {
+                    "role": "hair_clump",
+                    "parameter": "clumpsizeoverride",
+                    "operators": [
+                      "Sop/hairclump::2.0"
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": "clump_strength",
+              "blocker": "H22_459_NATIVE_TEMPLATE_REQUIRED",
+              "native_basis": {
+                "version": "22.0.459",
+                "source": "docs/native-basis/hda-interface-22.0.459.json",
+                "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+                "native_execution": false,
+                "observed": [],
+                "missing": [
+                  {
+                    "role": "hair_clump",
+                    "parameter": "tightness",
+                    "operators": [
+                      "Sop/hairclump::2.0"
+                    ]
+                  },
+                  {
+                    "role": "hair_clump",
+                    "parameter": "tightnessoverride",
+                    "operators": [
+                      "Sop/hairclump::2.0"
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": "hair_width",
+              "blocker": "H22_459_NATIVE_TEMPLATE_REQUIRED",
+              "native_basis": {
+                "version": "22.0.459",
+                "source": "docs/native-basis/hda-interface-22.0.459.json",
+                "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+                "native_execution": false,
+                "observed": [],
+                "missing": [
+                  {
+                    "role": "hair",
+                    "parameter": "thickness",
+                    "operators": [
+                      "Sop/hairgen::2.0"
+                    ]
+                  },
+                  {
+                    "role": "hair",
+                    "parameter": "outputthicknessattrib",
+                    "operators": [
+                      "Sop/hairgen::2.0"
+                    ]
+                  },
+                  {
+                    "role": "hair",
+                    "parameter": "thicknessoverride",
+                    "operators": [
+                      "Sop/hairgen::2.0"
+                    ]
+                  },
+                  {
+                    "role": "hair",
+                    "parameter": "thicknessattrib",
+                    "operators": [
+                      "Sop/hairgen::2.0"
+                    ]
+                  },
+                  {
+                    "role": "guides",
+                    "parameter": "widthoverride",
+                    "operators": [
+                      "Sop/guidegroom::2.0"
+                    ]
+                  },
+                  {
+                    "role": "guides",
+                    "parameter": "width",
+                    "operators": [
+                      "Sop/guidegroom::2.0"
+                    ]
+                  },
+                  {
+                    "role": "hair",
+                    "parameter": "thickness",
+                    "operators": [
+                      "Sop/hairgen::2.0"
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "native_execution": false
+      }
+    }
+  },
+  "expected_nodes": {
+    "21.0.631": {
+      "default": [
+        {
+          "role": "geometry_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "geo"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "source",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "sphere"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "guide_seed",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "hairgen::2.0"
+          ],
+          "required_parameter_aliases": [
+            [
+              "mode"
+            ],
+            [
+              "forcecount"
+            ],
+            [
+              "densityoverride"
+            ],
+            [
+              "useguides"
+            ],
+            [
+              "useinitdirattrib"
+            ],
+            [
+              "unguidedlength"
+            ],
+            [
+              "unguidedlengthoverride"
+            ],
+            [
+              "unguidedsegments"
+            ],
+            [
+              "density"
+            ]
+          ]
+        },
+        {
+          "role": "guides",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "guidegroom::2.0"
+          ],
+          "required_parameter_aliases": [
+            [
+              "tool"
+            ],
+            [
+              "plantmode"
+            ],
+            [
+              "density"
+            ],
+            [
+              "width"
+            ],
+            [
+              "widthoverride"
+            ]
+          ]
+        },
+        {
+          "role": "guide_length",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "guideprocess"
+          ],
+          "required_parameter_aliases": [
+            [
+              "operations"
+            ],
+            [
+              "op#"
+            ],
+            [
+              "active#"
+            ],
+            [
+              "setlength_mode#"
+            ],
+            [
+              "setlength_method#"
+            ],
+            [
+              "setlength_randomize#"
+            ],
+            [
+              "setlength_length#"
+            ],
+            [
+              "setlength_lengthoverride#"
+            ],
+            [
+              "setlength_blend#"
+            ]
+          ]
+        },
+        {
+          "role": "hair_clump",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "hairclump::2.0"
+          ],
+          "required_parameter_aliases": [
+            [
+              "clumpsize"
+            ],
+            [
+              "clumpsizeoverride"
+            ],
+            [
+              "tightness"
+            ],
+            [
+              "tightnessoverride"
+            ]
+          ]
+        },
+        {
+          "role": "constraints",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "vellumconstraints"
+          ],
+          "required_parameter_aliases": [
+            [
+              "constrainttype"
+            ],
+            [
+              "computeorient"
+            ],
+            [
+              "bendstiffnessexp"
+            ],
+            [
+              "bendstiffnessscalemode"
+            ],
+            [
+              "dothickness"
+            ],
+            [
+              "pingroup"
+            ],
+            [
+              "pintype"
+            ],
+            [
+              "pinrotation"
+            ],
+            [
+              "matchanimation"
+            ],
+            [
+              "bendstiffness"
+            ],
+            [
+              "thickness"
+            ]
+          ]
+        },
+        {
+          "role": "collision_source",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "box"
+          ],
+          "required_parameter_aliases": [
+            [
+              "size"
+            ]
+          ]
+        },
+        {
+          "role": "collision_transform",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "xform"
+          ],
+          "required_parameter_aliases": [
+            [
+              "t"
+            ],
+            [
+              "s"
+            ]
+          ]
+        },
+        {
+          "role": "solver",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "vellumsolver"
+          ],
+          "required_parameter_aliases": [
+            [
+              "enablecollisions"
+            ],
+            [
+              "doselfcollisions"
+            ],
+            [
+              "dowind"
+            ],
+            [
+              "veldamping"
+            ],
+            [
+              "windspeed"
+            ],
+            [
+              "wind"
+            ]
+          ]
+        },
+        {
+          "role": "hair",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "hairgen::2.0"
+          ],
+          "required_parameter_aliases": [
+            [
+              "mode"
+            ],
+            [
+              "forcecount"
+            ],
+            [
+              "densityoverride"
+            ],
+            [
+              "useguides"
+            ],
+            [
+              "outputthicknessattrib"
+            ],
+            [
+              "thicknessattrib"
+            ],
+            [
+              "thicknessoverride"
+            ],
+            [
+              "density"
+            ],
+            [
+              "thickness"
+            ]
+          ]
+        },
+        {
+          "role": "output",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "null"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "usd_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "lopnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "render_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "ropnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "geometry_import",
+          "category": "lop",
+          "input_role": null,
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "sopimport"
+          ],
+          "required_parameter_aliases": [
+            [
+              "soppath"
+            ],
+            [
+              "enable_pathprefix"
+            ],
+            [
+              "pathprefix"
+            ]
+          ]
+        },
+        {
+          "role": "camera",
+          "category": "lop",
+          "input_role": "geometry_import",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "camera"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "focalLength"
+            ],
+            [
+              "fStop"
+            ],
+            [
+              "xn__shutteropen_0ta"
+            ],
+            [
+              "xn__shutterclose_nva"
+            ]
+          ]
+        },
+        {
+          "role": "light",
+          "category": "lop",
+          "input_role": "camera",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "light"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "lighttype"
+            ],
+            [
+              "radius"
+            ],
+            [
+              "exposure"
+            ]
+          ]
+        },
+        {
+          "role": "render_settings",
+          "category": "lop",
+          "input_role": "light",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "karmarendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "camera"
+            ],
+            [
+              "samplesperpixel"
+            ],
+            [
+              "volumesteprate"
+            ],
+            [
+              "enablemblur"
+            ],
+            [
+              "pixelfiltersize"
+            ],
+            [
+              "denoiser"
+            ]
+          ]
+        },
+        {
+          "role": "render_var",
+          "category": "lop",
+          "input_role": "render_settings",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendervar"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "sourceName"
+            ],
+            [
+              "sourceType"
+            ],
+            [
+              "dataType"
+            ]
+          ]
+        },
+        {
+          "role": "render_product",
+          "category": "lop",
+          "input_role": "render_var",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "renderproduct"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "orderedVars"
+            ],
+            [
+              "productType"
+            ],
+            [
+              "productName"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "settings_binding",
+          "category": "lop",
+          "input_role": "render_product",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "createprims"
+            ],
+            [
+              "products"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "render",
+          "category": "rop",
+          "input_role": null,
+          "parent_role": "render_network",
+          "type_candidates": [
+            "usdrender"
+          ],
+          "required_parameter_aliases": [
+            [
+              "loppath"
+            ],
+            [
+              "rendersettings"
+            ],
+            [
+              "override_camera"
+            ],
+            [
+              "outputimage"
+            ],
+            [
+              "execute"
+            ]
+          ]
+        }
+      ]
+    },
+    "22.0.429": {
+      "default": [
+        {
+          "role": "geometry_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "geo"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "source",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "sphere"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "guide_seed",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "hairgen::2.0"
+          ],
+          "required_parameter_aliases": [
+            [
+              "mode"
+            ],
+            [
+              "forcecount"
+            ],
+            [
+              "densityoverride"
+            ],
+            [
+              "useguides"
+            ],
+            [
+              "useinitdirattrib"
+            ],
+            [
+              "unguidedlength"
+            ],
+            [
+              "unguidedlengthoverride"
+            ],
+            [
+              "unguidedsegments"
+            ],
+            [
+              "density"
+            ]
+          ]
+        },
+        {
+          "role": "guides",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "guidegroom::2.0"
+          ],
+          "required_parameter_aliases": [
+            [
+              "tool"
+            ],
+            [
+              "plantmode"
+            ],
+            [
+              "density"
+            ],
+            [
+              "width"
+            ],
+            [
+              "widthoverride"
+            ]
+          ]
+        },
+        {
+          "role": "guide_length",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "guideprocess"
+          ],
+          "required_parameter_aliases": [
+            [
+              "operations"
+            ],
+            [
+              "op#"
+            ],
+            [
+              "active#"
+            ],
+            [
+              "setlength_mode#"
+            ],
+            [
+              "setlength_method#"
+            ],
+            [
+              "setlength_randomize#"
+            ],
+            [
+              "setlength_length#"
+            ],
+            [
+              "setlength_lengthoverride#"
+            ],
+            [
+              "setlength_blend#"
+            ]
+          ]
+        },
+        {
+          "role": "hair_clump",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "hairclump::2.0"
+          ],
+          "required_parameter_aliases": [
+            [
+              "clumpsize"
+            ],
+            [
+              "clumpsizeoverride"
+            ],
+            [
+              "tightness"
+            ],
+            [
+              "tightnessoverride"
+            ]
+          ]
+        },
+        {
+          "role": "constraints",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "vellumconstraints"
+          ],
+          "required_parameter_aliases": [
+            [
+              "constrainttype"
+            ],
+            [
+              "computeorient"
+            ],
+            [
+              "bendstiffnessexp"
+            ],
+            [
+              "bendstiffnessscalemode"
+            ],
+            [
+              "dothickness"
+            ],
+            [
+              "pingroup"
+            ],
+            [
+              "pintype"
+            ],
+            [
+              "pinrotation"
+            ],
+            [
+              "matchanimation"
+            ],
+            [
+              "bendstiffness"
+            ],
+            [
+              "thickness"
+            ]
+          ]
+        },
+        {
+          "role": "collision_source",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "box"
+          ],
+          "required_parameter_aliases": [
+            [
+              "size"
+            ]
+          ]
+        },
+        {
+          "role": "collision_transform",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "xform"
+          ],
+          "required_parameter_aliases": [
+            [
+              "t"
+            ],
+            [
+              "s"
+            ]
+          ]
+        },
+        {
+          "role": "solver",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "vellumsolver"
+          ],
+          "required_parameter_aliases": [
+            [
+              "enablecollisions"
+            ],
+            [
+              "doselfcollisions"
+            ],
+            [
+              "dowind"
+            ],
+            [
+              "veldamping"
+            ],
+            [
+              "windspeed"
+            ],
+            [
+              "wind"
+            ]
+          ]
+        },
+        {
+          "role": "hair",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "hairgen::2.0"
+          ],
+          "required_parameter_aliases": [
+            [
+              "mode"
+            ],
+            [
+              "forcecount"
+            ],
+            [
+              "densityoverride"
+            ],
+            [
+              "useguides"
+            ],
+            [
+              "outputthicknessattrib"
+            ],
+            [
+              "thicknessattrib"
+            ],
+            [
+              "thicknessoverride"
+            ],
+            [
+              "density"
+            ],
+            [
+              "thickness"
+            ]
+          ]
+        },
+        {
+          "role": "output",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "null"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "usd_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "lopnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "render_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "ropnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "geometry_import",
+          "category": "lop",
+          "input_role": null,
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "sopimport"
+          ],
+          "required_parameter_aliases": [
+            [
+              "soppath"
+            ],
+            [
+              "enable_pathprefix"
+            ],
+            [
+              "pathprefix"
+            ]
+          ]
+        },
+        {
+          "role": "camera",
+          "category": "lop",
+          "input_role": "geometry_import",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "camera"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "focalLength"
+            ],
+            [
+              "fStop"
+            ],
+            [
+              "xn__shutteropen_0ta"
+            ],
+            [
+              "xn__shutterclose_nva"
+            ]
+          ]
+        },
+        {
+          "role": "light",
+          "category": "lop",
+          "input_role": "camera",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "light"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "lighttype"
+            ],
+            [
+              "radius"
+            ],
+            [
+              "exposure"
+            ]
+          ]
+        },
+        {
+          "role": "render_settings",
+          "category": "lop",
+          "input_role": "light",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "karmarendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "camera"
+            ],
+            [
+              "samplesperpixel"
+            ],
+            [
+              "volumesteprate"
+            ],
+            [
+              "enablemblur"
+            ],
+            [
+              "pixelfiltersize"
+            ],
+            [
+              "denoiser"
+            ]
+          ]
+        },
+        {
+          "role": "render_var",
+          "category": "lop",
+          "input_role": "render_settings",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendervar"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "sourceName"
+            ],
+            [
+              "sourceType"
+            ],
+            [
+              "dataType"
+            ]
+          ]
+        },
+        {
+          "role": "render_product",
+          "category": "lop",
+          "input_role": "render_var",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "renderproduct"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "orderedVars"
+            ],
+            [
+              "productType"
+            ],
+            [
+              "productName"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "settings_binding",
+          "category": "lop",
+          "input_role": "render_product",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "createprims"
+            ],
+            [
+              "products"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "render",
+          "category": "rop",
+          "input_role": null,
+          "parent_role": "render_network",
+          "type_candidates": [
+            "usdrender"
+          ],
+          "required_parameter_aliases": [
+            [
+              "loppath"
+            ],
+            [
+              "rendersettings"
+            ],
+            [
+              "override_camera"
+            ],
+            [
+              "outputimage"
+            ],
+            [
+              "execute"
+            ]
+          ]
+        }
+      ]
+    },
+    "22.0.459": {
+      "default": [
+        {
+          "role": "geometry_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "geo"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "source",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "sphere"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "guide_seed",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "hairgen::2.0"
+          ],
+          "required_parameter_aliases": [
+            [
+              "mode"
+            ],
+            [
+              "forcecount"
+            ],
+            [
+              "densityoverride"
+            ],
+            [
+              "useguides"
+            ],
+            [
+              "useinitdirattrib"
+            ],
+            [
+              "unguidedlength"
+            ],
+            [
+              "unguidedlengthoverride"
+            ],
+            [
+              "unguidedsegments"
+            ]
+          ]
+        },
+        {
+          "role": "guides",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "guidegroom::2.0"
+          ],
+          "required_parameter_aliases": [
+            [
+              "tool"
+            ],
+            [
+              "plantmode"
+            ],
+            [
+              "density"
+            ],
+            [
+              "width"
+            ],
+            [
+              "widthoverride"
+            ]
+          ]
+        },
+        {
+          "role": "guide_length",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "guideprocess"
+          ],
+          "required_parameter_aliases": [
+            [
+              "operations"
+            ],
+            [
+              "op#"
+            ],
+            [
+              "active#"
+            ],
+            [
+              "setlength_mode#"
+            ],
+            [
+              "setlength_method#"
+            ],
+            [
+              "setlength_randomize#"
+            ],
+            [
+              "setlength_length#"
+            ],
+            [
+              "setlength_lengthoverride#"
+            ],
+            [
+              "setlength_blend#"
+            ]
+          ]
+        },
+        {
+          "role": "hair_clump",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "hairclump::2.0"
+          ],
+          "required_parameter_aliases": [
+            [
+              "clumpsize"
+            ],
+            [
+              "clumpsizeoverride"
+            ],
+            [
+              "tightness"
+            ],
+            [
+              "tightnessoverride"
+            ]
+          ]
+        },
+        {
+          "role": "constraints",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "vellumconstraints"
+          ],
+          "required_parameter_aliases": [
+            [
+              "constrainttype"
+            ],
+            [
+              "computeorient"
+            ],
+            [
+              "bendstiffnessexp"
+            ],
+            [
+              "bendstiffnessscalemode"
+            ],
+            [
+              "dothickness"
+            ],
+            [
+              "pingroup"
+            ],
+            [
+              "pintype"
+            ],
+            [
+              "pinrotation"
+            ],
+            [
+              "matchanimation"
+            ],
+            [
+              "bendstiffness"
+            ],
+            [
+              "thickness"
+            ]
+          ]
+        },
+        {
+          "role": "collision_source",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "box"
+          ],
+          "required_parameter_aliases": [
+            [
+              "size"
+            ]
+          ]
+        },
+        {
+          "role": "collision_transform",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "xform"
+          ],
+          "required_parameter_aliases": [
+            [
+              "t"
+            ],
+            [
+              "s"
+            ]
+          ]
+        },
+        {
+          "role": "solver",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "vellumsolver"
+          ],
+          "required_parameter_aliases": [
+            [
+              "enablecollisions"
+            ],
+            [
+              "doselfcollisions"
+            ],
+            [
+              "dowind"
+            ],
+            [
+              "veldamping"
+            ],
+            [
+              "windspeed"
+            ],
+            [
+              "wind"
+            ]
+          ]
+        },
+        {
+          "role": "hair",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "hairgen::2.0"
+          ],
+          "required_parameter_aliases": [
+            [
+              "mode"
+            ],
+            [
+              "forcecount"
+            ],
+            [
+              "densityoverride"
+            ],
+            [
+              "useguides"
+            ],
+            [
+              "outputthicknessattrib"
+            ],
+            [
+              "thicknessattrib"
+            ],
+            [
+              "thicknessoverride"
+            ]
+          ]
+        },
+        {
+          "role": "output",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "null"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "usd_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "lopnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "render_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "ropnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "geometry_import",
+          "category": "lop",
+          "input_role": null,
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "sopimport"
+          ],
+          "required_parameter_aliases": [
+            [
+              "soppath"
+            ],
+            [
+              "enable_pathprefix"
+            ],
+            [
+              "pathprefix"
+            ]
+          ]
+        },
+        {
+          "role": "camera",
+          "category": "lop",
+          "input_role": "geometry_import",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "camera"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "focalLength"
+            ],
+            [
+              "fStop"
+            ],
+            [
+              "xn__shutteropen_0ta"
+            ],
+            [
+              "xn__shutterclose_nva"
+            ]
+          ]
+        },
+        {
+          "role": "light",
+          "category": "lop",
+          "input_role": "camera",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "light"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "lighttype"
+            ],
+            [
+              "radius"
+            ],
+            [
+              "exposure"
+            ]
+          ]
+        },
+        {
+          "role": "render_settings",
+          "category": "lop",
+          "input_role": "light",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "karmarendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "camera"
+            ],
+            [
+              "samplesperpixel"
+            ],
+            [
+              "volumesteprate"
+            ],
+            [
+              "enablemblur"
+            ],
+            [
+              "pixelfiltersize"
+            ],
+            [
+              "denoiser"
+            ]
+          ]
+        },
+        {
+          "role": "render_var",
+          "category": "lop",
+          "input_role": "render_settings",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendervar"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "sourceName"
+            ],
+            [
+              "sourceType"
+            ],
+            [
+              "dataType"
+            ]
+          ]
+        },
+        {
+          "role": "render_product",
+          "category": "lop",
+          "input_role": "render_var",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "renderproduct"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "orderedVars"
+            ],
+            [
+              "productType"
+            ],
+            [
+              "productName"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "settings_binding",
+          "category": "lop",
+          "input_role": "render_product",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "createprims"
+            ],
+            [
+              "products"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "render",
+          "category": "rop",
+          "input_role": null,
+          "parent_role": "render_network",
+          "type_candidates": [
+            "usdrender"
+          ],
+          "required_parameter_aliases": [
+            [
+              "loppath"
+            ],
+            [
+              "rendersettings"
+            ],
+            [
+              "override_camera"
+            ],
+            [
+              "outputimage"
+            ],
+            [
+              "execute"
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "expected_connections": {
+    "21.0.631": {
+      "default": [
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "guide_seed",
+          "destination_input": 0
+        },
+        {
+          "source_role": "guide_seed",
+          "source_output": 0,
+          "destination_role": "guides",
+          "destination_input": 0
+        },
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "guides",
+          "destination_input": 1
+        },
+        {
+          "source_role": "guides",
+          "source_output": 0,
+          "destination_role": "guide_length",
+          "destination_input": 0
+        },
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "guide_length",
+          "destination_input": 1
+        },
+        {
+          "source_role": "guide_length",
+          "source_output": 0,
+          "destination_role": "hair_clump",
+          "destination_input": 0
+        },
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "hair_clump",
+          "destination_input": 1
+        },
+        {
+          "source_role": "hair_clump",
+          "source_output": 0,
+          "destination_role": "constraints",
+          "destination_input": 0
+        },
+        {
+          "source_role": "constraints",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 0
+        },
+        {
+          "source_role": "constraints",
+          "source_output": 1,
+          "destination_role": "solver",
+          "destination_input": 1
+        },
+        {
+          "source_role": "collision_source",
+          "source_output": 0,
+          "destination_role": "collision_transform",
+          "destination_input": 0
+        },
+        {
+          "source_role": "collision_transform",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 2
+        },
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "hair",
+          "destination_input": 0
+        },
+        {
+          "source_role": "solver",
+          "source_output": 0,
+          "destination_role": "hair",
+          "destination_input": 1
+        },
+        {
+          "source_role": "hair",
+          "source_output": 0,
+          "destination_role": "output",
+          "destination_input": 0
+        },
+        {
+          "source_role": "geometry_import",
+          "source_output": 0,
+          "destination_role": "camera",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "camera",
+          "source_output": 0,
+          "destination_role": "light",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "light",
+          "source_output": 0,
+          "destination_role": "render_settings",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_settings",
+          "source_output": 0,
+          "destination_role": "render_var",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_var",
+          "source_output": 0,
+          "destination_role": "render_product",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_product",
+          "source_output": 0,
+          "destination_role": "settings_binding",
+          "destination_input": 0,
+          "require_same_parent": true
+        }
+      ]
+    },
+    "22.0.429": {
+      "default": [
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "guide_seed",
+          "destination_input": 0
+        },
+        {
+          "source_role": "guide_seed",
+          "source_output": 0,
+          "destination_role": "guides",
+          "destination_input": 0
+        },
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "guides",
+          "destination_input": 1
+        },
+        {
+          "source_role": "guides",
+          "source_output": 0,
+          "destination_role": "guide_length",
+          "destination_input": 0
+        },
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "guide_length",
+          "destination_input": 1
+        },
+        {
+          "source_role": "guide_length",
+          "source_output": 0,
+          "destination_role": "hair_clump",
+          "destination_input": 0
+        },
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "hair_clump",
+          "destination_input": 1
+        },
+        {
+          "source_role": "hair_clump",
+          "source_output": 0,
+          "destination_role": "constraints",
+          "destination_input": 0
+        },
+        {
+          "source_role": "constraints",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 0
+        },
+        {
+          "source_role": "constraints",
+          "source_output": 1,
+          "destination_role": "solver",
+          "destination_input": 1
+        },
+        {
+          "source_role": "collision_source",
+          "source_output": 0,
+          "destination_role": "collision_transform",
+          "destination_input": 0
+        },
+        {
+          "source_role": "collision_transform",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 2
+        },
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "hair",
+          "destination_input": 0
+        },
+        {
+          "source_role": "solver",
+          "source_output": 0,
+          "destination_role": "hair",
+          "destination_input": 1
+        },
+        {
+          "source_role": "hair",
+          "source_output": 0,
+          "destination_role": "output",
+          "destination_input": 0
+        },
+        {
+          "source_role": "geometry_import",
+          "source_output": 0,
+          "destination_role": "camera",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "camera",
+          "source_output": 0,
+          "destination_role": "light",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "light",
+          "source_output": 0,
+          "destination_role": "render_settings",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_settings",
+          "source_output": 0,
+          "destination_role": "render_var",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_var",
+          "source_output": 0,
+          "destination_role": "render_product",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_product",
+          "source_output": 0,
+          "destination_role": "settings_binding",
+          "destination_input": 0,
+          "require_same_parent": true
+        }
+      ]
+    },
+    "22.0.459": {
+      "default": [
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "guide_seed",
+          "destination_input": 0
+        },
+        {
+          "source_role": "guide_seed",
+          "source_output": 0,
+          "destination_role": "guides",
+          "destination_input": 0
+        },
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "guides",
+          "destination_input": 1
+        },
+        {
+          "source_role": "guides",
+          "source_output": 0,
+          "destination_role": "guide_length",
+          "destination_input": 0
+        },
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "guide_length",
+          "destination_input": 1
+        },
+        {
+          "source_role": "guide_length",
+          "source_output": 0,
+          "destination_role": "hair_clump",
+          "destination_input": 0
+        },
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "hair_clump",
+          "destination_input": 1
+        },
+        {
+          "source_role": "hair_clump",
+          "source_output": 0,
+          "destination_role": "constraints",
+          "destination_input": 0
+        },
+        {
+          "source_role": "constraints",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 0
+        },
+        {
+          "source_role": "constraints",
+          "source_output": 1,
+          "destination_role": "solver",
+          "destination_input": 1
+        },
+        {
+          "source_role": "collision_source",
+          "source_output": 0,
+          "destination_role": "collision_transform",
+          "destination_input": 0
+        },
+        {
+          "source_role": "collision_transform",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 2
+        },
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "hair",
+          "destination_input": 0
+        },
+        {
+          "source_role": "solver",
+          "source_output": 0,
+          "destination_role": "hair",
+          "destination_input": 1
+        },
+        {
+          "source_role": "hair",
+          "source_output": 0,
+          "destination_role": "output",
+          "destination_input": 0
+        },
+        {
+          "source_role": "geometry_import",
+          "source_output": 0,
+          "destination_role": "camera",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "camera",
+          "source_output": 0,
+          "destination_role": "light",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "light",
+          "source_output": 0,
+          "destination_role": "render_settings",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_settings",
+          "source_output": 0,
+          "destination_role": "render_var",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_var",
+          "source_output": 0,
+          "destination_role": "render_product",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_product",
+          "source_output": 0,
+          "destination_role": "settings_binding",
+          "destination_input": 0,
+          "require_same_parent": true
+        }
+      ]
+    }
+  },
+  "key_parameters": {
+    "semantic": [
+      {
+        "name": "guide_length",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 1000.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "generation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "guide_density",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 10000000.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "generation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "bend_stiffness",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 1000000000000.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "damping",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 100.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "clump",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 10.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "shaping"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "collision_radius",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 100.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "clump_strength",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 100.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "shaping"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "wind_strength",
+        "value_type": "float",
+        "minimum": -10000.0,
+        "maximum": 10000.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "hair_width",
+        "value_type": "float",
+        "minimum": 1e-05,
+        "maximum": 100.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "shaping"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "houdini"
+      }
+    ],
+    "versioned_native_mapping": {
+      "21.0.631": {
+        "default": [
+          {
+            "id": "guide_length",
+            "node_role": "guide_length",
+            "parameter_aliases": [
+              "setlength_length#"
+            ],
+            "minimum": 0,
+            "maximum": 1000,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "guide_seed",
+                "useguides",
+                0
+              ],
+              [
+                "guide_seed",
+                "unguidedlengthoverride",
+                "none"
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "guide_density",
+            "node_role": "guide_seed",
+            "parameter_aliases": [
+              "density"
+            ],
+            "minimum": 0,
+            "maximum": 10000000,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "guide_seed",
+                "mode",
+                "surface"
+              ],
+              [
+                "guide_seed",
+                "forcecount",
+                0
+              ],
+              [
+                "guide_seed",
+                "densityoverride",
+                "none"
+              ],
+              [
+                "guides",
+                "tool",
+                "plant"
+              ],
+              [
+                "guides",
+                "plantmode",
+                "scatter"
+              ],
+              [
+                "hair",
+                "mode",
+                "surface"
+              ],
+              [
+                "hair",
+                "forcecount",
+                0
+              ],
+              [
+                "hair",
+                "densityoverride",
+                "none"
+              ]
+            ],
+            "native_status": "mapped",
+            "targets": [
+              [
+                "guide_seed",
+                "density"
+              ],
+              [
+                "guides",
+                "density"
+              ],
+              [
+                "hair",
+                "density"
+              ]
+            ]
+          },
+          {
+            "id": "bend_stiffness",
+            "node_role": "constraints",
+            "parameter_aliases": [
+              "bendstiffness"
+            ],
+            "minimum": 0,
+            "maximum": 1000000000000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "constraints",
+                "constrainttype",
+                "hair"
+              ],
+              [
+                "constraints",
+                "bendstiffnessscalemode",
+                "none"
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "damping",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "veldamping"
+            ],
+            "minimum": 0,
+            "maximum": 100,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "mapped"
+          },
+          {
+            "id": "clump",
+            "node_role": "hair_clump",
+            "parameter_aliases": [
+              "clumpsize"
+            ],
+            "minimum": 0,
+            "maximum": 10,
+            "invalidates_from": "shaping_control",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "hair_clump",
+                "clumpsizeoverride",
+                "none"
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "collision_radius",
+            "node_role": "constraints",
+            "parameter_aliases": [
+              "thickness"
+            ],
+            "minimum": 0,
+            "maximum": 100,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "constraints",
+                "constrainttype",
+                "hair"
+              ],
+              [
+                "constraints",
+                "dothickness",
+                "on"
+              ],
+              [
+                "solver",
+                "enablecollisions",
+                1
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "clump_strength",
+            "node_role": "hair_clump",
+            "parameter_aliases": [
+              "tightness"
+            ],
+            "minimum": 0,
+            "maximum": 100,
+            "invalidates_from": "shaping_control",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "hair_clump",
+                "tightnessoverride",
+                "none"
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "wind_strength",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "windspeed"
+            ],
+            "minimum": -10000,
+            "maximum": 10000,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "solver",
+                "dowind",
+                1
+              ]
+            ],
+            "native_status": "mapped",
+            "targets": [
+              [
+                "solver",
+                "wind"
+              ],
+              [
+                "solver",
+                "windspeed"
+              ]
+            ]
+          },
+          {
+            "id": "hair_width",
+            "node_role": "hair",
+            "parameter_aliases": [
+              "thickness"
+            ],
+            "minimum": 1e-05,
+            "maximum": 100,
+            "invalidates_from": "shaping_control",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "hair",
+                "outputthicknessattrib",
+                1
+              ],
+              [
+                "hair",
+                "thicknessoverride",
+                "none"
+              ],
+              [
+                "hair",
+                "thicknessattrib",
+                "width"
+              ],
+              [
+                "guides",
+                "widthoverride",
+                0
+              ]
+            ],
+            "native_status": "mapped",
+            "targets": [
+              [
+                "guides",
+                "width"
+              ],
+              [
+                "hair",
+                "thickness"
+              ]
+            ]
+          }
+        ]
+      },
+      "22.0.429": {
+        "default": [
+          {
+            "id": "guide_length",
+            "node_role": "guide_length",
+            "parameter_aliases": [
+              "setlength_length#"
+            ],
+            "minimum": 0,
+            "maximum": 1000,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "guide_seed",
+                "useguides",
+                0
+              ],
+              [
+                "guide_seed",
+                "unguidedlengthoverride",
+                "none"
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "guide_density",
+            "node_role": "guide_seed",
+            "parameter_aliases": [
+              "density"
+            ],
+            "minimum": 0,
+            "maximum": 10000000,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "guide_seed",
+                "mode",
+                "surface"
+              ],
+              [
+                "guide_seed",
+                "forcecount",
+                0
+              ],
+              [
+                "guide_seed",
+                "densityoverride",
+                "none"
+              ],
+              [
+                "guides",
+                "tool",
+                "plant"
+              ],
+              [
+                "guides",
+                "plantmode",
+                "scatter"
+              ],
+              [
+                "hair",
+                "mode",
+                "surface"
+              ],
+              [
+                "hair",
+                "forcecount",
+                0
+              ],
+              [
+                "hair",
+                "densityoverride",
+                "none"
+              ]
+            ],
+            "native_status": "mapped",
+            "targets": [
+              [
+                "guide_seed",
+                "density"
+              ],
+              [
+                "guides",
+                "density"
+              ],
+              [
+                "hair",
+                "density"
+              ]
+            ]
+          },
+          {
+            "id": "bend_stiffness",
+            "node_role": "constraints",
+            "parameter_aliases": [
+              "bendstiffness"
+            ],
+            "minimum": 0,
+            "maximum": 1000000000000.0,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "constraints",
+                "constrainttype",
+                "hair"
+              ],
+              [
+                "constraints",
+                "bendstiffnessscalemode",
+                "none"
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "damping",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "veldamping"
+            ],
+            "minimum": 0,
+            "maximum": 100,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "mapped"
+          },
+          {
+            "id": "clump",
+            "node_role": "hair_clump",
+            "parameter_aliases": [
+              "clumpsize"
+            ],
+            "minimum": 0,
+            "maximum": 10,
+            "invalidates_from": "shaping_control",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "hair_clump",
+                "clumpsizeoverride",
+                "none"
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "collision_radius",
+            "node_role": "constraints",
+            "parameter_aliases": [
+              "thickness"
+            ],
+            "minimum": 0,
+            "maximum": 100,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "constraints",
+                "constrainttype",
+                "hair"
+              ],
+              [
+                "constraints",
+                "dothickness",
+                "on"
+              ],
+              [
+                "solver",
+                "enablecollisions",
+                1
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "clump_strength",
+            "node_role": "hair_clump",
+            "parameter_aliases": [
+              "tightness"
+            ],
+            "minimum": 0,
+            "maximum": 100,
+            "invalidates_from": "shaping_control",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "hair_clump",
+                "tightnessoverride",
+                "none"
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "wind_strength",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "windspeed"
+            ],
+            "minimum": -10000,
+            "maximum": 10000,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "solver",
+                "dowind",
+                1
+              ]
+            ],
+            "native_status": "mapped",
+            "targets": [
+              [
+                "solver",
+                "wind"
+              ],
+              [
+                "solver",
+                "windspeed"
+              ]
+            ]
+          },
+          {
+            "id": "hair_width",
+            "node_role": "hair",
+            "parameter_aliases": [
+              "thickness"
+            ],
+            "minimum": 1e-05,
+            "maximum": 100,
+            "invalidates_from": "shaping_control",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "hair",
+                "outputthicknessattrib",
+                1
+              ],
+              [
+                "hair",
+                "thicknessoverride",
+                "none"
+              ],
+              [
+                "hair",
+                "thicknessattrib",
+                "width"
+              ],
+              [
+                "guides",
+                "widthoverride",
+                0
+              ]
+            ],
+            "native_status": "mapped",
+            "targets": [
+              [
+                "guides",
+                "width"
+              ],
+              [
+                "hair",
+                "thickness"
+              ]
+            ]
+          }
+        ]
+      },
+      "22.0.459": {
+        "default": [
+          {
+            "minimum": 0,
+            "maximum": 1000,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "invalidates_from": "generation_simulation",
+            "required_gates": [
+              [
+                "guide_seed",
+                "useguides",
+                0
+              ],
+              [
+                "guide_seed",
+                "unguidedlengthoverride",
+                "none"
+              ]
+            ],
+            "unit": "native curve length in scene units",
+            "native_status": "blocked",
+            "semantic_contract": "seed_and_actual_multiparm_guide_length/1",
+            "context_parms": [
+              [
+                "guide_length",
+                "@multiparm/operations"
+              ],
+              [
+                "guide_seed",
+                "unguidedlength"
+              ]
+            ],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [],
+              "missing": [
+                {
+                  "role": "guide_length",
+                  "parameter": "setlength_length#",
+                  "operators": [
+                    "Sop/guideprocess"
+                  ]
+                },
+                {
+                  "role": "guide_seed",
+                  "parameter": "useguides",
+                  "operators": [
+                    "Sop/hairgen::2.0"
+                  ]
+                },
+                {
+                  "role": "guide_seed",
+                  "parameter": "unguidedlengthoverride",
+                  "operators": [
+                    "Sop/hairgen::2.0"
+                  ]
+                }
+              ]
+            },
+            "blocker": "H22_459_NATIVE_TEMPLATE_REQUIRED",
+            "id": "guide_length",
+            "node_role": "guide_length",
+            "parameter_aliases": [
+              "setlength_length#"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 10000000,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "invalidates_from": "generation_simulation",
+            "required_gates": [
+              [
+                "guide_seed",
+                "mode",
+                "surface"
+              ],
+              [
+                "guide_seed",
+                "forcecount",
+                0
+              ],
+              [
+                "guide_seed",
+                "densityoverride",
+                "none"
+              ],
+              [
+                "guides",
+                "tool",
+                "plant"
+              ],
+              [
+                "guides",
+                "plantmode",
+                "scatter"
+              ],
+              [
+                "hair",
+                "mode",
+                "surface"
+              ],
+              [
+                "hair",
+                "forcecount",
+                0
+              ],
+              [
+                "hair",
+                "densityoverride",
+                "none"
+              ]
+            ],
+            "unit": "native surface scatter density; physical area unit not captured",
+            "native_status": "blocked",
+            "semantic_contract": "joint_native_guide_and_hair_scatter_density/1",
+            "targets": [
+              [
+                "guide_seed",
+                "density"
+              ],
+              [
+                "guides",
+                "density"
+              ],
+              [
+                "hair",
+                "density"
+              ]
+            ],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [],
+              "missing": [
+                {
+                  "role": "guide_seed",
+                  "parameter": "density",
+                  "operators": [
+                    "Sop/hairgen::2.0"
+                  ]
+                },
+                {
+                  "role": "guide_seed",
+                  "parameter": "mode",
+                  "operators": [
+                    "Sop/hairgen::2.0"
+                  ]
+                },
+                {
+                  "role": "guide_seed",
+                  "parameter": "forcecount",
+                  "operators": [
+                    "Sop/hairgen::2.0"
+                  ]
+                },
+                {
+                  "role": "guide_seed",
+                  "parameter": "densityoverride",
+                  "operators": [
+                    "Sop/hairgen::2.0"
+                  ]
+                },
+                {
+                  "role": "guides",
+                  "parameter": "tool",
+                  "operators": [
+                    "Sop/guidegroom::2.0"
+                  ]
+                },
+                {
+                  "role": "guides",
+                  "parameter": "plantmode",
+                  "operators": [
+                    "Sop/guidegroom::2.0"
+                  ]
+                },
+                {
+                  "role": "hair",
+                  "parameter": "mode",
+                  "operators": [
+                    "Sop/hairgen::2.0"
+                  ]
+                },
+                {
+                  "role": "hair",
+                  "parameter": "forcecount",
+                  "operators": [
+                    "Sop/hairgen::2.0"
+                  ]
+                },
+                {
+                  "role": "hair",
+                  "parameter": "densityoverride",
+                  "operators": [
+                    "Sop/hairgen::2.0"
+                  ]
+                },
+                {
+                  "role": "guide_seed",
+                  "parameter": "density",
+                  "operators": [
+                    "Sop/hairgen::2.0"
+                  ]
+                },
+                {
+                  "role": "guides",
+                  "parameter": "density",
+                  "operators": [
+                    "Sop/guidegroom::2.0"
+                  ]
+                },
+                {
+                  "role": "hair",
+                  "parameter": "density",
+                  "operators": [
+                    "Sop/hairgen::2.0"
+                  ]
+                }
+              ]
+            },
+            "blocker": "H22_459_NATIVE_TEMPLATE_REQUIRED",
+            "id": "guide_density",
+            "node_role": "guide_seed",
+            "parameter_aliases": [
+              "density"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 1000000000000.0,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "invalidates_from": "generation_simulation",
+            "required_gates": [
+              [
+                "constraints",
+                "constrainttype",
+                "hair"
+              ],
+              [
+                "constraints",
+                "bendstiffnessscalemode",
+                "none"
+              ]
+            ],
+            "unit": "effective native bend stiffness",
+            "native_status": "mapped",
+            "multiplier_parm": "bendstiffnessexp",
+            "semantic_contract": "native_constraint_stiffness_times_ten_to_exponent/1",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "bendstiffness",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "constrainttype",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "bendstiffnessscalemode",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "bend_stiffness",
+            "node_role": "constraints",
+            "parameter_aliases": [
+              "bendstiffness"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 100,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "invalidates_from": "generation_simulation",
+            "required_gates": [],
+            "unit": "native direct velocity damping",
+            "native_status": "mapped",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/vellumsolver",
+                  "parameter": "veldamping",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "91e6811b8ad06b252aefcbba3a22ef51affc233ddc2cb8005f0f24830f57a1b2",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "damping",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "veldamping"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 10,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "invalidates_from": "shaping_control",
+            "required_gates": [
+              [
+                "hair_clump",
+                "clumpsizeoverride",
+                "none"
+              ]
+            ],
+            "unit": "native clump size in scene units",
+            "native_status": "blocked",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [],
+              "missing": [
+                {
+                  "role": "hair_clump",
+                  "parameter": "clumpsize",
+                  "operators": [
+                    "Sop/hairclump::2.0"
+                  ]
+                },
+                {
+                  "role": "hair_clump",
+                  "parameter": "clumpsizeoverride",
+                  "operators": [
+                    "Sop/hairclump::2.0"
+                  ]
+                }
+              ]
+            },
+            "blocker": "H22_459_NATIVE_TEMPLATE_REQUIRED",
+            "id": "clump",
+            "node_role": "hair_clump",
+            "parameter_aliases": [
+              "clumpsize"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 100,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "invalidates_from": "generation_simulation",
+            "required_gates": [
+              [
+                "constraints",
+                "constrainttype",
+                "hair"
+              ],
+              [
+                "constraints",
+                "dothickness",
+                "on"
+              ],
+              [
+                "solver",
+                "enablecollisions",
+                1
+              ]
+            ],
+            "unit": "native point pscale collision radius in scene units; requires actual pscale/radius convention",
+            "native_status": "mapped",
+            "semantic_contract": "native_pscale_radius/1",
+            "requires_context": "collision_radius_convention",
+            "context_parms": [
+              [
+                "constraints",
+                "@collision_radius_convention"
+              ],
+              [
+                "constraints",
+                "@geometry/0"
+              ]
+            ],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "thickness",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "constrainttype",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumconstraints",
+                  "parameter": "dothickness",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "8ece364ee71ff3e530069b6895d01a6bfb5a51bb0ef5fe809bdbd940eddfae53",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumsolver",
+                  "parameter": "enablecollisions",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "91e6811b8ad06b252aefcbba3a22ef51affc233ddc2cb8005f0f24830f57a1b2",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "collision_radius",
+            "node_role": "constraints",
+            "parameter_aliases": [
+              "thickness"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 100,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "invalidates_from": "shaping_control",
+            "required_gates": [
+              [
+                "hair_clump",
+                "tightnessoverride",
+                "none"
+              ]
+            ],
+            "unit": "percentage of native clump tightness in the hard [0,1] interval",
+            "native_status": "blocked",
+            "semantic_contract": "native_clump_tightness_percent/1",
+            "forward": "native=value/100",
+            "inverse": "value=native*100",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [],
+              "missing": [
+                {
+                  "role": "hair_clump",
+                  "parameter": "tightness",
+                  "operators": [
+                    "Sop/hairclump::2.0"
+                  ]
+                },
+                {
+                  "role": "hair_clump",
+                  "parameter": "tightnessoverride",
+                  "operators": [
+                    "Sop/hairclump::2.0"
+                  ]
+                }
+              ]
+            },
+            "blocker": "H22_459_NATIVE_TEMPLATE_REQUIRED",
+            "id": "clump_strength",
+            "node_role": "hair_clump",
+            "parameter_aliases": [
+              "tightness"
+            ]
+          },
+          {
+            "minimum": -10000,
+            "maximum": 10000,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "invalidates_from": "generation_simulation",
+            "required_gates": [
+              [
+                "solver",
+                "dowind",
+                1
+              ]
+            ],
+            "unit": "signed native wind gain along an observed trusted unit axis",
+            "native_status": "mapped",
+            "targets": [
+              [
+                "solver",
+                "wind"
+              ],
+              [
+                "solver",
+                "windspeed"
+              ]
+            ],
+            "semantic_contract": "signed_native_wind_axis_gain/1",
+            "context_parms": [
+              [
+                "solver",
+                "@trusted_axis"
+              ]
+            ],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/vellumsolver",
+                  "parameter": "windspeed",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "91e6811b8ad06b252aefcbba3a22ef51affc233ddc2cb8005f0f24830f57a1b2",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumsolver",
+                  "parameter": "dowind",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "91e6811b8ad06b252aefcbba3a22ef51affc233ddc2cb8005f0f24830f57a1b2",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumsolver",
+                  "parameter": "wind",
+                  "type": "direction",
+                  "size": 3,
+                  "section_sha256": "91e6811b8ad06b252aefcbba3a22ef51affc233ddc2cb8005f0f24830f57a1b2",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/vellumsolver",
+                  "parameter": "windspeed",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "91e6811b8ad06b252aefcbba3a22ef51affc233ddc2cb8005f0f24830f57a1b2",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "wind_strength",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "windspeed"
+            ]
+          },
+          {
+            "minimum": 1e-05,
+            "maximum": 100,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "invalidates_from": "shaping_control",
+            "required_gates": [
+              [
+                "hair",
+                "outputthicknessattrib",
+                1
+              ],
+              [
+                "hair",
+                "thicknessoverride",
+                "none"
+              ],
+              [
+                "hair",
+                "thicknessattrib",
+                "width"
+              ],
+              [
+                "guides",
+                "widthoverride",
+                0
+              ]
+            ],
+            "unit": "native hair thickness at the thickest point in scene units",
+            "native_status": "blocked",
+            "targets": [
+              [
+                "guides",
+                "width"
+              ],
+              [
+                "hair",
+                "thickness"
+              ]
+            ],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [],
+              "missing": [
+                {
+                  "role": "hair",
+                  "parameter": "thickness",
+                  "operators": [
+                    "Sop/hairgen::2.0"
+                  ]
+                },
+                {
+                  "role": "hair",
+                  "parameter": "outputthicknessattrib",
+                  "operators": [
+                    "Sop/hairgen::2.0"
+                  ]
+                },
+                {
+                  "role": "hair",
+                  "parameter": "thicknessoverride",
+                  "operators": [
+                    "Sop/hairgen::2.0"
+                  ]
+                },
+                {
+                  "role": "hair",
+                  "parameter": "thicknessattrib",
+                  "operators": [
+                    "Sop/hairgen::2.0"
+                  ]
+                },
+                {
+                  "role": "guides",
+                  "parameter": "widthoverride",
+                  "operators": [
+                    "Sop/guidegroom::2.0"
+                  ]
+                },
+                {
+                  "role": "guides",
+                  "parameter": "width",
+                  "operators": [
+                    "Sop/guidegroom::2.0"
+                  ]
+                },
+                {
+                  "role": "hair",
+                  "parameter": "thickness",
+                  "operators": [
+                    "Sop/hairgen::2.0"
+                  ]
+                }
+              ]
+            },
+            "blocker": "H22_459_NATIVE_TEMPLATE_REQUIRED",
+            "id": "hair_width",
+            "node_role": "hair",
+            "parameter_aliases": [
+              "thickness"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "save_reopen": [
+    "Use the production generator and task-owned host; persist project content/version/owner and the original operation receipt.",
+    "Stop the actual owned worker and verify trusted stop, then reopen the saved HIP/NK in a new host identity.",
+    "Read back every role, native type, port, connection and semantic control; preserve unrelated artist changes."
+  ],
+  "stop_recovery": [
+    "Interrupt the actual case worker, not an auxiliary process.",
+    "Retain the heavy slot while stop is unknown; verify task/session/nonce/process/generation/build/scene epoch.",
+    "Restart the controller, restore the same operation from persistent facts, and verify no duplicate execution/registration."
+  ],
+  "artifact_checks": [
+    "Consume only task-owned registered input IDs/versions/hash and exact frames.",
+    "Validate applicable outputs: diagnostic_preview, editable_scene, simulation_cache",
+    "Require producer operation, scene/version, format/dimensions/channels, color/premultiplication and dependency facts; reject missing typed metadata.",
+    "Check missing/repeated/frozen/abrupt frames against a frozen activity interval; pixel change alone does not establish correct motion."
+  ],
+  "raw_evidence_path": "outputs/live-validation/hair_fur_v1/<new-run-id>",
+  "human_checks": [
+    "Editable topology and save/reopen match the approved controls.",
+    "Compare the registered reference and feedback result; judge actual motion, silhouette, timing, material, lighting and composition.",
+    "Accept visual quality separately from software, format and process-stop checks."
+  ],
+  "resource_requirements": {
+    "explicit_frames_max": 12,
+    "seconds_max": 120,
+    "disk_bytes": "explicit positive task budget; include output/cache/temp/logs",
+    "cache": "separate exact path/frame/content-version/estimated-bytes/invalidation confirmation before execution",
+    "concurrency": "one heavy DCC job; unknown stop keeps slot"
+  },
+  "blockers": [
+    "Full 54-row current-build evidence and independent M1 reception remain incomplete.",
+    "Whole-domain native basis and applicable output/actual worker recovery are not verified by this card."
+  ],
+  "composite": true
+}

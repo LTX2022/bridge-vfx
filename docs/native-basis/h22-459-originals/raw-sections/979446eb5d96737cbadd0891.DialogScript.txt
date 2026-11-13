@@ -1,0 +1,1960 @@
+# Dialog script for attribadjustvector automatically generated
+
+{
+    name	attribadjustvector
+    script	attribadjustvector
+    label	"Attribute Adjust Vector"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Geometry with Vector Attribute to Modify"
+    inputlabel	2	"Sub-Network Input #2"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+    outputlabel	1	"Geometry with Modified Vector Attribute"
+
+    groupsimple {
+        name    "folder3"
+        label   "General"
+
+        parm {
+            name    "group"
+            label   "Group"
+            type    string
+            default { "" }
+            menutoggle {
+                [ "opmenu -l -a attribwrangle1 group" ]
+            }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_action" "import soputils\npc = kwargs['node'].parm('class').evalAsString()\nif pc != 'detail':\n    if pc == 'primitive':\n        kwargs['geometrytype'] = hou.geometryType.Primitives\n    elif pc == 'vertex':\n        kwargs['geometrytype'] = hou.geometryType.Vertices\n    elif pc == 'point':\n        kwargs['geometrytype'] = hou.geometryType.Points\n    kwargs['inputindex'] = 0\n    soputils.selectGroupParm(kwargs)" }
+            parmtag { "script_action_help" "Select geometry from an available viewport." }
+            parmtag { "script_action_icon" "BUTTONS_reselect" }
+        }
+        parm {
+            name    "attrib"
+            label   "Attribute Name"
+            type    string
+            default { "v" }
+            menureplace {
+                [ "r = []" ]
+                [ "node = hou.pwd()" ]
+                [ "inputs = node.inputsFollowingOutputs()" ]
+                [ "if inputs and inputs[0]:" ]
+                [ "    geo = inputs[0].geometry()" ]
+                [ "    if geo:" ]
+                [ "        c = node.parm('class').evalAsString()" ]
+                [ "        if c == 'detail':" ]
+                [ "            attrs = geo.globalAttribs()" ]
+                [ "        elif c == 'primitive':" ]
+                [ "            attrs = geo.primAttribs()" ]
+                [ "        elif c == 'point':" ]
+                [ "            attrs = geo.pointAttribs()" ]
+                [ "        else: # vertex" ]
+                [ "            attrs = geo.vertexAttribs()" ]
+                [ "        for a in attrs:" ]
+                [ "            if a.dataType() == hou.attribData.Float and not a.isArrayType() and a.size() == 3:" ]
+                [ "                r.extend([a.name(), a.name()])" ]
+                [ "return r" ]
+                language python
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_action" "from soputils import actionToggleVisualizer\nactionToggleVisualizer(kwargs)" }
+            parmtag { "script_action_help" "Toggle visualization Ctrl-LMB: Open the visualization editor" }
+            parmtag { "script_action_icon" "VIEW_visualization" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "class"
+            label   "Attribute Class"
+            type    ordinal
+            default { "point" }
+            menu {
+                "point"     "Point"
+                "vertex"    "Vertex"
+                "primitive" "Primitive"
+                "detail"    "Detail"
+            }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "componentscope"
+            label   "Component Scope"
+            type    buttonstrip
+            default { "7" }
+            menutoggle {
+                "x" "X"
+                "y" "Y"
+                "z" "Z"
+            }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    groupsimple {
+        name    "folder13"
+        label   "Pre-Process"
+
+        parm {
+            name    "enable_preprocess"
+            label   "Enable Pre-Process"
+            type    toggle
+            default { "off" }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "doinitvalue"
+            label   "Overwrite Initial Value"
+            type    toggle
+            default { "off" }
+            disablewhen "{ adjustdirlen == 1 dirlen_operation == initial } { adjustdirlen == 1 dirlen_operation == set }"
+            hidewhen "{ enable_preprocess != 1 }"
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "initvaluefrom"
+            label   "Initial Value From"
+            type    ordinal
+            default { "uniform" }
+            hidewhen "{ enable_preprocess != 1 } { doinitvalue != 1 } { adjustdirlen == 1 dirlen_operation == initial } { adjustdirlen == 1 dirlen_operation == set }"
+            menu {
+                "uniform"       "Constant Value"
+                "normalattrib"  "Normal Attribute"
+                "vecattrib"     "Vector Attribute"
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "initvalue"
+            label   "Initial Vector"
+            type    vector
+            size    3
+            default { "0" "1" "0" }
+            hidewhen "{ enable_preprocess != 1 } { initvaluefrom != uniform } { doinitvalue != 1 } { adjustdirlen == 1 dirlen_operation == initial } { adjustdirlen == 1 dirlen_operation == set }"
+            range   { -1 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "initvecattrib"
+            label   "Vector Attribute"
+            type    string
+            default { "N" }
+            hidewhen "{ enable_preprocess != 1 } { initvaluefrom != vecattrib } { doinitvalue != 1 } { adjustdirlen == 1 dirlen_operation == initial } { adjustdirlen == 0 dirlen_operation == set }"
+            menureplace {
+                [ "r = []" ]
+                [ "node = hou.pwd()" ]
+                [ "inputs = node.inputsFollowingOutputs()" ]
+                [ "if inputs and inputs[0]:" ]
+                [ "    geo = inputs[0].geometry()" ]
+                [ "    if geo:" ]
+                [ "        c = node.parm('class').evalAsString()" ]
+                [ "        if c == 'detail':" ]
+                [ "            attrs = geo.globalAttribs()" ]
+                [ "        elif c == 'primitive':" ]
+                [ "            attrs = geo.primAttribs()" ]
+                [ "        elif c == 'point':" ]
+                [ "            attrs = geo.pointAttribs()" ]
+                [ "        else: # vertex" ]
+                [ "            attrs = geo.vertexAttribs()" ]
+                [ "        for a in attrs:" ]
+                [ "            if a.dataType() == hou.attribData.Float and not a.isArrayType() and a.size() == 3:" ]
+                [ "                r.extend([a.name(), a.name()])" ]
+                [ "return r" ]
+                language python
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "reverse"
+            label   "Reverse Direction"
+            type    toggle
+            default { "off" }
+            disablewhen "{ adjustdirlen == 1 dirlen_operation == initial } { adjustdirlen == 1 dirlen_operation == set }"
+            hidewhen "{ enable_preprocess != 1 }"
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "prenormalize"
+            label   "Make Vectors Unit Length"
+            type    toggle
+            default { "off" }
+            disablewhen "{ adjustdirlen == 1 dirlen_operation == initial } { adjustdirlen == 1 dirlen_operation == set }"
+            hidewhen "{ enable_preprocess != 1 }"
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "doprescale"
+            label   "Pre-Length Scale"
+            type    toggle
+            nolabel
+            joinnext
+            default { "off" }
+            disablewhen "{ adjustdirlen == 1 dirlen_operation == initial } { adjustdirlen == 1 dirlen_operation == set }"
+            hidewhen "{ enable_preprocess != 1 }"
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "prescale"
+            label   "Length Scale"
+            type    float
+            default { "1" }
+            disablewhen "{ doprescale != 1 } { adjustdirlen == 1 dirlen_operation == initial } { adjustdirlen == 1 dirlen_operation == set }"
+            hidewhen "{ enable_preprocess != 1 }"
+            range   { 0! 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    groupsimple {
+        name    "folder1"
+        label   "Adjustment Value"
+
+        parm {
+            name    "adjustvalue"
+            label   "Adjust Value"
+            type    toggle
+            default { "on" }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "adjustquantity"
+            label   "Adjustment for"
+            type    ordinal
+            default { "0" }
+            hidewhen "{ adjustvalue != 1 }"
+            menu {
+                "all"   "Direction & Length"
+                "dir"   "Direction Only"
+                "len"   "Length Only"
+            }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dirlen_operation"
+            label   "Operation"
+            type    ordinal
+            default { "add" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != all }"
+            menu {
+                "init"  "Set Initial"
+                "set"   "Set Always"
+                "add"   "Add"
+                "sub"   "Subtract"
+                "mult"  "Multiply"
+                "min"   "Minimum"
+                "max"   "Maximum"
+            }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "dir_operation"
+            label   "Operation"
+            type    ordinal
+            default { "add" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != dir }"
+            menu {
+                "add"       "Add"
+                "sub"       "Subtract"
+                "rot"       "Rotate"
+                "spread"    "Spread"
+                "slerp"     "Interpolate"
+            }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "len_operation"
+            label   "Operation"
+            type    ordinal
+            default { "add" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != len }"
+            menu {
+                "set"   "Set"
+                "add"   "Add"
+                "sub"   "Subtract"
+                "mult"  "Multiply"
+                "min"   "Minimum"
+                "max"   "Maximum"
+            }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "dirlen_valuetype"
+            label   "Adjust with"
+            type    ordinal
+            default { "0" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != all }"
+            menu {
+                "const" "Constant"
+                "rand"  "Random"
+                "noise" "Noise"
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dirlen_singlevalue"
+            label   "Constant Value"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != all } { dirlen_valuetype != const }"
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dirlen_noiserange"
+            label   "Range Values"
+            type    ordinal
+            default { "positive" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != all } { dirlen_valuetype != rand dirlen_valuetype != noise }"
+            menu {
+                "positive"  "Positive"
+                "zcentered" "Zero Centered"
+                "custom"    "Min/Max"
+                "specific"  "Specific Values"
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dirlen_amplitude"
+            label   "Amplitude"
+            type    float
+            joinnext
+            default { "1" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != all } { dirlen_valuetype != rand dirlen_valuetype != noise } { dirlen_noiserange == custom } { dirlen_noiserange == specific }"
+            range   { 0! 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dirlen_amplitudetype"
+            label   "Amplitude Type"
+            type    iconstrip
+            nolabel
+            default { "0" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != all } { dirlen_valuetype != rand dirlen_valuetype != noise } { dirlen_noiserange == custom } { dirlen_noiserange == specific }"
+            menutoggle {
+                "BUTTONS_decompose_transforms"  "Per-Component Control"
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dirlen_amplitudescale"
+            label   "Amplitude Scale"
+            type    vector
+            size    3
+            default { "1" "1" "1" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != all } { dirlen_valuetype != rand dirlen_valuetype != noise } { dirlen_noiserange == custom } { dirlen_amplitudetype != 1 } { dirlen_noiserange == specific }"
+            range   { 0! 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dirlen_rangemin"
+            label   "Min Value"
+            type    float
+            joinnext
+            default { "0" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != all } { dirlen_valuetype != rand dirlen_valuetype != noise } { dirlen_noiserange != custom } { dirlen_noiserange == specific }"
+            range   { -1 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dirlen_rangemintype"
+            label   "Range Min Type"
+            type    iconstrip
+            nolabel
+            default { "0" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != all } { dirlen_valuetype != rand dirlen_valuetype != noise } { dirlen_noiserange != custom } { dirlen_noiserange == specific }"
+            menutoggle {
+                "BUTTONS_decompose_transforms"  "Per-Component Control"
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dirlen_rangeminscale"
+            label   "Min Value Scale"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != all } { dirlen_valuetype != rand dirlen_valuetype != noise } { dirlen_noiserange != custom } { dirlen_rangemintype != 1 } { dirlen_noiserange == specific }"
+            range   { -1 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dirlen_rangemax"
+            label   "Max Value"
+            type    float
+            joinnext
+            default { "1" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != all } { dirlen_valuetype != rand dirlen_valuetype != noise } { dirlen_noiserange != custom } { dirlen_noiserange == specific }"
+            range   { -1 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dirlen_rangemaxtype"
+            label   "Range Max Type"
+            type    iconstrip
+            nolabel
+            default { "0" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != all } { dirlen_valuetype != rand dirlen_valuetype != noise } { dirlen_noiserange != custom } { dirlen_noiserange == specific }"
+            menutoggle {
+                "BUTTONS_decompose_transforms"  "Per-Component Control"
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dirlen_rangemaxscale"
+            label   "Max Value Scale"
+            type    vector
+            size    3
+            default { "1" "1" "1" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != all } { dirlen_valuetype != rand dirlen_valuetype != noise } { dirlen_noiserange != custom } { dirlen_rangemaxtype != 1 } { dirlen_noiserange == specific }"
+            range   { -1 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        multiparm {
+            name    "dirlen_nvalues"
+            label    "Number of Values"
+            default 1
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != all } { dirlen_valuetype != rand dirlen_valuetype != noise } { dirlen_noiserange != specific }"
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "multistartoffset" "0" }
+
+            groupsimple {
+                name    "folder3_#_2"
+                label   "Value #"
+
+                parm {
+                    name    "dirlen_value#"
+                    label   "Value"
+                    type    vector
+                    joinnext
+                    size    3
+                    default { "0" "0" "0" }
+                    range   { 0 10 }
+                }
+                parm {
+                    name    "dirlen_weight#"
+                    label   "Weight"
+                    type    float
+                    default { "1" }
+                    range   { 0! 1 }
+                }
+            }
+
+        }
+
+        parm {
+            name    "dir_valuetype"
+            label   "Adjust with"
+            type    ordinal
+            default { "0" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != dir }"
+            menu {
+                "const" "Constant"
+                "rand"  "Random"
+                "noise" "Noise"
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dir_noiserange"
+            label   "Range Values"
+            type    ordinal
+            default { "positive" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != dir } { dir_valuetype != rand dir_valuetype != noise } { dir_operation == spread } { dir_operation == rot } { dir_operation == slerp }"
+            menu {
+                "positive"  "Positive"
+                "zcentered" "Zero Centered"
+                "custom"    "Min/Max"
+                "specific"  "Specific Values"
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dir_singlevalue"
+            label   "Constant Value"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != dir } { dir_valuetype != const } { dir_operation == spread } { dir_operation == rot } { dir_operation == slerp }"
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dir_amplitude"
+            label   "Amplitude"
+            type    float
+            joinnext
+            default { "1" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != dir } { dir_valuetype != rand dir_valuetype != noise } { dir_noiserange == custom } { dir_operation == spread } { dir_operation == rot } { dir_operation == slerp } { dir_noiserange == specific }"
+            range   { 0! 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dir_amplitudetype"
+            label   "Amplitude Type"
+            type    iconstrip
+            nolabel
+            default { "0" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != dir } { dir_valuetype != rand dir_valuetype != noise } { dir_noiserange == custom } { dir_operation == spread } { dir_operation == rot } { dir_operation == slerp } { dir_noiserange == specific }"
+            menutoggle {
+                "BUTTONS_decompose_transforms"  "Per-Component Control"
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dir_amplitudescale"
+            label   "Amplitude Scale"
+            type    vector
+            size    3
+            default { "1" "1" "1" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != dir } { dir_valuetype != rand dir_valuetype != noise } { dir_noiserange == custom } { dir_amplitudetype != 1 } { dir_operation == spread } { dir_operation == rot } { dir_operation == slerp } { dir_noiserange == specific }"
+            range   { 0! 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dir_rangemin"
+            label   "Min Value"
+            type    float
+            joinnext
+            default { "0" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != dir } { dir_valuetype != rand dir_valuetype != noise } { dir_noiserange != custom } { dir_operation == spread } { dir_operation == rot } { dir_operation == slerp } { dir_noiserange == specific }"
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dir_rangemintype"
+            label   "Range Min Type"
+            type    iconstrip
+            nolabel
+            default { "0" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != dir } { dir_valuetype != rand dir_valuetype != noise } { dir_noiserange != custom } { dir_operation == spread } { dir_operation == rot } { dir_operation == slerp } { dir_noiserange == specific }"
+            menutoggle {
+                "BUTTONS_decompose_transforms"  "Per-Component Control"
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dir_rangeminscale"
+            label   "Min Value Scale"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != dir } { dir_valuetype != rand dir_valuetype != noise } { dir_noiserange != custom } { dir_rangemintype != 1 } { dir_operation == spread } { dir_operation == rot } { dir_operation == slerp } { dir_noiserange == specific }"
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dir_rangemaxv"
+            label   "Max Value"
+            type    float
+            joinnext
+            default { "1" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != dir } { dir_valuetype != rand dir_valuetype != noise } { dir_noiserange != custom } { dir_operation == spread } { dir_operation == rot } { dir_operation == slerp } { dir_noiserange == specific }"
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dir_rangemaxtype"
+            label   "Range Max Type"
+            type    iconstrip
+            nolabel
+            default { "0" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != dir } { dir_valuetype != rand dir_valuetype != noise } { dir_noiserange != custom } { dir_operation == spread } { dir_operation == rot } { dir_operation == slerp } { dir_noiserange == specific }"
+            menutoggle {
+                "BUTTONS_decompose_transforms"  "Per-Component Control"
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dir_rangemaxscale"
+            label   "Max Value Scale"
+            type    vector
+            size    3
+            default { "1" "1" "1" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != dir } { dir_valuetype != rand dir_valuetype != noise } { dir_noiserange != custom } { dir_rangemaxtype != 1 } { dir_operation == spread } { dir_operation == rot } { dir_operation == slerp } { dir_noiserange == specific }"
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dir_rotrange"
+            label   "Range Values"
+            type    ordinal
+            default { "positive" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != dir } { dir_valuetype != rand dir_valuetype != noise } { dir_operation != rot }"
+            menu {
+                "minmax"    "Min/Max"
+                "specific"  "Specific Values"
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dir_singlerotaxis"
+            label   "Axis of Rotation"
+            type    vector
+            joinnext
+            size    3
+            default { "1" "0" "0" }
+            disablewhen "{ dir_rotaxismode != uniform }"
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != dir } { dir_operation != rot }"
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dir_rotaxismode"
+            label   "Rotation Axis Mode"
+            type    ordinal
+            nolabel
+            default { "0" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != dir } { dir_operation != rot }"
+            menu {
+                "uniform"   "Constant Value"
+                "attrib"    "From Attribute"
+            }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dir_rotaxisattrib"
+            label   "Axis Attribute"
+            type    string
+            default { "N" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != dir } { dir_operation != rot } { dir_rotaxismode != attrib }"
+            menureplace {
+                [ "r = []" ]
+                [ "node = hou.pwd()" ]
+                [ "inputs = node.inputsFollowingOutputs()" ]
+                [ "if inputs and inputs[0]:" ]
+                [ "    geo = inputs[0].geometry()" ]
+                [ "    if geo:" ]
+                [ "        c = node.parm('class').evalAsString()" ]
+                [ "        if c == 'detail':" ]
+                [ "            attrs = geo.globalAttribs()" ]
+                [ "        elif c == 'primitive':" ]
+                [ "            attrs = geo.primAttribs()" ]
+                [ "        elif c == 'point':" ]
+                [ "            attrs = geo.pointAttribs()" ]
+                [ "        else: # vertex" ]
+                [ "            attrs = geo.vertexAttribs()" ]
+                [ "        for a in attrs:" ]
+                [ "            if a.dataType() == hou.attribData.Float and not a.isArrayType() and a.size() == 3:" ]
+                [ "                r.extend([a.name(), a.name()])" ]
+                [ "return r" ]
+                language python
+            }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dir_singlerot"
+            label   "Rotate Angle"
+            type    angle
+            default { "0" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != dir } { dir_valuetype != const } { dir_operation != rot }"
+            range   { -180 180 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dir_rotmin"
+            label   "Rotate Angle Min"
+            type    angle
+            default { "-35" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != dir } { dir_valuetype != rand dir_valuetype != noise } { dir_operation != rot } { dir_rotrange == specific }"
+            range   { -180 180 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dir_rotmax"
+            label   "Rotate Angle Max"
+            type    angle
+            default { "35" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != dir } { dir_valuetype != rand dir_valuetype != noise } { dir_operation != rot } { dir_rotrange == specific }"
+            range   { -180 180 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dir_spreadrange"
+            label   "Range Values"
+            type    ordinal
+            default { "positive" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != dir } { dir_valuetype != rand dir_valuetype != noise } { dir_operation != spread }"
+            menu {
+                "minmax"    "Min/Max"
+                "specific"  "Specific Values"
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dir_singlespread"
+            label   "Spread Angle"
+            type    angle
+            default { "0" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != dir } { dir_valuetype != const } { dir_operation != spread }"
+            range   { 0! 180! }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dir_spreadmin"
+            label   "Spread Angle Min"
+            type    angle
+            default { "0" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != dir } { dir_valuetype != rand dir_valuetype != noise } { dir_operation != spread } { dir_spreadrange == specific }"
+            range   { 0! 180! }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dir_spreadmax"
+            label   "Spread Angle Max"
+            type    angle
+            default { "35" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != dir } { dir_valuetype != rand dir_valuetype != noise } { dir_operation != spread } { dir_spreadrange == specific }"
+            range   { 0! 180! }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dir_biasrange"
+            label   "Range Values"
+            type    ordinal
+            default { "positive" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != dir } { dir_valuetype != rand dir_valuetype != noise } { dir_operation != slerp }"
+            menu {
+                "minmax"    "Min/Max"
+                "specific"  "Specific Values"
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dir_goaldir"
+            label   "Goal Direction"
+            type    vector
+            joinnext
+            size    3
+            default { "1" "0" "0" }
+            disablewhen "{ dir_goaldirmode != uniform }"
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != dir } { dir_operation != slerp }"
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dir_goaldirmode"
+            label   "Goal Direction Mode"
+            type    ordinal
+            nolabel
+            default { "0" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != dir } { dir_operation != slerp }"
+            menu {
+                "uniform"   "Constant Value"
+                "attrib"    "From Attribute"
+            }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dir_goaldirattrib"
+            label   "Goal Direction Attribute"
+            type    string
+            default { "N" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != dir } { dir_operation != slerp } { dir_goaldirmode != attrib }"
+            menureplace {
+                [ "r = []" ]
+                [ "node = hou.pwd()" ]
+                [ "inputs = node.inputsFollowingOutputs()" ]
+                [ "if inputs and inputs[0]:" ]
+                [ "    geo = inputs[0].geometry()" ]
+                [ "    if geo:" ]
+                [ "        c = node.parm('class').evalAsString()" ]
+                [ "        if c == 'detail':" ]
+                [ "            attrs = geo.globalAttribs()" ]
+                [ "        elif c == 'primitive':" ]
+                [ "            attrs = geo.primAttribs()" ]
+                [ "        elif c == 'point':" ]
+                [ "            attrs = geo.pointAttribs()" ]
+                [ "        else: # vertex" ]
+                [ "            attrs = geo.vertexAttribs()" ]
+                [ "        for a in attrs:" ]
+                [ "            if a.dataType() == hou.attribData.Float and not a.isArrayType() and a.size() == 3:" ]
+                [ "                r.extend([a.name(), a.name()])" ]
+                [ "return r" ]
+                language python
+            }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dir_singlebias"
+            label   "Bias"
+            type    float
+            default { "0" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != dir } { dir_valuetype != const } { dir_operation != slerp }"
+            range   { 0! 1! }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dir_biasmin"
+            label   "Bias Min"
+            type    float
+            default { "0" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != dir } { dir_valuetype != rand dir_valuetype != noise } { dir_operation != slerp } { dir_biasrange == specific }"
+            range   { 0! 1! }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dir_biasmax"
+            label   "Bias Max"
+            type    float
+            default { "0.25" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != dir } { dir_valuetype != rand dir_valuetype != noise } { dir_operation != slerp } { dir_biasrange == specific }"
+            range   { 0! 1! }
+            parmtag { "script_callback_language" "python" }
+        }
+        multiparm {
+            name    "dir_nvalues"
+            label    "Number of Values"
+            default 1
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != dir } { dir_valuetype != rand dir_valuetype != noise } { dir_operation == add dir_noiserange != specific } { dir_operation == sub dir_noiserange != specific } { dir_operation == rot dir_rotrange != specific } { dir_operation == spread dir_spreadrange != specific } { dir_operation == slerp dir_biasrange != specific }"
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "multistartoffset" "0" }
+
+            groupsimple {
+                name    "folder3_#_3"
+                label   "Value #"
+
+                parm {
+                    name    "dir_value#"
+                    label   "Value"
+                    type    vector
+                    joinnext
+                    size    3
+                    default { "0" "0" "0" }
+                    hidewhen "{ dir_operation == spread } { dir_operation == rot } { dir_operation == slerp }"
+                    range   { 0 10 }
+                }
+                parm {
+                    name    "dir_weight#"
+                    label   "Weight"
+                    type    float
+                    default { "1" }
+                    hidewhen "{ dir_operation == spread } { dir_operation == rot } { dir_operation == slerp }"
+                    range   { 0! 1 }
+                }
+                parm {
+                    name    "dir_spreadvalue#"
+                    label   "Spread Angle #"
+                    type    angle
+                    joinnext
+                    default { "0" }
+                    disablewhen "{ dir_spreadtype# != const }"
+                    hidewhen "{ dir_operation != spread }"
+                    range   { 0! 180! }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "dir_spreadtype#"
+                    label   "Value Type"
+                    type    ordinal
+                    nolabel
+                    joinnext
+                    default { "0" }
+                    hidewhen "{ dir_operation != spread }"
+                    menu {
+                        "const" "Constant"
+                        "list"  "List of Values"
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "dir_spreadweight#"
+                    label   "Weight"
+                    type    float
+                    default { "1" }
+                    hidewhen "{ dir_operation != spread }"
+                    range   { 0! 1 }
+                }
+                parm {
+                    name    "dir_spreadvalues#"
+                    label   "Spread Angle List #"
+                    type    string
+                    default { "" }
+                    hidewhen "{ dir_operation != spread } { dir_spreadtype# != list }"
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "dir_rotvalue#"
+                    label   "Rotate Angle #"
+                    type    angle
+                    joinnext
+                    default { "0" }
+                    disablewhen "{ dir_rottype# != const }"
+                    hidewhen "{ dir_operation != rot }"
+                    range   { -180 180 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "dir_rottype#"
+                    label   "Value Type"
+                    type    ordinal
+                    nolabel
+                    joinnext
+                    default { "0" }
+                    hidewhen "{ dir_operation != rot }"
+                    menu {
+                        "const" "Constant"
+                        "list"  "List of Values"
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "dir_rotweight#"
+                    label   "Weight"
+                    type    float
+                    default { "1" }
+                    hidewhen "{ dir_operation != rot }"
+                    range   { 0! 1 }
+                }
+                parm {
+                    name    "dir_rotvalues#"
+                    label   "Rotate Angle List #"
+                    type    string
+                    default { "" }
+                    hidewhen "{ dir_operation != rot } { dir_rottype# != list }"
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "dir_biasvalue#"
+                    label   "Bias #"
+                    type    float
+                    joinnext
+                    default { "0" }
+                    disablewhen "{ dir_biastype# != const }"
+                    hidewhen "{ dir_operation != slerp }"
+                    range   { 0! 1! }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "dir_biastype#"
+                    label   "Value Type"
+                    type    ordinal
+                    nolabel
+                    joinnext
+                    default { "0" }
+                    hidewhen "{ dir_operation != slerp }"
+                    menu {
+                        "const" "Constant"
+                        "list"  "List of Values"
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "dir_biasweight#"
+                    label   "Weight"
+                    type    float
+                    default { "1" }
+                    hidewhen "{ dir_operation != slerp }"
+                    range   { 0! 1 }
+                }
+                parm {
+                    name    "dir_biasvalues#"
+                    label   "Bias List #"
+                    type    string
+                    default { "" }
+                    hidewhen "{ dir_operation != slerp } { dir_biastype# != list }"
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+        }
+
+        parm {
+            name    "len_valuetype"
+            label   "Adjust with"
+            type    ordinal
+            default { "0" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != len }"
+            menu {
+                "const"     "Constant"
+                "rand"      "Random"
+                "noise"     "Noise"
+                "attrib"    "Attribute"
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "len_singlevalue"
+            label   "Constant Value"
+            type    float
+            default { "0" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != len } { len_valuetype != const }"
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "len_rangemethod"
+            label   "Range Values"
+            type    ordinal
+            default { "minmax" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != len } { len_valuetype != rand len_valuetype != noise }"
+            menu {
+                "minmax"            "Min/Max"
+                "minplusrange"      "Min + Range Length"
+                "midplusminusrange" "Middle ± Range Length"
+                "specific"          "Specific Values"
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "len_minvalue"
+            label   "Min Value"
+            type    float
+            default { "0" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != len } { len_valuetype != rand len_valuetype != noise } { len_rangemethod == midplusminusrange } { len_rangemethod == specific }"
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "len_maxvalue"
+            label   "Max Value"
+            type    float
+            default { "1" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != len } { len_valuetype != rand len_valuetype != noise } { len_rangemethod != minmax } { len_rangemethod == specific }"
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "len_midvalue"
+            label   "Middle Value"
+            type    float
+            default { "0" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != len } { len_valuetype != rand len_valuetype != noise } { len_rangemethod != midplusminusrange } { len_rangemethod == specific }"
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "len_rangevalue"
+            label   "Range Length"
+            type    float
+            default { "1" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != len } { len_valuetype != rand len_valuetype != noise } { len_rangemethod == minmax } { len_rangemethod == specific }"
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "len_distribinrange"
+            label   "Value Distribution"
+            type    ordinal
+            default { "uniform" }
+            hidewhen "{ adjustvalue != 1 } { len_valuetype != rand len_valuetype != noise } { adjustquantity != len } { len_rangemethod == specific }"
+            menu {
+                "uniform"   "Uniform"
+                "remap"     "Uniform with Remapping"
+                "outliers"  "Uniform with Outliers"
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "len_remapramp"
+            label   "Remap Ramp"
+            type    ramp_flt
+            default { "2" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != len } { len_valuetype != rand len_valuetype != noise } { len_distribinrange != remap } { len_rangemethod == specific }"
+            range   { 1! 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 0 ) 1interp ( linear ) 2pos ( 1 ) 2value ( 1 ) 2interp ( linear )" }
+            parmtag { "rampshowcontrolsdefault" "0" }
+        }
+        parm {
+            name    "len_outlierpercent"
+            label   "Outlier Percent"
+            type    float
+            default { "15" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != len } { len_valuetype != rand len_valuetype != noise } { len_distribinrange != outliers } { len_rangemethod == specific }"
+            range   { 0! 100! }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "len_outlierrange"
+            label   "Outlier Range"
+            type    float
+            joinnext
+            default { "1" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != len } { len_valuetype != rand len_valuetype != noise } { len_distribinrange != outliers } { len_rangemethod == specific }"
+            range   { 1! 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "len_outlieroperation"
+            label   "Outlier Operation"
+            type    ordinal
+            nolabel
+            joinnext
+            default { "add" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != len } { len_valuetype != rand len_valuetype != noise } { len_distribinrange != outliers } { len_rangemethod == specific }"
+            menu {
+                "add"   "Additive"
+                "mult"  "Multiplicative"
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "len_outlierside"
+            label   "Outlier Side"
+            type    ordinal
+            nolabel
+            default { "above" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != len } { len_valuetype != rand len_valuetype != noise } { len_distribinrange != outliers } { len_rangemethod == specific }"
+            menu {
+                "above" "Above Max Value"
+                "below" "Below Min Value"
+                "both"  "Both"
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "len_outlierseed"
+            label   "Seed"
+            type    integer
+            default { "0" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != len } { len_valuetype != rand len_valuetype != noise } { len_distribinrange != outliers } { len_rangemethod == specific }"
+            range   { 0! 100 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "len_outlierviz"
+            label   "Outlier Visualizer"
+            type    toggle
+            nolabel
+            joinnext
+            default { "0" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != len } { len_valuetype != rand len_valuetype != noise } { len_distribinrange != outliers } { len_rangemethod == specific }"
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "len_outlierattrib"
+            label   "Outlier Attribute"
+            type    string
+            default { "outlier" }
+            disablewhen "{ len_outlierviz != 1 }"
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != len } { len_valuetype != rand len_valuetype != noise } { len_distribinrange != outliers } { len_rangemethod == specific }"
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_action" "from soputils import actionToggleVisualizer\nkwargs['attribname'] = kwargs['node'].parm('len_outlierattrib').eval()\nactionToggleVisualizer(kwargs)\n" }
+            parmtag { "script_action_help" "Toggle visualization Ctrl-LMB: Open the visualization editor" }
+            parmtag { "script_action_icon" "VIEW_visualization" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "len_enablestepping"
+            label   "Step Size"
+            type    toggle
+            nolabel
+            joinnext
+            default { "off" }
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != len } { len_valuetype != rand len_valuetype != noise } { len_rangemethod == specific }"
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "len_stepsize"
+            label   "Step Size"
+            type    float
+            default { "0.1" }
+            disablewhen "{ len_enablestepping != 1 }"
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != len } { len_valuetype != rand len_valuetype != noise } { len_rangemethod == specific }"
+            range   { 0! 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_action_icon" "$HTOOLS_PATH/icons/custom/float.svg" }
+            parmtag { "script_callback_language" "python" }
+        }
+        multiparm {
+            name    "len_nvalues"
+            label    "Number of Values"
+            default 1
+            hidewhen "{ adjustvalue != 1 } { adjustquantity != len } { len_valuetype != rand len_valuetype != noise } { len_rangemethod != specific }"
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "multistartoffset" "0" }
+
+            groupsimple {
+                name    "folder3_#"
+                label   "Value #"
+
+                parm {
+                    name    "len_value#"
+                    label   "Value"
+                    type    float
+                    joinnext
+                    default { "0" }
+                    disablewhen "{ len_valuetype# != const }"
+                    range   { 0 10 }
+                }
+                parm {
+                    name    "len_valuetype#"
+                    label   "Value Type"
+                    type    ordinal
+                    nolabel
+                    joinnext
+                    default { "0" }
+                    menu {
+                        "const" "Constant"
+                        "list"  "List of Values"
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "len_weight#"
+                    label   "Weight"
+                    type    float
+                    default { "1" }
+                    range   { 0! 1 }
+                }
+                parm {
+                    name    "len_values#"
+                    label   "Value List"
+                    type    string
+                    default { "" }
+                    hidewhen "{ len_valuetype# != list }"
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+        }
+
+        parm {
+            name    "otherattrib"
+            label   "Attribute Name"
+            type    string
+            default { "" }
+            hidewhen "{ adjustvalue != 1 } { len_valuetype != attrib } { adjustquantity != len }"
+            menureplace {
+                [ "r = []" ]
+                [ "node = hou.pwd()" ]
+                [ "inputs = node.inputsFollowingOutputs()" ]
+                [ "if inputs and inputs[0]:" ]
+                [ "    geo = inputs[0].geometry()" ]
+                [ "    if geo:" ]
+                [ "        c = node.parm('class').evalAsString()" ]
+                [ "        if c == 'detail':" ]
+                [ "            attrs = geo.globalAttribs()" ]
+                [ "        elif c == 'primitive':" ]
+                [ "            attrs = geo.primAttribs()" ]
+                [ "        elif c == 'point':" ]
+                [ "            attrs = geo.pointAttribs()" ]
+                [ "        else: # vertex" ]
+                [ "            attrs = geo.vertexAttribs()" ]
+                [ "        for a in attrs:" ]
+                [ "            if a.dataType() == hou.attribData.Float and not a.isArrayType() and a.size() == 1:" ]
+                [ "                r.extend([a.name(), a.name()])" ]
+                [ "return r" ]
+                language python
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    groupsimple {
+        name    "folder2"
+        label   "Random"
+        hidewhentab "{ adjustvalue != 1 } { adjustquantity == all dirlen_valuetype != rand } { adjustquantity == dir dir_operation == spread dir_valuetype == noise } { adjustquantity == dir dir_operation != spread dir_valuetype != rand } { adjustquantity == len len_valuetype != rand }"
+
+        parm {
+            name    "randmethod"
+            label   "Randomization By"
+            type    ordinal
+            default { "ppnum" }
+            menu {
+                "ppnum"     "Element Number"
+                "custom"    "Custom Attribute"
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "randattrib"
+            label   "Custom Attribute"
+            type    string
+            default { "id" }
+            hidewhen "{ randmethod != custom }"
+            menureplace {
+                [ "r = []" ]
+                [ "node = hou.pwd()" ]
+                [ "inputs = node.inputs()" ]
+                [ "if inputs and inputs[0]:" ]
+                [ "    geo = inputs[0].geometry()" ]
+                [ "    if geo:" ]
+                [ "        c = node.parm('class').evalAsString()" ]
+                [ "        if c == 'detail':" ]
+                [ "            attrs = geo.globalAttribs()" ]
+                [ "        elif c == 'primitive':" ]
+                [ "            attrs = geo.primAttribs()" ]
+                [ "        elif c == 'point':" ]
+                [ "            attrs = geo.pointAttribs()" ]
+                [ "        else: # vertex" ]
+                [ "            attrs = geo.vertexAttribs()" ]
+                [ "        for a in attrs:" ]
+                [ "            if a.dataType() == hou.attribData.Int and not a.isArrayType() and a.size() == 1:" ]
+                [ "                r.extend([a.name(), a.name()])" ]
+                [ "return r" ]
+                language python
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_action" "import soputils\n  \nsoputils.actionToggleVisualizer(kwargs, viz_defaults=soputils.getRandomColorVisualizerDefaults())\n\n" }
+            parmtag { "script_action_help" "Toggle visualization Ctrl-LMB: Open the visualization editor" }
+            parmtag { "script_action_icon" "VIEW_visualization" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "randomseed"
+            label   "Seed"
+            type    integer
+            default { "0" }
+            hidewhen "{ randmethod == mapattrib }"
+            range   { 0! 100 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    groupsimple {
+        name    "folder0"
+        label   "Noise Pattern"
+        hidewhentab "{ adjustvalue != 1 } { adjustquantity == all dirlen_valuetype != noise } { adjustquantity == dir dir_valuetype != noise } { adjustquantity == len len_valuetype != noise }"
+
+        parm {
+            name    "basis"
+            label   "Noise Type"
+            type    ordinal
+            default { "simplex" }
+            menu {
+                "value_fast"    "Fast"
+                "sparse"        "Sparse Convolution"
+                "alligator"     "Alligator"
+                "perlin"        "Perlin"
+                "flow"          "Perlin Flow"
+                "simplex"       "Simplex"
+                "worleyFA"      "Worley Cellular F1"
+                "worleyFB"      "Worley Cellular F2-F1"
+                "mworleyFA"     "Manhattan Cellular F1"
+                "mworleyFB"     "Manhattan Cellular F2-F1"
+                "cworleyFA"     "Chebyshev Cellular F1"
+                "cworleyFB"     "Chebyshev Cellular F2-F1"
+            }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_unquoted" "1" }
+        }
+        parm {
+            name    "locationattrib"
+            label   "Location Attribute"
+            type    string
+            default { "P" }
+            menureplace {
+                [ "r = []" ]
+                [ "node = hou.pwd()" ]
+                [ "inputs = node.inputs()" ]
+                [ "if inputs and inputs[0]:" ]
+                [ "    geo = inputs[0].geometry()" ]
+                [ "    if geo:" ]
+                [ "        c = node.parm('class').evalAsString()" ]
+                [ "        if c == 'detail':" ]
+                [ "            attrs = geo.globalAttribs()" ]
+                [ "        elif c == 'primitive':" ]
+                [ "            attrs = geo.primAttribs()" ]
+                [ "        elif c == 'point':" ]
+                [ "            attrs = geo.pointAttribs()" ]
+                [ "        else: # vertex" ]
+                [ "            attrs = geo.vertexAttribs()" ]
+                [ "        for a in attrs:" ]
+                [ "            if a.dataType() == hou.attribData.Float and not a.isArrayType() and a.size() == 3:" ]
+                [ "                r.extend([a.name(), a.name()])" ]
+                [ "return r" ]
+                language python
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "elementsize"
+            label   "Element Size"
+            type    float
+            joinnext
+            default { "1" }
+            range   { 0! 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "elementsizetype"
+            label   "Element Size"
+            type    iconstrip
+            nolabel
+            default { "0" }
+            menutoggle {
+                "BUTTONS_decompose_transforms"  "Per-Component Control"
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "elementscale"
+            label   "Element Scale"
+            type    vector
+            size    3
+            default { "1" "1" "1" }
+            hidewhen "{ elementsizetype != 1 }"
+            range   { 0! 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "offset"
+            label   "Offset"
+            type    float
+            joinnext
+            default { "0" }
+            range   { 0 50 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "parmvop" "1" }
+            parmtag { "shaderparmcontexts" "cvex" }
+        }
+        parm {
+            name    "offsettype"
+            label   "Offset"
+            type    iconstrip
+            nolabel
+            default { "0" }
+            menutoggle {
+                "BUTTONS_decompose_transforms"  "Per-Component Control"
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "offsetv"
+            label   "Offset"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            hidewhen "{ offsettype != 1 }"
+            range   { 0 50 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "parmvop" "1" }
+            parmtag { "shaderparmcontexts" "cvex" }
+        }
+        parm {
+            name    "usenoiseexpression"
+            label   "Use VEXpression"
+            type    toggle
+            default { "off" }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "parmvop" "1" }
+            parmtag { "shaderparmcontexts" "cvex" }
+        }
+        parm {
+            name    "noiseexpression"
+            label   " "
+            type    string
+            default { "// Parameters to modify:\n// Location Attribute - pos\n// Element Size - elementsize\n// Offset - offset\n\n" }
+            hidewhen "{ usenoiseexpression != 1 }"
+            menureplace {
+                [ "import vexpressionmenu" ]
+                [ "" ]
+                [ "return vexpressionmenu.buildSnippetMenu('attribnoise::2.0/noiseexpression', kwargs=kwargs)" ]
+                language python
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "editor" "1" }
+            parmtag { "editorlang" "vex" }
+            parmtag { "editorlines" "8-40" }
+            parmtag { "script_action" "import vexpressionmenu\n\nnode = kwargs['node']\nparmname = 'noiseexpression'\n\nvexpressionmenu.createSpareParmsFromChCalls(node, parmname)" }
+            parmtag { "script_action_help" "Creates spare parameters for each unique call of ch()" }
+            parmtag { "script_action_icon" "BUTTONS_create_parm_from_ch" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "vex_cwdpath"
+            label   "Evaluation Node Path"
+            type    oppath
+            default { "." }
+            hidewhen "{ usenoiseexpression != 1 }"
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "oprelative" "." }
+            parmtag { "script_callback_language" "python" }
+        }
+        groupcollapsible {
+            name    "folder9"
+            label   "Animation"
+
+            parm {
+                name    "animate"
+                label   "Animate Noise"
+                type    toggle
+                default { "off" }
+                disablewhen "{ basis == value_fast } { basis == sparse } { basis == alligator }"
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "parmvop" "1" }
+                parmtag { "shaderparmcontexts" "cvex" }
+            }
+            parm {
+                name    "pulseduration"
+                label   "Pulse Duration"
+                type    float
+                default { "1" }
+                disablewhen "{ basis == value_fast } { basis == sparse } { basis == alligator }"
+                hidewhen "{ animate != 1 }"
+                range   { 0! 10 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "parmvop" "1" }
+                parmtag { "shaderparmcontexts" "cvex" }
+            }
+        }
+
+        groupcollapsible {
+            name    "folder14"
+            label   "Fractal"
+
+            parm {
+                name    "fractal"
+                label   "Fractal Type"
+                type    ordinal
+                default { "fBm" }
+                menu {
+                    "none"  "None"
+                    "fBm"   "Standard (fBm)"
+                    "mfT"   "Terrain"
+                    "hmfT"  "Hybrid Terrain"
+                }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_unquoted" "1" }
+            }
+            parm {
+                name    "oct"
+                label   "Max Octaves"
+                type    float
+                default { "3" }
+                hidewhen "{ fractal == none } { fractal == none }"
+                range   { 0 16 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "parmvop" "1" }
+                parmtag { "shaderparmcontexts" "cvex" }
+            }
+            parm {
+                name    "lac"
+                label   "Lacunarity"
+                type    float
+                default { "2.01234" }
+                hidewhen "{ fractal == none }"
+                range   { 0 4 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "parmvop" "1" }
+                parmtag { "shaderparmcontexts" "cvex" }
+            }
+            parm {
+                name    "rough"
+                label   "Roughness"
+                type    float
+                default { "0.5" }
+                hidewhen "{ fractal == none }"
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "parmvop" "1" }
+                parmtag { "shaderparmcontexts" "cvex" }
+            }
+        }
+
+        groupcollapsible {
+            name    "folder8"
+            label   "Warping"
+
+            parm {
+                name    "disp"
+                label   "Lattice Warp"
+                type    float
+                default { "0" }
+                range   { -1 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "parmvop" "1" }
+                parmtag { "shaderparmcontexts" "cvex" }
+            }
+            parm {
+                name    "dispesize"
+                label   "Lattice Warp Size"
+                type    float
+                default { "1" }
+                range   { 0 10 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "parmvop" "1" }
+                parmtag { "shaderparmcontexts" "cvex" }
+            }
+            parm {
+                name    "gflow"
+                label   "Gradient Warp"
+                type    float
+                default { "0" }
+                range   { -1 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "parmvop" "1" }
+                parmtag { "shaderparmcontexts" "cvex" }
+            }
+            parm {
+                name    "flowrot"
+                label   "Flow Rotation"
+                type    float
+                default { "0" }
+                hidewhen "{ basis != flow basis != pflow }"
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "parmvop" "1" }
+                parmtag { "shaderparmcontexts" "cvex" }
+            }
+            parm {
+                name    "accuml"
+                label   "Accumulate Lattice Warp"
+                type    toggle
+                default { "off" }
+                hidewhen "{ fractal == none }"
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "parmvop" "1" }
+                parmtag { "shaderparmcontexts" "cvex" }
+            }
+            parm {
+                name    "accumg"
+                label   "Accumulate Gradient Warp"
+                type    toggle
+                default { "off" }
+                hidewhen "{ fractal == none }"
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "parmvop" "1" }
+                parmtag { "shaderparmcontexts" "cvex" }
+            }
+        }
+
+    }
+
+    groupsimple {
+        name    "folder6"
+        label   "Post-Process"
+
+        parm {
+            name    "enable_postprocess"
+            label   "Enable Post-Process"
+            type    toggle
+            default { "off" }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "doblend"
+            label   "Blend"
+            type    toggle
+            nolabel
+            joinnext
+            default { "off" }
+            hidewhen "{ enable_postprocess != 1 }"
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "blendweight"
+            label   "Blend"
+            type    float
+            joinnext
+            default { "1" }
+            disablewhen "{ doblend == 0 } { blendmode == attrib }"
+            hidewhen "{ enable_postprocess != 1 }"
+            range   { 0! 1! }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "blendtype"
+            label   "Blend Type"
+            type    ordinal
+            nolabel
+            joinnext
+            default { "value" }
+            disablewhen "{ doblend == 0 }"
+            hidewhen "{ enable_postprocess != 1 }"
+            menu {
+                "linear"    "Linear"
+                "spherical" "Spherical"
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "blendmode"
+            label   "Scale Mode"
+            type    ordinal
+            nolabel
+            default { "value" }
+            disablewhen "{ doblend == 0 }"
+            hidewhen "{ enable_postprocess != 1 }"
+            menu {
+                "value"     "Blend by Constant"
+                "attrib"    "Blend by Attribute"
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "blendattrib"
+            label   "Blend Attribute"
+            type    string
+            default { "" }
+            hidewhen "{ enable_postprocess != 1 } { doblend == 0 } { blendmode == value }"
+            menureplace {
+                [ "r = []" ]
+                [ "node = hou.pwd()" ]
+                [ "inputs = node.inputsFollowingOutputs()" ]
+                [ "if inputs and inputs[0]:" ]
+                [ "    geo = inputs[0].geometry()" ]
+                [ "    if geo:" ]
+                [ "        c = node.parm('class').evalAsString()" ]
+                [ "        if c == 'detail':" ]
+                [ "            attrs = geo.globalAttribs()" ]
+                [ "        elif c == 'primitive':" ]
+                [ "            attrs = geo.primAttribs()" ]
+                [ "        elif c == 'point':" ]
+                [ "            attrs = geo.pointAttribs()" ]
+                [ "        else: # vertex" ]
+                [ "            attrs = geo.vertexAttribs()" ]
+                [ "        for a in attrs:" ]
+                [ "            if a.dataType() == hou.attribData.Float and not a.isArrayType() and a.size() == 1:" ]
+                [ "                r.extend([a.name(), a.name()])" ]
+                [ "return r" ]
+                language python
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_action" "import soputils\n  \nsoputils.actionToggleVisualizer(kwargs, viz_defaults=soputils.getRandomColorVisualizerDefaults())\n\n" }
+            parmtag { "script_action_help" "Toggle visualization Ctrl-LMB: Open the visualization editor" }
+            parmtag { "script_action_icon" "VIEW_visualization" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dopostscale"
+            label   "Post-Length Scale"
+            type    toggle
+            nolabel
+            joinnext
+            default { "off" }
+            hidewhen "{ enable_postprocess != 1 }"
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "postscale"
+            label   "Length Scale"
+            type    float
+            default { "1" }
+            disablewhen "{ dopostscale != 1 }"
+            hidewhen "{ enable_postprocess != 1 }"
+            range   { 0! 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "doclampmin"
+            label   "Minimum"
+            type    toggle
+            nolabel
+            joinnext
+            default { "off" }
+            hidewhen "{ enable_postprocess != 1 }"
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "clampminvalue"
+            label   "Minimum Length"
+            type    float
+            default { "0" }
+            disablewhen "{ doclampmin == 0 }"
+            hidewhen "{ enable_postprocess != 1 }"
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "doclampmax"
+            label   "Maximum"
+            type    toggle
+            nolabel
+            joinnext
+            default { "off" }
+            hidewhen "{ enable_postprocess != 1 }"
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "clampmaxvalue"
+            label   "Maximum Length"
+            type    float
+            default { "1" }
+            disablewhen "{ doclampmax == 0 }"
+            hidewhen "{ enable_postprocess != 1 }"
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "postnormalize"
+            label   "Make Vectors Unit Length"
+            type    toggle
+            default { "off" }
+            hidewhen "{ enable_postprocess != 1 }"
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    groupsimple {
+        name    "folder10"
+        label   "Output Attributes"
+
+        parm {
+            name    "output_lenattrib"
+            label   "Output Length Attribute"
+            type    toggle
+            nolabel
+            joinnext
+            default { "off" }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "lengthattrib"
+            label   "Length"
+            type    string
+            default { "length" }
+            disablewhen "{ output_lenattrib != 1 }"
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_action" "from soputils import actionToggleVisualizer\nkwargs['attribname'] = kwargs['node'].parm('lengthattrib').eval()\nactionToggleVisualizer(kwargs)\n" }
+            parmtag { "script_action_help" "Toggle visualization Ctrl-LMB: Open the visualization editor" }
+            parmtag { "script_action_icon" "VIEW_visualization" }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    groupsimple {
+        name    "folder11"
+        label   "Attribute Properties"
+
+        parm {
+            name    "dodefault"
+            label   "Default"
+            type    toggle
+            nolabel
+            joinnext
+            default { "off" }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "default"
+            label   "Default Value"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            disablewhen "{ dodefault != 1 }"
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dotypeinfo"
+            label   "Type Info"
+            type    toggle
+            nolabel
+            joinnext
+            default { "0" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "typeinfo"
+            label   "Type Qualifier"
+            type    ordinal
+            default { "vector" }
+            disablewhen "{ dotypeinfo != 1 }"
+            menu {
+                "none"      "None"
+                "point"     "Position"
+                "vector"    "Vector"
+                "normal"    "Normal"
+                "color"     "Color"
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+}

@@ -1,0 +1,2902 @@
+{
+  "domain_pack": "water_flip_v1",
+  "case_id": "water_flip_v1__build_inspect",
+  "case_ids": [
+    "water_flip_v1__build_inspect",
+    "water_flip_v1__causal_candidate",
+    "water_flip_v1__approval_recovery"
+  ],
+  "domain_pack_version": "1.0.0",
+  "kind": "current_software_contract_checklist_not_execution_evidence",
+  "status": "PREPARATION_NOT_ACCEPTED",
+  "applications": [
+    "houdini",
+    "nuke"
+  ],
+  "required_versions": {
+    "houdini": [
+      "21.0.631",
+      "22.0.459"
+    ],
+    "nuke": [
+      "17.0v1"
+    ]
+  },
+  "native_basis_status": "UNRESOLVED",
+  "native_basis": {
+    "static_definitions": [
+      "docs/native-basis/hda-interface-capture.json",
+      "docs/native-basis/native-boundary-metadata-supplement.json",
+      "docs/native-basis/hda-interface-22.0.459.json",
+      "docs/native-basis/supporting-sources-22.0.459.json"
+    ],
+    "meaning": "Current software mappings and static references are not whole-domain native validation; resolve exact operator/parameter/port and output-consumption gaps before marking VERIFIED_SOURCE.",
+    "versioned_preparation": {
+      "22.0.459": {
+        "status": "UNRESOLVED",
+        "scope": "Independent459HDA static fields and prospective software topology only; no compiled template, host process, writer execution or whole-domain validation.",
+        "sources": [
+          {
+            "path": "docs/native-basis/hda-interface-22.0.459.json",
+            "sha256": "e8d9ee7a16f14baa2327ae45412b2acee60ef4849d4e3aa099aea229586379c7",
+            "version": "22.0.459",
+            "native_execution": false
+          },
+          {
+            "path": "docs/native-basis/supporting-sources-22.0.459.json",
+            "sha256": "7b1bd4e1b187de823db9555bca10f40e9278dd88fb790cce8c874576405e1c3a",
+            "version": "22.0.459",
+            "native_execution": false
+          }
+        ],
+        "originals": "docs/native-basis/h22-459-originals/",
+        "captured_hda_operators": 55,
+        "node_templates": {
+          "default": [
+            {
+              "role": "geometry_network",
+              "candidates": [
+                {
+                  "operator": "Obj/geo",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "source",
+              "candidates": [
+                {
+                  "operator": "Sop/sphere",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "fluid_source",
+              "candidates": [
+                {
+                  "operator": "Sop/flipsource",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "5a74ef711777bdb1e6b944001ac851cf64ff3ce84d808a94510045aed49e82b6",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "container",
+              "candidates": [
+                {
+                  "operator": "Sop/flipcontainer",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "3559d9700a6aef15f186ac2566cf302fb6355d0d21b47056eea7c6f016777104",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "collision_source",
+              "candidates": [
+                {
+                  "operator": "Sop/box",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "collision_transform",
+              "candidates": [
+                {
+                  "operator": "Sop/xform",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "collisions",
+              "candidates": [
+                {
+                  "operator": "Sop/flipcollide",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "8ffb37959a3b73d8fd53db8bbc3aa0b53471c94178a2a7fccd1bffa6d4b21a83",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "solver",
+              "candidates": [
+                {
+                  "operator": "Sop/flipsolver",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "e3be31e692144229fc2c984f36013455feab9a4bf4eca2c9a05b78044618aed5",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "surface",
+              "candidates": [
+                {
+                  "operator": "Sop/particlefluidsurface::2.0",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "c199e313145f241e29c4c9873f7cb18fbffa7db04f3185de68084faa1d0b805d",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "output",
+              "candidates": [
+                {
+                  "operator": "Sop/null",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "usd_network",
+              "candidates": [
+                {
+                  "operator": "Obj/lopnet",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "render_network",
+              "candidates": [
+                {
+                  "operator": "Obj/ropnet",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "geometry_import",
+              "candidates": [
+                {
+                  "operator": "Lop/sopimport",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "camera",
+              "candidates": [
+                {
+                  "operator": "Lop/camera",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "e7961a7d50953ca0a1d9cbd8f5349db34a4ec33fb98118f6d852e91765564612",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "light",
+              "candidates": [
+                {
+                  "operator": "Lop/light",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "34498e2f239d0566a47fc65928f9d42db17b8d7e487a99d3e0acc66b407abf38",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render_settings",
+              "candidates": [
+                {
+                  "operator": "Lop/karmarendersettings",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "cc263cb8a2e6e1f964363999322d8395f7c52d7160ea723173a24b23568783fe",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render_var",
+              "candidates": [
+                {
+                  "operator": "Lop/rendervar",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "c296736e72c9e2881b3867ff634cfe6253e5e5848e4f63bc9ff01420cbc39aea",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render_product",
+              "candidates": [
+                {
+                  "operator": "Lop/renderproduct",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "db75399202e08a57d1c5a1b29b42a2f871b690b9f23fe5db955a185bcb015cab",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "settings_binding",
+              "candidates": [
+                {
+                  "operator": "Lop/rendersettings",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "325937f14987a4b23ec74be88ac1bb0a424e351a469776e41b15952dbef9ac3d",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render",
+              "candidates": [
+                {
+                  "operator": "Driver/usdrender",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            }
+          ]
+        },
+        "blocked_controls": {
+          "default": [
+            {
+              "id": "collision_separation",
+              "blocker": "FLIP_SIMULATION_COLLISION_SEPARATION_CONTRACT_NOT_CAPTURED",
+              "native_basis": {
+                "version": "22.0.459",
+                "source": "docs/native-basis/hda-interface-22.0.459.json",
+                "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+                "native_execution": false,
+                "observed": [],
+                "missing": []
+              }
+            },
+            {
+              "id": "collision_passes",
+              "blocker": "FLIP_COLLISION_PASSES_NATIVE_FIELD_NOT_CAPTURED",
+              "native_basis": {
+                "version": "22.0.459",
+                "source": "docs/native-basis/hda-interface-22.0.459.json",
+                "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+                "native_execution": false,
+                "observed": [],
+                "missing": []
+              }
+            }
+          ]
+        },
+        "native_execution": false
+      }
+    }
+  },
+  "expected_nodes": {
+    "21.0.631": {
+      "default": [
+        {
+          "role": "geometry_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "geo"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "source",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "sphere"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "fluid_source",
+          "category": "sop",
+          "input_role": "source",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "flipsource"
+          ],
+          "required_parameter_aliases": [
+            [
+              "createparticles"
+            ],
+            [
+              "particlesep"
+            ]
+          ]
+        },
+        {
+          "role": "container",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "flipcontainer"
+          ],
+          "required_parameter_aliases": [
+            [
+              "particlesep"
+            ],
+            [
+              "viscosity"
+            ],
+            [
+              "dovaryingviscosity"
+            ],
+            [
+              "default_viscosity"
+            ],
+            [
+              "dosurfacetension"
+            ],
+            [
+              "surfacetension"
+            ]
+          ]
+        },
+        {
+          "role": "collision_source",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "box"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "collision_transform",
+          "category": "sop",
+          "input_role": "collision_source",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "xform"
+          ],
+          "required_parameter_aliases": [
+            [
+              "t"
+            ],
+            [
+              "s"
+            ]
+          ]
+        },
+        {
+          "role": "collisions",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "flipcollide"
+          ],
+          "required_parameter_aliases": [
+            [
+              "activate"
+            ],
+            [
+              "dovolume"
+            ],
+            [
+              "dosurface"
+            ]
+          ]
+        },
+        {
+          "role": "solver",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "flipsolver"
+          ],
+          "required_parameter_aliases": [
+            [
+              "overrideres"
+            ],
+            [
+              "minimumsubsteps"
+            ],
+            [
+              "substeps"
+            ],
+            [
+              "collision"
+            ]
+          ]
+        },
+        {
+          "role": "surface",
+          "category": "sop",
+          "input_role": "solver",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "particlefluidsurface::2.0"
+          ],
+          "required_parameter_aliases": [
+            [
+              "particlesep"
+            ],
+            [
+              "voxelsize"
+            ],
+            [
+              "surfmethod"
+            ],
+            [
+              "surfacedistance"
+            ],
+            [
+              "conversion"
+            ],
+            [
+              "docollisions"
+            ]
+          ]
+        },
+        {
+          "role": "output",
+          "category": "sop",
+          "input_role": "surface",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "null"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "usd_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "lopnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "render_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "ropnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "geometry_import",
+          "category": "lop",
+          "input_role": null,
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "sopimport"
+          ],
+          "required_parameter_aliases": [
+            [
+              "soppath"
+            ],
+            [
+              "enable_pathprefix"
+            ],
+            [
+              "pathprefix"
+            ]
+          ]
+        },
+        {
+          "role": "camera",
+          "category": "lop",
+          "input_role": "geometry_import",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "camera"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "focalLength"
+            ],
+            [
+              "fStop"
+            ],
+            [
+              "xn__shutteropen_0ta"
+            ],
+            [
+              "xn__shutterclose_nva"
+            ]
+          ]
+        },
+        {
+          "role": "light",
+          "category": "lop",
+          "input_role": "camera",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "light"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "lighttype"
+            ],
+            [
+              "radius"
+            ],
+            [
+              "exposure"
+            ]
+          ]
+        },
+        {
+          "role": "render_settings",
+          "category": "lop",
+          "input_role": "light",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "karmarendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "camera"
+            ],
+            [
+              "samplesperpixel"
+            ],
+            [
+              "volumesteprate"
+            ],
+            [
+              "enablemblur"
+            ],
+            [
+              "pixelfiltersize"
+            ],
+            [
+              "denoiser"
+            ]
+          ]
+        },
+        {
+          "role": "render_var",
+          "category": "lop",
+          "input_role": "render_settings",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendervar"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "sourceName"
+            ],
+            [
+              "sourceType"
+            ],
+            [
+              "dataType"
+            ]
+          ]
+        },
+        {
+          "role": "render_product",
+          "category": "lop",
+          "input_role": "render_var",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "renderproduct"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "orderedVars"
+            ],
+            [
+              "productType"
+            ],
+            [
+              "productName"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "settings_binding",
+          "category": "lop",
+          "input_role": "render_product",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "createprims"
+            ],
+            [
+              "products"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "render",
+          "category": "rop",
+          "input_role": null,
+          "parent_role": "render_network",
+          "type_candidates": [
+            "usdrender"
+          ],
+          "required_parameter_aliases": [
+            [
+              "loppath"
+            ],
+            [
+              "rendersettings"
+            ],
+            [
+              "override_camera"
+            ],
+            [
+              "outputimage"
+            ],
+            [
+              "execute"
+            ]
+          ]
+        }
+      ]
+    },
+    "22.0.429": {
+      "default": [
+        {
+          "role": "geometry_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "geo"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "source",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "sphere"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "fluid_source",
+          "category": "sop",
+          "input_role": "source",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "flipsource"
+          ],
+          "required_parameter_aliases": [
+            [
+              "createparticles"
+            ],
+            [
+              "particlesep"
+            ]
+          ]
+        },
+        {
+          "role": "container",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "flipcontainer"
+          ],
+          "required_parameter_aliases": [
+            [
+              "particlesep"
+            ],
+            [
+              "viscosity"
+            ],
+            [
+              "dovaryingviscosity"
+            ],
+            [
+              "default_viscosity"
+            ],
+            [
+              "dosurfacetension"
+            ],
+            [
+              "surfacetension"
+            ]
+          ]
+        },
+        {
+          "role": "collision_source",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "box"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "collision_transform",
+          "category": "sop",
+          "input_role": "collision_source",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "xform"
+          ],
+          "required_parameter_aliases": [
+            [
+              "t"
+            ],
+            [
+              "s"
+            ]
+          ]
+        },
+        {
+          "role": "collisions",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "flipcollide"
+          ],
+          "required_parameter_aliases": [
+            [
+              "activate"
+            ],
+            [
+              "dovolume"
+            ],
+            [
+              "dosurface"
+            ]
+          ]
+        },
+        {
+          "role": "solver",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "flipsolver"
+          ],
+          "required_parameter_aliases": [
+            [
+              "overrideres"
+            ],
+            [
+              "minimumsubsteps"
+            ],
+            [
+              "substeps"
+            ],
+            [
+              "collision"
+            ]
+          ]
+        },
+        {
+          "role": "surface",
+          "category": "sop",
+          "input_role": "solver",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "particlefluidsurface::2.0"
+          ],
+          "required_parameter_aliases": [
+            [
+              "particlesep"
+            ],
+            [
+              "voxelsize"
+            ],
+            [
+              "surfmethod"
+            ],
+            [
+              "surfacedistance"
+            ],
+            [
+              "conversion"
+            ],
+            [
+              "docollisions"
+            ]
+          ]
+        },
+        {
+          "role": "output",
+          "category": "sop",
+          "input_role": "surface",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "null"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "usd_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "lopnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "render_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "ropnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "geometry_import",
+          "category": "lop",
+          "input_role": null,
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "sopimport"
+          ],
+          "required_parameter_aliases": [
+            [
+              "soppath"
+            ],
+            [
+              "enable_pathprefix"
+            ],
+            [
+              "pathprefix"
+            ]
+          ]
+        },
+        {
+          "role": "camera",
+          "category": "lop",
+          "input_role": "geometry_import",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "camera"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "focalLength"
+            ],
+            [
+              "fStop"
+            ],
+            [
+              "xn__shutteropen_0ta"
+            ],
+            [
+              "xn__shutterclose_nva"
+            ]
+          ]
+        },
+        {
+          "role": "light",
+          "category": "lop",
+          "input_role": "camera",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "light"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "lighttype"
+            ],
+            [
+              "radius"
+            ],
+            [
+              "exposure"
+            ]
+          ]
+        },
+        {
+          "role": "render_settings",
+          "category": "lop",
+          "input_role": "light",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "karmarendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "camera"
+            ],
+            [
+              "samplesperpixel"
+            ],
+            [
+              "volumesteprate"
+            ],
+            [
+              "enablemblur"
+            ],
+            [
+              "pixelfiltersize"
+            ],
+            [
+              "denoiser"
+            ]
+          ]
+        },
+        {
+          "role": "render_var",
+          "category": "lop",
+          "input_role": "render_settings",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendervar"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "sourceName"
+            ],
+            [
+              "sourceType"
+            ],
+            [
+              "dataType"
+            ]
+          ]
+        },
+        {
+          "role": "render_product",
+          "category": "lop",
+          "input_role": "render_var",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "renderproduct"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "orderedVars"
+            ],
+            [
+              "productType"
+            ],
+            [
+              "productName"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "settings_binding",
+          "category": "lop",
+          "input_role": "render_product",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "createprims"
+            ],
+            [
+              "products"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "render",
+          "category": "rop",
+          "input_role": null,
+          "parent_role": "render_network",
+          "type_candidates": [
+            "usdrender"
+          ],
+          "required_parameter_aliases": [
+            [
+              "loppath"
+            ],
+            [
+              "rendersettings"
+            ],
+            [
+              "override_camera"
+            ],
+            [
+              "outputimage"
+            ],
+            [
+              "execute"
+            ]
+          ]
+        }
+      ]
+    },
+    "22.0.459": {
+      "default": [
+        {
+          "role": "geometry_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "geo"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "source",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "sphere"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "fluid_source",
+          "category": "sop",
+          "input_role": "source",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "flipsource"
+          ],
+          "required_parameter_aliases": [
+            [
+              "createparticles"
+            ],
+            [
+              "particlesep"
+            ]
+          ]
+        },
+        {
+          "role": "container",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "flipcontainer"
+          ],
+          "required_parameter_aliases": [
+            [
+              "particlesep"
+            ],
+            [
+              "viscosity"
+            ],
+            [
+              "dovaryingviscosity"
+            ],
+            [
+              "default_viscosity"
+            ],
+            [
+              "dosurfacetension"
+            ],
+            [
+              "surfacetension"
+            ]
+          ]
+        },
+        {
+          "role": "collision_source",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "box"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "collision_transform",
+          "category": "sop",
+          "input_role": "collision_source",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "xform"
+          ],
+          "required_parameter_aliases": [
+            [
+              "t"
+            ],
+            [
+              "s"
+            ]
+          ]
+        },
+        {
+          "role": "collisions",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "flipcollide"
+          ],
+          "required_parameter_aliases": [
+            [
+              "activate"
+            ],
+            [
+              "dovolume"
+            ],
+            [
+              "dosurface"
+            ]
+          ]
+        },
+        {
+          "role": "solver",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "flipsolver"
+          ],
+          "required_parameter_aliases": [
+            [
+              "overrideres"
+            ],
+            [
+              "minimumsubsteps"
+            ],
+            [
+              "substeps"
+            ],
+            [
+              "collision"
+            ]
+          ]
+        },
+        {
+          "role": "surface",
+          "category": "sop",
+          "input_role": "solver",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "particlefluidsurface::2.0"
+          ],
+          "required_parameter_aliases": [
+            [
+              "particlesep"
+            ],
+            [
+              "voxelsize"
+            ],
+            [
+              "surfmethod"
+            ],
+            [
+              "surfacedistance"
+            ],
+            [
+              "conversion"
+            ],
+            [
+              "docollisions"
+            ]
+          ]
+        },
+        {
+          "role": "output",
+          "category": "sop",
+          "input_role": "surface",
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "null"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "usd_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "lopnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "render_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "ropnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "geometry_import",
+          "category": "lop",
+          "input_role": null,
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "sopimport"
+          ],
+          "required_parameter_aliases": [
+            [
+              "soppath"
+            ],
+            [
+              "enable_pathprefix"
+            ],
+            [
+              "pathprefix"
+            ]
+          ]
+        },
+        {
+          "role": "camera",
+          "category": "lop",
+          "input_role": "geometry_import",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "camera"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "focalLength"
+            ],
+            [
+              "fStop"
+            ],
+            [
+              "xn__shutteropen_0ta"
+            ],
+            [
+              "xn__shutterclose_nva"
+            ]
+          ]
+        },
+        {
+          "role": "light",
+          "category": "lop",
+          "input_role": "camera",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "light"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "lighttype"
+            ],
+            [
+              "radius"
+            ],
+            [
+              "exposure"
+            ]
+          ]
+        },
+        {
+          "role": "render_settings",
+          "category": "lop",
+          "input_role": "light",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "karmarendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "camera"
+            ],
+            [
+              "samplesperpixel"
+            ],
+            [
+              "volumesteprate"
+            ],
+            [
+              "enablemblur"
+            ],
+            [
+              "pixelfiltersize"
+            ],
+            [
+              "denoiser"
+            ]
+          ]
+        },
+        {
+          "role": "render_var",
+          "category": "lop",
+          "input_role": "render_settings",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendervar"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "sourceName"
+            ],
+            [
+              "sourceType"
+            ],
+            [
+              "dataType"
+            ]
+          ]
+        },
+        {
+          "role": "render_product",
+          "category": "lop",
+          "input_role": "render_var",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "renderproduct"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "orderedVars"
+            ],
+            [
+              "productType"
+            ],
+            [
+              "productName"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "settings_binding",
+          "category": "lop",
+          "input_role": "render_product",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "createprims"
+            ],
+            [
+              "products"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "render",
+          "category": "rop",
+          "input_role": null,
+          "parent_role": "render_network",
+          "type_candidates": [
+            "usdrender"
+          ],
+          "required_parameter_aliases": [
+            [
+              "loppath"
+            ],
+            [
+              "rendersettings"
+            ],
+            [
+              "override_camera"
+            ],
+            [
+              "outputimage"
+            ],
+            [
+              "execute"
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "expected_connections": {
+    "21.0.631": {
+      "default": [
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "fluid_source",
+          "destination_input": 0
+        },
+        {
+          "source_role": "fluid_source",
+          "source_output": 0,
+          "destination_role": "container",
+          "destination_input": 0
+        },
+        {
+          "source_role": "collision_source",
+          "source_output": 0,
+          "destination_role": "collision_transform",
+          "destination_input": 0
+        },
+        {
+          "source_role": "collision_transform",
+          "source_output": 0,
+          "destination_role": "collisions",
+          "destination_input": 3
+        },
+        {
+          "source_role": "container",
+          "source_output": 0,
+          "destination_role": "collisions",
+          "destination_input": 0
+        },
+        {
+          "source_role": "container",
+          "source_output": 1,
+          "destination_role": "collisions",
+          "destination_input": 1
+        },
+        {
+          "source_role": "container",
+          "source_output": 2,
+          "destination_role": "collisions",
+          "destination_input": 2
+        },
+        {
+          "source_role": "collisions",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 0
+        },
+        {
+          "source_role": "collisions",
+          "source_output": 1,
+          "destination_role": "solver",
+          "destination_input": 1
+        },
+        {
+          "source_role": "collisions",
+          "source_output": 2,
+          "destination_role": "solver",
+          "destination_input": 2
+        },
+        {
+          "source_role": "solver",
+          "source_output": 0,
+          "destination_role": "surface",
+          "destination_input": 0
+        },
+        {
+          "source_role": "collisions",
+          "source_output": 2,
+          "destination_role": "surface",
+          "destination_input": 1
+        },
+        {
+          "source_role": "surface",
+          "source_output": 0,
+          "destination_role": "output",
+          "destination_input": 0
+        },
+        {
+          "source_role": "geometry_import",
+          "source_output": 0,
+          "destination_role": "camera",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "camera",
+          "source_output": 0,
+          "destination_role": "light",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "light",
+          "source_output": 0,
+          "destination_role": "render_settings",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_settings",
+          "source_output": 0,
+          "destination_role": "render_var",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_var",
+          "source_output": 0,
+          "destination_role": "render_product",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_product",
+          "source_output": 0,
+          "destination_role": "settings_binding",
+          "destination_input": 0,
+          "require_same_parent": true
+        }
+      ]
+    },
+    "22.0.429": {
+      "default": [
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "fluid_source",
+          "destination_input": 0
+        },
+        {
+          "source_role": "fluid_source",
+          "source_output": 0,
+          "destination_role": "container",
+          "destination_input": 0
+        },
+        {
+          "source_role": "collision_source",
+          "source_output": 0,
+          "destination_role": "collision_transform",
+          "destination_input": 0
+        },
+        {
+          "source_role": "collision_transform",
+          "source_output": 0,
+          "destination_role": "collisions",
+          "destination_input": 3
+        },
+        {
+          "source_role": "container",
+          "source_output": 0,
+          "destination_role": "collisions",
+          "destination_input": 0
+        },
+        {
+          "source_role": "container",
+          "source_output": 1,
+          "destination_role": "collisions",
+          "destination_input": 1
+        },
+        {
+          "source_role": "container",
+          "source_output": 2,
+          "destination_role": "collisions",
+          "destination_input": 2
+        },
+        {
+          "source_role": "collisions",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 0
+        },
+        {
+          "source_role": "collisions",
+          "source_output": 1,
+          "destination_role": "solver",
+          "destination_input": 1
+        },
+        {
+          "source_role": "collisions",
+          "source_output": 2,
+          "destination_role": "solver",
+          "destination_input": 2
+        },
+        {
+          "source_role": "solver",
+          "source_output": 0,
+          "destination_role": "surface",
+          "destination_input": 0
+        },
+        {
+          "source_role": "collisions",
+          "source_output": 2,
+          "destination_role": "surface",
+          "destination_input": 1
+        },
+        {
+          "source_role": "surface",
+          "source_output": 0,
+          "destination_role": "output",
+          "destination_input": 0
+        },
+        {
+          "source_role": "geometry_import",
+          "source_output": 0,
+          "destination_role": "camera",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "camera",
+          "source_output": 0,
+          "destination_role": "light",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "light",
+          "source_output": 0,
+          "destination_role": "render_settings",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_settings",
+          "source_output": 0,
+          "destination_role": "render_var",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_var",
+          "source_output": 0,
+          "destination_role": "render_product",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_product",
+          "source_output": 0,
+          "destination_role": "settings_binding",
+          "destination_input": 0,
+          "require_same_parent": true
+        }
+      ]
+    },
+    "22.0.459": {
+      "default": [
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "fluid_source",
+          "destination_input": 0
+        },
+        {
+          "source_role": "fluid_source",
+          "source_output": 0,
+          "destination_role": "container",
+          "destination_input": 0
+        },
+        {
+          "source_role": "collision_source",
+          "source_output": 0,
+          "destination_role": "collision_transform",
+          "destination_input": 0
+        },
+        {
+          "source_role": "collision_transform",
+          "source_output": 0,
+          "destination_role": "collisions",
+          "destination_input": 3
+        },
+        {
+          "source_role": "container",
+          "source_output": 0,
+          "destination_role": "collisions",
+          "destination_input": 0
+        },
+        {
+          "source_role": "container",
+          "source_output": 1,
+          "destination_role": "collisions",
+          "destination_input": 1
+        },
+        {
+          "source_role": "container",
+          "source_output": 2,
+          "destination_role": "collisions",
+          "destination_input": 2
+        },
+        {
+          "source_role": "collisions",
+          "source_output": 0,
+          "destination_role": "solver",
+          "destination_input": 0
+        },
+        {
+          "source_role": "collisions",
+          "source_output": 1,
+          "destination_role": "solver",
+          "destination_input": 1
+        },
+        {
+          "source_role": "collisions",
+          "source_output": 2,
+          "destination_role": "solver",
+          "destination_input": 2
+        },
+        {
+          "source_role": "solver",
+          "source_output": 0,
+          "destination_role": "surface",
+          "destination_input": 0
+        },
+        {
+          "source_role": "collisions",
+          "source_output": 2,
+          "destination_role": "surface",
+          "destination_input": 1
+        },
+        {
+          "source_role": "surface",
+          "source_output": 0,
+          "destination_role": "output",
+          "destination_input": 0
+        },
+        {
+          "source_role": "geometry_import",
+          "source_output": 0,
+          "destination_role": "camera",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "camera",
+          "source_output": 0,
+          "destination_role": "light",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "light",
+          "source_output": 0,
+          "destination_role": "render_settings",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_settings",
+          "source_output": 0,
+          "destination_role": "render_var",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_var",
+          "source_output": 0,
+          "destination_role": "render_product",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_product",
+          "source_output": 0,
+          "destination_role": "settings_binding",
+          "destination_input": 0,
+          "require_same_parent": true
+        }
+      ]
+    }
+  },
+  "key_parameters": {
+    "semantic": [
+      {
+        "name": "particle_separation",
+        "value_type": "float",
+        "minimum": 0.001,
+        "maximum": 10.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "substeps",
+        "value_type": "int",
+        "minimum": 1.0,
+        "maximum": 20.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "viscosity",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 100000.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "surface_tension",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 10000.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "surface_resolution",
+        "value_type": "float",
+        "minimum": 0.1,
+        "maximum": 10.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "shaping"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "droplet_scale",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 100.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "shaping"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "meshing_detail",
+        "value_type": "float",
+        "minimum": 0.01,
+        "maximum": 100.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "shaping"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "collision_separation",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 100.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "collision_passes",
+        "value_type": "int",
+        "minimum": 1.0,
+        "maximum": 1000.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "simulation"
+        ],
+        "requires_simulation_cache": true,
+        "invalidates_components": [],
+        "application": "houdini"
+      }
+    ],
+    "versioned_native_mapping": {
+      "21.0.631": {
+        "default": [
+          {
+            "id": "particle_separation",
+            "node_role": "container",
+            "parameter_aliases": [
+              "particlesep"
+            ],
+            "minimum": 0.001,
+            "maximum": 10,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "fluid_source",
+                "createparticles",
+                1
+              ],
+              [
+                "solver",
+                "overrideres",
+                0
+              ]
+            ],
+            "native_status": "mapped",
+            "targets": [
+              [
+                "fluid_source",
+                "particlesep"
+              ],
+              [
+                "container",
+                "particlesep"
+              ],
+              [
+                "surface",
+                "particlesep"
+              ]
+            ]
+          },
+          {
+            "id": "substeps",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "minimumsubsteps"
+            ],
+            "minimum": 1,
+            "maximum": 20,
+            "invalidates_from": "generation_simulation",
+            "value_type": "int",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "mapped"
+          },
+          {
+            "id": "viscosity",
+            "node_role": "container",
+            "parameter_aliases": [
+              "default_viscosity"
+            ],
+            "minimum": 0,
+            "maximum": 100000,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "container",
+                "viscosity",
+                1
+              ],
+              [
+                "container",
+                "dovaryingviscosity",
+                0
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "surface_tension",
+            "node_role": "container",
+            "parameter_aliases": [
+              "surfacetension"
+            ],
+            "minimum": 0,
+            "maximum": 10000,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "container",
+                "dosurfacetension",
+                1
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "surface_resolution",
+            "node_role": "surface",
+            "parameter_aliases": [
+              "voxelsize"
+            ],
+            "minimum": 0.1,
+            "maximum": 10,
+            "invalidates_from": "shaping_meshing",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "mapped"
+          },
+          {
+            "id": "droplet_scale",
+            "node_role": "surface",
+            "parameter_aliases": [
+              "surfacedistance"
+            ],
+            "minimum": 0,
+            "maximum": 100,
+            "invalidates_from": "shaping_meshing",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "surface",
+                "surfmethod",
+                "particlefluid"
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "meshing_detail",
+            "node_role": "surface",
+            "parameter_aliases": [
+              "voxelsize"
+            ],
+            "minimum": 0.01,
+            "maximum": 100,
+            "invalidates_from": "shaping_meshing",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "mapped"
+          },
+          {
+            "id": "collision_separation",
+            "node_role": "collisions",
+            "parameter_aliases": [],
+            "minimum": 0,
+            "maximum": 100,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "blocked",
+            "blocker": "FLIP_SIMULATION_COLLISION_SEPARATION_CONTRACT_NOT_CAPTURED"
+          },
+          {
+            "id": "collision_passes",
+            "node_role": "solver",
+            "parameter_aliases": [],
+            "minimum": 1,
+            "maximum": 1000,
+            "invalidates_from": "generation_simulation",
+            "value_type": "int",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "blocked",
+            "blocker": "FLIP_COLLISION_PASSES_NATIVE_FIELD_NOT_CAPTURED"
+          }
+        ]
+      },
+      "22.0.429": {
+        "default": [
+          {
+            "id": "particle_separation",
+            "node_role": "container",
+            "parameter_aliases": [
+              "particlesep"
+            ],
+            "minimum": 0.001,
+            "maximum": 10,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "fluid_source",
+                "createparticles",
+                1
+              ],
+              [
+                "solver",
+                "overrideres",
+                0
+              ]
+            ],
+            "native_status": "mapped",
+            "targets": [
+              [
+                "fluid_source",
+                "particlesep"
+              ],
+              [
+                "container",
+                "particlesep"
+              ],
+              [
+                "surface",
+                "particlesep"
+              ]
+            ]
+          },
+          {
+            "id": "substeps",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "minimumsubsteps"
+            ],
+            "minimum": 1,
+            "maximum": 20,
+            "invalidates_from": "generation_simulation",
+            "value_type": "int",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "mapped"
+          },
+          {
+            "id": "viscosity",
+            "node_role": "container",
+            "parameter_aliases": [
+              "default_viscosity"
+            ],
+            "minimum": 0,
+            "maximum": 100000,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "container",
+                "viscosity",
+                1
+              ],
+              [
+                "container",
+                "dovaryingviscosity",
+                0
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "surface_tension",
+            "node_role": "container",
+            "parameter_aliases": [
+              "surfacetension"
+            ],
+            "minimum": 0,
+            "maximum": 10000,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "container",
+                "dosurfacetension",
+                1
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "surface_resolution",
+            "node_role": "surface",
+            "parameter_aliases": [
+              "voxelsize"
+            ],
+            "minimum": 0.1,
+            "maximum": 10,
+            "invalidates_from": "shaping_meshing",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "mapped"
+          },
+          {
+            "id": "droplet_scale",
+            "node_role": "surface",
+            "parameter_aliases": [
+              "surfacedistance"
+            ],
+            "minimum": 0,
+            "maximum": 100,
+            "invalidates_from": "shaping_meshing",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "surface",
+                "surfmethod",
+                "particlefluid"
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "meshing_detail",
+            "node_role": "surface",
+            "parameter_aliases": [
+              "voxelsize"
+            ],
+            "minimum": 0.01,
+            "maximum": 100,
+            "invalidates_from": "shaping_meshing",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "mapped"
+          },
+          {
+            "id": "collision_separation",
+            "node_role": "collisions",
+            "parameter_aliases": [],
+            "minimum": 0,
+            "maximum": 100,
+            "invalidates_from": "generation_simulation",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "blocked",
+            "blocker": "FLIP_SIMULATION_COLLISION_SEPARATION_CONTRACT_NOT_CAPTURED"
+          },
+          {
+            "id": "collision_passes",
+            "node_role": "solver",
+            "parameter_aliases": [],
+            "minimum": 1,
+            "maximum": 1000,
+            "invalidates_from": "generation_simulation",
+            "value_type": "int",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "blocked",
+            "blocker": "FLIP_COLLISION_PASSES_NATIVE_FIELD_NOT_CAPTURED"
+          }
+        ]
+      },
+      "22.0.459": {
+        "default": [
+          {
+            "minimum": 0.001,
+            "maximum": 10,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [
+              [
+                "fluid_source",
+                "createparticles",
+                1
+              ],
+              [
+                "solver",
+                "overrideres",
+                0
+              ]
+            ],
+            "invalidates_from": "generation_simulation",
+            "unit": "scene units; container vendor unit m1",
+            "native_status": "mapped",
+            "targets": [
+              [
+                "fluid_source",
+                "particlesep"
+              ],
+              [
+                "container",
+                "particlesep"
+              ],
+              [
+                "surface",
+                "particlesep"
+              ]
+            ],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/flipcontainer",
+                  "parameter": "particlesep",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "3559d9700a6aef15f186ac2566cf302fb6355d0d21b47056eea7c6f016777104",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/flipsource",
+                  "parameter": "createparticles",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "5a74ef711777bdb1e6b944001ac851cf64ff3ce84d808a94510045aed49e82b6",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/flipsolver",
+                  "parameter": "overrideres",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "e3be31e692144229fc2c984f36013455feab9a4bf4eca2c9a05b78044618aed5",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/flipsource",
+                  "parameter": "particlesep",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "5a74ef711777bdb1e6b944001ac851cf64ff3ce84d808a94510045aed49e82b6",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/flipcontainer",
+                  "parameter": "particlesep",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "3559d9700a6aef15f186ac2566cf302fb6355d0d21b47056eea7c6f016777104",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/particlefluidsurface::2.0",
+                  "parameter": "particlesep",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "c199e313145f241e29c4c9873f7cb18fbffa7db04f3185de68084faa1d0b805d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "particle_separation",
+            "node_role": "container",
+            "parameter_aliases": [
+              "particlesep"
+            ]
+          },
+          {
+            "minimum": 1,
+            "maximum": 20,
+            "value_type": "int",
+            "native_type": "integer",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [],
+            "invalidates_from": "generation_simulation",
+            "unit": "minimum substeps per frame",
+            "native_status": "mapped",
+            "maximum_substeps_parm": "substeps",
+            "context_parms": [
+              [
+                "solver",
+                "substeps"
+              ]
+            ],
+            "maximum_policy": "preserve actual maximum or raise it to the requested minimum",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/flipsolver",
+                  "parameter": "minimumsubsteps",
+                  "type": "integer",
+                  "size": 1,
+                  "section_sha256": "e3be31e692144229fc2c984f36013455feab9a4bf4eca2c9a05b78044618aed5",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "substeps",
+            "node_role": "solver",
+            "parameter_aliases": [
+              "minimumsubsteps"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 100000,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [
+              [
+                "container",
+                "viscosity",
+                1
+              ],
+              [
+                "container",
+                "dovaryingviscosity",
+                0
+              ]
+            ],
+            "invalidates_from": "generation_simulation",
+            "unit": "native viscosity; vendor token kg1m-1, physical conversion NOT_CAPTURED",
+            "native_status": "mapped",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/flipcontainer",
+                  "parameter": "default_viscosity",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "3559d9700a6aef15f186ac2566cf302fb6355d0d21b47056eea7c6f016777104",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/flipcontainer",
+                  "parameter": "viscosity",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "3559d9700a6aef15f186ac2566cf302fb6355d0d21b47056eea7c6f016777104",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/flipcontainer",
+                  "parameter": "dovaryingviscosity",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "3559d9700a6aef15f186ac2566cf302fb6355d0d21b47056eea7c6f016777104",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "viscosity",
+            "node_role": "container",
+            "parameter_aliases": [
+              "default_viscosity"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 10000,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [
+              [
+                "container",
+                "dosurfacetension",
+                1
+              ]
+            ],
+            "invalidates_from": "generation_simulation",
+            "unit": "native surface tension; vendor token kg1m-3s-2",
+            "native_status": "mapped",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/flipcontainer",
+                  "parameter": "surfacetension",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "3559d9700a6aef15f186ac2566cf302fb6355d0d21b47056eea7c6f016777104",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/flipcontainer",
+                  "parameter": "dosurfacetension",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "3559d9700a6aef15f186ac2566cf302fb6355d0d21b47056eea7c6f016777104",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "surface_tension",
+            "node_role": "container",
+            "parameter_aliases": [
+              "surfacetension"
+            ]
+          },
+          {
+            "minimum": 0.1,
+            "maximum": 10,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [],
+            "invalidates_from": "shaping_meshing",
+            "unit": "dimensionless voxel scale times particle separation",
+            "native_status": "mapped",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/particlefluidsurface::2.0",
+                  "parameter": "voxelsize",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "c199e313145f241e29c4c9873f7cb18fbffa7db04f3185de68084faa1d0b805d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "surface_resolution",
+            "node_role": "surface",
+            "parameter_aliases": [
+              "voxelsize"
+            ]
+          },
+          {
+            "minimum": 0.01,
+            "maximum": 100,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [],
+            "invalidates_from": "shaping_meshing",
+            "unit": "dimensionless voxel scale times particle separation",
+            "native_status": "mapped",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/particlefluidsurface::2.0",
+                  "parameter": "voxelsize",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "c199e313145f241e29c4c9873f7cb18fbffa7db04f3185de68084faa1d0b805d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "meshing_detail",
+            "node_role": "surface",
+            "parameter_aliases": [
+              "voxelsize"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 100,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [
+              [
+                "surface",
+                "surfmethod",
+                "particlefluid"
+              ]
+            ],
+            "invalidates_from": "shaping_meshing",
+            "unit": "native dimensionless droplet scale",
+            "native_status": "mapped",
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/particlefluidsurface::2.0",
+                  "parameter": "surfacedistance",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "c199e313145f241e29c4c9873f7cb18fbffa7db04f3185de68084faa1d0b805d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/particlefluidsurface::2.0",
+                  "parameter": "surfmethod",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "c199e313145f241e29c4c9873f7cb18fbffa7db04f3185de68084faa1d0b805d",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "droplet_scale",
+            "node_role": "surface",
+            "parameter_aliases": [
+              "surfacedistance"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 100,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [],
+            "invalidates_from": "generation_simulation",
+            "unit": "NOT_CAPTURED",
+            "native_status": "blocked",
+            "blocker": "FLIP_SIMULATION_COLLISION_SEPARATION_CONTRACT_NOT_CAPTURED",
+            "product_status": "approved",
+            "product_definition": {
+              "decision_id": "A02",
+              "unit": "SU",
+              "definition": "Collision-field voxel edge length, not collision clearance; positive values specify absolute resolution. Zero follows the actual native default for this version/graph, freezing and reading back the effective edge length.",
+              "zero": "Follow the actual native default; keep collisions enabled.",
+              "negative": "Reject.",
+              "scope": "Owned FLIP collision SDF/velocity fields; preserve particle_separation, surface mesh and collision padding. Record absolute override versus default-following behavior and actual grid budget.",
+              "required_basis": [
+                "version/graph default and effective edge length",
+                "field units and grid transform",
+                "SDF/velocity inputs",
+                "actual domain resource budget"
+              ],
+              "capture_blockers": [
+                "legal editable SOP boundary; internal/DOP fields alone are insufficient",
+                "override/default expression consumption",
+                "zero-to-default restoration mechanism"
+              ],
+              "proposal_sha256": "7a5d8f699ee879c9d613832d9520ceb71580080f6ebadfd187fbd3b0389f4f9e",
+              "decision_record": "handover/CONTROL_DECISIONS_20261004.md",
+              "approved_sections": [
+                2,
+                3
+              ],
+              "common_rules": {
+                "units": "Lengths use current scene units (SU), velocities SU/s; read actual FPS and time scale. No SI conversion without explicit scale and mass bases.",
+                "validation": "Require finite values and each control's zero policy; reject unsigned negatives, missing bases, incompatible combinations and budget excess. No clamping, rounding, implicit conversion or renaming.",
+                "randomness": "Use fixed task seed, stable entity IDs and independent control sub-seeds; reopening reproduces samples and changing one control does not resample another. New percentages are bounded amplitudes, not statistical variance.",
+                "basis": "Freeze bases, coordinate spaces, distributions, time scales and controlled stages. Missing axes, targets, events, source geometry or stable IDs remain explicit missing inputs; preserve unrelated artist fields.",
+                "ranges": "Preserve existing names and validation ranges. Mathematical conditions, version-specific native hard limits, product limits and scene budgets remain distinct; unsupported endpoints stay blocked. Range, alias or endpoint changes require a specific decision.",
+                "readback": "Observe actual parameters, attributes, channels, topology or semantic programs and their input SHA, not requested values. Cache/render authorization, 12-frame/120-second limits and total disk budget remain required; product approval does not authorize real jobs.",
+                "existing_definitions": "Preserve particle life/velocity variance, Crowd path_variance and Geometry scale_variance; preserve the existing RBD activation_frame constant active step."
+              },
+              "common_capture_requirements": {
+                "versions": [
+                  "21.0.631",
+                  "22.0.429"
+                ],
+                "interface": "For each version, capture raw definition/help/SDK sources and hashes, exact operators/machine parameters, types/tuples, menu tokens, defaults/expressions, hard/soft ranges, disable/hide state, indexed input/output roles, editable boundaries and downstream consumption.",
+                "attributes": "Attribute routes additionally need class/storage/tuple, coordinate space, stable IDs and actual downstream consumption rules; labels, help anchors, sliders and other-version tokens are not machine interface proof.",
+                "runtime": "Static evidence bounds pure contracts/native API substitutes. Instance state, geometry/fields, save/reopen and dynamic effects require separately authorized real-host evidence. Recovered JSON excerpts do not replace missing original HDA bytes."
+              },
+              "preparation_capture_requirements": {
+                "versions": [
+                  "22.0.459"
+                ],
+                "interface": "For each version, capture raw definition/help/SDK sources and hashes, exact operators/machine parameters, types/tuples, menu tokens, defaults/expressions, hard/soft ranges, disable/hide state, indexed input/output roles, editable boundaries and downstream consumption.",
+                "attributes": "Attribute routes additionally need class/storage/tuple, coordinate space, stable IDs and actual downstream consumption rules; labels, help anchors, sliders and other-version tokens are not machine interface proof.",
+                "runtime": "Static evidence bounds pure contracts/native API substitutes. Instance state, geometry/fields, save/reopen and dynamic effects require separately authorized real-host evidence. Recovered JSON excerpts do not replace missing original HDA bytes.",
+                "status": "PARTIAL_STATIC_BASIS_RUNTIME_FACTS_REQUIRED"
+              }
+            },
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [],
+              "missing": []
+            },
+            "id": "collision_separation",
+            "node_role": "collisions",
+            "parameter_aliases": []
+          },
+          {
+            "minimum": 1,
+            "maximum": 1000,
+            "value_type": "int",
+            "native_type": "integer",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [],
+            "invalidates_from": "generation_simulation",
+            "unit": "NOT_CAPTURED",
+            "native_status": "blocked",
+            "blocker": "FLIP_COLLISION_PASSES_NATIVE_FIELD_NOT_CAPTURED",
+            "product_status": "approved",
+            "product_definition": {
+              "decision_id": "A03",
+              "unit": "dimensionless integer count per FLIP substep",
+              "definition": "Number of complete collision-projection loops per FLIP substep; each loop includes SDF sampling and Move-to-Iso position correction. Preserve solver substep count.",
+              "zero": "Reject; the existing range starts at one complete loop.",
+              "negative": "Reject; do not round floating-point counts.",
+              "scope": "Owned FLIP particle collision-iteration branch; independent of solver substeps and particle separation iterations.",
+              "required_basis": [
+                "FLIP substep timing",
+                "bound SDF and particle positions",
+                "definition of one complete loop"
+              ],
+              "capture_blockers": [
+                "versioned Gas Repeat/Move-to-Iso operators, count/stop fields and ports",
+                "legal editable entry and actual per-substep loop consumption"
+              ],
+              "proposal_sha256": "7a5d8f699ee879c9d613832d9520ceb71580080f6ebadfd187fbd3b0389f4f9e",
+              "decision_record": "handover/CONTROL_DECISIONS_20261004.md",
+              "approved_sections": [
+                2,
+                3
+              ],
+              "common_rules": {
+                "units": "Lengths use current scene units (SU), velocities SU/s; read actual FPS and time scale. No SI conversion without explicit scale and mass bases.",
+                "validation": "Require finite values and each control's zero policy; reject unsigned negatives, missing bases, incompatible combinations and budget excess. No clamping, rounding, implicit conversion or renaming.",
+                "randomness": "Use fixed task seed, stable entity IDs and independent control sub-seeds; reopening reproduces samples and changing one control does not resample another. New percentages are bounded amplitudes, not statistical variance.",
+                "basis": "Freeze bases, coordinate spaces, distributions, time scales and controlled stages. Missing axes, targets, events, source geometry or stable IDs remain explicit missing inputs; preserve unrelated artist fields.",
+                "ranges": "Preserve existing names and validation ranges. Mathematical conditions, version-specific native hard limits, product limits and scene budgets remain distinct; unsupported endpoints stay blocked. Range, alias or endpoint changes require a specific decision.",
+                "readback": "Observe actual parameters, attributes, channels, topology or semantic programs and their input SHA, not requested values. Cache/render authorization, 12-frame/120-second limits and total disk budget remain required; product approval does not authorize real jobs.",
+                "existing_definitions": "Preserve particle life/velocity variance, Crowd path_variance and Geometry scale_variance; preserve the existing RBD activation_frame constant active step."
+              },
+              "common_capture_requirements": {
+                "versions": [
+                  "21.0.631",
+                  "22.0.429"
+                ],
+                "interface": "For each version, capture raw definition/help/SDK sources and hashes, exact operators/machine parameters, types/tuples, menu tokens, defaults/expressions, hard/soft ranges, disable/hide state, indexed input/output roles, editable boundaries and downstream consumption.",
+                "attributes": "Attribute routes additionally need class/storage/tuple, coordinate space, stable IDs and actual downstream consumption rules; labels, help anchors, sliders and other-version tokens are not machine interface proof.",
+                "runtime": "Static evidence bounds pure contracts/native API substitutes. Instance state, geometry/fields, save/reopen and dynamic effects require separately authorized real-host evidence. Recovered JSON excerpts do not replace missing original HDA bytes."
+              },
+              "preparation_capture_requirements": {
+                "versions": [
+                  "22.0.459"
+                ],
+                "interface": "For each version, capture raw definition/help/SDK sources and hashes, exact operators/machine parameters, types/tuples, menu tokens, defaults/expressions, hard/soft ranges, disable/hide state, indexed input/output roles, editable boundaries and downstream consumption.",
+                "attributes": "Attribute routes additionally need class/storage/tuple, coordinate space, stable IDs and actual downstream consumption rules; labels, help anchors, sliders and other-version tokens are not machine interface proof.",
+                "runtime": "Static evidence bounds pure contracts/native API substitutes. Instance state, geometry/fields, save/reopen and dynamic effects require separately authorized real-host evidence. Recovered JSON excerpts do not replace missing original HDA bytes.",
+                "status": "PARTIAL_STATIC_BASIS_RUNTIME_FACTS_REQUIRED"
+              }
+            },
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [],
+              "missing": []
+            },
+            "id": "collision_passes",
+            "node_role": "solver",
+            "parameter_aliases": []
+          }
+        ]
+      }
+    }
+  },
+  "save_reopen": [
+    "Use the production generator and task-owned host; persist project content/version/owner and the original operation receipt.",
+    "Stop the actual owned worker and verify trusted stop, then reopen the saved HIP/NK in a new host identity.",
+    "Read back every role, native type, port, connection and semantic control; preserve unrelated artist changes."
+  ],
+  "stop_recovery": [
+    "Interrupt the actual case worker, not an auxiliary process.",
+    "Retain the heavy slot while stop is unknown; verify task/session/nonce/process/generation/build/scene epoch.",
+    "Restart the controller, restore the same operation from persistent facts, and verify no duplicate execution/registration."
+  ],
+  "artifact_checks": [
+    "Consume only task-owned registered input IDs/versions/hash and exact frames.",
+    "Validate applicable outputs: diagnostic_preview, editable_scene, simulation_cache",
+    "Require producer operation, scene/version, format/dimensions/channels, color/premultiplication and dependency facts; reject missing typed metadata.",
+    "Check missing/repeated/frozen/abrupt frames against a frozen activity interval; pixel change alone does not establish correct motion."
+  ],
+  "raw_evidence_path": "outputs/live-validation/water_flip_v1/<new-run-id>",
+  "human_checks": [
+    "Editable topology and save/reopen match the approved controls.",
+    "Compare the registered reference and feedback result; judge actual motion, silhouette, timing, material, lighting and composition.",
+    "Accept visual quality separately from software, format and process-stop checks."
+  ],
+  "resource_requirements": {
+    "explicit_frames_max": 12,
+    "seconds_max": 120,
+    "disk_bytes": "explicit positive task budget; include output/cache/temp/logs",
+    "cache": "separate exact path/frame/content-version/estimated-bytes/invalidation confirmation before execution",
+    "concurrency": "one heavy DCC job; unknown stop keeps slot"
+  },
+  "blockers": [
+    "Full 54-row current-build evidence and independent M1 reception remain incomplete.",
+    "Whole-domain native basis and applicable output/actual worker recovery are not verified by this card."
+  ],
+  "composite": true
+}

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Nuke Bridge"
+  short_description: "Build, render, and verify editable Nuke tasks"
+  default_prompt: "Use $nuke-bridge to plan and run a verified Nuke delivery task."
+policy:
+  allow_implicit_invocation: true
+

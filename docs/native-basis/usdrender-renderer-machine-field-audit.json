@@ -1,0 +1,99 @@
+{
+  "schema": "bridge.usdrender.machine_parameter.static.audit/1",
+  "versions": [
+    {
+      "version": "21.0.631",
+      "driver_node": "Driver/usdrender",
+      "machine_parameter": "renderer",
+      "sources": [
+        {
+          "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/scripts/out/usdrender.cmd",
+          "sha256": "63a12109739a6a9d5cf99f635e3b25a4370af968f116012aec6ecd1df8973f72",
+          "machine_field_evidence": [
+            {
+              "line": 14,
+              "text": "opparm $arg1 renderer ( \"$HOUDINI_DEFAULT_ROP_RENDER_DELEGATE\" )"
+            },
+            {
+              "line": 16,
+              "text": "opparm $arg1 renderer ( \"$HOUDINI_DEFAULT_RENDER_DELEGATE\" )"
+            }
+          ]
+        },
+        {
+          "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/scripts/lop/usdrender_rop.cmd",
+          "sha256": "fae13c11e735a72444e2873fdc23b6030753f960d655b0d5953e841936a19a2d",
+          "machine_field_evidence": [
+            {
+              "line": 15,
+              "text": "opparm $arg1 renderer ( \"$HOUDINI_DEFAULT_ROP_RENDER_DELEGATE\" )"
+            },
+            {
+              "line": 17,
+              "text": "opparm $arg1 renderer ( \"$HOUDINI_DEFAULT_RENDER_DELEGATE\" )"
+            }
+          ]
+        },
+        {
+          "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/scripts/hqueue/hqlib.py",
+          "sha256": "9ef98b977e1defb840d9173c8b3cc533607999c6c44093a857a7fd30e539a8c0",
+          "machine_field_evidence": [
+            {
+              "line": 85,
+              "text": "renderer = usdrender_rop.evalParm(\"renderer\")"
+            }
+          ]
+        }
+      ],
+      "help_anchor_limitation": "#id renderdelegate is a documentation anchor; creation script directly addresses renderer",
+      "native_execution": "NOT_RUN"
+    },
+    {
+      "version": "22.0.429",
+      "driver_node": "Driver/usdrender",
+      "machine_parameter": "renderer",
+      "sources": [
+        {
+          "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/scripts/out/usdrender.cmd",
+          "sha256": "63a12109739a6a9d5cf99f635e3b25a4370af968f116012aec6ecd1df8973f72",
+          "machine_field_evidence": [
+            {
+              "line": 14,
+              "text": "opparm $arg1 renderer ( \"$HOUDINI_DEFAULT_ROP_RENDER_DELEGATE\" )"
+            },
+            {
+              "line": 16,
+              "text": "opparm $arg1 renderer ( \"$HOUDINI_DEFAULT_RENDER_DELEGATE\" )"
+            }
+          ]
+        },
+        {
+          "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/scripts/lop/usdrender_rop.cmd",
+          "sha256": "fae13c11e735a72444e2873fdc23b6030753f960d655b0d5953e841936a19a2d",
+          "machine_field_evidence": [
+            {
+              "line": 15,
+              "text": "opparm $arg1 renderer ( \"$HOUDINI_DEFAULT_ROP_RENDER_DELEGATE\" )"
+            },
+            {
+              "line": 17,
+              "text": "opparm $arg1 renderer ( \"$HOUDINI_DEFAULT_RENDER_DELEGATE\" )"
+            }
+          ]
+        },
+        {
+          "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/scripts/hqueue/hqlib.py",
+          "sha256": "dc789d3099d7a151c7c7788b3f305a0650b66dcc799c1d0c0194f385688c4653",
+          "machine_field_evidence": [
+            {
+              "line": 86,
+              "text": "renderer = usdrender_rop.evalParm(\"renderer\")"
+            }
+          ]
+        }
+      ],
+      "help_anchor_limitation": "#id renderdelegate is a documentation anchor; creation script directly addresses renderer",
+      "native_execution": "NOT_RUN"
+    }
+  ]
+}

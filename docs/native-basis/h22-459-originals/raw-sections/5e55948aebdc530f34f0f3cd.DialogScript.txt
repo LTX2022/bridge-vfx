@@ -1,0 +1,472 @@
+# Dialog script for renderproduct automatically generated
+
+{
+    name	renderproduct
+    script	renderproduct
+    label	"Render Product"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Input Stage"
+
+    groupcollapsible {
+        name    "sample_group2"
+        label   "Frame Range/Subframes"
+        parmtag { "sidefx::header_parm" "sample_behavior" }
+
+        parm {
+            name    "sample_behavior"
+            baseparm
+            label   "Sampling Behavior"
+            export  none
+        }
+        parm {
+            name    "sample_f"
+            baseparm
+            label   "Start/End/Inc"
+            export  none
+        }
+        parm {
+            name    "sample_subframeenable"
+            baseparm
+            label   "Subframe Sampling"
+            export  none
+        }
+        groupsimple {
+            name    "sample_subframegroup2"
+            label   "Subframe Sampling"
+            disablewhen "{ sample_subframeenable == 0 }"
+            parmtag { "sidefx::header_toggle" "sample_subframeenable" }
+
+            parm {
+                name    "sample_shuttermode"
+                baseparm
+                label   "Shutter"
+                export  none
+            }
+            parm {
+                name    "sample_shutterrange"
+                baseparm
+                label   "Shutter Open/Close"
+                export  none
+            }
+            parm {
+                name    "sample_cameraprim"
+                baseparm
+                label   "Camera Prim"
+                export  none
+            }
+            parm {
+                name    "sample_count"
+                baseparm
+                label   "Samples"
+                export  none
+            }
+            parm {
+                name    "sample_includeframe"
+                baseparm
+                label   "Always Include Frame Sample"
+                export  none
+            }
+        }
+
+    }
+
+    parm {
+        name    "primpattern"
+        label   "Primitives"
+        type    string
+        default { "`lopinputprims('.', 0)`" }
+        hidewhen "{ createprims == on }"
+        menutoggle {
+            [ "import loputils" ]
+            [ "return loputils.createPrimPatternMenu(kwargs['node'], 0)" ]
+            language python
+        }
+        parmtag { "script_action" "import loputils\nkwargs['ctrl'] = True\nloputils.selectPrimsInParm(kwargs, True)" }
+        parmtag { "script_action_help" "Select primitives using the primitive picker dialog. Shift-click to select using the primitive pattern editor." }
+        parmtag { "script_action_icon" "BUTTONS_reselect" }
+        parmtag { "sidefx::usdpathtype" "primlist" }
+    }
+    parm {
+        name    "primpath"
+        label   "Primitive Path"
+        type    string
+        default { "/Render/Products/$OS" }
+        hidewhen "{ createprims != on }"
+        menureplace {
+            [ "import loputils" ]
+            [ "return loputils.createPrimPathMenu()" ]
+            language python
+        }
+        parmtag { "script_action" "import loputils\nkwargs['ctrl'] = True\nloputils.selectPrimsInParm(kwargs, False)" }
+        parmtag { "script_action_help" "Select a primitive using the primitive picker dialog." }
+        parmtag { "script_action_icon" "BUTTONS_reselect" }
+        parmtag { "sidefx::usdpathtype" "prim" }
+    }
+    parm {
+        name    "createprims"
+        label   "Action"
+        type    ordinal
+        default { "on" }
+        menu {
+            "off"       "Edit"
+            "on"        "Create"
+            "forceedit" "Force Edit (Ignore Editable Flag)"
+        }
+    }
+    parm {
+        name    "initforedit"
+        label   "Initialize Parameters"
+        type    button
+        default { "donothing" }
+        menu {
+            [ "import loputils" ]
+            [ "return loputils.createInitializeParametersMenu(kwargs['node'].parm('createprims').eval(), 'Product')" ]
+            language python
+        }
+        parmtag { "script_callback" "__import__('loputils').initializeParameters(kwargs['node'], kwargs['script_value'])" }
+        parmtag { "script_callback_language" "python" }
+    }
+    groupcollapsible {
+        name    "createprimsgroup2"
+        label   "Create Primitives"
+        hidewhen "{ createprims != on }"
+
+        parm {
+            name    "primcount"
+            label   "Primitive Count"
+            type    integer
+            default { "1" }
+            range   { 0 10 }
+        }
+        parm {
+            name    "primtype"
+            label   "Primitive Type"
+            type    string
+            invisible
+            default { "UsdRenderProduct" }
+            menu {
+                [ "import loputils" ]
+                [ "return loputils.createSchemaTypesMenu(True)" ]
+                language python
+            }
+        }
+        parm {
+            name    "primkind"
+            label   "Primitive Kind"
+            type    string
+            default { "" }
+            menu {
+                [ "import loputils" ]
+                [ "return loputils.createKindsMenu(True, False)" ]
+                language python
+            }
+        }
+        parm {
+            name    "specifier"
+            label   "Primitive Specifier"
+            type    string
+            default { "def" }
+            menu {
+                [ "import loputils" ]
+                [ "return loputils.createSpecifiersMenu()" ]
+                language python
+            }
+        }
+        parm {
+            name    "classancestor"
+            label   "Class Ancestor"
+            type    string
+            default { "" }
+            disablewhen "{ specifier == class }"
+            parmtag { "script_action" "import loputils\nkwargs['ctrl'] = True\nloputils.selectPrimsInParm(kwargs, False)" }
+            parmtag { "script_action_help" "Select a primitive using the primitive picker dialog." }
+            parmtag { "script_action_icon" "BUTTONS_reselect" }
+            parmtag { "sidefx::usdpathtype" "prim" }
+        }
+        parm {
+            name    "parentprimtype"
+            label   "Parent Primitive Type"
+            type    string
+            default { "UsdGeomScope" }
+            menu {
+                [ "import loputils" ]
+                [ "return loputils.createParentTypesMenu()" ]
+                language python
+            }
+        }
+    }
+
+    group {
+        name    "settings"
+        label   "Standard"
+
+        parm {
+            name    "orderedVars_control"
+            label   "orderedVars"
+            type    string
+            default { "set" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'relationship')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "orderedVars"
+            label   "Ordered Render Vars"
+            type    string
+            default { "" }
+            disablewhen "{ orderedVars_control == block } { orderedVars_control == none }"
+            menutoggle {
+                [ "import loputils" ]
+                [ "lop = kwargs['node']" ]
+                [ "if len(lop.inputs()) > 0:" ]
+                [ "    lop = lop.inputs()[0]" ]
+                [ "stage = lop.stage() if lop else None" ]
+                [ "return loputils.createRenderVarPrimMenu(stage)" ]
+                language python
+            }
+            parmtag { "sidefx::usdpathtype" "primlist" }
+            parmtag { "usdvalueordered" "1" }
+            parmtag { "usdvaluetype" "relationship" }
+        }
+        parm {
+            name    "productName_control"
+            label   "productName"
+            type    string
+            default { "set" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'token')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "productName"
+            label   "Product Name"
+            type    string
+            default { "" }
+            disablewhen "{ productName_control == block } { productName_control == animationblock } { productName_control == none }"
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "productType_control"
+            label   "productType"
+            type    string
+            default { "set" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'token')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "productType"
+            label   "Product Type"
+            type    string
+            default { "raster" }
+            disablewhen "{ productType_control == block } { productType_control == animationblock } { productType_control == none }"
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "sepparm"
+            label   "Separator"
+            type    separator
+            default { "" }
+        }
+        parm {
+            name    "camera_control"
+            label   "camera"
+            type    string
+            default { "none" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'relationship')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "camera"
+            label   "Camera"
+            type    string
+            default { "" }
+            disablewhen "{ camera_control == block } { camera_control == none }"
+            parmtag { "script_action" "import loputils\nloputils.selectPrimsInParm(kwargs, False)\n" }
+            parmtag { "script_action_icon" "BUTTONS_reselect" }
+            parmtag { "sidefx::usdpathtype" "prim" }
+            parmtag { "usdvaluetype" "relationship" }
+        }
+        parm {
+            name    "res_mode"
+            label   "Resolution Mode"
+            type    string
+            default { "autoheight" }
+            disablewhen "{ resolution_control == block } { resolution_control == animationblock } { resolution_control == none }"
+            menu {
+                [ "menu = __import__('loputils').resolutionModeMenuItems()" ]
+                [ "return menu" ]
+                language python
+            }
+            parmtag { "export_disable" "1" }
+            parmtag { "script_callback" "__import__('loputils').updateResolutionParameters(hou.pwd())" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "resolution_control"
+            label   "resolution"
+            type    string
+            default { "none" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'int2')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "resolution"
+            label   "Resolution"
+            type    integer
+            joinnext
+            size    2
+            default { "2048" "1080" }
+            disablewhen "{ resolution_control == block } { resolution_control == animationblock } { resolution_control == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int2" }
+        }
+        parm {
+            name    "resolutionMenu"
+            label   "Choose Resolution"
+            type    button
+            nolabel
+            default { "0" }
+            disablewhen "{ resolution_control == block } { resolution_control == animationblock } { resolution_control == none }"
+            menumini {
+                [ "echo `pythonexprs(\"__import__('toolutils').parseDialogScriptMenu('FBres')\")`" ]
+            }
+            parmtag { "script_callback" "opparm . resolution ( `arg(\"$script_value\", 0)` `arg(\"$script_value\", 1)` pixelAspectRatio ( `arg(\"$script_value\", 2)` )" }
+        }
+        parm {
+            name    "instantaneousShutter_control"
+            label   "instantaneousShutter"
+            type    string
+            default { "none" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'bool')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "instantaneousShutter"
+            label   "Instantaneous Shutter"
+            type    toggle
+            default { "0" }
+            disablewhen "{ instantaneousShutter_control == block } { instantaneousShutter_control == animationblock } { instantaneousShutter_control == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "aspectRatioConformPolicy_control"
+            label   "aspectRatioConformPolicy"
+            type    string
+            default { "none" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'token')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "aspectRatioConformPolicy"
+            label   "Aspect Ratio Conform Policy"
+            type    string
+            default { "expandAperture" }
+            disablewhen "{ aspectRatioConformPolicy_control == block } { aspectRatioConformPolicy_control == animationblock } { aspectRatioConformPolicy_control == none }"
+            menu {
+                "expandAperture"            "Expand Aperture"
+                "cropAperture"              "Crop Aperture"
+                "adjustApertureWidth"       "Adjust Aperture Width"
+                "adjustApertureHeight"      "Adjust Aperture Height"
+                "adjustPixelAspectRatio"    "Adjust Pixel Aspect Ratio"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "dataWindowNDC_control"
+            label   "dataWindowNDC"
+            type    string
+            default { "none" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'float4')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "dataWindowNDC"
+            label   "Data Window NDC"
+            type    float
+            size    4
+            default { "0" "0" "1" "1" }
+            disablewhen "{ dataWindowNDC_control == block } { dataWindowNDC_control == animationblock } { dataWindowNDC_control == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float4" }
+        }
+        parm {
+            name    "pixelAspectRatio_control"
+            label   "pixelAspectRatio"
+            type    string
+            default { "none" }
+            menujoin {
+                [ "import loputils" ]
+                [ "return loputils.createEditPropertiesControlMenu(kwargs, 'float')" ]
+                language python
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "pixelAspectRatio"
+            label   "Pixel Aspect Ratio"
+            type    float
+            default { "1" }
+            disablewhen "{ pixelAspectRatio_control == block } { pixelAspectRatio_control == animationblock } { pixelAspectRatio_control == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    parm {
+        name    "errorseverity"
+        label   "Error Severity"
+        type    ordinal
+        invisible
+        default { "1" }
+        menu {
+            "0" "Message"
+            "1" "Warning"
+            "2" "Error"
+        }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "errormsg"
+        label   "Error Message"
+        type    string
+        invisible
+        default { [ "__import__('loputils').renderProductAndSettingsErrorMessage()" python ] }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "autoselect" "0000000000000000" }
+        parmtag { "script_callback_language" "python" }
+    }
+}

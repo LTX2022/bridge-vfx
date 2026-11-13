@@ -1,0 +1,64 @@
+{
+  "schema": "bridge.static-native-followup/1",
+  "scope": "Same-build SopNode geometry output_index and inputGeometry signatures; read-only documents, no native cook.",
+  "versions": {
+    "21.0.631": {
+      "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/help/hom.zip",
+      "archive_sha256": "e4c8f5503d1f96ab10ca17f865e468c05243d2a3fa7a96ccd0b7904b0929817c",
+      "member": "hou/SopNode.txt",
+      "member_sha256": "25be4eb22b472a92559982adffead9951c109ab41dd6fb189980dae1a3c86872",
+      "methods": {
+        "geometry": {
+          "line_start": 11,
+          "line_end": 23,
+          "text": "::`geometry(self, output_index=0)` -> [Hom:hou.Geometry]:\n    #cppname: HOM_SopNode::geometry\n    Return the geometry computed by this SOP node.  If the SOP has not already\n    cooked, this method will cook the SOP.\n\n    The returned Geometry object is not frozen.  See [Hom:hou.Geometry#freeze]\n    for more information on frozen Geometry objects.\n\n    You can optionally specify the `output_index` argument to request the\n    geometry attached to another output on the node.  This only applies to SOP\n    nodes with multiple outputs.  If there is no geometry for the specified\n    output index then None is returned. \n"
+        },
+        "geometryAtFrame": {
+          "line_start": 24,
+          "line_end": 36,
+          "text": "::`geometryAtFrame(self, frame, output_index=0)` -> [Hom:hou.Geometry]:\n    #cppname: HOM_SopNode::geometryAtFrame\n    Return the geometry computed by this SOP node cooked at the specified\n    frame.  If the SOP has not already cooked, this method will cook the SOP.\n\n    The returned Geometry object is frozen.  See [Hom:hou.Geometry#freeze]\n    for more information on frozen Geometry objects.\n\n    You can optionally specify the `output_index` argument to request the\n    geometry attached to another output on the node.  This only applies to SOP\n    nodes with multiple outputs.  If there is no geometry for the specified\n    output index then None is returned. \n"
+        },
+        "inputGeometry": {
+          "line_start": 37,
+          "line_end": 45,
+          "text": "::`inputGeometry(self, index)` -> [Hom:hou.Geometry]:\n    #cppname: HOM_SopNode::inputGeometry\n    Return the geometry that is connected to the node input specified by `index`.\n    If there is no geometry connected to the node input specified by `index`,\n    then None is returned.\n\n    The returned Geometry object is not frozen.  See [Hom:hou.Geometry#freeze]\n    for more information on frozen Geometry objects.\n"
+        }
+      },
+      "invariants": [
+        "geometry(output_index=1) obtains actual second output; absent returns None, not default output substitution",
+        "inputGeometry(1) obtains actual connected input1; absent returns None",
+        "geometry() can cook the SOP if not yet cooked; no assumption of read-only computational effect",
+        "geometry and inputGeometry returned objects nonfrozen; do not mutate native node readonly geometry; fixed owned SOP changes then read actual output"
+      ]
+    },
+    "22.0.429": {
+      "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/help/hom.zip",
+      "archive_sha256": "143162e01defa725c5e35f9a53bfb3ba339a91fa1edd0e99d73da8499be23d0c",
+      "member": "hou/SopNode.txt",
+      "member_sha256": "25be4eb22b472a92559982adffead9951c109ab41dd6fb189980dae1a3c86872",
+      "methods": {
+        "geometry": {
+          "line_start": 11,
+          "line_end": 23,
+          "text": "::`geometry(self, output_index=0)` -> [Hom:hou.Geometry]:\n    #cppname: HOM_SopNode::geometry\n    Return the geometry computed by this SOP node.  If the SOP has not already\n    cooked, this method will cook the SOP.\n\n    The returned Geometry object is not frozen.  See [Hom:hou.Geometry#freeze]\n    for more information on frozen Geometry objects.\n\n    You can optionally specify the `output_index` argument to request the\n    geometry attached to another output on the node.  This only applies to SOP\n    nodes with multiple outputs.  If there is no geometry for the specified\n    output index then None is returned. \n"
+        },
+        "geometryAtFrame": {
+          "line_start": 24,
+          "line_end": 36,
+          "text": "::`geometryAtFrame(self, frame, output_index=0)` -> [Hom:hou.Geometry]:\n    #cppname: HOM_SopNode::geometryAtFrame\n    Return the geometry computed by this SOP node cooked at the specified\n    frame.  If the SOP has not already cooked, this method will cook the SOP.\n\n    The returned Geometry object is frozen.  See [Hom:hou.Geometry#freeze]\n    for more information on frozen Geometry objects.\n\n    You can optionally specify the `output_index` argument to request the\n    geometry attached to another output on the node.  This only applies to SOP\n    nodes with multiple outputs.  If there is no geometry for the specified\n    output index then None is returned. \n"
+        },
+        "inputGeometry": {
+          "line_start": 37,
+          "line_end": 45,
+          "text": "::`inputGeometry(self, index)` -> [Hom:hou.Geometry]:\n    #cppname: HOM_SopNode::inputGeometry\n    Return the geometry that is connected to the node input specified by `index`.\n    If there is no geometry connected to the node input specified by `index`,\n    then None is returned.\n\n    The returned Geometry object is not frozen.  See [Hom:hou.Geometry#freeze]\n    for more information on frozen Geometry objects.\n"
+        }
+      },
+      "invariants": [
+        "geometry(output_index=1) obtains actual second output; absent returns None, not default output substitution",
+        "inputGeometry(1) obtains actual connected input1; absent returns None",
+        "geometry() can cook the SOP if not yet cooked; no assumption of read-only computational effect",
+        "geometry and inputGeometry returned objects nonfrozen; do not mutate native node readonly geometry; fixed owned SOP changes then read actual output"
+      ]
+    }
+  }
+}

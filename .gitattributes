@@ -1,0 +1,21 @@
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+
+/handover/evidence/20261010/** -text whitespace=cr-at-eol
+/handover/evidence/20261013/** -text whitespace=cr-at-eol
+/handover/evidence/20261013-output/** -text whitespace=cr-at-eol
+/handover/evidence/20261013-geometry/** -text whitespace=cr-at-eol
+/handover/evidence/20261013-geometry-input/** -text whitespace=cr-at-eol
+/handover/evidence/20261013-geometry-observation/** -text whitespace=cr-at-eol
+/handover/evidence/20261013-geometry-reopen/** -text whitespace=cr-at-eol
+/handover/evidence/20261013-rbd-authority/** -text whitespace=cr-at-eol
+/handover/evidence/20261013-rbd-reopen/** -text whitespace=cr-at-eol
+/handover/evidence/20261014-output-observation/** -text whitespace=cr-at-eol
+/handover/evidence/20261014-particle-emission/** -text whitespace=cr-at-eol
+/handover/evidence/20261014-particle-reopen/** -text whitespace=cr-at-eol
+
+# Preserve evidence bytes used by frozen SHA-256 records.
+handover/evidence/** -text

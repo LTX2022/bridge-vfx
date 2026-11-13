@@ -1,0 +1,21 @@
+Analysis of sampling Python (pid 53966) every 1 millisecond
+Call graph:
+    1 Thread_6796654   DispatchQueue_1: com.apple.main-thread  (serial)
+      1 start  (in dyld) + 6076  [0x180f26b98]
+        1 Py_BytesMain  (in Python) + 40  [0x100c44308]
+          1 Py_RunMain  (in Python) + 228  [0x100c42fe0]
+            1 pymain_run_command  (in Python) + 144  [0x100c43520]
+              1 PyRun_SimpleStringFlags  (in Python) + 64  [0x100c2ab00]
+                1 PyRun_StringFlags  (in Python) + 112  [0x100c2abb8]
+                  1 run_mod  (in Python) + 112  [0x100c28618]
+                    1 run_eval_code_obj  (in Python) + 84  [0x100c286b4]
+                      1 PyEval_EvalCode  (in Python) + 168  [0x100bd3618]
+                        1 _PyEval_EvalFrameDefault  (in Python) + 40368  [0x100bddf24]
+                          1 cfunction_vectorcall_O  (in Python) + 92  [0x100b4dd78]
+                            1 time_sleep  (in Python) + 144  [0x100c955f8]
+                              1 nanosleep  (in libsystem_c.dylib) + 220  [0x1811656f4]
+                                1 __semwait_signal  (in libsystem_kernel.dylib) + 8  [0x1812891c8]
+
+Total number in stack (recursive counted multiple, when >=5):
+
+Sort by top of stack, same collapsed (when >= 5):

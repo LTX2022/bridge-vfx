@@ -1,0 +1,3279 @@
+{
+  "schema": "bridge.static-native-followup/1",
+  "scope": "read-only vendor metadata and consumers; no native instance/simulation",
+  "versions": {
+    "21.0.631": {
+      "operators": {
+        "Dop/flipobject": {
+          "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/otls/OPlibDop.hda",
+          "archive_sha256": "89ea7e3d89c1ade75ff02d0cb5c76d0a77e3482b6e9702ee4a6a1d0e62fdfbb4",
+          "member": "Dop/flipobject::DialogScript",
+          "section_sha256": "f34f455fa37909e67aefc206a7e13ab114acc6496a3bce59c1c30f1afc064fba",
+          "parameters": {
+            "overridecollisionsep": {
+              "name": "overridecollisionsep",
+              "type": "toggle",
+              "size": 1,
+              "label": "Override Collision Separation",
+              "default_tokens": [
+                "0"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "flipobject",
+                "folder0"
+              ],
+              "flags": [
+                "joinnext",
+                "nolabel"
+              ],
+              "raw_fields": {
+                "name": "overridecollisionsep",
+                "label": "Override Collision Separation",
+                "type": "toggle",
+                "nolabel": true,
+                "joinnext": true,
+                "default": [
+                  "0"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ]
+              }
+            },
+            "collisionsep": {
+              "name": "collisionsep",
+              "type": "float",
+              "size": 1,
+              "label": "Collision Separation",
+              "default_tokens": [
+                "0.2"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "10"
+              ],
+              "disable_when": "{ overridecollisionsep == 0 }",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "units",
+                "m1"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "flipobject",
+                "folder0"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "collisionsep",
+                "label": "Collision Separation",
+                "type": "float",
+                "default": [
+                  "0.2"
+                ],
+                "disablewhen": "{ overridecollisionsep == 0 }",
+                "range": [
+                  "0",
+                  "10"
+                ],
+                "parmtag": [
+                  "units",
+                  "m1"
+                ]
+              }
+            },
+            "particlesep": {
+              "name": "particlesep",
+              "type": "float",
+              "size": 1,
+              "label": "Particle Separation",
+              "default_tokens": [
+                "0.1"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "10"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000",
+                "units",
+                "m1"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "flipobject",
+                "folder0"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "particlesep",
+                "label": "Particle Separation",
+                "type": "float",
+                "default": [
+                  "0.1"
+                ],
+                "range": [
+                  "0",
+                  "10"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000",
+                  "units",
+                  "m1"
+                ]
+              }
+            }
+          },
+          "absent_requested_fields": []
+        },
+        "Dop/flipconfigureobject": {
+          "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/otls/OPlibDop.hda",
+          "archive_sha256": "89ea7e3d89c1ade75ff02d0cb5c76d0a77e3482b6e9702ee4a6a1d0e62fdfbb4",
+          "member": "Dop/flipconfigureobject::DialogScript",
+          "section_sha256": "d69dad45d5b6dfc9d30803a093fceb517af7dac1f2ea206ca3ea3d3f1622f5e8",
+          "parameters": {
+            "coldivsize": {
+              "name": "coldivsize",
+              "type": "float",
+              "size": 1,
+              "label": "Collision Division Size",
+              "default_tokens": [
+                "[",
+                "ch(\"divsize\")",
+                "hscript-expr",
+                "]"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0!",
+                "10"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "units",
+                "m1"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "flipconfigureobject"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "coldivsize",
+                "label": "Collision Division Size",
+                "type": "float",
+                "default": [
+                  "[",
+                  "ch(\"divsize\")",
+                  "hscript-expr",
+                  "]"
+                ],
+                "range": [
+                  "0!",
+                  "10"
+                ],
+                "parmtag": [
+                  "units",
+                  "m1"
+                ]
+              }
+            },
+            "divsize": {
+              "name": "divsize",
+              "type": "float",
+              "size": 1,
+              "label": "Division Size",
+              "default_tokens": [
+                "0.1"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0!",
+                "10"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000",
+                "units",
+                "m1"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "flipconfigureobject"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "divsize",
+                "label": "Division Size",
+                "type": "float",
+                "default": [
+                  "0.1"
+                ],
+                "range": [
+                  "0!",
+                  "10"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000",
+                  "units",
+                  "m1"
+                ]
+              }
+            }
+          },
+          "absent_requested_fields": []
+        },
+        "Sop/rbdbulletsolver": {
+          "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/otls/OPlibSop.hda",
+          "archive_sha256": "5018624a3f850b498df5696e7294dae8d442a847b6c61b9717025495d76bf5e2",
+          "member": "Sop/rbdbulletsolver::DialogScript",
+          "section_sha256": "3584f6549d07fdd42586002efc8301710fc0d6ad5e28e289412c67d12b92374b",
+          "parameters": {
+            "glue_strength": {
+              "name": "glue_strength",
+              "type": "float",
+              "size": 1,
+              "label": "Strength",
+              "default_tokens": [
+                "1"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "10"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "rbdbulletsolver",
+                "folder_7",
+                "folder26",
+                "folder14"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "glue_strength",
+                "label": "Strength",
+                "type": "float",
+                "default": [
+                  "1"
+                ],
+                "range": [
+                  "0",
+                  "10"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "glue_defaultparmop": {
+              "name": "glue_defaultparmop",
+              "type": "ordinal",
+              "size": 1,
+              "label": "Default Operation",
+              "default_tokens": [
+                "initial"
+              ],
+              "menu_tokens": [
+                "initial",
+                "Set Initial",
+                "always",
+                "Set Always",
+                "never",
+                "Set Never"
+              ],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "rbdbulletsolver",
+                "folder_7",
+                "folder26",
+                "folder14"
+              ],
+              "flags": [
+                "nolabel"
+              ],
+              "raw_fields": {
+                "name": "glue_defaultparmop",
+                "label": "Default Operation",
+                "type": "ordinal",
+                "nolabel": true,
+                "default": [
+                  "initial"
+                ],
+                "menu": [
+                  "initial",
+                  "Set Initial",
+                  "always",
+                  "Set Always",
+                  "never",
+                  "Set Never"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "glue_dataname": {
+              "name": "glue_dataname",
+              "type": "string",
+              "size": 1,
+              "label": "Data Name",
+              "default_tokens": [
+                "Glue"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [
+                "[",
+                "kwargs['node'].hdaViewerStateModule().getConstraintNames(kwargs)",
+                "]",
+                "language",
+                "python"
+              ],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "rbdbulletsolver",
+                "folder_7",
+                "folder26",
+                "folder14"
+              ],
+              "flags": [
+                "joinnext"
+              ],
+              "raw_fields": {
+                "name": "glue_dataname",
+                "label": "Data Name",
+                "type": "string",
+                "joinnext": true,
+                "default": [
+                  "Glue"
+                ],
+                "menureplace": [
+                  "[",
+                  "kwargs['node'].hdaViewerStateModule().getConstraintNames(kwargs)",
+                  "]",
+                  "language",
+                  "python"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "overwritefromsop": {
+              "name": "overwritefromsop",
+              "type": "toggle",
+              "size": 1,
+              "label": "Override Attributes from SOP",
+              "default_tokens": [
+                "1"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "rbdbulletsolver",
+                "folder_1",
+                "folder6",
+                "folder34"
+              ],
+              "flags": [
+                "joinnext",
+                "nolabel"
+              ],
+              "raw_fields": {
+                "name": "overwritefromsop",
+                "label": "Override Attributes from SOP",
+                "type": "toggle",
+                "nolabel": true,
+                "joinnext": true,
+                "default": [
+                  "1"
+                ]
+              }
+            },
+            "overwriteattributes": {
+              "name": "overwriteattributes",
+              "type": "string",
+              "size": 1,
+              "label": "Attributes",
+              "default_tokens": [
+                "active animated deforming __pin __guide_*"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "{ overwritefromsop == 0 }",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "rbdbulletsolver",
+                "folder_1",
+                "folder6",
+                "folder34"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "overwriteattributes",
+                "label": "Attributes",
+                "type": "string",
+                "default": [
+                  "active animated deforming __pin __guide_*"
+                ],
+                "disablewhen": "{ overwritefromsop == 0 }",
+                "menutoggle": [
+                  "[",
+                  "opmenu -l -a dopnet/rbd_object overwriteattributes",
+                  "]"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            }
+          },
+          "absent_requested_fields": []
+        },
+        "Sop/rbdconfigure": {
+          "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/otls/OPlibSop.hda",
+          "archive_sha256": "5018624a3f850b498df5696e7294dae8d442a847b6c61b9717025495d76bf5e2",
+          "member": "Sop/rbdconfigure::DialogScript",
+          "section_sha256": "8886a64f999cf9b24aa36350c39789e0330f0e007bf24beb3338ae600df8a617",
+          "parameters": {
+            "addactive#": {
+              "name": "addactive#",
+              "type": "toggle",
+              "size": 1,
+              "label": "Add Active",
+              "default_tokens": [
+                "0"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "rbdconfigure",
+                "folder3",
+                "attributes",
+                "folder0_#_2"
+              ],
+              "flags": [
+                "joinnext",
+                "nolabel"
+              ],
+              "raw_fields": {
+                "name": "addactive#",
+                "label": "Add Active",
+                "type": "toggle",
+                "nolabel": true,
+                "joinnext": true,
+                "default": [
+                  "0"
+                ]
+              }
+            },
+            "active#": {
+              "name": "active#",
+              "type": "integer",
+              "size": 1,
+              "label": "Active",
+              "default_tokens": [
+                "1"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0!",
+                "1!"
+              ],
+              "disable_when": "{ addactive# == 0 }",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "rbdconfigure",
+                "folder3",
+                "attributes",
+                "folder0_#_2"
+              ],
+              "flags": [
+                "joinnext"
+              ],
+              "raw_fields": {
+                "name": "active#",
+                "label": "Active",
+                "type": "integer",
+                "joinnext": true,
+                "default": [
+                  "1"
+                ],
+                "disablewhen": "{ addactive# == 0 }",
+                "range": [
+                  "0!",
+                  "1!"
+                ]
+              }
+            }
+          },
+          "absent_requested_fields": []
+        }
+      },
+      "consumers": [
+        {
+          "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/otls/OPlibSop.hda",
+          "archive_sha256": "5018624a3f850b498df5696e7294dae8d442a847b6c61b9717025495d76bf5e2",
+          "member": "Sop/flipsolver::Contents.gz::hdaroot/dopnet1/flipfluidobject.parm",
+          "section_sha256": "23af199ab8fb33eddb715747498f0354a26aef72cee59c7674c1fdf7af822bb9",
+          "lines": [
+            {
+              "line": 2,
+              "text": "version 0.8"
+            },
+            {
+              "line": 3,
+              "text": "folder0\t[ 0\tlocks=0 ]\t(\t0\t0\t)"
+            },
+            {
+              "line": 4,
+              "text": "particlesep\t[ 0\tlocks=0 ]\t(\t[ particlesep\t0.1 ] \t)"
+            },
+            {
+              "line": 5,
+              "text": "radiusscale\t[ 0\tlocks=0 ]\t(\t1.2\t)"
+            },
+            {
+              "line": 6,
+              "text": "gridscale\t[ 8\tlocks=0 ]\t(\t[ gridscale\t2 ] \t)"
+            },
+            {
+              "line": 7,
+              "text": "overridecollisionsep\t[ 0\tlocks=0 ]\t(\t\"off\"\t)"
+            },
+            {
+              "line": 8,
+              "text": "collisionsep\t[ 0\tlocks=0 ]\t(\t0.2\t)"
+            },
+            {
+              "line": 9,
+              "text": "closedends\t[ 0\tlocks=0 ]\t(\t\"off\"\t)"
+            },
+            {
+              "line": 10,
+              "text": "closexpos\t[ 0\tlocks=0 ]\t(\t\"on\"\t)"
+            }
+          ]
+        },
+        {
+          "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/otls/OPlibSop.hda",
+          "archive_sha256": "5018624a3f850b498df5696e7294dae8d442a847b6c61b9717025495d76bf5e2",
+          "member": "Sop/rbdbulletsolver::Contents.gz::hdaroot/dopnet/constraints/Glue.chn",
+          "section_sha256": "6cd59da568fd9ed41c315beb088f37e77b9772ed11d49e02977f566bf613fea1",
+          "lines": [
+            {
+              "line": 9,
+              "text": "    channel strength {"
+            },
+            {
+              "line": 10,
+              "text": "      lefttype = extend"
+            },
+            {
+              "line": 11,
+              "text": "      righttype = extend"
+            },
+            {
+              "line": 12,
+              "text": "      default = 1"
+            },
+            {
+              "line": 13,
+              "text": "      flags = 0"
+            },
+            {
+              "line": 14,
+              "text": "      segment { length = 0 value = 1 1 expr = ch(\\\"../../../glue_strength\\\") }"
+            },
+            {
+              "line": 15,
+              "text": "    }"
+            },
+            {
+              "line": 16,
+              "text": "    channel impulse_halflife {"
+            },
+            {
+              "line": 36,
+              "text": "    }"
+            },
+            {
+              "line": 37,
+              "text": "    channel defaultparmop {"
+            },
+            {
+              "line": 38,
+              "text": "      lefttype = extend"
+            },
+            {
+              "line": 39,
+              "text": "      righttype = extend"
+            },
+            {
+              "line": 40,
+              "text": "      flags = 0"
+            },
+            {
+              "line": 41,
+              "text": "      segment { length = 0 expr = ch(\\\"../../../glue_defaultparmop\\\") }"
+            },
+            {
+              "line": 42,
+              "text": "    }"
+            },
+            {
+              "line": 43,
+              "text": "    channel dataname {"
+            }
+          ]
+        }
+      ],
+      "help": [
+        {
+          "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/help/nodes.zip",
+          "archive_sha256": "7c83e14d77ddaebf0f918244c1747509633b2721a39468eb4ae3efc694886916",
+          "member": "dop/standard_constraintnetworkattribs.txt",
+          "section_sha256": "35ac0fb8899e836de7496af65fcda77f2c85812156d550972824274fef869574",
+          "lines": [
+            {
+              "line": 5,
+              "text": "You can [create attributes|/model/attributes] on the geometry to customize each constraint's behavior and type."
+            },
+            {
+              "line": 6,
+              "text": "If a primitive attribute with the same name as a constraint property (such as `damping`) is present, the attribute value will be multiplied with the value from the constraint sub-data if the data type is `float`."
+            },
+            {
+              "line": 7,
+              "text": "For other data types, a primitive attribute will override the value from the constraint sub-data."
+            },
+            {
+              "line": 8,
+              "text": ""
+            },
+            {
+              "line": 9,
+              "text": "The following attributes can be used to control the type of constraint described by each primitive."
+            },
+            {
+              "line": 10,
+              "text": ""
+            },
+            {
+              "line": 11,
+              "text": "table>>"
+            },
+            {
+              "line": 173,
+              "text": "                    td>> `1`"
+            },
+            {
+              "line": 174,
+              "text": "                    td>> Free to rotate around 2 axes. `condir` defines the inactive axis."
+            },
+            {
+              "line": 175,
+              "text": "                tr>>"
+            },
+            {
+              "line": 176,
+              "text": "                    td>>"
+            },
+            {
+              "line": 177,
+              "text": "                    td>> `2`"
+            },
+            {
+              "line": 178,
+              "text": "                    td>> Free to rotate around 1 axis. `condir` defines the active axis."
+            },
+            {
+              "line": 179,
+              "text": "                tr>>"
+            },
+            {
+              "line": 180,
+              "text": "                    td>>"
+            },
+            {
+              "line": 181,
+              "text": "                    td>> `3`"
+            },
+            {
+              "line": 182,
+              "text": "                    td>> No rotation."
+            },
+            {
+              "line": 183,
+              "text": "    tr>>"
+            }
+          ]
+        },
+        {
+          "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/help/nodes.zip",
+          "archive_sha256": "7c83e14d77ddaebf0f918244c1747509633b2721a39468eb4ae3efc694886916",
+          "member": "dop/glueconrel.txt",
+          "section_sha256": "4d62e2e298a2ded1951425e1a567758617496d23864ad59a489299d881bd78cc",
+          "lines": [
+            {
+              "line": 18,
+              "text": ""
+            },
+            {
+              "line": 19,
+              "text": "Strength:"
+            },
+            {
+              "line": 20,
+              "text": "    #id: strength"
+            },
+            {
+              "line": 21,
+              "text": "    Specifies the strength of the glue bond. If the value is -1, the connection will never break."
+            },
+            {
+              "line": 22,
+              "text": ""
+            },
+            {
+              "line": 23,
+              "text": "Half-Life:"
+            },
+            {
+              "line": 24,
+              "text": "    #id: impulse_halflife"
+            },
+            {
+              "line": 25,
+              "text": "    The number of seconds for the glue impulse to decay by one half. Whenever a glued object gets hit, it accumulates a glue impulse force. This controls how fast that force decays."
+            },
+            {
+              "line": 26,
+              "text": ""
+            }
+          ]
+        },
+        {
+          "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/help/nodes.zip",
+          "archive_sha256": "7c83e14d77ddaebf0f918244c1747509633b2721a39468eb4ae3efc694886916",
+          "member": "dop/flipconfigureobject.txt",
+          "section_sha256": "25c3cb58eb2854a241a2a3d4d277e8eb73056b0f17cc0d0dccad42f4d0225b05",
+          "lines": [
+            {
+              "line": 18,
+              "text": ""
+            },
+            {
+              "line": 19,
+              "text": "    If the division size is less than the particle size, unnecessary work"
+            },
+            {
+              "line": 20,
+              "text": "    will be done."
+            },
+            {
+              "line": 21,
+              "text": ""
+            },
+            {
+              "line": 22,
+              "text": "    A division size greater than the particle size will smear neighboring"
+            },
+            {
+              "line": 23,
+              "text": "    particles together, resulting in a smoother, stabler, and faster"
+            },
+            {
+              "line": 24,
+              "text": "    simulation.  The recommended division size is twice the particle"
+            },
+            {
+              "line": 25,
+              "text": "    separation, so there will be approximately eight particles per grid"
+            },
+            {
+              "line": 26,
+              "text": "    cell."
+            },
+            {
+              "line": 27,
+              "text": ""
+            },
+            {
+              "line": 28,
+              "text": "    If you halve the division size, you create eight times the work."
+            },
+            {
+              "line": 29,
+              "text": ""
+            },
+            {
+              "line": 30,
+              "text": "Collision Division Size:"
+            },
+            {
+              "line": 31,
+              "text": "    #id: coldivsize"
+            },
+            {
+              "line": 32,
+              "text": "    "
+            },
+            {
+              "line": 33,
+              "text": "    The division size for the collision-related fields."
+            },
+            {
+              "line": 34,
+              "text": ""
+            },
+            {
+              "line": 35,
+              "text": "    It can be useful for the collision fields to be higher resolution than the other simulation fields, especially when protoyping simulations at low resolutions, since the [FLIP Fluid Solver|Node:dop/flipsolver] takes into account fractional collision voxels when solving."
+            },
+            {
+              "line": 36,
+              "text": "    "
+            },
+            {
+              "line": 37,
+              "text": "    If this value is set as a fraction of the overall __Division Size__, be careful to restore it when running high resolution simulations.  Another option is to choose a division size that provides sufficient collision detail by visualizing the collision field, then leave it at that fixed value, independent from any changes to the overall division size."
+            },
+            {
+              "line": 38,
+              "text": ""
+            },
+            {
+              "line": 39,
+              "text": "Density:"
+            },
+            {
+              "line": 40,
+              "text": "    #id: density"
+            },
+            {
+              "line": 41,
+              "text": ""
+            },
+            {
+              "line": 42,
+              "text": "    The mass density of the fluid. This value is stored in the object's density field and can be manipulated in the __Volume Velocity__"
+            }
+          ]
+        },
+        {
+          "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/help/nodes.zip",
+          "archive_sha256": "7c83e14d77ddaebf0f918244c1747509633b2721a39468eb4ae3efc694886916",
+          "member": "dop/flipobject.txt",
+          "section_sha256": "b1705264c688a0bcf147874a321988b6377a107a2d29dc8c090bda53eb024e37",
+          "lines": [
+            {
+              "line": 28,
+              "text": ""
+            },
+            {
+              "line": 29,
+              "text": "    A scaling factor used to calculate the division size of the"
+            },
+            {
+              "line": 30,
+              "text": "    advection grid from the particle separation. The default"
+            },
+            {
+              "line": 31,
+              "text": "    should be good for most applications."
+            },
+            {
+              "line": 32,
+              "text": ""
+            },
+            {
+              "line": 33,
+              "text": "Collision Separation:"
+            },
+            {
+              "line": 34,
+              "text": "    #contentfrom: flipconfigureobject#coldivsize"
+            },
+            {
+              "line": 35,
+              "text": ""
+            },
+            {
+              "line": 36,
+              "text": ":include flipconfigureobject#closedends:"
+            },
+            {
+              "line": 37,
+              "text": ""
+            },
+            {
+              "line": 38,
+              "text": "== Creation =="
+            },
+            {
+              "line": 39,
+              "text": ""
+            }
+          ]
+        },
+        {
+          "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/help/nodes.zip",
+          "archive_sha256": "7c83e14d77ddaebf0f918244c1747509633b2721a39468eb4ae3efc694886916",
+          "member": "sop/rbdbulletsolver.txt",
+          "section_sha256": "842a43a69c1ecc390719e9355bd098b934e83c0724fcfa3ad3bdb6132d28003c",
+          "lines": [
+            {
+              "line": 34,
+              "text": ""
+            },
+            {
+              "line": 35,
+              "text": "Many visualizer options are available to get instant feedback on the simulation and the constraints to help tune constraint breaking thresholds. Additionally, a viewport inspector, accessible via a right-click context menu option in the viewport when the node state is active, allows you to inspect any particular primitive's attributes by simply hovering over it."
+            },
+            {
+              "line": 36,
+              "text": "In order to get constraint information from the viewport inspector, set the __RBD Bullet Solver__ SOP's output for view flag to `Constraint Geometry`."
+            },
+            {
+              "line": 37,
+              "text": ""
+            },
+            {
+              "line": 38,
+              "text": "== Name attribute types =="
+            },
+            {
+              "line": 39,
+              "text": ""
+            },
+            {
+              "line": 40,
+              "text": "It's very important that the RBD Bullet Solver SOP receives consistent `name` attribute types.  If you mix point and primitive `name` attributes, the solver is unlikely to be able to reconcile this mismatch and will either fail completely or give you erroneous results."
+            },
+            {
+              "line": 50,
+              "text": ""
+            },
+            {
+              "line": 51,
+              "text": "The RBD Bullet Solver provides a number of visualizers to help tune and debug the RBD simulation. When the node state is active, various guide geometries can be displayed (bullet geometry representation, guide preview, etc), constraint information can be displayed as a histogram with information about the min and max values and a viewport inspector can be activated to help with reading attribute values for the primitive under the mouse pointer."
+            },
+            {
+              "line": 52,
+              "text": ""
+            },
+            {
+              "line": 53,
+              "text": "=== Viewport Inspector ==="
+            },
+            {
+              "line": 54,
+              "text": ""
+            },
+            {
+              "line": 55,
+              "text": "The viewport inspector displays attribute values about the output primitive under the mouse pointer."
+            },
+            {
+              "line": 56,
+              "text": "To view information about the various outputs, switch the Bullet Solver node's output for view flag to the desired output. For example, to view information about constraints, switch the Bullet Solver node's output for view flag to \"Constraint Geometry\". You can use the `1`, `2` or `3` hotkeys in the viewport to switch between \"Geometry\", \"Constraint Geometry\" or \"Proxy Geometry\" respectively, or press `4` to toggle between them."
+            },
+            {
+              "line": 79,
+              "text": "    "
+            },
+            {
+              "line": 80,
+              "text": "    Constraint geometry attributes that are scale dependent are scaled accordingly (`restlength`, `strength`, `plasticthreshold`). Forces and thresholds are scaled accordingly where applicable."
+            },
+            {
+              "line": 81,
+              "text": ""
+            },
+            {
+              "line": 82,
+              "text": "    WARNING:"
+            },
+            {
+              "line": 83,
+              "text": "        When scaling the bullet world, constraint VEXpressions are run in the scaled world, so geometry lookups will need to take that into consideration. Similarly, custom forces applied in the editable forces subnet will need to be aware of the scale. "
+            },
+            {
+              "line": 84,
+              "text": ""
+            },
+            {
+              "line": 85,
+              "text": "Time Scale:"
+            },
+            {
+              "line": 157,
+              "text": ""
+            },
+            {
+              "line": 158,
+              "text": "~~~ Overwrite Attributes ~~~"
+            },
+            {
+              "line": 159,
+              "text": ""
+            },
+            {
+              "line": 160,
+              "text": "Attributes:"
+            },
+            {
+              "line": 161,
+              "text": "    #id: overwriteattributes"
+            },
+            {
+              "line": 162,
+              "text": "    The specified point attributes are copied from the input geometry to the simulation geometry at each frame. This can be useful to animate attributes such as `active` at the SOP level to activate pieces at a particular frame."
+            },
+            {
+              "line": 163,
+              "text": ""
+            },
+            {
+              "line": 164,
+              "text": "=== Sleeping ==="
+            },
+            {
+              "line": 165,
+              "text": ""
+            },
+            {
+              "line": 166,
+              "text": "Linear Threshold:"
+            },
+            {
+              "line": 167,
+              "text": "    The sleeping threshold for the object's linear velocity. If the object's linear speed is below this threshold for a period of time, the object may be treated as non-moving."
+            },
+            {
+              "line": 205,
+              "text": ""
+            },
+            {
+              "line": 206,
+              "text": "~~~ Overwrite Attributes ~~~"
+            },
+            {
+              "line": 207,
+              "text": ""
+            },
+            {
+              "line": 208,
+              "text": "Attributes:"
+            },
+            {
+              "line": 209,
+              "text": "    #id: collision_overwriteattributes"
+            },
+            {
+              "line": 210,
+              "text": "    The specified point attributes correspond to the solver node's fourth input. The attributes are copied from the input geometry to the simulation geometry at each frame. This can be useful to animate attributes such as `active` at the SOP level to activate pieces at a particular frame."
+            },
+            {
+              "line": 211,
+              "text": ""
+            },
+            {
+              "line": 212,
+              "text": "=== Ground Collision ==="
+            },
+            {
+              "line": 213,
+              "text": ""
+            },
+            {
+              "line": 214,
+              "text": "Ground Type:"
+            },
+            {
+              "line": 215,
+              "text": "    #id: useground"
+            },
+            {
+              "line": 288,
+              "text": ""
+            },
+            {
+              "line": 289,
+              "text": "    Since forces are stored as `force` rather than `accel` (acceleration), this is done by multiplying the `force` by the `mass` attribute. This will then be canceled out by the solver."
+            },
+            {
+              "line": 290,
+              "text": ""
+            },
+            {
+              "line": 291,
+              "text": "    `airresist` will also be similarly multiplied."
+            },
+            {
+              "line": 292,
+              "text": ""
+            },
+            {
+              "line": 293,
+              "text": "    Ignoring mass ensures that small pieces of an RBD object move at the same speed as big pieces.  This makes for a more controllable simulation."
+            },
+            {
+              "line": 294,
+              "text": ""
+            },
+            {
+              "line": 295,
+              "text": "Use VEXpressions:"
+            },
+            {
+              "line": 296,
+              "text": "    Use VEX expressions to modify the drag parameters."
+            },
+            {
+              "line": 355,
+              "text": "Angle Attribute:"
+            },
+            {
+              "line": 356,
+              "text": "    The name of the attribute used to multiply the angle threshold with."
+            },
+            {
+              "line": 357,
+              "text": ""
+            },
+            {
+              "line": 358,
+              "text": "Distance Threshold:"
+            },
+            {
+              "line": 359,
+              "text": "    The distance between anchor points beyond which a constraint will break. "
+            },
+            {
+              "line": 360,
+              "text": ""
+            },
+            {
+              "line": 361,
+              "text": "    NOTE:"
+            },
+            {
+              "line": 368,
+              "text": "    NOTE:"
+            },
+            {
+              "line": 369,
+              "text": "        As of Houdini 18.0, glue constraints update the force attribute on the constraint geometry such as it represents the length of the delta between the 2 constrained pieces' forces, multiplied by their average mass."
+            },
+            {
+              "line": 370,
+              "text": "        To break glue constraints based on force relative to their strength, set the force threshold to 1, enable scale by attribute, set Force Attribute to `strength`."
+            },
+            {
+              "line": 371,
+              "text": ""
+            },
+            {
+              "line": 372,
+              "text": "Impact Threshold:"
+            },
+            {
+              "line": 373,
+              "text": "    The impact beyond which a constraint will break."
+            },
+            {
+              "line": 374,
+              "text": ""
+            },
+            {
+              "line": 375,
+              "text": "Torque Threshold:"
+            },
+            {
+              "line": 405,
+              "text": "Attributes:"
+            },
+            {
+              "line": 406,
+              "text": "    The specified point attributes are copied from the input geometry (solver's second input) to animated constraints geometry at each frame. This can be useful to animate attributes such as `active` at the SOP level to activate pieces at a particular frame."
+            },
+            {
+              "line": 407,
+              "text": ""
+            },
+            {
+              "line": 408,
+              "text": "Group:"
+            },
+            {
+              "line": 409,
+              "text": "    Specify a group of constraints for which to update the attributes from SOPs. "
+            },
+            {
+              "line": 410,
+              "text": ""
+            },
+            {
+              "line": 411,
+              "text": "Export Broken Constraints:"
+            },
+            {
+              "line": 455,
+              "text": "    #id: guide_linearthreshold"
+            },
+            {
+              "line": 456,
+              "text": "    When the distance between the computed guided position and the resulting post-solve position is greater than the linear threshold multiplied by guide strength, the piece will become unguided."
+            },
+            {
+              "line": 457,
+              "text": ""
+            },
+            {
+              "line": 458,
+              "text": "Angular Threshold:"
+            },
+            {
+              "line": 459,
+              "text": "    #id: guide_angularthreshold"
+            },
+            {
+              "line": 460,
+              "text": "    When the angle (in degrees) between the computed guided orientation and the resulting post-solve orientation is greater than the angular threshold multiplied by guide strength, the piece will become unguided."
+            },
+            {
+              "line": 461,
+              "text": ""
+            },
+            {
+              "line": 462,
+              "text": "Distance Threshold:"
+            },
+            {
+              "line": 463,
+              "text": "    #id: guide_distancethreshold"
+            },
+            {
+              "line": 464,
+              "text": "    When the difference between the distance of the guide piece to the bullet primitive and their distance at rest increases beyond the distance threshold multiplied by guide strength, the piece will become unguided."
+            },
+            {
+              "line": 465,
+              "text": ""
+            },
+            {
+              "line": 466,
+              "text": "~~~ Accumulated ~~~"
+            },
+            {
+              "line": 467,
+              "text": ""
+            },
+            {
+              "line": 468,
+              "text": "Linear Threshold:"
+            },
+            {
+              "line": 469,
+              "text": "    #id: guide_acclinearthreshold"
+            },
+            {
+              "line": 470,
+              "text": "    When the accumulated distance between the computed guide position and the resulting post-solve position is greater than the distance threshold multiplied by guide strength, the piece will become unguided."
+            },
+            {
+              "line": 471,
+              "text": ""
+            },
+            {
+              "line": 472,
+              "text": "Angular Threshold:"
+            },
+            {
+              "line": 473,
+              "text": "    #id: guide_accangularthreshold"
+            },
+            {
+              "line": 474,
+              "text": "    When the accumulated angle (in degrees) between the computed guide orientation and the resulting post-solve orientation is greater than the angular threshold multiplied by guide strength, the piece will become unguided."
+            },
+            {
+              "line": 475,
+              "text": ""
+            },
+            {
+              "line": 476,
+              "text": "Distance Threshold:"
+            },
+            {
+              "line": 477,
+              "text": "    #id: guide_accdistancethreshold"
+            },
+            {
+              "line": 478,
+              "text": "    When the accumulated difference between the distance of the guide piece to the bullet primitive and their distance at rest increases beyond the distance threshold multiplied by guide strength, the piece will become unguided."
+            },
+            {
+              "line": 479,
+              "text": ""
+            },
+            {
+              "line": 480,
+              "text": "=== Remove Intra-Guided Constraints ==="
+            },
+            {
+              "line": 481,
+              "text": ""
+            },
+            {
+              "line": 482,
+              "text": "Remove Intra-Guide Constraints:"
+            },
+            {
+              "line": 483,
+              "text": "    #id: guide_delconstraints"
+            },
+            {
+              "line": 519,
+              "text": "Show Active (Green):"
+            },
+            {
+              "line": 520,
+              "text": "    Displays active pieces as a green wireframe overlay."
+            },
+            {
+              "line": 521,
+              "text": ""
+            },
+            {
+              "line": 522,
+              "text": "Show Sleeping (Red):"
+            },
+            {
+              "line": 523,
+              "text": "    Displays sleeping pieces as a red wireframe overlay."
+            },
+            {
+              "line": 524,
+              "text": ""
+            },
+            {
+              "line": 525,
+              "text": "=== Ground ==="
+            },
+            {
+              "line": 602,
+              "text": "    Displays the guided geometry transformed by the guide (no simulation)."
+            },
+            {
+              "line": 603,
+              "text": "    The hue represents the guide clusters, the value represents the strength attribute value."
+            },
+            {
+              "line": 604,
+              "text": "    In this mode, the viewport inspector will display information about the guide."
+            },
+            {
+              "line": 605,
+              "text": ""
+            },
+            {
+              "line": 606,
+              "text": "Guide Capture Frame:"
+            },
+            {
+              "line": 607,
+              "text": "    Applies a timeshift to the guided capture geometry to visualize the guide influence at the given frame."
+            },
+            {
+              "line": 608,
+              "text": ""
+            },
+            {
+              "line": 740,
+              "text": ""
+            },
+            {
+              "line": 741,
+              "text": "Strength:"
+            },
+            {
+              "line": 742,
+              "text": "    Guide strength. "
+            },
+            {
+              "line": 743,
+              "text": ""
+            },
+            {
+              "line": 744,
+              "text": "Distance to Strength:"
+            },
+            {
+              "line": 745,
+              "text": "    Multiply the strength based on distance to guide geometry."
+            },
+            {
+              "line": 746,
+              "text": ""
+            },
+            {
+              "line": 747,
+              "text": "Distance:"
+            },
+            {
+              "line": 748,
+              "text": "    Specify the minimum and maximum distance for the __Strength Multiplier__."
+            },
+            {
+              "line": 749,
+              "text": ""
+            },
+            {
+              "line": 750,
+              "text": "Strength Multiplier:"
+            },
+            {
+              "line": 751,
+              "text": "    The strength multiplier to use when the distance to the guide piece falls between the __Distance__ min and max."
+            },
+            {
+              "line": 752,
+              "text": ""
+            },
+            {
+              "line": 753,
+              "text": "Blend:"
+            },
+            {
+              "line": 754,
+              "text": "    Add a blend attribute to the simulation pieces which will be multiplied by the global blend value."
+            },
+            {
+              "line": 755,
+              "text": ""
+            },
+            {
+              "line": 756,
+              "text": "Transfer Attributes:"
+            },
+            {
+              "line": 757,
+              "text": "    Attributes to transfer from the guide piece to the RBD pieces."
+            },
+            {
+              "line": 758,
+              "text": ""
+            },
+            {
+              "line": 759,
+              "text": "Use VEXpressions:"
+            },
+            {
+              "line": 760,
+              "text": "    Use VEX expressions to modify guiding strength and blend attributes."
+            },
+            {
+              "line": 761,
+              "text": ""
+            },
+            {
+              "line": 762,
+              "text": "=== Guided Neighbors ==="
+            },
+            {
+              "line": 763,
+              "text": ""
+            },
+            {
+              "line": 764,
+              "text": "Guided Neighbors:"
+            },
+            {
+              "line": 765,
+              "text": "    When a guided piece has no neighbors within its guide cluster, it will inherit the nearest piece's guide target."
+            }
+          ]
+        }
+      ]
+    },
+    "22.0.429": {
+      "operators": {
+        "Dop/flipobject": {
+          "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/otls/OPlibDop.hda",
+          "archive_sha256": "362395c831852994efdc9c38048ae738e88559894ad6d88612091c958cd8e46b",
+          "member": "Dop/flipobject::DialogScript",
+          "section_sha256": "f34f455fa37909e67aefc206a7e13ab114acc6496a3bce59c1c30f1afc064fba",
+          "parameters": {
+            "overridecollisionsep": {
+              "name": "overridecollisionsep",
+              "type": "toggle",
+              "size": 1,
+              "label": "Override Collision Separation",
+              "default_tokens": [
+                "0"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "flipobject",
+                "folder0"
+              ],
+              "flags": [
+                "joinnext",
+                "nolabel"
+              ],
+              "raw_fields": {
+                "name": "overridecollisionsep",
+                "label": "Override Collision Separation",
+                "type": "toggle",
+                "nolabel": true,
+                "joinnext": true,
+                "default": [
+                  "0"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ]
+              }
+            },
+            "collisionsep": {
+              "name": "collisionsep",
+              "type": "float",
+              "size": 1,
+              "label": "Collision Separation",
+              "default_tokens": [
+                "0.2"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "10"
+              ],
+              "disable_when": "{ overridecollisionsep == 0 }",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "units",
+                "m1"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "flipobject",
+                "folder0"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "collisionsep",
+                "label": "Collision Separation",
+                "type": "float",
+                "default": [
+                  "0.2"
+                ],
+                "disablewhen": "{ overridecollisionsep == 0 }",
+                "range": [
+                  "0",
+                  "10"
+                ],
+                "parmtag": [
+                  "units",
+                  "m1"
+                ]
+              }
+            },
+            "particlesep": {
+              "name": "particlesep",
+              "type": "float",
+              "size": 1,
+              "label": "Particle Separation",
+              "default_tokens": [
+                "0.1"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "10"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000",
+                "units",
+                "m1"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "flipobject",
+                "folder0"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "particlesep",
+                "label": "Particle Separation",
+                "type": "float",
+                "default": [
+                  "0.1"
+                ],
+                "range": [
+                  "0",
+                  "10"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000",
+                  "units",
+                  "m1"
+                ]
+              }
+            }
+          },
+          "absent_requested_fields": []
+        },
+        "Dop/flipconfigureobject": {
+          "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/otls/OPlibDop.hda",
+          "archive_sha256": "362395c831852994efdc9c38048ae738e88559894ad6d88612091c958cd8e46b",
+          "member": "Dop/flipconfigureobject::DialogScript",
+          "section_sha256": "d69dad45d5b6dfc9d30803a093fceb517af7dac1f2ea206ca3ea3d3f1622f5e8",
+          "parameters": {
+            "coldivsize": {
+              "name": "coldivsize",
+              "type": "float",
+              "size": 1,
+              "label": "Collision Division Size",
+              "default_tokens": [
+                "[",
+                "ch(\"divsize\")",
+                "hscript-expr",
+                "]"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0!",
+                "10"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "units",
+                "m1"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "flipconfigureobject"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "coldivsize",
+                "label": "Collision Division Size",
+                "type": "float",
+                "default": [
+                  "[",
+                  "ch(\"divsize\")",
+                  "hscript-expr",
+                  "]"
+                ],
+                "range": [
+                  "0!",
+                  "10"
+                ],
+                "parmtag": [
+                  "units",
+                  "m1"
+                ]
+              }
+            },
+            "divsize": {
+              "name": "divsize",
+              "type": "float",
+              "size": 1,
+              "label": "Division Size",
+              "default_tokens": [
+                "0.1"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0!",
+                "10"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000",
+                "units",
+                "m1"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "flipconfigureobject"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "divsize",
+                "label": "Division Size",
+                "type": "float",
+                "default": [
+                  "0.1"
+                ],
+                "range": [
+                  "0!",
+                  "10"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000",
+                  "units",
+                  "m1"
+                ]
+              }
+            }
+          },
+          "absent_requested_fields": []
+        },
+        "Sop/rbdbulletsolver": {
+          "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/otls/OPlibSop.hda",
+          "archive_sha256": "c24559e89d9f2895e32d2fc26a96b922c00a47a75de212f60a56928042df1a7f",
+          "member": "Sop/rbdbulletsolver::DialogScript",
+          "section_sha256": "2fdca903735043c169d43f9c8fcc85d884e52633bf28e33f5905d1be1d37e2af",
+          "parameters": {
+            "glue_strength": {
+              "name": "glue_strength",
+              "type": "float",
+              "size": 1,
+              "label": "Strength",
+              "default_tokens": [
+                "1"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "10"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "rbdbulletsolver",
+                "folder_7",
+                "folder26",
+                "folder14"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "glue_strength",
+                "label": "Strength",
+                "type": "float",
+                "default": [
+                  "1"
+                ],
+                "range": [
+                  "0",
+                  "10"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "glue_defaultparmop": {
+              "name": "glue_defaultparmop",
+              "type": "ordinal",
+              "size": 1,
+              "label": "Default Operation",
+              "default_tokens": [
+                "initial"
+              ],
+              "menu_tokens": [
+                "initial",
+                "Set Initial",
+                "always",
+                "Set Always",
+                "never",
+                "Set Never"
+              ],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "rbdbulletsolver",
+                "folder_7",
+                "folder26",
+                "folder14"
+              ],
+              "flags": [
+                "nolabel"
+              ],
+              "raw_fields": {
+                "name": "glue_defaultparmop",
+                "label": "Default Operation",
+                "type": "ordinal",
+                "nolabel": true,
+                "default": [
+                  "initial"
+                ],
+                "menu": [
+                  "initial",
+                  "Set Initial",
+                  "always",
+                  "Set Always",
+                  "never",
+                  "Set Never"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "glue_dataname": {
+              "name": "glue_dataname",
+              "type": "string",
+              "size": 1,
+              "label": "Data Name",
+              "default_tokens": [
+                "Glue"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [
+                "[",
+                "kwargs['node'].hdaViewerStateModule().getConstraintNames(kwargs)",
+                "]",
+                "language",
+                "python"
+              ],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "rbdbulletsolver",
+                "folder_7",
+                "folder26",
+                "folder14"
+              ],
+              "flags": [
+                "joinnext"
+              ],
+              "raw_fields": {
+                "name": "glue_dataname",
+                "label": "Data Name",
+                "type": "string",
+                "joinnext": true,
+                "default": [
+                  "Glue"
+                ],
+                "menureplace": [
+                  "[",
+                  "kwargs['node'].hdaViewerStateModule().getConstraintNames(kwargs)",
+                  "]",
+                  "language",
+                  "python"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "overwritefromsop": {
+              "name": "overwritefromsop",
+              "type": "toggle",
+              "size": 1,
+              "label": "Override Attributes from SOP",
+              "default_tokens": [
+                "1"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "rbdbulletsolver",
+                "folder_1",
+                "folder6",
+                "folder34"
+              ],
+              "flags": [
+                "joinnext",
+                "nolabel"
+              ],
+              "raw_fields": {
+                "name": "overwritefromsop",
+                "label": "Override Attributes from SOP",
+                "type": "toggle",
+                "nolabel": true,
+                "joinnext": true,
+                "default": [
+                  "1"
+                ]
+              }
+            },
+            "overwriteattributes": {
+              "name": "overwriteattributes",
+              "type": "string",
+              "size": 1,
+              "label": "Attributes",
+              "default_tokens": [
+                "active animated deforming __pin __guide_*"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "{ overwritefromsop == 0 }",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "rbdbulletsolver",
+                "folder_1",
+                "folder6",
+                "folder34"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "overwriteattributes",
+                "label": "Attributes",
+                "type": "string",
+                "default": [
+                  "active animated deforming __pin __guide_*"
+                ],
+                "disablewhen": "{ overwritefromsop == 0 }",
+                "menutoggle": [
+                  "[",
+                  "opmenu -l -a dopnet/rbd_object overwriteattributes",
+                  "]"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            }
+          },
+          "absent_requested_fields": []
+        },
+        "Sop/rbdconfigure": {
+          "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/otls/OPlibSop.hda",
+          "archive_sha256": "c24559e89d9f2895e32d2fc26a96b922c00a47a75de212f60a56928042df1a7f",
+          "member": "Sop/rbdconfigure::DialogScript",
+          "section_sha256": "ff0ed8fd19eda1b806e09fddfc18298bedb383102c5d1e1c963e6da681c61005",
+          "parameters": {
+            "addactive#": {
+              "name": "addactive#",
+              "type": "toggle",
+              "size": 1,
+              "label": "Add Active",
+              "default_tokens": [
+                "0"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "rbdconfigure",
+                "folder3",
+                "attributes",
+                "folder0_#_2"
+              ],
+              "flags": [
+                "joinnext",
+                "nolabel"
+              ],
+              "raw_fields": {
+                "name": "addactive#",
+                "label": "Add Active",
+                "type": "toggle",
+                "nolabel": true,
+                "joinnext": true,
+                "default": [
+                  "0"
+                ]
+              }
+            },
+            "active#": {
+              "name": "active#",
+              "type": "integer",
+              "size": 1,
+              "label": "Active",
+              "default_tokens": [
+                "1"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0!",
+                "1!"
+              ],
+              "disable_when": "{ addactive# == 0 }",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "rbdconfigure",
+                "folder3",
+                "attributes",
+                "folder0_#_2"
+              ],
+              "flags": [
+                "joinnext"
+              ],
+              "raw_fields": {
+                "name": "active#",
+                "label": "Active",
+                "type": "integer",
+                "joinnext": true,
+                "default": [
+                  "1"
+                ],
+                "disablewhen": "{ addactive# == 0 }",
+                "range": [
+                  "0!",
+                  "1!"
+                ]
+              }
+            }
+          },
+          "absent_requested_fields": []
+        }
+      },
+      "consumers": [
+        {
+          "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/otls/OPlibSop.hda",
+          "archive_sha256": "c24559e89d9f2895e32d2fc26a96b922c00a47a75de212f60a56928042df1a7f",
+          "member": "Sop/flipsolver::Contents.gz::hdaroot/dopnet1/flipfluidobject.parm",
+          "section_sha256": "23af199ab8fb33eddb715747498f0354a26aef72cee59c7674c1fdf7af822bb9",
+          "lines": [
+            {
+              "line": 2,
+              "text": "version 0.8"
+            },
+            {
+              "line": 3,
+              "text": "folder0\t[ 0\tlocks=0 ]\t(\t0\t0\t)"
+            },
+            {
+              "line": 4,
+              "text": "particlesep\t[ 0\tlocks=0 ]\t(\t[ particlesep\t0.1 ] \t)"
+            },
+            {
+              "line": 5,
+              "text": "radiusscale\t[ 0\tlocks=0 ]\t(\t1.2\t)"
+            },
+            {
+              "line": 6,
+              "text": "gridscale\t[ 8\tlocks=0 ]\t(\t[ gridscale\t2 ] \t)"
+            },
+            {
+              "line": 7,
+              "text": "overridecollisionsep\t[ 0\tlocks=0 ]\t(\t\"off\"\t)"
+            },
+            {
+              "line": 8,
+              "text": "collisionsep\t[ 0\tlocks=0 ]\t(\t0.2\t)"
+            },
+            {
+              "line": 9,
+              "text": "closedends\t[ 0\tlocks=0 ]\t(\t\"off\"\t)"
+            },
+            {
+              "line": 10,
+              "text": "closexpos\t[ 0\tlocks=0 ]\t(\t\"on\"\t)"
+            }
+          ]
+        },
+        {
+          "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/otls/OPlibSop.hda",
+          "archive_sha256": "c24559e89d9f2895e32d2fc26a96b922c00a47a75de212f60a56928042df1a7f",
+          "member": "Sop/rbdbulletsolver::Contents.gz::hdaroot/dopnet/constraints/Glue.chn",
+          "section_sha256": "6cd59da568fd9ed41c315beb088f37e77b9772ed11d49e02977f566bf613fea1",
+          "lines": [
+            {
+              "line": 9,
+              "text": "    channel strength {"
+            },
+            {
+              "line": 10,
+              "text": "      lefttype = extend"
+            },
+            {
+              "line": 11,
+              "text": "      righttype = extend"
+            },
+            {
+              "line": 12,
+              "text": "      default = 1"
+            },
+            {
+              "line": 13,
+              "text": "      flags = 0"
+            },
+            {
+              "line": 14,
+              "text": "      segment { length = 0 value = 1 1 expr = ch(\\\"../../../glue_strength\\\") }"
+            },
+            {
+              "line": 15,
+              "text": "    }"
+            },
+            {
+              "line": 16,
+              "text": "    channel impulse_halflife {"
+            },
+            {
+              "line": 36,
+              "text": "    }"
+            },
+            {
+              "line": 37,
+              "text": "    channel defaultparmop {"
+            },
+            {
+              "line": 38,
+              "text": "      lefttype = extend"
+            },
+            {
+              "line": 39,
+              "text": "      righttype = extend"
+            },
+            {
+              "line": 40,
+              "text": "      flags = 0"
+            },
+            {
+              "line": 41,
+              "text": "      segment { length = 0 expr = ch(\\\"../../../glue_defaultparmop\\\") }"
+            },
+            {
+              "line": 42,
+              "text": "    }"
+            },
+            {
+              "line": 43,
+              "text": "    channel dataname {"
+            }
+          ]
+        }
+      ],
+      "help": [
+        {
+          "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/help/nodes.zip",
+          "archive_sha256": "6ca2ef18ce0d1f142d3415e27885b36f69b3537344a04621c89f9fab6937ad53",
+          "member": "dop/standard_constraintnetworkattribs.txt",
+          "section_sha256": "35ac0fb8899e836de7496af65fcda77f2c85812156d550972824274fef869574",
+          "lines": [
+            {
+              "line": 5,
+              "text": "You can [create attributes|/model/attributes] on the geometry to customize each constraint's behavior and type."
+            },
+            {
+              "line": 6,
+              "text": "If a primitive attribute with the same name as a constraint property (such as `damping`) is present, the attribute value will be multiplied with the value from the constraint sub-data if the data type is `float`."
+            },
+            {
+              "line": 7,
+              "text": "For other data types, a primitive attribute will override the value from the constraint sub-data."
+            },
+            {
+              "line": 8,
+              "text": ""
+            },
+            {
+              "line": 9,
+              "text": "The following attributes can be used to control the type of constraint described by each primitive."
+            },
+            {
+              "line": 10,
+              "text": ""
+            },
+            {
+              "line": 11,
+              "text": "table>>"
+            },
+            {
+              "line": 173,
+              "text": "                    td>> `1`"
+            },
+            {
+              "line": 174,
+              "text": "                    td>> Free to rotate around 2 axes. `condir` defines the inactive axis."
+            },
+            {
+              "line": 175,
+              "text": "                tr>>"
+            },
+            {
+              "line": 176,
+              "text": "                    td>>"
+            },
+            {
+              "line": 177,
+              "text": "                    td>> `2`"
+            },
+            {
+              "line": 178,
+              "text": "                    td>> Free to rotate around 1 axis. `condir` defines the active axis."
+            },
+            {
+              "line": 179,
+              "text": "                tr>>"
+            },
+            {
+              "line": 180,
+              "text": "                    td>>"
+            },
+            {
+              "line": 181,
+              "text": "                    td>> `3`"
+            },
+            {
+              "line": 182,
+              "text": "                    td>> No rotation."
+            },
+            {
+              "line": 183,
+              "text": "    tr>>"
+            }
+          ]
+        },
+        {
+          "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/help/nodes.zip",
+          "archive_sha256": "6ca2ef18ce0d1f142d3415e27885b36f69b3537344a04621c89f9fab6937ad53",
+          "member": "dop/glueconrel.txt",
+          "section_sha256": "4d62e2e298a2ded1951425e1a567758617496d23864ad59a489299d881bd78cc",
+          "lines": [
+            {
+              "line": 18,
+              "text": ""
+            },
+            {
+              "line": 19,
+              "text": "Strength:"
+            },
+            {
+              "line": 20,
+              "text": "    #id: strength"
+            },
+            {
+              "line": 21,
+              "text": "    Specifies the strength of the glue bond. If the value is -1, the connection will never break."
+            },
+            {
+              "line": 22,
+              "text": ""
+            },
+            {
+              "line": 23,
+              "text": "Half-Life:"
+            },
+            {
+              "line": 24,
+              "text": "    #id: impulse_halflife"
+            },
+            {
+              "line": 25,
+              "text": "    The number of seconds for the glue impulse to decay by one half. Whenever a glued object gets hit, it accumulates a glue impulse force. This controls how fast that force decays."
+            },
+            {
+              "line": 26,
+              "text": ""
+            }
+          ]
+        },
+        {
+          "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/help/nodes.zip",
+          "archive_sha256": "6ca2ef18ce0d1f142d3415e27885b36f69b3537344a04621c89f9fab6937ad53",
+          "member": "dop/flipconfigureobject.txt",
+          "section_sha256": "25c3cb58eb2854a241a2a3d4d277e8eb73056b0f17cc0d0dccad42f4d0225b05",
+          "lines": [
+            {
+              "line": 18,
+              "text": ""
+            },
+            {
+              "line": 19,
+              "text": "    If the division size is less than the particle size, unnecessary work"
+            },
+            {
+              "line": 20,
+              "text": "    will be done."
+            },
+            {
+              "line": 21,
+              "text": ""
+            },
+            {
+              "line": 22,
+              "text": "    A division size greater than the particle size will smear neighboring"
+            },
+            {
+              "line": 23,
+              "text": "    particles together, resulting in a smoother, stabler, and faster"
+            },
+            {
+              "line": 24,
+              "text": "    simulation.  The recommended division size is twice the particle"
+            },
+            {
+              "line": 25,
+              "text": "    separation, so there will be approximately eight particles per grid"
+            },
+            {
+              "line": 26,
+              "text": "    cell."
+            },
+            {
+              "line": 27,
+              "text": ""
+            },
+            {
+              "line": 28,
+              "text": "    If you halve the division size, you create eight times the work."
+            },
+            {
+              "line": 29,
+              "text": ""
+            },
+            {
+              "line": 30,
+              "text": "Collision Division Size:"
+            },
+            {
+              "line": 31,
+              "text": "    #id: coldivsize"
+            },
+            {
+              "line": 32,
+              "text": "    "
+            },
+            {
+              "line": 33,
+              "text": "    The division size for the collision-related fields."
+            },
+            {
+              "line": 34,
+              "text": ""
+            },
+            {
+              "line": 35,
+              "text": "    It can be useful for the collision fields to be higher resolution than the other simulation fields, especially when protoyping simulations at low resolutions, since the [FLIP Fluid Solver|Node:dop/flipsolver] takes into account fractional collision voxels when solving."
+            },
+            {
+              "line": 36,
+              "text": "    "
+            },
+            {
+              "line": 37,
+              "text": "    If this value is set as a fraction of the overall __Division Size__, be careful to restore it when running high resolution simulations.  Another option is to choose a division size that provides sufficient collision detail by visualizing the collision field, then leave it at that fixed value, independent from any changes to the overall division size."
+            },
+            {
+              "line": 38,
+              "text": ""
+            },
+            {
+              "line": 39,
+              "text": "Density:"
+            },
+            {
+              "line": 40,
+              "text": "    #id: density"
+            },
+            {
+              "line": 41,
+              "text": ""
+            },
+            {
+              "line": 42,
+              "text": "    The mass density of the fluid. This value is stored in the object's density field and can be manipulated in the __Volume Velocity__"
+            }
+          ]
+        },
+        {
+          "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/help/nodes.zip",
+          "archive_sha256": "6ca2ef18ce0d1f142d3415e27885b36f69b3537344a04621c89f9fab6937ad53",
+          "member": "dop/flipobject.txt",
+          "section_sha256": "b1705264c688a0bcf147874a321988b6377a107a2d29dc8c090bda53eb024e37",
+          "lines": [
+            {
+              "line": 28,
+              "text": ""
+            },
+            {
+              "line": 29,
+              "text": "    A scaling factor used to calculate the division size of the"
+            },
+            {
+              "line": 30,
+              "text": "    advection grid from the particle separation. The default"
+            },
+            {
+              "line": 31,
+              "text": "    should be good for most applications."
+            },
+            {
+              "line": 32,
+              "text": ""
+            },
+            {
+              "line": 33,
+              "text": "Collision Separation:"
+            },
+            {
+              "line": 34,
+              "text": "    #contentfrom: flipconfigureobject#coldivsize"
+            },
+            {
+              "line": 35,
+              "text": ""
+            },
+            {
+              "line": 36,
+              "text": ":include flipconfigureobject#closedends:"
+            },
+            {
+              "line": 37,
+              "text": ""
+            },
+            {
+              "line": 38,
+              "text": "== Creation =="
+            },
+            {
+              "line": 39,
+              "text": ""
+            }
+          ]
+        },
+        {
+          "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/help/nodes.zip",
+          "archive_sha256": "6ca2ef18ce0d1f142d3415e27885b36f69b3537344a04621c89f9fab6937ad53",
+          "member": "sop/rbdbulletsolver.txt",
+          "section_sha256": "59fef96ad413e459e1bfdda7ebba3216f12adda587246cf783a5cdd7ade07286",
+          "lines": [
+            {
+              "line": 34,
+              "text": ""
+            },
+            {
+              "line": 35,
+              "text": "Many visualizer options are available to get instant feedback on the simulation and the constraints to help tune constraint breaking thresholds. Additionally, a viewport inspector, accessible via a right-click context menu option in the viewport when the node state is active, allows you to inspect any particular primitive's attributes by simply hovering over it."
+            },
+            {
+              "line": 36,
+              "text": "In order to get constraint information from the viewport inspector, set the __RBD Bullet Solver__ SOP's output for view flag to `Constraint Geometry`."
+            },
+            {
+              "line": 37,
+              "text": ""
+            },
+            {
+              "line": 38,
+              "text": "== Name attribute types =="
+            },
+            {
+              "line": 39,
+              "text": ""
+            },
+            {
+              "line": 40,
+              "text": "It's very important that the RBD Bullet Solver SOP receives consistent `name` attribute types.  If you mix point and primitive `name` attributes, the solver is unlikely to be able to reconcile this mismatch and will either fail completely or give you erroneous results."
+            },
+            {
+              "line": 50,
+              "text": ""
+            },
+            {
+              "line": 51,
+              "text": "The RBD Bullet Solver provides a number of visualizers to help tune and debug the RBD simulation. When the node state is active, various guide geometries can be displayed (bullet geometry representation, guide preview, etc), constraint information can be displayed as a histogram with information about the min and max values and a viewport inspector can be activated to help with reading attribute values for the primitive under the mouse pointer."
+            },
+            {
+              "line": 52,
+              "text": ""
+            },
+            {
+              "line": 53,
+              "text": "=== Viewport Inspector ==="
+            },
+            {
+              "line": 54,
+              "text": ""
+            },
+            {
+              "line": 55,
+              "text": "The viewport inspector displays attribute values about the output primitive under the mouse pointer."
+            },
+            {
+              "line": 56,
+              "text": "To view information about the various outputs, switch the Bullet Solver node's output for view flag to the desired output. For example, to view information about constraints, switch the Bullet Solver node's output for view flag to \"Constraint Geometry\". You can use the `1`, `2` or `3` hotkeys in the viewport to switch between \"Geometry\", \"Constraint Geometry\" or \"Proxy Geometry\" respectively, or press `4` to toggle between them."
+            },
+            {
+              "line": 79,
+              "text": "    "
+            },
+            {
+              "line": 80,
+              "text": "    Constraint geometry attributes that are scale dependent are scaled accordingly (`restlength`, `strength`, `plasticthreshold`). Forces and thresholds are scaled accordingly where applicable."
+            },
+            {
+              "line": 81,
+              "text": ""
+            },
+            {
+              "line": 82,
+              "text": "    WARNING:"
+            },
+            {
+              "line": 83,
+              "text": "        When scaling the bullet world, constraint VEXpressions are run in the scaled world, so geometry lookups will need to take that into consideration. Similarly, custom forces applied in the editable forces subnet will need to be aware of the scale. "
+            },
+            {
+              "line": 84,
+              "text": ""
+            },
+            {
+              "line": 85,
+              "text": "Time Scale:"
+            },
+            {
+              "line": 157,
+              "text": ""
+            },
+            {
+              "line": 158,
+              "text": "~~~ Overwrite Attributes ~~~"
+            },
+            {
+              "line": 159,
+              "text": ""
+            },
+            {
+              "line": 160,
+              "text": "Attributes:"
+            },
+            {
+              "line": 161,
+              "text": "    #id: overwriteattributes"
+            },
+            {
+              "line": 162,
+              "text": "    The specified point attributes are copied from the input geometry to the simulation geometry at each frame. This can be useful to animate attributes such as `active` at the SOP level to activate pieces at a particular frame."
+            },
+            {
+              "line": 163,
+              "text": ""
+            },
+            {
+              "line": 164,
+              "text": "=== Sleeping ==="
+            },
+            {
+              "line": 165,
+              "text": ""
+            },
+            {
+              "line": 166,
+              "text": "Linear Threshold:"
+            },
+            {
+              "line": 167,
+              "text": "    The sleeping threshold for the object's linear velocity. If the object's linear speed is below this threshold for a period of time, the object may be treated as non-moving."
+            },
+            {
+              "line": 205,
+              "text": ""
+            },
+            {
+              "line": 206,
+              "text": "~~~ Overwrite Attributes ~~~"
+            },
+            {
+              "line": 207,
+              "text": ""
+            },
+            {
+              "line": 208,
+              "text": "Attributes:"
+            },
+            {
+              "line": 209,
+              "text": "    #id: collision_overwriteattributes"
+            },
+            {
+              "line": 210,
+              "text": "    The specified point attributes correspond to the solver node's fourth input. The attributes are copied from the input geometry to the simulation geometry at each frame. This can be useful to animate attributes such as `active` at the SOP level to activate pieces at a particular frame."
+            },
+            {
+              "line": 211,
+              "text": ""
+            },
+            {
+              "line": 212,
+              "text": "=== Ground Collision ==="
+            },
+            {
+              "line": 213,
+              "text": ""
+            },
+            {
+              "line": 214,
+              "text": "Ground Type:"
+            },
+            {
+              "line": 215,
+              "text": "    #id: useground"
+            },
+            {
+              "line": 288,
+              "text": ""
+            },
+            {
+              "line": 289,
+              "text": "    Since forces are stored as `force` rather than `accel` (acceleration), this is done by multiplying the `force` by the `mass` attribute. This will then be canceled out by the solver."
+            },
+            {
+              "line": 290,
+              "text": ""
+            },
+            {
+              "line": 291,
+              "text": "    `airresist` will also be similarly multiplied."
+            },
+            {
+              "line": 292,
+              "text": ""
+            },
+            {
+              "line": 293,
+              "text": "    Ignoring mass ensures that small pieces of an RBD object move at the same speed as big pieces.  This makes for a more controllable simulation."
+            },
+            {
+              "line": 294,
+              "text": ""
+            },
+            {
+              "line": 295,
+              "text": "Use VEXpressions:"
+            },
+            {
+              "line": 296,
+              "text": "    Use VEX expressions to modify the drag parameters."
+            },
+            {
+              "line": 355,
+              "text": "Angle Attribute:"
+            },
+            {
+              "line": 356,
+              "text": "    The name of the attribute used to multiply the angle threshold with."
+            },
+            {
+              "line": 357,
+              "text": ""
+            },
+            {
+              "line": 358,
+              "text": "Distance Threshold:"
+            },
+            {
+              "line": 359,
+              "text": "    The distance between anchor points beyond which a constraint will break. "
+            },
+            {
+              "line": 360,
+              "text": ""
+            },
+            {
+              "line": 361,
+              "text": "    NOTE:"
+            },
+            {
+              "line": 368,
+              "text": "    NOTE:"
+            },
+            {
+              "line": 369,
+              "text": "        As of Houdini 18.0, glue constraints update the force attribute on the constraint geometry such as it represents the length of the delta between the 2 constrained pieces' forces, multiplied by their average mass."
+            },
+            {
+              "line": 370,
+              "text": "        To break glue constraints based on force relative to their strength, set the force threshold to 1, enable scale by attribute, set Force Attribute to `strength`."
+            },
+            {
+              "line": 371,
+              "text": ""
+            },
+            {
+              "line": 372,
+              "text": "Impact Threshold:"
+            },
+            {
+              "line": 373,
+              "text": "    The impact beyond which a constraint will break."
+            },
+            {
+              "line": 374,
+              "text": ""
+            },
+            {
+              "line": 375,
+              "text": "Torque Threshold:"
+            },
+            {
+              "line": 405,
+              "text": "Attributes:"
+            },
+            {
+              "line": 406,
+              "text": "    The specified point attributes are copied from the input geometry (solver's second input) to animated constraints geometry at each frame. This can be useful to animate attributes such as `active` at the SOP level to activate pieces at a particular frame."
+            },
+            {
+              "line": 407,
+              "text": ""
+            },
+            {
+              "line": 408,
+              "text": "Group:"
+            },
+            {
+              "line": 409,
+              "text": "    Specify a group of constraints for which to update the attributes from SOPs. "
+            },
+            {
+              "line": 410,
+              "text": ""
+            },
+            {
+              "line": 411,
+              "text": "Export Broken Constraints:"
+            },
+            {
+              "line": 455,
+              "text": "    #id: guide_linearthreshold"
+            },
+            {
+              "line": 456,
+              "text": "    When the distance between the computed guided position and the resulting post-solve position is greater than the linear threshold multiplied by guide strength, the piece will become unguided."
+            },
+            {
+              "line": 457,
+              "text": ""
+            },
+            {
+              "line": 458,
+              "text": "Angular Threshold:"
+            },
+            {
+              "line": 459,
+              "text": "    #id: guide_angularthreshold"
+            },
+            {
+              "line": 460,
+              "text": "    When the angle (in degrees) between the computed guided orientation and the resulting post-solve orientation is greater than the angular threshold multiplied by guide strength, the piece will become unguided."
+            },
+            {
+              "line": 461,
+              "text": ""
+            },
+            {
+              "line": 462,
+              "text": "Distance Threshold:"
+            },
+            {
+              "line": 463,
+              "text": "    #id: guide_distancethreshold"
+            },
+            {
+              "line": 464,
+              "text": "    When the difference between the distance of the guide piece to the bullet primitive and their distance at rest increases beyond the distance threshold multiplied by guide strength, the piece will become unguided."
+            },
+            {
+              "line": 465,
+              "text": ""
+            },
+            {
+              "line": 466,
+              "text": "~~~ Accumulated ~~~"
+            },
+            {
+              "line": 467,
+              "text": ""
+            },
+            {
+              "line": 468,
+              "text": "Linear Threshold:"
+            },
+            {
+              "line": 469,
+              "text": "    #id: guide_acclinearthreshold"
+            },
+            {
+              "line": 470,
+              "text": "    When the accumulated distance between the computed guide position and the resulting post-solve position is greater than the distance threshold multiplied by guide strength, the piece will become unguided."
+            },
+            {
+              "line": 471,
+              "text": ""
+            },
+            {
+              "line": 472,
+              "text": "Angular Threshold:"
+            },
+            {
+              "line": 473,
+              "text": "    #id: guide_accangularthreshold"
+            },
+            {
+              "line": 474,
+              "text": "    When the accumulated angle (in degrees) between the computed guide orientation and the resulting post-solve orientation is greater than the angular threshold multiplied by guide strength, the piece will become unguided."
+            },
+            {
+              "line": 475,
+              "text": ""
+            },
+            {
+              "line": 476,
+              "text": "Distance Threshold:"
+            },
+            {
+              "line": 477,
+              "text": "    #id: guide_accdistancethreshold"
+            },
+            {
+              "line": 478,
+              "text": "    When the accumulated difference between the distance of the guide piece to the bullet primitive and their distance at rest increases beyond the distance threshold multiplied by guide strength, the piece will become unguided."
+            },
+            {
+              "line": 479,
+              "text": ""
+            },
+            {
+              "line": 480,
+              "text": "=== Remove Intra-Guided Constraints ==="
+            },
+            {
+              "line": 481,
+              "text": ""
+            },
+            {
+              "line": 482,
+              "text": "Remove Intra-Guide Constraints:"
+            },
+            {
+              "line": 483,
+              "text": "    #id: guide_delconstraints"
+            },
+            {
+              "line": 519,
+              "text": "Show Active (Green):"
+            },
+            {
+              "line": 520,
+              "text": "    Displays active pieces as a green wireframe overlay."
+            },
+            {
+              "line": 521,
+              "text": ""
+            },
+            {
+              "line": 522,
+              "text": "Show Sleeping (Red):"
+            },
+            {
+              "line": 523,
+              "text": "    Displays sleeping pieces as a red wireframe overlay."
+            },
+            {
+              "line": 524,
+              "text": ""
+            },
+            {
+              "line": 525,
+              "text": "=== Ground ==="
+            },
+            {
+              "line": 602,
+              "text": "    Displays the guided geometry transformed by the guide (no simulation)."
+            },
+            {
+              "line": 603,
+              "text": "    The hue represents the guide clusters, the value represents the strength attribute value."
+            },
+            {
+              "line": 604,
+              "text": "    In this mode, the viewport inspector will display information about the guide."
+            },
+            {
+              "line": 605,
+              "text": ""
+            },
+            {
+              "line": 606,
+              "text": "Guide Capture Frame:"
+            },
+            {
+              "line": 607,
+              "text": "    Applies a timeshift to the guided capture geometry to visualize the guide influence at the given frame."
+            },
+            {
+              "line": 608,
+              "text": ""
+            },
+            {
+              "line": 740,
+              "text": ""
+            },
+            {
+              "line": 741,
+              "text": "Strength:"
+            },
+            {
+              "line": 742,
+              "text": "    Guide strength. "
+            },
+            {
+              "line": 743,
+              "text": ""
+            },
+            {
+              "line": 744,
+              "text": "Distance to Strength:"
+            },
+            {
+              "line": 745,
+              "text": "    Multiply the strength based on distance to guide geometry."
+            },
+            {
+              "line": 746,
+              "text": ""
+            },
+            {
+              "line": 747,
+              "text": "Distance:"
+            },
+            {
+              "line": 748,
+              "text": "    Specify the minimum and maximum distance for the __Strength Multiplier__."
+            },
+            {
+              "line": 749,
+              "text": ""
+            },
+            {
+              "line": 750,
+              "text": "Strength Multiplier:"
+            },
+            {
+              "line": 751,
+              "text": "    The strength multiplier to use when the distance to the guide piece falls between the __Distance__ min and max."
+            },
+            {
+              "line": 752,
+              "text": ""
+            },
+            {
+              "line": 753,
+              "text": "Blend:"
+            },
+            {
+              "line": 754,
+              "text": "    Add a blend attribute to the simulation pieces which will be multiplied by the global blend value."
+            },
+            {
+              "line": 755,
+              "text": ""
+            },
+            {
+              "line": 756,
+              "text": "Transfer Attributes:"
+            },
+            {
+              "line": 757,
+              "text": "    Attributes to transfer from the guide piece to the RBD pieces."
+            },
+            {
+              "line": 758,
+              "text": ""
+            },
+            {
+              "line": 759,
+              "text": "Use VEXpressions:"
+            },
+            {
+              "line": 760,
+              "text": "    Use VEX expressions to modify guiding strength and blend attributes."
+            },
+            {
+              "line": 761,
+              "text": ""
+            },
+            {
+              "line": 762,
+              "text": "=== Guided Neighbors ==="
+            },
+            {
+              "line": 763,
+              "text": ""
+            },
+            {
+              "line": 764,
+              "text": "Guided Neighbors:"
+            },
+            {
+              "line": 765,
+              "text": "    When a guided piece has no neighbors within its guide cluster, it will inherit the nearest piece's guide target."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "inferences": {
+    "uniform_glue_strength": "Native float primitive attribute multiplies subdata: a bridge-owned constraints stage normalizing applicable Glue primitive strength to 1, with global glue_strength=desired and verified Set Always, provides uniform requested native strength. This is an implementation inference, not evidence the stage currently exists.",
+    "collision_separation": "DOP collision separation is collision field resolution, not particle clearance. The SOP FLIP internal flipfluidobject has overridecollisionsep off/collisionsep 0.2, not a public SOP control. No authorization to mutate locked arbitrary internal nodes is implied.",
+    "collision_passes": "No legal mapping captured; particle separation iterations do not establish collision passes."
+  }
+}

@@ -1,0 +1,4186 @@
+{
+  "domain_pack": "procedural_geometry_v1",
+  "case_id": "procedural_geometry_v1__build_inspect",
+  "case_ids": [
+    "procedural_geometry_v1__build_inspect",
+    "procedural_geometry_v1__causal_candidate",
+    "procedural_geometry_v1__approval_recovery"
+  ],
+  "domain_pack_version": "1.0.0",
+  "kind": "current_software_contract_checklist_not_execution_evidence",
+  "status": "PREPARATION_NOT_ACCEPTED",
+  "applications": [
+    "houdini",
+    "nuke"
+  ],
+  "required_versions": {
+    "houdini": [
+      "21.0.631",
+      "22.0.459"
+    ],
+    "nuke": [
+      "17.0v1"
+    ]
+  },
+  "native_basis_status": "UNRESOLVED",
+  "native_basis": {
+    "static_definitions": [
+      "docs/native-basis/hda-interface-capture.json",
+      "docs/native-basis/native-boundary-metadata-supplement.json",
+      "docs/native-basis/hda-interface-22.0.459.json",
+      "docs/native-basis/supporting-sources-22.0.459.json"
+    ],
+    "meaning": "Current software mappings and static references are not whole-domain native validation; resolve exact operator/parameter/port and output-consumption gaps before marking VERIFIED_SOURCE.",
+    "versioned_preparation": {
+      "22.0.459": {
+        "status": "UNRESOLVED",
+        "scope": "Independent459HDA static fields and prospective software topology only; no compiled template, host process, writer execution or whole-domain validation.",
+        "sources": [
+          {
+            "path": "docs/native-basis/hda-interface-22.0.459.json",
+            "sha256": "e8d9ee7a16f14baa2327ae45412b2acee60ef4849d4e3aa099aea229586379c7",
+            "version": "22.0.459",
+            "native_execution": false
+          },
+          {
+            "path": "docs/native-basis/supporting-sources-22.0.459.json",
+            "sha256": "7b1bd4e1b187de823db9555bca10f40e9278dd88fb790cce8c874576405e1c3a",
+            "version": "22.0.459",
+            "native_execution": false
+          }
+        ],
+        "originals": "docs/native-basis/h22-459-originals/",
+        "captured_hda_operators": 55,
+        "node_templates": {
+          "default": [
+            {
+              "role": "geometry_network",
+              "candidates": [
+                {
+                  "operator": "Obj/geo",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "source",
+              "candidates": [
+                {
+                  "operator": "Sop/grid",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "instance_source",
+              "candidates": [
+                {
+                  "operator": "Sop/sphere",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "geometry_deform",
+              "candidates": [
+                {
+                  "operator": "Sop/attribwrangle",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "b47a35a99cfd15f0c85143a3fed309c1a2f30704183ef7565bd52af1f7306c77",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "instance_transform",
+              "candidates": [
+                {
+                  "operator": "Sop/xform",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "scatter",
+              "candidates": [
+                {
+                  "operator": "Sop/scatter::2.0",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "point_variation",
+              "candidates": [
+                {
+                  "operator": "Sop/attribadjustfloat",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "23de8cbbf6748d8d9dd96b8ffdf2fda6b3717909f60b57aa51d3e56ecaaffd89",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "instance",
+              "candidates": [
+                {
+                  "operator": "Sop/copytopoints::2.0",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "output",
+              "candidates": [
+                {
+                  "operator": "Sop/null",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "usd_network",
+              "candidates": [
+                {
+                  "operator": "Obj/lopnet",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "render_network",
+              "candidates": [
+                {
+                  "operator": "Obj/ropnet",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "geometry_import",
+              "candidates": [
+                {
+                  "operator": "Lop/sopimport",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            },
+            {
+              "role": "camera",
+              "candidates": [
+                {
+                  "operator": "Lop/camera",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "e7961a7d50953ca0a1d9cbd8f5349db34a4ec33fb98118f6d852e91765564612",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "light",
+              "candidates": [
+                {
+                  "operator": "Lop/light",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "34498e2f239d0566a47fc65928f9d42db17b8d7e487a99d3e0acc66b407abf38",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render_settings",
+              "candidates": [
+                {
+                  "operator": "Lop/karmarendersettings",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "cc263cb8a2e6e1f964363999322d8395f7c52d7160ea723173a24b23568783fe",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render_var",
+              "candidates": [
+                {
+                  "operator": "Lop/rendervar",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "c296736e72c9e2881b3867ff634cfe6253e5e5848e4f63bc9ff01420cbc39aea",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render_product",
+              "candidates": [
+                {
+                  "operator": "Lop/renderproduct",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "db75399202e08a57d1c5a1b29b42a2f871b690b9f23fe5db955a185bcb015cab",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "settings_binding",
+              "candidates": [
+                {
+                  "operator": "Lop/rendersettings",
+                  "status": "STATIC_HDA_CAPTURED",
+                  "section_sha256": "325937f14987a4b23ec74be88ac1bb0a424e351a469776e41b15952dbef9ac3d",
+                  "reason": null
+                }
+              ]
+            },
+            {
+              "role": "render",
+              "candidates": [
+                {
+                  "operator": "Driver/usdrender",
+                  "status": "UNRESOLVED",
+                  "section_sha256": null,
+                  "reason": "No same-build captured DialogScript; compiled/runtime template is not inferred."
+                }
+              ]
+            }
+          ]
+        },
+        "blocked_controls": {
+          "default": [
+            {
+              "id": "scatter_density",
+              "blocker": "H22_459_NATIVE_TEMPLATE_REQUIRED",
+              "native_basis": {
+                "version": "22.0.459",
+                "source": "docs/native-basis/hda-interface-22.0.459.json",
+                "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+                "native_execution": false,
+                "observed": [],
+                "missing": [
+                  {
+                    "role": "scatter",
+                    "parameter": "npts",
+                    "operators": [
+                      "Sop/scatter::2.0"
+                    ]
+                  },
+                  {
+                    "role": "scatter",
+                    "parameter": "generateby",
+                    "operators": [
+                      "Sop/scatter::2.0"
+                    ]
+                  },
+                  {
+                    "role": "scatter",
+                    "parameter": "forcetotal",
+                    "operators": [
+                      "Sop/scatter::2.0"
+                    ]
+                  },
+                  {
+                    "role": "scatter",
+                    "parameter": "indepvoxel",
+                    "operators": [
+                      "Sop/scatter::2.0"
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": "seed",
+              "blocker": "H22_459_NATIVE_TEMPLATE_REQUIRED",
+              "native_basis": {
+                "version": "22.0.459",
+                "source": "docs/native-basis/hda-interface-22.0.459.json",
+                "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+                "native_execution": false,
+                "observed": [],
+                "missing": [
+                  {
+                    "role": "scatter",
+                    "parameter": "seed",
+                    "operators": [
+                      "Sop/scatter::2.0"
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": "scale",
+              "blocker": "H22_459_NATIVE_TEMPLATE_REQUIRED",
+              "native_basis": {
+                "version": "22.0.459",
+                "source": "docs/native-basis/hda-interface-22.0.459.json",
+                "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+                "native_execution": false,
+                "observed": [],
+                "missing": [
+                  {
+                    "role": "instance_transform",
+                    "parameter": "scale",
+                    "operators": [
+                      "Sop/xform"
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": "scatter_variance",
+              "blocker": "SCATTER_STATISTICAL_VARIANCE_CONVERSION_REQUIRED",
+              "native_basis": {
+                "version": "22.0.459",
+                "source": "docs/native-basis/hda-interface-22.0.459.json",
+                "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+                "native_execution": false,
+                "observed": [],
+                "missing": []
+              }
+            },
+            {
+              "id": "rotation_variance",
+              "blocker": "INSTANCE_RANDOM_ROTATION_ATTRIBUTE_GRAPH_REQUIRED",
+              "native_basis": {
+                "version": "22.0.459",
+                "source": "docs/native-basis/hda-interface-22.0.459.json",
+                "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+                "native_execution": false,
+                "observed": [],
+                "missing": []
+              }
+            },
+            {
+              "id": "density",
+              "blocker": "H22_459_NATIVE_TEMPLATE_REQUIRED",
+              "native_basis": {
+                "version": "22.0.459",
+                "source": "docs/native-basis/hda-interface-22.0.459.json",
+                "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+                "native_execution": false,
+                "observed": [],
+                "missing": [
+                  {
+                    "role": "scatter",
+                    "parameter": "densityscale",
+                    "operators": [
+                      "Sop/scatter::2.0"
+                    ]
+                  },
+                  {
+                    "role": "scatter",
+                    "parameter": "generateby",
+                    "operators": [
+                      "Sop/scatter::2.0"
+                    ]
+                  },
+                  {
+                    "role": "scatter",
+                    "parameter": "forcetotal",
+                    "operators": [
+                      "Sop/scatter::2.0"
+                    ]
+                  },
+                  {
+                    "role": "scatter",
+                    "parameter": "indepvoxel",
+                    "operators": [
+                      "Sop/scatter::2.0"
+                    ]
+                  },
+                  {
+                    "role": "scatter",
+                    "parameter": "usedensityattrib",
+                    "operators": [
+                      "Sop/scatter::2.0"
+                    ]
+                  },
+                  {
+                    "role": "scatter",
+                    "parameter": "useareaattrib",
+                    "operators": [
+                      "Sop/scatter::2.0"
+                    ]
+                  },
+                  {
+                    "role": "scatter",
+                    "parameter": "group",
+                    "operators": [
+                      "Sop/scatter::2.0"
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": "rotation",
+              "blocker": "H22_459_NATIVE_TEMPLATE_REQUIRED",
+              "native_basis": {
+                "version": "22.0.459",
+                "source": "docs/native-basis/hda-interface-22.0.459.json",
+                "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+                "native_execution": false,
+                "observed": [],
+                "missing": [
+                  {
+                    "role": "instance_transform",
+                    "parameter": "r",
+                    "operators": [
+                      "Sop/xform"
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "native_execution": false
+      }
+    }
+  },
+  "expected_nodes": {
+    "21.0.631": {
+      "default": [
+        {
+          "role": "geometry_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "geo"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "source",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "grid"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "instance_source",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "sphere"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "geometry_deform",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "attribwrangle"
+          ],
+          "required_parameter_aliases": [
+            [
+              "class"
+            ],
+            [
+              "group"
+            ],
+            [
+              "snippet"
+            ],
+            [
+              "vex_precision"
+            ]
+          ]
+        },
+        {
+          "role": "instance_transform",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "xform"
+          ],
+          "required_parameter_aliases": [
+            [
+              "scale"
+            ],
+            [
+              "r"
+            ]
+          ]
+        },
+        {
+          "role": "scatter",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "scatter::2.0"
+          ],
+          "required_parameter_aliases": [
+            [
+              "seed"
+            ],
+            [
+              "npts"
+            ],
+            [
+              "densityscale"
+            ],
+            [
+              "generateby"
+            ],
+            [
+              "forcetotal"
+            ],
+            [
+              "indepvoxel"
+            ],
+            [
+              "usedensityattrib"
+            ],
+            [
+              "useareaattrib"
+            ],
+            [
+              "group"
+            ]
+          ]
+        },
+        {
+          "role": "point_variation",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "attribadjustfloat"
+          ],
+          "required_parameter_aliases": [
+            [
+              "rangevalue"
+            ],
+            [
+              "attrib"
+            ],
+            [
+              "class"
+            ],
+            [
+              "adjustvalue"
+            ],
+            [
+              "operation"
+            ],
+            [
+              "valuetype"
+            ],
+            [
+              "unitsettings"
+            ],
+            [
+              "doblend"
+            ],
+            [
+              "enable_postprocess"
+            ],
+            [
+              "group"
+            ],
+            [
+              "rangemethod"
+            ],
+            [
+              "minvalue"
+            ],
+            [
+              "distribinrange"
+            ],
+            [
+              "enablestepping"
+            ]
+          ]
+        },
+        {
+          "role": "instance",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "copytopoints::2.0"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "output",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "null"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "usd_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "lopnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "render_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "ropnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "geometry_import",
+          "category": "lop",
+          "input_role": null,
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "sopimport"
+          ],
+          "required_parameter_aliases": [
+            [
+              "soppath"
+            ],
+            [
+              "enable_pathprefix"
+            ],
+            [
+              "pathprefix"
+            ]
+          ]
+        },
+        {
+          "role": "camera",
+          "category": "lop",
+          "input_role": "geometry_import",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "camera"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "focalLength"
+            ],
+            [
+              "fStop"
+            ],
+            [
+              "xn__shutteropen_0ta"
+            ],
+            [
+              "xn__shutterclose_nva"
+            ]
+          ]
+        },
+        {
+          "role": "light",
+          "category": "lop",
+          "input_role": "camera",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "light"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "lighttype"
+            ],
+            [
+              "radius"
+            ],
+            [
+              "exposure"
+            ]
+          ]
+        },
+        {
+          "role": "render_settings",
+          "category": "lop",
+          "input_role": "light",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "karmarendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "camera"
+            ],
+            [
+              "samplesperpixel"
+            ],
+            [
+              "volumesteprate"
+            ],
+            [
+              "enablemblur"
+            ],
+            [
+              "pixelfiltersize"
+            ],
+            [
+              "denoiser"
+            ]
+          ]
+        },
+        {
+          "role": "render_var",
+          "category": "lop",
+          "input_role": "render_settings",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendervar"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "sourceName"
+            ],
+            [
+              "sourceType"
+            ],
+            [
+              "dataType"
+            ]
+          ]
+        },
+        {
+          "role": "render_product",
+          "category": "lop",
+          "input_role": "render_var",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "renderproduct"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "orderedVars"
+            ],
+            [
+              "productType"
+            ],
+            [
+              "productName"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "settings_binding",
+          "category": "lop",
+          "input_role": "render_product",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "createprims"
+            ],
+            [
+              "products"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "render",
+          "category": "rop",
+          "input_role": null,
+          "parent_role": "render_network",
+          "type_candidates": [
+            "usdrender"
+          ],
+          "required_parameter_aliases": [
+            [
+              "loppath"
+            ],
+            [
+              "rendersettings"
+            ],
+            [
+              "override_camera"
+            ],
+            [
+              "outputimage"
+            ],
+            [
+              "execute"
+            ]
+          ]
+        }
+      ]
+    },
+    "22.0.429": {
+      "default": [
+        {
+          "role": "geometry_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "geo"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "source",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "grid"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "instance_source",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "sphere"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "geometry_deform",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "attribwrangle"
+          ],
+          "required_parameter_aliases": [
+            [
+              "class"
+            ],
+            [
+              "group"
+            ],
+            [
+              "snippet"
+            ],
+            [
+              "vex_precision"
+            ]
+          ]
+        },
+        {
+          "role": "instance_transform",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "xform"
+          ],
+          "required_parameter_aliases": [
+            [
+              "scale"
+            ],
+            [
+              "r"
+            ]
+          ]
+        },
+        {
+          "role": "scatter",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "scatter::2.0"
+          ],
+          "required_parameter_aliases": [
+            [
+              "seed"
+            ],
+            [
+              "npts"
+            ],
+            [
+              "densityscale"
+            ],
+            [
+              "generateby"
+            ],
+            [
+              "forcetotal"
+            ],
+            [
+              "indepvoxel"
+            ],
+            [
+              "usedensityattrib"
+            ],
+            [
+              "useareaattrib"
+            ],
+            [
+              "group"
+            ]
+          ]
+        },
+        {
+          "role": "point_variation",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "attribadjustfloat"
+          ],
+          "required_parameter_aliases": [
+            [
+              "rangevalue"
+            ],
+            [
+              "attrib"
+            ],
+            [
+              "class"
+            ],
+            [
+              "adjustvalue"
+            ],
+            [
+              "operation"
+            ],
+            [
+              "valuetype"
+            ],
+            [
+              "unitsettings"
+            ],
+            [
+              "doblend"
+            ],
+            [
+              "enable_postprocess"
+            ],
+            [
+              "group"
+            ],
+            [
+              "rangemethod"
+            ],
+            [
+              "minvalue"
+            ],
+            [
+              "distribinrange"
+            ],
+            [
+              "enablestepping"
+            ]
+          ]
+        },
+        {
+          "role": "instance",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "copytopoints::2.0"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "output",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "null"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "usd_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "lopnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "render_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "ropnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "geometry_import",
+          "category": "lop",
+          "input_role": null,
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "sopimport"
+          ],
+          "required_parameter_aliases": [
+            [
+              "soppath"
+            ],
+            [
+              "enable_pathprefix"
+            ],
+            [
+              "pathprefix"
+            ]
+          ]
+        },
+        {
+          "role": "camera",
+          "category": "lop",
+          "input_role": "geometry_import",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "camera"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "focalLength"
+            ],
+            [
+              "fStop"
+            ],
+            [
+              "xn__shutteropen_0ta"
+            ],
+            [
+              "xn__shutterclose_nva"
+            ]
+          ]
+        },
+        {
+          "role": "light",
+          "category": "lop",
+          "input_role": "camera",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "light"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "lighttype"
+            ],
+            [
+              "radius"
+            ],
+            [
+              "exposure"
+            ]
+          ]
+        },
+        {
+          "role": "render_settings",
+          "category": "lop",
+          "input_role": "light",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "karmarendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "camera"
+            ],
+            [
+              "samplesperpixel"
+            ],
+            [
+              "volumesteprate"
+            ],
+            [
+              "enablemblur"
+            ],
+            [
+              "pixelfiltersize"
+            ],
+            [
+              "denoiser"
+            ]
+          ]
+        },
+        {
+          "role": "render_var",
+          "category": "lop",
+          "input_role": "render_settings",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendervar"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "sourceName"
+            ],
+            [
+              "sourceType"
+            ],
+            [
+              "dataType"
+            ]
+          ]
+        },
+        {
+          "role": "render_product",
+          "category": "lop",
+          "input_role": "render_var",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "renderproduct"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "orderedVars"
+            ],
+            [
+              "productType"
+            ],
+            [
+              "productName"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "settings_binding",
+          "category": "lop",
+          "input_role": "render_product",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "createprims"
+            ],
+            [
+              "products"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "render",
+          "category": "rop",
+          "input_role": null,
+          "parent_role": "render_network",
+          "type_candidates": [
+            "usdrender"
+          ],
+          "required_parameter_aliases": [
+            [
+              "loppath"
+            ],
+            [
+              "rendersettings"
+            ],
+            [
+              "override_camera"
+            ],
+            [
+              "outputimage"
+            ],
+            [
+              "execute"
+            ]
+          ]
+        }
+      ]
+    },
+    "22.0.459": {
+      "default": [
+        {
+          "role": "geometry_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "geo"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "source",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "grid"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "instance_source",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "sphere"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "geometry_deform",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "attribwrangle"
+          ],
+          "required_parameter_aliases": [
+            [
+              "class"
+            ],
+            [
+              "group"
+            ],
+            [
+              "snippet"
+            ],
+            [
+              "vex_precision"
+            ]
+          ]
+        },
+        {
+          "role": "instance_transform",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "xform"
+          ],
+          "required_parameter_aliases": [
+            [
+              "scale"
+            ],
+            [
+              "r"
+            ]
+          ]
+        },
+        {
+          "role": "scatter",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "scatter::2.0"
+          ],
+          "required_parameter_aliases": [
+            [
+              "seed"
+            ],
+            [
+              "npts"
+            ],
+            [
+              "densityscale"
+            ],
+            [
+              "generateby"
+            ],
+            [
+              "forcetotal"
+            ],
+            [
+              "indepvoxel"
+            ],
+            [
+              "usedensityattrib"
+            ],
+            [
+              "useareaattrib"
+            ],
+            [
+              "group"
+            ]
+          ]
+        },
+        {
+          "role": "point_variation",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "attribadjustfloat"
+          ],
+          "required_parameter_aliases": [
+            [
+              "rangevalue"
+            ],
+            [
+              "attrib"
+            ],
+            [
+              "class"
+            ],
+            [
+              "adjustvalue"
+            ],
+            [
+              "operation"
+            ],
+            [
+              "valuetype"
+            ],
+            [
+              "unitsettings"
+            ],
+            [
+              "doblend"
+            ],
+            [
+              "enable_postprocess"
+            ],
+            [
+              "group"
+            ],
+            [
+              "rangemethod"
+            ],
+            [
+              "minvalue"
+            ],
+            [
+              "distribinrange"
+            ],
+            [
+              "enablestepping"
+            ]
+          ]
+        },
+        {
+          "role": "instance",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "copytopoints::2.0"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "output",
+          "category": "sop",
+          "input_role": null,
+          "parent_role": "geometry_network",
+          "type_candidates": [
+            "null"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "usd_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "lopnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "render_network",
+          "category": "obj",
+          "input_role": null,
+          "type_candidates": [
+            "ropnet"
+          ],
+          "required_parameter_aliases": []
+        },
+        {
+          "role": "geometry_import",
+          "category": "lop",
+          "input_role": null,
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "sopimport"
+          ],
+          "required_parameter_aliases": [
+            [
+              "soppath"
+            ],
+            [
+              "enable_pathprefix"
+            ],
+            [
+              "pathprefix"
+            ]
+          ]
+        },
+        {
+          "role": "camera",
+          "category": "lop",
+          "input_role": "geometry_import",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "camera"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "focalLength"
+            ],
+            [
+              "fStop"
+            ],
+            [
+              "xn__shutteropen_0ta"
+            ],
+            [
+              "xn__shutterclose_nva"
+            ]
+          ]
+        },
+        {
+          "role": "light",
+          "category": "lop",
+          "input_role": "camera",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "light"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "lighttype"
+            ],
+            [
+              "radius"
+            ],
+            [
+              "exposure"
+            ]
+          ]
+        },
+        {
+          "role": "render_settings",
+          "category": "lop",
+          "input_role": "light",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "karmarendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "camera"
+            ],
+            [
+              "samplesperpixel"
+            ],
+            [
+              "volumesteprate"
+            ],
+            [
+              "enablemblur"
+            ],
+            [
+              "pixelfiltersize"
+            ],
+            [
+              "denoiser"
+            ]
+          ]
+        },
+        {
+          "role": "render_var",
+          "category": "lop",
+          "input_role": "render_settings",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendervar"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpath"
+            ],
+            [
+              "sourceName"
+            ],
+            [
+              "sourceType"
+            ],
+            [
+              "dataType"
+            ]
+          ]
+        },
+        {
+          "role": "render_product",
+          "category": "lop",
+          "input_role": "render_var",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "renderproduct"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "orderedVars"
+            ],
+            [
+              "productType"
+            ],
+            [
+              "productName"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "settings_binding",
+          "category": "lop",
+          "input_role": "render_product",
+          "parent_role": "usd_network",
+          "type_candidates": [
+            "rendersettings"
+          ],
+          "required_parameter_aliases": [
+            [
+              "primpattern"
+            ],
+            [
+              "createprims"
+            ],
+            [
+              "products"
+            ],
+            [
+              "camera"
+            ]
+          ]
+        },
+        {
+          "role": "render",
+          "category": "rop",
+          "input_role": null,
+          "parent_role": "render_network",
+          "type_candidates": [
+            "usdrender"
+          ],
+          "required_parameter_aliases": [
+            [
+              "loppath"
+            ],
+            [
+              "rendersettings"
+            ],
+            [
+              "override_camera"
+            ],
+            [
+              "outputimage"
+            ],
+            [
+              "execute"
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "expected_connections": {
+    "21.0.631": {
+      "default": [
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "scatter",
+          "destination_input": 0
+        },
+        {
+          "source_role": "instance_source",
+          "source_output": 0,
+          "destination_role": "geometry_deform",
+          "destination_input": 0
+        },
+        {
+          "source_role": "geometry_deform",
+          "source_output": 0,
+          "destination_role": "instance_transform",
+          "destination_input": 0
+        },
+        {
+          "source_role": "instance_transform",
+          "source_output": 0,
+          "destination_role": "instance",
+          "destination_input": 0
+        },
+        {
+          "source_role": "scatter",
+          "source_output": 0,
+          "destination_role": "point_variation",
+          "destination_input": 0
+        },
+        {
+          "source_role": "point_variation",
+          "source_output": 0,
+          "destination_role": "instance",
+          "destination_input": 1
+        },
+        {
+          "source_role": "instance",
+          "source_output": 0,
+          "destination_role": "output",
+          "destination_input": 0
+        },
+        {
+          "source_role": "geometry_import",
+          "source_output": 0,
+          "destination_role": "camera",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "camera",
+          "source_output": 0,
+          "destination_role": "light",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "light",
+          "source_output": 0,
+          "destination_role": "render_settings",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_settings",
+          "source_output": 0,
+          "destination_role": "render_var",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_var",
+          "source_output": 0,
+          "destination_role": "render_product",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_product",
+          "source_output": 0,
+          "destination_role": "settings_binding",
+          "destination_input": 0,
+          "require_same_parent": true
+        }
+      ]
+    },
+    "22.0.429": {
+      "default": [
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "scatter",
+          "destination_input": 0
+        },
+        {
+          "source_role": "instance_source",
+          "source_output": 0,
+          "destination_role": "geometry_deform",
+          "destination_input": 0
+        },
+        {
+          "source_role": "geometry_deform",
+          "source_output": 0,
+          "destination_role": "instance_transform",
+          "destination_input": 0
+        },
+        {
+          "source_role": "instance_transform",
+          "source_output": 0,
+          "destination_role": "instance",
+          "destination_input": 0
+        },
+        {
+          "source_role": "scatter",
+          "source_output": 0,
+          "destination_role": "point_variation",
+          "destination_input": 0
+        },
+        {
+          "source_role": "point_variation",
+          "source_output": 0,
+          "destination_role": "instance",
+          "destination_input": 1
+        },
+        {
+          "source_role": "instance",
+          "source_output": 0,
+          "destination_role": "output",
+          "destination_input": 0
+        },
+        {
+          "source_role": "geometry_import",
+          "source_output": 0,
+          "destination_role": "camera",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "camera",
+          "source_output": 0,
+          "destination_role": "light",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "light",
+          "source_output": 0,
+          "destination_role": "render_settings",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_settings",
+          "source_output": 0,
+          "destination_role": "render_var",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_var",
+          "source_output": 0,
+          "destination_role": "render_product",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_product",
+          "source_output": 0,
+          "destination_role": "settings_binding",
+          "destination_input": 0,
+          "require_same_parent": true
+        }
+      ]
+    },
+    "22.0.459": {
+      "default": [
+        {
+          "source_role": "source",
+          "source_output": 0,
+          "destination_role": "scatter",
+          "destination_input": 0
+        },
+        {
+          "source_role": "instance_source",
+          "source_output": 0,
+          "destination_role": "geometry_deform",
+          "destination_input": 0
+        },
+        {
+          "source_role": "geometry_deform",
+          "source_output": 0,
+          "destination_role": "instance_transform",
+          "destination_input": 0
+        },
+        {
+          "source_role": "instance_transform",
+          "source_output": 0,
+          "destination_role": "instance",
+          "destination_input": 0
+        },
+        {
+          "source_role": "scatter",
+          "source_output": 0,
+          "destination_role": "point_variation",
+          "destination_input": 0
+        },
+        {
+          "source_role": "point_variation",
+          "source_output": 0,
+          "destination_role": "instance",
+          "destination_input": 1
+        },
+        {
+          "source_role": "instance",
+          "source_output": 0,
+          "destination_role": "output",
+          "destination_input": 0
+        },
+        {
+          "source_role": "geometry_import",
+          "source_output": 0,
+          "destination_role": "camera",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "camera",
+          "source_output": 0,
+          "destination_role": "light",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "light",
+          "source_output": 0,
+          "destination_role": "render_settings",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_settings",
+          "source_output": 0,
+          "destination_role": "render_var",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_var",
+          "source_output": 0,
+          "destination_role": "render_product",
+          "destination_input": 0,
+          "require_same_parent": true
+        },
+        {
+          "source_role": "render_product",
+          "source_output": 0,
+          "destination_role": "settings_binding",
+          "destination_input": 0,
+          "require_same_parent": true
+        }
+      ]
+    }
+  },
+  "key_parameters": {
+    "semantic": [
+      {
+        "name": "scatter_density",
+        "value_type": "int",
+        "minimum": 0.0,
+        "maximum": 10000000.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "source"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "seed",
+        "value_type": "int",
+        "minimum": 0.0,
+        "maximum": 2147483647.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "source"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "scale",
+        "value_type": "float",
+        "minimum": 0.0001,
+        "maximum": 10000.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "shaping"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "variation",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 100.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "shaping"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "scatter_variance",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 1000.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "source"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "scale_variance",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 100.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "shaping"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "rotation_variance",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 360.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "shaping"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "deformation",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 100.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "shaping"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "density",
+        "value_type": "float",
+        "minimum": 0.0,
+        "maximum": 10000000.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "source"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "houdini"
+      },
+      {
+        "name": "rotation",
+        "value_type": "float",
+        "minimum": -360.0,
+        "maximum": 360.0,
+        "choices": [],
+        "invalidates_stage_nodes": [
+          "shaping"
+        ],
+        "requires_simulation_cache": false,
+        "invalidates_components": [],
+        "application": "houdini"
+      }
+    ],
+    "versioned_native_mapping": {
+      "21.0.631": {
+        "default": [
+          {
+            "id": "scatter_density",
+            "node_role": "scatter",
+            "parameter_aliases": [
+              "npts"
+            ],
+            "minimum": 0,
+            "maximum": 10000000,
+            "invalidates_from": "source_layout_control",
+            "value_type": "int",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "scatter",
+                "generateby",
+                "bydensity"
+              ],
+              [
+                "scatter",
+                "forcetotal",
+                1
+              ],
+              [
+                "scatter",
+                "indepvoxel",
+                0
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "seed",
+            "node_role": "scatter",
+            "parameter_aliases": [
+              "seed"
+            ],
+            "minimum": 0,
+            "maximum": 2147483647,
+            "invalidates_from": "source_layout_control",
+            "value_type": "int",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "mapped"
+          },
+          {
+            "id": "scale",
+            "node_role": "instance_transform",
+            "parameter_aliases": [
+              "scale"
+            ],
+            "minimum": 0.0001,
+            "maximum": 10000,
+            "invalidates_from": "shaping_meshing",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "mapped"
+          },
+          {
+            "id": "variation",
+            "node_role": "point_variation",
+            "parameter_aliases": [
+              "rangevalue"
+            ],
+            "minimum": 0,
+            "maximum": 100,
+            "invalidates_from": "shaping_meshing",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "point_variation",
+                "attrib",
+                "pscale"
+              ],
+              [
+                "point_variation",
+                "class",
+                "point"
+              ],
+              [
+                "point_variation",
+                "adjustvalue",
+                1
+              ],
+              [
+                "point_variation",
+                "operation",
+                "set"
+              ],
+              [
+                "point_variation",
+                "valuetype",
+                "rand"
+              ],
+              [
+                "point_variation",
+                "unitsettings",
+                "none"
+              ],
+              [
+                "point_variation",
+                "doblend",
+                0
+              ],
+              [
+                "point_variation",
+                "enable_postprocess",
+                0
+              ],
+              [
+                "point_variation",
+                "group",
+                ""
+              ],
+              [
+                "point_variation",
+                "rangemethod",
+                "minplusrange"
+              ],
+              [
+                "point_variation",
+                "minvalue",
+                1.0
+              ],
+              [
+                "point_variation",
+                "distribinrange",
+                "uniform"
+              ],
+              [
+                "point_variation",
+                "enablestepping",
+                0
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "scatter_variance",
+            "node_role": "scatter",
+            "parameter_aliases": [],
+            "minimum": 0,
+            "maximum": 1000,
+            "invalidates_from": "source_layout_control",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "blocked",
+            "blocker": "SCATTER_STATISTICAL_VARIANCE_CONVERSION_REQUIRED"
+          },
+          {
+            "id": "scale_variance",
+            "node_role": "point_variation",
+            "parameter_aliases": [
+              "rangevalue"
+            ],
+            "minimum": 0,
+            "maximum": 100,
+            "invalidates_from": "shaping_meshing",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "point_variation",
+                "attrib",
+                "pscale"
+              ],
+              [
+                "point_variation",
+                "class",
+                "point"
+              ],
+              [
+                "point_variation",
+                "adjustvalue",
+                1
+              ],
+              [
+                "point_variation",
+                "operation",
+                "set"
+              ],
+              [
+                "point_variation",
+                "valuetype",
+                "rand"
+              ],
+              [
+                "point_variation",
+                "unitsettings",
+                "none"
+              ],
+              [
+                "point_variation",
+                "doblend",
+                0
+              ],
+              [
+                "point_variation",
+                "enable_postprocess",
+                0
+              ],
+              [
+                "point_variation",
+                "group",
+                ""
+              ],
+              [
+                "point_variation",
+                "rangemethod",
+                "minplusrange"
+              ],
+              [
+                "point_variation",
+                "minvalue",
+                1.0
+              ],
+              [
+                "point_variation",
+                "distribinrange",
+                "uniform"
+              ],
+              [
+                "point_variation",
+                "enablestepping",
+                0
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "rotation_variance",
+            "node_role": "instance",
+            "parameter_aliases": [],
+            "minimum": 0,
+            "maximum": 360,
+            "invalidates_from": "shaping_meshing",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "blocked",
+            "blocker": "INSTANCE_RANDOM_ROTATION_ATTRIBUTE_GRAPH_REQUIRED"
+          },
+          {
+            "id": "deformation",
+            "node_role": "geometry_deform",
+            "parameter_aliases": [
+              "snippet"
+            ],
+            "minimum": 0,
+            "maximum": 100,
+            "invalidates_from": "shaping_meshing",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "mapped"
+          },
+          {
+            "id": "density",
+            "node_role": "scatter",
+            "parameter_aliases": [
+              "densityscale"
+            ],
+            "minimum": 0,
+            "maximum": 10000000,
+            "invalidates_from": "source_layout_control",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "scatter",
+                "generateby",
+                "bydensity"
+              ],
+              [
+                "scatter",
+                "forcetotal",
+                0
+              ],
+              [
+                "scatter",
+                "indepvoxel",
+                0
+              ],
+              [
+                "scatter",
+                "usedensityattrib",
+                0
+              ],
+              [
+                "scatter",
+                "useareaattrib",
+                0
+              ],
+              [
+                "scatter",
+                "group",
+                ""
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "rotation",
+            "node_role": "instance_transform",
+            "parameter_aliases": [
+              "r"
+            ],
+            "minimum": -360,
+            "maximum": 360,
+            "invalidates_from": "shaping_meshing",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "mapped"
+          }
+        ]
+      },
+      "22.0.429": {
+        "default": [
+          {
+            "id": "scatter_density",
+            "node_role": "scatter",
+            "parameter_aliases": [
+              "npts"
+            ],
+            "minimum": 0,
+            "maximum": 10000000,
+            "invalidates_from": "source_layout_control",
+            "value_type": "int",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "scatter",
+                "generateby",
+                "bydensity"
+              ],
+              [
+                "scatter",
+                "forcetotal",
+                1
+              ],
+              [
+                "scatter",
+                "indepvoxel",
+                0
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "seed",
+            "node_role": "scatter",
+            "parameter_aliases": [
+              "seed"
+            ],
+            "minimum": 0,
+            "maximum": 2147483647,
+            "invalidates_from": "source_layout_control",
+            "value_type": "int",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "mapped"
+          },
+          {
+            "id": "scale",
+            "node_role": "instance_transform",
+            "parameter_aliases": [
+              "scale"
+            ],
+            "minimum": 0.0001,
+            "maximum": 10000,
+            "invalidates_from": "shaping_meshing",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "mapped"
+          },
+          {
+            "id": "variation",
+            "node_role": "point_variation",
+            "parameter_aliases": [
+              "rangevalue"
+            ],
+            "minimum": 0,
+            "maximum": 100,
+            "invalidates_from": "shaping_meshing",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "point_variation",
+                "attrib",
+                "pscale"
+              ],
+              [
+                "point_variation",
+                "class",
+                "point"
+              ],
+              [
+                "point_variation",
+                "adjustvalue",
+                1
+              ],
+              [
+                "point_variation",
+                "operation",
+                "set"
+              ],
+              [
+                "point_variation",
+                "valuetype",
+                "rand"
+              ],
+              [
+                "point_variation",
+                "unitsettings",
+                "none"
+              ],
+              [
+                "point_variation",
+                "doblend",
+                0
+              ],
+              [
+                "point_variation",
+                "enable_postprocess",
+                0
+              ],
+              [
+                "point_variation",
+                "group",
+                ""
+              ],
+              [
+                "point_variation",
+                "rangemethod",
+                "minplusrange"
+              ],
+              [
+                "point_variation",
+                "minvalue",
+                1.0
+              ],
+              [
+                "point_variation",
+                "distribinrange",
+                "uniform"
+              ],
+              [
+                "point_variation",
+                "enablestepping",
+                0
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "scatter_variance",
+            "node_role": "scatter",
+            "parameter_aliases": [],
+            "minimum": 0,
+            "maximum": 1000,
+            "invalidates_from": "source_layout_control",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "blocked",
+            "blocker": "SCATTER_STATISTICAL_VARIANCE_CONVERSION_REQUIRED"
+          },
+          {
+            "id": "scale_variance",
+            "node_role": "point_variation",
+            "parameter_aliases": [
+              "rangevalue"
+            ],
+            "minimum": 0,
+            "maximum": 100,
+            "invalidates_from": "shaping_meshing",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "point_variation",
+                "attrib",
+                "pscale"
+              ],
+              [
+                "point_variation",
+                "class",
+                "point"
+              ],
+              [
+                "point_variation",
+                "adjustvalue",
+                1
+              ],
+              [
+                "point_variation",
+                "operation",
+                "set"
+              ],
+              [
+                "point_variation",
+                "valuetype",
+                "rand"
+              ],
+              [
+                "point_variation",
+                "unitsettings",
+                "none"
+              ],
+              [
+                "point_variation",
+                "doblend",
+                0
+              ],
+              [
+                "point_variation",
+                "enable_postprocess",
+                0
+              ],
+              [
+                "point_variation",
+                "group",
+                ""
+              ],
+              [
+                "point_variation",
+                "rangemethod",
+                "minplusrange"
+              ],
+              [
+                "point_variation",
+                "minvalue",
+                1.0
+              ],
+              [
+                "point_variation",
+                "distribinrange",
+                "uniform"
+              ],
+              [
+                "point_variation",
+                "enablestepping",
+                0
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "rotation_variance",
+            "node_role": "instance",
+            "parameter_aliases": [],
+            "minimum": 0,
+            "maximum": 360,
+            "invalidates_from": "shaping_meshing",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "blocked",
+            "blocker": "INSTANCE_RANDOM_ROTATION_ATTRIBUTE_GRAPH_REQUIRED"
+          },
+          {
+            "id": "deformation",
+            "node_role": "geometry_deform",
+            "parameter_aliases": [
+              "snippet"
+            ],
+            "minimum": 0,
+            "maximum": 100,
+            "invalidates_from": "shaping_meshing",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "mapped"
+          },
+          {
+            "id": "density",
+            "node_role": "scatter",
+            "parameter_aliases": [
+              "densityscale"
+            ],
+            "minimum": 0,
+            "maximum": 10000000,
+            "invalidates_from": "source_layout_control",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [
+              [
+                "scatter",
+                "generateby",
+                "bydensity"
+              ],
+              [
+                "scatter",
+                "forcetotal",
+                0
+              ],
+              [
+                "scatter",
+                "indepvoxel",
+                0
+              ],
+              [
+                "scatter",
+                "usedensityattrib",
+                0
+              ],
+              [
+                "scatter",
+                "useareaattrib",
+                0
+              ],
+              [
+                "scatter",
+                "group",
+                ""
+              ]
+            ],
+            "native_status": "mapped"
+          },
+          {
+            "id": "rotation",
+            "node_role": "instance_transform",
+            "parameter_aliases": [
+              "r"
+            ],
+            "minimum": -360,
+            "maximum": 360,
+            "invalidates_from": "shaping_meshing",
+            "value_type": "float",
+            "application": "houdini",
+            "required_gates": [],
+            "native_status": "mapped"
+          }
+        ]
+      },
+      "22.0.459": {
+        "default": [
+          {
+            "minimum": 0,
+            "maximum": 10000000,
+            "value_type": "int",
+            "native_type": "integer",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [
+              [
+                "scatter",
+                "generateby",
+                "bydensity"
+              ],
+              [
+                "scatter",
+                "forcetotal",
+                1
+              ],
+              [
+                "scatter",
+                "indepvoxel",
+                0
+              ]
+            ],
+            "invalidates_from": "source_layout_control",
+            "unit": "exact native forced total point count; requires actual count mode",
+            "native_status": "blocked",
+            "context_parms": [
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "geometry_deform",
+                "@node"
+              ],
+              [
+                "instance_transform",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@node"
+              ],
+              [
+                "point_variation",
+                "@node"
+              ],
+              [
+                "instance",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@input/0"
+              ],
+              [
+                "geometry_deform",
+                "@input/0"
+              ],
+              [
+                "instance_transform",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/0"
+              ],
+              [
+                "point_variation",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [],
+              "missing": [
+                {
+                  "role": "scatter",
+                  "parameter": "npts",
+                  "operators": [
+                    "Sop/scatter::2.0"
+                  ]
+                },
+                {
+                  "role": "scatter",
+                  "parameter": "generateby",
+                  "operators": [
+                    "Sop/scatter::2.0"
+                  ]
+                },
+                {
+                  "role": "scatter",
+                  "parameter": "forcetotal",
+                  "operators": [
+                    "Sop/scatter::2.0"
+                  ]
+                },
+                {
+                  "role": "scatter",
+                  "parameter": "indepvoxel",
+                  "operators": [
+                    "Sop/scatter::2.0"
+                  ]
+                }
+              ]
+            },
+            "blocker": "H22_459_NATIVE_TEMPLATE_REQUIRED",
+            "id": "scatter_density",
+            "node_role": "scatter",
+            "parameter_aliases": [
+              "npts"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 2147483647,
+            "value_type": "int",
+            "native_type": "integer",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [],
+            "invalidates_from": "source_layout_control",
+            "unit": "native global random seed",
+            "native_status": "blocked",
+            "context_parms": [
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "geometry_deform",
+                "@node"
+              ],
+              [
+                "instance_transform",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@node"
+              ],
+              [
+                "point_variation",
+                "@node"
+              ],
+              [
+                "instance",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@input/0"
+              ],
+              [
+                "geometry_deform",
+                "@input/0"
+              ],
+              [
+                "instance_transform",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/0"
+              ],
+              [
+                "point_variation",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [],
+              "missing": [
+                {
+                  "role": "scatter",
+                  "parameter": "seed",
+                  "operators": [
+                    "Sop/scatter::2.0"
+                  ]
+                }
+              ]
+            },
+            "blocker": "H22_459_NATIVE_TEMPLATE_REQUIRED",
+            "id": "seed",
+            "node_role": "scatter",
+            "parameter_aliases": [
+              "seed"
+            ]
+          },
+          {
+            "minimum": 0.0001,
+            "maximum": 10000,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [],
+            "invalidates_from": "shaping_meshing",
+            "unit": "native uniform scaling multiplier",
+            "native_status": "blocked",
+            "context_parms": [
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "geometry_deform",
+                "@node"
+              ],
+              [
+                "instance_transform",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@node"
+              ],
+              [
+                "point_variation",
+                "@node"
+              ],
+              [
+                "instance",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@input/0"
+              ],
+              [
+                "geometry_deform",
+                "@input/0"
+              ],
+              [
+                "instance_transform",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/0"
+              ],
+              [
+                "point_variation",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [],
+              "missing": [
+                {
+                  "role": "instance_transform",
+                  "parameter": "scale",
+                  "operators": [
+                    "Sop/xform"
+                  ]
+                }
+              ]
+            },
+            "blocker": "H22_459_NATIVE_TEMPLATE_REQUIRED",
+            "id": "scale",
+            "node_role": "instance_transform",
+            "parameter_aliases": [
+              "scale"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 100,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [
+              [
+                "point_variation",
+                "attrib",
+                "pscale"
+              ],
+              [
+                "point_variation",
+                "class",
+                "point"
+              ],
+              [
+                "point_variation",
+                "adjustvalue",
+                1
+              ],
+              [
+                "point_variation",
+                "operation",
+                "set"
+              ],
+              [
+                "point_variation",
+                "valuetype",
+                "rand"
+              ],
+              [
+                "point_variation",
+                "unitsettings",
+                "none"
+              ],
+              [
+                "point_variation",
+                "doblend",
+                0
+              ],
+              [
+                "point_variation",
+                "enable_postprocess",
+                0
+              ],
+              [
+                "point_variation",
+                "group",
+                ""
+              ],
+              [
+                "point_variation",
+                "rangemethod",
+                "minplusrange"
+              ],
+              [
+                "point_variation",
+                "minvalue",
+                1.0
+              ],
+              [
+                "point_variation",
+                "distribinrange",
+                "uniform"
+              ],
+              [
+                "point_variation",
+                "enablestepping",
+                0
+              ]
+            ],
+            "invalidates_from": "shaping_meshing",
+            "unit": "length of uniform native point pscale range [1,1+value]; not statistical variance",
+            "native_status": "mapped",
+            "context_parms": [
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "geometry_deform",
+                "@node"
+              ],
+              [
+                "instance_transform",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@node"
+              ],
+              [
+                "point_variation",
+                "@node"
+              ],
+              [
+                "instance",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@input/0"
+              ],
+              [
+                "geometry_deform",
+                "@input/0"
+              ],
+              [
+                "instance_transform",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/0"
+              ],
+              [
+                "point_variation",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/attribadjustfloat",
+                  "parameter": "rangevalue",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "23de8cbbf6748d8d9dd96b8ffdf2fda6b3717909f60b57aa51d3e56ecaaffd89",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/attribadjustfloat",
+                  "parameter": "attrib",
+                  "type": "string",
+                  "size": 1,
+                  "section_sha256": "23de8cbbf6748d8d9dd96b8ffdf2fda6b3717909f60b57aa51d3e56ecaaffd89",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/attribadjustfloat",
+                  "parameter": "class",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "23de8cbbf6748d8d9dd96b8ffdf2fda6b3717909f60b57aa51d3e56ecaaffd89",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/attribadjustfloat",
+                  "parameter": "adjustvalue",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "23de8cbbf6748d8d9dd96b8ffdf2fda6b3717909f60b57aa51d3e56ecaaffd89",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/attribadjustfloat",
+                  "parameter": "operation",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "23de8cbbf6748d8d9dd96b8ffdf2fda6b3717909f60b57aa51d3e56ecaaffd89",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/attribadjustfloat",
+                  "parameter": "valuetype",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "23de8cbbf6748d8d9dd96b8ffdf2fda6b3717909f60b57aa51d3e56ecaaffd89",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/attribadjustfloat",
+                  "parameter": "unitsettings",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "23de8cbbf6748d8d9dd96b8ffdf2fda6b3717909f60b57aa51d3e56ecaaffd89",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/attribadjustfloat",
+                  "parameter": "doblend",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "23de8cbbf6748d8d9dd96b8ffdf2fda6b3717909f60b57aa51d3e56ecaaffd89",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/attribadjustfloat",
+                  "parameter": "enable_postprocess",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "23de8cbbf6748d8d9dd96b8ffdf2fda6b3717909f60b57aa51d3e56ecaaffd89",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/attribadjustfloat",
+                  "parameter": "group",
+                  "type": "string",
+                  "size": 1,
+                  "section_sha256": "23de8cbbf6748d8d9dd96b8ffdf2fda6b3717909f60b57aa51d3e56ecaaffd89",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/attribadjustfloat",
+                  "parameter": "rangemethod",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "23de8cbbf6748d8d9dd96b8ffdf2fda6b3717909f60b57aa51d3e56ecaaffd89",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/attribadjustfloat",
+                  "parameter": "minvalue",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "23de8cbbf6748d8d9dd96b8ffdf2fda6b3717909f60b57aa51d3e56ecaaffd89",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/attribadjustfloat",
+                  "parameter": "distribinrange",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "23de8cbbf6748d8d9dd96b8ffdf2fda6b3717909f60b57aa51d3e56ecaaffd89",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/attribadjustfloat",
+                  "parameter": "enablestepping",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "23de8cbbf6748d8d9dd96b8ffdf2fda6b3717909f60b57aa51d3e56ecaaffd89",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "variation",
+            "node_role": "point_variation",
+            "parameter_aliases": [
+              "rangevalue"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 1000,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [],
+            "invalidates_from": "source_layout_control",
+            "unit": "NOT_CAPTURED",
+            "native_status": "blocked",
+            "blocker": "SCATTER_STATISTICAL_VARIANCE_CONVERSION_REQUIRED",
+            "product_status": "approved",
+            "product_definition": {
+              "decision_id": "G01",
+              "unit": "SU",
+              "definition": "Maximum positional perturbation radius of existing scattered points: uniform disk sampling in the local tangent plane, then projection onto the same connected source surface. Edge-projected results are not claimed strictly uniform.",
+              "zero": "Preserve original points.",
+              "negative": "Reject.",
+              "scope": "Change P only; preserve count/density mode, count, seed and stable point IDs. Not point-count variance, seed or relax iterations; ambiguous same-surface projection is rejected.",
+              "required_basis": [
+                "stable point IDs",
+                "source connected surface and normals",
+                "local tangent-plane basis",
+                "fixed seed and independent control sub-seed"
+              ],
+              "capture_blockers": [
+                "versioned legal projection/nearest-point API and connections",
+                "edge/hole/multiple-surface selection and unique same-surface projection"
+              ],
+              "proposal_sha256": "7a5d8f699ee879c9d613832d9520ceb71580080f6ebadfd187fbd3b0389f4f9e",
+              "decision_record": "handover/CONTROL_DECISIONS_20261004.md",
+              "approved_sections": [
+                2,
+                3
+              ],
+              "common_rules": {
+                "units": "Lengths use current scene units (SU), velocities SU/s; read actual FPS and time scale. No SI conversion without explicit scale and mass bases.",
+                "validation": "Require finite values and each control's zero policy; reject unsigned negatives, missing bases, incompatible combinations and budget excess. No clamping, rounding, implicit conversion or renaming.",
+                "randomness": "Use fixed task seed, stable entity IDs and independent control sub-seeds; reopening reproduces samples and changing one control does not resample another. New percentages are bounded amplitudes, not statistical variance.",
+                "basis": "Freeze bases, coordinate spaces, distributions, time scales and controlled stages. Missing axes, targets, events, source geometry or stable IDs remain explicit missing inputs; preserve unrelated artist fields.",
+                "ranges": "Preserve existing names and validation ranges. Mathematical conditions, version-specific native hard limits, product limits and scene budgets remain distinct; unsupported endpoints stay blocked. Range, alias or endpoint changes require a specific decision.",
+                "readback": "Observe actual parameters, attributes, channels, topology or semantic programs and their input SHA, not requested values. Cache/render authorization, 12-frame/120-second limits and total disk budget remain required; product approval does not authorize real jobs.",
+                "existing_definitions": "Preserve particle life/velocity variance, Crowd path_variance and Geometry scale_variance; preserve the existing RBD activation_frame constant active step."
+              },
+              "common_capture_requirements": {
+                "versions": [
+                  "21.0.631",
+                  "22.0.429"
+                ],
+                "interface": "For each version, capture raw definition/help/SDK sources and hashes, exact operators/machine parameters, types/tuples, menu tokens, defaults/expressions, hard/soft ranges, disable/hide state, indexed input/output roles, editable boundaries and downstream consumption.",
+                "attributes": "Attribute routes additionally need class/storage/tuple, coordinate space, stable IDs and actual downstream consumption rules; labels, help anchors, sliders and other-version tokens are not machine interface proof.",
+                "runtime": "Static evidence bounds pure contracts/native API substitutes. Instance state, geometry/fields, save/reopen and dynamic effects require separately authorized real-host evidence. Recovered JSON excerpts do not replace missing original HDA bytes."
+              },
+              "preparation_capture_requirements": {
+                "versions": [
+                  "22.0.459"
+                ],
+                "interface": "For each version, capture raw definition/help/SDK sources and hashes, exact operators/machine parameters, types/tuples, menu tokens, defaults/expressions, hard/soft ranges, disable/hide state, indexed input/output roles, editable boundaries and downstream consumption.",
+                "attributes": "Attribute routes additionally need class/storage/tuple, coordinate space, stable IDs and actual downstream consumption rules; labels, help anchors, sliders and other-version tokens are not machine interface proof.",
+                "runtime": "Static evidence bounds pure contracts/native API substitutes. Instance state, geometry/fields, save/reopen and dynamic effects require separately authorized real-host evidence. Recovered JSON excerpts do not replace missing original HDA bytes.",
+                "status": "PARTIAL_STATIC_BASIS_RUNTIME_FACTS_REQUIRED"
+              }
+            },
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [],
+              "missing": []
+            },
+            "id": "scatter_variance",
+            "node_role": "scatter",
+            "parameter_aliases": []
+          },
+          {
+            "minimum": 0,
+            "maximum": 100,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [
+              [
+                "point_variation",
+                "attrib",
+                "pscale"
+              ],
+              [
+                "point_variation",
+                "class",
+                "point"
+              ],
+              [
+                "point_variation",
+                "adjustvalue",
+                1
+              ],
+              [
+                "point_variation",
+                "operation",
+                "set"
+              ],
+              [
+                "point_variation",
+                "valuetype",
+                "rand"
+              ],
+              [
+                "point_variation",
+                "unitsettings",
+                "none"
+              ],
+              [
+                "point_variation",
+                "doblend",
+                0
+              ],
+              [
+                "point_variation",
+                "enable_postprocess",
+                0
+              ],
+              [
+                "point_variation",
+                "group",
+                ""
+              ],
+              [
+                "point_variation",
+                "rangemethod",
+                "minplusrange"
+              ],
+              [
+                "point_variation",
+                "minvalue",
+                1.0
+              ],
+              [
+                "point_variation",
+                "distribinrange",
+                "uniform"
+              ],
+              [
+                "point_variation",
+                "enablestepping",
+                0
+              ]
+            ],
+            "invalidates_from": "shaping_meshing",
+            "unit": "length of uniform native point pscale range [1,1+value]; not statistical variance",
+            "native_status": "mapped",
+            "context_parms": [
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "geometry_deform",
+                "@node"
+              ],
+              [
+                "instance_transform",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@node"
+              ],
+              [
+                "point_variation",
+                "@node"
+              ],
+              [
+                "instance",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@input/0"
+              ],
+              [
+                "geometry_deform",
+                "@input/0"
+              ],
+              [
+                "instance_transform",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/0"
+              ],
+              [
+                "point_variation",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/attribadjustfloat",
+                  "parameter": "rangevalue",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "23de8cbbf6748d8d9dd96b8ffdf2fda6b3717909f60b57aa51d3e56ecaaffd89",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/attribadjustfloat",
+                  "parameter": "attrib",
+                  "type": "string",
+                  "size": 1,
+                  "section_sha256": "23de8cbbf6748d8d9dd96b8ffdf2fda6b3717909f60b57aa51d3e56ecaaffd89",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/attribadjustfloat",
+                  "parameter": "class",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "23de8cbbf6748d8d9dd96b8ffdf2fda6b3717909f60b57aa51d3e56ecaaffd89",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/attribadjustfloat",
+                  "parameter": "adjustvalue",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "23de8cbbf6748d8d9dd96b8ffdf2fda6b3717909f60b57aa51d3e56ecaaffd89",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/attribadjustfloat",
+                  "parameter": "operation",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "23de8cbbf6748d8d9dd96b8ffdf2fda6b3717909f60b57aa51d3e56ecaaffd89",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/attribadjustfloat",
+                  "parameter": "valuetype",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "23de8cbbf6748d8d9dd96b8ffdf2fda6b3717909f60b57aa51d3e56ecaaffd89",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/attribadjustfloat",
+                  "parameter": "unitsettings",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "23de8cbbf6748d8d9dd96b8ffdf2fda6b3717909f60b57aa51d3e56ecaaffd89",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/attribadjustfloat",
+                  "parameter": "doblend",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "23de8cbbf6748d8d9dd96b8ffdf2fda6b3717909f60b57aa51d3e56ecaaffd89",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/attribadjustfloat",
+                  "parameter": "enable_postprocess",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "23de8cbbf6748d8d9dd96b8ffdf2fda6b3717909f60b57aa51d3e56ecaaffd89",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/attribadjustfloat",
+                  "parameter": "group",
+                  "type": "string",
+                  "size": 1,
+                  "section_sha256": "23de8cbbf6748d8d9dd96b8ffdf2fda6b3717909f60b57aa51d3e56ecaaffd89",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/attribadjustfloat",
+                  "parameter": "rangemethod",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "23de8cbbf6748d8d9dd96b8ffdf2fda6b3717909f60b57aa51d3e56ecaaffd89",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/attribadjustfloat",
+                  "parameter": "minvalue",
+                  "type": "float",
+                  "size": 1,
+                  "section_sha256": "23de8cbbf6748d8d9dd96b8ffdf2fda6b3717909f60b57aa51d3e56ecaaffd89",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/attribadjustfloat",
+                  "parameter": "distribinrange",
+                  "type": "ordinal",
+                  "size": 1,
+                  "section_sha256": "23de8cbbf6748d8d9dd96b8ffdf2fda6b3717909f60b57aa51d3e56ecaaffd89",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                },
+                {
+                  "operator": "Sop/attribadjustfloat",
+                  "parameter": "enablestepping",
+                  "type": "toggle",
+                  "size": 1,
+                  "section_sha256": "23de8cbbf6748d8d9dd96b8ffdf2fda6b3717909f60b57aa51d3e56ecaaffd89",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "scale_variance",
+            "node_role": "point_variation",
+            "parameter_aliases": [
+              "rangevalue"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 360,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [],
+            "invalidates_from": "shaping_meshing",
+            "unit": "NOT_CAPTURED",
+            "native_status": "blocked",
+            "blocker": "INSTANCE_RANDOM_ROTATION_ATTRIBUTE_GRAPH_REQUIRED",
+            "product_status": "approved",
+            "product_definition": {
+              "decision_id": "G02",
+              "unit": "degrees",
+              "definition": "Full random angular width about trusted local Z: each instance independently samples delta uniformly in [-value/2,+value/2], added along that local axis after the source instance transform; 360 covers one full circle.",
+              "zero": "Preserve baseline orientation.",
+              "negative": "Reject; 360 does not mean plus/minus 360.",
+              "scope": "Instance orient perturbation only; preserve existing global X/Y/Z rotation bases, scale and point P, with fixed point IDs and seed.",
+              "required_basis": [
+                "trusted local Z axis",
+                "baseline orient and source instance transform",
+                "stable point IDs",
+                "fixed seed and independent control sub-seed"
+              ],
+              "capture_blockers": [
+                "versioned orient quaternion class/tuple and angle/transform order",
+                "copytopoints consumption and existing orient/transform composition graph"
+              ],
+              "proposal_sha256": "7a5d8f699ee879c9d613832d9520ceb71580080f6ebadfd187fbd3b0389f4f9e",
+              "decision_record": "handover/CONTROL_DECISIONS_20261004.md",
+              "approved_sections": [
+                2,
+                3
+              ],
+              "common_rules": {
+                "units": "Lengths use current scene units (SU), velocities SU/s; read actual FPS and time scale. No SI conversion without explicit scale and mass bases.",
+                "validation": "Require finite values and each control's zero policy; reject unsigned negatives, missing bases, incompatible combinations and budget excess. No clamping, rounding, implicit conversion or renaming.",
+                "randomness": "Use fixed task seed, stable entity IDs and independent control sub-seeds; reopening reproduces samples and changing one control does not resample another. New percentages are bounded amplitudes, not statistical variance.",
+                "basis": "Freeze bases, coordinate spaces, distributions, time scales and controlled stages. Missing axes, targets, events, source geometry or stable IDs remain explicit missing inputs; preserve unrelated artist fields.",
+                "ranges": "Preserve existing names and validation ranges. Mathematical conditions, version-specific native hard limits, product limits and scene budgets remain distinct; unsupported endpoints stay blocked. Range, alias or endpoint changes require a specific decision.",
+                "readback": "Observe actual parameters, attributes, channels, topology or semantic programs and their input SHA, not requested values. Cache/render authorization, 12-frame/120-second limits and total disk budget remain required; product approval does not authorize real jobs.",
+                "existing_definitions": "Preserve particle life/velocity variance, Crowd path_variance and Geometry scale_variance; preserve the existing RBD activation_frame constant active step."
+              },
+              "common_capture_requirements": {
+                "versions": [
+                  "21.0.631",
+                  "22.0.429"
+                ],
+                "interface": "For each version, capture raw definition/help/SDK sources and hashes, exact operators/machine parameters, types/tuples, menu tokens, defaults/expressions, hard/soft ranges, disable/hide state, indexed input/output roles, editable boundaries and downstream consumption.",
+                "attributes": "Attribute routes additionally need class/storage/tuple, coordinate space, stable IDs and actual downstream consumption rules; labels, help anchors, sliders and other-version tokens are not machine interface proof.",
+                "runtime": "Static evidence bounds pure contracts/native API substitutes. Instance state, geometry/fields, save/reopen and dynamic effects require separately authorized real-host evidence. Recovered JSON excerpts do not replace missing original HDA bytes."
+              },
+              "preparation_capture_requirements": {
+                "versions": [
+                  "22.0.459"
+                ],
+                "interface": "For each version, capture raw definition/help/SDK sources and hashes, exact operators/machine parameters, types/tuples, menu tokens, defaults/expressions, hard/soft ranges, disable/hide state, indexed input/output roles, editable boundaries and downstream consumption.",
+                "attributes": "Attribute routes additionally need class/storage/tuple, coordinate space, stable IDs and actual downstream consumption rules; labels, help anchors, sliders and other-version tokens are not machine interface proof.",
+                "runtime": "Static evidence bounds pure contracts/native API substitutes. Instance state, geometry/fields, save/reopen and dynamic effects require separately authorized real-host evidence. Recovered JSON excerpts do not replace missing original HDA bytes.",
+                "status": "PARTIAL_STATIC_BASIS_RUNTIME_FACTS_REQUIRED"
+              }
+            },
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [],
+              "missing": []
+            },
+            "id": "rotation_variance",
+            "node_role": "instance",
+            "parameter_aliases": []
+          },
+          {
+            "minimum": 0,
+            "maximum": 100,
+            "value_type": "float",
+            "native_type": "string",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [],
+            "invalidates_from": "shaping_meshing",
+            "unit": "SU; frozen rest-space instance-source sinusoidal normal displacement before scale/rotation",
+            "native_status": "mapped",
+            "semantic_contract": "trusted_geometry_deform_program/1",
+            "evidence_scope": "parameters_only_requires_actual_deformation_and_downstream_consumption",
+            "context_parms": [
+              [
+                "geometry_deform",
+                "@geometry_context"
+              ],
+              [
+                "geometry_deform",
+                "@geometry_parameters"
+              ],
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "geometry_deform",
+                "@node"
+              ],
+              [
+                "instance_transform",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@node"
+              ],
+              [
+                "point_variation",
+                "@node"
+              ],
+              [
+                "instance",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@input/0"
+              ],
+              [
+                "geometry_deform",
+                "@input/0"
+              ],
+              [
+                "instance_transform",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/0"
+              ],
+              [
+                "point_variation",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ],
+            "product_status": "approved",
+            "product_definition": {
+              "decision_id": "G03",
+              "unit": "SU",
+              "definition": "Rest-space instance-source sinusoidal normal displacement amplitude: P'=P+d*sin(2*pi*x/Lx)*N_base; x is relative to frozen source bbox origin, Lx its local X span, phase zero. Deform before existing scale/rotation.",
+              "zero": "Restore upstream source geometry.",
+              "negative": "Reject; reject zero Lx or missing N rather than inventing a wavelength.",
+              "scope": "Owned instance_source geometry before copy; preserve topology, instance positions, count, seed and pscale. Existing instance scale also scales this local amplitude; self-intersection safety is not guaranteed.",
+              "required_basis": [
+                "frozen rest-space source and bbox origin",
+                "nonzero local X span Lx",
+                "actual baseline normals N_base",
+                "local coordinate/packing basis"
+              ],
+              "capture_blockers": [
+                "versioned legal wrangle/VEX or equivalent deformer parameters and ports",
+                "actual P/N/bbox attributes/units, pack expansion, exact zero restoration and reopen readback"
+              ],
+              "proposal_sha256": "7a5d8f699ee879c9d613832d9520ceb71580080f6ebadfd187fbd3b0389f4f9e",
+              "decision_record": "handover/CONTROL_DECISIONS_20261004.md",
+              "approved_sections": [
+                2,
+                3
+              ],
+              "common_rules": {
+                "units": "Lengths use current scene units (SU), velocities SU/s; read actual FPS and time scale. No SI conversion without explicit scale and mass bases.",
+                "validation": "Require finite values and each control's zero policy; reject unsigned negatives, missing bases, incompatible combinations and budget excess. No clamping, rounding, implicit conversion or renaming.",
+                "randomness": "Use fixed task seed, stable entity IDs and independent control sub-seeds; reopening reproduces samples and changing one control does not resample another. New percentages are bounded amplitudes, not statistical variance.",
+                "basis": "Freeze bases, coordinate spaces, distributions, time scales and controlled stages. Missing axes, targets, events, source geometry or stable IDs remain explicit missing inputs; preserve unrelated artist fields.",
+                "ranges": "Preserve existing names and validation ranges. Mathematical conditions, version-specific native hard limits, product limits and scene budgets remain distinct; unsupported endpoints stay blocked. Range, alias or endpoint changes require a specific decision.",
+                "readback": "Observe actual parameters, attributes, channels, topology or semantic programs and their input SHA, not requested values. Cache/render authorization, 12-frame/120-second limits and total disk budget remain required; product approval does not authorize real jobs.",
+                "existing_definitions": "Preserve particle life/velocity variance, Crowd path_variance and Geometry scale_variance; preserve the existing RBD activation_frame constant active step."
+              },
+              "common_capture_requirements": {
+                "versions": [
+                  "21.0.631",
+                  "22.0.429"
+                ],
+                "interface": "For each version, capture raw definition/help/SDK sources and hashes, exact operators/machine parameters, types/tuples, menu tokens, defaults/expressions, hard/soft ranges, disable/hide state, indexed input/output roles, editable boundaries and downstream consumption.",
+                "attributes": "Attribute routes additionally need class/storage/tuple, coordinate space, stable IDs and actual downstream consumption rules; labels, help anchors, sliders and other-version tokens are not machine interface proof.",
+                "runtime": "Static evidence bounds pure contracts/native API substitutes. Instance state, geometry/fields, save/reopen and dynamic effects require separately authorized real-host evidence. Recovered JSON excerpts do not replace missing original HDA bytes."
+              },
+              "preparation_capture_requirements": {
+                "versions": [
+                  "22.0.459"
+                ],
+                "interface": "For each version, capture raw definition/help/SDK sources and hashes, exact operators/machine parameters, types/tuples, menu tokens, defaults/expressions, hard/soft ranges, disable/hide state, indexed input/output roles, editable boundaries and downstream consumption.",
+                "attributes": "Attribute routes additionally need class/storage/tuple, coordinate space, stable IDs and actual downstream consumption rules; labels, help anchors, sliders and other-version tokens are not machine interface proof.",
+                "runtime": "Static evidence bounds pure contracts/native API substitutes. Instance state, geometry/fields, save/reopen and dynamic effects require separately authorized real-host evidence. Recovered JSON excerpts do not replace missing original HDA bytes.",
+                "status": "PARTIAL_STATIC_BASIS_RUNTIME_FACTS_REQUIRED"
+              }
+            },
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [
+                {
+                  "operator": "Sop/attribwrangle",
+                  "parameter": "snippet",
+                  "type": "string",
+                  "size": 1,
+                  "section_sha256": "b47a35a99cfd15f0c85143a3fed309c1a2f30704183ef7565bd52af1f7306c77",
+                  "archive_sha256": "bd7889533d374f98bd4d0d940730602be73e9e64490571f3159fc7451b4e992e"
+                }
+              ],
+              "missing": []
+            },
+            "id": "deformation",
+            "node_role": "geometry_deform",
+            "parameter_aliases": [
+              "snippet"
+            ]
+          },
+          {
+            "minimum": 0,
+            "maximum": 10000000,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 1,
+            "application": "houdini",
+            "required_gates": [
+              [
+                "scatter",
+                "generateby",
+                "bydensity"
+              ],
+              [
+                "scatter",
+                "forcetotal",
+                0
+              ],
+              [
+                "scatter",
+                "indepvoxel",
+                0
+              ],
+              [
+                "scatter",
+                "usedensityattrib",
+                0
+              ],
+              [
+                "scatter",
+                "useareaattrib",
+                0
+              ],
+              [
+                "scatter",
+                "group",
+                ""
+              ]
+            ],
+            "invalidates_from": "source_layout_control",
+            "unit": "expected points per native scene area on the observed polygon surface without density or area attribute weights",
+            "native_status": "blocked",
+            "context_parms": [
+              [
+                "scatter",
+                "@input_geometry/0"
+              ],
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "geometry_deform",
+                "@node"
+              ],
+              [
+                "instance_transform",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@node"
+              ],
+              [
+                "point_variation",
+                "@node"
+              ],
+              [
+                "instance",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@input/0"
+              ],
+              [
+                "geometry_deform",
+                "@input/0"
+              ],
+              [
+                "instance_transform",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/0"
+              ],
+              [
+                "point_variation",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [],
+              "missing": [
+                {
+                  "role": "scatter",
+                  "parameter": "densityscale",
+                  "operators": [
+                    "Sop/scatter::2.0"
+                  ]
+                },
+                {
+                  "role": "scatter",
+                  "parameter": "generateby",
+                  "operators": [
+                    "Sop/scatter::2.0"
+                  ]
+                },
+                {
+                  "role": "scatter",
+                  "parameter": "forcetotal",
+                  "operators": [
+                    "Sop/scatter::2.0"
+                  ]
+                },
+                {
+                  "role": "scatter",
+                  "parameter": "indepvoxel",
+                  "operators": [
+                    "Sop/scatter::2.0"
+                  ]
+                },
+                {
+                  "role": "scatter",
+                  "parameter": "usedensityattrib",
+                  "operators": [
+                    "Sop/scatter::2.0"
+                  ]
+                },
+                {
+                  "role": "scatter",
+                  "parameter": "useareaattrib",
+                  "operators": [
+                    "Sop/scatter::2.0"
+                  ]
+                },
+                {
+                  "role": "scatter",
+                  "parameter": "group",
+                  "operators": [
+                    "Sop/scatter::2.0"
+                  ]
+                }
+              ]
+            },
+            "blocker": "H22_459_NATIVE_TEMPLATE_REQUIRED",
+            "id": "density",
+            "node_role": "scatter",
+            "parameter_aliases": [
+              "densityscale"
+            ]
+          },
+          {
+            "minimum": -360,
+            "maximum": 360,
+            "value_type": "float",
+            "native_type": "float",
+            "size": 3,
+            "application": "houdini",
+            "required_gates": [],
+            "invalidates_from": "shaping_meshing",
+            "unit": "native Z rotation in degrees; preserve actual X and Y",
+            "native_status": "blocked",
+            "semantic_contract": "native_rotation_z_preserve_xy/1",
+            "context_parms": [
+              [
+                "source",
+                "@node"
+              ],
+              [
+                "instance_source",
+                "@node"
+              ],
+              [
+                "geometry_deform",
+                "@node"
+              ],
+              [
+                "instance_transform",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@node"
+              ],
+              [
+                "point_variation",
+                "@node"
+              ],
+              [
+                "instance",
+                "@node"
+              ],
+              [
+                "output",
+                "@node"
+              ],
+              [
+                "scatter",
+                "@input/0"
+              ],
+              [
+                "geometry_deform",
+                "@input/0"
+              ],
+              [
+                "instance_transform",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/0"
+              ],
+              [
+                "point_variation",
+                "@input/0"
+              ],
+              [
+                "instance",
+                "@input/1"
+              ],
+              [
+                "output",
+                "@input/0"
+              ]
+            ],
+            "native_basis": {
+              "version": "22.0.459",
+              "source": "docs/native-basis/hda-interface-22.0.459.json",
+              "scope": "STATIC_HDA_PARAMETER_FIELDS_ONLY",
+              "native_execution": false,
+              "observed": [],
+              "missing": [
+                {
+                  "role": "instance_transform",
+                  "parameter": "r",
+                  "operators": [
+                    "Sop/xform"
+                  ]
+                }
+              ]
+            },
+            "blocker": "H22_459_NATIVE_TEMPLATE_REQUIRED",
+            "id": "rotation",
+            "node_role": "instance_transform",
+            "parameter_aliases": [
+              "r"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "save_reopen": [
+    "Use the production generator and task-owned host; persist project content/version/owner and the original operation receipt.",
+    "Stop the actual owned worker and verify trusted stop, then reopen the saved HIP/NK in a new host identity.",
+    "Read back every role, native type, port, connection and semantic control; preserve unrelated artist changes."
+  ],
+  "stop_recovery": [
+    "Interrupt the actual case worker, not an auxiliary process.",
+    "Retain the heavy slot while stop is unknown; verify task/session/nonce/process/generation/build/scene epoch.",
+    "Restart the controller, restore the same operation from persistent facts, and verify no duplicate execution/registration."
+  ],
+  "artifact_checks": [
+    "Consume only task-owned registered input IDs/versions/hash and exact frames.",
+    "Validate applicable outputs: diagnostic_preview, editable_scene",
+    "Require producer operation, scene/version, format/dimensions/channels, color/premultiplication and dependency facts; reject missing typed metadata.",
+    "Check missing/repeated/frozen/abrupt frames against a frozen activity interval; pixel change alone does not establish correct motion."
+  ],
+  "raw_evidence_path": "outputs/live-validation/procedural_geometry_v1/<new-run-id>",
+  "human_checks": [
+    "Editable topology and save/reopen match the approved controls.",
+    "Compare the registered reference and feedback result; judge actual motion, silhouette, timing, material, lighting and composition.",
+    "Accept visual quality separately from software, format and process-stop checks."
+  ],
+  "resource_requirements": {
+    "explicit_frames_max": 12,
+    "seconds_max": 120,
+    "disk_bytes": "explicit positive task budget; include output/cache/temp/logs",
+    "cache": "separate exact path/frame/content-version/estimated-bytes/invalidation confirmation before execution",
+    "concurrency": "one heavy DCC job; unknown stop keeps slot"
+  },
+  "blockers": [
+    "Full 54-row current-build evidence and independent M1 reception remain incomplete.",
+    "Whole-domain native basis and applicable output/actual worker recovery are not verified by this card."
+  ],
+  "composite": true
+}

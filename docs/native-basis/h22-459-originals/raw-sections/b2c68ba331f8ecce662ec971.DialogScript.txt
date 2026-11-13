@@ -1,0 +1,1486 @@
+# Dialog script for vellumsolver automatically generated
+
+{
+    name	vellumsolver
+    script	vellumsolver
+    label	"Vellum Solver"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Vellum Geometry"
+    inputlabel	2	"Constraint Geometry"
+    inputlabel	3	"Collision Geometry"
+    parmtag { inputisref3 1 }
+    inputlabel	4	"Sub-Network Input #4"
+    outputlabel	1	"Vellum Geometry"
+    outputlabel	2	"Constraint Geometry"
+    outputlabel	3	"Collision Geometry"
+
+    parm {
+        name    "resimulate"
+        label   "Reset Simulation"
+        type    button
+        default { "0" }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "startframe"
+        label   "Start Frame"
+        type    integer
+        default { "1" }
+        range   { 1 240 }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    group {
+        name    "folder0_1"
+        label   "Solver"
+
+        parm {
+            name    "solvermode"
+            label   "Solver Mode"
+            type    ordinal
+            default { "0" }
+            menu {
+                "full"      "Full"
+                "minimal"   "Minimal (Grains and Fluid)"
+            }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "timescale"
+            label   "Time Scale"
+            type    float
+            default { "1" }
+            range   { 0 2 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "dosubstep"
+            label   "Use Global Substeps"
+            type    toggle
+            nolabel
+            joinnext
+            default { "0" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "substep"
+            label   "Global Substeps"
+            type    integer
+            default { "1" }
+            disablewhen "{ dosubstep == 0 }"
+            range   { 1! 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "substeps"
+            label   "Substeps"
+            type    integer
+            default { "1" }
+            range   { 1 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "units" "" }
+        }
+        parm {
+            name    "niter"
+            label   "Constraint Iterations"
+            type    integer
+            default { "100" }
+            range   { 0 200 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "units" "" }
+        }
+        parm {
+            name    "smoothiter"
+            label   "Smoothing Iterations"
+            type    integer
+            default { "10" }
+            range   { 0 50 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "units" "" }
+        }
+        group {
+            name    "folder4"
+            label   "Collisions"
+
+            parm {
+                name    "enablecollisions"
+                label   "Enable Collisions"
+                type    toggle
+                default { "on" }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "doselfcollisions"
+                label   "Self Collisions"
+                type    toggle
+                default { "on" }
+                disablewhen "{ enablecollisions == 0 }"
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "useground"
+                label   "Ground Plane"
+                type    toggle
+                nolabel
+                joinnext
+                default { "0" }
+                disablewhen "{ enablecollisions == off }"
+            }
+            parm {
+                name    "groundpos"
+                label   "Ground Position"
+                type    vector
+                size    3
+                default { "0" "0" "0" }
+                disablewhen "{ enablecollisions == off } { useground == 0 }"
+                range   { -1 1 }
+            }
+            parm {
+                name    "collisionsiter"
+                label   "Collision Passes"
+                type    integer
+                default { "10" }
+                disablewhen "{ enablecollisions == 0 }"
+                range   { 0 10 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "units" "" }
+            }
+            parm {
+                name    "postcollisioniter"
+                label   "Post Collision Passes"
+                type    integer
+                default { "3" }
+                disablewhen "{ enablecollisions == 0 }"
+                range   { 0 10 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "units" "" }
+            }
+            parm {
+                name    "resolveall"
+                label   "Resolve All Collisions"
+                type    toggle
+                nolabel
+                joinnext
+                default { "on" }
+                disablewhen "{ enablecollisions == 0 }"
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "resolveallmax"
+                label   "Polish Passes"
+                type    integer
+                default { "10" }
+                disablewhen "{ enablecollisions == 0 } { resolveall == 0 }"
+                range   { 0! 10 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "layershock"
+                label   "Layer Shock"
+                type    float
+                default { "4" }
+                disablewhen "{ enablecollisions == 0 }"
+                range   { 1 10 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+        }
+
+    }
+
+    group {
+        name    "folder0_1_1"
+        label   "Forces"
+
+        parm {
+            name    "gravity"
+            label   "Gravity"
+            type    vector
+            size    3
+            default { "0" "-9.80665" "0" }
+            range   { -1 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "units" "m1s-2" }
+        }
+        parm {
+            name    "dowind"
+            label   "Activation"
+            type    toggle
+            nolabel
+            joinnext
+            default { "1" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "wind"
+            label   "Built-in Wind"
+            type    direction
+            size    3
+            default { "0" "0" "0" }
+            disablewhen "{ dowind == 0 }"
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "parmvop" "1" }
+            parmtag { "shaderparmcontexts" "cvex" }
+            parmtag { "units" "kg1m1s-2" }
+        }
+        parm {
+            name    "windspeed"
+            label   "Built-in Wind Speed"
+            type    float
+            default { "1" }
+            hidewhen "{ dowind == 0 }"
+            range   { 0 10 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "winddrag"
+            label   "Built-in Wind Drag"
+            type    float
+            default { "0.1" }
+            hidewhen "{ dowind == 0 }"
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "parmvop" "1" }
+            parmtag { "shaderparmcontexts" "cvex" }
+        }
+        parm {
+            name    "veldamping"
+            label   "Velocity Damping"
+            type    float
+            default { "0" }
+            range   { 0! 1! }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "angveldamping"
+            label   "Angular Damping"
+            type    float
+            default { "0" }
+            range   { 0! 1! }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        groupcollapsible {
+            name    "folder12"
+            label   "Wind Shadowing"
+            parmtag { "sidefx::header_parm" "windshadow_type" }
+
+            parm {
+                name    "windshadow_type"
+                label   "Type"
+                type    ordinal
+                default { "0" }
+                menu {
+                    "none"  "None"
+                    "ray"   "Ray"
+                }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "windshadow_doexternal"
+                label   "External Shadow"
+                type    toggle
+                nolabel
+                joinnext
+                default { "on" }
+                disablewhen "{ windshadow_type == none }"
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "windshadow_externalmask"
+                label   "External Shadow"
+                type    float
+                default { "1" }
+                disablewhen "{ windshadow_doexternal == 0 } { windshadow_type == none }"
+                range   { 0! 1! }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "windshadow_doself"
+                label   "Self Shadow"
+                type    toggle
+                nolabel
+                joinnext
+                default { "off" }
+                disablewhen "{ windshadow_type == none }"
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "windshadow_selfmask"
+                label   "Self Shadow"
+                type    float
+                default { "1" }
+                disablewhen "{ windshadow_doself == 0 } { windshadow_type == none }"
+                range   { 0! 1! }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "windshadow_maxdistance"
+                label   "Max Distance"
+                type    float
+                default { "1" }
+                disablewhen "{ windshadow_type == none }"
+                range   { 0 10 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+                parmtag { "units" "m1" }
+            }
+            parm {
+                name    "windshadow_raybias"
+                label   "Self Shadow Bias"
+                type    float
+                default { "0.0001" }
+                disablewhen "{ windshadow_type == none }"
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "windshadow_coneangle"
+                label   "Shadow Angle"
+                type    float
+                default { "0" }
+                disablewhen "{ windshadow_type == none }"
+                range   { 0! 180 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "windshadow_samples"
+                label   "Shadow Samples"
+                type    integer
+                default { "8" }
+                disablewhen "{ windshadow_type == none }"
+                range   { 1! 16 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "windshadow_maskfalloff"
+                label   "Falloff by Distance"
+                type    ramp_flt
+                default { "2" }
+                disablewhen "{ windshadow_type == none }"
+                range   { 1! 10 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "rampfloatdefault" "1pos ( 0.8500000238418579 ) 1value ( 1 ) 1interp ( linear ) 2pos ( 0.9973856210708618 ) 2value ( 0 ) 2interp ( linear )" }
+                parmtag { "rampshowcontrolsdefault" "0" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "windshadow_doblur"
+                label   "Blur Wind Shadow"
+                type    toggle
+                nolabel
+                joinnext
+                default { "off" }
+                disablewhen "{ windshadow_type == none }"
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "windshadow_blur_iterations"
+                label   "Blur Iterations"
+                type    integer
+                default { "4" }
+                disablewhen "{ windshadow_doblur != 1 } { windshadow_type == none }"
+                range   { 0 100 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "windshadow_blur_influencetype"
+                label   "Blur Influence Type"
+                type    ordinal
+                default { "connectivity" }
+                disablewhen "{ windshadow_doblur != 1 } { windshadow_type == none }"
+                menu {
+                    "connectivity"  "Connectivity"
+                    "proximity"     "Proximity"
+                }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "windshadow_blur_proxrad"
+                label   "Proximity Radius"
+                type    float
+                default { "0.5" }
+                disablewhen "{ windshadow_doblur == 0 } { windshadow_type == none }"
+                hidewhen "{ windshadow_blur_influencetype != proximity }"
+                range   { 0 10 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "windshadow_blur_maxneigh"
+                label   "Max Neighbors"
+                type    integer
+                default { "20" }
+                disablewhen "{ windshadow_doblur == 0 } { windshadow_type == none }"
+                hidewhen "{ windshadow_blur_influencetype != proximity }"
+                range   { 0 50 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+        groupsimple {
+            name    "folder2"
+            label   "Friction"
+
+            parm {
+                name    "static_threshold"
+                label   "Static Threshold"
+                type    float
+                default { "0.5" }
+                range   { 0 10 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "dynamic_scale"
+                label   "Dynamic Scale"
+                type    float
+                default { "0.1" }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "sepparm"
+                label   "Separator"
+                type    separator
+                default { "" }
+            }
+            parm {
+                name    "friction"
+                label   "Enable External"
+                type    toggle
+                default { "1" }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "selffriction"
+                label   "Enable Self"
+                type    toggle
+                default { "1" }
+                range   { 0! 1! }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "static_sdfscale"
+                label   "Ground Static Scale"
+                type    float
+                default { "1" }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "dynamic_sdfscale"
+                label   "Ground Dynamic Scale"
+                type    float
+                default { "1" }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+        }
+
+    }
+
+    group {
+        name    "folder0_1_2"
+        label   "Simulation"
+
+        parm {
+            name    "cacheenabled"
+            label   "Cache Enabled"
+            type    toggle
+            nolabel
+            joinnext
+            default { "1" }
+        }
+        parm {
+            name    "cachemaxsize"
+            label   "Cache Memory (MB)"
+            type    integer
+            default { "5000" }
+            disablewhen "{ cacheenabled == 0 }"
+            range   { 0! 1000 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "autoresim"
+            label   "Enable Automatic Resimulation"
+            type    toggle
+            default { "on" }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "simulationtype"
+            label   "Simulation Type"
+            type    ordinal
+            default { "dynamic" }
+            menu {
+                "quasistatic"   "Quasistatic"
+                "dynamic"       "Dynamic"
+            }
+        }
+        parm {
+            name    "quasistaticframes"
+            label   "Quasistatic Frames"
+            type    integer
+            default { "10" }
+            disablewhen "{ simulationtype == dynamic }"
+            range   { 0! 100 }
+        }
+        parm {
+            name    "zerodynamics"
+            label   "Clear Dynamics"
+            type    toggle
+            default { "0" }
+        }
+    }
+
+    group {
+        name    "folder0_1_3"
+        label   "Advanced"
+
+        parm {
+            name    "targetmethod"
+            label   "Target"
+            type    ordinal
+            default { "0" }
+            menu {
+                "first"     "First Input"
+                "soppath"   "SOP Path"
+            }
+        }
+        parm {
+            name    "targetpath"
+            label   "Target Path"
+            type    oppath
+            default { "" }
+            hidewhen "{ targetmethod != soppath }"
+            parmtag { "opfilter" "!!SOP!!" }
+            parmtag { "oprelative" "." }
+        }
+        parm {
+            name    "integration"
+            label   "Integration"
+            type    ordinal
+            default { "secondorder" }
+            menu {
+                "firstorder"    "First Order"
+                "secondorder"   "Second Order"
+            }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "thickness"
+            label   "Default Thickness"
+            type    float
+            default { "0.01" }
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        groupcollapsible {
+            name    "folder10"
+            label   "Secondary Constraint Pass"
+
+            parm {
+                name    "dosecondary"
+                label   "Enable Secondary Constraint Pass"
+                type    toggle
+                default { "off" }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "secondarygroup"
+                label   "Constraint Group"
+                type    string
+                default { "@type==bend" }
+                disablewhen "{ dosecondary == 0 }"
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "secondaryfrequency"
+                label   "Solve Frequency"
+                type    float
+                default { "0.25" }
+                disablewhen "{ dosecondary == 0 }"
+                range   { 0! 1! }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+        groupcollapsible {
+            name    "folder7"
+            label   "Multi-Pass Solve"
+
+            parm {
+                name    "domultipass"
+                label   "Enable Multi-Pass"
+                type    toggle
+                default { "off" }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "maxmultipass"
+                label   "Maximum Passes"
+                type    integer
+                default { "10" }
+                disablewhen "{ domultipass == 0 }"
+                range   { 0! 20 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "disablestretchratio"
+                label   "Disable Stretch Ratio"
+                type    float
+                default { "0.5" }
+                disablewhen "{ domultipass == 0 }"
+                range   { 0! 2 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+        }
+
+        groupcollapsible {
+            name    "folder5"
+            label   "Motion"
+
+            parm {
+                name    "domaxaccel"
+                label   "Cap Displacement"
+                type    toggle
+                nolabel
+                joinnext
+                default { "on" }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "maxaccel"
+                label   "Max Acceleration"
+                type    float
+                default { "30" }
+                disablewhen "{ domaxaccel == 0 }"
+                range   { 0! 500 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "units" "m1s-2" }
+            }
+            parm {
+                name    "accelfallback"
+                label   "Fallback to First Order Integration on Collision"
+                type    toggle
+                default { "on" }
+                disablewhen "{ domaxaccel == 0 } { integration == firstorder }"
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "limitaccel"
+                label   "Limit Acceleration in Velocity Update"
+                type    toggle
+                default { "off" }
+                disablewhen "{ domaxaccel == 0 }"
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "limitdisplace"
+                label   "Limit Displacement on Collision"
+                type    toggle
+                default { "off" }
+                disablewhen "{ domaxaccel == 0 } { enablecollisions == 0 }"
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "disablebrokenwelds"
+                label   "Disable Broken Welds"
+                type    toggle
+                default { "off" }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "normalizestress"
+                label   "Normalize Stress"
+                type    toggle
+                default { "on" }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "slidingmethod"
+                label   "Sliding Method"
+                type    ordinal
+                default { "closest" }
+                menu {
+                    "closest"       "Closest Point"
+                    "traverse"      "Traverse Polygons"
+                    "traversetris"  "Traverse Triangles (Optimized)"
+                }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "orientsolve"
+                label   "Orientation Solve"
+                type    ordinal
+                default { "dynamic" }
+                menu {
+                    "dynamic"       "Dynamic"
+                    "quasistatic"   "Quasistatic"
+                }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+        groupcollapsible {
+            name    "folder8"
+            label   "Sleeping"
+
+            parm {
+                name    "doautosleep"
+                label   "Enable Auto Sleep"
+                type    toggle
+                default { "off" }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "sleep_velocitythreshold"
+                label   "Velocity Threshold"
+                type    float
+                default { "0.01" }
+                disablewhen "{ doautosleep == 0 }"
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "parmvop" "1" }
+                parmtag { "shaderparmcontexts" "cvex" }
+            }
+            parm {
+                name    "sleep_delay"
+                label   "Sleep Delay"
+                type    float
+                default { "0.1" }
+                disablewhen "{ doautosleep == 0 }"
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "parmvop" "1" }
+                parmtag { "shaderparmcontexts" "cvex" }
+            }
+        }
+
+        groupcollapsible {
+            name    "folder9"
+            label   "Grain Collisions"
+
+            parm {
+                name    "grain_searchscale"
+                label   "Search Scale"
+                type    float
+                default { "2.5" }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "parmvop" "1" }
+                parmtag { "shaderparmcontexts" "cvex" }
+            }
+            parm {
+                name    "grain_maxneighbor"
+                label   "Max Neighbors"
+                type    integer
+                default { "20" }
+                disablewhen "{ oclneighborsearch == 1 }"
+                range   { 0 10 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "parmvop" "1" }
+                parmtag { "shaderparmcontexts" "cvex" }
+            }
+            parm {
+                name    "grain_uniformradius"
+                label   "Assume Uniform Radius"
+                type    toggle
+                default { "on" }
+                range   { 0 10 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "parmvop" "1" }
+                parmtag { "shaderparmcontexts" "cvex" }
+            }
+            parm {
+                name    "ignorepiece"
+                label   "Ignore Neighbors with Same Name or Piece"
+                type    toggle
+                default { "on" }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "repulsionweight"
+                label   "Repulsion Weight"
+                type    float
+                default { "1" }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "attractionweight"
+                label   "Attraction Weight"
+                type    float
+                default { "0" }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+        }
+
+        groupcollapsible {
+            name    "folder11"
+            label   "Fluids"
+
+            parm {
+                name    "fluid_searchscale"
+                label   "Kernel Radius Scale"
+                type    float
+                default { "4" }
+                range   { 3 5 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "viscosity"
+                label   "Viscosity"
+                type    float
+                default { "5" }
+                range   { 0 1000 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "collisionviscosity"
+                label   "Collision Viscosity"
+                type    float
+                default { "0" }
+                range   { 0 1000 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "viscositysolver"
+                label   "Viscosity Solver"
+                type    ordinal
+                default { "implicit" }
+                menu {
+                    "explicit"  "Explicit"
+                    "implicit"  "Implicit"
+                }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "tol"
+                label   "Viscosity Tolerance"
+                type    float
+                default { "0.001" }
+                disablewhen "{ viscositysolver == explicit }"
+                range   { 0 10 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "maxviscosityiterations"
+                label   "Max Viscosity Iterations"
+                type    integer
+                default { "500" }
+                disablewhen "{ viscositysolver == explicit }"
+                range   { 0 1000 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "surfacetension"
+                label   "Surface Tension"
+                type    float
+                default { "0.0001" }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "adhesion"
+                label   "Adhesion"
+                type    float
+                default { "0" }
+                range   { 0 1 }
+                parmtag { "autoscope" "1000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "dosort"
+                label   "Spatial Sort"
+                type    toggle
+                nolabel
+                joinnext
+                default { "off" }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "sortinterval"
+                label   "Spatial Sort Interval"
+                type    integer
+                default { "20" }
+                disablewhen "{ dosort == 0 }"
+                range   { 0 10 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+        groupcollapsible {
+            name    "folder6"
+            label   "OpenCL"
+
+            parm {
+                name    "oclgraphcolor"
+                label   "OpenCL Graph Coloring"
+                type    toggle
+                default { "on" }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "oclneighborsearch"
+                label   "OpenCL Neighbor Search"
+                type    toggle
+                default { "on" }
+                disablewhen "{ grain_uniformradius == 0 }"
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+        groupcollapsible {
+            name    "folder26_3"
+            label   "Checkpoints"
+            parmtag { "group_default" "0" }
+            parmtag { "sidefx::header_toggle" "savecheckpoints" }
+
+            parm {
+                name    "savecheckpoints"
+                label   "Save Checkpoints"
+                type    toggle
+                default { "off" }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "checkpoint_basename"
+                label   "Base Name"
+                type    string
+                default { "$HIPNAME.$OS" }
+                disablewhen "{ savecheckpoints == 0 }"
+                menureplace {
+                    "$OS"                                           "Node Name"
+                    "`opname(\"..\")`_$OS"                          "Parent + Node Name"
+                    "$HIPNAME.$OS"                                  "Scene + Node Name"
+                    "`strreplace(opfullpath(\".\"),\"/\",\"_\")`"   "Unique Node Name"
+                }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "editor" "0" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "checkpoint_basedir"
+                label   "Base Folder"
+                type    directory
+                joinnext
+                default { "$HIP/geo" }
+                disablewhen "{ savecheckpoints == 0 }"
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "checkpoint_openbasedir"
+                label   "Open Directory"
+                type    button
+                nolabel
+                default { "0" }
+                disablewhen "{ savecheckpoints == 0 }"
+                parmtag { "button_icon" "BUTTONS_folder" }
+                parmtag { "script_callback" "hou.phm().openPath(kwargs)" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "checkpoint_enableversion"
+                label   "Enable Version"
+                type    toggle
+                nolabel
+                joinnext
+                default { "on" }
+                disablewhen "{ savecheckpoints == 0 }"
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "checkpoint_version"
+                label   "Version"
+                type    integer
+                default { "1" }
+                disablewhen "{ checkpoint_enableversion != 1 } { savecheckpoints == 0 }"
+                range   { 1! 25 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "labelparm8"
+                label   "Output File"
+                type    label
+                default { "`chs(\"checkpoint_basedir\")``ifs(ch(\"checkpoint_enableversion\"), \"/v\"+chs(\"checkpoint_version\"), \"\")`/`chs(\"checkpoint_basename\")``ifs(ch(\"checkpoint_enableversion\"), \"_v\"+chs(\"checkpoint_version\"), \"\")`.\\$SF.sim" }
+                hidewhen "{ savecheckpoints == 0 }"
+                parmtag { "sidefx::look" "block" }
+            }
+            parm {
+                name    "sepparm4"
+                label   "Separator"
+                type    separator
+                default { "" }
+            }
+            parm {
+                name    "checkpoint_explicitcachensteps"
+                label   "Checkpoint Trail Length"
+                type    integer
+                default { "0" }
+                disablewhen "{ savecheckpoints == 0 }"
+                range   { 0! 10 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "checkpoint_explicitcachespacing"
+                label   "Checkpoint Interval"
+                type    integer
+                default { "1" }
+                disablewhen "{ savecheckpoints == 0 }"
+                range   { 1! 100 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+    }
+
+    group {
+        name    "folder0_1_4"
+        label   "Visualize"
+
+        parm {
+            name    "showcollision"
+            label   "Show Collision"
+            type    toggle
+            default { "1" }
+        }
+        import {
+            label   "Visualize Import"
+            source  "op:dopnet1/vellumobject1"
+            mask    "showguide guide_* vis_*"
+            enable  1
+
+            parm {
+                name    "showguide"
+                label   "Show Guide Geometry"
+                type    toggle
+                default { "on" }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "import_source" "op:dopnet1/vellumobject1" }
+                parmtag { "import_token" "showguide" }
+            }
+            groupsimple {
+                name    "folder0"
+                label   "Geometry"
+                disablewhentab "{ showguide == 0 }"
+                grouptag { "import_source" "op:dopnet1/vellumobject1" }
+                grouptag { "import_token" "vis_foldergeo2:Geometry" }
+
+                parm {
+                    name    "guide_showthickness"
+                    label   "showthickness"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "off" }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "import_source" "op:dopnet1/vellumobject1" }
+                    parmtag { "import_token" "guide_showthickness" }
+                }
+                parm {
+                    name    "guide_thicknesscolor"
+                    label   "Thickness"
+                    type    color
+                    joinnext
+                    size    3
+                    default { "0" "0.9" "0" }
+                    disablewhen "{ guide_showthickness == 0 }"
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "import_source" "op:dopnet1/vellumobject1" }
+                    parmtag { "import_token" "guide_thicknesscolor" }
+                }
+                parm {
+                    name    "guide_showthicknessextrude"
+                    label   "Extrude"
+                    type    toggle
+                    default { "off" }
+                    disablewhen "{ guide_showthickness == 0 }"
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "import_source" "op:dopnet1/vellumobject1" }
+                    parmtag { "import_token" "guide_showthicknessextrude" }
+                }
+                parm {
+                    name    "guide_showfailedself"
+                    label   "showfailedselfcol"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "off" }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "import_source" "op:dopnet1/vellumobject1" }
+                    parmtag { "import_token" "guide_showfailedself" }
+                }
+                parm {
+                    name    "guide_failedself"
+                    label   "Failed Self Collision"
+                    type    color
+                    size    3
+                    default { "0.9" "0" "0" }
+                    disablewhen "{ guide_showfailedself == 0 }"
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "import_source" "op:dopnet1/vellumobject1" }
+                    parmtag { "import_token" "guide_failedself" }
+                }
+                parm {
+                    name    "guide_showfailedexternal"
+                    label   "showfailedexternalcol"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "off" }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "import_source" "op:dopnet1/vellumobject1" }
+                    parmtag { "import_token" "guide_showfailedexternal" }
+                }
+                parm {
+                    name    "guide_failedexternal"
+                    label   "Failed External Collision"
+                    type    color
+                    size    3
+                    default { "0.9" "0.45" "0" }
+                    disablewhen "{ guide_showfailedexternal == 0 }"
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "import_source" "op:dopnet1/vellumobject1" }
+                    parmtag { "import_token" "guide_failedexternal" }
+                }
+                parm {
+                    name    "guide_showwelds"
+                    label   "showwelds"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "off" }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "import_source" "op:dopnet1/vellumobject1" }
+                    parmtag { "import_token" "guide_showwelds" }
+                }
+                parm {
+                    name    "guide_weldcolor"
+                    label   "Welds"
+                    type    color
+                    size    3
+                    default { "0" "0.9" "0.45" }
+                    disablewhen "{ guide_showwelds == 0 } { vis_mode == stretchstress }"
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "import_source" "op:dopnet1/vellumobject1" }
+                    parmtag { "import_token" "guide_weldcolor" }
+                }
+                parm {
+                    name    "guide_colvisscale"
+                    label   "Radius Scale"
+                    type    float
+                    default { "1" }
+                    disablewhen "{ guide_showfailedself == 0 guide_showfailedexternal == 0 guide_showwelds == 0 }"
+                    range   { 0 10 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "import_source" "op:dopnet1/vellumobject1" }
+                    parmtag { "import_token" "guide_colvisscale" }
+                }
+            }
+
+            groupsimple {
+                name    "folder1"
+                label   "Constraints"
+                disablewhentab "{ showguide == 0 }"
+                grouptag { "import_source" "op:dopnet1/vellumobject1" }
+                grouptag { "import_token" "vis_folderconstraints2:Constraints" }
+
+                parm {
+                    name    "guide_usegroup"
+                    label   "usegroup"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "off" }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "import_source" "op:dopnet1/vellumobject1" }
+                    parmtag { "import_token" "guide_usegroup" }
+                }
+                parm {
+                    name    "guide_constraintgroup"
+                    label   "Group"
+                    type    string
+                    default { "" }
+                    disablewhen "{ guide_usegroup == 0 }"
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "import_source" "op:dopnet1/vellumobject1" }
+                    parmtag { "import_token" "guide_constraintgroup" }
+                }
+                parm {
+                    name    "guide_showpin"
+                    label   "showpin"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "off" }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "import_source" "op:dopnet1/vellumobject1" }
+                    parmtag { "import_token" "guide_showpin" }
+                }
+                parm {
+                    name    "guide_pincolor"
+                    label   "Pin to Target"
+                    type    color
+                    size    3
+                    default { "0.25" "0" "0.5" }
+                    disablewhen "{ guide_showpin == 0 } { vis_mode != none }"
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "import_source" "op:dopnet1/vellumobject1" }
+                    parmtag { "import_token" "guide_pincolor" }
+                }
+                parm {
+                    name    "guide_showstitch"
+                    label   "showstitch"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "off" }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "import_source" "op:dopnet1/vellumobject1" }
+                    parmtag { "import_token" "guide_showstitch" }
+                }
+                parm {
+                    name    "guide_stitchcolor"
+                    label   "Stitch Points"
+                    type    color
+                    size    3
+                    default { "0.9" "0.9" "0" }
+                    disablewhen "{ guide_showstitch == 0 } { vis_mode == stretchstress } { vis_mode == stretchdistance } { vis_mode == stretchratio }"
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "import_source" "op:dopnet1/vellumobject1" }
+                    parmtag { "import_token" "guide_stitchcolor" }
+                }
+                parm {
+                    name    "guide_showattach"
+                    label   "showattach"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "off" }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "import_source" "op:dopnet1/vellumobject1" }
+                    parmtag { "import_token" "guide_showattach" }
+                }
+                parm {
+                    name    "guide_attachcolor"
+                    label   "Attach to Geometry"
+                    type    color
+                    size    3
+                    default { "0" "0.45" "0.9" }
+                    disablewhen "{ guide_showattach == 0 } { vis_mode == stretchstress } { vis_mode == stretchdistance } { vis_mode == stretchratio }"
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "import_source" "op:dopnet1/vellumobject1" }
+                    parmtag { "import_token" "guide_attachcolor" }
+                }
+                parm {
+                    name    "guide_constraintvisradius"
+                    label   "Radius"
+                    type    float
+                    default { "0.01" }
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "import_source" "op:dopnet1/vellumobject1" }
+                    parmtag { "import_token" "guide_constraintvisradius" }
+                }
+            }
+
+            groupsimple {
+                name    "folder3"
+                label   "Visualization"
+                disablewhentab "{ showguide == 0 }"
+                grouptag { "import_source" "op:dopnet1/vellumobject1" }
+                grouptag { "import_token" "vis_foldervis2:Visualization" }
+
+                parm {
+                    name    "vis_mode"
+                    label   "False Color Mode"
+                    type    ordinal
+                    default { "none" }
+                    menu {
+                        "none"                  "None"
+                        "stretchstress"         "Stretch Stress"
+                        "bendstress"            "Bend Stress"
+                        "stretchdistance"       "Stretch Distance"
+                        "stretchratio"          "Stretch Ratio"
+                        "bendangle"             "Bend Angle"
+                        "stretchplasticflow"    "Stretch Plastic Flow"
+                        "bendplasticflow"       "Bend Plastic Flow"
+                        "volumestress"          "Volume Stress"
+                        "volumedistance"        "Volume Distance"
+                        "volumeratio"           "Volume Ratio"
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "import_source" "op:dopnet1/vellumobject1" }
+                    parmtag { "import_token" "vis_mode" }
+                }
+                parm {
+                    name    "vis_displaygeo"
+                    label   "Display Visualization Geometry"
+                    type    toggle
+                    default { "on" }
+                    disablewhen "{ vis_mode == none }"
+                    range   { 0 10 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "import_source" "op:dopnet1/vellumobject1" }
+                    parmtag { "import_token" "vis_displaygeo" }
+                }
+                parm {
+                    name    "vis_maxstretchstress"
+                    label   "Max Stretch Stress"
+                    type    float
+                    default { "0.01" }
+                    hidewhen "{ vis_mode != stretchstress }"
+                    range   { 0 10 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "import_source" "op:dopnet1/vellumobject1" }
+                    parmtag { "import_token" "vis_maxstretchstress" }
+                }
+                parm {
+                    name    "vis_maxbendstress"
+                    label   "Max Bend Stress"
+                    type    float
+                    default { "0.001" }
+                    hidewhen "{ vis_mode != bendstress }"
+                    range   { 0 10 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "import_source" "op:dopnet1/vellumobject1" }
+                    parmtag { "import_token" "vis_maxbendstress" }
+                }
+                parm {
+                    name    "vis_maxstretchdistance"
+                    label   "Max Stretch Distance"
+                    type    float
+                    default { "0.01" }
+                    hidewhen "{ vis_mode != stretchdistance }"
+                    range   { 0 10 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "import_source" "op:dopnet1/vellumobject1" }
+                    parmtag { "import_token" "vis_maxstretchdistance" }
+                }
+                parm {
+                    name    "vis_maxstretchratio"
+                    label   "Max Stretch Ratio"
+                    type    float
+                    default { "0.1" }
+                    hidewhen "{ vis_mode != stretchratio }"
+                    range   { 0 10 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "import_source" "op:dopnet1/vellumobject1" }
+                    parmtag { "import_token" "vis_maxstretchratio" }
+                }
+                parm {
+                    name    "vis_maxbendangle"
+                    label   "Max Bend Angle"
+                    type    float
+                    default { "5" }
+                    hidewhen "{ vis_mode != bendangle }"
+                    range   { 0 10 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "import_source" "op:dopnet1/vellumobject1" }
+                    parmtag { "import_token" "vis_maxbendangle" }
+                }
+                parm {
+                    name    "vis_maxstretchplasticflow"
+                    label   "Max Stretch Plastic Flow"
+                    type    float
+                    default { "1" }
+                    hidewhen "{ vis_mode != stretchplasticflow }"
+                    range   { 0 10 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "import_source" "op:dopnet1/vellumobject1" }
+                    parmtag { "import_token" "vis_maxstretchplasticflow" }
+                }
+                parm {
+                    name    "vis_maxbendplasticflow"
+                    label   "Max Bend Plastic Flow"
+                    type    float
+                    default { "10" }
+                    hidewhen "{ vis_mode != bendplasticflow }"
+                    range   { 0 100 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "import_source" "op:dopnet1/vellumobject1" }
+                    parmtag { "import_token" "vis_maxbendplasticflow" }
+                }
+                parm {
+                    name    "vis_maxvolumestress"
+                    label   "Max Volume Stress"
+                    type    float
+                    default { "0.01" }
+                    hidewhen "{ vis_mode != volumestress }"
+                    range   { 0 10 }
+                }
+                parm {
+                    name    "vis_maxvolumedistance"
+                    label   "Max Volume Distance"
+                    type    float
+                    default { "0.0001" }
+                    hidewhen "{ vis_mode != volumedistance }"
+                    range   { 0 10 }
+                }
+                parm {
+                    name    "vis_maxvolumeratio"
+                    label   "Max Volume Ratio"
+                    type    float
+                    default { "0.1" }
+                    hidewhen "{ vis_mode != volumeratio }"
+                    range   { 0 10 }
+                }
+            }
+
+        }
+
+    }
+
+}

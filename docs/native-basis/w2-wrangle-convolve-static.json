@@ -1,0 +1,5478 @@
+{
+  "schema": "bridge.static-native-followup/1",
+  "scope": "read-only installed vendor files; no native API instance or DCC execution",
+  "versions": {
+    "21.0.631": {
+      "operators": {
+        "Sop/attribwrangle": {
+          "status": "CAPTURED",
+          "source": {
+            "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/otls/OPlibSop.hda",
+            "archive_sha256": "5018624a3f850b498df5696e7294dae8d442a847b6c61b9717025495d76bf5e2",
+            "member": "Sop/attribwrangle::DialogScript",
+            "section_sha256": "b47a35a99cfd15f0c85143a3fed309c1a2f30704183ef7565bd52af1f7306c77"
+          },
+          "parameters": {
+            "group": {
+              "name": "group",
+              "type": "string",
+              "size": 1,
+              "label": "Group",
+              "default_tokens": [
+                ""
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000",
+                "script_action",
+                "import soputils\nkwargs['geometrytype'] = kwargs['node'].parmTuple('grouptype')\nkwargs['inputindex'] = 0\nsoputils.selectGroupParm(kwargs)",
+                "script_action_help",
+                "Select geometry from an available viewport.",
+                "script_action_icon",
+                "BUTTONS_reselect"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "group",
+                "label": "Group",
+                "type": "string",
+                "default": [
+                  ""
+                ],
+                "menutoggle": [
+                  "[",
+                  "opmenu -l -a attribvop1 bindgroup",
+                  "]"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000",
+                  "script_action",
+                  "import soputils\nkwargs['geometrytype'] = kwargs['node'].parmTuple('grouptype')\nkwargs['inputindex'] = 0\nsoputils.selectGroupParm(kwargs)",
+                  "script_action_help",
+                  "Select geometry from an available viewport.",
+                  "script_action_icon",
+                  "BUTTONS_reselect"
+                ],
+                "bindselector": "uvselect",
+                "0": "1"
+              }
+            },
+            "grouptype": {
+              "name": "grouptype",
+              "type": "ordinal",
+              "size": 1,
+              "label": "Group Type",
+              "default_tokens": [
+                "guess"
+              ],
+              "menu_tokens": [
+                "guess",
+                "Guess from Group",
+                "vertices",
+                "Vertices",
+                "edges",
+                "Edges",
+                "points",
+                "Points",
+                "prims",
+                "Primitives"
+              ],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "grouptype",
+                "label": "Group Type",
+                "type": "ordinal",
+                "default": [
+                  "guess"
+                ],
+                "menu": [
+                  "guess",
+                  "Guess from Group",
+                  "vertices",
+                  "Vertices",
+                  "edges",
+                  "Edges",
+                  "points",
+                  "Points",
+                  "prims",
+                  "Primitives"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "class": {
+              "name": "class",
+              "type": "ordinal",
+              "size": 1,
+              "label": "Run Over",
+              "default_tokens": [
+                "point"
+              ],
+              "menu_tokens": [
+                "detail",
+                "Detail (only once)",
+                "primitive",
+                "Primitives",
+                "point",
+                "Points",
+                "vertex",
+                "Vertices",
+                "number",
+                "Numbers"
+              ],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "class",
+                "label": "Run Over",
+                "type": "ordinal",
+                "default": [
+                  "point"
+                ],
+                "menu": [
+                  "detail",
+                  "Detail (only once)",
+                  "primitive",
+                  "Primitives",
+                  "point",
+                  "Points",
+                  "vertex",
+                  "Vertices",
+                  "number",
+                  "Numbers"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "vex_numcount": {
+              "name": "vex_numcount",
+              "type": "integer",
+              "size": 1,
+              "label": "Number Count",
+              "default_tokens": [
+                "10"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0!",
+                "10000"
+              ],
+              "disable_when": "",
+              "hide_when": "{ class != number }",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "vex_numcount",
+                "label": "Number Count",
+                "type": "integer",
+                "default": [
+                  "10"
+                ],
+                "hidewhen": "{ class != number }",
+                "range": [
+                  "0!",
+                  "10000"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "vex_threadjobsize": {
+              "name": "vex_threadjobsize",
+              "type": "integer",
+              "size": 1,
+              "label": "Thread Job Size",
+              "default_tokens": [
+                "1024"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "1!",
+                "10000"
+              ],
+              "disable_when": "",
+              "hide_when": "{ class != number }",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "vex_threadjobsize",
+                "label": "Thread Job Size",
+                "type": "integer",
+                "default": [
+                  "1024"
+                ],
+                "hidewhen": "{ class != number }",
+                "range": [
+                  "1!",
+                  "10000"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "snippet": {
+              "name": "snippet",
+              "type": "string",
+              "size": 1,
+              "label": "VEXpression",
+              "default_tokens": [
+                ""
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000",
+                "editor",
+                "1",
+                "editorlang",
+                "VEX",
+                "editorlines",
+                "8-30",
+                "script_action",
+                "import vexpressionmenu\n\nnode = kwargs['node']\nparmname = 'snippet'\n\nvexpressionmenu.createSpareParmsFromChCalls(node, parmname)",
+                "script_action_help",
+                "Creates spare parameters for each unique call of ch() ",
+                "script_action_icon",
+                "BUTTONS_create_parm_from_ch"
+              ],
+              "menu_script_tokens": [
+                "[",
+                "import vexpressionmenu",
+                "]",
+                "[",
+                "",
+                "]",
+                "[",
+                "return vexpressionmenu.buildSnippetMenu('attribwrangle/snippet', kwargs=kwargs)",
+                "]",
+                "language",
+                "python"
+              ],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0"
+              ],
+              "flags": [
+                "export"
+              ],
+              "raw_fields": {
+                "name": "snippet",
+                "label": "VEXpression",
+                "type": "string",
+                "default": [
+                  ""
+                ],
+                "menureplace": [
+                  "[",
+                  "import vexpressionmenu",
+                  "]",
+                  "[",
+                  "",
+                  "]",
+                  "[",
+                  "return vexpressionmenu.buildSnippetMenu('attribwrangle/snippet', kwargs=kwargs)",
+                  "]",
+                  "language",
+                  "python"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "export": true,
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000",
+                  "editor",
+                  "1",
+                  "editorlang",
+                  "VEX",
+                  "editorlines",
+                  "8-30",
+                  "script_action",
+                  "import vexpressionmenu\n\nnode = kwargs['node']\nparmname = 'snippet'\n\nvexpressionmenu.createSpareParmsFromChCalls(node, parmname)",
+                  "script_action_help",
+                  "Creates spare parameters for each unique call of ch() ",
+                  "script_action_icon",
+                  "BUTTONS_create_parm_from_ch"
+                ]
+              }
+            },
+            "exportlist": {
+              "name": "exportlist",
+              "type": "string",
+              "size": 1,
+              "label": "Attributes to Create",
+              "default_tokens": [
+                "*"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "exportlist",
+                "label": "Attributes to Create",
+                "type": "string",
+                "default": [
+                  "*"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "vex_strict": {
+              "name": "vex_strict",
+              "type": "toggle",
+              "size": 1,
+              "label": "Enforce Prototypes",
+              "default_tokens": [
+                "off"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000",
+                "script_callback",
+                ""
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "vex_strict",
+                "label": "Enforce Prototypes",
+                "type": "toggle",
+                "default": [
+                  "off"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000",
+                  "script_callback",
+                  ""
+                ]
+              }
+            },
+            "vex_strictvariables": {
+              "name": "vex_strictvariables",
+              "type": "toggle",
+              "size": 1,
+              "label": "Standard Variable Names Only",
+              "default_tokens": [
+                "on"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000",
+                "script_callback_language",
+                "python"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "vex_strictvariables",
+                "label": "Standard Variable Names Only",
+                "type": "toggle",
+                "default": [
+                  "on"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000",
+                  "script_callback_language",
+                  "python"
+                ]
+              }
+            },
+            "folder0": {
+              "name": "folder0",
+              "type": "group",
+              "size": 1,
+              "label": "Code",
+              "default_tokens": [],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [],
+              "menu_script_tokens": [],
+              "container_kind": "group",
+              "children": [
+                "group",
+                "grouptype",
+                "class",
+                "vex_numcount",
+                "vex_threadjobsize",
+                "snippet",
+                "exportlist",
+                "vex_strict",
+                "vex_strictvariables"
+              ],
+              "ancestors": [
+                "attribwrangle"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "folder0",
+                "label": "Code"
+              }
+            },
+            "autobind": {
+              "name": "autobind",
+              "type": "toggle",
+              "size": 1,
+              "label": "Autobind by Name",
+              "default_tokens": [
+                "on"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0_1"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "autobind",
+                "label": "Autobind by Name",
+                "type": "toggle",
+                "default": [
+                  "on"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "bindname#": {
+              "name": "bindname#",
+              "type": "string",
+              "size": 1,
+              "label": "Attribute Name",
+              "default_tokens": [
+                ""
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0_1",
+                "bindings"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "bindname#",
+                "label": "Attribute Name",
+                "type": "string",
+                "default": [
+                  ""
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ]
+              }
+            },
+            "bindparm#": {
+              "name": "bindparm#",
+              "type": "string",
+              "size": 1,
+              "label": "VEX Parameter",
+              "default_tokens": [
+                ""
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0_1",
+                "bindings"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "bindparm#",
+                "label": "VEX Parameter",
+                "type": "string",
+                "default": [
+                  ""
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ]
+              }
+            },
+            "bindings": {
+              "name": "bindings",
+              "type": "multiparm",
+              "size": 1,
+              "label": "Number of Bindings",
+              "default_tokens": [
+                "0"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000",
+                "multistartoffset",
+                "1"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "multiparm",
+              "children": [
+                "bindname#",
+                "bindparm#"
+              ],
+              "ancestors": [
+                "attribwrangle",
+                "folder0_1"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "bindings",
+                "label": "Number of Bindings",
+                "default": "0",
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000",
+                  "multistartoffset",
+                  "1"
+                ]
+              }
+            },
+            "groupautobind": {
+              "name": "groupautobind",
+              "type": "toggle",
+              "size": 1,
+              "label": "Autobind Groups by Name",
+              "default_tokens": [
+                "on"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0_1"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "groupautobind",
+                "label": "Autobind Groups by Name",
+                "type": "toggle",
+                "default": [
+                  "on"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "bindgroupname#": {
+              "name": "bindgroupname#",
+              "type": "string",
+              "size": 1,
+              "label": "Group Name",
+              "default_tokens": [
+                ""
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0_1",
+                "groupbindings"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "bindgroupname#",
+                "label": "Group Name",
+                "type": "string",
+                "default": [
+                  ""
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ]
+              }
+            },
+            "bindgroupparm#": {
+              "name": "bindgroupparm#",
+              "type": "string",
+              "size": 1,
+              "label": "VEX Parameter",
+              "default_tokens": [
+                ""
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0_1",
+                "groupbindings"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "bindgroupparm#",
+                "label": "VEX Parameter",
+                "type": "string",
+                "default": [
+                  ""
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ]
+              }
+            },
+            "groupbindings": {
+              "name": "groupbindings",
+              "type": "multiparm",
+              "size": 1,
+              "label": "Group Bindings",
+              "default_tokens": [
+                "0"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000",
+                "multistartoffset",
+                "1"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "multiparm",
+              "children": [
+                "bindgroupname#",
+                "bindgroupparm#"
+              ],
+              "ancestors": [
+                "attribwrangle",
+                "folder0_1"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "groupbindings",
+                "label": "Group Bindings",
+                "default": "0",
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000",
+                  "multistartoffset",
+                  "1"
+                ]
+              }
+            },
+            "vex_cwdpath": {
+              "name": "vex_cwdpath",
+              "type": "oppath",
+              "size": 1,
+              "label": "Evaluation Node Path",
+              "default_tokens": [
+                "."
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000",
+                "oprelative",
+                "."
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0_1"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "vex_cwdpath",
+                "label": "Evaluation Node Path",
+                "type": "oppath",
+                "default": [
+                  "."
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000",
+                  "oprelative",
+                  "."
+                ]
+              }
+            },
+            "vex_outputmask": {
+              "name": "vex_outputmask",
+              "type": "string",
+              "size": 1,
+              "label": "Export Parameters",
+              "default_tokens": [
+                "*"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0_1"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "vex_outputmask",
+                "label": "Export Parameters",
+                "type": "string",
+                "default": [
+                  "*"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "vex_updatenmls": {
+              "name": "vex_updatenmls",
+              "type": "toggle",
+              "size": 1,
+              "label": "Update Normals If Displaced",
+              "default_tokens": [
+                "off"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000",
+                "script_callback",
+                ""
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0_1"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "vex_updatenmls",
+                "label": "Update Normals If Displaced",
+                "type": "toggle",
+                "default": [
+                  "off"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000",
+                  "script_callback",
+                  ""
+                ]
+              }
+            },
+            "vex_matchattrib": {
+              "name": "vex_matchattrib",
+              "type": "string",
+              "size": 1,
+              "label": "Attribute to Match",
+              "default_tokens": [
+                "id"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0_1"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "vex_matchattrib",
+                "label": "Attribute to Match",
+                "type": "string",
+                "default": [
+                  "id"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "vex_inplace": {
+              "name": "vex_inplace",
+              "type": "toggle",
+              "size": 1,
+              "label": "Compute Results In Place",
+              "default_tokens": [
+                "off"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0_1"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "vex_inplace",
+                "label": "Compute Results In Place",
+                "type": "toggle",
+                "default": [
+                  "off"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "vex_selectiongroup": {
+              "name": "vex_selectiongroup",
+              "type": "string",
+              "size": 1,
+              "label": "Output Selection Group",
+              "default_tokens": [
+                ""
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0_1"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "vex_selectiongroup",
+                "label": "Output Selection Group",
+                "type": "string",
+                "default": [
+                  ""
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "vex_precision": {
+              "name": "vex_precision",
+              "type": "string",
+              "size": 1,
+              "label": "VEX Precision",
+              "default_tokens": [
+                "auto"
+              ],
+              "menu_tokens": [
+                "auto",
+                "Auto",
+                "32",
+                "32-bit",
+                "64",
+                "64-bit"
+              ],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0_1"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "vex_precision",
+                "label": "VEX Precision",
+                "type": "string",
+                "default": [
+                  "auto"
+                ],
+                "menu": [
+                  "auto",
+                  "Auto",
+                  "32",
+                  "32-bit",
+                  "64",
+                  "64-bit"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "folder0_1": {
+              "name": "folder0_1",
+              "type": "group",
+              "size": 1,
+              "label": "Bindings",
+              "default_tokens": [],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [],
+              "menu_script_tokens": [],
+              "container_kind": "group",
+              "children": [
+                "autobind",
+                "bindings",
+                "groupautobind",
+                "groupbindings",
+                "vex_cwdpath",
+                "vex_outputmask",
+                "vex_updatenmls",
+                "vex_matchattrib",
+                "vex_inplace",
+                "vex_selectiongroup",
+                "vex_precision"
+              ],
+              "ancestors": [
+                "attribwrangle"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "folder0_1",
+                "label": "Bindings"
+              }
+            }
+          },
+          "interface": {
+            "input_labels": [
+              {
+                "dialogscript_index": 1,
+                "api_index": 0,
+                "label": "Geometry to Process with Wrangle",
+                "index_normalization": "one_based_dialogscript_to_zero_based_hom",
+                "status": "NORMALIZED"
+              },
+              {
+                "dialogscript_index": 2,
+                "api_index": 1,
+                "label": "Ancillary Input, point(1, ...) to Access",
+                "index_normalization": "one_based_dialogscript_to_zero_based_hom",
+                "status": "NORMALIZED"
+              },
+              {
+                "dialogscript_index": 3,
+                "api_index": 2,
+                "label": "Ancillary Input, point(2, ...) to Access",
+                "index_normalization": "one_based_dialogscript_to_zero_based_hom",
+                "status": "NORMALIZED"
+              },
+              {
+                "dialogscript_index": 4,
+                "api_index": 3,
+                "label": "Ancillary Input, point(3, ...) to Access",
+                "index_normalization": "one_based_dialogscript_to_zero_based_hom",
+                "status": "NORMALIZED"
+              }
+            ],
+            "output_labels": [],
+            "inputs": [],
+            "outputs": [],
+            "signatures": [],
+            "port_signature": {
+              "input_label_count": 4,
+              "output_label_count": 0,
+              "declared_input_count": 0,
+              "declared_output_count": 0,
+              "signature_count": 0,
+              "full_node_port_arity": null,
+              "semantics_status": "LABELS_AND_DIALOGSCRIPT_DECLARATIONS_ONLY",
+              "missing_semantics": "DialogScript labels/declarations do not prove the complete HOM node input/output signature or connection semantics."
+            }
+          }
+        },
+        "Sop/volumewrangle": {
+          "status": "CAPTURED",
+          "source": {
+            "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/otls/OPlibSop.hda",
+            "archive_sha256": "5018624a3f850b498df5696e7294dae8d442a847b6c61b9717025495d76bf5e2",
+            "member": "Sop/volumewrangle::DialogScript",
+            "section_sha256": "f15071e8c452e1a86d5ff28ca3bfc290bb09193ac549808dd7f14fb292b0b4a3"
+          },
+          "parameters": {
+            "group": {
+              "name": "group",
+              "type": "string",
+              "size": 1,
+              "label": "Group",
+              "default_tokens": [
+                ""
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000",
+                "script_action",
+                "import soputils\nkwargs['geometrytype'] = hou.geometryType.Primitives\nkwargs['inputindex'] = 0\nsoputils.selectGroupParm(kwargs)",
+                "script_action_help",
+                "Select geometry from an available viewport.",
+                "script_action_icon",
+                "BUTTONS_reselect"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "volumewrangle",
+                "folder0"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "group",
+                "label": "Group",
+                "type": "string",
+                "default": [
+                  ""
+                ],
+                "menutoggle": [
+                  "[",
+                  "opmenu -l -a blast1 group",
+                  "]"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000",
+                  "script_action",
+                  "import soputils\nkwargs['geometrytype'] = hou.geometryType.Primitives\nkwargs['inputindex'] = 0\nsoputils.selectGroupParm(kwargs)",
+                  "script_action_help",
+                  "Select geometry from an available viewport.",
+                  "script_action_icon",
+                  "BUTTONS_reselect"
+                ]
+              }
+            },
+            "bindeach": {
+              "name": "bindeach",
+              "type": "toggle",
+              "size": 1,
+              "label": "Bind Each Volume to Density",
+              "default_tokens": [
+                "off"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "volumewrangle",
+                "folder0"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "bindeach",
+                "label": "Bind Each Volume to Density",
+                "type": "toggle",
+                "default": [
+                  "off"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "snippet": {
+              "name": "snippet",
+              "type": "string",
+              "size": 1,
+              "label": "VEXpression",
+              "default_tokens": [
+                ""
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000",
+                "editor",
+                "1",
+                "editorlang",
+                "VEX",
+                "editorlines",
+                "8-30",
+                "script_action",
+                "import vexpressionmenu\n\nnode = kwargs['node']\nparmname = 'snippet'\n\nvexpressionmenu.createSpareParmsFromChCalls(node, parmname)",
+                "script_action_help",
+                "Creates spare parameters for each unique call of ch() ",
+                "script_action_icon",
+                "BUTTONS_create_parm_from_ch"
+              ],
+              "menu_script_tokens": [
+                "[",
+                "import vexpressionmenu",
+                "]",
+                "[",
+                "",
+                "]",
+                "[",
+                "return vexpressionmenu.buildSnippetMenu('volumewrangle/snippet', kwargs=kwargs)",
+                "]",
+                "language",
+                "python"
+              ],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "volumewrangle",
+                "folder0"
+              ],
+              "flags": [
+                "export"
+              ],
+              "raw_fields": {
+                "name": "snippet",
+                "label": "VEXpression",
+                "type": "string",
+                "default": [
+                  ""
+                ],
+                "menureplace": [
+                  "[",
+                  "import vexpressionmenu",
+                  "]",
+                  "[",
+                  "",
+                  "]",
+                  "[",
+                  "return vexpressionmenu.buildSnippetMenu('volumewrangle/snippet', kwargs=kwargs)",
+                  "]",
+                  "language",
+                  "python"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "export": true,
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000",
+                  "editor",
+                  "1",
+                  "editorlang",
+                  "VEX",
+                  "editorlines",
+                  "8-30",
+                  "script_action",
+                  "import vexpressionmenu\n\nnode = kwargs['node']\nparmname = 'snippet'\n\nvexpressionmenu.createSpareParmsFromChCalls(node, parmname)",
+                  "script_action_help",
+                  "Creates spare parameters for each unique call of ch() ",
+                  "script_action_icon",
+                  "BUTTONS_create_parm_from_ch"
+                ]
+              }
+            },
+            "exportlist": {
+              "name": "exportlist",
+              "type": "string",
+              "size": 1,
+              "label": "Volumes to Write to",
+              "default_tokens": [
+                "*"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "volumewrangle",
+                "folder0"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "exportlist",
+                "label": "Volumes to Write to",
+                "type": "string",
+                "default": [
+                  "*"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "vex_strict": {
+              "name": "vex_strict",
+              "type": "toggle",
+              "size": 1,
+              "label": "Enforce Prototypes",
+              "default_tokens": [
+                "off"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000",
+                "script_callback",
+                ""
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "volumewrangle",
+                "folder0"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "vex_strict",
+                "label": "Enforce Prototypes",
+                "type": "toggle",
+                "default": [
+                  "off"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000",
+                  "script_callback",
+                  ""
+                ]
+              }
+            },
+            "vex_strictvariables": {
+              "name": "vex_strictvariables",
+              "type": "toggle",
+              "size": 1,
+              "label": "Standard Variable Names Only",
+              "default_tokens": [
+                "on"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000",
+                "script_callback_language",
+                "python"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "volumewrangle",
+                "folder0"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "vex_strictvariables",
+                "label": "Standard Variable Names Only",
+                "type": "toggle",
+                "default": [
+                  "on"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000",
+                  "script_callback_language",
+                  "python"
+                ]
+              }
+            },
+            "folder0": {
+              "name": "folder0",
+              "type": "group",
+              "size": 1,
+              "label": "Code",
+              "default_tokens": [],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [],
+              "menu_script_tokens": [],
+              "container_kind": "group",
+              "children": [
+                "group",
+                "bindeach",
+                "snippet",
+                "exportlist",
+                "vex_strict",
+                "vex_strictvariables"
+              ],
+              "ancestors": [
+                "volumewrangle"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "folder0",
+                "label": "Code"
+              }
+            },
+            "autobind": {
+              "name": "autobind",
+              "type": "toggle",
+              "size": 1,
+              "label": "Autobind by Name",
+              "default_tokens": [
+                "1"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [],
+              "disable_when": "{ bindeach == 1 }",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "volumewrangle",
+                "folder0_1"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "autobind",
+                "label": "Autobind by Name",
+                "type": "toggle",
+                "default": [
+                  "1"
+                ],
+                "disablewhen": "{ bindeach == 1 }"
+              }
+            },
+            "bindprimname#": {
+              "name": "bindprimname#",
+              "type": "string",
+              "size": 1,
+              "label": "Primitive Name",
+              "default_tokens": [
+                ""
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [],
+              "disable_when": "{ bindeach == 1 } { autobind == 1 }",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "volumewrangle",
+                "folder0_1",
+                "bindings"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "bindprimname#",
+                "label": "Primitive Name",
+                "type": "string",
+                "default": [
+                  ""
+                ],
+                "disablewhen": "{ bindeach == 1 } { autobind == 1 }"
+              }
+            },
+            "bindprim#": {
+              "name": "bindprim#",
+              "type": "integer",
+              "size": 1,
+              "label": "Primitive",
+              "default_tokens": [
+                "0"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "10"
+              ],
+              "disable_when": "{ bindeach == 1 } { autobind == 1 }",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "volumewrangle",
+                "folder0_1",
+                "bindings"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "bindprim#",
+                "label": "Primitive",
+                "type": "integer",
+                "default": [
+                  "0"
+                ],
+                "disablewhen": "{ bindeach == 1 } { autobind == 1 }",
+                "range": [
+                  "0",
+                  "10"
+                ]
+              }
+            },
+            "bindname#": {
+              "name": "bindname#",
+              "type": "string",
+              "size": 1,
+              "label": "VEX Parameter",
+              "default_tokens": [
+                ""
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [],
+              "disable_when": "{ bindeach == 1 } { autobind == 1 }",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "volumewrangle",
+                "folder0_1",
+                "bindings"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "bindname#",
+                "label": "VEX Parameter",
+                "type": "string",
+                "default": [
+                  ""
+                ],
+                "disablewhen": "{ bindeach == 1 } { autobind == 1 }"
+              }
+            },
+            "bindings": {
+              "name": "bindings",
+              "type": "multiparm",
+              "size": 1,
+              "label": "Number of Bindings",
+              "default_tokens": [
+                "0"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000",
+                "multistartoffset",
+                "1"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "multiparm",
+              "children": [
+                "bindprimname#",
+                "bindprim#",
+                "bindname#"
+              ],
+              "ancestors": [
+                "volumewrangle",
+                "folder0_1"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "bindings",
+                "label": "Number of Bindings",
+                "default": "0",
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000",
+                  "multistartoffset",
+                  "1"
+                ]
+              }
+            },
+            "vex_geometrygenerator": {
+              "name": "vex_geometrygenerator",
+              "type": "toggle",
+              "size": 1,
+              "label": "Only Output Created Geometry",
+              "default_tokens": [
+                "off"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "volumewrangle",
+                "folder0_1"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "vex_geometrygenerator",
+                "label": "Only Output Created Geometry",
+                "type": "toggle",
+                "default": [
+                  "off"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "vdb_signedflood": {
+              "name": "vdb_signedflood",
+              "type": "toggle",
+              "size": 1,
+              "label": "Signed-Flood Fill Output SDF VDBs",
+              "default_tokens": [
+                "on"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "volumewrangle",
+                "folder0_1"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "vdb_signedflood",
+                "label": "Signed-Flood Fill Output SDF VDBs",
+                "type": "toggle",
+                "default": [
+                  "on"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "vex_cwdpath": {
+              "name": "vex_cwdpath",
+              "type": "oppath",
+              "size": 1,
+              "label": "Evaluation Node Path",
+              "default_tokens": [
+                "."
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000",
+                "oprelative",
+                "."
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "volumewrangle",
+                "folder0_1"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "vex_cwdpath",
+                "label": "Evaluation Node Path",
+                "type": "oppath",
+                "default": [
+                  "."
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000",
+                  "oprelative",
+                  "."
+                ]
+              }
+            },
+            "vex_outputmask": {
+              "name": "vex_outputmask",
+              "type": "string",
+              "size": 1,
+              "label": "Export Parameters",
+              "default_tokens": [
+                "*"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "volumewrangle",
+                "folder0_1"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "vex_outputmask",
+                "label": "Export Parameters",
+                "type": "string",
+                "default": [
+                  "*"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "vex_precision": {
+              "name": "vex_precision",
+              "type": "string",
+              "size": 1,
+              "label": "VEX Precision",
+              "default_tokens": [
+                "auto"
+              ],
+              "menu_tokens": [
+                "auto",
+                "Auto",
+                "32",
+                "32",
+                "64",
+                "64"
+              ],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "volumewrangle",
+                "folder0_1"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "vex_precision",
+                "label": "VEX Precision",
+                "type": "string",
+                "default": [
+                  "auto"
+                ],
+                "menu": [
+                  "auto",
+                  "Auto",
+                  "32",
+                  "32",
+                  "64",
+                  "64"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "folder0_1": {
+              "name": "folder0_1",
+              "type": "group",
+              "size": 1,
+              "label": "Bindings",
+              "default_tokens": [],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [],
+              "menu_script_tokens": [],
+              "container_kind": "group",
+              "children": [
+                "autobind",
+                "bindings",
+                "vex_geometrygenerator",
+                "vdb_signedflood",
+                "vex_cwdpath",
+                "vex_outputmask",
+                "vex_precision"
+              ],
+              "ancestors": [
+                "volumewrangle"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "folder0_1",
+                "label": "Bindings"
+              }
+            }
+          },
+          "interface": {
+            "input_labels": [
+              {
+                "dialogscript_index": 1,
+                "api_index": 0,
+                "label": "Volumes to Process with Wrangle",
+                "index_normalization": "one_based_dialogscript_to_zero_based_hom",
+                "status": "NORMALIZED"
+              },
+              {
+                "dialogscript_index": 2,
+                "api_index": 1,
+                "label": "Auxillary Input 1, access with volumesample(1, ...)",
+                "index_normalization": "one_based_dialogscript_to_zero_based_hom",
+                "status": "NORMALIZED"
+              },
+              {
+                "dialogscript_index": 3,
+                "api_index": 2,
+                "label": "Auxillary Input 2, access with volumesample(2, ...)",
+                "index_normalization": "one_based_dialogscript_to_zero_based_hom",
+                "status": "NORMALIZED"
+              },
+              {
+                "dialogscript_index": 4,
+                "api_index": 3,
+                "label": "Auxillary Input 3, access with volumesample(3, ...)",
+                "index_normalization": "one_based_dialogscript_to_zero_based_hom",
+                "status": "NORMALIZED"
+              }
+            ],
+            "output_labels": [],
+            "inputs": [],
+            "outputs": [],
+            "signatures": [],
+            "port_signature": {
+              "input_label_count": 4,
+              "output_label_count": 0,
+              "declared_input_count": 0,
+              "declared_output_count": 0,
+              "signature_count": 0,
+              "full_node_port_arity": null,
+              "semantics_status": "LABELS_AND_DIALOGSCRIPT_DECLARATIONS_ONLY",
+              "missing_semantics": "DialogScript labels/declarations do not prove the complete HOM node input/output signature or connection semantics."
+            }
+          }
+        },
+        "Sop/volumeconvolve3": {
+          "status": "PARTIAL_STATIC_EVIDENCE",
+          "source_refs": [
+            {
+              "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/python3.11libs/dopsparsepyrotools.py",
+              "sha256": "0e086f9a7caf012cf9824f743bda8c0d48af26b9e20e451840a1cbe311b525ec",
+              "lines": [
+                {
+                  "line": 5700,
+                  "text": "def setupSharpenVolume(node, volumename='density'):"
+                },
+                {
+                  "line": 5701,
+                  "text": "    \"\"\" Generates a subnet with voluemconvolve3 node with predefined sharpening settings."
+                },
+                {
+                  "line": 5702,
+                  "text": ""
+                },
+                {
+                  "line": 5703,
+                  "text": "        :param node: The volumeconvolve will be placed under this node."
+                },
+                {
+                  "line": 5704,
+                  "text": "        :param volumename: The name of the volume to sharpen."
+                },
+                {
+                  "line": 5705,
+                  "text": "    \"\"\""
+                },
+                {
+                  "line": 5706,
+                  "text": "   "
+                },
+                {
+                  "line": 5707,
+                  "text": "    pos = node.position()"
+                },
+                {
+                  "line": 5708,
+                  "text": "    parent= node.parent()"
+                },
+                {
+                  "line": 5709,
+                  "text": ""
+                },
+                {
+                  "line": 5710,
+                  "text": "    subnet = parent.createNode(\"subnet\", \"sharpen_\" + volumename)"
+                },
+                {
+                  "line": 5711,
+                  "text": ""
+                },
+                {
+                  "line": 5712,
+                  "text": "    hou_parm_template_group = hou.ParmTemplateGroup()"
+                },
+                {
+                  "line": 5713,
+                  "text": "    # Code for parameter template"
+                },
+                {
+                  "line": 5714,
+                  "text": "    hou_parm_template = hou.StringParmTemplate(\"label1\", \"Input #1 Label\", 1, default_value=([\"Sub-Network Input #1\"]), naming_scheme=hou.parmNamingScheme.Base1, string_type=hou.stringParmType.Regular, menu_items=([]), menu_labels=([]), icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal)"
+                },
+                {
+                  "line": 5715,
+                  "text": "    hou_parm_template.hide(True)"
+                },
+                {
+                  "line": 5716,
+                  "text": "    hou_parm_template_group.append(hou_parm_template)"
+                },
+                {
+                  "line": 5717,
+                  "text": "    # Code for parameter template"
+                },
+                {
+                  "line": 5718,
+                  "text": "    hou_parm_template = hou.StringParmTemplate(\"label2\", \"Input #2 Label\", 1, default_value=([\"Sub-Network Input #2\"]), naming_scheme=hou.parmNamingScheme.Base1, string_type=hou.stringParmType.Regular, menu_items=([]), menu_labels=([]), icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal)"
+                },
+                {
+                  "line": 5719,
+                  "text": "    hou_parm_template.hide(True)"
+                },
+                {
+                  "line": 5720,
+                  "text": "    hou_parm_template_group.append(hou_parm_template)"
+                },
+                {
+                  "line": 5721,
+                  "text": "    # Code for parameter template"
+                },
+                {
+                  "line": 5722,
+                  "text": "    hou_parm_template = hou.StringParmTemplate(\"label3\", \"Input #3 Label\", 1, default_value=([\"Sub-Network Input #3\"]), naming_scheme=hou.parmNamingScheme.Base1, string_type=hou.stringParmType.Regular, menu_items=([]), menu_labels=([]), icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal)"
+                },
+                {
+                  "line": 5723,
+                  "text": "    hou_parm_template.hide(True)"
+                },
+                {
+                  "line": 5724,
+                  "text": "    hou_parm_template_group.append(hou_parm_template)"
+                },
+                {
+                  "line": 5725,
+                  "text": "    # Code for parameter template"
+                },
+                {
+                  "line": 5726,
+                  "text": "    hou_parm_template = hou.StringParmTemplate(\"label4\", \"Input #4 Label\", 1, default_value=([\"Sub-Network Input #4\"]), naming_scheme=hou.parmNamingScheme.Base1, string_type=hou.stringParmType.Regular, menu_items=([]), menu_labels=([]), icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal)"
+                },
+                {
+                  "line": 5727,
+                  "text": "    hou_parm_template.hide(True)"
+                },
+                {
+                  "line": 5728,
+                  "text": "    hou_parm_template_group.append(hou_parm_template)"
+                },
+                {
+                  "line": 5729,
+                  "text": "    # Code for parameter template"
+                },
+                {
+                  "line": 5730,
+                  "text": "    hou_parm_template = hou.StringParmTemplate(\"volumename\", \"Volume to Sharpen\", 1, default_value=([\"density\"]), naming_scheme=hou.parmNamingScheme.Base1, string_type=hou.stringParmType.Regular, menu_items=([]), menu_labels=([]), icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal)"
+                },
+                {
+                  "line": 5731,
+                  "text": "    hou_parm_template.setScriptCallbackLanguage(hou.scriptLanguage.Python)"
+                },
+                {
+                  "line": 5732,
+                  "text": "    hou_parm_template.setTags({\"script_callback_language\": \"python\"})"
+                },
+                {
+                  "line": 5733,
+                  "text": "    hou_parm_template_group.append(hou_parm_template)"
+                },
+                {
+                  "line": 5734,
+                  "text": "    # Code for parameter template"
+                },
+                {
+                  "line": 5735,
+                  "text": "    hou_parm_template = hou.FloatParmTemplate(\"coef\", \"Coefficient\", 1, default_value=([15]), min=0, max=50, min_is_strict=True, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1)"
+                },
+                {
+                  "line": 5736,
+                  "text": "    hou_parm_template.setScriptCallbackLanguage(hou.scriptLanguage.Python)"
+                },
+                {
+                  "line": 5737,
+                  "text": "    hou_parm_template.setTags({\"script_callback_language\": \"python\"})"
+                },
+                {
+                  "line": 5738,
+                  "text": "    hou_parm_template_group.append(hou_parm_template)"
+                },
+                {
+                  "line": 5739,
+                  "text": "    subnet.setParmTemplateGroup(hou_parm_template_group)"
+                },
+                {
+                  "line": 5740,
+                  "text": ""
+                },
+                {
+                  "line": 5741,
+                  "text": "    subnet.setInput(0,node,0) "
+                },
+                {
+                  "line": 5742,
+                  "text": "    subnet.moveToGoodPosition()"
+                },
+                {
+                  "line": 5743,
+                  "text": ""
+                },
+                {
+                  "line": 5744,
+                  "text": "    sharpen = subnet.createNode('volumeconvolve3', 'sharpen_' + volumename)"
+                },
+                {
+                  "line": 5745,
+                  "text": "    sharpen.parm('group').set('@name=`chs(\"../volumename\")`')    "
+                },
+                {
+                  "line": 5746,
+                  "text": "    "
+                },
+                {
+                  "line": 5747,
+                  "text": "    hou_parm_tuple = sharpen.parmTuple(\"convolvezm\")    "
+                },
+                {
+                  "line": 5748,
+                  "text": "    hou_parm_tuple.set((0, -0.10000000000000001, 0, -0.10000000000000001, -1, -0.10000000000000001, 0, -0.10000000000000001, 0))"
+                },
+                {
+                  "line": 5749,
+                  "text": ""
+                },
+                {
+                  "line": 5750,
+                  "text": "    hou_parm_tuple = sharpen.parmTuple(\"convolvezz\")    "
+                },
+                {
+                  "line": 5751,
+                  "text": "    hou_parm_tuple.set((-0.10000000000000001, -1, -0.10000000000000001, -1, 15, -1, -0.10000000000000001, -1, -0.10000000000000001))"
+                },
+                {
+                  "line": 5752,
+                  "text": "    "
+                },
+                {
+                  "line": 5753,
+                  "text": "    hou_parm_tuple = sharpen.parmTuple(\"convolvezp\")"
+                },
+                {
+                  "line": 5754,
+                  "text": "    hou_parm_tuple.set((0, -0.10000000000000001, 0, -0.10000000000000001, -1, -0.10000000000000001, 0, -0.10000000000000001, 0)) "
+                },
+                {
+                  "line": 5755,
+                  "text": "    "
+                },
+                {
+                  "line": 5756,
+                  "text": "    sharpen.parm(\"normalize\").set(1)  "
+                },
+                {
+                  "line": 5757,
+                  "text": "    sharpen.parm(\"convolvezz5\").setExpression('ch(\"../coef\")')"
+                },
+                {
+                  "line": 5758,
+                  "text": "    "
+                },
+                {
+                  "line": 5759,
+                  "text": "    #sharpen.setPosition(hou.Vector2(0,0))"
+                },
+                {
+                  "line": 5760,
+                  "text": "    #sharpen.setInput(0,node,0)"
+                },
+                {
+                  "line": 5761,
+                  "text": ""
+                },
+                {
+                  "line": 5762,
+                  "text": "    volume_clamp = subnet.createNode('volumewrangle', 'clamp_below_zero')"
+                },
+                {
+                  "line": 5763,
+                  "text": "    volume_clamp.parm('group').set('@name=`chs(\"../volumename\")`')"
+                },
+                {
+                  "line": 5764,
+                  "text": "    volume_clamp.parm('bindeach').set(1)"
+                },
+                {
+                  "line": 5765,
+                  "text": "    volume_clamp.parm('snippet').set('@density = max(0,f@density);')    "
+                },
+                {
+                  "line": 5766,
+                  "text": ""
+                },
+                {
+                  "line": 5767,
+                  "text": "    out = subnet.createNode('output', 'output0')"
+                },
+                {
+                  "line": 5768,
+                  "text": "    out.setInput(0,subnet.indirectInputs()[0],0)    "
+                },
+                {
+                  "line": 5769,
+                  "text": "    out.setPosition(hou.Vector2(0,-2))"
+                },
+                {
+                  "line": 5770,
+                  "text": "    toolutils.insertNodeAbove(out,sharpen)"
+                },
+                {
+                  "line": 5771,
+                  "text": "    toolutils.insertNodeAbove(out,volume_clamp)"
+                },
+                {
+                  "line": 5772,
+                  "text": "    sharpen.setPosition(hou.Vector2(0,0))  "
+                },
+                {
+                  "line": 5773,
+                  "text": "    volume_clamp.setPosition(hou.Vector2(0,-1)) "
+                },
+                {
+                  "line": 5774,
+                  "text": "    "
+                },
+                {
+                  "line": 5775,
+                  "text": "    return subnet"
+                },
+                {
+                  "line": 5776,
+                  "text": ""
+                },
+                {
+                  "line": 5777,
+                  "text": "def linkMaterialToSolver(solver_node, shader_node, use_data: bool = False):"
+                },
+                {
+                  "line": 5778,
+                  "text": "    ''' Links the pyro solver node and shader node together. The shader node will"
+                },
+                {
+                  "line": 5779,
+                  "text": "        gain channel references pointing to the corresponding parts of"
+                }
+              ]
+            },
+            {
+              "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/help/nodes.zip",
+              "archive_sha256": "7c83e14d77ddaebf0f918244c1747509633b2721a39468eb4ae3efc694886916",
+              "member": "sop/volumeconvolve3.txt",
+              "section_sha256": "cf0c531b7446595c45db925437d82f9a06201002962be7bb907d5b32ad3eb6ae",
+              "text": "#type: node\n#context: sop\n#internal: volumeconvolve3\n#icon: SOP/volumeconvolve3\n#since: 12.5\n#verb_since: 16.5\n\n#tags: volumes\n\n= Volume Convolve 3x3x3 =\n\n\"\"\"Convolves a volume by a 3x3x3 kernel.\"\"\"\n\nThe Volume Convolve 3x3x3 operation convolves the voxels of a volume.\n\nThis takes each 3x3x3 neighbourhood of a voxel, multiplies it by a set of\ncoefficients, and combines the result into a total.  This can be used as a\nbasic primitive for doing edge detection or neighbourhood counting.\n\n@parameters\n    Source Group:\n        The volume primitives to be convolved.\n    Z-1, Z=0, Z+1 Kernel:\n\tThe coefficients for the 3x3x3 neighbourhood are split into separate\n\t3x3 arrays, specifying the x/y coefficients for each z-plane.\n    Normalize Kernel:\n\tThe coefficients will be divided by the average of all of the\n\tcoefficients, resulting in an operation that preserves magnitude.\n    Combine Operation:\n\tHow to combine the voxels after they've been multiplied by the\n\tcoefficients.  Add Abs will take the absolute value of each\n\tvoxel-coeffecient product prior to adding them up.\n\n@related\n    - [Node:sop/volumeblur]\n\n"
+            },
+            {
+              "path": "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/21.0/Resources/houdini/config/Dialogs/SOP/volumeconvolve3",
+              "sha256": "d77190db4faf0ad0fef1927e79b1ea80d3e3fe57f642f04c7fdd8b88eabcbfdd",
+              "format": "compiled UI; not decoded into default or runtime gate facts"
+            }
+          ],
+          "vendor_explicit_api_usage": {
+            "group": {
+              "api": "parm.set",
+              "type": "string",
+              "size": 1
+            },
+            "normalize": {
+              "api": "parm.set",
+              "value": 1,
+              "size": 1
+            },
+            "convolvezm": {
+              "api": "parmTuple.set",
+              "size": 9,
+              "values": [
+                0,
+                -0.1,
+                0,
+                -0.1,
+                -1,
+                -0.1,
+                0,
+                -0.1,
+                0
+              ]
+            },
+            "convolvezz": {
+              "api": "parmTuple.set",
+              "size": 9,
+              "values": [
+                -0.1,
+                -1,
+                -0.1,
+                -1,
+                15,
+                -1,
+                -0.1,
+                -1,
+                -0.1
+              ]
+            },
+            "convolvezp": {
+              "api": "parmTuple.set",
+              "size": 9,
+              "values": [
+                0,
+                -0.1,
+                0,
+                -0.1,
+                -1,
+                -0.1,
+                0,
+                -0.1,
+                0
+              ]
+            },
+            "convolvezz5": {
+              "api": "parm.setExpression",
+              "expression": "ch(\"../coef\")",
+              "component_index": 4
+            }
+          },
+          "unknowns": [
+            "instantiated defaults",
+            "instance gate state",
+            "operation ordinal values/default",
+            "complete parameter template metadata"
+          ],
+          "notes": [
+            "3 nine-component kernel tuples and component 5 are explicit same-build vendor API calls.",
+            "Test-injected native API instance state must be labelled as such and not promoted to static or real-host fact.",
+            "The vendor sharpening function does not set operation; no operation ordinal/default can be inferred from that omission."
+          ]
+        }
+      }
+    },
+    "22.0.429": {
+      "operators": {
+        "Sop/attribwrangle": {
+          "status": "CAPTURED",
+          "source": {
+            "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/otls/OPlibSop.hda",
+            "archive_sha256": "c24559e89d9f2895e32d2fc26a96b922c00a47a75de212f60a56928042df1a7f",
+            "member": "Sop/attribwrangle::DialogScript",
+            "section_sha256": "b47a35a99cfd15f0c85143a3fed309c1a2f30704183ef7565bd52af1f7306c77"
+          },
+          "parameters": {
+            "group": {
+              "name": "group",
+              "type": "string",
+              "size": 1,
+              "label": "Group",
+              "default_tokens": [
+                ""
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000",
+                "script_action",
+                "import soputils\nkwargs['geometrytype'] = kwargs['node'].parmTuple('grouptype')\nkwargs['inputindex'] = 0\nsoputils.selectGroupParm(kwargs)",
+                "script_action_help",
+                "Select geometry from an available viewport.",
+                "script_action_icon",
+                "BUTTONS_reselect"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "group",
+                "label": "Group",
+                "type": "string",
+                "default": [
+                  ""
+                ],
+                "menutoggle": [
+                  "[",
+                  "opmenu -l -a attribvop1 bindgroup",
+                  "]"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000",
+                  "script_action",
+                  "import soputils\nkwargs['geometrytype'] = kwargs['node'].parmTuple('grouptype')\nkwargs['inputindex'] = 0\nsoputils.selectGroupParm(kwargs)",
+                  "script_action_help",
+                  "Select geometry from an available viewport.",
+                  "script_action_icon",
+                  "BUTTONS_reselect"
+                ],
+                "bindselector": "uvselect",
+                "0": "1"
+              }
+            },
+            "grouptype": {
+              "name": "grouptype",
+              "type": "ordinal",
+              "size": 1,
+              "label": "Group Type",
+              "default_tokens": [
+                "guess"
+              ],
+              "menu_tokens": [
+                "guess",
+                "Guess from Group",
+                "vertices",
+                "Vertices",
+                "edges",
+                "Edges",
+                "points",
+                "Points",
+                "prims",
+                "Primitives"
+              ],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "grouptype",
+                "label": "Group Type",
+                "type": "ordinal",
+                "default": [
+                  "guess"
+                ],
+                "menu": [
+                  "guess",
+                  "Guess from Group",
+                  "vertices",
+                  "Vertices",
+                  "edges",
+                  "Edges",
+                  "points",
+                  "Points",
+                  "prims",
+                  "Primitives"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "class": {
+              "name": "class",
+              "type": "ordinal",
+              "size": 1,
+              "label": "Run Over",
+              "default_tokens": [
+                "point"
+              ],
+              "menu_tokens": [
+                "detail",
+                "Detail (only once)",
+                "primitive",
+                "Primitives",
+                "point",
+                "Points",
+                "vertex",
+                "Vertices",
+                "number",
+                "Numbers"
+              ],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "class",
+                "label": "Run Over",
+                "type": "ordinal",
+                "default": [
+                  "point"
+                ],
+                "menu": [
+                  "detail",
+                  "Detail (only once)",
+                  "primitive",
+                  "Primitives",
+                  "point",
+                  "Points",
+                  "vertex",
+                  "Vertices",
+                  "number",
+                  "Numbers"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "vex_numcount": {
+              "name": "vex_numcount",
+              "type": "integer",
+              "size": 1,
+              "label": "Number Count",
+              "default_tokens": [
+                "10"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0!",
+                "10000"
+              ],
+              "disable_when": "",
+              "hide_when": "{ class != number }",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "vex_numcount",
+                "label": "Number Count",
+                "type": "integer",
+                "default": [
+                  "10"
+                ],
+                "hidewhen": "{ class != number }",
+                "range": [
+                  "0!",
+                  "10000"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "vex_threadjobsize": {
+              "name": "vex_threadjobsize",
+              "type": "integer",
+              "size": 1,
+              "label": "Thread Job Size",
+              "default_tokens": [
+                "1024"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "1!",
+                "10000"
+              ],
+              "disable_when": "",
+              "hide_when": "{ class != number }",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "vex_threadjobsize",
+                "label": "Thread Job Size",
+                "type": "integer",
+                "default": [
+                  "1024"
+                ],
+                "hidewhen": "{ class != number }",
+                "range": [
+                  "1!",
+                  "10000"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "snippet": {
+              "name": "snippet",
+              "type": "string",
+              "size": 1,
+              "label": "VEXpression",
+              "default_tokens": [
+                ""
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000",
+                "editor",
+                "1",
+                "editorlang",
+                "VEX",
+                "editorlines",
+                "8-30",
+                "script_action",
+                "import vexpressionmenu\n\nnode = kwargs['node']\nparmname = 'snippet'\n\nvexpressionmenu.createSpareParmsFromChCalls(node, parmname)",
+                "script_action_help",
+                "Creates spare parameters for each unique call of ch() ",
+                "script_action_icon",
+                "BUTTONS_create_parm_from_ch"
+              ],
+              "menu_script_tokens": [
+                "[",
+                "import vexpressionmenu",
+                "]",
+                "[",
+                "",
+                "]",
+                "[",
+                "return vexpressionmenu.buildSnippetMenu('attribwrangle/snippet', kwargs=kwargs)",
+                "]",
+                "language",
+                "python"
+              ],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0"
+              ],
+              "flags": [
+                "export"
+              ],
+              "raw_fields": {
+                "name": "snippet",
+                "label": "VEXpression",
+                "type": "string",
+                "default": [
+                  ""
+                ],
+                "menureplace": [
+                  "[",
+                  "import vexpressionmenu",
+                  "]",
+                  "[",
+                  "",
+                  "]",
+                  "[",
+                  "return vexpressionmenu.buildSnippetMenu('attribwrangle/snippet', kwargs=kwargs)",
+                  "]",
+                  "language",
+                  "python"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "export": true,
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000",
+                  "editor",
+                  "1",
+                  "editorlang",
+                  "VEX",
+                  "editorlines",
+                  "8-30",
+                  "script_action",
+                  "import vexpressionmenu\n\nnode = kwargs['node']\nparmname = 'snippet'\n\nvexpressionmenu.createSpareParmsFromChCalls(node, parmname)",
+                  "script_action_help",
+                  "Creates spare parameters for each unique call of ch() ",
+                  "script_action_icon",
+                  "BUTTONS_create_parm_from_ch"
+                ]
+              }
+            },
+            "exportlist": {
+              "name": "exportlist",
+              "type": "string",
+              "size": 1,
+              "label": "Attributes to Create",
+              "default_tokens": [
+                "*"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "exportlist",
+                "label": "Attributes to Create",
+                "type": "string",
+                "default": [
+                  "*"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "vex_strict": {
+              "name": "vex_strict",
+              "type": "toggle",
+              "size": 1,
+              "label": "Enforce Prototypes",
+              "default_tokens": [
+                "off"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000",
+                "script_callback",
+                ""
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "vex_strict",
+                "label": "Enforce Prototypes",
+                "type": "toggle",
+                "default": [
+                  "off"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000",
+                  "script_callback",
+                  ""
+                ]
+              }
+            },
+            "vex_strictvariables": {
+              "name": "vex_strictvariables",
+              "type": "toggle",
+              "size": 1,
+              "label": "Standard Variable Names Only",
+              "default_tokens": [
+                "on"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000",
+                "script_callback_language",
+                "python"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "vex_strictvariables",
+                "label": "Standard Variable Names Only",
+                "type": "toggle",
+                "default": [
+                  "on"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000",
+                  "script_callback_language",
+                  "python"
+                ]
+              }
+            },
+            "folder0": {
+              "name": "folder0",
+              "type": "group",
+              "size": 1,
+              "label": "Code",
+              "default_tokens": [],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [],
+              "menu_script_tokens": [],
+              "container_kind": "group",
+              "children": [
+                "group",
+                "grouptype",
+                "class",
+                "vex_numcount",
+                "vex_threadjobsize",
+                "snippet",
+                "exportlist",
+                "vex_strict",
+                "vex_strictvariables"
+              ],
+              "ancestors": [
+                "attribwrangle"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "folder0",
+                "label": "Code"
+              }
+            },
+            "autobind": {
+              "name": "autobind",
+              "type": "toggle",
+              "size": 1,
+              "label": "Autobind by Name",
+              "default_tokens": [
+                "on"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0_1"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "autobind",
+                "label": "Autobind by Name",
+                "type": "toggle",
+                "default": [
+                  "on"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "bindname#": {
+              "name": "bindname#",
+              "type": "string",
+              "size": 1,
+              "label": "Attribute Name",
+              "default_tokens": [
+                ""
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0_1",
+                "bindings"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "bindname#",
+                "label": "Attribute Name",
+                "type": "string",
+                "default": [
+                  ""
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ]
+              }
+            },
+            "bindparm#": {
+              "name": "bindparm#",
+              "type": "string",
+              "size": 1,
+              "label": "VEX Parameter",
+              "default_tokens": [
+                ""
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0_1",
+                "bindings"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "bindparm#",
+                "label": "VEX Parameter",
+                "type": "string",
+                "default": [
+                  ""
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ]
+              }
+            },
+            "bindings": {
+              "name": "bindings",
+              "type": "multiparm",
+              "size": 1,
+              "label": "Number of Bindings",
+              "default_tokens": [
+                "0"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000",
+                "multistartoffset",
+                "1"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "multiparm",
+              "children": [
+                "bindname#",
+                "bindparm#"
+              ],
+              "ancestors": [
+                "attribwrangle",
+                "folder0_1"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "bindings",
+                "label": "Number of Bindings",
+                "default": "0",
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000",
+                  "multistartoffset",
+                  "1"
+                ]
+              }
+            },
+            "groupautobind": {
+              "name": "groupautobind",
+              "type": "toggle",
+              "size": 1,
+              "label": "Autobind Groups by Name",
+              "default_tokens": [
+                "on"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0_1"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "groupautobind",
+                "label": "Autobind Groups by Name",
+                "type": "toggle",
+                "default": [
+                  "on"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "bindgroupname#": {
+              "name": "bindgroupname#",
+              "type": "string",
+              "size": 1,
+              "label": "Group Name",
+              "default_tokens": [
+                ""
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0_1",
+                "groupbindings"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "bindgroupname#",
+                "label": "Group Name",
+                "type": "string",
+                "default": [
+                  ""
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ]
+              }
+            },
+            "bindgroupparm#": {
+              "name": "bindgroupparm#",
+              "type": "string",
+              "size": 1,
+              "label": "VEX Parameter",
+              "default_tokens": [
+                ""
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0_1",
+                "groupbindings"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "bindgroupparm#",
+                "label": "VEX Parameter",
+                "type": "string",
+                "default": [
+                  ""
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ]
+              }
+            },
+            "groupbindings": {
+              "name": "groupbindings",
+              "type": "multiparm",
+              "size": 1,
+              "label": "Group Bindings",
+              "default_tokens": [
+                "0"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000",
+                "multistartoffset",
+                "1"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "multiparm",
+              "children": [
+                "bindgroupname#",
+                "bindgroupparm#"
+              ],
+              "ancestors": [
+                "attribwrangle",
+                "folder0_1"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "groupbindings",
+                "label": "Group Bindings",
+                "default": "0",
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000",
+                  "multistartoffset",
+                  "1"
+                ]
+              }
+            },
+            "vex_cwdpath": {
+              "name": "vex_cwdpath",
+              "type": "oppath",
+              "size": 1,
+              "label": "Evaluation Node Path",
+              "default_tokens": [
+                "."
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000",
+                "oprelative",
+                "."
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0_1"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "vex_cwdpath",
+                "label": "Evaluation Node Path",
+                "type": "oppath",
+                "default": [
+                  "."
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000",
+                  "oprelative",
+                  "."
+                ]
+              }
+            },
+            "vex_outputmask": {
+              "name": "vex_outputmask",
+              "type": "string",
+              "size": 1,
+              "label": "Export Parameters",
+              "default_tokens": [
+                "*"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0_1"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "vex_outputmask",
+                "label": "Export Parameters",
+                "type": "string",
+                "default": [
+                  "*"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "vex_updatenmls": {
+              "name": "vex_updatenmls",
+              "type": "toggle",
+              "size": 1,
+              "label": "Update Normals If Displaced",
+              "default_tokens": [
+                "off"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000",
+                "script_callback",
+                ""
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0_1"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "vex_updatenmls",
+                "label": "Update Normals If Displaced",
+                "type": "toggle",
+                "default": [
+                  "off"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000",
+                  "script_callback",
+                  ""
+                ]
+              }
+            },
+            "vex_matchattrib": {
+              "name": "vex_matchattrib",
+              "type": "string",
+              "size": 1,
+              "label": "Attribute to Match",
+              "default_tokens": [
+                "id"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0_1"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "vex_matchattrib",
+                "label": "Attribute to Match",
+                "type": "string",
+                "default": [
+                  "id"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "vex_inplace": {
+              "name": "vex_inplace",
+              "type": "toggle",
+              "size": 1,
+              "label": "Compute Results In Place",
+              "default_tokens": [
+                "off"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0_1"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "vex_inplace",
+                "label": "Compute Results In Place",
+                "type": "toggle",
+                "default": [
+                  "off"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "vex_selectiongroup": {
+              "name": "vex_selectiongroup",
+              "type": "string",
+              "size": 1,
+              "label": "Output Selection Group",
+              "default_tokens": [
+                ""
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0_1"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "vex_selectiongroup",
+                "label": "Output Selection Group",
+                "type": "string",
+                "default": [
+                  ""
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "vex_precision": {
+              "name": "vex_precision",
+              "type": "string",
+              "size": 1,
+              "label": "VEX Precision",
+              "default_tokens": [
+                "auto"
+              ],
+              "menu_tokens": [
+                "auto",
+                "Auto",
+                "32",
+                "32-bit",
+                "64",
+                "64-bit"
+              ],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "attribwrangle",
+                "folder0_1"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "vex_precision",
+                "label": "VEX Precision",
+                "type": "string",
+                "default": [
+                  "auto"
+                ],
+                "menu": [
+                  "auto",
+                  "Auto",
+                  "32",
+                  "32-bit",
+                  "64",
+                  "64-bit"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "folder0_1": {
+              "name": "folder0_1",
+              "type": "group",
+              "size": 1,
+              "label": "Bindings",
+              "default_tokens": [],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [],
+              "menu_script_tokens": [],
+              "container_kind": "group",
+              "children": [
+                "autobind",
+                "bindings",
+                "groupautobind",
+                "groupbindings",
+                "vex_cwdpath",
+                "vex_outputmask",
+                "vex_updatenmls",
+                "vex_matchattrib",
+                "vex_inplace",
+                "vex_selectiongroup",
+                "vex_precision"
+              ],
+              "ancestors": [
+                "attribwrangle"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "folder0_1",
+                "label": "Bindings"
+              }
+            }
+          },
+          "interface": {
+            "input_labels": [
+              {
+                "dialogscript_index": 1,
+                "api_index": 0,
+                "label": "Geometry to Process with Wrangle",
+                "index_normalization": "one_based_dialogscript_to_zero_based_hom",
+                "status": "NORMALIZED"
+              },
+              {
+                "dialogscript_index": 2,
+                "api_index": 1,
+                "label": "Ancillary Input, point(1, ...) to Access",
+                "index_normalization": "one_based_dialogscript_to_zero_based_hom",
+                "status": "NORMALIZED"
+              },
+              {
+                "dialogscript_index": 3,
+                "api_index": 2,
+                "label": "Ancillary Input, point(2, ...) to Access",
+                "index_normalization": "one_based_dialogscript_to_zero_based_hom",
+                "status": "NORMALIZED"
+              },
+              {
+                "dialogscript_index": 4,
+                "api_index": 3,
+                "label": "Ancillary Input, point(3, ...) to Access",
+                "index_normalization": "one_based_dialogscript_to_zero_based_hom",
+                "status": "NORMALIZED"
+              }
+            ],
+            "output_labels": [],
+            "inputs": [],
+            "outputs": [],
+            "signatures": [],
+            "port_signature": {
+              "input_label_count": 4,
+              "output_label_count": 0,
+              "declared_input_count": 0,
+              "declared_output_count": 0,
+              "signature_count": 0,
+              "full_node_port_arity": null,
+              "semantics_status": "LABELS_AND_DIALOGSCRIPT_DECLARATIONS_ONLY",
+              "missing_semantics": "DialogScript labels/declarations do not prove the complete HOM node input/output signature or connection semantics."
+            }
+          }
+        },
+        "Sop/volumewrangle": {
+          "status": "CAPTURED",
+          "source": {
+            "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/otls/OPlibSop.hda",
+            "archive_sha256": "c24559e89d9f2895e32d2fc26a96b922c00a47a75de212f60a56928042df1a7f",
+            "member": "Sop/volumewrangle::DialogScript",
+            "section_sha256": "f15071e8c452e1a86d5ff28ca3bfc290bb09193ac549808dd7f14fb292b0b4a3"
+          },
+          "parameters": {
+            "group": {
+              "name": "group",
+              "type": "string",
+              "size": 1,
+              "label": "Group",
+              "default_tokens": [
+                ""
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000",
+                "script_action",
+                "import soputils\nkwargs['geometrytype'] = hou.geometryType.Primitives\nkwargs['inputindex'] = 0\nsoputils.selectGroupParm(kwargs)",
+                "script_action_help",
+                "Select geometry from an available viewport.",
+                "script_action_icon",
+                "BUTTONS_reselect"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "volumewrangle",
+                "folder0"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "group",
+                "label": "Group",
+                "type": "string",
+                "default": [
+                  ""
+                ],
+                "menutoggle": [
+                  "[",
+                  "opmenu -l -a blast1 group",
+                  "]"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000",
+                  "script_action",
+                  "import soputils\nkwargs['geometrytype'] = hou.geometryType.Primitives\nkwargs['inputindex'] = 0\nsoputils.selectGroupParm(kwargs)",
+                  "script_action_help",
+                  "Select geometry from an available viewport.",
+                  "script_action_icon",
+                  "BUTTONS_reselect"
+                ]
+              }
+            },
+            "bindeach": {
+              "name": "bindeach",
+              "type": "toggle",
+              "size": 1,
+              "label": "Bind Each Volume to Density",
+              "default_tokens": [
+                "off"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "volumewrangle",
+                "folder0"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "bindeach",
+                "label": "Bind Each Volume to Density",
+                "type": "toggle",
+                "default": [
+                  "off"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "snippet": {
+              "name": "snippet",
+              "type": "string",
+              "size": 1,
+              "label": "VEXpression",
+              "default_tokens": [
+                ""
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000",
+                "editor",
+                "1",
+                "editorlang",
+                "VEX",
+                "editorlines",
+                "8-30",
+                "script_action",
+                "import vexpressionmenu\n\nnode = kwargs['node']\nparmname = 'snippet'\n\nvexpressionmenu.createSpareParmsFromChCalls(node, parmname)",
+                "script_action_help",
+                "Creates spare parameters for each unique call of ch() ",
+                "script_action_icon",
+                "BUTTONS_create_parm_from_ch"
+              ],
+              "menu_script_tokens": [
+                "[",
+                "import vexpressionmenu",
+                "]",
+                "[",
+                "",
+                "]",
+                "[",
+                "return vexpressionmenu.buildSnippetMenu('volumewrangle/snippet', kwargs=kwargs)",
+                "]",
+                "language",
+                "python"
+              ],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "volumewrangle",
+                "folder0"
+              ],
+              "flags": [
+                "export"
+              ],
+              "raw_fields": {
+                "name": "snippet",
+                "label": "VEXpression",
+                "type": "string",
+                "default": [
+                  ""
+                ],
+                "menureplace": [
+                  "[",
+                  "import vexpressionmenu",
+                  "]",
+                  "[",
+                  "",
+                  "]",
+                  "[",
+                  "return vexpressionmenu.buildSnippetMenu('volumewrangle/snippet', kwargs=kwargs)",
+                  "]",
+                  "language",
+                  "python"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "export": true,
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000",
+                  "editor",
+                  "1",
+                  "editorlang",
+                  "VEX",
+                  "editorlines",
+                  "8-30",
+                  "script_action",
+                  "import vexpressionmenu\n\nnode = kwargs['node']\nparmname = 'snippet'\n\nvexpressionmenu.createSpareParmsFromChCalls(node, parmname)",
+                  "script_action_help",
+                  "Creates spare parameters for each unique call of ch() ",
+                  "script_action_icon",
+                  "BUTTONS_create_parm_from_ch"
+                ]
+              }
+            },
+            "exportlist": {
+              "name": "exportlist",
+              "type": "string",
+              "size": 1,
+              "label": "Volumes to Write to",
+              "default_tokens": [
+                "*"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "volumewrangle",
+                "folder0"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "exportlist",
+                "label": "Volumes to Write to",
+                "type": "string",
+                "default": [
+                  "*"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "vex_strict": {
+              "name": "vex_strict",
+              "type": "toggle",
+              "size": 1,
+              "label": "Enforce Prototypes",
+              "default_tokens": [
+                "off"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000",
+                "script_callback",
+                ""
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "volumewrangle",
+                "folder0"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "vex_strict",
+                "label": "Enforce Prototypes",
+                "type": "toggle",
+                "default": [
+                  "off"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000",
+                  "script_callback",
+                  ""
+                ]
+              }
+            },
+            "vex_strictvariables": {
+              "name": "vex_strictvariables",
+              "type": "toggle",
+              "size": 1,
+              "label": "Standard Variable Names Only",
+              "default_tokens": [
+                "on"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000",
+                "script_callback_language",
+                "python"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "volumewrangle",
+                "folder0"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "vex_strictvariables",
+                "label": "Standard Variable Names Only",
+                "type": "toggle",
+                "default": [
+                  "on"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000",
+                  "script_callback_language",
+                  "python"
+                ]
+              }
+            },
+            "folder0": {
+              "name": "folder0",
+              "type": "group",
+              "size": 1,
+              "label": "Code",
+              "default_tokens": [],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [],
+              "menu_script_tokens": [],
+              "container_kind": "group",
+              "children": [
+                "group",
+                "bindeach",
+                "snippet",
+                "exportlist",
+                "vex_strict",
+                "vex_strictvariables"
+              ],
+              "ancestors": [
+                "volumewrangle"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "folder0",
+                "label": "Code"
+              }
+            },
+            "autobind": {
+              "name": "autobind",
+              "type": "toggle",
+              "size": 1,
+              "label": "Autobind by Name",
+              "default_tokens": [
+                "1"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [],
+              "disable_when": "{ bindeach == 1 }",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "volumewrangle",
+                "folder0_1"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "autobind",
+                "label": "Autobind by Name",
+                "type": "toggle",
+                "default": [
+                  "1"
+                ],
+                "disablewhen": "{ bindeach == 1 }"
+              }
+            },
+            "bindprimname#": {
+              "name": "bindprimname#",
+              "type": "string",
+              "size": 1,
+              "label": "Primitive Name",
+              "default_tokens": [
+                ""
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [],
+              "disable_when": "{ bindeach == 1 } { autobind == 1 }",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "volumewrangle",
+                "folder0_1",
+                "bindings"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "bindprimname#",
+                "label": "Primitive Name",
+                "type": "string",
+                "default": [
+                  ""
+                ],
+                "disablewhen": "{ bindeach == 1 } { autobind == 1 }"
+              }
+            },
+            "bindprim#": {
+              "name": "bindprim#",
+              "type": "integer",
+              "size": 1,
+              "label": "Primitive",
+              "default_tokens": [
+                "0"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "10"
+              ],
+              "disable_when": "{ bindeach == 1 } { autobind == 1 }",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "volumewrangle",
+                "folder0_1",
+                "bindings"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "bindprim#",
+                "label": "Primitive",
+                "type": "integer",
+                "default": [
+                  "0"
+                ],
+                "disablewhen": "{ bindeach == 1 } { autobind == 1 }",
+                "range": [
+                  "0",
+                  "10"
+                ]
+              }
+            },
+            "bindname#": {
+              "name": "bindname#",
+              "type": "string",
+              "size": 1,
+              "label": "VEX Parameter",
+              "default_tokens": [
+                ""
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [],
+              "disable_when": "{ bindeach == 1 } { autobind == 1 }",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "volumewrangle",
+                "folder0_1",
+                "bindings"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "bindname#",
+                "label": "VEX Parameter",
+                "type": "string",
+                "default": [
+                  ""
+                ],
+                "disablewhen": "{ bindeach == 1 } { autobind == 1 }"
+              }
+            },
+            "bindings": {
+              "name": "bindings",
+              "type": "multiparm",
+              "size": 1,
+              "label": "Number of Bindings",
+              "default_tokens": [
+                "0"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000",
+                "multistartoffset",
+                "1"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "multiparm",
+              "children": [
+                "bindprimname#",
+                "bindprim#",
+                "bindname#"
+              ],
+              "ancestors": [
+                "volumewrangle",
+                "folder0_1"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "bindings",
+                "label": "Number of Bindings",
+                "default": "0",
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000",
+                  "multistartoffset",
+                  "1"
+                ]
+              }
+            },
+            "vex_geometrygenerator": {
+              "name": "vex_geometrygenerator",
+              "type": "toggle",
+              "size": 1,
+              "label": "Only Output Created Geometry",
+              "default_tokens": [
+                "off"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "volumewrangle",
+                "folder0_1"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "vex_geometrygenerator",
+                "label": "Only Output Created Geometry",
+                "type": "toggle",
+                "default": [
+                  "off"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "vdb_signedflood": {
+              "name": "vdb_signedflood",
+              "type": "toggle",
+              "size": 1,
+              "label": "Signed-Flood Fill Output SDF VDBs",
+              "default_tokens": [
+                "on"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "volumewrangle",
+                "folder0_1"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "vdb_signedflood",
+                "label": "Signed-Flood Fill Output SDF VDBs",
+                "type": "toggle",
+                "default": [
+                  "on"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "vex_cwdpath": {
+              "name": "vex_cwdpath",
+              "type": "oppath",
+              "size": 1,
+              "label": "Evaluation Node Path",
+              "default_tokens": [
+                "."
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000",
+                "oprelative",
+                "."
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "volumewrangle",
+                "folder0_1"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "vex_cwdpath",
+                "label": "Evaluation Node Path",
+                "type": "oppath",
+                "default": [
+                  "."
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000",
+                  "oprelative",
+                  "."
+                ]
+              }
+            },
+            "vex_outputmask": {
+              "name": "vex_outputmask",
+              "type": "string",
+              "size": 1,
+              "label": "Export Parameters",
+              "default_tokens": [
+                "*"
+              ],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [
+                "0",
+                "1"
+              ],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "volumewrangle",
+                "folder0_1"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "vex_outputmask",
+                "label": "Export Parameters",
+                "type": "string",
+                "default": [
+                  "*"
+                ],
+                "range": [
+                  "0",
+                  "1"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "vex_precision": {
+              "name": "vex_precision",
+              "type": "string",
+              "size": 1,
+              "label": "VEX Precision",
+              "default_tokens": [
+                "auto"
+              ],
+              "menu_tokens": [
+                "auto",
+                "Auto",
+                "32",
+                "32",
+                "64",
+                "64"
+              ],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [
+                "autoscope",
+                "0000000000000000"
+              ],
+              "menu_script_tokens": [],
+              "container_kind": "parm",
+              "children": [],
+              "ancestors": [
+                "volumewrangle",
+                "folder0_1"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "vex_precision",
+                "label": "VEX Precision",
+                "type": "string",
+                "default": [
+                  "auto"
+                ],
+                "menu": [
+                  "auto",
+                  "Auto",
+                  "32",
+                  "32",
+                  "64",
+                  "64"
+                ],
+                "parmtag": [
+                  "autoscope",
+                  "0000000000000000"
+                ]
+              }
+            },
+            "folder0_1": {
+              "name": "folder0_1",
+              "type": "group",
+              "size": 1,
+              "label": "Bindings",
+              "default_tokens": [],
+              "menu_tokens": [],
+              "menu_modifiers": [],
+              "menu_uses_token_value": false,
+              "range_tokens": [],
+              "disable_when": "",
+              "hide_when": "",
+              "disable_when_tab": "",
+              "naming_tokens": "",
+              "tags_tokens": [],
+              "menu_script_tokens": [],
+              "container_kind": "group",
+              "children": [
+                "autobind",
+                "bindings",
+                "vex_geometrygenerator",
+                "vdb_signedflood",
+                "vex_cwdpath",
+                "vex_outputmask",
+                "vex_precision"
+              ],
+              "ancestors": [
+                "volumewrangle"
+              ],
+              "flags": [],
+              "raw_fields": {
+                "name": "folder0_1",
+                "label": "Bindings"
+              }
+            }
+          },
+          "interface": {
+            "input_labels": [
+              {
+                "dialogscript_index": 1,
+                "api_index": 0,
+                "label": "Volumes to Process with Wrangle",
+                "index_normalization": "one_based_dialogscript_to_zero_based_hom",
+                "status": "NORMALIZED"
+              },
+              {
+                "dialogscript_index": 2,
+                "api_index": 1,
+                "label": "Auxillary Input 1, access with volumesample(1, ...)",
+                "index_normalization": "one_based_dialogscript_to_zero_based_hom",
+                "status": "NORMALIZED"
+              },
+              {
+                "dialogscript_index": 3,
+                "api_index": 2,
+                "label": "Auxillary Input 2, access with volumesample(2, ...)",
+                "index_normalization": "one_based_dialogscript_to_zero_based_hom",
+                "status": "NORMALIZED"
+              },
+              {
+                "dialogscript_index": 4,
+                "api_index": 3,
+                "label": "Auxillary Input 3, access with volumesample(3, ...)",
+                "index_normalization": "one_based_dialogscript_to_zero_based_hom",
+                "status": "NORMALIZED"
+              }
+            ],
+            "output_labels": [],
+            "inputs": [],
+            "outputs": [],
+            "signatures": [],
+            "port_signature": {
+              "input_label_count": 4,
+              "output_label_count": 0,
+              "declared_input_count": 0,
+              "declared_output_count": 0,
+              "signature_count": 0,
+              "full_node_port_arity": null,
+              "semantics_status": "LABELS_AND_DIALOGSCRIPT_DECLARATIONS_ONLY",
+              "missing_semantics": "DialogScript labels/declarations do not prove the complete HOM node input/output signature or connection semantics."
+            }
+          }
+        },
+        "Sop/volumeconvolve3": {
+          "status": "PARTIAL_STATIC_EVIDENCE",
+          "source_refs": [
+            {
+              "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/python3.13libs/dopsparsepyrotools.py",
+              "sha256": "0e086f9a7caf012cf9824f743bda8c0d48af26b9e20e451840a1cbe311b525ec",
+              "lines": [
+                {
+                  "line": 5700,
+                  "text": "def setupSharpenVolume(node, volumename='density'):"
+                },
+                {
+                  "line": 5701,
+                  "text": "    \"\"\" Generates a subnet with voluemconvolve3 node with predefined sharpening settings."
+                },
+                {
+                  "line": 5702,
+                  "text": ""
+                },
+                {
+                  "line": 5703,
+                  "text": "        :param node: The volumeconvolve will be placed under this node."
+                },
+                {
+                  "line": 5704,
+                  "text": "        :param volumename: The name of the volume to sharpen."
+                },
+                {
+                  "line": 5705,
+                  "text": "    \"\"\""
+                },
+                {
+                  "line": 5706,
+                  "text": "   "
+                },
+                {
+                  "line": 5707,
+                  "text": "    pos = node.position()"
+                },
+                {
+                  "line": 5708,
+                  "text": "    parent= node.parent()"
+                },
+                {
+                  "line": 5709,
+                  "text": ""
+                },
+                {
+                  "line": 5710,
+                  "text": "    subnet = parent.createNode(\"subnet\", \"sharpen_\" + volumename)"
+                },
+                {
+                  "line": 5711,
+                  "text": ""
+                },
+                {
+                  "line": 5712,
+                  "text": "    hou_parm_template_group = hou.ParmTemplateGroup()"
+                },
+                {
+                  "line": 5713,
+                  "text": "    # Code for parameter template"
+                },
+                {
+                  "line": 5714,
+                  "text": "    hou_parm_template = hou.StringParmTemplate(\"label1\", \"Input #1 Label\", 1, default_value=([\"Sub-Network Input #1\"]), naming_scheme=hou.parmNamingScheme.Base1, string_type=hou.stringParmType.Regular, menu_items=([]), menu_labels=([]), icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal)"
+                },
+                {
+                  "line": 5715,
+                  "text": "    hou_parm_template.hide(True)"
+                },
+                {
+                  "line": 5716,
+                  "text": "    hou_parm_template_group.append(hou_parm_template)"
+                },
+                {
+                  "line": 5717,
+                  "text": "    # Code for parameter template"
+                },
+                {
+                  "line": 5718,
+                  "text": "    hou_parm_template = hou.StringParmTemplate(\"label2\", \"Input #2 Label\", 1, default_value=([\"Sub-Network Input #2\"]), naming_scheme=hou.parmNamingScheme.Base1, string_type=hou.stringParmType.Regular, menu_items=([]), menu_labels=([]), icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal)"
+                },
+                {
+                  "line": 5719,
+                  "text": "    hou_parm_template.hide(True)"
+                },
+                {
+                  "line": 5720,
+                  "text": "    hou_parm_template_group.append(hou_parm_template)"
+                },
+                {
+                  "line": 5721,
+                  "text": "    # Code for parameter template"
+                },
+                {
+                  "line": 5722,
+                  "text": "    hou_parm_template = hou.StringParmTemplate(\"label3\", \"Input #3 Label\", 1, default_value=([\"Sub-Network Input #3\"]), naming_scheme=hou.parmNamingScheme.Base1, string_type=hou.stringParmType.Regular, menu_items=([]), menu_labels=([]), icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal)"
+                },
+                {
+                  "line": 5723,
+                  "text": "    hou_parm_template.hide(True)"
+                },
+                {
+                  "line": 5724,
+                  "text": "    hou_parm_template_group.append(hou_parm_template)"
+                },
+                {
+                  "line": 5725,
+                  "text": "    # Code for parameter template"
+                },
+                {
+                  "line": 5726,
+                  "text": "    hou_parm_template = hou.StringParmTemplate(\"label4\", \"Input #4 Label\", 1, default_value=([\"Sub-Network Input #4\"]), naming_scheme=hou.parmNamingScheme.Base1, string_type=hou.stringParmType.Regular, menu_items=([]), menu_labels=([]), icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal)"
+                },
+                {
+                  "line": 5727,
+                  "text": "    hou_parm_template.hide(True)"
+                },
+                {
+                  "line": 5728,
+                  "text": "    hou_parm_template_group.append(hou_parm_template)"
+                },
+                {
+                  "line": 5729,
+                  "text": "    # Code for parameter template"
+                },
+                {
+                  "line": 5730,
+                  "text": "    hou_parm_template = hou.StringParmTemplate(\"volumename\", \"Volume to Sharpen\", 1, default_value=([\"density\"]), naming_scheme=hou.parmNamingScheme.Base1, string_type=hou.stringParmType.Regular, menu_items=([]), menu_labels=([]), icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal)"
+                },
+                {
+                  "line": 5731,
+                  "text": "    hou_parm_template.setScriptCallbackLanguage(hou.scriptLanguage.Python)"
+                },
+                {
+                  "line": 5732,
+                  "text": "    hou_parm_template.setTags({\"script_callback_language\": \"python\"})"
+                },
+                {
+                  "line": 5733,
+                  "text": "    hou_parm_template_group.append(hou_parm_template)"
+                },
+                {
+                  "line": 5734,
+                  "text": "    # Code for parameter template"
+                },
+                {
+                  "line": 5735,
+                  "text": "    hou_parm_template = hou.FloatParmTemplate(\"coef\", \"Coefficient\", 1, default_value=([15]), min=0, max=50, min_is_strict=True, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1)"
+                },
+                {
+                  "line": 5736,
+                  "text": "    hou_parm_template.setScriptCallbackLanguage(hou.scriptLanguage.Python)"
+                },
+                {
+                  "line": 5737,
+                  "text": "    hou_parm_template.setTags({\"script_callback_language\": \"python\"})"
+                },
+                {
+                  "line": 5738,
+                  "text": "    hou_parm_template_group.append(hou_parm_template)"
+                },
+                {
+                  "line": 5739,
+                  "text": "    subnet.setParmTemplateGroup(hou_parm_template_group)"
+                },
+                {
+                  "line": 5740,
+                  "text": ""
+                },
+                {
+                  "line": 5741,
+                  "text": "    subnet.setInput(0,node,0) "
+                },
+                {
+                  "line": 5742,
+                  "text": "    subnet.moveToGoodPosition()"
+                },
+                {
+                  "line": 5743,
+                  "text": ""
+                },
+                {
+                  "line": 5744,
+                  "text": "    sharpen = subnet.createNode('volumeconvolve3', 'sharpen_' + volumename)"
+                },
+                {
+                  "line": 5745,
+                  "text": "    sharpen.parm('group').set('@name=`chs(\"../volumename\")`')    "
+                },
+                {
+                  "line": 5746,
+                  "text": "    "
+                },
+                {
+                  "line": 5747,
+                  "text": "    hou_parm_tuple = sharpen.parmTuple(\"convolvezm\")    "
+                },
+                {
+                  "line": 5748,
+                  "text": "    hou_parm_tuple.set((0, -0.10000000000000001, 0, -0.10000000000000001, -1, -0.10000000000000001, 0, -0.10000000000000001, 0))"
+                },
+                {
+                  "line": 5749,
+                  "text": ""
+                },
+                {
+                  "line": 5750,
+                  "text": "    hou_parm_tuple = sharpen.parmTuple(\"convolvezz\")    "
+                },
+                {
+                  "line": 5751,
+                  "text": "    hou_parm_tuple.set((-0.10000000000000001, -1, -0.10000000000000001, -1, 15, -1, -0.10000000000000001, -1, -0.10000000000000001))"
+                },
+                {
+                  "line": 5752,
+                  "text": "    "
+                },
+                {
+                  "line": 5753,
+                  "text": "    hou_parm_tuple = sharpen.parmTuple(\"convolvezp\")"
+                },
+                {
+                  "line": 5754,
+                  "text": "    hou_parm_tuple.set((0, -0.10000000000000001, 0, -0.10000000000000001, -1, -0.10000000000000001, 0, -0.10000000000000001, 0)) "
+                },
+                {
+                  "line": 5755,
+                  "text": "    "
+                },
+                {
+                  "line": 5756,
+                  "text": "    sharpen.parm(\"normalize\").set(1)  "
+                },
+                {
+                  "line": 5757,
+                  "text": "    sharpen.parm(\"convolvezz5\").setExpression('ch(\"../coef\")')"
+                },
+                {
+                  "line": 5758,
+                  "text": "    "
+                },
+                {
+                  "line": 5759,
+                  "text": "    #sharpen.setPosition(hou.Vector2(0,0))"
+                },
+                {
+                  "line": 5760,
+                  "text": "    #sharpen.setInput(0,node,0)"
+                },
+                {
+                  "line": 5761,
+                  "text": ""
+                },
+                {
+                  "line": 5762,
+                  "text": "    volume_clamp = subnet.createNode('volumewrangle', 'clamp_below_zero')"
+                },
+                {
+                  "line": 5763,
+                  "text": "    volume_clamp.parm('group').set('@name=`chs(\"../volumename\")`')"
+                },
+                {
+                  "line": 5764,
+                  "text": "    volume_clamp.parm('bindeach').set(1)"
+                },
+                {
+                  "line": 5765,
+                  "text": "    volume_clamp.parm('snippet').set('@density = max(0,f@density);')    "
+                },
+                {
+                  "line": 5766,
+                  "text": ""
+                },
+                {
+                  "line": 5767,
+                  "text": "    out = subnet.createNode('output', 'output0')"
+                },
+                {
+                  "line": 5768,
+                  "text": "    out.setInput(0,subnet.indirectInputs()[0],0)    "
+                },
+                {
+                  "line": 5769,
+                  "text": "    out.setPosition(hou.Vector2(0,-2))"
+                },
+                {
+                  "line": 5770,
+                  "text": "    toolutils.insertNodeAbove(out,sharpen)"
+                },
+                {
+                  "line": 5771,
+                  "text": "    toolutils.insertNodeAbove(out,volume_clamp)"
+                },
+                {
+                  "line": 5772,
+                  "text": "    sharpen.setPosition(hou.Vector2(0,0))  "
+                },
+                {
+                  "line": 5773,
+                  "text": "    volume_clamp.setPosition(hou.Vector2(0,-1)) "
+                },
+                {
+                  "line": 5774,
+                  "text": "    "
+                },
+                {
+                  "line": 5775,
+                  "text": "    return subnet"
+                },
+                {
+                  "line": 5776,
+                  "text": ""
+                },
+                {
+                  "line": 5777,
+                  "text": "def linkMaterialToSolver(solver_node, shader_node, use_data: bool = False):"
+                },
+                {
+                  "line": 5778,
+                  "text": "    ''' Links the pyro solver node and shader node together. The shader node will"
+                },
+                {
+                  "line": 5779,
+                  "text": "        gain channel references pointing to the corresponding parts of"
+                }
+              ]
+            },
+            {
+              "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/help/nodes.zip",
+              "archive_sha256": "6ca2ef18ce0d1f142d3415e27885b36f69b3537344a04621c89f9fab6937ad53",
+              "member": "sop/volumeconvolve3.txt",
+              "section_sha256": "cf0c531b7446595c45db925437d82f9a06201002962be7bb907d5b32ad3eb6ae",
+              "text": "#type: node\n#context: sop\n#internal: volumeconvolve3\n#icon: SOP/volumeconvolve3\n#since: 12.5\n#verb_since: 16.5\n\n#tags: volumes\n\n= Volume Convolve 3x3x3 =\n\n\"\"\"Convolves a volume by a 3x3x3 kernel.\"\"\"\n\nThe Volume Convolve 3x3x3 operation convolves the voxels of a volume.\n\nThis takes each 3x3x3 neighbourhood of a voxel, multiplies it by a set of\ncoefficients, and combines the result into a total.  This can be used as a\nbasic primitive for doing edge detection or neighbourhood counting.\n\n@parameters\n    Source Group:\n        The volume primitives to be convolved.\n    Z-1, Z=0, Z+1 Kernel:\n\tThe coefficients for the 3x3x3 neighbourhood are split into separate\n\t3x3 arrays, specifying the x/y coefficients for each z-plane.\n    Normalize Kernel:\n\tThe coefficients will be divided by the average of all of the\n\tcoefficients, resulting in an operation that preserves magnitude.\n    Combine Operation:\n\tHow to combine the voxels after they've been multiplied by the\n\tcoefficients.  Add Abs will take the absolute value of each\n\tvoxel-coeffecient product prior to adding them up.\n\n@related\n    - [Node:sop/volumeblur]\n\n"
+            },
+            {
+              "path": "/Applications/Houdini/Houdini22.0.429/Frameworks/Houdini.framework/Versions/22.0/Resources/houdini/config/Dialogs/SOP/volumeconvolve3",
+              "sha256": "b9bb7fb13b16af6ee977617251913dfa2d31b93e3d6d2a30fcb17b879ce27d5b",
+              "format": "compiled UI; not decoded into default or runtime gate facts"
+            }
+          ],
+          "vendor_explicit_api_usage": {
+            "group": {
+              "api": "parm.set",
+              "type": "string",
+              "size": 1
+            },
+            "normalize": {
+              "api": "parm.set",
+              "value": 1,
+              "size": 1
+            },
+            "convolvezm": {
+              "api": "parmTuple.set",
+              "size": 9,
+              "values": [
+                0,
+                -0.1,
+                0,
+                -0.1,
+                -1,
+                -0.1,
+                0,
+                -0.1,
+                0
+              ]
+            },
+            "convolvezz": {
+              "api": "parmTuple.set",
+              "size": 9,
+              "values": [
+                -0.1,
+                -1,
+                -0.1,
+                -1,
+                15,
+                -1,
+                -0.1,
+                -1,
+                -0.1
+              ]
+            },
+            "convolvezp": {
+              "api": "parmTuple.set",
+              "size": 9,
+              "values": [
+                0,
+                -0.1,
+                0,
+                -0.1,
+                -1,
+                -0.1,
+                0,
+                -0.1,
+                0
+              ]
+            },
+            "convolvezz5": {
+              "api": "parm.setExpression",
+              "expression": "ch(\"../coef\")",
+              "component_index": 4
+            }
+          },
+          "unknowns": [
+            "instantiated defaults",
+            "instance gate state",
+            "operation ordinal values/default",
+            "complete parameter template metadata"
+          ],
+          "notes": [
+            "3 nine-component kernel tuples and component 5 are explicit same-build vendor API calls.",
+            "Test-injected native API instance state must be labelled as such and not promoted to static or real-host fact.",
+            "The vendor sharpening function does not set operation; no operation ordinal/default can be inferred from that omission."
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "kind": "prospective_official_karma_rebuild_contract_not_execution_evidence",
+  "status": "PREPARATION_ONLY",
+  "native_execution": false,
+  "resource_confirmation": false,
+  "source_reports": [
+    "karma-21.0.631.json",
+    "karma-22.0.459.json"
+  ],
+  "scope": "Minimal static shared-chain experiment; not whole-domain, all-16-domain or M1 acceptance",
+  "versions": {
+    "houdini_primary": "21.0.631",
+    "houdini_compatibility": "22.0.459",
+    "nuke": "17.0v1"
+  },
+  "existing_case_ids": [
+    "lighting_camera_render_v1__build_inspect",
+    "lighting_camera_render_v1__causal_candidate",
+    "lighting_camera_render_v1__approval_recovery",
+    "material_lookdev_v1__build_inspect",
+    "nuke_composite_v1__build_inspect"
+  ],
+  "proposed_scene": {
+    "units": "metres",
+    "up_axis": "Y",
+    "sphere": {
+      "radius": 0.5,
+      "center": [
+        0,
+        0.5,
+        0
+      ]
+    },
+    "ground": {
+      "plane": "XZ",
+      "y": 0
+    },
+    "material": {
+      "semantic_base_color": [
+        0.18,
+        0.18,
+        0.18
+      ],
+      "semantic_roughness": 0.5
+    },
+    "camera": {
+      "position": [
+        3,
+        2,
+        4
+      ],
+      "look_at": [
+        0,
+        0.5,
+        0
+      ],
+      "focal_length_mm": 50
+    },
+    "light": {
+      "usd_shape": "UsdLuxDiskLight",
+      "position": [
+        2,
+        3,
+        2
+      ],
+      "look_at": [
+        0,
+        0.5,
+        0
+      ],
+      "radius": 0.5
+    },
+    "engine": "Karma CPU",
+    "resolution": [
+      128,
+      128
+    ],
+    "frames": [
+      1
+    ],
+    "denoise": false,
+    "motion_blur": false,
+    "simulation": false,
+    "feedback_base_color": [
+      0.5,
+      0.18,
+      0.18
+    ]
+  },
+  "formal_path": [
+    "prepare_workbuddy_graph.py",
+    "registered graph/domain construction",
+    "GraphRun.task_save",
+    "trusted own worker stop",
+    "GraphRun.task_reopen under new process identity",
+    "GraphRun.houdini_render_bounded",
+    "GraphRun.register_render_artifact",
+    "Nuke registered artifact consumption and saved NK"
+  ],
+  "required_bindings": [
+    "owned geometry -> USD Stage",
+    "MaterialX surface/material -> actual geometry binding",
+    "RenderSettings -> Camera/RenderProduct/RenderVars",
+    "Driver/usdrender -> saved source LOP",
+    "producer operation -> artifact ID/version/frames/color/content -> Nuke input/Write"
+  ],
+  "future_scope_proposal": {
+    "confirmed": false,
+    "phase_exception_approved": false,
+    "frames": [
+      1
+    ],
+    "max_seconds_per_public_job": 120,
+    "suggested_total_output_temp_log_bytes": 268435456,
+    "task_root_relative_to_repo": "outputs/official-karma-20261016/live/<unique-experiment-id>",
+    "total_jobs": null,
+    "total_experiment_seconds": null,
+    "task_id": null,
+    "request_id": null,
+    "content_version": null,
+    "trusted_executable_and_plugin_build": null,
+    "cache": false,
+    "model_calls": false,
+    "unresolved": "Exact scope and cumulative limits require explicit confirmation before execution; this object is not accepted by preflight as an authorization."
+  },
+  "stages": {
+    "build": "NOT_RUN",
+    "save_new_process_reopen": "NOT_RUN",
+    "render_registration": "BLOCKED",
+    "nuke": "NOT_RUN",
+    "feedback": "NOT_RUN",
+    "actual_worker_recovery": "NOT_RUN",
+    "second_case_reuse": "NOT_RUN",
+    "visual_acceptance": "NOT_RUN"
+  },
+  "blockers": [
+    "M1-before-live exception and exact resources not authorized",
+    "Current native_basis and compiler/host facts incomplete",
+    "Modern karmarendersettings mapping is not inferred from legacy node name",
+    "Effective writer/OCIO/AOV/filter/alpha/AVAILABLE incomplete",
+    "Formal full feedback and composite dataflow remain incomplete",
+    "No verified new minimal HIP/NK or visual ground truth exists"
+  ],
+  "forbidden_shortcuts": [
+    "load official HIP as proof of Bridge reconstruction",
+    "copy old node names as modern native types",
+    "invent native parameter values or successful metadata",
+    "use standalone synthetic EXR as Houdini producer output",
+    "use private facade calls as evidence of model-accessible automation",
+    "promote this experiment to whole-domain/M1 acceptance"
+  ]
+}

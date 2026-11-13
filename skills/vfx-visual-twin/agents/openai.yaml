@@ -1,0 +1,6 @@
+interface:
+  display_name: "VFX Visual Twin"
+  short_description: "Assess reference VFX and run bounded reconstruction"
+  default_prompt: "Use $vfx-visual-twin to assess this reference, execute the feasible authorized work, and compare the actual result with the full target."
+policy:
+  allow_implicit_invocation: true
