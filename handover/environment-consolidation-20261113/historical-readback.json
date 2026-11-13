@@ -1,0 +1,37 @@
+{
+  "query_only": true,
+  "native_starts": 0,
+  "results": [
+    {
+      "operation_id": "geo_efec90eac243766b68958b83",
+      "isError": false,
+      "state": "COMPLETE",
+      "revision": 1,
+      "goal_status": "PASS",
+      "native_dispatch_attempted": false
+    },
+    {
+      "operation_id": "geo_681f8440a8c84e2c87143c31",
+      "isError": false,
+      "state": "COMPLETE",
+      "revision": 2,
+      "goal_status": "FAIL",
+      "native_dispatch_attempted": false
+    },
+    {
+      "operation_id": "geo_feedback_8c216030618e095bb7a5f9c6",
+      "isError": false,
+      "state": "COMPLETE",
+      "revision": 3,
+      "goal_status": "PASS",
+      "native_dispatch_attempted": false
+    },
+    {
+      "operation_id": "creative_a8e61b2e379eb44fa300",
+      "isError": false,
+      "state": "COMPLETE",
+      "revision": 1,
+      "native_dispatch_attempted": false
+    }
+  ]
+}

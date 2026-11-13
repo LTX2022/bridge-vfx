@@ -1,0 +1,5861 @@
+[
+  {
+    "path": "outputs/Bridge-H21\u5de5\u7a0b\u95ed\u73af\u51c6\u5907-20261025-R2.independent-audit.json",
+    "files": 1,
+    "bytes": 2501,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "report_or_test_log"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-H21-alpha\u65e9\u505c\u4fee\u590d-20261023-10-\u7ed3\u679c.zip.sha256",
+    "files": 1,
+    "bytes": 118,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "sidecar_or_binary"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-full-chain-20261020-11.unittest.log",
+    "files": 1,
+    "bytes": 54411,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "report_or_test_log"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-H21\u771f\u5b9e\u9a8c\u653614\u4e0eHusk\u5165\u53e3\u4fee\u590d15-20261023.zip",
+    "files": 1,
+    "bytes": 2573652,
+    "categories": {
+      "local_recovery_archive_or_compressed_evidence": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "retained_archive"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/.DS_Store",
+    "files": 1,
+    "bytes": 129028,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "sidecar_or_binary"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-H21-HIP\u4e13\u9879\u6267\u884c\u7ed3\u679c-20261024.zip",
+    "files": 1,
+    "bytes": 2997573,
+    "categories": {
+      "local_recovery_archive_or_compressed_evidence": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "retained_archive"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-H21\u5de5\u7a0b\u95ed\u73af\u51c6\u5907-20261025-R2.zip.sha256",
+    "files": 1,
+    "bytes": 111,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "sidecar_or_binary"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-H21\u771f\u5b9e\u9a8c\u653616\u4e0e\u7cbe\u786e\u8282\u70b9\u4fee\u590d17-20261023.zip.sha256",
+    "files": 1,
+    "bytes": 127,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "sidecar_or_binary"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-full-chain-20261020-05.unittest.log",
+    "files": 1,
+    "bytes": 3553,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "report_or_test_log"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-H21-alpha\u65e9\u505c\u4fee\u590d-20261023-10-\u7ed3\u679c.zip",
+    "files": 1,
+    "bytes": 1577396,
+    "categories": {
+      "local_recovery_archive_or_compressed_evidence": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "retained_archive"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-H21-HIP\u4e13\u9879\u6267\u884c\u7ed3\u679c-20261024.package-audit.json",
+    "files": 1,
+    "bytes": 531,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "report_or_test_log"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-full-chain-20261020-10.unittest.log",
+    "files": 1,
+    "bytes": 53906,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "report_or_test_log"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-H21-Nuke\u771f\u5b9e\u9a8c\u653612-20261023-\u7ed3\u679c.zip",
+    "files": 1,
+    "bytes": 1355319,
+    "categories": {
+      "local_recovery_archive_or_compressed_evidence": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "retained_archive"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-H21\u68c0\u67e5\u70b9\u771f\u5b9e\u9a8c\u6536-20261024-\u7ed3\u679c.zip",
+    "files": 1,
+    "bytes": 9094826,
+    "categories": {
+      "local_recovery_archive_or_compressed_evidence": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "retained_archive"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-full-chain-20261020-08.unittest.log",
+    "files": 1,
+    "bytes": 51773,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "report_or_test_log"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-H21\u539f\u751f\u8eab\u4efd\u91c7\u96c6\u4fee\u590d-20261023-11-\u7ed3\u679c.zip.sha256",
+    "files": 1,
+    "bytes": 124,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "sidecar_or_binary"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-H21\u5efa\u56fe240\u79d2\u4e13\u9879-20261024-\u7ed3\u679c.zip.sha256",
+    "files": 1,
+    "bytes": 115,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "sidecar_or_binary"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-H21-Nuke\u771f\u5b9e\u9a8c\u653612-20261023-\u7ed3\u679c.zip.sha256",
+    "files": 1,
+    "bytes": 116,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "sidecar_or_binary"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-H21\u771f\u5b9e\u9a8c\u653618\u4e0eHDA\u8fb9\u754c\u4fee\u590d19-20261023.zip.sha256",
+    "files": 1,
+    "bytes": 124,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "sidecar_or_binary"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-H21-alpha\u65e9\u505c\u4fee\u590d-20261023-10-\u7ed3\u679c.zip.package-audit.json",
+    "files": 1,
+    "bytes": 589,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "report_or_test_log"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-full-chain-20261020-09.unittest.log",
+    "files": 1,
+    "bytes": 24332,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "report_or_test_log"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-H21\u542f\u52a8\u68c0\u67e5\u70b9\u51c6\u5907-20261024.zip",
+    "files": 1,
+    "bytes": 5973529,
+    "categories": {
+      "local_recovery_archive_or_compressed_evidence": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "retained_archive"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-HIP\u8def\u5f84\u4fee\u590d\u4e0eOS\u91c7\u96c6\u963b\u65ad-20261024.zip",
+    "files": 1,
+    "bytes": 1899383,
+    "categories": {
+      "local_recovery_archive_or_compressed_evidence": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "retained_archive"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-H21\u542f\u52a8\u68c0\u67e5\u70b9\u51c6\u5907-20261024.package-audit.json",
+    "files": 1,
+    "bytes": 524,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "report_or_test_log"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-\u539f\u751f\u5c31\u7eea\u4e0e\u5931\u8d25\u65e9\u505c\u4fee\u590d-20261023-13\u5019\u9009.zip",
+    "files": 1,
+    "bytes": 2138469,
+    "categories": {
+      "local_recovery_archive_or_compressed_evidence": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "retained_archive"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-H21\u68c0\u67e5\u70b9\u771f\u5b9e\u9a8c\u6536-20261024-\u7ed3\u679c.zip.sha256",
+    "files": 1,
+    "bytes": 118,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "sidecar_or_binary"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-H21\u542f\u52a8\u9884\u7b97\u6838\u67e5\u4e0e\u6267\u884c\u65b9\u6848-20261024.zip.sha256",
+    "files": 1,
+    "bytes": 123,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "sidecar_or_binary"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-H21-Nuke\u771f\u5b9e\u9a8c\u653609-20261023-\u7ed3\u679c.zip",
+    "files": 1,
+    "bytes": 56222,
+    "categories": {
+      "local_recovery_archive_or_compressed_evidence": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "retained_archive"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-nuke-source-regression-20261020-01.log",
+    "files": 1,
+    "bytes": 2127,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "report_or_test_log"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-H21\u542f\u52a8\u9884\u7b97\u6838\u67e5\u4e0e\u6267\u884c\u65b9\u6848-20261024.zip",
+    "files": 1,
+    "bytes": 9084113,
+    "categories": {
+      "local_recovery_archive_or_compressed_evidence": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "retained_archive"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-H21\u5de5\u7a0b\u95ed\u73af\u51c6\u5907-20261025-R2.package-audit.json",
+    "files": 1,
+    "bytes": 1729,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "report_or_test_log"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-nuke-source-regression-20261020-03.log",
+    "files": 1,
+    "bytes": 691,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "report_or_test_log"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-H21-Nuke\u771f\u5b9e\u9a8c\u653609-20261023-\u7ed3\u679c.zip.sha256",
+    "files": 1,
+    "bytes": 116,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "sidecar_or_binary"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/supervisor-bytecode-20261021-red.log",
+    "files": 1,
+    "bytes": 1331,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "report_or_test_log"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-nuke-source-regression-20261020-02.log",
+    "files": 1,
+    "bytes": 502,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "report_or_test_log"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-H21-HIP\u4e13\u9879\u6267\u884c\u7ed3\u679c-20261024.zip.sha256",
+    "files": 1,
+    "bytes": 112,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "sidecar_or_binary"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-HIP\u8def\u5f84\u4fee\u590d\u4e0eOS\u91c7\u96c6\u963b\u65ad-20261024.zip.sha256",
+    "files": 1,
+    "bytes": 119,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "sidecar_or_binary"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-H21\u771f\u5b9e\u9a8c\u653614\u4e0eHusk\u5165\u53e3\u4fee\u590d15-20261023.zip.sha256",
+    "files": 1,
+    "bytes": 125,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "sidecar_or_binary"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-H21\u771f\u5b9e\u9a8c\u653618\u4e0eHDA\u8fb9\u754c\u4fee\u590d19-20261023.zip",
+    "files": 1,
+    "bytes": 3403558,
+    "categories": {
+      "local_recovery_archive_or_compressed_evidence": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "retained_archive"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-nuke-source-regression-20261020-04.log",
+    "files": 1,
+    "bytes": 892,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "report_or_test_log"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-H21\u5de5\u7a0b\u70ed\u8def\u5f84\u4fee\u590d-20261025-\u5019\u9009.zip.sha256",
+    "files": 1,
+    "bytes": 118,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "sidecar_or_binary"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-H21\u68c0\u67e5\u70b9\u771f\u5b9e\u9a8c\u6536-20261024-\u7ed3\u679c.package-audit.json",
+    "files": 1,
+    "bytes": 508,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "report_or_test_log"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-H21\u5de5\u7a0b\u95ed\u73af\u51c6\u5907-20261025-R2.zip",
+    "files": 1,
+    "bytes": 95718477,
+    "categories": {
+      "local_recovery_archive_or_compressed_evidence": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "retained_archive"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-H21\u539f\u751f\u8eab\u4efd\u91c7\u96c6\u4fee\u590d-20261023-11-\u7ed3\u679c.zip",
+    "files": 1,
+    "bytes": 1675497,
+    "categories": {
+      "local_recovery_archive_or_compressed_evidence": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "retained_archive"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-parent-group-regression-20261020-01.log",
+    "files": 1,
+    "bytes": 285,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "report_or_test_log"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-H21\u5de5\u7a0b\u70ed\u8def\u5f84\u4fee\u590d-20261025-\u5019\u9009.zip",
+    "files": 1,
+    "bytes": 50418396,
+    "categories": {
+      "local_recovery_archive_or_compressed_evidence": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "retained_archive"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-H21\u771f\u5b9e\u9a8c\u653616\u4e0e\u7cbe\u786e\u8282\u70b9\u4fee\u590d17-20261023.zip",
+    "files": 1,
+    "bytes": 3437489,
+    "categories": {
+      "local_recovery_archive_or_compressed_evidence": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "retained_archive"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/supervisor-bytecode-20261021-green311.log",
+    "files": 1,
+    "bytes": 317,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "report_or_test_log"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-H21\u5de5\u7a0b\u70ed\u8def\u5f84\u4fee\u590d-20261025-\u5019\u9009.package-audit.json",
+    "files": 1,
+    "bytes": 1004,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "report_or_test_log"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-full-chain-20261020-07.unittest.log",
+    "files": 1,
+    "bytes": 9568,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "report_or_test_log"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-H21\u5efa\u56fe240\u79d2\u4e13\u9879-20261024-\u7ed3\u679c.zip",
+    "files": 1,
+    "bytes": 11092121,
+    "categories": {
+      "local_recovery_archive_or_compressed_evidence": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "retained_archive"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-\u539f\u751f\u5c31\u7eea\u4e0e\u5931\u8d25\u65e9\u505c\u4fee\u590d-20261023-13\u5019\u9009.zip.sha256",
+    "files": 1,
+    "bytes": 129,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "sidecar_or_binary"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-full-chain-20261020-12.unittest.log",
+    "files": 1,
+    "bytes": 313,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "report_or_test_log"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/supervisor-bytecode-20261021-green314.log",
+    "files": 1,
+    "bytes": 660,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "report_or_test_log"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-H21\u542f\u52a8\u68c0\u67e5\u70b9\u51c6\u5907-20261024.zip.sha256",
+    "files": 1,
+    "bytes": 111,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "sidecar_or_binary"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-H21\u542f\u52a8\u9884\u7b97\u6838\u67e5\u4e0e\u6267\u884c\u65b9\u6848-20261024.package-audit.json",
+    "files": 1,
+    "bytes": 417,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "report_or_test_log"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-image-probe",
+    "files": 1,
+    "bytes": 33432,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "sidecar_or_binary"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-H21\u5de5\u7a0b\u95ed\u73af\u51c6\u5907-20261025-R2.independent-audit.md",
+    "files": 1,
+    "bytes": 805,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "report_or_test_log"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-full-chain-20261020-06.unittest.log",
+    "files": 1,
+    "bytes": 39791,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "topfiles-coverage.json",
+      "recorded_scope": "report_or_test_log"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-window-late-vmmap-candidate-20261027-01",
+    "files": 48,
+    "bytes": 23213530,
+    "categories": {
+      "local_audit_configuration_or_document": 23,
+      "local_private_identity": 1,
+      "local_original_artifact_or_input": 23,
+      "local_historical_implementation": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-prepared-29",
+    "files": 26,
+    "bytes": 234968,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-karma-disklight-h21-20261027-01",
+    "files": 61,
+    "bytes": 23131501,
+    "categories": {
+      "local_audit_configuration_or_document": 35,
+      "local_private_identity": 2,
+      "local_original_artifact_or_input": 23,
+      "local_historical_implementation": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-full-chain-20261020-12",
+    "files": 321,
+    "bytes": 44270308,
+    "categories": {
+      "local_audit_configuration_or_document": 268,
+      "local_private_identity": 12,
+      "local_historical_implementation": 7,
+      "local_original_artifact_or_input": 21,
+      "local_historical_database": 13
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-alpha-early-gate-20261023-01",
+    "files": 65,
+    "bytes": 613586,
+    "categories": {
+      "local_audit_configuration_or_document": 50,
+      "local_private_identity": 3,
+      "local_historical_implementation": 5,
+      "local_original_artifact_or_input": 7
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-prepared-18",
+    "files": 26,
+    "bytes": 234968,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-candidate-16",
+    "files": 26,
+    "bytes": 235115,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261025-prepared-02",
+    "files": 25,
+    "bytes": 205480,
+    "categories": {
+      "local_audit_configuration_or_document": 20,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-prepared-27",
+    "files": 26,
+    "bytes": 234968,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-closure-20261023-h21-13",
+    "files": 26,
+    "bytes": 233450,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-candidate-11",
+    "files": 26,
+    "bytes": 235115,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-prepared-20",
+    "files": 26,
+    "bytes": 234968,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-prepared-12",
+    "files": 170,
+    "bytes": 4730515,
+    "categories": {
+      "local_audit_configuration_or_document": 10,
+      "local_private_identity": 1,
+      "local_historical_implementation": 159
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-authorized-18",
+    "files": 273,
+    "bytes": 49979318,
+    "categories": {
+      "local_audit_configuration_or_document": 106,
+      "local_private_identity": 2,
+      "local_historical_implementation": 159,
+      "local_original_artifact_or_input": 2,
+      "local_historical_database": 4
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-disklight-integrated-20261028-02",
+    "files": 314,
+    "bytes": 39628017,
+    "categories": {
+      "local_audit_configuration_or_document": 122,
+      "local_historical_database": 9,
+      "local_private_identity": 2,
+      "local_historical_implementation": 179,
+      "local_original_artifact_or_input": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/render-readback-20261026-candidate-2",
+    "files": 163,
+    "bytes": 4651694,
+    "categories": {
+      "local_audit_configuration_or_document": 11,
+      "local_private_identity": 1,
+      "local_historical_implementation": 151
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-prepared-15",
+    "files": 170,
+    "bytes": 4733801,
+    "categories": {
+      "local_audit_configuration_or_document": 10,
+      "local_private_identity": 1,
+      "local_historical_implementation": 159
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-20261023-h21-exact-types-02",
+    "files": 323,
+    "bytes": 46598521,
+    "categories": {
+      "local_audit_configuration_or_document": 272,
+      "local_private_identity": 12,
+      "local_historical_implementation": 7,
+      "local_original_artifact_or_input": 21,
+      "local_historical_database": 11
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-disklight-integrated-20261028-05",
+    "files": 229,
+    "bytes": 5774042,
+    "categories": {
+      "local_audit_configuration_or_document": 34,
+      "local_historical_database": 11,
+      "local_private_identity": 2,
+      "local_historical_implementation": 180,
+      "local_original_artifact_or_input": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-resource360-20261024-authorized",
+    "files": 240,
+    "bytes": 12868608,
+    "categories": {
+      "local_audit_configuration_or_document": 67,
+      "local_private_identity": 2,
+      "local_historical_implementation": 159,
+      "local_historical_database": 12
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-authorized-20",
+    "files": 336,
+    "bytes": 77311139,
+    "categories": {
+      "local_audit_configuration_or_document": 162,
+      "local_private_identity": 4,
+      "local_historical_implementation": 160,
+      "local_original_artifact_or_input": 2,
+      "local_historical_database": 8
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-softbody-stitch-f47-20261107",
+    "files": 31,
+    "bytes": 1749815,
+    "categories": {
+      "local_historical_implementation": 5,
+      "local_audit_configuration_or_document": 22,
+      "local_original_artifact_or_input": 3,
+      "local_private_identity": 1
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-softbody-core-f60-20261107",
+    "files": 137,
+    "bytes": 14168408,
+    "categories": {
+      "local_historical_implementation": 5,
+      "local_audit_configuration_or_document": 28,
+      "local_original_artifact_or_input": 102,
+      "local_private_identity": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-authorized-16",
+    "files": 273,
+    "bytes": 49974116,
+    "categories": {
+      "local_audit_configuration_or_document": 106,
+      "local_private_identity": 2,
+      "local_historical_implementation": 159,
+      "local_original_artifact_or_input": 2,
+      "local_historical_database": 4
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-preparation-diagnostic-20261020-01",
+    "files": 29,
+    "bytes": 215230,
+    "categories": {
+      "local_audit_configuration_or_document": 24,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-regular-plugin-20261104",
+    "files": 859,
+    "bytes": 78748967,
+    "categories": {
+      "local_audit_configuration_or_document": 5,
+      "local_recovery_archive_or_compressed_evidence": 2,
+      "local_registered_dependency": 852
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-authorized-11",
+    "files": 268,
+    "bytes": 46427625,
+    "categories": {
+      "local_audit_configuration_or_document": 103,
+      "local_private_identity": 2,
+      "local_historical_implementation": 159,
+      "local_historical_database": 4
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-candidate-10",
+    "files": 26,
+    "bytes": 235115,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261025-prepared-04",
+    "files": 26,
+    "bytes": 234696,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-prepared-21",
+    "files": 26,
+    "bytes": 234968,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-closure-20261023-h21-15",
+    "files": 26,
+    "bytes": 233452,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-softbody-ramp-frontload-20261110",
+    "files": 173,
+    "bytes": 20070403,
+    "categories": {
+      "local_audit_configuration_or_document": 43,
+      "local_historical_implementation": 9,
+      "local_original_artifact_or_input": 119,
+      "local_private_identity": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-candidate-17",
+    "files": 26,
+    "bytes": 235115,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-vmmap-20261023-01",
+    "files": 321,
+    "bytes": 51218828,
+    "categories": {
+      "local_audit_configuration_or_document": 268,
+      "local_private_identity": 12,
+      "local_historical_implementation": 7,
+      "local_original_artifact_or_input": 21,
+      "local_historical_database": 13
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-prepared-19",
+    "files": 26,
+    "bytes": 234968,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/render-readback-20261026-authorized",
+    "files": 180,
+    "bytes": 4699046,
+    "categories": {
+      "local_audit_configuration_or_document": 26,
+      "local_private_identity": 2,
+      "local_historical_implementation": 151,
+      "local_historical_database": 1
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-prepared-26",
+    "files": 26,
+    "bytes": 234968,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261025-prepared-03",
+    "files": 25,
+    "bytes": 205480,
+    "categories": {
+      "local_audit_configuration_or_document": 20,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/resolution-experiment-20261026-authorized",
+    "files": 182,
+    "bytes": 4739735,
+    "categories": {
+      "local_audit_configuration_or_document": 26,
+      "local_private_identity": 2,
+      "local_historical_implementation": 153,
+      "local_historical_database": 1
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-prepared-28",
+    "files": 26,
+    "bytes": 234968,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-karma-disklight-h21-ramp-candidate-20261027-01",
+    "files": 40,
+    "bytes": 22992687,
+    "categories": {
+      "local_audit_configuration_or_document": 16,
+      "local_private_identity": 1,
+      "local_original_artifact_or_input": 22,
+      "local_historical_implementation": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-closure-20261023-h21-14-authorized",
+    "files": 36,
+    "bytes": 222748,
+    "categories": {
+      "local_audit_configuration_or_document": 30,
+      "local_private_identity": 2,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-Luna-newtask-20261106",
+    "files": 4,
+    "bytes": 239322,
+    "categories": {
+      "local_audit_configuration_or_document": 2,
+      "local_original_artifact_or_input": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-karma-disklight-h21-query-candidate-20261027-01",
+    "files": 50,
+    "bytes": 23231140,
+    "categories": {
+      "local_audit_configuration_or_document": 25,
+      "local_private_identity": 1,
+      "local_original_artifact_or_input": 23,
+      "local_historical_implementation": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-authorized-10",
+    "files": 268,
+    "bytes": 46427832,
+    "categories": {
+      "local_audit_configuration_or_document": 103,
+      "local_private_identity": 2,
+      "local_historical_implementation": 159,
+      "local_historical_database": 4
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/all-domain-20261009",
+    "files": 1041,
+    "bytes": 85581862,
+    "categories": {
+      "local_audit_configuration_or_document": 838,
+      "local_historical_implementation": 29,
+      "local_original_artifact_or_input": 66,
+      "local_historical_database": 73,
+      "local_private_identity": 35
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-prepared-14",
+    "files": 170,
+    "bytes": 4732652,
+    "categories": {
+      "local_audit_configuration_or_document": 10,
+      "local_private_identity": 1,
+      "local_historical_implementation": 159
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-karma-disklight-h21-exportdir-20261027-02",
+    "files": 459,
+    "bytes": 73866897,
+    "categories": {
+      "local_audit_configuration_or_document": 121,
+      "local_historical_implementation": 310,
+      "local_private_identity": 3,
+      "local_original_artifact_or_input": 25
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-disklight-integrated-20261028-04",
+    "files": 217,
+    "bytes": 5602348,
+    "categories": {
+      "local_audit_configuration_or_document": 28,
+      "local_historical_database": 5,
+      "local_private_identity": 2,
+      "local_historical_implementation": 180,
+      "local_original_artifact_or_input": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-authorized-21",
+    "files": 340,
+    "bytes": 78321410,
+    "categories": {
+      "local_audit_configuration_or_document": 166,
+      "local_private_identity": 4,
+      "local_historical_implementation": 160,
+      "local_original_artifact_or_input": 2,
+      "local_historical_database": 8
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-softbody-repeat-shape-20261110",
+    "files": 159,
+    "bytes": 17137039,
+    "categories": {
+      "local_audit_configuration_or_document": 37,
+      "local_historical_implementation": 9,
+      "local_original_artifact_or_input": 111,
+      "local_private_identity": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-authorized-19",
+    "files": 273,
+    "bytes": 49983124,
+    "categories": {
+      "local_audit_configuration_or_document": 106,
+      "local_private_identity": 2,
+      "local_historical_implementation": 159,
+      "local_original_artifact_or_input": 2,
+      "local_historical_database": 4
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261025-authorized-06",
+    "files": 295,
+    "bytes": 84547242,
+    "categories": {
+      "local_audit_configuration_or_document": 255,
+      "local_historical_implementation": 7,
+      "local_historical_database": 11,
+      "local_private_identity": 8,
+      "local_original_artifact_or_input": 14
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-softbody-capture-20261112",
+    "files": 454,
+    "bytes": 37219634,
+    "categories": {
+      "local_historical_implementation": 9,
+      "local_audit_configuration_or_document": 341,
+      "local_original_artifact_or_input": 102,
+      "local_private_identity": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-prepared-13",
+    "files": 170,
+    "bytes": 4730679,
+    "categories": {
+      "local_audit_configuration_or_document": 10,
+      "local_private_identity": 1,
+      "local_historical_implementation": 159
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-softbody-retet-gui-20261110",
+    "files": 528,
+    "bytes": 37973714,
+    "categories": {
+      "local_historical_implementation": 8,
+      "local_audit_configuration_or_document": 416,
+      "local_original_artifact_or_input": 102,
+      "local_private_identity": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-disklight-integrated-20261028-03",
+    "files": 217,
+    "bytes": 5601348,
+    "categories": {
+      "local_audit_configuration_or_document": 28,
+      "local_historical_database": 5,
+      "local_private_identity": 2,
+      "local_historical_implementation": 180,
+      "local_original_artifact_or_input": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-softbody-retet-timing-20261110",
+    "files": 135,
+    "bytes": 13997755,
+    "categories": {
+      "local_audit_configuration_or_document": 23,
+      "local_historical_implementation": 8,
+      "local_original_artifact_or_input": 102,
+      "local_private_identity": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/windows-next-20261005",
+    "files": 191,
+    "bytes": 27413964,
+    "categories": {
+      "local_audit_configuration_or_document": 45,
+      "local_historical_implementation": 143,
+      "local_original_artifact_or_input": 1,
+      "local_private_identity": 2
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-softbody-waist-cavity-20261110",
+    "files": 509,
+    "bytes": 44008597,
+    "categories": {
+      "local_audit_configuration_or_document": 376,
+      "local_historical_implementation": 12,
+      "local_original_artifact_or_input": 119,
+      "local_private_identity": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/.execution-locks",
+    "files": 2,
+    "bytes": 0,
+    "categories": {
+      "local_audit_configuration_or_document": 2
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "inventory_only_unresolved"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-karma-disklight-h21-query2-candidate-20261027-01",
+    "files": 227,
+    "bytes": 73010136,
+    "categories": {
+      "local_registered_dependency": 226,
+      "local_private_identity": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-autonomous-takeover-20261107",
+    "files": 1,
+    "bytes": 3348,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-authorized-08",
+    "files": 26,
+    "bytes": 207550,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-softbody-core-quality-20261109",
+    "files": 154,
+    "bytes": 16174925,
+    "categories": {
+      "local_audit_configuration_or_document": 37,
+      "local_historical_implementation": 7,
+      "local_original_artifact_or_input": 108,
+      "local_private_identity": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-extra-feedback-20261107",
+    "files": 3037,
+    "bytes": 280963979,
+    "categories": {
+      "local_original_artifact_or_input": 1,
+      "local_audit_configuration_or_document": 17,
+      "local_recovery_archive_or_compressed_evidence": 8,
+      "local_registered_dependency": 3011
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/production-interface-closure-20261016",
+    "files": 6,
+    "bytes": 36842,
+    "categories": {
+      "local_audit_configuration_or_document": 3,
+      "local_historical_implementation": 3
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-softbody-finaltrial-20261112",
+    "files": 730,
+    "bytes": 54676529,
+    "categories": {
+      "local_historical_implementation": 9,
+      "local_audit_configuration_or_document": 467,
+      "local_original_artifact_or_input": 252,
+      "local_private_identity": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-hython-startup-audit-20261110",
+    "files": 4,
+    "bytes": 9490,
+    "categories": {
+      "local_audit_configuration_or_document": 4
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-only-h21-20261024-prepared",
+    "files": 170,
+    "bytes": 4646262,
+    "categories": {
+      "local_audit_configuration_or_document": 10,
+      "local_private_identity": 1,
+      "local_historical_implementation": 159
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-vmmap-identity-candidate-20261027-01",
+    "files": 48,
+    "bytes": 23205692,
+    "categories": {
+      "local_audit_configuration_or_document": 23,
+      "local_private_identity": 1,
+      "local_original_artifact_or_input": 23,
+      "local_historical_implementation": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/native-integration-readiness-handoff-20261016",
+    "files": 5,
+    "bytes": 31883,
+    "categories": {
+      "local_historical_implementation": 4,
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/render-readback-20261026-authorized-2",
+    "files": 179,
+    "bytes": 4725928,
+    "categories": {
+      "local_audit_configuration_or_document": 25,
+      "local_private_identity": 2,
+      "local_historical_implementation": 151,
+      "local_historical_database": 1
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261025-candidate-06",
+    "files": 26,
+    "bytes": 235115,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-creation-status-20261106",
+    "files": 433,
+    "bytes": 39486461,
+    "categories": {
+      "local_audit_configuration_or_document": 3,
+      "local_recovery_archive_or_compressed_evidence": 1,
+      "local_registered_dependency": 429
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/stack-capture-qualification-candidate-20261027-02",
+    "files": 5,
+    "bytes": 89818,
+    "categories": {
+      "local_audit_configuration_or_document": 1,
+      "local_historical_implementation": 4
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-karma-disklight-h21-query2-20261027-01",
+    "files": 775,
+    "bytes": 137559044,
+    "categories": {
+      "local_registered_dependency": 768,
+      "local_private_identity": 7
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-authorized-09",
+    "files": 28,
+    "bytes": 208515,
+    "categories": {
+      "local_audit_configuration_or_document": 23,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/probe-locked-tmp",
+    "files": 10,
+    "bytes": 44425,
+    "categories": {
+      "local_audit_configuration_or_document": 10
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/process-identity-release-20261016-0fgojv8h",
+    "files": 366,
+    "bytes": 19169017,
+    "categories": {
+      "local_audit_configuration_or_document": 286,
+      "local_historical_implementation": 13,
+      "local_recovery_archive_or_compressed_evidence": 7,
+      "local_original_artifact_or_input": 21,
+      "local_historical_database": 39
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-authorized-14",
+    "files": 297,
+    "bytes": 86448081,
+    "categories": {
+      "local_audit_configuration_or_document": 257,
+      "local_historical_implementation": 7,
+      "local_historical_database": 11,
+      "local_private_identity": 8,
+      "local_original_artifact_or_input": 14
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/process-identity-release-20261016-84n_bjlz",
+    "files": 366,
+    "bytes": 19169377,
+    "categories": {
+      "local_audit_configuration_or_document": 286,
+      "local_historical_implementation": 13,
+      "local_recovery_archive_or_compressed_evidence": 7,
+      "local_original_artifact_or_input": 21,
+      "local_historical_database": 39
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-startup-checkpoints-20261024-prepared",
+    "files": 170,
+    "bytes": 4643571,
+    "categories": {
+      "local_audit_configuration_or_document": 10,
+      "local_private_identity": 1,
+      "local_historical_implementation": 159
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-authorized-13",
+    "files": 297,
+    "bytes": 86421375,
+    "categories": {
+      "local_audit_configuration_or_document": 257,
+      "local_historical_implementation": 7,
+      "local_historical_database": 11,
+      "local_private_identity": 8,
+      "local_original_artifact_or_input": 14
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-20261023-native-image-02",
+    "files": 319,
+    "bytes": 47009479,
+    "categories": {
+      "local_audit_configuration_or_document": 268,
+      "local_private_identity": 12,
+      "local_historical_implementation": 7,
+      "local_original_artifact_or_input": 21,
+      "local_historical_database": 11
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-karma-disklight-h21-menu-candidate-20261027-01",
+    "files": 50,
+    "bytes": 23230205,
+    "categories": {
+      "local_audit_configuration_or_document": 25,
+      "local_private_identity": 1,
+      "local_original_artifact_or_input": 23,
+      "local_historical_implementation": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-vmmap-survey-20261027-01",
+    "files": 59,
+    "bytes": 23117945,
+    "categories": {
+      "local_audit_configuration_or_document": 33,
+      "local_private_identity": 2,
+      "local_original_artifact_or_input": 23,
+      "local_historical_implementation": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-softbody-retet-gui-post4-20261110",
+    "files": 527,
+    "bytes": 41273824,
+    "categories": {
+      "local_historical_implementation": 9,
+      "local_audit_configuration_or_document": 405,
+      "local_original_artifact_or_input": 111,
+      "local_private_identity": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-softbody-core-material-20261107",
+    "files": 140,
+    "bytes": 14538703,
+    "categories": {
+      "local_historical_implementation": 4,
+      "local_audit_configuration_or_document": 30,
+      "local_original_artifact_or_input": 104,
+      "local_private_identity": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-disklight-templates-20261028",
+    "files": 1,
+    "bytes": 764505,
+    "categories": {
+      "local_registered_dependency": 1
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-authorized-22",
+    "files": 331,
+    "bytes": 94020799,
+    "categories": {
+      "local_audit_configuration_or_document": 279,
+      "local_historical_implementation": 12,
+      "local_historical_database": 11,
+      "local_private_identity": 10,
+      "local_original_artifact_or_input": 19
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-houdini-worker-startup-20261110",
+    "files": 18,
+    "bytes": 20468,
+    "categories": {
+      "local_historical_implementation": 2,
+      "local_audit_configuration_or_document": 14,
+      "local_private_identity": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-task-creation-20261105",
+    "files": 438,
+    "bytes": 46959894,
+    "categories": {
+      "local_audit_configuration_or_document": 8,
+      "local_recovery_archive_or_compressed_evidence": 3,
+      "local_registered_dependency": 427
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-softbody-production-resume-20261107",
+    "files": 197,
+    "bytes": 25083566,
+    "categories": {
+      "local_audit_configuration_or_document": 49,
+      "local_historical_implementation": 7,
+      "local_original_artifact_or_input": 139,
+      "local_private_identity": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-closure-20261021-h21-07",
+    "files": 26,
+    "bytes": 231897,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-geometry-plugin-20261030",
+    "files": 6910,
+    "bytes": 669000751,
+    "categories": {
+      "local_audit_configuration_or_document": 40,
+      "local_recovery_archive_or_compressed_evidence": 20,
+      "local_registered_dependency": 6850
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-disklight-integrated-20261028",
+    "files": 207,
+    "bytes": 5557901,
+    "categories": {
+      "local_audit_configuration_or_document": 20,
+      "local_historical_database": 5,
+      "local_private_identity": 1,
+      "local_historical_implementation": 179,
+      "local_original_artifact_or_input": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/stack-capture-qualification-20261027-02",
+    "files": 18,
+    "bytes": 9396,
+    "categories": {
+      "local_audit_configuration_or_document": 17,
+      "local_private_identity": 1
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-karma-disklight-h21-axis-20261027-01",
+    "files": 470,
+    "bytes": 73963761,
+    "categories": {
+      "local_audit_configuration_or_document": 128,
+      "local_historical_implementation": 312,
+      "local_private_identity": 4,
+      "local_original_artifact_or_input": 26
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-closure-20261020-h21-02",
+    "files": 1,
+    "bytes": 4618,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-prepared-17b",
+    "files": 170,
+    "bytes": 4737607,
+    "categories": {
+      "local_audit_configuration_or_document": 10,
+      "local_private_identity": 1,
+      "local_historical_implementation": 159
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-closure-20261020-h21-05",
+    "files": 26,
+    "bytes": 231895,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/writer-capture-handoff-20261016",
+    "files": 1,
+    "bytes": 17947,
+    "categories": {
+      "local_historical_implementation": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-only-h21-20261024",
+    "files": 188,
+    "bytes": 4752439,
+    "categories": {
+      "local_audit_configuration_or_document": 25,
+      "local_private_identity": 2,
+      "local_historical_implementation": 159,
+      "local_historical_database": 2
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-authorized-23",
+    "files": 331,
+    "bytes": 94712486,
+    "categories": {
+      "local_audit_configuration_or_document": 279,
+      "local_private_identity": 10,
+      "local_historical_implementation": 12,
+      "local_historical_database": 11,
+      "local_original_artifact_or_input": 19
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-softbody-secondary-20261112",
+    "files": 609,
+    "bytes": 44257548,
+    "categories": {
+      "local_historical_implementation": 9,
+      "local_audit_configuration_or_document": 482,
+      "local_original_artifact_or_input": 116,
+      "local_private_identity": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-authorized-24",
+    "files": 348,
+    "bytes": 94794676,
+    "categories": {
+      "local_audit_configuration_or_document": 292,
+      "local_historical_implementation": 13,
+      "local_historical_database": 11,
+      "local_private_identity": 12,
+      "local_original_artifact_or_input": 20
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-softbody-retet-gui-auto-20261110",
+    "files": 586,
+    "bytes": 44848232,
+    "categories": {
+      "local_historical_implementation": 8,
+      "local_audit_configuration_or_document": 457,
+      "local_original_artifact_or_input": 119,
+      "local_private_identity": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-karma-diagnostic-20261027-01",
+    "files": 66,
+    "bytes": 67920875,
+    "categories": {
+      "local_audit_configuration_or_document": 39,
+      "local_private_identity": 2,
+      "local_original_artifact_or_input": 24,
+      "local_historical_implementation": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-cleanup-20261112",
+    "files": 4,
+    "bytes": 200281,
+    "categories": {
+      "local_audit_configuration_or_document": 4
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-authorized-12",
+    "files": 296,
+    "bytes": 84433418,
+    "categories": {
+      "local_audit_configuration_or_document": 255,
+      "local_historical_implementation": 8,
+      "local_historical_database": 11,
+      "local_private_identity": 8,
+      "local_original_artifact_or_input": 14
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/desktop-legacy-20261104",
+    "files": 1420,
+    "bytes": 375354152,
+    "categories": {
+      "local_audit_configuration_or_document": 1131,
+      "local_historical_implementation": 229,
+      "local_registered_dependency": 14,
+      "local_original_artifact_or_input": 38,
+      "local_recovery_archive_or_compressed_evidence": 8
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/resolution-experiment-20261026-candidate",
+    "files": 191,
+    "bytes": 5347417,
+    "categories": {
+      "local_audit_configuration_or_document": 11,
+      "local_private_identity": 1,
+      "local_historical_implementation": 179
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-authorized-15",
+    "files": 297,
+    "bytes": 86429175,
+    "categories": {
+      "local_audit_configuration_or_document": 257,
+      "local_historical_implementation": 7,
+      "local_historical_database": 11,
+      "local_private_identity": 8,
+      "local_original_artifact_or_input": 14
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-closure-20261020-h21-04",
+    "files": 26,
+    "bytes": 231894,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-karma-disklight-h21-exportdir-candidate-20261027-01",
+    "files": 50,
+    "bytes": 23234134,
+    "categories": {
+      "local_audit_configuration_or_document": 25,
+      "local_private_identity": 1,
+      "local_original_artifact_or_input": 23,
+      "local_historical_implementation": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-vmmap-survey-candidate-20261027-01",
+    "files": 48,
+    "bytes": 23204614,
+    "categories": {
+      "local_audit_configuration_or_document": 23,
+      "local_private_identity": 1,
+      "local_original_artifact_or_input": 23,
+      "local_historical_implementation": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-closure-20261020-h21-03",
+    "files": 25,
+    "bytes": 199950,
+    "categories": {
+      "local_audit_configuration_or_document": 20,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-window-diagnostic-candidate-20261027-01",
+    "files": 46,
+    "bytes": 23055978,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 1,
+      "local_original_artifact_or_input": 23,
+      "local_historical_implementation": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-karma-disklight-h21-axis-candidate-20261027-01",
+    "files": 50,
+    "bytes": 23230205,
+    "categories": {
+      "local_audit_configuration_or_document": 25,
+      "local_private_identity": 1,
+      "local_original_artifact_or_input": 23,
+      "local_historical_implementation": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/material-controls-new-process",
+    "files": 243,
+    "bytes": 5777215,
+    "categories": {
+      "local_audit_configuration_or_document": 207,
+      "local_historical_implementation": 12,
+      "local_original_artifact_or_input": 8,
+      "local_private_identity": 16
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-closure-20261023-h21-16-authorized",
+    "files": 159,
+    "bytes": 5210811,
+    "categories": {
+      "local_audit_configuration_or_document": 133,
+      "local_historical_implementation": 3,
+      "local_historical_database": 11,
+      "local_private_identity": 4,
+      "local_original_artifact_or_input": 8
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-authorized-04",
+    "files": 230,
+    "bytes": 9656621,
+    "categories": {
+      "local_audit_configuration_or_document": 65,
+      "local_private_identity": 2,
+      "local_historical_implementation": 159,
+      "local_historical_database": 4
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/dove-browser-reference",
+    "files": 94,
+    "bytes": 6372729,
+    "categories": {
+      "local_original_artifact_or_input": 89,
+      "local_audit_configuration_or_document": 5
+    },
+    "prior_review": null,
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-karma-20261016",
+    "files": 28,
+    "bytes": 117222658,
+    "categories": {
+      "local_audit_configuration_or_document": 6,
+      "local_original_artifact_or_input": 22
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-karma-disklight-h21-topology-20261027-01",
+    "files": 459,
+    "bytes": 73864972,
+    "categories": {
+      "local_audit_configuration_or_document": 121,
+      "local_historical_implementation": 310,
+      "local_private_identity": 3,
+      "local_original_artifact_or_input": 25
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-prepared-09",
+    "files": 170,
+    "bytes": 4726263,
+    "categories": {
+      "local_audit_configuration_or_document": 10,
+      "local_private_identity": 1,
+      "local_historical_implementation": 159
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-authorized-03",
+    "files": 230,
+    "bytes": 9656130,
+    "categories": {
+      "local_audit_configuration_or_document": 65,
+      "local_private_identity": 2,
+      "local_historical_implementation": 159,
+      "local_historical_database": 4
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-nuke-api-smoke-20261020-01",
+    "files": 16,
+    "bytes": 553623,
+    "categories": {
+      "local_audit_configuration_or_document": 11,
+      "local_original_artifact_or_input": 3,
+      "local_historical_implementation": 1,
+      "local_private_identity": 1
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-window-late-vmmap-20261027-01",
+    "files": 118,
+    "bytes": 23227468,
+    "categories": {
+      "local_audit_configuration_or_document": 92,
+      "local_private_identity": 2,
+      "local_original_artifact_or_input": 23,
+      "local_historical_implementation": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-20261023-h21-hda-boundary-01",
+    "files": 187,
+    "bytes": 15579615,
+    "categories": {
+      "local_audit_configuration_or_document": 159,
+      "local_private_identity": 5,
+      "local_historical_implementation": 5,
+      "local_original_artifact_or_input": 11,
+      "local_historical_database": 7
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/native-controls-new-process",
+    "files": 223,
+    "bytes": 5562760,
+    "categories": {
+      "local_audit_configuration_or_document": 187,
+      "local_historical_implementation": 12,
+      "local_original_artifact_or_input": 8,
+      "local_private_identity": 16
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-softbody-velocity-limit-20261110",
+    "files": 156,
+    "bytes": 17131036,
+    "categories": {
+      "local_audit_configuration_or_document": 35,
+      "local_historical_implementation": 8,
+      "local_original_artifact_or_input": 111,
+      "local_private_identity": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-prepared-07",
+    "files": 170,
+    "bytes": 4724777,
+    "categories": {
+      "local_audit_configuration_or_document": 10,
+      "local_private_identity": 1,
+      "local_historical_implementation": 159
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/process-identity-handoff-20261016",
+    "files": 5,
+    "bytes": 46162,
+    "categories": {
+      "local_audit_configuration_or_document": 2,
+      "local_historical_implementation": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-softbody-goal-20261112",
+    "files": 149,
+    "bytes": 16247352,
+    "categories": {
+      "local_historical_implementation": 7,
+      "local_audit_configuration_or_document": 13,
+      "local_original_artifact_or_input": 129
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-full-chain-20261020-09",
+    "files": 152,
+    "bytes": 4358017,
+    "categories": {
+      "local_audit_configuration_or_document": 120,
+      "local_private_identity": 5,
+      "local_historical_implementation": 5,
+      "local_original_artifact_or_input": 11,
+      "local_historical_database": 11
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-softbody-checkpoint-20261112",
+    "files": 692,
+    "bytes": 49755294,
+    "categories": {
+      "local_historical_implementation": 9,
+      "local_audit_configuration_or_document": 469,
+      "local_original_artifact_or_input": 212,
+      "local_private_identity": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-window-diagnostic-20261027-01",
+    "files": 130,
+    "bytes": 23230296,
+    "categories": {
+      "local_audit_configuration_or_document": 104,
+      "local_private_identity": 2,
+      "local_original_artifact_or_input": 23,
+      "local_historical_implementation": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-karma-disklight-h21-candidate-20261027-02",
+    "files": 50,
+    "bytes": 23218063,
+    "categories": {
+      "local_audit_configuration_or_document": 25,
+      "local_private_identity": 1,
+      "local_original_artifact_or_input": 23,
+      "local_historical_implementation": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-closure-20261023-h21-08",
+    "files": 26,
+    "bytes": 231897,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/sample-native-repair-20261023-04",
+    "files": 7,
+    "bytes": 50729,
+    "categories": {
+      "local_audit_configuration_or_document": 2,
+      "local_original_artifact_or_input": 5
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-full-chain-20261020-07",
+    "files": 105,
+    "bytes": 2166347,
+    "categories": {
+      "local_audit_configuration_or_document": 79,
+      "local_private_identity": 5,
+      "local_historical_implementation": 5,
+      "local_original_artifact_or_input": 11,
+      "local_historical_database": 5
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-startup-diagnostic-candidate-20261027-01",
+    "files": 48,
+    "bytes": 23210847,
+    "categories": {
+      "local_audit_configuration_or_document": 23,
+      "local_private_identity": 1,
+      "local_original_artifact_or_input": 23,
+      "local_historical_implementation": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/sample-native-repair-20261023-03",
+    "files": 4,
+    "bytes": 35363,
+    "categories": {
+      "local_audit_configuration_or_document": 2,
+      "local_original_artifact_or_input": 2
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-20261023-readiness-01",
+    "files": 323,
+    "bytes": 46199945,
+    "categories": {
+      "local_audit_configuration_or_document": 272,
+      "local_private_identity": 12,
+      "local_historical_implementation": 7,
+      "local_original_artifact_or_input": 21,
+      "local_historical_database": 11
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-hotpath-20261025-authorized",
+    "files": 230,
+    "bytes": 9654820,
+    "categories": {
+      "local_audit_configuration_or_document": 65,
+      "local_private_identity": 2,
+      "local_historical_implementation": 159,
+      "local_historical_database": 4
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-vmmap-identity-20261027-01",
+    "files": 89,
+    "bytes": 23271251,
+    "categories": {
+      "local_audit_configuration_or_document": 63,
+      "local_private_identity": 2,
+      "local_original_artifact_or_input": 23,
+      "local_historical_implementation": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-prepared-06",
+    "files": 170,
+    "bytes": 4724773,
+    "categories": {
+      "local_audit_configuration_or_document": 10,
+      "local_private_identity": 1,
+      "local_historical_implementation": 159
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-rectlight-softbox-20261104-01",
+    "files": 5334,
+    "bytes": 483267771,
+    "categories": {
+      "local_registered_dependency": 5308,
+      "local_private_identity": 26
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-prepared-01",
+    "files": 170,
+    "bytes": 4720120,
+    "categories": {
+      "local_audit_configuration_or_document": 10,
+      "local_private_identity": 1,
+      "local_historical_implementation": 159
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-authorized-02",
+    "files": 230,
+    "bytes": 9656051,
+    "categories": {
+      "local_audit_configuration_or_document": 65,
+      "local_private_identity": 2,
+      "local_historical_implementation": 159,
+      "local_historical_database": 4
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-softbody-retet-skill-release-20261110",
+    "files": 3,
+    "bytes": 3815921,
+    "categories": {
+      "local_recovery_archive_or_compressed_evidence": 1,
+      "local_audit_configuration_or_document": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-prepared-08",
+    "files": 170,
+    "bytes": 4726023,
+    "categories": {
+      "local_audit_configuration_or_document": 10,
+      "local_private_identity": 1,
+      "local_historical_implementation": 159
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-authorized-05",
+    "files": 230,
+    "bytes": 9657607,
+    "categories": {
+      "local_audit_configuration_or_document": 65,
+      "local_private_identity": 2,
+      "local_historical_implementation": 159,
+      "local_historical_database": 4
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-startup-diagnostic-20261027-01",
+    "files": 73,
+    "bytes": 23129530,
+    "categories": {
+      "local_audit_configuration_or_document": 47,
+      "local_private_identity": 2,
+      "local_original_artifact_or_input": 23,
+      "local_historical_implementation": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/process-identity-release-20261016-796h9zrr",
+    "files": 367,
+    "bytes": 19400643,
+    "categories": {
+      "local_audit_configuration_or_document": 287,
+      "local_historical_implementation": 13,
+      "local_recovery_archive_or_compressed_evidence": 7,
+      "local_original_artifact_or_input": 21,
+      "local_historical_database": 39
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/sample-native-repair-20261023-02",
+    "files": 7,
+    "bytes": 56153,
+    "categories": {
+      "local_original_artifact_or_input": 5,
+      "local_audit_configuration_or_document": 2
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-full-chain-20261020-01",
+    "files": 279,
+    "bytes": 31045812,
+    "categories": {
+      "local_audit_configuration_or_document": 235,
+      "local_private_identity": 10,
+      "local_historical_implementation": 7,
+      "local_original_artifact_or_input": 18,
+      "local_historical_database": 9
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-full-chain-20261020-06",
+    "files": 246,
+    "bytes": 24731454,
+    "categories": {
+      "local_audit_configuration_or_document": 211,
+      "local_private_identity": 7,
+      "local_historical_implementation": 6,
+      "local_original_artifact_or_input": 13,
+      "local_historical_database": 9
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/sample-native-repair-20261023-05",
+    "files": 9,
+    "bytes": 74828,
+    "categories": {
+      "local_original_artifact_or_input": 7,
+      "local_audit_configuration_or_document": 2
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-health-diagnostic-20261105",
+    "files": 485,
+    "bytes": 39508554,
+    "categories": {
+      "local_audit_configuration_or_document": 43,
+      "local_recovery_archive_or_compressed_evidence": 1,
+      "local_registered_dependency": 435,
+      "local_historical_implementation": 2,
+      "local_private_identity": 4
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-karma-disklight-h21-candidate-20261027-03",
+    "files": 50,
+    "bytes": 23218072,
+    "categories": {
+      "local_audit_configuration_or_document": 25,
+      "local_private_identity": 1,
+      "local_original_artifact_or_input": 23,
+      "local_historical_implementation": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-karma-diagnostic-candidate-20261027-01",
+    "files": 31,
+    "bytes": 22900633,
+    "categories": {
+      "local_audit_configuration_or_document": 10,
+      "local_private_identity": 1,
+      "local_original_artifact_or_input": 20
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-karma-disklight-h21-topology-candidate-20261027-01",
+    "files": 50,
+    "bytes": 23233945,
+    "categories": {
+      "local_audit_configuration_or_document": 25,
+      "local_private_identity": 1,
+      "local_original_artifact_or_input": 23,
+      "local_historical_implementation": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-20261023-husk-filename-01",
+    "files": 323,
+    "bytes": 45337559,
+    "categories": {
+      "local_audit_configuration_or_document": 272,
+      "local_private_identity": 12,
+      "local_historical_implementation": 7,
+      "local_original_artifact_or_input": 21,
+      "local_historical_database": 11
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-karma-disklight-h21-candidate-20261027-04",
+    "files": 50,
+    "bytes": 23218123,
+    "categories": {
+      "local_audit_configuration_or_document": 25,
+      "local_private_identity": 1,
+      "local_original_artifact_or_input": 23,
+      "local_historical_implementation": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-full-chain-20261020-08",
+    "files": 282,
+    "bytes": 45291804,
+    "categories": {
+      "local_audit_configuration_or_document": 236,
+      "local_private_identity": 10,
+      "local_historical_implementation": 7,
+      "local_original_artifact_or_input": 18,
+      "local_historical_database": 11
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-prepared-16",
+    "files": 170,
+    "bytes": 4735275,
+    "categories": {
+      "local_audit_configuration_or_document": 10,
+      "local_private_identity": 1,
+      "local_historical_implementation": 159
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-20261023-h21-exact-types-01",
+    "files": 64,
+    "bytes": 488887,
+    "categories": {
+      "local_audit_configuration_or_document": 50,
+      "local_private_identity": 3,
+      "local_historical_implementation": 5,
+      "local_original_artifact_or_input": 6
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-disklight-integrated-20261028-06",
+    "files": 230,
+    "bytes": 6030545,
+    "categories": {
+      "local_audit_configuration_or_document": 39,
+      "local_historical_database": 7,
+      "local_private_identity": 2,
+      "local_historical_implementation": 180,
+      "local_original_artifact_or_input": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-softbody-integration-20261110",
+    "files": 156,
+    "bytes": 16976077,
+    "categories": {
+      "local_audit_configuration_or_document": 35,
+      "local_historical_implementation": 8,
+      "local_original_artifact_or_input": 111,
+      "local_private_identity": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-prepared-11",
+    "files": 170,
+    "bytes": 4730015,
+    "categories": {
+      "local_audit_configuration_or_document": 10,
+      "local_private_identity": 1,
+      "local_historical_implementation": 159
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261025-authorized-04",
+    "files": 278,
+    "bytes": 75752362,
+    "categories": {
+      "local_audit_configuration_or_document": 242,
+      "local_historical_implementation": 8,
+      "local_historical_database": 11,
+      "local_private_identity": 6,
+      "local_original_artifact_or_input": 11
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-official-table-cold-recovery-20261107",
+    "files": 890,
+    "bytes": 79393682,
+    "categories": {
+      "local_audit_configuration_or_document": 18,
+      "local_historical_implementation": 4,
+      "local_recovery_archive_or_compressed_evidence": 2,
+      "local_registered_dependency": 866
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-disklight-integrated-20261028-08",
+    "files": 10516,
+    "bytes": 595522027,
+    "categories": {
+      "local_registered_dependency": 10419,
+      "local_private_identity": 97
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-prepared-18",
+    "files": 170,
+    "bytes": 4740896,
+    "categories": {
+      "local_audit_configuration_or_document": 10,
+      "local_private_identity": 1,
+      "local_historical_implementation": 159
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-closure-20261020-h21-06-authorized",
+    "files": 78,
+    "bytes": 311204,
+    "categories": {
+      "local_audit_configuration_or_document": 68,
+      "local_historical_implementation": 3,
+      "local_private_identity": 2,
+      "local_original_artifact_or_input": 5
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-authorized-12",
+    "files": 268,
+    "bytes": 46428250,
+    "categories": {
+      "local_audit_configuration_or_document": 103,
+      "local_private_identity": 2,
+      "local_historical_implementation": 159,
+      "local_historical_database": 4
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-prepared-20",
+    "files": 170,
+    "bytes": 4744767,
+    "categories": {
+      "local_audit_configuration_or_document": 10,
+      "local_private_identity": 1,
+      "local_historical_implementation": 159
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-authorized-15",
+    "files": 273,
+    "bytes": 49971587,
+    "categories": {
+      "local_audit_configuration_or_document": 106,
+      "local_private_identity": 2,
+      "local_historical_implementation": 159,
+      "local_original_artifact_or_input": 2,
+      "local_historical_database": 4
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-full-chain-20261020-11",
+    "files": 300,
+    "bytes": 43859264,
+    "categories": {
+      "local_audit_configuration_or_document": 254,
+      "local_private_identity": 11,
+      "local_historical_implementation": 7,
+      "local_original_artifact_or_input": 19,
+      "local_historical_database": 9
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-alpha-early-gate-20261023-02",
+    "files": 65,
+    "bytes": 617510,
+    "categories": {
+      "local_audit_configuration_or_document": 50,
+      "local_private_identity": 3,
+      "local_historical_implementation": 5,
+      "local_original_artifact_or_input": 7
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-net-width-correction-20261106-02",
+    "files": 23,
+    "bytes": 66619,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-preview-goal-status-20261106",
+    "files": 867,
+    "bytes": 82770396,
+    "categories": {
+      "local_audit_configuration_or_document": 6,
+      "local_recovery_archive_or_compressed_evidence": 3,
+      "local_registered_dependency": 858
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-closure-20261023-h21-19",
+    "files": 26,
+    "bytes": 233452,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-karma-disklight-h21-20261027-02",
+    "files": 66,
+    "bytes": 67917873,
+    "categories": {
+      "local_audit_configuration_or_document": 39,
+      "local_private_identity": 2,
+      "local_original_artifact_or_input": 24,
+      "local_historical_implementation": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/dove-flight-wind",
+    "files": 47,
+    "bytes": 417306164,
+    "categories": {
+      "local_audit_configuration_or_document": 7,
+      "local_original_artifact_or_input": 32,
+      "local_recovery_archive_or_compressed_evidence": 1,
+      "local_historical_implementation": 7
+    },
+    "prior_review": null,
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-closure-20261023-h21-10",
+    "files": 26,
+    "bytes": 231897,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-candidate-12",
+    "files": 26,
+    "bytes": 235115,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-prepared-23",
+    "files": 26,
+    "bytes": 234968,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-candidate-15",
+    "files": 26,
+    "bytes": 235115,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-softbody-retet-gui-self-20261110",
+    "files": 606,
+    "bytes": 43543225,
+    "categories": {
+      "local_historical_implementation": 9,
+      "local_audit_configuration_or_document": 480,
+      "local_original_artifact_or_input": 115,
+      "local_private_identity": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-closure-20261023-h21-17",
+    "files": 26,
+    "bytes": 233452,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/writer-save-implementation-handoff-20261016",
+    "files": 1,
+    "bytes": 18724,
+    "categories": {
+      "local_historical_implementation": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-prepared-24",
+    "files": 26,
+    "bytes": 234968,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261025-prepared-01",
+    "files": 25,
+    "bytes": 205480,
+    "categories": {
+      "local_audit_configuration_or_document": 20,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-receipt-recovery-20261106",
+    "files": 3,
+    "bytes": 9083,
+    "categories": {
+      "local_audit_configuration_or_document": 3
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-prepared-21",
+    "files": 170,
+    "bytes": 4744857,
+    "categories": {
+      "local_audit_configuration_or_document": 10,
+      "local_private_identity": 1,
+      "local_historical_implementation": 159
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-authorized-14",
+    "files": 268,
+    "bytes": 46432455,
+    "categories": {
+      "local_audit_configuration_or_document": 103,
+      "local_private_identity": 2,
+      "local_historical_implementation": 159,
+      "local_historical_database": 4
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-supervisor-diagnostic-20261020-01",
+    "files": 23,
+    "bytes": 46702,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 2
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/dove-flight-refinement",
+    "files": 67,
+    "bytes": 427294269,
+    "categories": {
+      "local_audit_configuration_or_document": 14,
+      "local_original_artifact_or_input": 46,
+      "local_recovery_archive_or_compressed_evidence": 1,
+      "local_historical_implementation": 6
+    },
+    "prior_review": null,
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/dove-flight-polished",
+    "files": 68,
+    "bytes": 679073125,
+    "categories": {
+      "local_audit_configuration_or_document": 12,
+      "local_original_artifact_or_input": 44,
+      "local_recovery_archive_or_compressed_evidence": 1,
+      "local_historical_implementation": 11
+    },
+    "prior_review": null,
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-authorized-13",
+    "files": 268,
+    "bytes": 46428414,
+    "categories": {
+      "local_audit_configuration_or_document": 103,
+      "local_private_identity": 2,
+      "local_historical_implementation": 159,
+      "local_historical_database": 4
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-prepared-19",
+    "files": 170,
+    "bytes": 4744282,
+    "categories": {
+      "local_audit_configuration_or_document": 10,
+      "local_private_identity": 1,
+      "local_historical_implementation": 159
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-karma-disklight-h21-sample-header-candidate-20261027-01",
+    "files": 50,
+    "bytes": 23237874,
+    "categories": {
+      "local_audit_configuration_or_document": 25,
+      "local_private_identity": 1,
+      "local_original_artifact_or_input": 23,
+      "local_historical_implementation": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261025-authorized-05",
+    "files": 279,
+    "bytes": 77478183,
+    "categories": {
+      "local_audit_configuration_or_document": 243,
+      "local_historical_implementation": 7,
+      "local_historical_database": 11,
+      "local_private_identity": 6,
+      "local_original_artifact_or_input": 12
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-prepared-10",
+    "files": 170,
+    "bytes": 4729843,
+    "categories": {
+      "local_audit_configuration_or_document": 10,
+      "local_private_identity": 1,
+      "local_historical_implementation": 159
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-prepared-17",
+    "files": 170,
+    "bytes": 4737680,
+    "categories": {
+      "local_audit_configuration_or_document": 10,
+      "local_private_identity": 1,
+      "local_historical_implementation": 159
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-alpha-context-20261105",
+    "files": 1211,
+    "bytes": 124138130,
+    "categories": {
+      "local_audit_configuration_or_document": 137,
+      "local_registered_dependency": 769,
+      "local_private_identity": 5,
+      "local_recovery_archive_or_compressed_evidence": 1,
+      "local_historical_implementation": 299
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-disklight-integrated-20261028-07",
+    "files": 235,
+    "bytes": 10246662,
+    "categories": {
+      "local_audit_configuration_or_document": 42,
+      "local_historical_database": 7,
+      "local_private_identity": 2,
+      "local_historical_implementation": 180,
+      "local_original_artifact_or_input": 4
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-authorized-17b",
+    "files": 273,
+    "bytes": 49978620,
+    "categories": {
+      "local_audit_configuration_or_document": 106,
+      "local_private_identity": 2,
+      "local_historical_implementation": 159,
+      "local_original_artifact_or_input": 2,
+      "local_historical_database": 4
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-candidate-14",
+    "files": 26,
+    "bytes": 235115,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-prepared-25",
+    "files": 26,
+    "bytes": 234968,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-candidate-13",
+    "files": 26,
+    "bytes": 235115,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-closure-20261023-h21-11",
+    "files": 26,
+    "bytes": 231897,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-prepared-22",
+    "files": 26,
+    "bytes": 234968,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-karma-disklight-h21-ramp-candidate-20261027-02",
+    "files": 50,
+    "bytes": 23229459,
+    "categories": {
+      "local_audit_configuration_or_document": 25,
+      "local_private_identity": 1,
+      "local_original_artifact_or_input": 23,
+      "local_historical_implementation": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-official-table-20261107",
+    "files": 2215,
+    "bytes": 240153274,
+    "categories": {
+      "local_audit_configuration_or_document": 151,
+      "local_historical_implementation": 4,
+      "local_registered_dependency": 2026,
+      "local_original_artifact_or_input": 7,
+      "local_recovery_archive_or_compressed_evidence": 5,
+      "local_private_identity": 22
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-alpha-early-gate-20261023-04",
+    "files": 323,
+    "bytes": 36868601,
+    "categories": {
+      "local_audit_configuration_or_document": 269,
+      "local_historical_implementation": 8,
+      "local_private_identity": 12,
+      "local_original_artifact_or_input": 21,
+      "local_historical_database": 13
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-format-bytecode-20261021-01",
+    "files": 242,
+    "bytes": 24310382,
+    "categories": {
+      "local_audit_configuration_or_document": 207,
+      "local_private_identity": 7,
+      "local_historical_implementation": 6,
+      "local_original_artifact_or_input": 13,
+      "local_historical_database": 9
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-karma-disklight-h21-20261027-03",
+    "files": 63,
+    "bytes": 23130174,
+    "categories": {
+      "local_audit_configuration_or_document": 37,
+      "local_private_identity": 2,
+      "local_original_artifact_or_input": 23,
+      "local_historical_implementation": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/review-20261015",
+    "files": 4,
+    "bytes": 1150655,
+    "categories": {
+      "local_audit_configuration_or_document": 4
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-only-h21-20261024-prepared-02",
+    "files": 170,
+    "bytes": 4646523,
+    "categories": {
+      "local_audit_configuration_or_document": 10,
+      "local_private_identity": 1,
+      "local_historical_implementation": 159
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-net-width-correction-20261106-03",
+    "files": 62,
+    "bytes": 1936539,
+    "categories": {
+      "local_original_artifact_or_input": 8,
+      "local_audit_configuration_or_document": 49,
+      "local_private_identity": 5
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-full-chain-20261020-10",
+    "files": 281,
+    "bytes": 44605890,
+    "categories": {
+      "local_audit_configuration_or_document": 237,
+      "local_private_identity": 10,
+      "local_historical_implementation": 7,
+      "local_original_artifact_or_input": 18,
+      "local_historical_database": 9
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-alpha-early-gate-20261023-03",
+    "files": 244,
+    "bytes": 24299853,
+    "categories": {
+      "local_audit_configuration_or_document": 208,
+      "local_historical_implementation": 7,
+      "local_private_identity": 7,
+      "local_original_artifact_or_input": 13,
+      "local_historical_database": 9
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-closure-20261023-h21-18-authorized",
+    "files": 197,
+    "bytes": 57693057,
+    "categories": {
+      "local_audit_configuration_or_document": 173,
+      "local_historical_implementation": 5,
+      "local_historical_database": 7,
+      "local_private_identity": 4,
+      "local_original_artifact_or_input": 8
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-karma-disklight-h21-ramp-20261027-01",
+    "files": 458,
+    "bytes": 73842470,
+    "categories": {
+      "local_audit_configuration_or_document": 121,
+      "local_historical_implementation": 310,
+      "local_private_identity": 3,
+      "local_original_artifact_or_input": 24
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-hotpath-20261025-prepared",
+    "files": 170,
+    "bytes": 4719024,
+    "categories": {
+      "local_audit_configuration_or_document": 10,
+      "local_private_identity": 1,
+      "local_historical_implementation": 159
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-softbody-thin-waist-20261109",
+    "files": 159,
+    "bytes": 17137883,
+    "categories": {
+      "local_audit_configuration_or_document": 36,
+      "local_historical_implementation": 10,
+      "local_original_artifact_or_input": 111,
+      "local_private_identity": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-karma-disklight-h21-query-20261027-01",
+    "files": 542,
+    "bytes": 75676724,
+    "categories": {
+      "local_audit_configuration_or_document": 180,
+      "local_historical_implementation": 315,
+      "local_private_identity": 7,
+      "local_historical_database": 9,
+      "local_original_artifact_or_input": 31
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/stack-capture-qualification-candidate-20261027-01",
+    "files": 5,
+    "bytes": 89258,
+    "categories": {
+      "local_audit_configuration_or_document": 1,
+      "local_historical_implementation": 4
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-Luna-production-20261106",
+    "files": 1,
+    "bytes": 3590,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/operation-receipt-store",
+    "files": 15,
+    "bytes": 0,
+    "categories": {
+      "local_audit_configuration_or_document": 15
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "inventory_only_unresolved"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261025-candidate-05",
+    "files": 26,
+    "bytes": 235114,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/m1-next-20261015",
+    "files": 1572,
+    "bytes": 81102703,
+    "categories": {
+      "local_audit_configuration_or_document": 1240,
+      "local_historical_implementation": 64,
+      "local_original_artifact_or_input": 93,
+      "local_recovery_archive_or_compressed_evidence": 19,
+      "local_historical_database": 156
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-softbody-ramp-20261110",
+    "files": 167,
+    "bytes": 18743764,
+    "categories": {
+      "local_audit_configuration_or_document": 41,
+      "local_historical_implementation": 9,
+      "local_original_artifact_or_input": 115,
+      "local_private_identity": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-geometry-creative-20261030-01",
+    "files": 2336,
+    "bytes": 191155981,
+    "categories": {
+      "local_registered_dependency": 2312,
+      "local_private_identity": 24
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/dove-flight-final",
+    "files": 38,
+    "bytes": 407021042,
+    "categories": {
+      "local_audit_configuration_or_document": 6,
+      "local_original_artifact_or_input": 27,
+      "local_recovery_archive_or_compressed_evidence": 1,
+      "local_historical_implementation": 4
+    },
+    "prior_review": null,
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/m1-writer-controls-20261015",
+    "files": 7336,
+    "bytes": 409914240,
+    "categories": {
+      "local_audit_configuration_or_document": 3585,
+      "local_recovery_archive_or_compressed_evidence": 2138,
+      "local_historical_database": 639,
+      "local_original_artifact_or_input": 558,
+      "local_private_identity": 293,
+      "local_historical_implementation": 123
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-softbody-production-20261107",
+    "files": 111,
+    "bytes": 4105632,
+    "categories": {
+      "local_historical_implementation": 17,
+      "local_audit_configuration_or_document": 76,
+      "local_original_artifact_or_input": 11,
+      "local_private_identity": 7
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/live-validation",
+    "files": 1,
+    "bytes": 514,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/retired-environments-20261113",
+    "files": 5,
+    "bytes": 333123040,
+    "categories": {
+      "local_recovery_archive_or_compressed_evidence": 4,
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": null,
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/husk-entry-current-release-handoff-20261016",
+    "files": 2,
+    "bytes": 20690,
+    "categories": {
+      "local_historical_implementation": 2
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-closure-20261023-h21-09-authorized",
+    "files": 96,
+    "bytes": 432854,
+    "categories": {
+      "local_audit_configuration_or_document": 81,
+      "local_historical_implementation": 4,
+      "local_private_identity": 3,
+      "local_original_artifact_or_input": 8
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-softbody-retet-20261110",
+    "files": 140,
+    "bytes": 14095255,
+    "categories": {
+      "local_audit_configuration_or_document": 27,
+      "local_historical_implementation": 9,
+      "local_original_artifact_or_input": 102,
+      "local_private_identity": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/formal-domain-recovery",
+    "files": 3073,
+    "bytes": 196259092,
+    "categories": {
+      "local_audit_configuration_or_document": 2408,
+      "local_historical_implementation": 118,
+      "local_original_artifact_or_input": 261,
+      "local_historical_database": 143,
+      "local_private_identity": 142,
+      "local_recovery_archive_or_compressed_evidence": 1
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/m1-completion-20261015",
+    "files": 1630,
+    "bytes": 89975540,
+    "categories": {
+      "local_audit_configuration_or_document": 746,
+      "local_historical_implementation": 719,
+      "local_original_artifact_or_input": 72,
+      "local_historical_database": 46,
+      "local_private_identity": 32,
+      "local_recovery_archive_or_compressed_evidence": 15
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-softbody-retet-gui-contact-20261110",
+    "files": 504,
+    "bytes": 41017672,
+    "categories": {
+      "local_historical_implementation": 9,
+      "local_audit_configuration_or_document": 382,
+      "local_original_artifact_or_input": 111,
+      "local_private_identity": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-karma-disklight-h21-sample-header-20261027-01",
+    "files": 69,
+    "bytes": 67950681,
+    "categories": {
+      "local_audit_configuration_or_document": 42,
+      "local_private_identity": 2,
+      "local_original_artifact_or_input": 24,
+      "local_historical_implementation": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-worker-preflight-diagnostic-20261020-01",
+    "files": 5,
+    "bytes": 4084,
+    "categories": {
+      "local_audit_configuration_or_document": 4,
+      "local_historical_implementation": 1
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/stack-capture-qualification-20261027-01",
+    "files": 14,
+    "bytes": 5659,
+    "categories": {
+      "local_audit_configuration_or_document": 13,
+      "local_private_identity": 1
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/private-preparations",
+    "files": 184,
+    "bytes": 4787796,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 1,
+      "local_historical_implementation": 159,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-closure-20261020-h21-01",
+    "files": 1,
+    "bytes": 4187,
+    "categories": {
+      "local_audit_configuration_or_document": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-window-diagnostic-candidate-20261027-03",
+    "files": 48,
+    "bytes": 23213546,
+    "categories": {
+      "local_audit_configuration_or_document": 23,
+      "local_private_identity": 1,
+      "local_original_artifact_or_input": 23,
+      "local_historical_implementation": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-visual-delivery-20261104",
+    "files": 4,
+    "bytes": 223915,
+    "categories": {
+      "local_original_artifact_or_input": 2,
+      "local_audit_configuration_or_document": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-startup-checkpoints-20261024-authorized",
+    "files": 214,
+    "bytes": 5936834,
+    "categories": {
+      "local_audit_configuration_or_document": 47,
+      "local_private_identity": 2,
+      "local_historical_implementation": 159,
+      "local_historical_database": 6
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-authorized-10",
+    "files": 197,
+    "bytes": 42837747,
+    "categories": {
+      "local_audit_configuration_or_document": 173,
+      "local_historical_implementation": 5,
+      "local_historical_database": 7,
+      "local_private_identity": 4,
+      "local_original_artifact_or_input": 8
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-20261023-native-image-01",
+    "files": 283,
+    "bytes": 48392094,
+    "categories": {
+      "local_audit_configuration_or_document": 239,
+      "local_private_identity": 10,
+      "local_historical_implementation": 7,
+      "local_original_artifact_or_input": 18,
+      "local_historical_database": 9
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-authorized-17",
+    "files": 328,
+    "bytes": 93104203,
+    "categories": {
+      "local_audit_configuration_or_document": 276,
+      "local_private_identity": 10,
+      "local_historical_implementation": 13,
+      "local_historical_database": 11,
+      "local_original_artifact_or_input": 18
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-authorized-28",
+    "files": 346,
+    "bytes": 94758967,
+    "categories": {
+      "local_audit_configuration_or_document": 291,
+      "local_historical_implementation": 12,
+      "local_historical_database": 11,
+      "local_private_identity": 11,
+      "local_original_artifact_or_input": 21
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-authorized-26",
+    "files": 326,
+    "bytes": 93843263,
+    "categories": {
+      "local_audit_configuration_or_document": 275,
+      "local_historical_implementation": 12,
+      "local_historical_database": 11,
+      "local_private_identity": 10,
+      "local_original_artifact_or_input": 18
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-closure-20261023-h21-12-authorized",
+    "files": 73,
+    "bytes": 370281,
+    "categories": {
+      "local_audit_configuration_or_document": 64,
+      "local_historical_implementation": 3,
+      "local_private_identity": 2,
+      "local_original_artifact_or_input": 4
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-authorized-19",
+    "files": 37,
+    "bytes": 449965,
+    "categories": {
+      "local_audit_configuration_or_document": 31,
+      "local_private_identity": 2,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-window-diagnostic-candidate-20261027-02",
+    "files": 48,
+    "bytes": 23213546,
+    "categories": {
+      "local_audit_configuration_or_document": 23,
+      "local_private_identity": 1,
+      "local_original_artifact_or_input": 23,
+      "local_historical_implementation": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-regular-completion-20261105",
+    "files": 872,
+    "bytes": 90288253,
+    "categories": {
+      "local_audit_configuration_or_document": 11,
+      "local_recovery_archive_or_compressed_evidence": 5,
+      "local_registered_dependency": 856
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/confirmed-fixes-20261015",
+    "files": 1080,
+    "bytes": 23477172,
+    "categories": {
+      "local_audit_configuration_or_document": 279,
+      "local_historical_implementation": 706,
+      "local_original_artifact_or_input": 55,
+      "local_historical_database": 20,
+      "local_private_identity": 20
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-karma-disklight-h21-exportdir-candidate-20261027-02",
+    "files": 50,
+    "bytes": 23234982,
+    "categories": {
+      "local_audit_configuration_or_document": 25,
+      "local_private_identity": 1,
+      "local_original_artifact_or_input": 23,
+      "local_historical_implementation": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-geometry-creative-20261030",
+    "files": 19,
+    "bytes": 205053,
+    "categories": {
+      "local_audit_configuration_or_document": 14,
+      "local_private_identity": 1,
+      "local_historical_database": 2,
+      "local_original_artifact_or_input": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-20261024-h21-hip-path-01",
+    "files": 65,
+    "bytes": 486603,
+    "categories": {
+      "local_audit_configuration_or_document": 51,
+      "local_private_identity": 3,
+      "local_historical_implementation": 5,
+      "local_original_artifact_or_input": 6
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-authorized-27",
+    "files": 327,
+    "bytes": 93939285,
+    "categories": {
+      "local_audit_configuration_or_document": 275,
+      "local_private_identity": 10,
+      "local_historical_implementation": 13,
+      "local_historical_database": 11,
+      "local_original_artifact_or_input": 18
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-softbody-upstream-native-20261111",
+    "files": 477,
+    "bytes": 40857877,
+    "categories": {
+      "local_historical_implementation": 10,
+      "local_audit_configuration_or_document": 354,
+      "local_original_artifact_or_input": 111,
+      "local_private_identity": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-softbody-substeps-20261110",
+    "files": 156,
+    "bytes": 17086217,
+    "categories": {
+      "local_audit_configuration_or_document": 35,
+      "local_historical_implementation": 8,
+      "local_original_artifact_or_input": 111,
+      "local_private_identity": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-authorized-20",
+    "files": 277,
+    "bytes": 75032861,
+    "categories": {
+      "local_audit_configuration_or_document": 242,
+      "local_historical_implementation": 8,
+      "local_historical_database": 11,
+      "local_private_identity": 6,
+      "local_original_artifact_or_input": 10
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/current-source-release-20261016-s78f3h42",
+    "files": 364,
+    "bytes": 19005792,
+    "categories": {
+      "local_audit_configuration_or_document": 284,
+      "local_historical_implementation": 13,
+      "local_recovery_archive_or_compressed_evidence": 7,
+      "local_original_artifact_or_input": 21,
+      "local_historical_database": 39
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-authorized-16",
+    "files": 325,
+    "bytes": 93078613,
+    "categories": {
+      "local_audit_configuration_or_document": 273,
+      "local_historical_implementation": 13,
+      "local_historical_database": 11,
+      "local_private_identity": 10,
+      "local_original_artifact_or_input": 18
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-authorized-29",
+    "files": 346,
+    "bytes": 94661271,
+    "categories": {
+      "local_audit_configuration_or_document": 290,
+      "local_private_identity": 11,
+      "local_registered_dependency": 1,
+      "local_historical_implementation": 12,
+      "local_historical_database": 11,
+      "local_original_artifact_or_input": 21
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-authorized-11",
+    "files": 198,
+    "bytes": 42844003,
+    "categories": {
+      "local_audit_configuration_or_document": 173,
+      "local_historical_implementation": 6,
+      "local_historical_database": 7,
+      "local_private_identity": 4,
+      "local_original_artifact_or_input": 8
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-softbody-production-supplement-20261107",
+    "files": 341,
+    "bytes": 24098919,
+    "categories": {
+      "local_historical_implementation": 18,
+      "local_audit_configuration_or_document": 139,
+      "local_original_artifact_or_input": 180,
+      "local_private_identity": 4
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-karma-disklight-h21-candidate-20261027-01",
+    "files": 48,
+    "bytes": 23121381,
+    "categories": {
+      "local_audit_configuration_or_document": 23,
+      "local_private_identity": 1,
+      "local_original_artifact_or_input": 23,
+      "local_historical_implementation": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-candidate-07",
+    "files": 26,
+    "bytes": 235115,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-resource360-20261024-prepared",
+    "files": 170,
+    "bytes": 4665122,
+    "categories": {
+      "local_audit_configuration_or_document": 10,
+      "local_private_identity": 1,
+      "local_historical_implementation": 159
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-softbody-neighbor-20261111",
+    "files": 489,
+    "bytes": 43654925,
+    "categories": {
+      "local_historical_implementation": 10,
+      "local_audit_configuration_or_document": 358,
+      "local_original_artifact_or_input": 119,
+      "local_private_identity": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-full-chain-20261020-04",
+    "files": 149,
+    "bytes": 4358303,
+    "categories": {
+      "local_audit_configuration_or_document": 119,
+      "local_private_identity": 5,
+      "local_historical_implementation": 5,
+      "local_original_artifact_or_input": 11,
+      "local_historical_database": 9
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-candidate-09",
+    "files": 26,
+    "bytes": 235115,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-startup-diagnostic-candidate-20261027-02",
+    "files": 48,
+    "bytes": 23210847,
+    "categories": {
+      "local_audit_configuration_or_document": 23,
+      "local_private_identity": 1,
+      "local_original_artifact_or_input": 23,
+      "local_historical_implementation": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/dove-flight-20261113",
+    "files": 106,
+    "bytes": 798517041,
+    "categories": {
+      "local_original_artifact_or_input": 79,
+      "local_recovery_archive_or_compressed_evidence": 1,
+      "local_audit_configuration_or_document": 11,
+      "local_historical_implementation": 15
+    },
+    "prior_review": null,
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-entry-selfhelp-20261106",
+    "files": 438,
+    "bytes": 43282956,
+    "categories": {
+      "local_audit_configuration_or_document": 7,
+      "local_recovery_archive_or_compressed_evidence": 2,
+      "local_registered_dependency": 429
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-softbody-tear-v2-20261107",
+    "files": 83,
+    "bytes": 627897,
+    "categories": {
+      "local_audit_configuration_or_document": 73,
+      "local_historical_implementation": 3,
+      "local_private_identity": 6,
+      "local_original_artifact_or_input": 1
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-authorized-07",
+    "files": 268,
+    "bytes": 46421690,
+    "categories": {
+      "local_audit_configuration_or_document": 103,
+      "local_private_identity": 2,
+      "local_historical_implementation": 159,
+      "local_historical_database": 4
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-karma-disklight-h21-menu-20261027-01",
+    "files": 592,
+    "bytes": 87430005,
+    "categories": {
+      "local_audit_configuration_or_document": 224,
+      "local_historical_implementation": 315,
+      "local_private_identity": 7,
+      "local_historical_database": 15,
+      "local_original_artifact_or_input": 31
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-startup-diagnostic-20261027-03",
+    "files": 89,
+    "bytes": 23151671,
+    "categories": {
+      "local_audit_configuration_or_document": 63,
+      "local_private_identity": 2,
+      "local_original_artifact_or_input": 23,
+      "local_historical_implementation": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-hbootstrap-diagnostic-20261020-01",
+    "files": 10,
+    "bytes": 72569,
+    "categories": {
+      "local_audit_configuration_or_document": 6,
+      "local_historical_implementation": 4
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-prepared-04",
+    "files": 170,
+    "bytes": 4722001,
+    "categories": {
+      "local_audit_configuration_or_document": 10,
+      "local_private_identity": 1,
+      "local_historical_implementation": 159
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/render-readback-20261026-candidate",
+    "files": 163,
+    "bytes": 4650253,
+    "categories": {
+      "local_audit_configuration_or_document": 11,
+      "local_private_identity": 1,
+      "local_historical_implementation": 151
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-20261023-h21-hda-boundary-02",
+    "files": 323,
+    "bytes": 47382437,
+    "categories": {
+      "local_audit_configuration_or_document": 272,
+      "local_private_identity": 12,
+      "local_historical_implementation": 7,
+      "local_original_artifact_or_input": 21,
+      "local_historical_database": 11
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-softbody-local-fix-20261110",
+    "files": 172,
+    "bytes": 19808656,
+    "categories": {
+      "local_audit_configuration_or_document": 42,
+      "local_historical_implementation": 9,
+      "local_original_artifact_or_input": 119,
+      "local_private_identity": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-prepared-03",
+    "files": 170,
+    "bytes": 4721575,
+    "categories": {
+      "local_audit_configuration_or_document": 10,
+      "local_private_identity": 1,
+      "local_historical_implementation": 159
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-authorized-09",
+    "files": 268,
+    "bytes": 46424704,
+    "categories": {
+      "local_audit_configuration_or_document": 103,
+      "local_private_identity": 2,
+      "local_historical_implementation": 159,
+      "local_historical_database": 4
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-hotpath-20261025-prepared-02",
+    "files": 170,
+    "bytes": 4719687,
+    "categories": {
+      "local_audit_configuration_or_document": 10,
+      "local_private_identity": 1,
+      "local_historical_implementation": 159
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-full-chain-20261020-05",
+    "files": 52,
+    "bytes": 405380,
+    "categories": {
+      "local_audit_configuration_or_document": 39,
+      "local_private_identity": 2,
+      "local_historical_implementation": 5,
+      "local_original_artifact_or_input": 6
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/engineering-chain-20261026-candidate-08",
+    "files": 26,
+    "bytes": 235115,
+    "categories": {
+      "local_audit_configuration_or_document": 21,
+      "local_private_identity": 1,
+      "local_historical_implementation": 1,
+      "local_original_artifact_or_input": 3
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-softbody-dynamic-20261110",
+    "files": 155,
+    "bytes": 17068919,
+    "categories": {
+      "local_audit_configuration_or_document": 34,
+      "local_historical_implementation": 8,
+      "local_original_artifact_or_input": 111,
+      "local_private_identity": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-plugin-entry-20261030",
+    "files": 14,
+    "bytes": 13805146,
+    "categories": {
+      "local_audit_configuration_or_document": 10,
+      "local_recovery_archive_or_compressed_evidence": 4
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-savedgraph-downstream-20261105",
+    "files": 985,
+    "bytes": 40391165,
+    "categories": {
+      "local_registered_dependency": 971,
+      "local_private_identity": 14
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-startup-diagnostic-candidate-20261027-03",
+    "files": 48,
+    "bytes": 23210847,
+    "categories": {
+      "local_audit_configuration_or_document": 23,
+      "local_private_identity": 1,
+      "local_original_artifact_or_input": 23,
+      "local_historical_implementation": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-learning-20261028",
+    "files": 71,
+    "bytes": 3121558,
+    "categories": {
+      "local_historical_implementation": 9,
+      "local_audit_configuration_or_document": 52,
+      "local_original_artifact_or_input": 10
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/sample-native-repair-20261023-01",
+    "files": 9,
+    "bytes": 139519,
+    "categories": {
+      "local_audit_configuration_or_document": 2,
+      "local_original_artifact_or_input": 7
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-full-chain-20261020-02",
+    "files": 277,
+    "bytes": 31119981,
+    "categories": {
+      "local_audit_configuration_or_document": 233,
+      "local_private_identity": 10,
+      "local_historical_implementation": 7,
+      "local_original_artifact_or_input": 18,
+      "local_historical_database": 9
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-karma-diagnostic-candidate-20261027-02",
+    "files": 48,
+    "bytes": 23205374,
+    "categories": {
+      "local_audit_configuration_or_document": 23,
+      "local_private_identity": 1,
+      "local_original_artifact_or_input": 23,
+      "local_historical_implementation": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-softbody-thickness-20261112",
+    "files": 597,
+    "bytes": 42793852,
+    "categories": {
+      "local_historical_implementation": 9,
+      "local_audit_configuration_or_document": 474,
+      "local_original_artifact_or_input": 112,
+      "local_private_identity": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-authorized-08",
+    "files": 268,
+    "bytes": 46424597,
+    "categories": {
+      "local_audit_configuration_or_document": 103,
+      "local_private_identity": 2,
+      "local_historical_implementation": 159,
+      "local_historical_database": 4
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-skill-positioning-20261112",
+    "files": 3,
+    "bytes": 38812,
+    "categories": {
+      "local_audit_configuration_or_document": 3
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-prepared-02",
+    "files": 170,
+    "bytes": 4720715,
+    "categories": {
+      "local_audit_configuration_or_document": 10,
+      "local_private_identity": 1,
+      "local_historical_implementation": 159
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-prepared-05",
+    "files": 170,
+    "bytes": 4722178,
+    "categories": {
+      "local_audit_configuration_or_document": 10,
+      "local_private_identity": 1,
+      "local_historical_implementation": 159
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-history-reader-20261113",
+    "files": 436,
+    "bytes": 39622118,
+    "categories": {
+      "local_audit_configuration_or_document": 2,
+      "local_recovery_archive_or_compressed_evidence": 1,
+      "local_registered_dependency": 433
+    },
+    "prior_review": null,
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-background-plugin-20261031",
+    "files": 405,
+    "bytes": 38688256,
+    "categories": {
+      "local_audit_configuration_or_document": 3,
+      "local_recovery_archive_or_compressed_evidence": 1,
+      "local_registered_dependency": 401
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-net-width-correction-20261106",
+    "files": 21,
+    "bytes": 59863,
+    "categories": {
+      "local_audit_configuration_or_document": 19,
+      "local_private_identity": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-authorized-06",
+    "files": 268,
+    "bytes": 46420950,
+    "categories": {
+      "local_audit_configuration_or_document": 103,
+      "local_private_identity": 2,
+      "local_historical_implementation": 159,
+      "local_historical_database": 4
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/official-startup-diagnostic-20261027-02",
+    "files": 77,
+    "bytes": 23133862,
+    "categories": {
+      "local_audit_configuration_or_document": 51,
+      "local_private_identity": 2,
+      "local_original_artifact_or_input": 23,
+      "local_historical_implementation": 1
+    },
+    "prior_review": {
+      "coverage_file": "native-coverage.json",
+      "recorded_scope": "reviewed"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-softbody-region-20261112",
+    "files": 819,
+    "bytes": 44361053,
+    "categories": {
+      "local_historical_implementation": 9,
+      "local_audit_configuration_or_document": 575,
+      "local_original_artifact_or_input": 233,
+      "local_private_identity": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/hip-chain-20261025-authorized-01",
+    "files": 230,
+    "bytes": 9655454,
+    "categories": {
+      "local_audit_configuration_or_document": 65,
+      "local_private_identity": 2,
+      "local_historical_implementation": 159,
+      "local_historical_database": 4
+    },
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/Bridge-softbody-core-pin-20261107",
+    "files": 138,
+    "bytes": 14187017,
+    "categories": {
+      "local_historical_implementation": 4,
+      "local_audit_configuration_or_document": 30,
+      "local_original_artifact_or_input": 102,
+      "local_private_identity": 2
+    },
+    "prior_review": {
+      "coverage_file": "recent-coverage.json",
+      "recorded_scope": "reviewed_case_summaries_and_result_evidence"
+    },
+    "decision": "retain_original_paths"
+  },
+  {
+    "path": "outputs/software-engineering-full-chain-20261020-03",
+    "files": 0,
+    "bytes": 0,
+    "categories": {},
+    "prior_review": {
+      "coverage_file": "legacy-coverage.json",
+      "recorded_scope": "reviewed_with_explicit_limits"
+    },
+    "decision": "retain_directory_boundary"
+  }
+]

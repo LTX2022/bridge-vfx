@@ -1,0 +1,9 @@
+# 同轮限定只读核对
+
+以下结论来自本机源码及同版文档，不是新原生执行结果。
+
+1. H21官方hou.py:61181明确说明hasUnsavedChanges在hython总为True；本正式链的dirty分支应按此事实验证，不能将其整体留作原生未知。setName不保存文件的说明位于60962。
+2. Opus评审未读到的输出新鲜度检查已经存在：19冻结addon中，提交前的15077拒绝已有输出或symlink；执行后的15244拒绝空文件或mtime早于started_at_epoch。client的_render_file_observation进一步核对producer记录的modified_ns、文件身份和摘要。此项无需新增补丁；这些静态检查存在不代表主场景真实EXR已生成或通过。
+3. Nuke owned_render_worker中native_write_readback失败会保留None而不产生类型化事实。仅这一分支不足以证明会错误判定AVAILABLE；本轮未将其猜测为确定缺陷，实际Write读回与冷重开仍需真实验收。
+
+本轮生产修复仍只针对HIP路径身份及直接关联的任务重放/恢复，不扩展到冻结领域。

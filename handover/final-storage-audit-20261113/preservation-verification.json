@@ -1,0 +1,11 @@
+{
+  "retained_files_checked": 103870,
+  "missing": [],
+  "changed": [
+    "outputs/Bridge-softbody-secondary-20261112/secondary-01/runtime/tmp/hserver.log",
+    "outputs/Bridge-disklight-integrated-20261028-08/continuations/hy3-creative-05/jobs/creative_4023177d8ff79d0defa7/executions/repair-01/project/control/host-state/configured-houdini-binding.json",
+    "outputs/Bridge-disklight-integrated-20261028-08/continuations/luna-rectlight-01/jobs/creative_bff6f898fafe1db03aae/executions/save-repair-02/project/control/host-state/configured-houdini-binding.json"
+  ],
+  "protected_original_files_checked": 569,
+  "protected_original_files_changed": []
+}

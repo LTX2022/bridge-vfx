@@ -1,0 +1,93 @@
+# news.zip 官方文档索引（Houdini 22.0.368）
+
+共 87 页。用 `--page news.zip:<内部路径>` 读取全文。
+
+| 页面 | 标题 |
+|---|---|
+| `20/channels.txt` | What's new \|> Channels |
+| `20/clouds.txt` | What's new \|> Clouds |
+| `20/crowds.txt` | What's new \|> Crowds |
+| `20/engine.txt` | What's new \|> Houdini Engine, APIs, & Plug-ins |
+| `20/feathers.txt` | What's new \|> Feathers |
+| `20/fluids.txt` | What's new \|> FLIP fluids |
+| `20/hotkeys.txt` | What's new \|> Hotkeys |
+| `20/hqueue.txt` | What's new \|> HQueue |
+| `20/index.txt` | What's new in Houdini 20 |
+| `20/karma.txt` | What's new \|> Karma |
+| `20/kinefx.txt` | What's new \|> KineFX and Animation |
+| `20/licensing.txt` | What's new \|> Licensing |
+| `20/ml.txt` | #bestbet: machine learning |
+| `20/model.txt` | What's new \|> Modeling |
+| `20/muscles.txt` | What's new \|> Muscles & Tissue |
+| `20/oceans.txt` | What's new \|> Oceans |
+| `20/pdg.txt` | What's new \|> PDG |
+| `20/platforms.txt` | What's new \|> Platforms |
+| `20/pyro.txt` | What's new \|> Pyro |
+| `20/rbd.txt` | What's new \|> Rigid Body Dynamics |
+| `20/solaris.txt` | What's new \|> Solaris |
+| `20/vellum.txt` | What's new \|> Vellum |
+| `20/vex.txt` | What's new \|> VEX and OpenCL |
+| `20/viewport.txt` | What's new \|> User interface, viewport, scripting |
+| `20_5/channels.txt` | What's new \|> Channels |
+| `20_5/copernicus.txt` | What's new \|> Copernicus |
+| `20_5/crowds.txt` | What's new \|> Crowds |
+| `20_5/engine.txt` | What's new \|> Houdini Engine, APIs, & Plug-ins |
+| `20_5/feathers.txt` | What's new \|> Hair, fur, feathers |
+| `20_5/hqueue.txt` | What's new \|> HQueue |
+| `20_5/index.txt` | What's new in Houdini 20.5 |
+| `20_5/karma.txt` | What's new \|> Karma |
+| `20_5/kinefx.txt` | What's new \|> APEX, KineFX, and animation |
+| `20_5/licensing.txt` | What's new \|> Licensing |
+| `20_5/ml.txt` | #bestbet: machine learning |
+| `20_5/model.txt` | What's new \|> Modeling |
+| `20_5/mpm.txt` | What's new \|> MPM |
+| `20_5/muscles.txt` | What's new \|> Muscles & Tissue |
+| `20_5/pdg.txt` | What's new \|> PDG |
+| `20_5/platforms.txt` | What's new \|> Platforms |
+| `20_5/rbd.txt` | What's new \|> Rigid Body Dynamics |
+| `20_5/solaris.txt` | What's new \|> Solaris |
+| `20_5/vellum.txt` | What's new \|> Vellum |
+| `20_5/vex.txt` | What's new \|> VEX and OpenCL |
+| `20_5/viewport.txt` | What's new \|> User interface, viewport, scripting |
+| `21/copernicus.txt` | What's new \|> Copernicus |
+| `21/crowds.txt` | What's new \|> Crowds |
+| `21/engine.txt` | What's new \|> Houdini Engine, APIs, & Plug-ins |
+| `21/hqueue.txt` | What's new \|> HQueue |
+| `21/index.txt` | What's new in Houdini 21 |
+| `21/karma.txt` | What's new \|> Karma |
+| `21/kinefx.txt` | What's new \|> APEX, KineFX, and animation |
+| `21/licensing.txt` | What's new \|> Licensing |
+| `21/ml.txt` | What's new \|> Machine learning |
+| `21/model.txt` | What's new \|> Modeling, geometry, and terrains |
+| `21/mpm.txt` | What's new \|> MPM |
+| `21/muscles.txt` | What's new \|> Muscles & Character Effects |
+| `21/pdg.txt` | What's new \|> PDG |
+| `21/platforms.txt` | What's new \|> Platforms |
+| `21/pyro.txt` | What's new \|> Pyro and FLIP |
+| `21/rbd.txt` | What's new \|> Rigid Body Dynamics |
+| `21/solaris.txt` | What's new \|> Solaris |
+| `21/vex.txt` | What's new \|> VEX and OpenCL |
+| `21/viewport.txt` | What's new \|> User interface, viewport, scripting |
+| `22/copernicus.txt` | What's new \|> Copernicus |
+| `22/crowds.txt` | What's new \|> Crowds |
+| `22/engine.txt` | What's new \|> Houdini Engine, APIs, & Plug-ins |
+| `22/feathers.txt` | What's new \|> Hair, fur, feathers |
+| `22/hqueue.txt` | What's new \|> HQueue |
+| `22/index.txt` | What's new in Houdini 22 |
+| `22/karma.txt` | What's new \|> Karma |
+| `22/kinefx.txt` | What's new \|> APEX, KineFX, and animation |
+| `22/licensing.txt` | What's new \|> Licensing |
+| `22/ml.txt` | What's new \|> Machine learning |
+| `22/model.txt` | What's new \|> Modeling, geometry, and terrains |
+| `22/mpm.txt` | What's new \|> Particles and MPM |
+| `22/muscles.txt` | What's new \|> Muscles & Tissue |
+| `22/pdg.txt` | What's new \|> PDG |
+| `22/platforms.txt` | What's new \|> Platforms |
+| `22/pyro.txt` | What's new \|> Pyro and Simulation |
+| `22/rbd.txt` | What's new \|> Rigid Body Dynamics |
+| `22/solaris.txt` | What's new \|> Solaris |
+| `22/vellum.txt` | What's new \|> Vellum |
+| `22/vex.txt` | What's new \|> VEX, OpenCL, and HOM scripting |
+| `22/viewport.txt` | What's new \|> User interface and viewport |
+| `beta.txt` | #type: include |
+| `index.txt` | What's new |

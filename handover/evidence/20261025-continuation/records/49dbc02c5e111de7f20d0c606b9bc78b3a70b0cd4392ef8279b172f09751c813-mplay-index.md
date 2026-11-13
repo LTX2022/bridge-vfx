@@ -1,0 +1,25 @@
+# mplay.zip 官方文档索引（Houdini 22.0.368）
+
+共 19 页。用 `--page mplay.zip:<内部路径>` 读取全文。
+
+| 页面 | 标题 |
+|---|---|
+| `index.txt` | MPlay viewer |
+| `mplay_audio.txt` | Play audio in MPlay |
+| `mplay_audio_dialog.txt` | #parent: mplay_dialogs |
+| `mplay_cache.txt` | Load MPlay images into memory to improve playback (caching) |
+| `mplay_control.txt` | ﻿ |
+| `mplay_dialogs.txt` | MPlay windows |
+| `mplay_displayopts.txt` | #parent: mplay_dialogs |
+| `mplay_menus.txt` | MPlay menus |
+| `mplay_movie_export.txt` | Movie export from MPlay |
+| `mplay_multiple_viewports.txt` | Use multiple viewports in MPlay |
+| `mplay_open.txt` | Open Images in MPlay |
+| `mplay_open_dialog.txt` | #parent: mplay_dialogs |
+| `mplay_optimize.txt` | Optimize Playback |
+| `mplay_options.txt` | ﻿= MPlay command line options |
+| `mplay_profile_dialog.txt` | #parent: mplay_dialogs |
+| `mplay_save.txt` | Save images from MPlay |
+| `mplay_script.txt` | Script MPlay |
+| `mplay_sequence_dialog.txt` | #parent: mplay_dialogs |
+| `mplay_settings_dialog.txt` | #parent: mplay_dialogs |

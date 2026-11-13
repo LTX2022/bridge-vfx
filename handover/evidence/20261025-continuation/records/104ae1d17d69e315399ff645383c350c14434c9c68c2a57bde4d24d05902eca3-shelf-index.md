@@ -1,0 +1,454 @@
+# shelf.zip 官方文档索引（Houdini 22.0.368）
+
+共 448 页。用 `--page shelf.zip:<内部路径>` 读取全文。
+
+| 页面 | 标题 |
+|---|---|
+| `activateobjects.txt` | #icon: SHELF/rbd_activate |
+| `addfield.txt` | ﻿= Add field to fluid |
+| `aligncapturepose.txt` | #icon: OBJ_STATE/aligncapturepose |
+| `aligncomponents.txt` | Align components |
+| `anim_backward.txt` | #icon: PLAYBAR/play_backward |
+| `anim_firstframe.txt` | #icon: PLAYBAR/frame_first |
+| `anim_flipbook.txt` | #icon: TOOLS/flipbook |
+| `anim_lastframe.txt` | #icon: PLAYBAR/last_frame |
+| `anim_nextframe.txt` | #icon: PLAYBAR/frame_next |
+| `anim_nextkey.txt` | #icon: PLAYBAR/keyframe_next |
+| `anim_play.txt` | #icon: PLAYBAR/play |
+| `anim_prevframe.txt` | #icon: PLAYBAR/frame_prev |
+| `anim_prevkey.txt` | #icon: PLAYBAR/keyframe_prev |
+| `anim_stop.txt` | #icon: PLAYBAR/stop |
+| `attachconstrainttoanimation.txt` | #icon: SHELF/attach_constraint_animation |
+| `attachconstrainttodynamicspoint.txt` | #icon: SHELF/attach_constraint_dynamicspoint |
+| `attachconstrainttorbd.txt` | #icon: SHELF/attach_constraint_rbd |
+| `attractfluid.txt` | #icon: SHELF/attractfluid |
+| `autorigs.txt` | #icon: OBJ/autorig |
+| `autosleep.txt` | #icon: POP/sleep |
+| `awakenbygeometry.txt` | #icon: POP/awaken |
+| `bakeconstraints.txt` | #icon: CHANNELS/bake_keys |
+| `beachtank.txt` | #icon: SHELF/beach_tank |
+| `bend.txt` | #icon: SHELF/twist_bend |
+| `blendpose.txt` | #icon: OBJ_STATE/blendpose |
+| `bones.txt` | #icon: OBJ_STATE/bones |
+| `bonesfromcurve.txt` | #icon: OBJ_STATE/bonesfromcurve |
+| `box.txt` | ﻿#icon: SOP/box |
+| `break.txt` | #icon: SOP/break |
+| `bulge.txt` | #icon: SOP/bulge |
+| `camera.txt` | Camera |
+| `capturegeometry.txt` | #icon: SOP/capture |
+| `carve.txt` | #icon: SOP/carve |
+| `centerpivot.txt` | #icon: SHELF/center_pivot |
+| `cleartexcache.txt` | #icon: SHELF/clear_texture_cache |
+| `clothattachtobody.txt` | Attach Cloth to Body |
+| `clothbodycollider.txt` | #icon: DOP/clothbodycollider |
+| `clothfollowanimation.txt` | Follow Target |
+| `clothobject.txt` | #icon: DOP/clothobject |
+| `clothproxy.txt` | Cloth Proxy |
+| `clothstitch.txt` | Stitch Cloth |
+| `cloudrig.txt` | #icon: SHELF/cloudrig |
+| `collidewithobjects.txt` | Collide with Objects |
+| `comb.txt` | #icon: SOP/comb |
+| `combine.txt` | #icon: SHELF/combine_objects |
+| `common_ocean.txt` | #type: include |
+| `condensation.txt` | #icon: SHELF/condensation |
+| `config_file.txt` | Shelf configuration file format |
+| `constraintblend.txt` | #icon: OBJ/blend |
+| `constraintdelete.txt` | #icon: SOP/delete |
+| `constraintgamepad.txt` | Gamepad Constraint |
+| `constraintlookat.txt` | #icon: SHELF/lookat |
+| `constraintparentblend.txt` | #icon: SHELF/parent |
+| `constraintpath.txt` | #icon:SHELF/followpath |
+| `constraintpoints.txt` | #icon: OBJ/rivet |
+| `constraintsurface.txt` | #icon: OBJ/sticky |
+| `constrainttoggle.txt` | #icon: DATATYPES/boolean |
+| `coolwithinobject.txt` | #icon: SHELF/cool_within_object |
+| `cop2_normal_color.txt` | Normal Color |
+| `cop2_normal_combine.txt` | Normal Combine |
+| `cop2_normal_invert.txt` | Normal Invert |
+| `cop2_normal_levels.txt` | Normal Levels |
+| `cop2_normal_map.txt` | Normal From Grayscale |
+| `cop2_normal_normalize.txt` | Normalize Normal |
+| `cop2_normal_rotate.txt` | Normal Rotate |
+| `copview.txt` | Composite Viewer |
+| `copytopoints.txt` | ﻿#icon: SOP/copy |
+| `cornell_box.txt` | #icon: SHELF/cornell_box |
+| `creepmodel.txt` | #icon: SOP/creep |
+| `crowds_addclip.txt` | #icon: CROWDS/agentclip |
+| `crowds_agent.txt` | Agent |
+| `crowds_agentcam.txt` | #icon: CROWDS/agentcam |
+| `crowds_collisionlayer.txt` | #icon: SOP/agentcollisionlayer |
+| `crowds_configurejoints.txt` | #icon: SOP/agentconfigurejoints |
+| `crowds_lookat.txt` | Look at |
+| `crowds_obstacle.txt` | Obstacle |
+| `crowds_paintdensity.txt` | Paint density |
+| `crowds_path.txt` | Path |
+| `crowds_populate.txt` | Populate |
+| `crowds_simulate.txt` | Simulate |
+| `crowds_target.txt` | #icon: CROWDS/popsteerseek |
+| `crowds_terrain.txt` | Terrain |
+| `crownsplash.txt` | #icon: SHELF/crown_splash |
+| `customize.txt` | ﻿= Customize the shelf |
+| `deactivateobjects.txt` | #icon: SHELF/rbd_deactivate |
+| `debris.txt` | #icon: SHELF/debris |
+| `deformingobject.txt` | #icon: SHELF/deforming_object |
+| `delete.txt` | #icon: COMMON/delete |
+| `deleteconstraint.txt` | #icon: SHELF/detach_constraint |
+| `detachconstraint.txt` | #icon: SHELF/detach_constraint |
+| `dopview.txt` | Camera tool |
+| `dragforce.txt` | #icon: DOP/drag |
+| `drawcurve.txt` | #icon: SOP/drawcurve |
+| `drawpartingline.txt` | #icon: FUR/addparting |
+| `dripparticlefluid.txt` | #icon: SHELF/drip |
+| `drysand.txt` | #icon: SHELF/dry_sand |
+| `duplicate.txt` | #icon: SOP/duplicate |
+| `dynamicparent.txt` | #icon: OBJ_STATE/dynamicparent |
+| `dynamics_gascurveforce.txt` | #icon: DOP/gascurveforce |
+| `dynamics_popattract.txt` | #icon: POP/attractor |
+| `dynamics_popaxisforce.txt` | #icon: POP/orbit |
+| `dynamics_popcollision.txt` | #icon: POP/collision |
+| `dynamics_popcolor.txt` | #icon: POP/color |
+| `dynamics_popcurveforce.txt` | #icon: DOP/vortexforce |
+| `dynamics_popdrag.txt` | #icon: POP/drag |
+| `dynamics_popfan.txt` | #icon: POP/fan |
+| `dynamics_popfireworks.txt` | #icon: POP/fireworks |
+| `dynamics_popflock.txt` | #icon: POP/follow |
+| `dynamics_popforce.txt` | #icon: POP/force |
+| `dynamics_popinstance.txt` | #icon: POP/instance |
+| `dynamics_popinteract.txt` | #icon: POP/interact |
+| `dynamics_poplocation.txt` | #icon: POP/location |
+| `dynamics_popmetaballforce.txt` | #icon: SOP/force |
+| `dynamics_popreplicate.txt` | Replicate |
+| `dynamics_popsource.txt` | #icon: POP/source |
+| `dynamics_popsprite.txt` | #icon: POP/sprite |
+| `dynamics_popwind.txt` | #icon: POP/wind |
+| `edgeloop.txt` | EdgeLoop |
+| `editcaptureblends.txt` | #icon: OBJ_STATE/editcaptureblend |
+| `editcaptureregions.txt` | #icon: OBJ_STATE/editcaptureregion |
+| `editcaptureweights.txt` | #icon: OBJ_STATE/editcaptureweight |
+| `embedhighresobject.txt` | Embed highres object |
+| `embedinfluid.txt` | #icon: SHELF/move_with_fluid |
+| `emitlava.txt` | #icon: SHELF/volcano |
+| `emitparticlefluid.txt` | #icon: DOP/particlefluidemitter |
+| `emitsteamoncollision.txt` | #icon: SHELF/emit_steam |
+| `expandfromobjects.txt` | Expand from Objects |
+| `extract.txt` | #icon: SHELF/extract_object |
+| `fanforce.txt` | #icon: DOP/fan |
+| `feconstrainpointstotarget.txt` | Constrain Points to Target |
+| `feconstrainregion.txt` | Constrain Region |
+| `fefusepointpairs.txt` | Fuse Point Pairs |
+| `femattach.txt` | FEM Attach |
+| `femslide.txt` | FEM Slide |
+| `fevisualize.txt` | Visualize Finite Elements |
+| `firebox.txt` | #icon: SHELF/box_fire |
+| `flattank.txt` | #icon: SHELF/flat_tank |
+| `flipfluidfromobject.txt` | #icon: SHELF/convert_to_fluid |
+| `flipmist.txt` | #icon: SHELF/flipmist |
+| `fliptank.txt` | FLIP Tank |
+| `fluidforce.txt` | #icon: DOP/fluidforce |
+| `font.txt` | #icon: SOP/font |
+| `formationcrowdsexample.txt` | #icon: MISC/present |
+| `fractal.txt` | #icon: SOP/fractal |
+| `fracturedsolidobject.txt` | Fractured solid object |
+| `freeze.txt` | #icon: SHELF/freezetransforms |
+| `fuelfromobject.txt` | Particle Fluid from Object |
+| `fuzzyobstaclescrowdsexample.txt` | #icon: MISC/present |
+| `fuzzystatetransition.txt` | #icon: MISC/present |
+| `game_development_toolset.txt` | SideFX Labs Toolset tab |
+| `gamepadcamera.txt` | Gamepad Camera |
+| `games.txt` | Games tab |
+| `gluewiretoanimation.txt` | #internal: wireglueconstraint |
+| `granularsheet.txt` | #icon: SHELF/sand_sheet |
+| `granularsolid.txt` | #icon: DOP/sandobject |
+| `granularstrand.txt` | #icon: SHELF/sand_strand |
+| `gravityforce.txt` | #icon: DOP/gravity |
+| `grid.txt` | #icon: SOP/grid |
+| `groom_addfur.txt` | #icon: FUR/add_fur |
+| `groom_animateguides.txt` | #icon: FUR/animate |
+| `groom_capybarasimanddeform.txt` | #icon: SOP/testgeometry_capybara |
+| `groom_emptyguidegroom.txt` | #icon: FUR/guidegroom |
+| `groom_groom.txt` | #icon: FUR/guidegroom |
+| `groom_groommerge.txt` | #icon: FUR/groommerge |
+| `groom_guidegroom.txt` | #icon: FUR/guidegroom |
+| `groom_haircardgen.txt` | #icon: FUR/haircardgen |
+| `groom_haircardtexture.txt` | #icon: FUR/haircardtex |
+| `groom_hairgen.txt` | #icon: FUR/hairgen |
+| `groom_isolateparts.txt` | #icon: FUR/isolate_parts |
+| `groom_simguides.txt` | #icon: FUR/add_dynamics |
+| `groom_togglehairdisplay.txt` | #icon: FUR/toggle_display |
+| `groundplane.txt` | #icon: DOP/groundplane |
+| `group.txt` | #icon: DOP/group |
+| `groupgeometry.txt` | #icon: SOP/group |
+| `guidedoceanlayer.txt` | #icon: SHELF/guided_ocean_layer |
+| `heatwithinobject.txt` | #icon: SHELF/heat_within_object |
+| `hengineinstaller.txt` | #icon: |
+| `hide.txt` | #icon:SHELF/hide |
+| `importmatfromstage.txt` | #icon: SHELF/importmatfromstage |
+| `index.txt` | Shelf tools |
+| `jiggleobject.txt` | Jiggle |
+| `lagobject.txt` | Lag |
+| `largeocean.txt` | #icon: SHELF/oceanwaves |
+| `lattice.txt` | #icon: SOP/lattice |
+| `lava_tips.txt` | #type: include |
+| `lavafromobject.txt` | #icon: SHELF/convert_to_lava |
+| `line.txt` | #icon: SOP/line |
+| `lineartaper.txt` | #icon: SHELF/twist_linear_taper |
+| `lookat.txt` | Look At |
+| `loprender.txt` | #icon: TOOLS/render_region |
+| `lopview.txt` | Camera tool |
+| `lsystem.txt` | #icon: SOP/lsystem |
+| `magnetforce.txt` | #icon: DOP/magnetforce |
+| `makebreakable.txt` | Make Breakable |
+| `makeviscous.txt` | #icon: SHELF/pour |
+| `matchtransform.txt` | #icon: SHELF/matchtransform |
+| `material_lookdev.txt` | #icon: SHELF/material_lookdev |
+| `meltobject.txt` | #icon: SHELF/melt |
+| `metaball.txt` | #icon: SOP/metaball |
+| `mirrorcaptureweights.txt` | #icon: OBJ_STATE/mirrorcapture |
+| `mirrormusclecapture.txt` | #icon: OBJ_STATE/mirrorcapture |
+| `morph.txt` | Morph |
+| `mountain.txt` | #icon: SOP/mountain |
+| `move.txt` | Move/Transform/Rotate tools |
+| `movetopivot.txt` | #icon: SHELF/movetopivot |
+| `mpmconfig.txt` | MPM Configure |
+| `mpmconfigbuildingcollapse.txt` | MPM Configure Building Collapse |
+| `mpmconfigjello.txt` | MPM Configure Jello Party |
+| `mpmconfiglandslide.txt` | MPM Configure Landslide |
+| `mpmconfigmetal.txt` | MPM Configure Metal Tearing |
+| `mpmconfigpancakes.txt` | MPM Configure Pancakes |
+| `mpmconfigsand.txt` | MPM Configure Sand Instances |
+| `mpmconfigsnow.txt` | MPM Configure Rolling Snowball |
+| `mpmconfigsoftbody.txt` | MPM Configure Softbody |
+| `mpmconfigtire.txt` | MPM Configure Spinning Tire |
+| `mpmconfigwater.txt` | MPM Configure Water Glass |
+| `muscle_attachmuscles.txt` | #icon: SHELF/muscle_attach |
+| `muscle_detachmuscles.txt` | #icon: SHELF/muscle_detach |
+| `muscle_displace.txt` | #icon: SOP/inflate |
+| `muscle_frankenmuscle.txt` | #icon: OBJ/frankenmuscle |
+| `muscle_musclepin.txt` | #icon: OBJ/musclepin |
+| `muscle_paintmusclemask.txt` | #icon: SHELF/paint_muscle_mask |
+| `muscle_rig.txt` | #icon: OBJ/musclerig |
+| `muscle_riggedmuscle.txt` | #icon: SHELF/point_to_point_muscle |
+| `muscle_setmuscleid.txt` | #icon: MISC/rename |
+| `muscle_strokemuscle.txt` | #icon: OBJ/muscle |
+| `muscle_tissuesimulate.txt` | #icon: SOP/tissuesolver |
+| `newsimulation.txt` | #icon: DOP/makeactive |
+| `noise_sampler.txt` | #icon: SHELF/noise_sampler |
+| `null.txt` | #icon: OBJ/null |
+| `objview.txt` | Camera tool |
+| `objxform.txt` | Object move/transform/rotate tools |
+| `ocean_differences.txt` | #type: include |
+| `oceanflattank.txt` | #icon: SHELF/flat_tank |
+| `paintcapturelayer.txt` | #icon: OBJ_STATE/paintcapturelayer |
+| `paintfuel.txt` | #icon: SHELF/paint_fuel |
+| `painttearable.txt` | #icon: SHELF/painttearable |
+| `painttemperature.txt` | #icon: SHELF/paint_temperature |
+| `parent.txt` | #icon: SHELF/parent |
+| `parentblend.txt` | #icon: OBJ/blend |
+| `parentconstraint.txt` | #icon: SHELF/parent_constraint |
+| `parentfluid.txt` | #icon: DOP/parentfluid |
+| `pdg_imageconvert.txt` | #icon: SHELF/pdg_imageconvert |
+| `pdg_installcheck.txt` | #icon: SHELF/pdg_installcheck |
+| `pdg_outputfile.txt` | #icon: SHELF/pdg_outputfile |
+| `pdg_rendersetup.txt` | #icon: SHELF/pdg_rendersetup |
+| `pdg_wedgegeo.txt` | #icon: SHELF/pdg_wedgegeo |
+| `platonic.txt` | #icon: SOP/platonic |
+| `pointweld.txt` | Point Weld |
+| `popview.txt` | Camera tool |
+| `pose.txt` | Pose |
+| `posespacedeform.txt` | #icon: SOP/posespacedeform |
+| `pumpfromobjects.txt` | Pump from Objects |
+| `pyro_billowysmoke.txt` | ﻿= Billowy smoke |
+| `pyro_burn.txt` | Flames |
+| `pyro_candle.txt` | Candle |
+| `pyro_coloredsmoke.txt` | ﻿= Colored Smoke |
+| `pyro_dryice.txt` | Dry Ice |
+| `pyro_explosion.txt` | Explosion |
+| `pyro_fireball.txt` | Fireball |
+| `pyro_makecolored.txt` | ﻿= Add Color |
+| `pyro_smokelessflame.txt` | Smokeless Flames |
+| `pyro_tips.txt` | #type: include |
+| `pyro_volcano.txt` | Volcano |
+| `pyro_wispysmoke.txt` | ﻿= Wispy smoke |
+| `pyrobox.txt` | ﻿= Pyro Container |
+| `pyrosimplebillowysmoke.txt` | ﻿= Sparse Billowy Smoke |
+| `pyrosimplefireball.txt` | Fireball |
+| `pyrosimplefirespread.txt` | Spreading Fire |
+| `pyrosimplemuzzleflash.txt` | Simple Muzzle Flash |
+| `pyrosimpleshockwave.txt` | Simple Shockwave |
+| `quickshapes.txt` | #icon: SHELF/quick_shapes |
+| `ragdollrunexample.txt` | #icon: MISC/present |
+| `rails.txt` | #icon: SOP/rails |
+| `ray.txt` | #icon: SOP/ray |
+| `rbdangularconstraint.txt` | #icon: DOP/rbdangularconstraint |
+| `rbdangularspringconstraint.txt` | #icon: DOP/rbdangularspringconstraint |
+| `rbdautofreeze.txt` | #icon: DOP/rbdautofreeze |
+| `rbdconetwistconstraint.txt` | #icon: DOP/rbdconetwistconstraint |
+| `rbdconvexproxy.txt` | #icon: SHELF/rbdconvexproxy |
+| `rbdfracturedobject.txt` | #icon: DOP/rbdfracturedobject |
+| `rbdglueobject.txt` | #icon: DOP/rbdglueobject |
+| `rbdgrains.txt` | #icon: SHELF/rbd_grains |
+| `rbdhingeconstraint.txt` | #icon: DOP/rbdhingeconstraint |
+| `rbdobjects.txt` | #icon: DOP/rbdpackedobject |
+| `rbdpackedobject_choose.txt` | #type: include |
+| `rbdpinconstraint.txt` | #icon: DOP/rbdpinconstraint |
+| `rbdpointobject.txt` | #icon: DOP/rbdpointobject |
+| `rbdragdollobject.txt` | #icon: DOP/rbdragdollobject |
+| `rbdsimplefracture.txt` | #icon: SOP/rbdmaterialfracture |
+| `rbdsimpleguided.txt` | #icon: SHELF/rbd_guided |
+| `rbdsliderconstraint.txt` | #icon: DOP/rbdsliderconstraint |
+| `rbdsphereproxy.txt` | #icon: SHELF/rbdsphereproxy |
+| `rbdspringconstraint.txt` | #icon: DOP/rbdspringconstraint |
+| `reguide.txt` | #icon: FUR/reguide |
+| `removeobjectsfromsimulation.txt` | #icon: SHELF/remove_from_simulation |
+| `renderregion.txt` | Render region tool |
+| `resizefluid.txt` | Resize Fluid |
+| `reverse.txt` | #icon: SOP/reverse |
+| `revolve.txt` | #icon: SOP/revolve |
+| `rigging_ikfrombones.txt` | #icon: MISC/digital_asset |
+| `rigging_ikfromobjects.txt` | #icon: MISC/digital_asset |
+| `rigidcollider.txt` | #icon: DOP/surfacecollisionparms |
+| `ripple.txt` | #icon: SOP/ripple |
+| `rop_rbd_to_fbx.txt` | RBD to FBX |
+| `rop_texture_sheets.txt` | Texture Sheet |
+| `rop_vertex_animation_textures.txt` | Vertex Animation Textures |
+| `sandbox.txt` | #icon: SHELF/sandbox |
+| `scatter.txt` | #icon: SOP/scatter |
+| `sculpt.txt` | #icon: SOP/sculpt |
+| `sculptedparticlefluid.txt` | #icon: SHELF/sculptedparticlefluid |
+| `seedvorticles.txt` | #icon: SHELF/seedvorticles |
+| `select.txt` | Select tool |
+| `setinitialpose.txt` | #icon: SHELF/wire_initial_pose |
+| `shatter.txt` | #icon: SOP/shatter |
+| `sinkfromobjects.txt` | #icon: SHELF/fluid_sink |
+| `slice.txt` | Slice |
+| `slicealongline.txt` | Slice along line |
+| `smallocean.txt` | #icon: SHELF/oceanwaves |
+| `smokebox.txt` | #icon: SHELF/box_smoke |
+| `smokefromobject.txt` | #icon: SHELF/convert_to_smoke |
+| `smoketrail.txt` | #index: no |
+| `solidobject.txt` | Solid object |
+| `sop_collision_geo.txt` | Game Engine Collision |
+| `sop_constraintnetwork.txt` | #icon: NETWORKS_chop |
+| `sop_create_flowmap.txt` | Create Flowmap |
+| `sop_flowmap_guide.txt` | Guide Flowmap |
+| `sop_flowmap_obstacle.txt` | Flowmap Obstacle |
+| `sop_flowmap_to_color.txt` | Flowmap to Color |
+| `sop_groom_curveadvect.txt` | #icon: SOP/guideadvect |
+| `sop_groom_guideinit.txt` | #icon: FUR/initialize_guides |
+| `sop_groom_guideprocess_bend.txt` | #icon: FUR/orientation |
+| `sop_groom_guideprocess_frizz.txt` | #icon: FUR/paint_frizz |
+| `sop_groom_guideprocess_length.txt` | #icon: FUR/paint_length |
+| `sop_groom_guideprocess_lift.txt` | #icon: FUR/lift_hair |
+| `sop_groom_guideprocess_setdir.txt` | #icon: FUR/comb |
+| `sop_groom_guideprocess_smooth.txt` | #icon: FUR/smooth |
+| `sop_groom_guideprocess_straighten.txt` | #icon: FUR/paint_straighten |
+| `sop_groom_hairclump.txt` | #icon: FUR/paint_clumping |
+| `sop_groom_whitehair.txt` | #icon: FUR/paint_white_density |
+| `sop_make_loop.txt` | Make Loop |
+| `sop_maya_mayahardedge_to_attribute.txt` | Convert Maya Hard Edge to Attribute |
+| `sop_maya_mayahardedge_to_group.txt` | Convert Maya Hard Edge to Group |
+| `sop_polywrap.txt` | PolyWrap |
+| `sop_smart_wrap.txt` | Smart Wrap |
+| `sop_unity_material.txt` | Unity Material |
+| `sop_unreal_material.txt` | Unreal Material |
+| `sopview.txt` | Camera tool |
+| `sourcefrompoints.txt` | Source from Points |
+| `sourcefromsurface.txt` | Source from Surface |
+| `sourcefromvolume.txt` | Source from Volumes |
+| `sparticles_fireworkbrocade.txt` | Firework Brocade |
+| `sparticles_fireworkchrysanthemum.txt` | Firework Chrysanthemum |
+| `sparticles_fireworkpeony.txt` | Firework Peony |
+| `sparticles_fireworks.txt` | Fireworks |
+| `sparticles_magictraila.txt` | Magic Trail A |
+| `sparticles_magictrailb.txt` | Magic Trail B |
+| `sparticles_magictrailc.txt` | Magic Trail C |
+| `specializematfromstage.txt` | #icon: SHELF/specializematfromstage |
+| `sphere.txt` | #icon: SOP/sphere |
+| `spraypaint.txt` | #icon: SOP/spraypaint |
+| `spyro_aerialbarrage.txt` | ﻿= Aerial Barrage |
+| `spyro_aerialgroundbarrage.txt` | ﻿= Aerial Ground Barrage |
+| `spyro_airexplosion.txt` | Aerial Explosion |
+| `spyro_billowysmoke.txt` | ﻿= Sparse Billowy Smoke |
+| `spyro_bullethits.txt` | Bullet Hits |
+| `spyro_campfire.txt` | Bonfire |
+| `spyro_candleflame.txt` | Candle Flame |
+| `spyro_debrisdust.txt` | Pyro Debris Dust |
+| `spyro_dryice.txt` | Dry Ice |
+| `spyro_dustfireball.txt` | ﻿= Dust Fireball |
+| `spyro_fireball.txt` | Sparse Fireball |
+| `spyro_fireballwithtrails.txt` | Fireball with Trails |
+| `spyro_fireportal.txt` | Fire Portal |
+| `spyro_firespread.txt` | ﻿= Spreading Fire |
+| `spyro_gputorch.txt` | Simple GPU Torch |
+| `spyro_groundexplosion.txt` | Ground Explosion |
+| `spyro_groundexplosiona.txt` | Ground Explosion A |
+| `spyro_groundexplosionb.txt` | Ground Explosion B |
+| `spyro_groundshockwave.txt` | ﻿= Ground Shockwave |
+| `spyro_shockwave.txt` | Shockwave |
+| `spyro_simpleairexplosion.txt` | Simple Aerial Explosion |
+| `spyro_simplecampfire.txt` | Simple Bonfire |
+| `spyro_simplegpuexplosion.txt` | Simple GPU Ground Explosion |
+| `spyro_simplegroundexplosion.txt` | Simple Ground Explosion |
+| `spyro_smokelessflame.txt` | Smokeless Flames |
+| `spyro_staggeredgroundshockwaves.txt` | ﻿= Staggered Ground Shockwaves |
+| `spyro_stylizedfire.txt` | Stylized Fire |
+| `spyro_synchronizedgroundshockwaves.txt` | ﻿= Synchronized Ground Shockwaves |
+| `spyro_thrusterexhaust.txt` | Thruster Exhaust |
+| `spyro_wispysmokea.txt` | ﻿= Wispy Smoke A |
+| `spyro_wispysmokeb.txt` | ﻿= Wispy Smoke B |
+| `squashstretch.txt` | #icon: SHELF/twist_squashstretch |
+| `stadiumcrowdsexample.txt` | #icon: MISC/present |
+| `standard_shader_ball.txt` | #icon: SHELF/standard_shader_ball |
+| `staticobject.txt` | #icon: DOP/staticobject |
+| `streetcrowdsexample.txt` | #icon: MISC/present |
+| `suctionfluid.txt` | #icon: SHELF/suctionfluid |
+| `taper.txt` | #icon: SHELF/twist_taper |
+| `terrain_canyon.txt` | Terrain: Canyon |
+| `terrain_dunes.txt` | Terrain: Dunes |
+| `terrain_hills.txt` | Terrain: Hills |
+| `terrain_islands.txt` | Terrain: Islands |
+| `terrain_moonscape.txt` | Terrain: Moonscape |
+| `terrain_mountain.txt` | Terrain: Mountain |
+| `terrain_valley.txt` | Terrain: Valley |
+| `terrainobject.txt` | #icon: DOP/terrainobject |
+| `transformconstraint.txt` | #icon: SOP/xform |
+| `tube.txt` | #icon: SOP/tube |
+| `twist.txt` | #icon: SOP/twist |
+| `uniformforce.txt` | #icon: DOP/uniformforce |
+| `update_toolset.txt` | Update Toolset |
+| `upres.txt` | Up-res |
+| `upressand.txt` | #icon: SHELF/sand_upres |
+| `uvbrush.txt` | #icon: SOP/uvbrush |
+| `uvedit.txt` | #icon: SOP/uvedit |
+| `uvflatten.txt` | #icon: SOP/uvflatten |
+| `uvfuse.txt` | #icon: SOP/uvfuse |
+| `uvpelt.txt` | #icon: SOP/uvpelt |
+| `uvproject.txt` | #icon: SOP/uvproject |
+| `uvquickshade.txt` | #icon: SOP/uvquickshade |
+| `uvtexture.txt` | #icon: SOP/texture |
+| `uvtransform.txt` | #icon: SOP/uvtransform |
+| `uvunwrap.txt` | #icon: SOP/uvunwrap |
+| `veach_mis_planks.txt` | #icon: SHELF/veach_mis_planks |
+| `vellumballoon.txt` | #icon: SHELF/vellum_balloon |
+| `vellumcloth.txt` | #icon: SHELF/vellum_cloth |
+| `vellumgrains.txt` | #icon: SHELF/vellum_grains |
+| `vellumhair.txt` | #icon: SHELF/vellum_hair |
+| `vellumsimplecloth.txt` | #icon: SHELF/vellum_simplecloth |
+| `vellumsimplesoftbody.txt` | #icon: SHELF/vellum_softbody |
+| `vellumsoftbody.txt` | #icon: SHELF/vellum_softbody_struts |
+| `vellumtetsoftbody.txt` | #icon: SHELF/vellum_softbody_tetrahedral |
+| `view.txt` | Camera tool |
+| `visibility.txt` | #icon: SOP/visibility |
+| `waveform.txt` | Waveform |
+| `waves.txt` | #icon: SHELF/oceanwaves |
+| `wavetank.txt` | #icon: SHELF/wave_tank |
+| `wetsand.txt` | #icon: SHELF/wet_sand |
+| `whitewater.txt` | #icon: SHELF/whitewater |
+| `windforce.txt` | #icon: DOP/windforce |
+| `wireangularconstraint.txt` | #icon: DOP/wireangularconstraint |
+| `wireangularspringconstraint.txt` | #icon: DOP/wireangularspringconstraint |
+| `wireattachtosurface.txt` | Attach Wire to Surface |
+| `wireglueconstraint.txt` | #icon: DOP/wireglueconstraint |
+| `wireobject.txt` | #icon: DOP/wireobject |
+| `wirepinconstraint.txt` | ﻿#icon: SHELF/wirepinconstraint |
+| `wirespringconstraint.txt` | ﻿#icon: SHELF/wirespringconstraint |

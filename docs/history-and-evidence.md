@@ -17,3 +17,5 @@ Bridge 的工程、结果、签名许可和执行记录属于具体本机任务�
 - [历史 2.0 CLI 参考](legacy-cli-reference.md)
 
 已验收结果的部分 HIP、NK、图像和预览副本见 [历史结果文件副本](../examples/historical-results/README.md)。原始源素材、许可、签名回执、原运行快照和历史账本应保留原路径；本仓库不是这些文件的完整备份。
+
+历史交接文字及本机保留策略见 [文件保留与 GitHub 范围](storage-and-publication.md)。

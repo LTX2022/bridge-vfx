@@ -1,0 +1,17 @@
+鸽子飞行动画
+
+Dove_Flap_Forward.fbx：扑翼前飞，3秒，1–145帧。
+Dove_Glide_Forward.fbx：受风滑翔前飞，3秒，1–145帧。
+Dove_Flap_Glide_Flap.fbx：扑翼—滑翔—扑翼，7秒，1–337帧。
+
+48fps；米制；Y轴向上，Z轴向前；根节点带前进位移。
+Houdini 导入时将场景帧率设为 48fps，FBX Character Import 的三个输出依次接入 Joint Deform。
+两段3秒片段首尾姿态相接；循环时去掉重复终帧，并累加每轮根位移。
+
+Dove_Flight.hip 为可编辑工程；需与 textures、work/capture_unpacked.bgeo.sc 保持相对目录结构。
+动画控制位于 /obj/Dove_Flight/Flight_Animation，含动作选择、前进速度与扑翼频率。
+过渡片段按默认扑翼频率设计；修改频率后需要重新调整过渡姿态衔接。
+
+羽毛采用羽根连续跟随及长羽末端弯曲绑定。贴图嵌入 FBX，同时提供 textures。
+保留模型网格羽毛与贴图，不包含 Maya XGen 程序绒毛。
+预览为正面和侧面的跟随镜头；slow 预览为四倍慢放。

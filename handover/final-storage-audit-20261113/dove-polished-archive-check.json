@@ -1,0 +1,102 @@
+{
+  "zip_sha256": "b6daec32fdc52f59253b02ec1bc6b3949e3710a7c3ff7527c564567cfa7e2536",
+  "zip_bytes": 66587699,
+  "members": [
+    {
+      "path": "Dove_Flap_Forward.fbx",
+      "sha256": "0a5f759f4db83391a9071718450a3db0e771afd93f386cab32c910bdad75cfd0",
+      "local_matches": true
+    },
+    {
+      "path": "Dove_Flap_Glide_Flap.fbx",
+      "sha256": "7d3022965cd129de0092e3f2c4754c07bdd47d3c3109091edc00aca3b3872fe2",
+      "local_matches": true
+    },
+    {
+      "path": "Dove_Glide_Forward.fbx",
+      "sha256": "9c92648a345c472d3f68bdfa840a51e407f0ef4a019fbc2880ba83d9f1e7d136",
+      "local_matches": true
+    },
+    {
+      "path": "Dove_Glide_Forward_preview.mp4",
+      "sha256": "5f71622f6b73e60eedc13d1e51c4cfb6f10c89f12cd907e3412435c085590a4f",
+      "local_matches": true
+    },
+    {
+      "path": "Dove_Flap_Glide_Flap_preview.mp4",
+      "sha256": "d2270518c43a88fcd75c112ccea1ab806a38b35ae48121c9697a705d12639c15",
+      "local_matches": true
+    },
+    {
+      "path": "Dove_Flap_Forward_preview.mp4",
+      "sha256": "c9f959cecb911ec65bd5d3d090d058298ca43fd9fb2c04d4ad51b6fffc37f8be",
+      "local_matches": true
+    },
+    {
+      "path": "Dove_Flap_Forward_slow.mp4",
+      "sha256": "b73061b79d522c55c6f1cdf54df1519b9c2c51e08d26016232fa3fa101eb1021",
+      "local_matches": true
+    },
+    {
+      "path": "Dove_Flight.hip",
+      "sha256": "942c48a2f3251aa82388bb8b1b895c62777139d65e9c9b966091db416fb381fd",
+      "local_matches": true
+    },
+    {
+      "path": "\u4f7f\u7528\u8bf4\u660e.txt",
+      "sha256": "51ddd312b74d04bdf31ad86dc7cb83e77717b9de07515f16f47c79de679ee2d4",
+      "local_matches": true
+    },
+    {
+      "path": "work/capture_unpacked.bgeo.sc",
+      "sha256": "074b3a4ad62be4f1559daa41a86b4e658f379c9b9268415567ef31d14fbbdec1",
+      "local_matches": true
+    },
+    {
+      "path": "textures/Dove_Wing_normal.jpg",
+      "sha256": "06907a0d1b8df795bfbdf65b4b988e9341c1ac5c234480762284aa6e4475db6e",
+      "local_matches": true
+    },
+    {
+      "path": "textures/Dove_leg_diffuse.jpg",
+      "sha256": "f95722504cda8783829d2932ca724b4c85a2a8b78491e8a940faa0dedd41f433",
+      "local_matches": true
+    },
+    {
+      "path": "textures/Dove_body_diffuse.jpg",
+      "sha256": "8a9db7cc26463495c787c3858e3be93c8685590f947dc8f646b016fdda009ec6",
+      "local_matches": true
+    },
+    {
+      "path": "textures/Dove_Wing_Mask.jpg",
+      "sha256": "bc1a4480315e75230422e56c2ec89236e82da105eeb8f7cc3fb635d7252ef28a",
+      "local_matches": true
+    },
+    {
+      "path": "textures/Dove_eye_diffuse.jpg",
+      "sha256": "0b1f34cdc6a8a18dc9a3d64bbdea63320487516a05f0bfdc6407a6886befa15b",
+      "local_matches": true
+    },
+    {
+      "path": "textures/Dove_Wing_diffuse.jpg",
+      "sha256": "af6015331eed44191fb2d352720b4da5f4cc0ef686bef5273a1bdbd9cb7a8fa8",
+      "local_matches": true
+    },
+    {
+      "path": "textures/Dove_WingTail_diffuse.jpg",
+      "sha256": "32a9c2c6166dbc46378f1db42fbeda65a6a1e09c85c2fa46eb776876da48e539",
+      "local_matches": true
+    },
+    {
+      "path": "textures/Dove_WingTail_normal.jpg",
+      "sha256": "4d18e1e9c3e5ce2c642f625487014d45209912a7f1a6f1e80e9c722645c18aaf",
+      "local_matches": true
+    },
+    {
+      "path": "textures/Dove_WingTail_Mask.jpg",
+      "sha256": "9b0d018212dcb366c2e4e20991a778c26a3d82e6b2b01c43504d8465d8743e9d",
+      "local_matches": true
+    }
+  ],
+  "private_paths": []
+}

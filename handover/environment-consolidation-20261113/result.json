@@ -1,0 +1,21 @@
+{
+  "removed_regular_files": 12854,
+  "removed_environment_roots": 8,
+  "archive_bytes": 56315740,
+  "net_allocated_bytes_saved": 138326016,
+  "outputs_regular_file_count_after": 136725,
+  "protected_files_checked": 569,
+  "protected_files_changed": 0,
+  "historical_goal_results": [
+    "PASS",
+    "FAIL",
+    "PASS"
+  ],
+  "native_starts": 0,
+  "live_config_files_checked": 871,
+  "live_config_references_to_candidates": 0,
+  "open_handles_or_processes_found": 0,
+  "remaining_python_paths": 62502,
+  "unique_python_contents": 1945,
+  "duplicate_python_paths": 60557
+}

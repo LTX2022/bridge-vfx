@@ -1,0 +1,11 @@
+# 启动接点与副本只读核查
+
+核查者：/root/startup_probe_route。
+
+最早接点在worker future语句后、argparse/sqlite3/项目依赖之前；后续覆盖导入、catalog、解析、编译和证据初始化。owned_process已直接将fd2接到私有追加无缓冲child.stderr.log，不需新路径或logging服务。
+
+GraphJobService._worker_env继承受控环境；专项controlled_environment会清空外部env，所以开启项必须在该受控环境内明确设置。生产默认关闭，普通import不输出。
+
+原scope snapshot是独立普通文件，其worker SHA632c8a737fc80ad3a08de0a5c6f5add55067f7a2ae6acd511ebcb48cc7b4d016保持。没有controller-entry worker镜像。三类Skill历史实体副本由build_release生成，本轮不交新安装包，不改历史ZIP。
+
+记录只证明阶段到达，不能替代签名身份/停止或HIP成功。缺首标记也不能区分原生启动、脚本加载解析与fd2失败。本轮未修改或运行DCC/OS采样。

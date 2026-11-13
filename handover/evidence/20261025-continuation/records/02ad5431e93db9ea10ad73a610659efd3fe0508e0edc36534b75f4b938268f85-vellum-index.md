@@ -1,0 +1,44 @@
+# vellum.zip 官方文档索引（Houdini 22.0.368）
+
+共 38 页。用 `--page vellum.zip:<内部路径>` 读取全文。
+
+| 页面 | 标题 |
+|---|---|
+| `64bit.txt` | Setting up a 64-bit solve |
+| `arap.txt` | Triangle and tetrahedral stretch constraints |
+| `breaking_tearing.txt` | Breaking and tearing |
+| `brush.txt` | Vellum brush |
+| `clothsimulation.txt` | Cloth simulation |
+| `collisions.txt` | POP Collision Ignore for Vellum |
+| `configuregrains.txt` | Vellum configure grains |
+| `dynamicconstraints.txt` | Dynamic constraints |
+| `emission.txt` | Emitting fluids and grains |
+| `fabric.txt` | Downloadable fabrics |
+| `fluiddirection.txt` | Emission direction |
+| `fluidemission.txt` | Emission methods |
+| `fluidphases.txt` | Fluid phases |
+| `fluidsetups.txt` | Vellum fluids setups |
+| `fluidsoftbodies.txt` | Vellum fluids and soft bodies |
+| `fluidsurfacing.txt` | Surfacing Vellum fluids |
+| `fluidtips.txt` | Fluid tips and troubleshooting |
+| `index.txt` | Vellum |
+| `intersect.txt` | Fixing intersecting collision geometry |
+| `lowreshighres.txt` | Working with low res and high res cloth |
+| `mass_thickness.txt` | Calculating mass and thickness |
+| `minimal.txt` | Minimal mode |
+| `overview.txt` | Overview |
+| `paneling_draping.txt` | Paneling and draping |
+| `plasticity.txt` | Plasticity |
+| `pressure.txt` | Animated pressure constraints |
+| `quickmovingcloth.txt` | Quick moving cloth |
+| `shapematching.txt` | Shape matching |
+| `slidingconstraints.txt` | Stitch and sliding constraints |
+| `softbody.txt` | Vellum softbodies |
+| `softbody_plasticity.txt` | Plasticity with softbodies |
+| `varyingfriction.txt` | Varying friction |
+| `vdbcollisions.txt` | VDB Collisions for Vellum |
+| `vellumattributes.txt` | Vellum attributes |
+| `vellumtips.txt` | Tips and troubleshooting |
+| `vellumvsflip.txt` | Vellum fluid vs FLIP fluid |
+| `windshadow.txt` | Wind shadow |
+| `wrinkledeformer.txt` | Wrinkle deformer |

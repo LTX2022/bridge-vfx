@@ -1,0 +1,31 @@
+# feathers.zip 官方文档索引（Houdini 22.0.368）
+
+共 25 页。用 `--page feathers.zip:<内部路径>` 读取全文。
+
+| 页面 | 标题 |
+|---|---|
+| `addgroomanim.txt` | Animation setup |
+| `addgroomrender.txt` | Render setup |
+| `applying.txt` | Applying feathers |
+| `atlas.txt` | Creating a feather atlas |
+| `attributes.txt` | Feather attributes and groups |
+| `blending.txt` | Feather blending |
+| `brushing.txt` | Working with brushes and tools |
+| `clumping.txt` | Feather clumping |
+| `concepts.txt` | Feather concepts |
+| `down.txt` | Down design |
+| `drawing.txt` | Drawing feathers |
+| `exporting.txt` | Exporting feathers |
+| `feathertemplate.txt` | Feather Template tool |
+| `guiding.txt` | Guide processing and noise |
+| `index.txt` | Feathers |
+| `interpolating.txt` | Interpolation and deintersecting |
+| `naming.txt` | Feather naming |
+| `painting.txt` | Painting |
+| `randomizing.txt` | Randomizing feathers |
+| `rendering.txt` | Feather rendering |
+| `scattering.txt` | Feather scattering |
+| `simulating.txt` | Feather simulation and animation |
+| `splitting.txt` | Accessing feather components |
+| `texturing.txt` | Feather UVs and textures |
+| `videos.txt` | Node reference videos |

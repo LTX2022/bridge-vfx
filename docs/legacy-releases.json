@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "releases": [
+    {
+      "version": "2.0.0-rc.1",
+      "status": "implementation-candidate",
+      "skills": ["houdini-bridge", "nuke-bridge", "vfx-visual-twin"],
+      "highlights": [
+        "reference visual twin and universal causal doctor contracts",
+        "separate exact simulation-cache and verified-experience approvals",
+        "sixteen experimental first-party domain packs with evidence gates"
+      ],
+      "limitations": [
+        "v2 domain live-validation matrix is incomplete",
+        "DoubaoDesktopRoute is currently DOUBAO_CONTROL_UNVERIFIED and requires synthetic-only UI and Skill-conformance evidence",
+        "DeepSeek and HY3 are optional adapters and do not satisfy the Doubao release gate",
+        "implementation-candidate is not a supported full-coverage release"
+      ]
+    },
+    {
+      "version": "1.4.0-rc.2",
+      "status": "release-candidate",
+      "skills": ["houdini-bridge", "nuke-bridge"],
+      "highlights": [
+        "Houdini 21/22 automatic startup and Karma CPU validation",
+        "Nuke 17 GUI-only listener and editable NK delivery",
+        "portable multi-Python loaders and per-frame NDJSON evidence"
+      ]
+    },
+    {
+      "version": "1.4.0-rc.1",
+      "status": "release-candidate",
+      "skills": ["houdini-bridge", "nuke-bridge"],
+      "highlights": [
+        "weak-model tool policy",
+        "curated release contents",
+        "compatibility and recovery contracts"
+      ]
+    },
+    {
+      "version": "1.3.0",
+      "status": "release-candidate",
+      "skills": ["houdini-bridge", "nuke-bridge"],
+      "highlights": [
+        "editable model-to-Karma recipe",
+        "Nuke EXR delivery recipe",
+        "technical artifact gates"
+      ]
+    },
+    {
+      "version": "1.2.0",
+      "status": "released",
+      "skills": ["houdini-bridge", "nuke-bridge"],
+      "highlights": [
+        "durable task state",
+        "progress events and checkpoints",
+        "task CLI service"
+      ]
+    },
+    {
+      "version": "1.1.0",
+      "status": "released",
+      "skills": ["houdini-bridge", "nuke-bridge"],
+      "highlights": [
+        "local bridge runtime",
+        "loopback instance discovery",
+        "reversible DCC addon installation"
+      ]
+    },
+    {
+      "version": "1.0.1",
+      "status": "released",
+      "skills": ["houdini-bridge", "nuke-bridge"],
+      "highlights": [
+        "valid skill metadata",
+        "portable helper scripts",
+        "self-contained task references"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "status": "baseline",
+      "skills": ["houdini-bridge", "nuke-bridge"]
+    }
+  ]
+}
