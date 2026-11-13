@@ -1,0 +1,16 @@
+{
+  "outputs_regular_files_before": 103872,
+  "outputs_regular_files_after": 67676,
+  "net_file_reduction": 36196,
+  "outputs_logical_bytes_after": 12539545699,
+  "outputs_allocated_bytes_after": 12803956736,
+  "archived_roots": 134,
+  "archived_files": 36445,
+  "archived_source_logical_bytes": 2166865296,
+  "expanded_roots": 0,
+  "retiring_entries": 0,
+  "store_database_bytes": 13193216,
+  "catalog_bytes": 7564969,
+  "archive_sha256": "fea8032ef6925b3fc913ca5f0e1fc5101d10def58854c43d93c280fe3720c9ce",
+  "catalog_sha256": "a245038032cf6b7e95360b54b51de67d4abfa26c7b89921c38512da65977df33"
+}

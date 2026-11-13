@@ -1,0 +1,13 @@
+{
+  "previous_inventory_count": 103872,
+  "current_count": 67676,
+  "missing_paths_total": 36445,
+  "missing_paths_in_archive": 36445,
+  "unexpected_missing": [],
+  "new_paths_count": 249,
+  "new_paths_by_top_directory": {
+    "outputs/Bridge-history-archive-20261113": 101,
+    "outputs/dove-flight-variants": 96,
+    "outputs/dove-flock-aerial-30s": 52
+  }
+}

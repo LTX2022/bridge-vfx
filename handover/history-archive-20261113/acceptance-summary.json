@@ -1,0 +1,44 @@
+{
+  "status": "PASS",
+  "default_plugin": "bridge-vfx@bridge-local-v0425-archive",
+  "delegated_consumer_version": "0.4.23",
+  "projects_read": 9,
+  "complete_results_read": 14,
+  "all_original_results_unchanged": true,
+  "protected_files_checked": 569,
+  "protected_files_changed": 0,
+  "protected_files_missing": 0,
+  "focused_tests_passed": 18,
+  "idle_rehydration_passed": true,
+  "idle_reclaim_seconds": 17.082,
+  "native_execution_tools_called": [],
+  "unique_archived_contents": 1012,
+  "storage": {
+    "outputs_regular_files_before": 103872,
+    "outputs_regular_files_after": 67676,
+    "net_file_reduction": 36196,
+    "outputs_logical_bytes_after": 12539545699,
+    "outputs_allocated_bytes_after": 12803956736,
+    "archived_roots": 134,
+    "archived_files": 36445,
+    "archived_source_logical_bytes": 2166865296,
+    "expanded_roots": 0,
+    "retiring_entries": 0,
+    "store_database_bytes": 13193216,
+    "catalog_bytes": 7564969,
+    "archive_sha256": "fea8032ef6925b3fc913ca5f0e1fc5101d10def58854c43d93c280fe3720c9ce",
+    "catalog_sha256": "a245038032cf6b7e95360b54b51de67d4abfa26c7b89921c38512da65977df33"
+  },
+  "packages": {
+    "0.4.23": {
+      "checked": 431,
+      "mismatches": [],
+      "manifest_sha256": "bce4c237f0ec2a1c9816fa5263773a60c8f8eb236e632538190c836addb477bf"
+    },
+    "0.4.25": {
+      "checked": 47,
+      "mismatches": [],
+      "manifest_sha256": "e1283797aae0ea8a995295a80a87a0ce440d5794778617f61f2f1b12d03bbe5b"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "0.4.23": {
+    "checked": 431,
+    "mismatches": [],
+    "manifest_sha256": "bce4c237f0ec2a1c9816fa5263773a60c8f8eb236e632538190c836addb477bf"
+  },
+  "0.4.25": {
+    "checked": 47,
+    "mismatches": [],
+    "manifest_sha256": "e1283797aae0ea8a995295a80a87a0ce440d5794778617f61f2f1b12d03bbe5b"
+  }
+}

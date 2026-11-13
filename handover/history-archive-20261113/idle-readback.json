@@ -1,0 +1,32 @@
+{
+  "plugin": "/Users/user/.codex/plugins/cache/bridge-local-v0425-archive/bridge-vfx/0.4.25",
+  "native_execution_tools_called": [],
+  "events": [],
+  "selection": {
+    "project_id": "disklight",
+    "label": "DiskLight",
+    "kind": "creative",
+    "task_id": "7c65a89096e84533b8f0ace596cfe1c2",
+    "native_dispatch_attempted": false,
+    "next_step": "bridge_tasks with this project_id"
+  },
+  "first_state": "COMPLETE",
+  "first_original_result": {
+    "path": "/Users/user/Documents/Code_Project/Bridge/outputs/Bridge-disklight-integrated-20261028-08/continuations/hy3-creative-05/jobs/creative_a8e61b2e379eb44fa300/result.json",
+    "bytes": 3745849,
+    "sha256": "ba834d7f7c7cbc0c83bae38c8e22e765fa391312835919bbcadbbc9c5bf154b0"
+  },
+  "expanded_after_read": 47,
+  "idle_reclaim_seconds": 17.082,
+  "expanded_after_idle": 0,
+  "second_state": "COMPLETE",
+  "second_original_result": {
+    "path": "/Users/user/Documents/Code_Project/Bridge/outputs/Bridge-disklight-integrated-20261028-08/continuations/hy3-creative-05/jobs/creative_a8e61b2e379eb44fa300/result.json",
+    "bytes": 3745849,
+    "sha256": "ba834d7f7c7cbc0c83bae38c8e22e765fa391312835919bbcadbbc9c5bf154b0"
+  },
+  "expanded_after_second_read": 47,
+  "passed": true,
+  "exit_code": 0,
+  "expanded_after_close": 0
+}
