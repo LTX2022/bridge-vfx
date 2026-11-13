@@ -1,0 +1,11 @@
+{
+  "restored_roots": 58,
+  "verified_files": 9237,
+  "all_original_freeze_manifests_match": true,
+  "compaction": {
+    "state": "COMPACT",
+    "removed_files": 9237,
+    "pinned_roots": 0
+  },
+  "seconds": 10.606
+}

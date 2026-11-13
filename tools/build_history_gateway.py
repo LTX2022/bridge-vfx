@@ -22,7 +22,7 @@ gateway(Store(binding['store']),registry=args.projects)
 '''
 
 
-def build(output, store, source_plugin, version='0.4.25'):
+def build(output, store, source_plugin, version='0.4.26'):
     output=Path(output).absolute();store=Path(store).absolute();source_plugin=Path(source_plugin).absolute()
     if output.exists():raise ValueError('HISTORY_GATEWAY_OUTPUT_EXISTS')
     from history_archive import Store

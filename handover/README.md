@@ -5,6 +5,7 @@
 - [当前交接状态](STATUS.md)
 - [长期未完成范围](REMAINING.md)
 - [执行经验与来源整理](output-consolidation-20261112/README.md)
+- [剩余文件整理与恢复验收](remaining-consolidation-20261113/README.md)
 - [历史依赖归档与读取验收](history-archive-20261113/README.md)
 - [历史结果读取修复](history-reader-repair-20261113/README.md)
 - [文件整理与保留范围](final-storage-audit-20261113/README.md)

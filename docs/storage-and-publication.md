@@ -4,6 +4,8 @@ GitHub 保存当前维护源码、skill、接口文档、历史交接文字、�
 
 当前历史源码采用 [归档读取](history-archive.md)：登记到内容仓库的旧包和快照按需恢复原路径，空闲后回收展开缓存。早期清单中的文件数量是当时快照，不代表当前仍全部展开。
 
+辅助缓存另行合并到 `outputs/Bridge-auxiliary-cache-archive-20261113`：9,036 个帮助与编译缓存文件去重存储，291 份 Finder 元数据合并备份后移除展开副本。原仿真帧、工程和受签依赖保持原用途，详见 [剩余文件整理与恢复验收](../handover/remaining-consolidation-20261113/README.md)。
+
 本机 `outputs` 保留以下材料：
 
 | 材料 | 保留原因 |

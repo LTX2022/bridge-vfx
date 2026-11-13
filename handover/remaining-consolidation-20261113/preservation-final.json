@@ -1,0 +1,16 @@
+{
+  "checked": 48542,
+  "missing": [],
+  "changed": [
+    "/Users/user/Documents/Code_Project/Bridge/outputs/Bridge-softbody-secondary-20261112/secondary-01/runtime/tmp/hserver.log",
+    "/Users/user/Documents/Code_Project/Bridge/outputs/Bridge-disklight-integrated-20261028-08/continuations/hy3-creative-05/jobs/creative_4023177d8ff79d0defa7/executions/repair-01/project/control/host-state/configured-houdini-binding.json",
+    "/Users/user/Documents/Code_Project/Bridge/outputs/Bridge-disklight-integrated-20261028-08/continuations/luna-rectlight-01/jobs/creative_bff6f898fafe1db03aae/executions/save-repair-02/project/control/host-state/configured-houdini-binding.json"
+  ],
+  "newly_archived_source_files": 9237,
+  "finder_files_removed": 291,
+  "superseded_archive_pair_preserved_in_rollback": [
+    "/Users/user/Documents/Code_Project/Bridge/outputs/Bridge-history-archive-20261113/store/contents.sqlite3",
+    "/Users/user/Documents/Code_Project/Bridge/outputs/Bridge-history-archive-20261113/store/catalog.json"
+  ],
+  "scope": "baseline files outside selected caches and concurrently active dove directories"
+}

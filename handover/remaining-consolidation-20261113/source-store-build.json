@@ -1,0 +1,20 @@
+{
+  "roots": 192,
+  "files": 45682,
+  "unique_contents": 1053,
+  "archive_bytes": 18407424,
+  "old_root_records_identical": true,
+  "source_roots_added": 58,
+  "source_files_added": 9237,
+  "per_project_added_roots": {
+    "completed-geometry-20261105": 0,
+    "created_29314c25c97c257d7cdb2e87": 0,
+    "created_41332fa685540f5259aa7301": 0,
+    "created_5413674dd70746566288c34f": 0,
+    "created_e70e336c786e674d71bfa597": 0,
+    "disklight": 0,
+    "geometry-gate": 0,
+    "rectlight": 0,
+    "rectlight-softbox": 0
+  }
+}

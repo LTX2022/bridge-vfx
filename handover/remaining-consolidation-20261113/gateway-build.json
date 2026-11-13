@@ -1,0 +1,11 @@
+{
+  "marketplace": "/Users/user/Documents/Code_Project/Bridge/outputs/Bridge-history-archive-20261113/release-v0.4.26/marketplace",
+  "plugin": "/Users/user/Documents/Code_Project/Bridge/outputs/Bridge-history-archive-20261113/release-v0.4.26/marketplace/plugins/bridge-vfx",
+  "plugin_id": "bridge-vfx@bridge-local-v0426-archive",
+  "version": "0.4.26",
+  "files": 48,
+  "changed_payloads_vs_0_4_25": [
+    "archive-binding.json",
+    "plugin.json"
+  ]
+}

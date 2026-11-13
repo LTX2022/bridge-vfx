@@ -1,0 +1,9 @@
+{
+  "protected_checked": 569,
+  "mismatches": [],
+  "original_source_root_records_unchanged": 134,
+  "previous_archive_pair_preserved_in_verified_rollback": true,
+  "current_source_roots": 192,
+  "current_archive_sha256": "68a3f62758841bcfb0e13f843e9b4e505bb29352f9fc72d1a040fd76f4dfa864",
+  "current_catalog_sha256": "089e584421144c33c3e9bbba76bc539a6e8f8ca326ea6c5bc76d0f56c78dc4f0"
+}

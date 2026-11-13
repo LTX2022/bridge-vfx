@@ -1,0 +1,13 @@
+{
+  "cache_roots": 54,
+  "cache_files": 9036,
+  "unique_cache_contents": 1101,
+  "cache_database_bytes": 4407296,
+  "cache_catalog_bytes": 1619747,
+  "cache_database_sha256": "e04b3f21fe71f5eacaa6a420df77502067ce1fcb13bb8eb8a0f163e7bf5d8ea0",
+  "cache_catalog_sha256": "d3dbc2bdaf27e65af5aba815f42debcecb5290a34e9aff132065aa6ef99cfe7c",
+  "finder_files": 291,
+  "finder_archive_bytes": 202378,
+  "finder_archive_sha256": "b7681010707f7f6c019b333377f468cdd9acc6d280fd91eaeeaf557c2e60b0cf",
+  "original_expanded_files_removed": 9327
+}

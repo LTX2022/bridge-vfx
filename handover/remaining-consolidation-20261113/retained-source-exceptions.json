@@ -1,0 +1,42 @@
+[
+  {
+    "root": "/Users/user/Documents/Code_Project/Bridge/outputs/resolution-experiment-20261026-candidate/control/snapshot",
+    "files": 179,
+    "reason": "frozen_manifest_not_exact",
+    "missing_members": [],
+    "extra_members": [
+      "packages/dcc-task-runtime/src/dcc_task_runtime/__pycache__/__init__.cpython-311.pyc",
+      "packages/dcc-task-runtime/src/dcc_task_runtime/__pycache__/approvals.cpython-311.pyc",
+      "packages/dcc-task-runtime/src/dcc_task_runtime/__pycache__/canonical.cpython-311.pyc",
+      "packages/dcc-task-runtime/src/dcc_task_runtime/__pycache__/causal.cpython-311.pyc",
+      "packages/dcc-task-runtime/src/dcc_task_runtime/__pycache__/contracts.cpython-311.pyc",
+      "packages/dcc-task-runtime/src/dcc_task_runtime/__pycache__/domains.cpython-311.pyc",
+      "packages/dcc-task-runtime/src/dcc_task_runtime/__pycache__/engine.cpython-311.pyc",
+      "packages/dcc-task-runtime/src/dcc_task_runtime/__pycache__/errors.cpython-311.pyc",
+      "packages/dcc-task-runtime/src/dcc_task_runtime/__pycache__/execution_lock.cpython-311.pyc",
+      "packages/dcc-task-runtime/src/dcc_task_runtime/__pycache__/experience.cpython-311.pyc",
+      "packages/dcc-task-runtime/src/dcc_task_runtime/__pycache__/gateways.cpython-311.pyc",
+      "packages/dcc-task-runtime/src/dcc_task_runtime/__pycache__/knowledge.cpython-311.pyc",
+      "packages/dcc-task-runtime/src/dcc_task_runtime/__pycache__/knowledge_store.cpython-311.pyc",
+      "packages/dcc-task-runtime/src/dcc_task_runtime/__pycache__/metrics.cpython-311.pyc",
+      "packages/dcc-task-runtime/src/dcc_task_runtime/__pycache__/model_acceptance.cpython-311.pyc",
+      "packages/dcc-task-runtime/src/dcc_task_runtime/__pycache__/models.cpython-311.pyc",
+      "packages/dcc-task-runtime/src/dcc_task_runtime/__pycache__/native_scope.cpython-311.pyc",
+      "packages/dcc-task-runtime/src/dcc_task_runtime/__pycache__/pipeline_store.cpython-311.pyc",
+      "packages/dcc-task-runtime/src/dcc_task_runtime/__pycache__/platform_support.cpython-311.pyc",
+      "packages/dcc-task-runtime/src/dcc_task_runtime/__pycache__/policy.cpython-311.pyc",
+      "packages/dcc-task-runtime/src/dcc_task_runtime/__pycache__/schemas.cpython-311.pyc",
+      "packages/dcc-task-runtime/src/dcc_task_runtime/__pycache__/service.cpython-311.pyc",
+      "packages/dcc-task-runtime/src/dcc_task_runtime/__pycache__/skill_ir.cpython-311.pyc",
+      "packages/dcc-task-runtime/src/dcc_task_runtime/__pycache__/skill_vm.cpython-311.pyc",
+      "packages/dcc-task-runtime/src/dcc_task_runtime/__pycache__/store.cpython-311.pyc",
+      "tools/__pycache__/run_hip_diagnostic.cpython-311.pyc"
+    ],
+    "changed_members": []
+  },
+  {
+    "root": "/Users/user/Documents/Code_Project/Bridge/outputs/Bridge-geometry-creative-20261030-01/runtime-continuation-source/geo_93090d6c3b41d4498a4006dd/partial-project/control/snapshot",
+    "files": 202,
+    "reason": "partial recovery source without matching freeze manifest at this root"
+  }
+]

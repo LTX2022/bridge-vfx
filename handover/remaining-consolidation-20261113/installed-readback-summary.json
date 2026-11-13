@@ -1,0 +1,107 @@
+{
+  "plugin": "bridge-vfx@bridge-local-v0426-archive",
+  "projects": 9,
+  "complete_results": 14,
+  "all_returned_results_equal_to_previous_consumer": true,
+  "native_execution_tools_called": [],
+  "results": [
+    {
+      "project_id": "completed-geometry-20261105",
+      "operation_id": "delivery_767eae3f6c41a32278436ffb",
+      "state": "COMPLETE",
+      "goal_status": "UNKNOWN",
+      "original_result_sha256": "d7df606edff957c83bf3ecb9ecac665a8f42ffe1a99f60638390f8cd8673b929"
+    },
+    {
+      "project_id": "created_41332fa685540f5259aa7301",
+      "operation_id": "geo_283a9078fd3f008229d45be9",
+      "state": "COMPLETE",
+      "goal_status": "PASS",
+      "original_result_sha256": "30798e8ba714cfbdad831436ef1cc8f49e42fdc32368aa051ef7f3274ef50f52"
+    },
+    {
+      "project_id": "created_41332fa685540f5259aa7301",
+      "operation_id": "geo_789aa2cc2124c18d0443e3d1",
+      "state": "COMPLETE",
+      "goal_status": "PASS",
+      "original_result_sha256": "02f550b4c457fc1e73e0c80edc70f3b096b14388c4221d15adc6b252238e1b98"
+    },
+    {
+      "project_id": "created_5413674dd70746566288c34f",
+      "operation_id": "geo_681f8440a8c84e2c87143c31",
+      "state": "COMPLETE",
+      "goal_status": "FAIL",
+      "original_result_sha256": "7983f525baef6f390d31ce9b802532399c103c8fe9b2164ef86c8f5bf78cef7a"
+    },
+    {
+      "project_id": "created_5413674dd70746566288c34f",
+      "operation_id": "geo_efec90eac243766b68958b83",
+      "state": "COMPLETE",
+      "goal_status": "PASS",
+      "original_result_sha256": "15fa4c9ba3fdd132a72fbd3f0f0ca6b82ead82702557911c16f3d076aeabbed0"
+    },
+    {
+      "project_id": "created_5413674dd70746566288c34f",
+      "operation_id": "geo_feedback_8c216030618e095bb7a5f9c6",
+      "state": "COMPLETE",
+      "goal_status": "PASS",
+      "original_result_sha256": "1a320ad4a05975b06b6e57966612f9b360aad67513b3ff91d9fcb99f1eb30f23"
+    },
+    {
+      "project_id": "disklight",
+      "operation_id": "creative_4023177d8ff79d0defa7",
+      "state": "COMPLETE",
+      "goal_status": null,
+      "original_result_sha256": "a9c15b16167294d835ea27836d87381ecddb3587d6fce3e6e58ae916aa0b6c68"
+    },
+    {
+      "project_id": "disklight",
+      "operation_id": "creative_a8e61b2e379eb44fa300",
+      "state": "COMPLETE",
+      "goal_status": null,
+      "original_result_sha256": "ba834d7f7c7cbc0c83bae38c8e22e765fa391312835919bbcadbbc9c5bf154b0"
+    },
+    {
+      "project_id": "geometry-gate",
+      "operation_id": "geo_ac86ddaeafec804b243af788",
+      "state": "COMPLETE",
+      "goal_status": "PASS",
+      "original_result_sha256": "8114c9f8dede441de72d96def111e737697832cad1ea9ff41604ec4e425066a7"
+    },
+    {
+      "project_id": "geometry-gate",
+      "operation_id": "geo_c2ebcbe923cf8805b9edf8fb",
+      "state": "COMPLETE",
+      "goal_status": "PASS",
+      "original_result_sha256": "1828fafff0ec7f3b11f1f22eb359c8ead256bbaad7306586b395728cd04fc41f"
+    },
+    {
+      "project_id": "rectlight",
+      "operation_id": "creative_06679b9bba7ae49982f1",
+      "state": "COMPLETE",
+      "goal_status": null,
+      "original_result_sha256": "c271b0c8a4124f92404ed5817ae98fcf091d8c97129110e036acc8e4286a2ce7"
+    },
+    {
+      "project_id": "rectlight",
+      "operation_id": "creative_bff6f898fafe1db03aae",
+      "state": "COMPLETE",
+      "goal_status": null,
+      "original_result_sha256": "c67614077bbfb13162233c65e4a4a35c425655a72f9b785c1ebc41c5986f96c2"
+    },
+    {
+      "project_id": "rectlight-softbox",
+      "operation_id": "rshape_73cdac9a8a587a7ca28e071a",
+      "state": "COMPLETE",
+      "goal_status": null,
+      "original_result_sha256": "869aa9123122e46e64925909080eacdcd3e3e10f33fc211782eae3d449620962"
+    },
+    {
+      "project_id": "rectlight-softbox",
+      "operation_id": "rshape_e47d86c8a1b70cf27ca9e2b8",
+      "state": "COMPLETE",
+      "goal_status": null,
+      "original_result_sha256": "b66a4808ed141e3b198c4412d1f7afe2d33213a5abc8b45dcdb70c5f3ef83826"
+    }
+  ]
+}

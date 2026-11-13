@@ -1,0 +1,8 @@
+{
+  "archive": "outputs/Bridge-history-archive-20261113/rollback-v0.4.25-store.zip",
+  "archive_sha256": "725461e80423e8a625aab10119f444582792ada8ba2f897d5db40c48b4662d80",
+  "members": {
+    "contents.sqlite3": "fea8032ef6925b3fc913ca5f0e1fc5101d10def58854c43d93c280fe3720c9ce",
+    "catalog.json": "a245038032cf6b7e95360b54b51de67d4abfa26c7b89921c38512da65977df33"
+  }
+}

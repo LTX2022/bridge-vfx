@@ -1,0 +1,12 @@
+{
+  "restored_roots": 54,
+  "verified_files": 9036,
+  "roundtrip_seconds": 12.828,
+  "compaction": {
+    "state": "COMPACT",
+    "removed_files": 9036,
+    "pinned_roots": 0
+  },
+  "remaining_expanded_roots": 0,
+  "archive_sha256": "e04b3f21fe71f5eacaa6a420df77502067ce1fcb13bb8eb8a0f163e7bf5d8ea0"
+}
