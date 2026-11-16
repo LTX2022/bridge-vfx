@@ -192,4 +192,108 @@ for line in sys.stdin:
         self.assertEqual(self.reader.compact()['state'],'PINNED')
 
 
+class TerminalReceiptArchiveTests(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory();self.addCleanup(self.temp.cleanup)
+        self.base = Path(self.temp.name).resolve()
+        self.root = self.base/'project'/'producer-records'
+        self.root.mkdir(parents=True)
+        self.record = {'schema': 'bridge.houdini.producer-operation/1.0',
+                       'state': 'COMPLETED', 'task_id': 'task', 'operation_id': 'operation'}
+        self.name = archive.digest(b'task')+'/'+archive.digest(b'operation')+'.json'
+        self.path = self.root/self.name;self.path.parent.mkdir()
+        self.path.write_text(json.dumps(self.record));os.chmod(self.path, 0o600)
+        self.consumer = self.base/'consumer.py';self.consumer.write_text('')
+        self.registry = self.base/'registry.json';self.registry.write_text('{}')
+        self.directory = self.base/'archive'
+
+    def build(self):
+        archive.build(self.directory, [self.root], consumer=self.consumer,
+                      registry=self.registry, legacy_guard=False, terminal_record_roots=[self.root])
+        return archive.Store(self.directory)
+
+    def test_terminal_receipt_roundtrip_preserves_original_bytes_and_mode(self):
+        os.chmod(self.root, 0o700);os.chmod(self.path.parent, 0o700)
+        raw = self.path.read_bytes();store = self.build()
+        self.assertEqual(store.compact()['removed_files'], 1)
+        with store.lease():
+            self.assertEqual(self.path.read_bytes(), raw)
+            self.assertEqual(self.path.stat().st_mode&0o777, 0o600)
+            self.assertEqual(self.root.stat().st_mode&0o777, 0o700)
+            self.assertEqual(self.path.parent.stat().st_mode&0o777, 0o700)
+        self.assertEqual(store.compact()['state'], 'COMPACT')
+
+    def test_unfinished_or_credential_records_refused(self):
+        for replacement in ({'state': 'INTENT'}, {'access_token': 'test-secret'}, {'budget_token': 'test-secret'}):
+            self.path.write_text(json.dumps({**self.record, **replacement}))
+            with self.assertRaises(ValueError):self.build()
+            self.assertFalse(self.directory.exists())
+            self.assertTrue(self.path.exists())
+
+    def test_record_filename_must_bind_task_and_operation(self):
+        self.path.write_text(json.dumps({**self.record, 'operation_id': 'different'}))
+        with self.assertRaisesRegex(ValueError, 'IDENTITY_MISMATCH'):self.build()
+
+    def test_terminal_query_schema_supported_but_unknown_schema_refused(self):
+        self.path.write_text(json.dumps({**self.record, 'schema': 'unknown'}))
+        with self.assertRaisesRegex(ValueError, 'TERMINAL_RECORD_REQUIRED'):self.build()
+        self.path.write_text(json.dumps({**self.record, 'schema': 'bridge.houdini.producer-query/2'}))
+        store = self.build();store.compact()
+        with store.lease():self.assertTrue(self.path.exists())
+
+    def test_duplicate_state_key_refused(self):
+        self.path.write_text(json.dumps(self.record)[:-1]+', "state": "INTENT"}')
+        with self.assertRaisesRegex(ValueError, 'DUPLICATE_JSON_KEY'):self.build()
+
+    def test_new_records_require_pin_and_are_never_compacted(self):
+        store = self.build();extra = self.root/'new.json';extra.write_text('new receipt')
+        with self.assertRaisesRegex(ValueError, 'TREE_CHANGED'):
+            with store.lease():pass
+        store.pin()
+        with store.lease():self.assertEqual(extra.read_text(), 'new receipt')
+        self.assertEqual(store.compact()['state'], 'PINNED')
+        self.assertTrue(extra.exists());self.assertTrue(self.path.exists())
+
+    def test_pin_does_not_allow_old_record_changes_or_missing_members(self):
+        store = self.build();store.pin();raw = self.path.read_bytes()
+        self.path.write_text('changed')
+        with self.assertRaisesRegex(ValueError, 'FILE_CHANGED'):
+            with store.lease():pass
+        self.path.write_bytes(raw);self.path.unlink()
+        with self.assertRaisesRegex(ValueError, 'TREE_CHANGED'):
+            with store.lease():pass
+
+    def test_pinned_extra_symlink_refused(self):
+        store = self.build();store.pin();(self.root/'alias').symlink_to(self.path)
+        with self.assertRaisesRegex(ValueError, 'LINKED_PATH'):
+            with store.lease():pass
+
+    def test_missing_pinned_root_is_not_replaced_with_stale_archive(self):
+        store = self.build();store.pin();archive.shutil.rmtree(self.root)
+        with self.assertRaisesRegex(ValueError, 'PINNED_RECORD_ROOT_MISSING'):
+            with store.lease():pass
+        self.assertFalse(self.root.exists())
+
+    def test_source_pin_does_not_relax_source_tree_checks(self):
+        archive.build(self.directory, [self.root], consumer=self.consumer,registry=self.registry,legacy_guard=False)
+        store = archive.Store(self.directory);store.pin();(self.root/'new.py').write_text('unfrozen')
+        with self.assertRaisesRegex(ValueError, 'TREE_CHANGED'):
+            with store.lease():pass
+
+    def test_observe_pin_survives_idle_and_followup_query(self):
+        extra = self.root/'new.json'
+        self.consumer.write_text('import sys,json\nfrom pathlib import Path\nfor line in sys.stdin:\n r=json.loads(line)\n if r.get("params",{}).get("name")=="bridge_observe":Path('+repr(str(extra))+').write_text("new receipt")\n if "id" in r:print(json.dumps({"id":r["id"],"result":{}}),flush=True)\n')
+        store = self.build();store.compact()
+        def messages(_):
+            yield json.dumps({'id':1,'method':'tools/call','params':{'name':'bridge_observe'}})+'\n'
+            yield None
+            yield json.dumps({'id':2,'method':'tools/call','params':{'name':'bridge_continue_task'}})+'\n'
+        out = io.StringIO()
+        with mock.patch.object(archive, 'input_lines', side_effect=messages):
+            archive.gateway(store, stdin=io.StringIO(), stdout=out)
+        self.assertEqual(len(out.getvalue().splitlines()), 2)
+        self.assertEqual(store.compact()['state'], 'PINNED')
+        self.assertTrue(extra.exists())
+
+
 if __name__=='__main__':unittest.main()

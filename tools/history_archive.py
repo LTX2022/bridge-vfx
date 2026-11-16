@@ -2,7 +2,8 @@
 """Operator-managed, content-deduplicated history storage; never grants execution.
 
 The gateway forwards the original MCP protocol to a pinned, unmodified consumer.
-Only inert package/source roots belong in a store, never live state or credentials.
+Stores contain frozen sources or explicitly admitted terminal producer receipts,
+never live databases or credentials. New receipt writes retain the expanded tree.
 """
 from __future__ import annotations
 import argparse
@@ -11,6 +12,7 @@ import select
 import hashlib
 import json
 import os
+import re
 from pathlib import Path, PurePosixPath
 import shutil
 import shlex
@@ -26,6 +28,8 @@ READ_ONLY = {'bridge_health', 'bridge_projects', 'bridge_select_project',
              'bridge_catalog', 'bridge_media', 'bridge_observe', 'bridge_propose', 'bridge_creation_status'}
 PRIVATE_SUFFIXES = {'.key', '.pem', '.token', '.secret', '.sqlite', '.sqlite3', '.db'}
 MAX_FILE = 64 * 1024 * 1024
+TERMINAL_RECORDS = 'terminal_producer_records'
+PRIVATE_FIELD = re.compile(r'token|secret|password|private_key|signing_key|hmac_key|api_key|credential|authorization', re.I)
 
 
 def digest(raw):
@@ -57,11 +61,47 @@ def file_bytes(path):
     return raw
 
 
-def build(destination, roots, *, consumer, registry, legacy_guard=True):
+def terminal_record(root, name, raw):
+    """Admit unchanged terminal records using their producer-owned path identity."""
+    def unique_object(pairs):
+        result = {}
+        for key, value in pairs:
+            if key in result:raise ValueError('HISTORY_ARCHIVE_DUPLICATE_JSON_KEY')
+            result[key] = value
+        return result
+    record = json.loads(raw, object_pairs_hook=unique_object)
+    if (Path(root).name != 'producer-records' or not isinstance(record, dict)
+            or record.get('schema') not in ('bridge.houdini.producer-operation/1.0', 'bridge.houdini.producer-query/2')
+            or record.get('state') not in ('COMPLETED', 'FAILED')
+            or not isinstance(record.get('task_id'), str)
+            or not record.get('task_id')
+            or not isinstance(record.get('operation_id'), str)
+            or not re.fullmatch(r'[A-Za-z0-9_.-]{1,100}', record['operation_id'])):
+        raise ValueError('HISTORY_ARCHIVE_TERMINAL_RECORD_REQUIRED')
+    expected = digest(record['task_id'].encode()) + '/' + digest(record['operation_id'].encode()) + '.json'
+    if name != expected:
+        raise ValueError('HISTORY_ARCHIVE_RECORD_IDENTITY_MISMATCH')
+    def private(value):
+        if isinstance(value, dict):
+            for key, item in value.items():
+                if (isinstance(item, str) and item and not item.startswith(('/', '$'))
+                        and key != 'attempt_token' and not key.endswith(('sha256', 'digest', 'path'))
+                        and PRIVATE_FIELD.search(key)):
+                    return True
+                if isinstance(item, (dict, list)) and private(item):return True
+        elif isinstance(value, list):
+            return any(private(item) for item in value if isinstance(item, (dict, list)))
+        return False
+    if private(record):raise ValueError('HISTORY_ARCHIVE_PRIVATE_STATE')
+
+
+def build(destination, roots, *, consumer, registry, legacy_guard=True, terminal_record_roots=()):
     destination = plain(destination)
     if destination.exists():
         raise ValueError('HISTORY_ARCHIVE_STORE_EXISTS')
     roots = sorted(plain(p) for p in roots)
+    record_roots = {plain(p) for p in terminal_record_roots}
+    if not record_roots <= set(roots):raise ValueError('HISTORY_ARCHIVE_RECORD_ROOT_INVALID')
     if len(set(roots)) != len(roots) or any(a in b.parents for a in roots for b in roots):
         raise ValueError('HISTORY_ARCHIVE_OVERLAPPING_ROOTS')
     if any(destination == p or p in destination.parents or destination in p.parents for p in roots):
@@ -85,13 +125,19 @@ def build(destination, roots, *, consumer, registry, legacy_guard=True):
                     if p.suffix in PRIVATE_SUFFIXES or p.name.startswith('.env'):
                         raise ValueError('HISTORY_ARCHIVE_PRIVATE_STATE')
                     raw = file_bytes(p); h = digest(raw); info = p.stat()
+                    if root in record_roots:terminal_record(root, str(p.relative_to(root)), raw)
                     con.execute('INSERT OR IGNORE INTO objects VALUES (?, ?)', (h, zlib.compress(raw)))
                     files.append({'path': str(p.relative_to(root)), 'sha256': h,
                                   'bytes': len(raw), 'mode': stat.S_IMODE(info.st_mode),
                                   'mtime_ns': info.st_mtime_ns})
                 if not files:
                     raise ValueError('HISTORY_ARCHIVE_EMPTY_ROOT')
-                entries.append({'root': str(root), 'files': files})
+                entry = {'root': str(root), 'files': files}
+                if root in record_roots:
+                    entry['kind'] = TERMINAL_RECORDS
+                    parents = {'.', *(str(PurePosixPath(r['path']).parent) for r in files)}
+                    entry['directory_modes'] = {name: stat.S_IMODE((root/name).stat().st_mode) for name in sorted(parents)}
+                entries.append(entry)
         os.chmod(db, 0o600)
         config = {'schema': 'bridge.history-archive/1', 'database_sha256': digest(db.read_bytes()),
                   'consumer': str(consumer), 'consumer_sha256': digest(file_bytes(consumer)),
@@ -115,6 +161,9 @@ class Store:
         self.roots = c['roots'];all_roots = []
         for entry in self.roots:
             root = plain(entry['root']);all_roots.append(root);seen = set()
+            kind = entry.get('kind', 'source')
+            if kind not in ('source', TERMINAL_RECORDS) or (kind == TERMINAL_RECORDS and root.name != 'producer-records'):
+                raise ValueError('HISTORY_ARCHIVE_ROOT_KIND_INVALID')
             for r in entry['files']:
                 name = r['path'];p = PurePosixPath(name)
                 if not name or p.is_absolute() or '\\' in name or any(x in ('', '.', '..') for x in name.split('/')) or name.casefold() in seen:
@@ -122,6 +171,14 @@ class Store:
                 seen.add(name.casefold())
                 if not 0 <= r['bytes'] <= MAX_FILE or not 0 <= r['mode'] <= 0o777:
                     raise ValueError('HISTORY_ARCHIVE_MEMBER_INVALID')
+                if kind == TERMINAL_RECORDS and not re.fullmatch(r'[0-9a-f]{64}/[0-9a-f]{64}\.json', name):
+                    raise ValueError('HISTORY_ARCHIVE_RECORD_IDENTITY_MISMATCH')
+            if kind == TERMINAL_RECORDS:
+                directories = entry.get('directory_modes', {})
+                expected = {'.', *(str(PurePosixPath(r['path']).parent) for r in entry['files'])}
+                if (not isinstance(directories, dict) or set(directories) != expected
+                        or any(type(mode) is not int or not 0 <= mode <= 0o777 for mode in directories.values())):
+                    raise ValueError('HISTORY_ARCHIVE_DIRECTORY_MODES_INVALID')
         if len(set(all_roots)) != len(all_roots) or any(a in b.parents for a in all_roots for b in all_roots):
             raise ValueError('HISTORY_ARCHIVE_OVERLAPPING_ROOTS')
         self.database = plain(self.directory / 'contents.sqlite3')
@@ -165,7 +222,8 @@ class Store:
         with self.database_reader() as con:
             for e in self.roots:
                 for r in e['files']:
-                    self._raw(con, r)
+                    raw = self._raw(con, r)
+                    if e.get('kind') == TERMINAL_RECORDS:terminal_record(e['root'], r['path'], raw)
 
     def verify_expanded(self):
         for e in self.roots:
@@ -173,8 +231,17 @@ class Store:
             if not root.is_dir():
                 raise ValueError('HISTORY_ARCHIVE_ROOT_MISSING')
             actual = {str(p.relative_to(root)) for p in root.rglob('*') if not p.is_dir() or p.is_symlink()}
-            if actual != set(expected):
+            pinned_records = (e.get('kind') == TERMINAL_RECORDS
+                              and plain(self.directory/'pins'/digest(e['root'].encode())).exists())
+            if any(p.is_symlink() for p in root.rglob('*')):
+                raise ValueError('HISTORY_ARCHIVE_LINKED_PATH')
+            if ((not pinned_records and actual != set(expected))
+                    or (pinned_records and not set(expected) <= actual)):
                 raise ValueError('HISTORY_ARCHIVE_TREE_CHANGED')
+            if e.get('kind') == TERMINAL_RECORDS:
+                for name, mode in e['directory_modes'].items():
+                    if stat.S_IMODE(plain(root/name).stat().st_mode) != mode:
+                        raise ValueError('HISTORY_ARCHIVE_DIRECTORY_MODE_CHANGED')
             for name, r in expected.items():
                 p = root / name
                 if digest(file_bytes(p)) != r['sha256'] or stat.S_IMODE(p.stat().st_mode) != r['mode']:
@@ -200,6 +267,9 @@ class Store:
                 root = plain(e['root'])
                 if root.exists():
                     continue  # Never repair or overwrite an existing tree.
+                if (e.get('kind') == TERMINAL_RECORDS
+                        and plain(self.directory/'pins'/digest(e['root'].encode())).exists()):
+                    raise ValueError('HISTORY_ARCHIVE_PINNED_RECORD_ROOT_MISSING')
                 plain(root.parent).mkdir(parents=True, exist_ok=True)
                 temp = Path(tempfile.mkdtemp(prefix='.bridge-restore-', dir=root.parent))
                 try:
@@ -208,6 +278,8 @@ class Store:
                         with p.open('xb') as stream:
                             stream.write(self._raw(con, r))
                         os.chmod(p, r['mode']);os.utime(p, ns=(r['mtime_ns'], r['mtime_ns']))
+                    if e.get('kind') == TERMINAL_RECORDS:
+                        for name, mode in e['directory_modes'].items():os.chmod(temp/name, mode)
                     if root.exists() or root.is_symlink():
                         raise ValueError('HISTORY_ARCHIVE_DESTINATION_CHANGED')
                     os.rename(temp, root)
@@ -362,7 +434,9 @@ def gateway(store, *, registry=None, stdin=sys.stdin, stdout=sys.stdout):
                 proc = subprocess.Popen([sys.executable, '-I', '-B', store.config['consumer'], 'serve',
                                          '--projects', store.config['registry']],
                                         stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True, bufsize=1)
-            if tool is not None and tool not in READ_ONLY:
+            if tool is not None and (tool not in READ_ONLY or (
+                    tool in ('bridge_observe', 'bridge_propose')
+                    and any(e.get('kind') == TERMINAL_RECORDS for e in store.roots))):
                 store.pin()  # Async work keeps only this project's restored roots.
             proc.stdin.write(line);proc.stdin.flush()
             if 'id' in request:
@@ -388,9 +462,11 @@ def main():
     parser.add_argument('--roots-file', type=Path)
     parser.add_argument('--consumer', type=Path)
     parser.add_argument('--registry', type=Path)
+    parser.add_argument('--terminal-record-roots-file', type=Path)
     args = parser.parse_args()
     if args.action == 'build':
-        print(json.dumps(build(args.store, json.loads(args.roots_file.read_text()), consumer=args.consumer, registry=args.registry)))
+        print(json.dumps(build(args.store, json.loads(args.roots_file.read_text()), consumer=args.consumer, registry=args.registry,
+                               terminal_record_roots=(() if args.terminal_record_roots_file is None else json.loads(args.terminal_record_roots_file.read_text())))))
         return
     store = Store(args.store)
     if args.action == 'verify':store.verify_archive();print('VERIFIED')
