@@ -2,6 +2,28 @@
 
 Bridge 是连接 AI 助手与 Houdini、Nuke 的本地工作流项目。它通过 MCP 提供工程选择、任务查询、受控提案和执行入口，并保留可编辑工程、产物及执行证据。
 
+## Houdini SOP 小样
+
+这里有 91 个可编辑的小场景。可以按效果查 SOP 如何接线、改哪个参数，以及改动在视口和几何数据里产生了什么变化。每项都附接线、测量结果和视口图。想跟着课程学，可以从 89 章操作路线跳到对应的小样。[实测接线表](skills/houdini-project-recipes/references/实测接线.md) · [课程路线](skills/houdini-project-recipes/references/课程路线.md) · [技能入口](skills/houdini-project-recipes/SKILL.md)
+
+### 从白水发射做一次参数对照
+
+从本分支的仓库根目录运行以下命令。搜索与导出只用 Python 3 标准库。搜索“白水”会列出发射和参数对照两个小样，下面导出的是七组参数对照用的 `whitewater_wedges`。
+
+```sh
+cd skills/houdini-project-recipes
+python3 scripts/example.py 白水
+python3 scripts/example.py whitewater_wedges --export ./whitewater-study.hip
+```
+
+在 Houdini 中打开 `whitewater-study.hip`，进入 `/obj/study_whitewater_wedges`，显示 `OUT_EFFECT`。先从 F1 播放到 F31，记下白水点数。重新打开工程，只把 `whitewater` 节点的 `lifespan` 从 1.3 调到 0.29 秒，再从 F1 播放到 F31。在 Houdini 21.0.631 的这个水槽中，F31 从 899 个白水点降到 646 个，俯视覆盖从 159 格降到 140 格。[小样视口](skills/houdini-project-recipes/assets/examples/whitewater_wedges.png) · [七组参数与完整测量表](skills/houdini-project-recipes/references/白水七组参数对照.md)
+
+| 想复用的效果 | 打开后先看哪里 |
+|---|---|
+| [二维烟速度驱动河流](skills/houdini-project-recipes/assets/examples/river_smoke_advection.png) | 搜 `river_smoke_advection`，在 F22 把速度系数从 0 调到 1，观察 143 个点怎样沿平面移动。 |
+| [建筑局部激活](skills/houdini-project-recipes/assets/examples/building_local_activation.png) | 搜 `building_local_activation`，在同一帧比较开口内外的碎块位移。 |
+| [羽毛去交叠](skills/houdini-project-recipes/assets/examples/feather_guides.png) | 搜 `feather_guides`，对照羽根导向和低模羽面的交点数。 |
+
 ## 当前能力
 
 - 查询已登记工程和原任务，读取已接收的工程文件与结果；运行中、失败或未知状态不会被当作完成。
@@ -10,8 +32,6 @@ Bridge 是连接 AI 助手与 Houdini、Nuke 的本地工作流项目。它通�
 - 读取符合原签名和产物校验要求的历史结果；被替代的历史产物只能观察，不能因此重新获得执行权限。
 
 技术完成和目标验收分别报告：`COMPLETE` 表示技术流程完成，`goal_status` 可为 `PASS`、`FAIL` 或 `UNKNOWN`；视觉质量需要另行验收。
-
-可在 [Houdini SOP 接线与复验](skills/houdini-project-recipes/SKILL.md) 中按效果查找 91 个自建小样，查看接线、参数对照和视口，并导出可编辑 HIP。
 
 ## 能力边界
 
