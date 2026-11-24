@@ -11,6 +11,8 @@ Bridge 是连接 AI 助手与 Houdini、Nuke 的本地工作流项目。它通�
 
 技术完成和目标验收分别报告：`COMPLETE` 表示技术流程完成，`goal_status` 可为 `PASS`、`FAIL` 或 `UNKNOWN`；视觉质量需要另行验收。
 
+可在 [Houdini SOP 接线与复验](skills/houdini-project-recipes/SKILL.md) 中按效果查找 91 个自建小样，查看接线、参数对照和视口，并导出可编辑 HIP。
+
 ## 能力边界
 
 Bridge 仍在开发，当前结果不代表所有 Houdini 节点、16 个领域、所有平台或任意素材都已通过验证。它**尚未证明可以仅凭任意教程自主拆解、学习并稳定复现完整成片**，也不保证创意质量达到参考视频。

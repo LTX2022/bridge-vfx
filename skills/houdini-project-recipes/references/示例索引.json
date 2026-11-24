@@ -1,0 +1,730 @@
+[
+ {
+  "id": "fracture",
+  "title": "Voronoi 破碎",
+  "wiring": "Box → Scatter → Voronoi Fracture → Exploded View",
+  "observation": "散点 5→13→5，piece name 数 5→13→5。",
+  "file": "fracture.hip.gz",
+  "sha256": "1e8fe0323b37f22b73e7ac606dd45bc4e6e8f3c049ec8713d3b7de15eb0b540e"
+ },
+ {
+  "id": "glue_constraints",
+  "title": "Glue 约束断键",
+  "wiring": "RBD Material Fracture 的约束口 → Primitive Wrangle → Bullet 第二口",
+  "observation": "用同一地面冲击，Glue 强度 0.05→5000→0.05，F28 剩余约束 0→29→0，点位复原。",
+  "file": "glue_constraints.hip.gz",
+  "sha256": "872fe73ad7945dc56e00c2c6bb9a422ec4a97bd98de833222bbb3bc01d4b8193"
+ },
+ {
+  "id": "rbd_bullet",
+  "title": "刚体落体",
+  "wiring": "Box → Scatter/Fracture → RBD Configure → Bullet",
+  "observation": "F1、F12、F23 分别顺算，核对各帧的碎片点位。",
+  "file": "rbd_bullet.hip.gz",
+  "sha256": "a13379c878e38b347958ece78e87dd7b67fdee6247146995784dba105c687aa7"
+ },
+ {
+  "id": "debris",
+  "title": "碎屑发射",
+  "wiring": "Voronoi Fracture → 动画 Exploded View → Debris Source",
+  "observation": "先保存完整初态，再改变碎片间距，检查首次释放时的点结果。",
+  "file": "debris.hip.gz",
+  "sha256": "797f575d901dc472b76f6a47b9587db29e40ca486b8ec528025f1c08b7dbd33f"
+ },
+ {
+  "id": "point_deform",
+  "title": "代理变形",
+  "wiring": "Grid → 静止和运动代理 + Subdivide → Point Deform",
+  "observation": "第三路弯曲幅度 0→0.8→0，529 点保持，垂直范围 0→1.617→0。",
+  "file": "point_deform.hip.gz",
+  "sha256": "746e70afe6cd69fbd4a5b4a729adfa29c1fae164d43f7e1b5af487f3f0ad8c9f"
+ },
+ {
+  "id": "instances",
+  "title": "点实例",
+  "wiring": "Grid → Scatter → pscale → Copy to Points",
+  "observation": "22 个实例固定，整体缩放 0.12→0.30→0.12，垂直包围盒 0.296→0.741→0.296。",
+  "file": "instances.hip.gz",
+  "sha256": "d0eb6a2d8e7605ea123555a09738ecece07f8088bd0a014947a52d0e78588275"
+ },
+ {
+  "id": "terrain_mask",
+  "title": "地形与坡度遮罩",
+  "wiring": "HeightField → Noise → Mask by Feature → Convert",
+  "observation": "Amplitude 5→22→5，网格垂直范围 1.476→6.493→1.476。本行验证振幅。",
+  "file": "terrain_mask.hip.gz",
+  "sha256": "8312fb52e8fd817676c459507c8c925cf760aef5332255575ecdda53a4004aaa"
+ },
+ {
+  "id": "flow_field",
+  "title": "流向场",
+  "wiring": "Grid → 点 v → Rasterize；另用 v 画速度线",
+  "observation": "流速 0.4→1.6→0.4，线端位置变化并复原。",
+  "file": "flow_field.hip.gz",
+  "sha256": "8912ba6141b12387860e752732c6daa04e04b0b18655c8f73c5874dae47527e8"
+ },
+ {
+  "id": "ocean",
+  "title": "海浪频谱",
+  "wiring": "Grid + Ocean Spectrum → Ocean Evaluate",
+  "observation": "全局 ampscale 0.4→1.2→0.4，垂直范围 0.353→1.059→0.353。",
+  "file": "ocean.hip.gz",
+  "sha256": "c5713cde99e607c85e0e41df9e106032281097a0bb1aa9e451b5ec646a34476e"
+ },
+ {
+  "id": "collision_sdf",
+  "title": "碰撞体 SDF",
+  "wiring": "Box → Transform → VDB From Polygons → 等值面",
+  "observation": "Y Scale 0.4→1.6→0.4，活跃体素 1,885→4,262→1,885。",
+  "file": "collision_sdf.hip.gz",
+  "sha256": "69a09a52dff4095243fd5d2645c611e9103e4c1e6125264d2782780664a113fb"
+ },
+ {
+  "id": "surface_smoke",
+  "title": "表面点转烟源",
+  "wiring": "Sphere → Scatter → density/pscale/v → Rasterize",
+  "observation": "体素 0.18→0.09→0.18，密度活跃体素 1,319→8,384→1,319。",
+  "file": "surface_smoke.hip.gz",
+  "sha256": "b064f04d9e1e6271913701c84da3b0559acadc0b1be1564f9aa2c30a81ea1262"
+ },
+ {
+  "id": "sop_pyro",
+  "title": "短程烟体与耗散",
+  "wiring": "点密度和温度 → Rasterize → Pyro → 密度等值面",
+  "observation": "F5 后停发，耗散 0.1→0.6→0.1，F12 非零体素约 18.7k→0→18.7k，复算粒度存在小差异。",
+  "file": "sop_pyro.hip.gz",
+  "sha256": "21bfea552a81af5cbf5274fe9970b8d1d5f0c5aaabd22510038423b61a0d8cdb"
+ },
+ {
+  "id": "fluid_surface",
+  "title": "液体成面",
+  "wiring": "Sphere → Points from Volume → Particle Fluid Surface",
+  "observation": "粒距 0.26→0.16→0.26，源点数 251→969→251。",
+  "file": "fluid_surface.hip.gz",
+  "sha256": "0df2db7b3d56fae8192ebe55012d7122e54a0dd323008979626711cca5022d7d"
+ },
+ {
+  "id": "flip_boundary",
+  "title": "FLIP 入水和运动碰撞",
+  "wiring": "FLIP Container → Boundary 第四口接封闭液体源 → Collide → Solver → 成面",
+  "observation": "补上 Boundary 液源后，F18 得 2,633 点液面。",
+  "file": "flip_boundary.hip.gz",
+  "sha256": "b256e55558419df620a80f1c377603fffbbdc8536a7b50eb71e79a2f19eff155"
+ },
+ {
+  "id": "whitewater",
+  "title": "白水发射",
+  "wiring": "FLIP 颗粒和字段 → Whitewater Source → Whitewater Solver",
+  "observation": "F18 的 emit 有 17 个活跃体素，白水求解器输出 825 点。",
+  "file": "whitewater.hip.gz",
+  "sha256": "dc50705a17cd3ae8af0aee87aab2b02c0c5163f43c5bd99e0f6f7a6d2f8b2226"
+ },
+ {
+  "id": "tension",
+  "title": "FLIP 表面张力",
+  "wiring": "FLIP Container 的 Surface Tension → FLIP Solver → 成面",
+  "observation": "F18 设值 0 → 4 → 0，点数 2426 → 2350 → 2426。点位指纹在调回原值后复原。",
+  "file": "tension.hip.gz",
+  "sha256": "65e2f7a2bd2eb0fdf50def11a5245a6cbcc04a974543f2db19097dc1fe464a9b"
+ },
+ {
+  "id": "viscosity",
+  "title": "FLIP 黏度",
+  "wiring": "FLIP Container 的 Viscosity → FLIP Solver → 成面",
+  "observation": "F18 设值 0 → 100 → 0，点数 2332 → 2318 → 2332。点位指纹在调回原值后复原。",
+  "file": "viscosity.hip.gz",
+  "sha256": "8d9bcc1edb99c2518d5ca0b84eba151bcca4c66316b4a89ff047d8c8e10e6154"
+ },
+ {
+  "id": "rbd_soft_constraint",
+  "title": "Bullet 软约束",
+  "wiring": "RBD Material Fracture 约束 → RBD Constraint Properties（Soft）→ Bullet 第二输入",
+  "observation": "Stiffness 4 → 2500 → 4。F20 保留 101 条连接。X 向包围盒宽 2.212 → 2.083 → 2.212。",
+  "file": "rbd_soft_constraint.hip.gz",
+  "sha256": "751ae31d85f46d4505dfeb4ffeae17013ef6b1ecc3328a8418be9ec42f8e2d72"
+ },
+ {
+  "id": "rbd_guide",
+  "title": "动画引导刚体",
+  "wiring": "碎块 → RBD Configure → Bullet 第一个输入。动画几何进第五个 Guide Sim 输入",
+  "observation": "F24 启用时碎块到导向中心约 0.0094，关闭时约 2.19。用独立动画输入反向复验。",
+  "file": "rbd_guide.hip.gz",
+  "sha256": "3908568ba18464167d9f2db295d5d40fb292fb42108bcfb174d8bba4d1b783be"
+ },
+ {
+  "id": "slope_control",
+  "title": "地形坡度遮罩",
+  "wiring": "HeightField → Noise → Mask by Feature → Convert → 按 mask 着色",
+  "observation": "Min Slope Angle 8° → 18° → 8°，mask>0.5 的格点 19,663 → 172 → 19,663，高程一致。",
+  "file": "slope_control.hip.gz",
+  "sha256": "6129db9226a91f1750b396b0da981a466fdbe64e0697a06da5d70d94a6202802"
+ },
+ {
+  "id": "flip_density",
+  "title": "SOP FLIP 可变密度",
+  "wiring": "带点密度的多边形源 → Boundary 第四输入 → FLIP Solver。Container 开 Varying Density",
+  "observation": "源密度 370 / 1600。启用后 F18 粒子实际覆盖 370–1600，关闭时粒子不输出 density。",
+  "file": "flip_density.hip.gz",
+  "sha256": "9adab39aa6319111d9dcdec8fa7f2ed114f3ea187e7ab53ec32d6e4a84307ebe"
+ },
+ {
+  "id": "contact_viscosity",
+  "title": "接触后逐步增黏",
+  "wiring": "FLIP Solver 内 Particle Velocity → Geometry Wrangle。板的距离壳层驱动冷却，回写 temperature / viscosity",
+  "observation": "Cooling Rate 0 → 8 → 0。F28 平均粒子黏度 3 → 209.51 → 3，峰值 225。温度下限为 0。",
+  "file": "contact_viscosity.hip.gz",
+  "sha256": "7309527dc5459ef170667bda3d288cbab18a1dfb89dfb64a71e0b8bbbf34fc11"
+ },
+ {
+  "id": "pyro_layers",
+  "title": "烟和火分源",
+  "wiring": "分别栅格化 density / v 与 temperature / burn → Merge → Pyro → 两层等值面",
+  "observation": "关闭 → 开启 → 再关闭 burn→flame，F10 非零 flame 采样点 0 → 842 → 0，三次均有烟。",
+  "file": "pyro_layers.hip.gz",
+  "sha256": "fa69ee132f882fa06799f4938f3f3123fae44ca7b88d0de467248b387bcc70e8"
+ },
+ {
+  "id": "ocean_moving_domain",
+  "title": "移动海洋的初始与维持层",
+  "wiring": "Ocean Spectrum → Ocean Source（Guided Ocean Layer）。两个输出分别检查",
+  "observation": "F12 跟随时 Initial 粒子中心 X=2.419，Maintain 字段中心 X=2.420。关闭时两者居中。",
+  "file": "ocean_moving_domain.hip.gz",
+  "sha256": "04fe13fa2c097a9adbbe0185d2736d4fe3967217eeabeb3b6d7aa6bf904105a8"
+ },
+ {
+  "id": "guided_flip_window",
+  "title": "移动窗口中的海浪 FLIP",
+  "wiring": "动画封闭 Box → FLIP Container / Collide。Ocean Evaluate 的 SDF、v、压力进 Solver 第四输入",
+  "observation": "F17 窗口 X 平移 1.76，液体粒子均值 X 约 0.071 → 1.408 → 0.070。关闭 Waterline，使用 Pressure Driven。",
+  "file": "guided_flip_window.hip.gz",
+  "sha256": "22694c79a825a3000dabafd4b37bf7b5b0a3b10c50b6a57b808fe9c09a19b0f0"
+ },
+ {
+  "id": "river_ocean_blend",
+  "title": "二维浅水河流衔接海面",
+  "wiring": "Shallow Water Solver 水面和 Ocean Evaluate 共用采样网格 → Wrangle 平滑过渡",
+  "observation": "过渡宽 0 → 3.2 → 0。F18 最大相邻高差 0.2333 → 0.0210 → 0.2333，两端位置保持。",
+  "file": "river_ocean_blend.hip.gz",
+  "sha256": "f161ba4d05be27203dfe93d04ce4294619dd11c46fa1472cd23534b5205537ae"
+ },
+ {
+  "id": "timed_ground_dust",
+  "title": "地表分时起尘",
+  "wiring": "Scatter → 用 P.x 排发射帧和方向速度 → Rasterize → Pyro → 密度等值面",
+  "observation": "源点发射中心从 F3 X=-3.25 推进到 F18 X=2.35。上抛速度 0 → 3 → 0，F18 尘体高度 0.541 → 0.859 → 0.541。",
+  "file": "timed_ground_dust.hip.gz",
+  "sha256": "18d2a8410edfc9018ed05d5035ff809f5b7bb6f01d7ae4063c5e1bef6d86d1df"
+ },
+ {
+  "id": "curve_ocean_waves",
+  "title": "沿闭曲线传播的波列",
+  "wiring": "Ocean Spectrum / Evaluate → 叠加闭曲线距离带 → 带符号距离控制行波",
+  "observation": "Direction -1 → 1 → -1 改变波相，4,622 个点在作用带内，带外附加位移为零。",
+  "file": "curve_ocean_waves.hip.gz",
+  "sha256": "4ea0d0ea387c1bee0a9a6594c3c134267a7626a59a9ada0af06339fcba16b370"
+ },
+ {
+  "id": "river_smoke_advection",
+  "title": "二维烟速度驱动河流",
+  "wiring": "烟源点 density/v → Volume Source → Smoke Object（XZ 单层）→ 导入 density/vel → Solver SOP 累加点位",
+  "observation": "F22 在系数 0 → 1 → 0 时，移动点数 0 → 143 → 0。开启时平均位移 0.901，越出 XZ 平面的位移为 0。",
+  "file": "river_smoke_advection.hip.gz",
+  "sha256": "cde67ad7e8b702d304c4b9423fbf648f51cd4559b82be7fc5a01f27fc1c90aa9"
+ },
+ {
+  "id": "viscous_lava_bursts",
+  "title": "高黏 FLIP 随机喷口",
+  "wiring": "封闭液源和固定池底 → FLIP。入水位置由固定种子选定，并在 Particle Velocity 阶段加局部向上推力",
+  "observation": "F18 喷发参数 0 → 4.6 → 0，液粒最高 Y 为 0.036 → 3.042 → 0.036。超过 Y=0.24 的液粒 0 → 61 → 0。",
+  "file": "viscous_lava_bursts.hip.gz",
+  "sha256": "65cc67b18993315d5d3f45b70cd4f1db6c65a2a2a4c54299c65c15fa94f73cfe"
+ },
+ {
+  "id": "debris_dust_trail",
+  "title": "二级碎块拖尘",
+  "wiring": "Bullet 的 Simulation Points → 写 density、temperature、v → 栅格化 → Pyro",
+  "observation": "F4–12 发尘。F22 耗散 0.06 与 0.74 的有效密度采样分别有 917 个、0 个。独立重复基线一致。",
+  "file": "debris_dust_trail.hip.gz",
+  "sha256": "25e65c0a2d82841bb2383d4f8e6db5327f7a580e36a10681923da171962f45d0"
+ },
+ {
+  "id": "smoke_particle_advection",
+  "title": "烟速度带动粒子",
+  "wiring": "Pyro 输出 vel 分量 → Solver SOP 读取当前粒子位置的速度 → 按时间步累加 P",
+  "observation": "F18 关闭驱动没有位移，开启后 70 个粒子的平均向上位移约 2.48。重复开关以位移验证，求值间的点位有小差异。",
+  "file": "smoke_particle_advection.hip.gz",
+  "sha256": "74df169c913459324f54078deaa9f297074585e0623902083362c5a7d8771657"
+ },
+ {
+  "id": "lake_shore_waves",
+  "title": "浅水湖波与岸线",
+  "wiring": "HeightField 湖盆和水深 → Shallow Water Solver → 保留湿区水面",
+  "observation": "低分辨率 32 帧。施加初始扰动后 F32 水面高度 RMS 由 0.00362 升至 0.02038，重复基线一致。",
+  "file": "lake_shore_waves.hip.gz",
+  "sha256": "e7359c127baff4d2190ba0ff380ae0ea08ebf3efb414bae92336f7b31a34d966"
+ },
+ {
+  "id": "dop_variable_density",
+  "title": "直接 DOP FLIP 读取每点密度",
+  "wiring": "Points from Volume → 点 density → FLIP Object 的 Particle Field → DOP FLIP Solver",
+  "observation": "用相同的 420／1,480 两组粒子。F12 开关 Density by Attribute 让结果从 996 点变为 1,016 点，重复基线点位一致。",
+  "file": "dop_variable_density.hip.gz",
+  "sha256": "f2806043e821d280b9db8439371c985c80d4c24073dc954bc8d7a76339c63703"
+ },
+ {
+  "id": "vellum_grain_dust",
+  "title": "Vellum 砂粒生成尘源",
+  "wiring": "封闭砂团 → Configure Grain → Vellum Solver → 粒子 density、v → Rasterize",
+  "observation": "粒径 0.17 → 0.115 → 0.17。F18 砂粒 68 → 294 → 68，密度活动体素 2,003 → 2,112 → 2,003。",
+  "file": "vellum_grain_dust.hip.gz",
+  "sha256": "2f12b165b7459c17c1fb5eba24e5bc25300d098cdd2eb7143f0cf9bc7869aa4a"
+ },
+ {
+  "id": "soft_metal_panel",
+  "title": "门状薄板的软约束挠曲",
+  "wiring": "薄板几何切块 → 配置软连接和两边支承 → Bullet 内 POP Force 从法向加载",
+  "observation": "Stiffness 2 → 2400 → 2，F20 最大法向位移 0.8264 → 0.0245 → 0.8264，64 条连接保持。",
+  "file": "soft_metal_panel.hip.gz",
+  "sha256": "c5bec1105629491b77846362875f8fef5e6dc605c286bb544cbafb9edd760b74"
+ },
+ {
+  "id": "chimney_smoke",
+  "title": "烟囱 SDF 与出口烟柱",
+  "wiring": "温度和密度源 → Pyro，四面墙的 collision SDF 接第二口",
+  "observation": "F23 开启碰撞后墙体内部采样均值由 0.0233 降至 0，出口仍能测到非零密度。第二次关闭后墙内再次有烟。",
+  "file": "chimney_smoke.hip.gz",
+  "sha256": "5e0e90196984bd8fe7e7f33105d6cc04a7f4791c0befb6b4bb746f2875e35e8e"
+ },
+ {
+  "id": "river_space_warp",
+  "title": "河道空间弯折",
+  "wiring": "烟速度驱动低模 → 弯折运动代理；静止与运动代理接 Point Deform 第二、三口，细波水面接第一口",
+  "observation": "弯折 0 → 0.7 → 0，F22 水面 Z 向范围 2.782 → 3.160 → 2.782，1,813 个点保持。",
+  "file": "river_space_warp.hip.gz",
+  "sha256": "8b949aec5c4edb252c97c361db41c26bd6bdcee256e102c69d4befa95b13c273"
+ },
+ {
+  "id": "flame_generates_density",
+  "title": "从火焰场产烟",
+  "wiring": "燃烧和温度源 → Pyro → Emit Density From Flame → density 等值面",
+  "observation": "关闭直接 density 来源。启用火焰产烟后，F13 有 1,131 个非零密度采样，前后基线均为零。",
+  "file": "flame_generates_density.hip.gz",
+  "sha256": "a347b596f911a958f85d1c63a47f5b838f643bfb2e57ff374bd3c98acb0a9a12"
+ },
+ {
+  "id": "pyro_advection_wind",
+  "title": "Pyro 全局风",
+  "wiring": "烟粒子栅格 → Pyro 的 Enable Wind 和 Wind Speed → density",
+  "observation": "风速 0 → 2.8 → 0，F13 密度加权中心 X 约 -0.001 → 0.379 → -0.003。",
+  "file": "pyro_advection_wind.hip.gz",
+  "sha256": "3a6c92b6ca761656eb11fe0bb66007f62c8bff6235519c010d0fbf4833ca95eb"
+ },
+ {
+  "id": "building_local_activation",
+  "title": "建筑局部激活",
+  "wiring": "带永久 name 的 packed 碎块 → Wrangle 写 active → Bullet 每帧覆盖 active",
+  "observation": "F8 固定。F9 激活开口上的 12 块。F15 最大位移 0.423，其余 30 块保持零位移。推迟到 F20 时在 F15 仍固定。",
+  "file": "building_local_activation.hip.gz",
+  "sha256": "946bfe1bc041e6c6d38ab237ba43051feb7d171047c55b8d30a0196c820ebd4b"
+ },
+ {
+  "id": "whitewater_wedges",
+  "title": "白水七组参数对照",
+  "wiring": "FLIP 颗粒及 surface/vel → Whitewater Source → Whitewater Solver",
+  "observation": "寿命、随流、排斥尺寸/强度/变化、约束刚度、求解体素。重复基线 899 点，寿命改短后 646 点。",
+  "file": "whitewater_wedges.hip.gz",
+  "sha256": "2776fa4a203fae570975b1fc5d5487b6bb73e97ed60aa300c8d1572e6e07a730"
+ },
+ {
+  "id": "ocean_floating",
+  "title": "物体随海面起伏与倾斜",
+  "wiring": "同一 Ocean Spectrum → Ocean Evaluate 取 3 个水面点 → 计算 up、forward、orient → Copy to Points",
+  "observation": "F12/F24/F37，开启倾斜时局部上方向随波变化，关闭时保持全局竖直。船体始终随同一海面取样点抬升。",
+  "file": "ocean_floating.hip.gz",
+  "sha256": "1021ea8f91469e2e4f10ead9ccd65d3432aab30b427280d61a7df979da751934"
+ },
+ {
+  "id": "chop_motion_smoothing",
+  "title": "CHOP 运动平滑",
+  "wiring": "Transform 通道 → Fetch CHOP → Filter CHOP → chopf 查询 → 原始与滤波曲线",
+  "observation": "窗宽 0.24 秒时，73 帧的二阶差分 RMS 从 0.3533 降到 0.04044，原始低频起伏保留。",
+  "file": "chop_motion_smoothing.hip.gz",
+  "sha256": "5958102a59e6241e52c14b962408e0e6f645125d774343332479601ba195229d"
+ },
+ {
+  "id": "rbd_terrain_collision",
+  "title": "Bullet 高程碰撞",
+  "wiring": "HeightField → 生成坡面 → Convert HeightField → Bullet 碰撞输入",
+  "observation": "地形高度 0 → 0.75 → 0，F26 刚体中心 Y 约 0.190 → 0.920 → 0.190。",
+  "file": "rbd_terrain_collision.hip.gz",
+  "sha256": "84baa391d262133984d171814ad193c2edb5837ba119c40ff5cd85a60d9a1bb2"
+ },
+ {
+  "id": "rbd_secondary_debris",
+  "title": "二级刚体碎屑",
+  "wiring": "主碎块分离 → Debris Source → 已释放点 → Copy to Points → 第二个 Bullet",
+  "observation": "保留同批释放点，关闭 → 开启 → 关闭第二级重力，F22 碎屑平均 Y 约 1.314 → 0.047 → 1.314。",
+  "file": "rbd_secondary_debris.hip.gz",
+  "sha256": "a0652091d1027b7b887962aa0d3db59063afac5a680f9c2002fd89d979f7fb07"
+ },
+ {
+  "id": "rbd_pop_force",
+  "title": "POP Force 驱动 Bullet 碎块",
+  "wiring": "碎块 → RBD Configure → Bullet 内 forces/PRESOLVE 接 POP Force",
+  "observation": "F16 给 X 力 0 → 0.3 → 0，平均 X 位移 0.02185 → 0.07500 → 0.02185。",
+  "file": "rbd_pop_force.hip.gz",
+  "sha256": "b682be3d2a6b335dc6c3913f66726b5226ef097488ea39f42290e0fe34f3e0d7"
+ },
+ {
+  "id": "wind_droplets",
+  "title": "风驱液滴",
+  "wiring": "散点和初速 → POP Source（Points）→ POP Wind → POP Solver / Gravity",
+  "observation": "F25 风速 X 0 → 3.4 → 0，液滴均值 X 约 -0.064 → 0.864 → -0.062。",
+  "file": "wind_droplets.hip.gz",
+  "sha256": "14c460fea94e72d224465a43841705741ac1c26227c4f6cc4872520e98c103f0"
+ },
+ {
+  "id": "river_external_boundary",
+  "title": "二维烟速度注入 FLIP",
+  "wiring": "二维 Smoke DOP → 取 XZ 速度 → 3D 采样点栅格化为 vel → 加 surface → FLIP Solver 第四口",
+  "observation": "F22 左侧液粒平均 vx -0.020 → +0.479。换河流入口尺寸后为 +0.269。",
+  "file": "river_external_boundary.hip.gz",
+  "sha256": "ba9d38ce9c9099cc3f523b08ac40cf46f4f1a8f7624b2edbdcf51c77313096db"
+ },
+ {
+  "id": "pyro_local_pull",
+  "title": "Pyro 局部速度导向",
+  "wiring": "局部点阵写 guidev/guideweight → Rasterize → Pyro Sourcing 的 Pull 操作写入 vel",
+  "observation": "F26 导向区内平均 vx -0.613 → +2.829，区外变化 0.186。缩小导向区后区内为 +2.606。",
+  "file": "pyro_local_pull.hip.gz",
+  "sha256": "35280b0f30ba74269b9054a5980ceb3baed55997391cb04ffb8f0cfd2840b1f0"
+ },
+ {
+  "id": "pyro_paddle_transfer",
+  "title": "移动碰撞速度传给烟",
+  "wiring": "动画 Box → collision SDF + v 向量 VDB → Pyro 第二口 → 读求解后的 collisionvel、vel",
+  "observation": "F19 碰撞体内 collisionvel.x 0.00 → 1.80，外侧烟气平均 vx -0.191 → +0.289。更窄的碰撞体仍传递速度。",
+  "file": "pyro_paddle_transfer.hip.gz",
+  "sha256": "fb0879762a58910154221215b8bf7b2317f2b98a86671eb80137dd2eb916abc7"
+ },
+ {
+  "id": "sop_campfire",
+  "title": "篝火与起烟",
+  "wiring": "火源点写 burn/temperature → Rasterize → Pyro flame → 从火焰生 density → 与木柴合看",
+  "observation": "F29 Flame Lifespan 0.16 → 0.82 秒，火焰体素 1,912 → 6,410，高于阈值的烟体素 2,931 → 6,094。扩大火源后烟体素 8,360。",
+  "file": "sop_campfire.hip.gz",
+  "sha256": "66149dcb6ad2377f06826183b8b13c7e664b9b0b0a38b0da68122108c390da39"
+ },
+ {
+  "id": "vellum_transport_dust",
+  "title": "Vellum 颗粒驱动 Pyro 灰尘",
+  "wiring": "Configure Grain → Vellum → 按粒速写 density，连同 temperature/v 栅格化 → Pyro → 合看颗粒与密度",
+  "observation": "固定 294 个砂粒，F10 起烟前为 0 个密度体素，F18 为 5,793。F18 后关闭发射，F23 仍有 4,485，禁用起烟对照为零。",
+  "file": "vellum_transport_dust.hip.gz",
+  "sha256": "89ae5d22713afdc147966dabe91f70b23e21faa1e406687ae08887ccffc0d844"
+ },
+ {
+  "id": "delayed_piece_collapse",
+  "title": "吸引坍缩的延迟收缩",
+  "wiring": "点阵 → 按激活帧计算 del 和收缩进度 → 调整位置与 pscale → Copy to Points",
+  "observation": "F10 有 30 块开始收缩。F21 平均尺度 1.000 → 0.157，换宽点阵为 0.207。",
+  "file": "delayed_piece_collapse.hip.gz",
+  "sha256": "865123d70ebc22537162cc313a79bff3ede1a980be608cc9c83023201d3f821d"
+ },
+ {
+  "id": "crystal_curve_growth",
+  "title": "沿曲线长冰锥",
+  "wiring": "导线 → Carve Second U → Resample → 按曲线 U 算分段年龄与 pscale → Copy to Points",
+  "observation": "F26 生长率 0.011 → 0.026 时，冰锥位置 18 → 39 个，换弯曲导线为 46 个。",
+  "file": "crystal_curve_growth.hip.gz",
+  "sha256": "9cb1477beb121eb0be82f84fbeb1771231e147463d80d72d631b55a9fb42e90a"
+ },
+ {
+  "id": "surface_diffusion_tracers",
+  "title": "表面扩散生成线条",
+  "wiring": "固定点阵和局部引燃 → Pyro Source Spread → 以 totalburn 筛点 → 生长线段",
+  "observation": "F16 搜索半径 0.03 → 0.22 时，达到阈值的点 7 → 543。换疏点阵为 24。",
+  "file": "surface_diffusion_tracers.hip.gz",
+  "sha256": "c6adf800aab85eab5cd647d30a558f61d9fcc16a61c2ca017db5ffcfd7ee0f1c"
+ },
+ {
+  "id": "looped_pyro_source",
+  "title": "烟源循环开关",
+  "wiring": "点源温度与密度 → Rasterize → Pyro Sourcing 按周期和帧窗激活",
+  "observation": "每 10 帧发射 4 帧。F14 近喷口密度，单脉冲 1.455，有第二次脉冲 9.569，换输入为 6.947。",
+  "file": "looped_pyro_source.hip.gz",
+  "sha256": "de9eabcbfaef1db23a7e17061367471f2f1c6b6d6ceba0d846bbb8592f89f7bf"
+ },
+ {
+  "id": "wave_clusters",
+  "title": "按簇控制波线寿命",
+  "wiring": "簇 ID 和寿命 → 逐簇取相位 → 生成波线",
+  "observation": "F18 波线数 6 → 13，换输入后 13。",
+  "file": "wave_clusters.hip.gz",
+  "sha256": "7017e0bb1999d26d6ead25e39f06d7f1dba0a3945fed15c2618653b42b1d2d84"
+ },
+ {
+  "id": "named_piece_handoff",
+  "title": "按名称回贴刚体细模",
+  "wiring": "休止点与目标点 → 按 name 对齐姿态 → Transform Pieces",
+  "observation": "F20 点的平均高度 0.000 → 0.762，换输入后 0.741。两组模板都重排后，按名比对最大位置误差小于 0.000001。",
+  "file": "named_piece_handoff.hip.gz",
+  "sha256": "8a53b3581d8f69a9338d2fc7727d3e37300ac486491cca9ae8dc1f29b3f43f90"
+ },
+ {
+  "id": "taper_mask",
+  "title": "平滑遮罩驱动径向挤出",
+  "wiring": "采样近邻位置 → Blur Cd → 按平滑遮罩作径向位移",
+  "observation": "F16 平均位移 0.000 → 0.194，换输入后 0.174。",
+  "file": "taper_mask.hip.gz",
+  "sha256": "c2c63e824ffcc959ede5fad71696d082014cfb821e7f1f5882af4b839d00a2ed"
+ },
+ {
+  "id": "stable_spin_strands",
+  "title": "稳定 ID 控制独立旋转",
+  "wiring": "稳定 id → 初始 orient 与时间四元数 → Copy to Points",
+  "observation": "F24 旋转后轴的",
+  "file": "stable_spin_strands.hip.gz",
+  "sha256": "7cc71cd52cc87d31c24d5f2dd38f89ade910a95f73f557363acf52b9e4b648e0"
+ },
+ {
+  "id": "contact_ring",
+  "title": "双输入碰撞中心与冲击环",
+  "wiring": "两路中心确定触点 → 从 rest 按时间和距离长波环",
+  "observation": "F22 波环半径 0.352 → 0.808，换输入后 0.000。",
+  "file": "contact_ring.hip.gz",
+  "sha256": "3f14b4985029db752303bf03f43dda33b2748e766114ffb4be494fe41c0d65dd"
+ },
+ {
+  "id": "layered_strand_noise",
+  "title": "按曲线 U 分层抖动细股",
+  "wiring": "公共导线与各层目标 → 分层混合 P → 用曲线 U 递增噪声",
+  "observation": "F18 尖端平均抖动幅度 0.000 → 0.049，换输入后 0.048。",
+  "file": "layered_strand_noise.hip.gz",
+  "sha256": "8224e2e4839f5087b1d65f532d34f8db3861aa78b6d950ed2aae5b14e6276e2b"
+ },
+ {
+  "id": "surface_arc_traces",
+  "title": "投射曲线贴住变形表面",
+  "wiring": "保留 rest 导线 → 投影到表面 → 用表面 N 做微小抬升 → 显式记录误差",
+  "observation": "F18 线点到表面的平均距离 0.218 → 0.045，换输入后 0.044。",
+  "file": "surface_arc_traces.hip.gz",
+  "sha256": "d6a2d89f8e26d09c8be02e090b98193cb58eeda7ec34768afbbe0354be5d18ae"
+ },
+ {
+  "id": "trajectory_ribbons",
+  "title": "按 ID 定速与衰减拖尾",
+  "wiring": "稳定 ID → 重算轨迹速度与年龄 → 按宽度和 Alpha 生成拖尾带",
+  "observation": "F24 同帧尾端 X 位移差 4.265 → 0.000，换输入后 0.000。",
+  "file": "trajectory_ribbons.hip.gz",
+  "sha256": "82f3832262dc72eaa01642adf9af80539e885d347030abe0c21fe56ab97e0372"
+ },
+ {
+  "id": "rest_shell_wipe",
+  "title": "休止坐标控制护盾消隐",
+  "wiring": "存 rest → 动画外形 → 用休止距离作阈值 → 逐面裁剪",
+  "observation": "F18 保留面数 288 → 236，换输入后 240。",
+  "file": "rest_shell_wipe.hip.gz",
+  "sha256": "732cb005e6623df4fe08376cc525750e7b2cf25a2778145861aacb28a144d88e"
+ },
+ {
+  "id": "agent_role_routing",
+  "title": "角色分组与启动时差",
+  "wiring": "阵列与角色标签 → 分组使用不同速度 → 实例化代理人",
+  "observation": "F15 角色组的平均附加位移 0.000 → 0.386，换输入后 0.225。",
+  "file": "agent_role_routing.hip.gz",
+  "sha256": "bc4b9de5c756bb0c29f376387b0ab998538cb8477e4e00949ff950fd9b320709"
+ },
+ {
+  "id": "petal_orientation",
+  "title": "按高度定花瓣朝向和尺度",
+  "wiring": "径向点 → 朝中心写 N 并正交化 up → 高度映射 pscale → Copy to Points",
+  "observation": "F11 瓣片尺度差 0.000 → 0.681，换输入后 0.681。",
+  "file": "petal_orientation.hip.gz",
+  "sha256": "fd7984f81a4829d360bcccc642381b568aa664a0c534b234c50cb8483db59a80"
+ },
+ {
+  "id": "lifted_rotating_tiles",
+  "title": "颜色遮罩抬升与筛除板块",
+  "wiring": "径向 Cd.r → 阈值筛板块 → 颜色映射抬升和旋转",
+  "observation": "F14 点的平均高度 0.000 → 0.515，换输入后 0.547。",
+  "file": "lifted_rotating_tiles.hip.gz",
+  "sha256": "ed43c87833231ada1716d56a25697522bdaca05d6bd4ff84ccd102c4d5cd2fb5"
+ },
+ {
+  "id": "aurora_ribbon",
+  "title": "沿 UV 变化的极光帘幕",
+  "wiring": "采样弯曲导线 → 绿色属性乘高度 → 按 uv.x 改宽和色彩",
+  "observation": "F14 帘幕最高高度 0.326 → 1.257，换输入后 1.257。",
+  "file": "aurora_ribbon.hip.gz",
+  "sha256": "23f081323ec8c5334864d9bf6a0ab72e32b3274a5720473e0d25979007ec43a0"
+ },
+ {
+  "id": "source_operator_compare",
+  "title": "同场对照 Pyro Pull 与 Add",
+  "wiring": "同一密度、温度和 v → Pyro Sourcing Add / Pull → 采真实 vel.x",
+  "observation": "F16 场内平均 vx 14.850 → 3.159，换输入后 3.139。",
+  "file": "source_operator_compare.hip.gz",
+  "sha256": "7cc353933828ad8ed123dc4e5887377999fbf801fdcbf40b0908ca5e4f2fb5af"
+ },
+ {
+  "id": "vortex_advection",
+  "title": "螺旋速度场带动轨迹",
+  "wiring": "径向、切向和垂直速度 → 向量栅格 → 在粒子位置积分",
+  "observation": "F15 平均累计转角（弧度） 0.007 → 3.356，换输入后 4.338。",
+  "file": "vortex_advection.hip.gz",
+  "sha256": "6f961e5769082dd8e2b706b8a68cb2a755b9fb79efbcde5514fee5508196ac0a"
+ },
+ {
+  "id": "flow_obstacle_regions",
+  "title": "流向点乘区分迎水和背水",
+  "wiring": "向下投射 → primuv 读流速 → 点乘障碍物法线 → 沿流向衰减",
+  "observation": "F1 左右加权遮罩 -0.117 → 0.117，换输入后 0.264。",
+  "file": "flow_obstacle_regions.hip.gz",
+  "sha256": "10998eca370a1bc643ac9e87dceb0d473155434bec815637bc1394c5aed36309"
+ },
+ {
+  "id": "cloud_base_height",
+  "title": "世界高度裁切云底密度",
+  "wiring": "点密度栅格 → 体素按世界高度 smooth → 统一等值面",
+  "observation": "F1 同位置云底平均密度 0.214 → 0.023，换输入后 0.006。",
+  "file": "cloud_base_height.hip.gz",
+  "sha256": "dbf2bbd538cd6741b46c015cd801bb6eb01ef846f927efc0a240a8a620dc370f"
+ },
+ {
+  "id": "volume_library_spacing",
+  "title": "按体积包围盒拼接云库",
+  "wiring": "读取各体积包围盒 → 累加宽度与间隔 → 横向排布",
+  "observation": "F1 体积排布总宽 5.590 → 6.230，换输入后 6.750。",
+  "file": "volume_library_spacing.hip.gz",
+  "sha256": "3e7290e55795776033804113e1d3408078a7a2679e8d0304dfd5346aa5ae4b13"
+ },
+ {
+  "id": "age_depth_density",
+  "title": "年龄与深度双遮罩",
+  "wiring": "给点写 age / depth → 两个归一化遮罩相乘 → 栅格化密度",
+  "observation": "F17 平均点密度 0.576 → 0.395，换输入后 0.288。",
+  "file": "age_depth_density.hip.gz",
+  "sha256": "4e2dc6174c68e1fa7aa297d3b42ec030749474e5b318154be574507eebcf8605"
+ },
+ {
+  "id": "radial_divergence_source",
+  "title": "散度源把烟向外推开",
+  "wiring": "点写 divergence → 命名标量 VDB → Pyro 散度行 → 测径向速度",
+  "observation": "F14 平均径向速度 0.000 → 0.682，换输入后 0.699。",
+  "file": "radial_divergence_source.hip.gz",
+  "sha256": "84b11a59a32d265c0f53fbda96d82fe8d146189a04cafd024f0eb478ddb8e1bc"
+ },
+ {
+  "id": "shockwave_timeline",
+  "title": "冲击环的启动帧与延迟支路",
+  "wiring": "关键帧控制半径 → 起始帧放行 → TimeShift $F-16 → 合并两圈",
+  "observation": "F28 非空环数 0.000 → 2.000，换输入后 2.000。",
+  "file": "shockwave_timeline.hip.gz",
+  "sha256": "8944a97c62a9e7a2e0ba7f9e86aff82129c88bc5fdfb4360c4dc285d7ce20772"
+ },
+ {
+  "id": "shared_crowd_smoke_v",
+  "title": "同一 v 场分别驱动轨迹与烟雾",
+  "wiring": "生成 v VDB → 点轨迹积分与 Pyro Add 分流，烟密度单独输入",
+  "observation": "F12 烟包络 X 中点 0.006 → 1.283，换输入后 1.313。",
+  "file": "shared_crowd_smoke_v.hip.gz",
+  "sha256": "ac20973e16fe167d851a0517e9b02b32ca0f574996251d9d5ae75297ff466cc8"
+ },
+ {
+  "id": "fire_loop_offset",
+  "title": "烟火分层和时移读取",
+  "wiring": "源点写 density / flame → 栅格化 → 两路 TimeShift → 保留不同字段",
+  "observation": "F9 探点平均密度 1.746 → 3.727，换输入后 3.336。",
+  "file": "fire_loop_offset.hip.gz",
+  "sha256": "ca94d8483fc080505b52ca09c947c24f2f15c55258d302ac7f4ba6a85e02b4d0"
+ },
+ {
+  "id": "surface_sdf_routing",
+  "title": "表面速度、贴面与独立删点区",
+  "wiring": "primuv 采表面 v → 删点区 SDF 剔除 → 表面 SDF 修正",
+  "observation": "F1 存活点绝对 SDF 均值 0.122 → 0.017，换输入后 0.017。",
+  "file": "surface_sdf_routing.hip.gz",
+  "sha256": "e09937984cb12d8c0dfa488030ca501c77f5f887317d447384d6335322574e5b"
+ },
+ {
+  "id": "sparse_volume_limit",
+  "title": "稀疏烟域限制盒",
+  "wiring": "带初速度的源 → Sparse Pyro → 固定最大范围对照 → density 等值面",
+  "observation": "F18 烟体右边界 X 1.019 → 2.404，换输入后 2.689。",
+  "file": "sparse_volume_limit.hip.gz",
+  "sha256": "be6a411dfc0a369ff0e31a907446559a75d9e1cdfa09a7b57f04e99c3635bd7d"
+ },
+ {
+  "id": "minimal_opencl_cycle",
+  "title": "Minimal OpenCL 源帧循环",
+  "wiring": "密度和温度源 → 固定域 Minimal OpenCL → 源 F1–3 按周期再入场",
+  "observation": "F12 探点平均密度 0.000 → 5.458，换输入后 7.573。",
+  "file": "minimal_opencl_cycle.hip.gz",
+  "sha256": "c2856279647e1b8670e7bba4fd6a52333b0e367e13deec33680c33069ad34fdc"
+ },
+ {
+  "id": "native_trail_components",
+  "title": "弹道拖尾分出密度和温度",
+  "wiring": "Pyro Trail Path 保存 time → Pyro Trail Source → 分别栅格密度、温度",
+  "observation": "F12 拖尾发射点数 360.000 → 960.000，换输入后 960.000。",
+  "file": "native_trail_components.hip.gz",
+  "sha256": "35035d0aba346c2e3ff724a627a120323e807cfab29aa3698574a06dabf708ed"
+ },
+ {
+  "id": "fracture_density_mask",
+  "title": "用密度遮罩控制破碎集中区",
+  "wiring": "程序化绘制 density → 采样和按密度筛点 → Voronoi Fracture → 视口比较左右碎块",
+  "observation": "F1 左侧破碎种子占比 0.483 → 0.805，换输入后 0.837。",
+  "file": "fracture_density_mask.hip.gz",
+  "sha256": "e3b56b90febc9deb8593a6d9d20faf14ca47b001880466e3ecd61c04df342121"
+ },
+ {
+  "id": "weighted_smoke_color",
+  "title": "颜色权重与烟密度分离",
+  "wiring": "点写 density、Cd 和 Alpha → 栅格颜色分子与权重 → 固定位置读颜色和密度",
+  "observation": "F1 固定探点平均红通道 0.090 → 0.633，换输入后 0.639。",
+  "file": "weighted_smoke_color.hip.gz",
+  "sha256": "8a944b3cf6dbbec8632ba05b9ecc10653068aadc16f236d3347dc48995b4228f"
+ },
+ {
+  "id": "reverse_debris_trail",
+  "title": "拖尾在碎屑后方的速度分路",
+  "wiring": "保留原块 v → 拖点用反向 v 与年龄渐变 → 分别栅格 traildensity 和 trailv",
+  "observation": "F1 拖尾点平均 X 0.669 → -0.189，换输入后 -0.189。",
+  "file": "reverse_debris_trail.hip.gz",
+  "sha256": "97710000f6c2ade9af9c32264e21a0e1a355d8a6500075a79efd0954b963fbf6"
+ },
+ {
+  "id": "feather_template",
+  "title": "单羽模板与 UV 回写",
+  "wiring": "三曲线 → Feather Shape Organize → Template → UV 回写",
+  "observation": "比较模板宽度、羽枝及展开 UV。",
+  "file": "feather_template.hip.gz",
+  "sha256": "8f228d0068172f1e213d353c98fc1734e1cd31e1363548ee43e3cc1cf8f99ef7"
+ },
+ {
+  "id": "feather_guides",
+  "title": "羽毛导向与去交叠",
+  "wiring": "带朝向导向 → 匹配模板 → 降采样去交叠 → 恢复细节",
+  "observation": "统一严重交叉的导向后，低模羽面交点从 76 降至 17。",
+  "file": "feather_guides.hip.gz",
+  "sha256": "ebcf11720184ca13a62fa283c33a9b93e0b4f96e1373926c025f62b2346959fe"
+ },
+ {
+  "id": "feather_cloth",
+  "title": "固定羽根与羽面随动",
+  "wiring": "Feather Surface → 固定 roots → Vellum Cloth → Feather Deform",
+  "observation": "F16 的 36 个固定点位移为 0，612 个非固定点移动。",
+  "file": "feather_cloth.hip.gz",
+  "sha256": "be6cfae40456e8ab9c5b8a1f7150f914af49d4b4d28411bc7db49b81b766865d"
+ },
+ {
+  "id": "garage_constraints",
+  "title": "车库 RBD 约束断开与碎屑起尘",
+  "wiring": "关系几何 → 按 Soft 角度、Hard 力及帧组删线；碎屑速度 → 密度 Ramp → Rasterize",
+  "observation": "F1040 逐段剩余 7、6、5 条，替换输入后最终剩 4 条。",
+  "file": "garage_constraints.hiplc.gz",
+  "sha256": "93d993fc41a52e428d5a9966f2f25a1eed495ccb8938b038d3180553963dcf21"
+ }
+]
