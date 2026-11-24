@@ -2,6 +2,19 @@
 
 Bridge 是连接 AI 助手与 Houdini、Nuke 的本地工作流项目。它通过 MCP 提供工程选择、任务查询、受控提案和执行入口，并保留可编辑工程、产物及执行证据。
 
+## Houdini SOP 小样
+
+想知道河流怎样跟随速度场、建筑怎样局部激活，或者白水寿命会如何改变覆盖面积，可以直接浏览 91 个自建小样的接线、视口和实测数据。示例与 89 章操作路线在 `codex/houdini-project-recipes` 分支维护。[白水参数对照上手示例](https://github.com/LTX2022/bridge-vfx/tree/codex/houdini-project-recipes#houdini-sop-小样) · [按效果查接线](https://github.com/LTX2022/bridge-vfx/blob/codex/houdini-project-recipes/skills/houdini-project-recipes/references/实测接线.md)
+
+```sh
+git clone --depth 1 --branch codex/houdini-project-recipes https://github.com/LTX2022/bridge-vfx.git bridge-vfx-recipes
+cd bridge-vfx-recipes/skills/houdini-project-recipes
+python3 scripts/example.py 白水
+python3 scripts/example.py whitewater_wedges --export ./whitewater-study.hip
+```
+
+在 Houdini 中打开导出的 HIP 即可查看和修改节点。搜索与导出使用 Python 3 标准库。
+
 ## 当前能力
 
 - 查询已登记工程和原任务，读取已接收的工程文件与结果；运行中、失败或未知状态不会被当作完成。
